@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FormButton } from 'natura-ui';
 
 class Orders extends Component {
   render() {
@@ -8,7 +9,7 @@ class Orders extends Component {
         <h2>Meus Pedidos</h2>
         <ul>
           <li key={1}>
-            <Link to="my-orders/1">Pedido #1</Link>
+            <FormButton label="Pedido #1" link="my-orders/1" />
           </li>
           <li key={2}>
             <Link to="my-orders/2">Pedido #2</Link>
