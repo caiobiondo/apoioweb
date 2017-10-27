@@ -28,7 +28,7 @@
     "glamor": "^2.20.40",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "natura-ui": "git@bitbucket.org:myvizir/natura-ui.git#feature/add-dist-folder",
+    "natura-ui": "git+ssh://git@bitbucket.org/myvizir/natura-ui.git#feature/theme-fonts-globals",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",
