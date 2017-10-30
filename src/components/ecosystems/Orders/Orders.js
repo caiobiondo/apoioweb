@@ -12,9 +12,15 @@ class Orders extends Component {
           <FormattedMessage id="my_orders" />
         </h2>
         <List>
-          <Card key={1}>
-            <FormButton label="Pedido #1" primary={true} link="my-orders/1" />
-          </Card>
+          {(this.props.data.orders || []).map((order, index) => {
+            const label = `Pedido #${order.orderNumber}`;
+            const link = `my-orders/${order.orderNumber}`;
+            return (
+              <Card key={index}>
+                <FormButton label={label} primary={true} link={link} />
+              </Card>
+            );
+          })}
         </List>
       </div>
     );
