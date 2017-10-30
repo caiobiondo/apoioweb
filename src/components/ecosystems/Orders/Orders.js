@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormButton, Card } from 'natura-ui';
 import { List } from './Orders.styles';
+import withData from './Orders.data';
 
 class Orders extends Component {
   render() {
@@ -17,4 +18,4 @@ class Orders extends Component {
   }
 }
 
-export default Orders;
+export default withData(Orders);
