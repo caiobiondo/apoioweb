@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
-import Orders from './components/ecosystems/Orders';
-import OrderDetails from './components/ecosystems/OrderDetails';
+import Orders from '../ecosystems/Orders';
+import OrderDetails from '../ecosystems/OrderDetails';
 
 import { ThemeProvider, theme, setupGlobals } from 'natura-ui';
 
