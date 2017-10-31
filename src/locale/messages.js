@@ -1,12 +1,14 @@
 export default {
   'en-US': {
-    my_orders: 'My Orders',
-    inputPlaceholder: 'Insert here your to do!',
-    trigger: 'SAVE'
+    orderNumber: 'Order number'
   },
   'pt-BR': {
-    my_orders: 'Meus Pedidos',
-    inputPlaceholder: 'Insira aqui o seu afazer!',
-    trigger: 'SALVAR'
+    orderCycle: 'Ciclo',
+    orderDate: 'Data do pedido',
+    orderDetails: 'Detalhe',
+    orderEstimatedDeliveryDate: 'Previsão de entrega',
+    orderNumber: 'Número do pedido',
+    orderTotalScore: 'Pontos',
+    orderValue: 'Valor total'
   }
 };
