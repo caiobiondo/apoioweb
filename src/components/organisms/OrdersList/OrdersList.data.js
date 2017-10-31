@@ -1,8 +1,7 @@
-import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const OrdersQuery = gql`
-  query OrdersQuery {
+const OrdersListQuery = gql`
+  query OrdersListQuery {
     orders(id: 1) {
       cycle
       date
@@ -15,4 +14,4 @@ const OrdersQuery = gql`
   }
 `;
 
-export default graphql(OrdersQuery);
+export default OrdersListQuery;

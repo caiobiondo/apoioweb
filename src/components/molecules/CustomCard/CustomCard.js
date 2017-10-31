@@ -4,7 +4,7 @@ import { Card } from 'natura-ui';
 
 import CustomCardSection from '../../atoms/CustomCardSection/CustomCardSection';
 import CustomCardText from '../../atoms/CustomCardText/CustomCardText';
-import { CARD_COLOR } from './utils';
+import { CARD_COLOR } from '../../../utils/colors';
 
 import { Wrapper, Border, Content, cardStyle } from './CustomCard.styles';
 

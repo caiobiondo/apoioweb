@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getGradientColor } from './utils';
+import { getGradientColor } from '../../../utils/colors';
 
 export const Wrapper = styled.div`
   margin: 15px 0px;
