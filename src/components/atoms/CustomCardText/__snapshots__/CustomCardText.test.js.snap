@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomCardText should render a custom card text 1`] = `
+<styled.div
+  color="#fff"
+>
+  text
+</styled.div>
+`;
