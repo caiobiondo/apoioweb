@@ -36,7 +36,7 @@ const Order = ({ color, left, middle, right }) => (
       <Body>{renderFields(middle.body)}</Body>
     </CustomCard.Section>
 
-    <CustomCard.Section alignItems="center" justifyContent="center">
+    <CustomCard.Section>
       {right.status && (
         <Status>
           <CustomCard.Text color={color}>{right.status}</CustomCard.Text>

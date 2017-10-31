@@ -5,8 +5,8 @@ exports[`Order should render an order card 1`] = `
   color="#fff"
 >
   <CardSection
-    alignItems="flex-start"
-    justifyContent="space-between"
+    alignItems="center"
+    justifyContent="center"
   >
     <styled.div>
       <div>
@@ -58,8 +58,8 @@ exports[`Order should render an order card 1`] = `
     </styled.div>
   </CardSection>
   <CardSection
-    alignItems="flex-start"
-    justifyContent="space-between"
+    alignItems="center"
+    justifyContent="center"
   >
     <styled.div>
       <div>
@@ -93,11 +93,11 @@ exports[`Order should render an order card 1`] = `
     justifyContent="center"
   >
     <styled.div>
-      <CardText
+      <CustomCardText
         color="#fff"
       >
         status
-      </CardText>
+      </CustomCardText>
     </styled.div>
     <FormButton
       backgroundColor="#fff"
@@ -122,8 +122,8 @@ exports[`Order should render an order card without status 1`] = `
   color="#fff"
 >
   <CardSection
-    alignItems="flex-start"
-    justifyContent="space-between"
+    alignItems="center"
+    justifyContent="center"
   >
     <styled.div>
       <div>
@@ -175,8 +175,8 @@ exports[`Order should render an order card without status 1`] = `
     </styled.div>
   </CardSection>
   <CardSection
-    alignItems="flex-start"
-    justifyContent="space-between"
+    alignItems="center"
+    justifyContent="center"
   >
     <styled.div>
       <div>

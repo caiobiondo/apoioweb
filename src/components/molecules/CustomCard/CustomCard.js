@@ -2,31 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'natura-ui';
 
-import CustomCardSection from './CustomCardSection';
-import CustomCardText from './CustomCardText';
+import CustomCardSection from '../../atoms/CustomCardSection/CustomCardSection';
+import CustomCardText from '../../atoms/CustomCardText/CustomCardText';
 import { CARD_COLOR } from './utils';
 
-import { Wrapper, Border, Content } from './CustomCard.styles';
+import { Wrapper, Border, Content, cardStyle } from './CustomCard.styles';
 
 const CustomCard = ({ color, children }) => (
   <Wrapper>
-    <Card style={styles().card}>
+    <Card style={cardStyle}>
       {color && <Border color={color} />}
-
       <Content>{children}</Content>
     </Card>
   </Wrapper>
 );
-
-const styles = () => ({
-  card: {
-    padding: 0,
-    borderRadius: 3,
-    overflow: 'hidden',
-    boxShadow: '2px 4px 5px -2px rgba(0,0,0,0.1)',
-    wordBreak: 'break-word'
-  }
-});
 
 CustomCard.SUCCESS = CARD_COLOR.SUCCESS;
 CustomCard.WARNING = CARD_COLOR.WARNING;

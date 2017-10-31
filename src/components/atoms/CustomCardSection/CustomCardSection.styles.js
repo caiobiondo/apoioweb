@@ -1,8 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 20px;
   margin-left: 40px;
@@ -27,17 +25,3 @@ const Wrapper = styled.div`
     }
   }
 `;
-
-const CardSection = ({ children, ...props }) => <Wrapper {...props}>{children}</Wrapper>;
-
-CardSection.defaultProps = {
-  justifyContent: 'space-between',
-  alignItems: 'flex-start'
-};
-
-CardSection.propTypes = {
-  justifyContent: PropTypes.string,
-  alignItems: PropTypes.string
-};
-
-export default CardSection;

@@ -24,3 +24,11 @@ export const Content = styled.div`
     flex-direction: row;
   }
 `;
+
+export const cardStyle = {
+  padding: 0,
+  borderRadius: 3,
+  overflow: 'hidden',
+  boxShadow: '2px 4px 5px -2px rgba(0,0,0,0.1)',
+  wordBreak: 'break-word'
+};
