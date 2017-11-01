@@ -1,4 +1,4 @@
-import { flattenMessages } from './index';
+import { flattenMessages } from './utils';
 
 describe('flattenMessages', () => {
   it('should flatten an hash of messages', () => {
