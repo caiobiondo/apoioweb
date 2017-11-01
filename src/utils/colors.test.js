@@ -3,10 +3,10 @@ import { CARD_COLOR, getGradientColor, getSolidColor } from './colors';
 describe('Colors Utils', () => {
   it('should define CARD_COLOR constants', () => {
     expect(CARD_COLOR).toEqual({
+      DANGER: 'DANGER',
+      INFO: 'INFO',
       SUCCESS: 'SUCCESS',
       WARNING: 'WARNING',
-      DANGER: 'DANGER',
-      INFO: 'INFO'
     });
   });
 

@@ -55,23 +55,23 @@ const Order = ({ color, left, middle, right }) => (
 );
 
 Order.defaultProps = {
-  color: null
+  color: null,
 };
 
 Order.propTypes = {
   color: PropTypes.string,
   left: PropTypes.shape({
+    body: PropTypes.object,
     header: PropTypes.object,
-    body: PropTypes.object
   }).isRequired,
   middle: PropTypes.shape({
+    body: PropTypes.object,
     header: PropTypes.object,
-    body: PropTypes.object
   }).isRequired,
   right: PropTypes.shape({
     details: PropTypes.string,
-    status: PropTypes.string
-  }).isRequired
+    status: PropTypes.string,
+  }).isRequired,
 };
 
 export default Order;

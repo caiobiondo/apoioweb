@@ -1,8 +1,8 @@
 export const CARD_COLOR = {
+  DANGER: 'DANGER',
+  INFO: 'INFO',
   SUCCESS: 'SUCCESS',
   WARNING: 'WARNING',
-  DANGER: 'DANGER',
-  INFO: 'INFO'
 };
 
 export function getGradientColor(color) {

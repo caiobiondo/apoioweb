@@ -8,30 +8,30 @@ describe('OrdersList', () => {
     const data = {
       orders: [
         {
-          orderNumber: '311619650',
-          date: '20/02/2015 16h48 Sex',
           cycle: '03/2015',
-          status: 'CONCLUÍDO E APROVADO',
+          date: '20/02/2015 16h48 Sex',
+          estimatedDeliveryDate: '23/02/2015',
+          invoice: '-',
+          orderNumber: '311619650',
+          orderValue: '376,99',
           origin: 'WEB',
           paymentMethod: 'Boleto Parcelado',
+          status: 'CONCLUÍDO E APROVADO',
           totalScore: '100',
-          orderValue: '376,99',
-          invoice: '-',
-          estimatedDeliveryDate: '23/02/2015'
         },
         {
-          orderNumber: '311619651',
-          date: '20/02/2015 16h48 Sex',
           cycle: '03/2015',
-          status: 'CONCLUÍDO E APROVADO',
+          date: '20/02/2015 16h48 Sex',
+          estimatedDeliveryDate: '23/02/2015',
+          invoice: '-',
+          orderNumber: '311619651',
+          orderValue: '376,99',
           origin: 'WEB',
           paymentMethod: 'Boleto Parcelado',
+          status: 'CONCLUÍDO E APROVADO',
           totalScore: '100',
-          orderValue: '376,99',
-          invoice: '-',
-          estimatedDeliveryDate: '23/02/2015'
-        }
-      ]
+        },
+      ],
     };
 
     renderer.render(<OrdersList data={data} />);

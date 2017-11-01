@@ -9,7 +9,7 @@ export default class ApolloClientCreator {
   create() {
     const link = this._createLink();
     const cache = this._createCache();
-    return new this.ApolloClient({ link, cache });
+    return new this.ApolloClient({ cache, link });
   }
 
   _createCache() {

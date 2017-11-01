@@ -11,26 +11,26 @@ const renderOrder = order => {
       key={order.orderNumber}
       color={CustomCard.SUCCESS}
       left={{
-        header: {
-          orderNumber: `#${order.orderNumber}`
-        },
         body: {
-          orderDate: order.date,
           orderCycle: order.cycle,
-          orderEstimatedDeliveryDate: order.estimatedDeliveryDate
-        }
+          orderDate: order.date,
+          orderEstimatedDeliveryDate: order.estimatedDeliveryDate,
+        },
+        header: {
+          orderNumber: `#${order.orderNumber}`,
+        },
       }}
       middle={{
-        header: {
-          orderValue: `R$ ${order.orderValue}`
-        },
         body: {
-          orderTotalScore: order.totalScore
-        }
+          orderTotalScore: order.totalScore,
+        },
+        header: {
+          orderValue: `R$ ${order.orderValue}`,
+        },
       }}
       right={{
+        details: `my-orders/${order.orderNumber}`,
         status: order.status,
-        details: `my-orders/${order.orderNumber}`
       }}
     />
   );
