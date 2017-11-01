@@ -9,11 +9,12 @@ import { Main } from './App.styles';
 import Orders from '../ecosystems/Orders/Orders';
 import OrderDetails from '../ecosystems/OrderDetails/OrderDetails';
 
-import { ThemeProvider, theme, setupGlobals } from 'natura-ui';
+import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 
 import { locale, flattenMessages, messages } from '../../locale/index';
 
 setupGlobals();
+setupFonts();
 
 const client = new ApolloClientCreator(GRAPHQL_URI).create();
 
