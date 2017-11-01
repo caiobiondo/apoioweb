@@ -1,7 +1,7 @@
 import { flattenMessages } from './index';
 
-describe('Order', () => {
-  it('should render an order card', () => {
+describe('flattenMessages', () => {
+  it('should flatten an hash of messages', () => {
     const messages = {
       'en-US': {
         orderCycle: 'Cycle',
