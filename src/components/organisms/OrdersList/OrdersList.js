@@ -6,14 +6,15 @@ import CustomCard from '../../molecules/CustomCard/CustomCard';
 import { graphql } from 'react-apollo';
 
 const renderOrder = order => {
+  /* eslint-disable sort-keys */
   return (
     <Order
       key={order.orderNumber}
       color={CustomCard.SUCCESS}
       left={{
         body: {
-          orderCycle: order.cycle,
           orderDate: order.date,
+          orderCycle: order.cycle,
           orderEstimatedDeliveryDate: order.estimatedDeliveryDate,
         },
         header: {
@@ -34,6 +35,7 @@ const renderOrder = order => {
       }}
     />
   );
+  /* eslint-enable sort-keys */
 };
 
 export class OrdersList extends Component {
