@@ -1,6 +1,6 @@
 export default {
   'en-US': {
-    orderNumber: 'Order number'
+    orderNumber: 'Order number',
   },
   'pt-BR': {
     orderCycle: 'Ciclo',
@@ -9,6 +9,6 @@ export default {
     orderEstimatedDeliveryDate: 'Previsão de entrega',
     orderNumber: 'Número do pedido',
     orderTotalScore: 'Pontos',
-    orderValue: 'Valor total'
-  }
+    orderValue: 'Valor total',
+  },
 };

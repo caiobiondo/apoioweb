@@ -5,11 +5,11 @@ import { Wrapper } from './CustomCardText.styles';
 const CustomCardText = ({ children, ...props }) => <Wrapper {...props}>{children}</Wrapper>;
 
 CustomCardText.defaultProps = {
-  color: null
+  color: null,
 };
 
 CustomCardText.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 export default CustomCardText;

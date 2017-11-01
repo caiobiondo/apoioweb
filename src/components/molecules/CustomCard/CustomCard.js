@@ -25,11 +25,11 @@ CustomCard.Section = CustomCardSection;
 CustomCard.Text = CustomCardText;
 
 CustomCard.defaultProps = {
-  color: null
+  color: null,
 };
 
 CustomCard.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 export default CustomCard;

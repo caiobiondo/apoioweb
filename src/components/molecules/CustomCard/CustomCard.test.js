@@ -13,7 +13,7 @@ describe('CustomCard', () => {
         <CustomCard.Section>
           <CustomCard.Text>text</CustomCard.Text>
         </CustomCard.Section>
-      </CustomCard>
+      </CustomCard>,
     );
     const result = renderer.getRenderOutput();
 

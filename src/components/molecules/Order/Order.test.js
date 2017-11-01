@@ -3,28 +3,28 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import Order from './Order';
 
 const left = {
-  header: {
-    orderNumber: '#123'
-  },
   body: {
-    orderDate: 'date',
     orderCycle: 'cycle',
-    orderEstimatedDeliveryDate: 'estimatedDeliveryDate'
-  }
+    orderDate: 'date',
+    orderEstimatedDeliveryDate: 'estimatedDeliveryDate',
+  },
+  header: {
+    orderNumber: '#123',
+  },
 };
 
 const right = {
+  details: 'link',
   status: 'status',
-  details: 'link'
 };
 
 const middle = {
-  header: {
-    orderValue: 'R$ 123'
-  },
   body: {
-    orderTotalScore: '100'
-  }
+    orderTotalScore: '100',
+  },
+  header: {
+    orderValue: 'R$ 123',
+  },
 };
 
 const color = '#fff';
@@ -42,8 +42,8 @@ describe('Order', () => {
   it('should render an order card without status', () => {
     const renderer = new ShallowRenderer();
     const right = {
+      details: 'link',
       status: null,
-      details: 'link'
     };
 
     renderer.render(<Order color={color} left={left} middle={middle} right={right} />);
