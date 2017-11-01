@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wrapper should be the correct card style 1`] = `
+Object {
+  "borderRadius": 3,
+  "boxShadow": "2px 4px 5px -2px rgba(0,0,0,0.1)",
+  "overflow": "hidden",
+  "padding": 0,
+  "wordBreak": "break-word",
+}
+`;
+
+exports[`Wrapper should render a border 1`] = `
+<div
+  className="sc-bwzfXH cZRgYi"
+  color="#fff"
+/>
+`;
+
+exports[`Wrapper should render a content 1`] = `
+<div
+  className="sc-htpNat eFqpUU"
+/>
+`;
+
+exports[`Wrapper should render a wrapper 1`] = `
+<div
+  className="sc-bdVaJa kKUitD"
+/>
+`;
