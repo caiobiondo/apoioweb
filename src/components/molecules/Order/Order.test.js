@@ -51,4 +51,19 @@ describe('Order', () => {
 
     expect(result).toMatchSnapshot();
   });
+
+  it('should render an order card without some field', () => {
+    const renderer = new ShallowRenderer();
+    const left = {
+      body: null,
+      header: {
+        orderNumber: '#123',
+      },
+    };
+
+    renderer.render(<Order color={color} left={left} middle={middle} right={right} />);
+    const result = renderer.getRenderOutput();
+
+    expect(result).toMatchSnapshot();
+  });
 });
