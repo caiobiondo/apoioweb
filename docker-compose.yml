@@ -1,0 +1,8 @@
+version: "3"
+services:
+  natura-orders:
+    build:
+      context: ./
+      dockerfile: docker/development/Dockerfile
+    ports:
+      - 3000:3000
