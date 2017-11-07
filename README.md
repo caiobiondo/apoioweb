@@ -10,8 +10,18 @@ Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/face
 
 ## :rocket: Setup & Run
 
+First copy the ***natura-ui-key*** in the root of the project.
+
+Install dependencies if you haven't yet
+
 ```sh
-npm install && npm start
+docker-compose run --rm --no-deps natura-orders npm install
+```
+
+Start the application
+
+```sh
+docker-compose up -d
 ```
 
 ## :heavy_check_mark: Running tests
