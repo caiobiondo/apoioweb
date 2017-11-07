@@ -13,7 +13,7 @@ Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/face
 Install dependencies if you haven't yet
 
 ```sh
-docker-compose run --rm --no-deps natura-orders npm install
+docker-compose run --rm --no-deps web npm install
 ```
 
 Start the application
