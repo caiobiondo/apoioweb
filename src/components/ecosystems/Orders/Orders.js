@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'natura-ui';
-import OrderList from '../../organisms/OrdersList/OrdersList';
+import OrderList from 'components/organisms/OrdersList/OrdersList';
 
 class Orders extends Component {
   render() {

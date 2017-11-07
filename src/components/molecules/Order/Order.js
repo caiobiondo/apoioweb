@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Header, Body, Status } from './Order.styles';
 
-import CustomCard from '../CustomCard/CustomCard';
+import CustomCard from 'components/molecules/CustomCard/CustomCard';
 
 const renderFields = fields => {
   if (!fields) {
