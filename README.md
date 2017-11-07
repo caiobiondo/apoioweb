@@ -12,6 +12,12 @@ Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/face
 
 First add the ***natura-ui-key*** in the root of the project.
 
+Change the natura-ui-key permisssions
+
+```sh
+chmod 400 natura-ui-key
+```
+
 Install dependencies if you haven't yet
 
 ```sh
