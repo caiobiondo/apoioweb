@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from '../../infra/ApolloClientCreator';
-import { GRAPHQL_URI } from '../../config';
+import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY } from '../../config';
 
 import { Main } from './App.styles';
 import Orders from '../ecosystems/Orders/Orders';
@@ -16,7 +16,7 @@ import { locale, flattenMessages, messages } from '../../locale/index';
 setupGlobals();
 setupFonts();
 
-const client = new ApolloClientCreator(GRAPHQL_URI).create();
+const client = new ApolloClientCreator(GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY).create();
 
 export default class App extends Component {
   render() {

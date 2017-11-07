@@ -1,6 +1,7 @@
 export default class ApolloClientCreator {
-  constructor(uri, ApolloClient, InMemoryCache, createHttpLink) {
+  constructor(uri, accessTokenKey, ApolloClient, InMemoryCache, createHttpLink) {
     this.uri = uri;
+    this.accessTokenKey = accessTokenKey;
     this.ApolloClient = ApolloClient || require('apollo-client').ApolloClient;
     this.InMemoryCache = InMemoryCache || require('apollo-cache-inmemory').InMemoryCache;
     this.createHttpLink = createHttpLink || require('apollo-link-http').createHttpLink;
@@ -17,6 +18,14 @@ export default class ApolloClientCreator {
   }
 
   _createLink() {
-    return this.createHttpLink({ uri: this.uri });
+    const headers = this._createAuthHeaders();
+    return this.createHttpLink({
+      headers: headers,
+      uri: this.uri,
+    });
+  }
+
+  _createAuthHeaders() {
+    return JSON.parse(localStorage.getItem(this.accessTokenKey));
   }
 }

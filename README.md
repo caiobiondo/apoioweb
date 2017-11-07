@@ -10,8 +10,24 @@ Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/face
 
 ## :rocket: Setup & Run
 
+First, add the ***natura-ui-key*** in the root of the project (ask to the administrator)
+
+Change the natura-ui-key permisssions
+
 ```sh
-npm install && npm start
+chmod 400 natura-ui-key
+```
+
+Install dependencies if you haven't yet
+
+```sh
+docker-compose run --rm --no-deps web npm install
+```
+
+Start the application
+
+```sh
+docker-compose up -d
 ```
 
 ## :heavy_check_mark: Running tests
@@ -31,6 +47,10 @@ npm run coverage && npm run coverage:open
 ```sh
 npm run lint
 ```
+
+## :rotating_light: Production
+
+Add the ***natura-ui-key*** (ask to the administrator) in the root of the project via Jenkins
 
 ## License
 
