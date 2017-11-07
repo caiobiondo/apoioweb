@@ -4,10 +4,7 @@ services:
     build:
       context: .
       dockerfile: docker/development/Dockerfile
-    environment:
-      SSH_AUTH_SOCK: /ssh-agent-sock
     ports:
       - 3000:3000
     volumes:
       - .:/app
-      - $PROXY_SSH_AUTH_SOCK:/ssh-agent-sock
