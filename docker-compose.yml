@@ -1,8 +1,12 @@
 version: "3"
 services:
-  natura-orders:
+  web:
     build:
-      context: ./
+      context: .
       dockerfile: docker/development/Dockerfile
+    environment:
+      SSH_AUTH_SOCK: "$SSH_AUTH_SOCK"
     ports:
       - 3000:3000
+    volumes:
+      - .:/app
