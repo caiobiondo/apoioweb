@@ -10,3 +10,11 @@ export function flattenMessages(nestedMessages, prefix = '') {
     return messages;
   }, {});
 }
+
+export function formatDate(isoDate, intl) {
+  return intl.formatDate(new Date(isoDate), { day: 'numeric', month: 'numeric', year: 'numeric' });
+}
+
+export function formatCurrency(price, intl) {
+  return intl.formatNumber(price, { currency: 'BRL', style: 'currency' });
+}
