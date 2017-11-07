@@ -93,7 +93,9 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],
-    "coveragePathIgnorePatterns": ["<rootDir>/src/index.js"],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js"
+    ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
       "jest-localstorage-mock",
