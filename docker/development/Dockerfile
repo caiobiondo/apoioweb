@@ -6,9 +6,6 @@ COPY natura-ui-key /tmp/natura-ui-key
 COPY ssh_config /etc/ssh/ssh_config
 RUN chmod 400 /tmp/natura-ui-key
 
-COPY package.json .
-RUN npm install
-
 COPY . /app
 
 CMD npm run start

@@ -13,5 +13,6 @@ RUN npm install
 COPY . /app
 
 RUN npm run build
+RUN npm run transpile
 
 CMD npm run start:prod
