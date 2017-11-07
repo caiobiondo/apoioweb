@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { List } from './OrdersList.styles';
 import OrdersListQuery from './OrdersList.data';
-import Order from '../../molecules/Order/Order';
-import CustomCard from '../../molecules/CustomCard/CustomCard';
+import Order from 'components/molecules/Order/Order';
+import CustomCard from 'components/molecules/CustomCard/CustomCard';
 import { graphql } from 'react-apollo';
 
 const renderOrder = order => {

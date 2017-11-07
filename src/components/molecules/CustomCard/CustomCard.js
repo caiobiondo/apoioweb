@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'natura-ui';
 
-import CustomCardSection from '../../atoms/CustomCardSection/CustomCardSection';
-import CustomCardText from '../../atoms/CustomCardText/CustomCardText';
-import { CARD_COLOR } from '../../../utils/colors';
+import CustomCardSection from 'components/atoms/CustomCardSection/CustomCardSection';
+import CustomCardText from 'components/atoms/CustomCardText/CustomCardText';
+import { CARD_COLOR } from 'utils/colors';
 
 import { Wrapper, Border, Content, cardStyle } from './CustomCard.styles';
 
