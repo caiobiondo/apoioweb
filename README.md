@@ -10,7 +10,7 @@ Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/face
 
 ## :rocket: Setup & Run
 
-First add the ***natura-ui-key*** in the root of the project.
+First add the ***natura-ui-key*** in the root of the project (ask to the administrator)
 
 Change the natura-ui-key permisssions
 
