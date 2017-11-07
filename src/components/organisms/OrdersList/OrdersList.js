@@ -4,33 +4,40 @@ import OrdersListQuery from './OrdersList.data';
 import Order from 'components/molecules/Order/Order';
 import CustomCard from 'components/molecules/CustomCard/CustomCard';
 import { graphql } from 'react-apollo';
+import { injectIntl } from 'react-intl';
+import { formatDate, formatCurrency } from '../../../locale/utils';
 
-const renderOrder = order => {
+const renderOrder = (order, intl) => {
+  const orderDate = formatDate(order.dataPedido, intl);
+  const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl);
+  const orderValue = formatCurrency(order.valor, intl);
+  const orderProfitsValue = formatCurrency(order.valorLucro, intl);
   /* eslint-disable sort-keys */
   return (
     <Order
-      key={order.orderNumber}
+      key={order.codigoPedido}
       color={CustomCard.SUCCESS}
       left={{
         body: {
-          orderDate: order.date,
-          orderCycle: order.cycle,
-          orderEstimatedDeliveryDate: order.estimatedDeliveryDate,
+          orderDate: orderDate,
+          orderCycle: order.ciclo,
+          orderEstimatedDeliveryDate: orderEstimatedDeliveryDate,
         },
         header: {
-          orderNumber: `#${order.orderNumber}`,
+          orderNumber: `#${order.codigoPedido}`,
         },
       }}
       middle={{
         body: {
-          orderTotalScore: order.totalScore,
+          orderTotalScore: order.pontos,
+          orderProfitsValue: orderProfitsValue,
         },
         header: {
-          orderValue: `R$ ${order.orderValue}`,
+          orderValue: orderValue,
         },
       }}
       right={{
-        details: `my-orders/${order.orderNumber}`,
+        details: `my-orders/${order.codigoPedido}`,
         status: order.status,
       }}
     />
@@ -40,8 +47,11 @@ const renderOrder = order => {
 
 export class OrdersList extends Component {
   render() {
-    return <List>{(this.props.data.orders || []).map(order => renderOrder(order))}</List>;
+    const { data, intl } = this.props;
+    return <List>{(data.orders || []).map(order => renderOrder(order, intl))}</List>;
   }
 }
 
-export default graphql(OrdersListQuery)(OrdersList);
+export const OrdersListWithIntl = injectIntl(OrdersList);
+
+export default graphql(OrdersListQuery)(OrdersListWithIntl);
