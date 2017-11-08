@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Card } from 'natura-ui';
 import {
-  OrderInformations,
+  OrderInfos,
+  OrderInfosColumn,
+  OrderInfosRow,
   OrderData,
   OrderDataTitle,
   OrderDatumShort,
+  OrderDatumShortMedium,
   OrderDatumMedium,
   OrderDatumLong,
   OrderDatumLabel,
@@ -16,35 +19,35 @@ class OrderDetails extends Component {
     const { id } = this.props.match.params;
     return (
       <Card>
-        <OrderInformations>
-          <div className="order-infos-column">
-            <div className="order-infos-row">
+        <OrderInfos>
+          <OrderInfosColumn>
+            <OrderInfosRow>
               <OrderDataTitle>Dados do pedido</OrderDataTitle>
               <OrderData>
                 <OrderDatumShort>
                   <OrderDatumLabel>Número do pedido</OrderDatumLabel>
                   <OrderDatumValue>#{id}</OrderDatumValue>
                 </OrderDatumShort>
-                <OrderDatumShort>
+                <OrderDatumShortMedium>
                   <OrderDatumLabel>Ciclo</OrderDatumLabel>
                   <OrderDatumValue>#{id}</OrderDatumValue>
-                </OrderDatumShort>
-                <OrderDatumShort>
+                </OrderDatumShortMedium>
+                <OrderDatumShortMedium>
                   <OrderDatumLabel>Data</OrderDatumLabel>
                   <OrderDatumValue>#{id}</OrderDatumValue>
-                </OrderDatumShort>
+                </OrderDatumShortMedium>
                 <OrderDatumLong>
                   <OrderDatumLabel>Situacao</OrderDatumLabel>
                   <OrderDatumValue>Pedido guardando confirmacao de pagamento</OrderDatumValue>
                 </OrderDatumLong>
-                <OrderDatumShort>
+                <OrderDatumShortMedium>
                   <OrderDatumLabel>Quantidade de itens</OrderDatumLabel>
                   <OrderDatumValue>12</OrderDatumValue>
-                </OrderDatumShort>
-                <OrderDatumShort>
+                </OrderDatumShortMedium>
+                <OrderDatumShortMedium>
                   <OrderDatumLabel>Total de pontos</OrderDatumLabel>
                   <OrderDatumValue>140</OrderDatumValue>
-                </OrderDatumShort>
+                </OrderDatumShortMedium>
                 <OrderDatumShort>
                   <OrderDatumLabel>Meio de captacao</OrderDatumLabel>
                   <OrderDatumValue>Web</OrderDatumValue>
@@ -54,9 +57,8 @@ class OrderDetails extends Component {
                   <OrderDatumValue>000000000000000000000000000000000</OrderDatumValue>
                 </OrderDatumLong>
               </OrderData>
-              <p>Infos do pedido</p>
-            </div>
-            <div className="order-infos-row">
+            </OrderInfosRow>
+            <OrderInfosRow>
               <OrderDataTitle>Valores</OrderDataTitle>
               <OrderData>
                 <OrderDatumShort>
@@ -80,9 +82,8 @@ class OrderDetails extends Component {
                   <OrderDatumValue>R$ 417,34</OrderDatumValue>
                 </OrderDatumShort>
               </OrderData>
-              <p>Infos do pedido</p>
-            </div>
-            <div className="order-infos-row">
+            </OrderInfosRow>
+            <OrderInfosRow>
               <OrderDataTitle>Pagamento</OrderDataTitle>
               <OrderData>
                 <OrderDatumLong>
@@ -93,8 +94,8 @@ class OrderDetails extends Component {
                 </OrderDatumLong>
               </OrderData>
               <p>Infos do pedido</p>
-            </div>
-            <div className="order-infos-row">
+            </OrderInfosRow>
+            <OrderInfosRow>
               <OrderDataTitle>Nota fiscal</OrderDataTitle>
               <OrderData>
                 <OrderDatumShort>
@@ -110,11 +111,10 @@ class OrderDetails extends Component {
                   <OrderDatumValue>Consultora</OrderDatumValue>
                 </OrderDatumShort>
               </OrderData>
-              <p>Infos do pedido</p>
-            </div>
-          </div>
-          <div className="order-infos-column">
-            <div className="order-infos-row">
+            </OrderInfosRow>
+          </OrderInfosColumn>
+          <OrderInfosColumn>
+            <OrderInfosRow>
               <OrderDataTitle>Entrega</OrderDataTitle>
               <OrderData>
                 <OrderDatumMedium>
@@ -142,9 +142,8 @@ class OrderDetails extends Component {
                   <OrderDatumValue>02/05/2017</OrderDatumValue>
                 </OrderDatumMedium>
               </OrderData>
-              <p>Infos do pedido</p>
-            </div>
-            <div className="order-infos-row">
+            </OrderInfosRow>
+            <OrderInfosRow>
               <OrderDataTitle>Ocorrencia de transporte</OrderDataTitle>
               <OrderData>
                 <OrderDatumLong>
@@ -168,9 +167,8 @@ class OrderDetails extends Component {
                   <OrderDatumValue>12:00:00</OrderDatumValue>
                 </OrderDatumMedium>
               </OrderData>
-              <p>Infos do pedido</p>
-            </div>
-            <div className="order-infos-row">
+            </OrderInfosRow>
+            <OrderInfosRow>
               <OrderDataTitle>Endereco de entrega</OrderDataTitle>
               <OrderData>
                 <OrderDatumLong>
@@ -179,10 +177,9 @@ class OrderDetails extends Component {
                   <OrderDatumValue>CEP: 35910-000</OrderDatumValue>
                 </OrderDatumLong>
               </OrderData>
-              <p>Infos do pedido</p>
-            </div>
-          </div>
-        </OrderInformations>
+            </OrderInfosRow>
+          </OrderInfosColumn>
+        </OrderInfos>
       </Card>
     );
   }
