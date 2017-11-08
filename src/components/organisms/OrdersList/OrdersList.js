@@ -5,7 +5,7 @@ import Order from 'components/molecules/Order/Order';
 import CustomCard from 'components/molecules/CustomCard/CustomCard';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
-import { formatDate, formatCurrency } from '../../../locale/utils';
+import { formatDate, formatCurrency } from 'locale/utils';
 
 const renderOrder = (order, intl) => {
   const orderDate = formatDate(order.dataPedido, intl);
