@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
+import { gray100, orange100, black } from 'styles/colors';
 
 export const OrderInfos = styled.div`
   display: flex;
@@ -13,13 +14,13 @@ export const OrderInfosColumn = styled.div`
   flex: 1 1 auto;
 
   & + & {
-    border-left: 1px solid #bbbbbb;
+    border-left: 1px solid ${gray100};
   }
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     & + & {
       border-left-width: 0;
-      border-top: 1px dotted #bbbbbb;
+      border-top: 1px dotted ${gray100};
     }
   }
 `;
@@ -28,7 +29,7 @@ export const OrderInfosRow = styled.div`
   padding: 10px;
 
   & + & {
-    border-top: 1px dotted #bbbbbb;
+    border-top: 1px dotted ${gray100};
   }
 `;
 
@@ -38,7 +39,7 @@ export const OrderData = styled.div`
 `;
 
 export const OrderDataTitle = styled.h2`
-  color: #f4a652;
+  color: ${orange100};
 `;
 
 export const OrderDatumShort = styled.div`
@@ -74,12 +75,12 @@ export const OrderDatumLong = styled.div`
 `;
 
 export const OrderDatumLabel = styled.label`
-  color: #bbbbbb;
+  color: ${gray100};
   text-transform: uppercase;
   font-family: Roboto;
 `;
 
 export const OrderDatumValue = styled.span`
-  color: #000;
+  color: ${black};
   font-family: Roboto;
 `;
