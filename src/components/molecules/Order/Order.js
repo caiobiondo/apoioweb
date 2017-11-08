@@ -26,12 +26,12 @@ const renderFields = fields => {
 
 const Order = ({ color, left, middle, right }) => (
   <CustomCard color={color}>
-    <CustomCard.Section>
+    <CustomCard.Section alignItems="flex-start">
       <Header>{renderFields(left.header)}</Header>
       <Body>{renderFields(left.body)}</Body>
     </CustomCard.Section>
 
-    <CustomCard.Section>
+    <CustomCard.Section alignItems="flex-start">
       <Header>{renderFields(middle.header)}</Header>
       <Body>{renderFields(middle.body)}</Body>
     </CustomCard.Section>

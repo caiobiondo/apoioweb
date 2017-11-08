@@ -8,6 +8,7 @@ export default {
     orderDetails: 'Detalhe',
     orderEstimatedDeliveryDate: 'Previsão de entrega',
     orderNumber: 'Número do pedido',
+    orderProfitsValue: 'Lucro previsto',
     orderTotalScore: 'Pontos',
     orderValue: 'Valor total',
   },
