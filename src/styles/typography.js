@@ -10,3 +10,4 @@ export const fw700 = '700';
 // Font Sizes
 // -------------------------------------
 export const fs10 = '10px';
+export const fs18 = '18px';
