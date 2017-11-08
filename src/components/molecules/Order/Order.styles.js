@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { gray300, gray900 } from 'styles/colors';
 
 export const Header = styled.div`
   margin-bottom: 25px;
 
   label {
     font-size: 15px;
-    color: #8e8e8e;
+    color: ${gray300};
   }
   div {
     font-size: 26px;
-    color: #222;
+    color: ${gray900};
     margin-top: 5px;
   }
 `;
@@ -28,7 +29,7 @@ export const Body = styled.div`
     }
     label {
       font-size: 16px;
-      color: #232323;
+      color: ${gray900};
       margin-right: 5px;
 
       &:after {
@@ -37,7 +38,7 @@ export const Body = styled.div`
     }
     div {
       font-size: 15px;
-      color: #8e8e8e;
+      color: ${gray300};
     }
   }
 `;
