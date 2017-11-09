@@ -3,6 +3,7 @@ import { getGradientColor } from 'utils/colors';
 
 export const Wrapper = styled.div`
   margin: 15px 0px;
+  position: relative;
   width: 100%;
 `;
 
