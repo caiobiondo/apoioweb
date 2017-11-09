@@ -12,7 +12,7 @@ Object {
 
 exports[`Wrapper should render a border 1`] = `
 <div
-  className="sc-bwzfXH cZRgYi"
+  className="sc-bwzfXH ifREpj"
   color="#fff"
 />
 `;
