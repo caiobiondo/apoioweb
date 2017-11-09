@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: docker/development/Dockerfile
+    environment:
+      VIRTUAL_HOST: web.naturawebfv.docker
+      VIRTUAL_PORT: 3000
     ports:
       - 3000:3000
     volumes:
