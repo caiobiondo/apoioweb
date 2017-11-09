@@ -5,6 +5,7 @@ import { fs10, fs18 } from 'styles/typography';
 
 export const OrderInfos = styled.div`
   display: flex;
+  padding-top: 36px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-direction: column;
@@ -33,6 +34,8 @@ export const OrderInfosRow = styled.div`
 
   & + & {
     border-top: 1px dotted ${gray200};
+    padding-top: 36px;
+    padding-bottom: 4px;
   }
 `;
 
@@ -90,4 +93,16 @@ export const OrderDatumLabel = styled.label`
 export const OrderDatumValue = styled.span`
   color: ${black};
   font-size: ${fs18};
+`;
+
+export const SectionTitle = styled.span`
+  font-size: ${fs18};
+`;
+
+export const SectionTitleSymbol = styled.span`
+  color: ${orange100};
+`;
+
+export const SectionTitleLabel = styled.span`
+  color: ${black};
 `;

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Card } from 'natura-ui';
 import {
+  SectionTitle,
+  SectionTitleSymbol,
+  SectionTitleLabel,
   OrderInfos,
   OrderInfosColumn,
   OrderInfosRow,
@@ -19,6 +22,10 @@ class OrderDetails extends Component {
     const { id } = this.props.match.params;
     return (
       <Card>
+        <SectionTitle>
+          <SectionTitleSymbol>ⓘ</SectionTitleSymbol>
+          <SectionTitleLabel>Informações</SectionTitleLabel>
+        </SectionTitle>
         <OrderInfos>
           <OrderInfosColumn>
             <OrderInfosRow>
@@ -93,7 +100,6 @@ class OrderDetails extends Component {
                   <OrderDatumValue>Cartao ELO 2x de R$ 208,67</OrderDatumValue>
                 </OrderDatumLong>
               </OrderData>
-              <p>Infos do pedido</p>
             </OrderInfosRow>
             <OrderInfosRow>
               <OrderDataTitle>Nota fiscal</OrderDataTitle>
