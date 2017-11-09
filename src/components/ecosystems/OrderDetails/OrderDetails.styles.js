@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray200, orange100, black } from 'styles/colors';
+import { gray200, gray600, gray890, orange100 } from 'styles/colors';
 import { fs10, fs18 } from 'styles/typography';
 
 export const OrderInfos = styled.div`
@@ -12,23 +12,6 @@ export const OrderInfos = styled.div`
   }
 `;
 
-export const OrderInfosColumn = styled.div`
-  flex: 1 1 60%;
-
-  & + & {
-    border-left: 1px solid ${gray200};
-    flex-basis: 40%;
-  }
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    & + & {
-      border-left-width: 0;
-      border-top: 1px dotted ${gray200};
-      flex-basis: auto;
-    }
-  }
-`;
-
 export const OrderInfosRow = styled.div`
   padding: 10px;
 
@@ -36,6 +19,32 @@ export const OrderInfosRow = styled.div`
     border-top: 1px dotted ${gray200};
     padding-top: 36px;
     padding-bottom: 4px;
+  }
+`;
+
+export const OrderInfosColumn = styled.div`
+  flex: 1 1 60%;
+
+  & + & {
+    border-left: 1px solid ${gray200};
+    flex-basis: 40%;
+
+    ${OrderInfosRow} {
+      padding-left: 65.5px;
+      padding-right: 10px;
+    }
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    & + & {
+      border-left-width: 0;
+      border-top: 1px dotted ${gray200};
+      flex-basis: auto;
+
+      ${OrderInfosRow} {
+        padding-left: 0;
+      }
+    }
   }
 `;
 
@@ -91,7 +100,7 @@ export const OrderDatumLabel = styled.label`
 `;
 
 export const OrderDatumValue = styled.span`
-  color: ${black};
+  color: ${gray600};
   font-size: ${fs18};
 `;
 
@@ -104,5 +113,5 @@ export const SectionTitleSymbol = styled.span`
 `;
 
 export const SectionTitleLabel = styled.span`
-  color: ${black};
+  color: ${gray890};
 `;
