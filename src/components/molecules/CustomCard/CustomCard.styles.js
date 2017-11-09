@@ -3,6 +3,7 @@ import { getGradientColor } from 'utils/colors';
 
 export const Wrapper = styled.div`
   margin: 15px 0px;
+  position: relative;
   width: 100%;
 `;
 
@@ -12,6 +13,7 @@ export const Border = styled.div`
   left: 0px;
   bottom: 0px;
   width: 4px;
+  border-radius: 4px 0 0 4px;
   background: ${props => getGradientColor(props.color)};
 `;
 

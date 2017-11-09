@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`OrdersList should render a loading indicator 1`] = `
+<Loading
+  background="#FFFFFF"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`OrdersList should render an empty list indicator 1`] = `<EmptyOrders />`;
+
 exports[`OrdersList should render an order list 1`] = `
 <styled.ul>
   <Order

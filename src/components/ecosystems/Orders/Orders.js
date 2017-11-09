@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Card } from 'natura-ui';
-import OrderList from 'components/organisms/OrdersList/OrdersList';
+import { Paper } from 'natura-ui';
+import OrdersList from 'components/organisms/OrdersList/OrdersList';
+import { scrolledContainer } from './Orders.styles';
 
 class Orders extends Component {
   render() {
     return (
-      <Card>
-        <OrderList />
-      </Card>
+      <Paper style={scrolledContainer}>
+        <OrdersList />
+      </Paper>
     );
   }
 }

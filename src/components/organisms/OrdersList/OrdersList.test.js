@@ -2,13 +2,14 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { OrdersList } from './OrdersList';
 
+const intl = {
+  formatCurrency: value => `formatedCurrency ${value}`,
+  formatDate: value => `formatedDate ${value}`,
+  formatNumber: value => `formatedNumber ${value}`,
+};
+
 describe('OrdersList', () => {
   it('should render an order list', () => {
-    const intl = {
-      formatCurrency: value => `formatedCurrency ${value}`,
-      formatDate: value => `formatedDate ${value}`,
-      formatNumber: value => `formatedNumber ${value}`,
-    };
     const renderer = new ShallowRenderer();
     const data = {
       orders: [
@@ -33,6 +34,32 @@ describe('OrdersList', () => {
           valorLucro: 30.99,
         },
       ],
+    };
+
+    renderer.render(<OrdersList data={data} intl={intl} />);
+    const result = renderer.getRenderOutput();
+
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should render a loading indicator', () => {
+    const renderer = new ShallowRenderer();
+    const data = {
+      loading: true,
+      orders: null,
+    };
+
+    renderer.render(<OrdersList data={data} intl={intl} />);
+    const result = renderer.getRenderOutput();
+
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should render an empty list indicator', () => {
+    const renderer = new ShallowRenderer();
+    const data = {
+      loading: false,
+      orders: [],
     };
 
     renderer.render(<OrdersList data={data} intl={intl} />);
