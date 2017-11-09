@@ -11,5 +11,7 @@ export default {
     orderProfitsValue: 'Lucro previsto',
     orderTotalScore: 'Pontos',
     orderValue: 'Valor total',
+    ordersEmptyList: 'Lista de pedidos vazia',
+    ordersWithoutOrders: 'Você ainda não efetuou nenhum pedido',
   },
 };
