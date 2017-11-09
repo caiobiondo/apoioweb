@@ -2,7 +2,9 @@
 
 exports[`CustomCard should render a custom card 1`] = `
 <styled.div>
-  <Card
+  <Paper
+    circle={false}
+    rounded={true}
     style={
       Object {
         "borderRadius": 3,
@@ -12,6 +14,8 @@ exports[`CustomCard should render a custom card 1`] = `
         "wordBreak": "break-word",
       }
     }
+    transitionEnabled={true}
+    zDepth={1}
   >
     <styled.div>
       <CardSection
@@ -37,6 +41,6 @@ exports[`CustomCard should render a custom card 1`] = `
         </CustomCardText>
       </CardSection>
     </styled.div>
-  </Card>
+  </Paper>
 </styled.div>
 `;

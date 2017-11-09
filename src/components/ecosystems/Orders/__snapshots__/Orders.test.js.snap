@@ -1,9 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Orders should render the orders page 1`] = `
-<Card
-  style={Object {}}
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "flex": "1 1 0",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "overflowY": "scroll",
+      "padding": 24,
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
 >
   <Apollo(OrdersList) />
-</Card>
+</Paper>
 `;

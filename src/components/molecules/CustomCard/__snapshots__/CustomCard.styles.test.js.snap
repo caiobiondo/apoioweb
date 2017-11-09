@@ -25,6 +25,6 @@ exports[`Wrapper should render a content 1`] = `
 
 exports[`Wrapper should render a wrapper 1`] = `
 <div
-  className="sc-bdVaJa kKUitD"
+  className="sc-bdVaJa jamAKw"
 />
 `;
