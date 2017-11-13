@@ -17,6 +17,15 @@ export const OrdersListQuery = gql`
   }
 `;
 
+export const updateQuery = (previousResult, { fetchMoreResult }) => {
+  if (!fetchMoreResult) {
+    return previousResult;
+  }
+  return Object.assign({}, previousResult, {
+    orders: [...previousResult.orders, ...fetchMoreResult.orders],
+  });
+};
+
 export const OrdersListQueryOptions = {
   options(props) {
     return {
@@ -36,14 +45,7 @@ export const OrdersListQueryOptions = {
           variables: {
             offset: orders.length,
           },
-          updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-              return previousResult;
-            }
-            return Object.assign({}, previousResult, {
-              orders: [...previousResult.orders, ...fetchMoreResult.orders],
-            });
-          },
+          updateQuery: updateQuery,
         });
       },
     };

@@ -201,3 +201,11 @@ Object {
   },
 }
 `;
+
+exports[`OrdersListQuery should be the correct query props 1`] = `
+Object {
+  "fetchMore": [Function],
+  "loading": true,
+  "orders": Array [],
+}
+`;
