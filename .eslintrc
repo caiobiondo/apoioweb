@@ -13,7 +13,6 @@
     "comma-style": ["error", "last"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "jsx-quotes": ["error", "prefer-double"],
-    "sort-keys": ["error", "asc"],
     "space-in-parens": ["error", "never"],
     "space-before-blocks": ["error", {
       "functions": "always",
