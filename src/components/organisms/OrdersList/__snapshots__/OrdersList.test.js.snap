@@ -33,7 +33,6 @@ exports[`OrdersList should render an order list 1`] = `
 >
   <styled.ul>
     <Order
-      color="SUCCESS"
       left={
         Object {
           "body": Object {
@@ -63,9 +62,9 @@ exports[`OrdersList should render an order list 1`] = `
           "status": "CONCLUÍDO E APROVADO",
         }
       }
+      statusType="pending"
     />
     <Order
-      color="SUCCESS"
       left={
         Object {
           "body": Object {
@@ -95,6 +94,7 @@ exports[`OrdersList should render an order list 1`] = `
           "status": "CONCLUÍDO E APROVADO",
         }
       }
+      statusType="pending"
     />
   </styled.ul>
 </InfiniteScroll>

@@ -24,42 +24,56 @@ const renderFields = fields => {
     ));
 };
 
-const Order = ({ color, left, middle, right }) => (
-  <CustomCard color={color}>
-    <CustomCard.Section alignItems="flex-start">
-      <Header>{renderFields(left.header)}</Header>
-      <Body>{renderFields(left.body)}</Body>
-    </CustomCard.Section>
+const colorByStatusType = statusType => {
+  switch (statusType) {
+    case 'approved':
+      return CustomCard.SUCCESS;
+    case 'cancelled':
+      return CustomCard.DANGER;
+    default:
+      return CustomCard.WARNING;
+  }
+};
 
-    <CustomCard.Section alignItems="flex-start">
-      <Header>{renderFields(middle.header)}</Header>
-      <Body>{renderFields(middle.body)}</Body>
-    </CustomCard.Section>
+const Order = ({ statusType, left, middle, right }) => {
+  const color = colorByStatusType(statusType);
+  return (
+    <CustomCard color={color}>
+      <CustomCard.Section alignItems="flex-start">
+        <Header>{renderFields(left.header)}</Header>
+        <Body>{renderFields(left.body)}</Body>
+      </CustomCard.Section>
 
-    <CustomCard.Section>
-      {right.status && (
-        <Status>
-          <CustomCard.Text color={color}>{right.status}</CustomCard.Text>
-        </Status>
-      )}
+      <CustomCard.Section alignItems="flex-start">
+        <Header>{renderFields(middle.header)}</Header>
+        <Body>{renderFields(middle.body)}</Body>
+      </CustomCard.Section>
 
-      <FormButton
-        link={right.details}
-        label={<FormattedMessage id="orderDetails" />}
-        backgroundColor="#fff"
-        labelColor="#000"
-        flat={false}
-      />
-    </CustomCard.Section>
-  </CustomCard>
-);
+      <CustomCard.Section>
+        {right.status && (
+          <Status>
+            <CustomCard.Text color={color}>{right.status}</CustomCard.Text>
+          </Status>
+        )}
+
+        <FormButton
+          link={right.details}
+          label={<FormattedMessage id="orderDetails" />}
+          backgroundColor="#fff"
+          labelColor="#000"
+          flat={false}
+        />
+      </CustomCard.Section>
+    </CustomCard>
+  );
+};
 
 Order.defaultProps = {
-  color: null,
+  statusType: 'pending',
 };
 
 Order.propTypes = {
-  color: PropTypes.string,
+  statusType: PropTypes.string,
   left: PropTypes.shape({
     body: PropTypes.object,
     header: PropTypes.object,

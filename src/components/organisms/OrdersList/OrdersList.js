@@ -3,7 +3,6 @@ import { Loading } from 'natura-ui';
 import { List, LoadingWrapper } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from 'components/molecules/Order/Order';
-import CustomCard from 'components/molecules/CustomCard/CustomCard';
 import EmptyOrders from 'components/molecules/EmptyOrders/EmptyOrders';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
@@ -18,7 +17,7 @@ const renderOrder = (order, intl) => {
   return (
     <Order
       key={order.codigoPedido}
-      color={CustomCard.SUCCESS}
+      statusType={order.statusTipo}
       left={{
         body: {
           orderDate: orderDate,

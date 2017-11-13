@@ -13,6 +13,7 @@ export const OrdersListQuery = gql`
       pontos
       valorLucro
       status
+      statusTipo
     }
   }
 `;

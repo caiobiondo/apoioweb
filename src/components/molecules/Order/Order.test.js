@@ -27,13 +27,11 @@ const middle = {
   },
 };
 
-const color = '#fff';
-
 describe('Order', () => {
   it('should render an order card', () => {
     const renderer = new ShallowRenderer();
 
-    renderer.render(<Order color={color} left={left} middle={middle} right={right} />);
+    renderer.render(<Order statusType="pending" left={left} middle={middle} right={right} />);
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
@@ -46,7 +44,7 @@ describe('Order', () => {
       status: null,
     };
 
-    renderer.render(<Order color={color} left={left} middle={middle} right={right} />);
+    renderer.render(<Order statusType="approved" left={left} middle={middle} right={right} />);
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
@@ -61,7 +59,7 @@ describe('Order', () => {
       },
     };
 
-    renderer.render(<Order color={color} left={left} middle={middle} right={right} />);
+    renderer.render(<Order statusType="cancelled" left={left} middle={middle} right={right} />);
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
