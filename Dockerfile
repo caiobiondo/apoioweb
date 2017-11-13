@@ -7,7 +7,7 @@ COPY ssh_config /etc/ssh/ssh_config
 RUN chmod 400 /tmp/natura-ui-key
 
 COPY package.json .
-COPY package.json.lock .
+COPY package-lock.json .
 
 RUN npm install
 COPY . /app
