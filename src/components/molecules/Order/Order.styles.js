@@ -49,3 +49,7 @@ export const Status = styled.div`
   text-align: center;
   padding-bottom: 30px;
 `;
+
+export const Label = styled.label`
+  font-family: Roboto-Regular;
+`;

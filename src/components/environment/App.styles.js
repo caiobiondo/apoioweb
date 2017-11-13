@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Responsive } from '@entria/components';
 
 export const Main = styled.div`
   margin: 25px;
@@ -8,4 +9,8 @@ export const Main = styled.div`
   left: 0;
   bottom: 0;
   display: flex;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    margin: 0;
+  }
 `;
