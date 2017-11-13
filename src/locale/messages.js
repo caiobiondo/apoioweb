@@ -1,8 +1,10 @@
+/* eslint-enable sort-keys */
 export default {
   'en-US': {
     orderNumber: 'Order number',
   },
   'pt-BR': {
+    loading: 'Carregando...',
     orderCycle: 'Ciclo',
     orderDate: 'Data do pedido',
     orderDetails: 'Detalhe',
@@ -15,3 +17,4 @@ export default {
     ordersWithoutOrders: 'Você ainda não efetuou nenhum pedido',
   },
 };
+/* eslint-disable sort-keys */
