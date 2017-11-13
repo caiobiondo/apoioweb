@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray200, gray600, gray890, orange100 } from 'styles/colors';
+import { gray150, gray200, gray600, gray890, orange100 } from 'styles/colors';
 import { fs10, fs18 } from 'styles/typography';
+
+export const OrderDetailsCard = styled.div`
+  > div {
+    padding: 30px;
+  }
+`;
 
 export const OrderInfos = styled.div`
   display: flex;
@@ -16,7 +22,7 @@ export const OrderInfosRow = styled.div`
   padding: 10px;
 
   & + & {
-    border-top: 1px dotted ${gray200};
+    border-top: 1px dotted ${gray150};
     padding-top: 36px;
     padding-bottom: 4px;
   }
@@ -26,7 +32,7 @@ export const OrderInfosColumn = styled.div`
   flex: 1 1 60%;
 
   & + & {
-    border-left: 1px solid ${gray200};
+    border-left: 1px solid ${gray150};
     flex-basis: 40%;
 
     ${OrderInfosRow} {
@@ -38,7 +44,7 @@ export const OrderInfosColumn = styled.div`
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     & + & {
       border-left-width: 0;
-      border-top: 1px dotted ${gray200};
+      border-top: 1px dotted ${gray150};
       flex-basis: auto;
 
       ${OrderInfosRow} {
@@ -104,14 +110,21 @@ export const OrderDatumValue = styled.span`
   font-size: ${fs18};
 `;
 
-export const SectionTitle = styled.span`
-  font-size: ${fs18};
+export const SectionTitle = styled.div`
+  display: flex;
 `;
 
-export const SectionTitleSymbol = styled.span`
-  color: ${orange100};
+export const SectionTitleSymbol = styled.div`
+  margin-right: 20px;
+  display: inline-block;
+
+  svg {
+    fill: ${orange100};
+  }
 `;
 
 export const SectionTitleLabel = styled.span`
+  vertical-align: middle;
+  font-size: ${fs18};
   color: ${gray890};
 `;
