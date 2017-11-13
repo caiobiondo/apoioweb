@@ -11,32 +11,34 @@ const intl = {
 describe('OrdersList', () => {
   it('should render an order list', () => {
     const renderer = new ShallowRenderer();
-    const data = {
-      orders: [
-        {
-          ciclo: '13/2017',
-          codigoPedido: 311619650,
-          dataPedido: '2017-10-08T22:27:48.000Z',
-          dataPrevisaoEntrega: '2017-10-13T03:00:00.000Z',
-          pontos: 27,
-          status: 'CONCLUÍDO E APROVADO',
-          valor: 420.17,
-          valorLucro: 30.99,
-        },
-        {
-          ciclo: '13/2017',
-          codigoPedido: 311619651,
-          dataPedido: '2017-10-08T22:27:48.000Z',
-          dataPrevisaoEntrega: '2017-10-13T03:00:00.000Z',
-          pontos: 27,
-          status: 'CONCLUÍDO E APROVADO',
-          valor: 420.17,
-          valorLucro: 30.99,
-        },
-      ],
-    };
+    const loading = false;
+    const orders = [
+      {
+        ciclo: '13/2017',
+        codigoPedido: 311619650,
+        dataPedido: '2017-10-08T22:27:48.000Z',
+        dataPrevisaoEntrega: '2017-10-13T03:00:00.000Z',
+        pontos: 27,
+        status: 'CONCLUÍDO E APROVADO',
+        valor: 420.17,
+        valorLucro: 30.99,
+      },
+      {
+        ciclo: '13/2017',
+        codigoPedido: 311619651,
+        dataPedido: '2017-10-08T22:27:48.000Z',
+        dataPrevisaoEntrega: '2017-10-13T03:00:00.000Z',
+        pontos: 27,
+        status: 'CONCLUÍDO E APROVADO',
+        valor: 420.17,
+        valorLucro: 30.99,
+      },
+    ];
+    const fetchMore = jest.fn();
 
-    renderer.render(<OrdersList data={data} intl={intl} />);
+    renderer.render(
+      <OrdersList loading={loading} orders={orders} fetchMore={fetchMore} intl={intl} />,
+    );
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
@@ -44,12 +46,13 @@ describe('OrdersList', () => {
 
   it('should render a loading indicator', () => {
     const renderer = new ShallowRenderer();
-    const data = {
-      loading: true,
-      orders: null,
-    };
+    const loading = true;
+    const orders = null;
+    const fetchMore = jest.fn();
 
-    renderer.render(<OrdersList data={data} intl={intl} />);
+    renderer.render(
+      <OrdersList loading={loading} orders={orders} fetchMore={fetchMore} intl={intl} />,
+    );
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
@@ -57,12 +60,13 @@ describe('OrdersList', () => {
 
   it('should render an empty list indicator', () => {
     const renderer = new ShallowRenderer();
-    const data = {
-      loading: false,
-      orders: [],
-    };
+    const loading = false;
+    const orders = [];
+    const fetchMore = jest.fn();
 
-    renderer.render(<OrdersList data={data} intl={intl} />);
+    renderer.render(
+      <OrdersList loading={loading} orders={orders} fetchMore={fetchMore} intl={intl} />,
+    );
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();

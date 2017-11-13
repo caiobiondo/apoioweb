@@ -11,70 +11,91 @@ exports[`OrdersList should render a loading indicator 1`] = `
 exports[`OrdersList should render an empty list indicator 1`] = `<EmptyOrders />`;
 
 exports[`OrdersList should render an order list 1`] = `
-<styled.ul>
-  <Order
-    color="SUCCESS"
-    left={
-      Object {
-        "body": Object {
-          "orderCycle": "13/2017",
-          "orderDate": "formatedDate Sun Oct 08 2017 19:27:48 GMT-0300 (-03)",
-          "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 00:00:00 GMT-0300 (-03)",
-        },
-        "header": Object {
-          "orderNumber": "#311619650",
-        },
+<InfiniteScroll
+  element="div"
+  hasMore={true}
+  initialLoad={true}
+  isReverse={false}
+  loadMore={[Function]}
+  loader={
+    <styled.div>
+      <FormattedMessage
+        id="loading"
+        values={Object {}}
+      />
+    </styled.div>
+  }
+  pageStart={0}
+  ref={null}
+  threshold={250}
+  useCapture={false}
+  useWindow={false}
+>
+  <styled.ul>
+    <Order
+      color="SUCCESS"
+      left={
+        Object {
+          "body": Object {
+            "orderCycle": "13/2017",
+            "orderDate": "formatedDate Sun Oct 08 2017 19:27:48 GMT-0300 (-03)",
+            "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 00:00:00 GMT-0300 (-03)",
+          },
+          "header": Object {
+            "orderNumber": "#311619650",
+          },
+        }
       }
-    }
-    middle={
-      Object {
-        "body": Object {
-          "orderProfitsValue": "formatedNumber 30.99",
-          "orderTotalScore": 27,
-        },
-        "header": Object {
-          "orderValue": "formatedNumber 420.17",
-        },
+      middle={
+        Object {
+          "body": Object {
+            "orderProfitsValue": "formatedNumber 30.99",
+            "orderTotalScore": 27,
+          },
+          "header": Object {
+            "orderValue": "formatedNumber 420.17",
+          },
+        }
       }
-    }
-    right={
-      Object {
-        "details": "my-orders/311619650",
-        "status": "CONCLUÍDO E APROVADO",
+      right={
+        Object {
+          "details": "my-orders/311619650",
+          "status": "CONCLUÍDO E APROVADO",
+        }
       }
-    }
-  />
-  <Order
-    color="SUCCESS"
-    left={
-      Object {
-        "body": Object {
-          "orderCycle": "13/2017",
-          "orderDate": "formatedDate Sun Oct 08 2017 19:27:48 GMT-0300 (-03)",
-          "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 00:00:00 GMT-0300 (-03)",
-        },
-        "header": Object {
-          "orderNumber": "#311619651",
-        },
+    />
+    <Order
+      color="SUCCESS"
+      left={
+        Object {
+          "body": Object {
+            "orderCycle": "13/2017",
+            "orderDate": "formatedDate Sun Oct 08 2017 19:27:48 GMT-0300 (-03)",
+            "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 00:00:00 GMT-0300 (-03)",
+          },
+          "header": Object {
+            "orderNumber": "#311619651",
+          },
+        }
       }
-    }
-    middle={
-      Object {
-        "body": Object {
-          "orderProfitsValue": "formatedNumber 30.99",
-          "orderTotalScore": 27,
-        },
-        "header": Object {
-          "orderValue": "formatedNumber 420.17",
-        },
+      middle={
+        Object {
+          "body": Object {
+            "orderProfitsValue": "formatedNumber 30.99",
+            "orderTotalScore": 27,
+          },
+          "header": Object {
+            "orderValue": "formatedNumber 420.17",
+          },
+        }
       }
-    }
-    right={
-      Object {
-        "details": "my-orders/311619651",
-        "status": "CONCLUÍDO E APROVADO",
+      right={
+        Object {
+          "details": "my-orders/311619651",
+          "status": "CONCLUÍDO E APROVADO",
+        }
       }
-    }
-  />
-</styled.ul>
+    />
+  </styled.ul>
+</InfiniteScroll>
 `;

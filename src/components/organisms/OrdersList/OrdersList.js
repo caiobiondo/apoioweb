@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Loading } from 'natura-ui';
-import { List } from './OrdersList.styles';
-import OrdersListQuery from './OrdersList.data';
+import { List, LoadingWrapper } from './OrdersList.styles';
+import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from 'components/molecules/Order/Order';
 import CustomCard from 'components/molecules/CustomCard/CustomCard';
 import EmptyOrders from 'components/molecules/EmptyOrders/EmptyOrders';
 import { graphql } from 'react-apollo';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
+import InfiniteScroll from 'react-infinite-scroller';
 
 const renderOrder = (order, intl) => {
   const orderDate = formatDate(order.dataPedido, intl);
   const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl);
   const orderValue = formatCurrency(order.valor, intl);
   const orderProfitsValue = formatCurrency(order.valorLucro, intl);
-  /* eslint-disable sort-keys */
   return (
     <Order
       key={order.codigoPedido}
@@ -44,22 +44,34 @@ const renderOrder = (order, intl) => {
       }}
     />
   );
-  /* eslint-enable sort-keys */
 };
 
 export class OrdersList extends Component {
   render() {
-    const { data, intl } = this.props;
-    if (data.loading) {
+    const { loading, orders, fetchMore, intl } = this.props;
+    if (loading && !orders) {
       return <Loading />;
     }
-    if (data.orders && data.orders.length === 0) {
+    if (!loading && orders && orders.length === 0) {
       return <EmptyOrders />;
     }
-    return <List>{data.orders.map(order => renderOrder(order, intl))}</List>;
+    return (
+      <InfiniteScroll
+        loadMore={fetchMore}
+        hasMore={true}
+        loader={
+          <LoadingWrapper>
+            <FormattedMessage id="loading" />
+          </LoadingWrapper>
+        }
+        useWindow={false}
+      >
+        <List>{orders.map(order => renderOrder(order, intl))}</List>
+      </InfiniteScroll>
+    );
   }
 }
 
 export const OrdersListWithIntl = injectIntl(OrdersList);
 
-export default graphql(OrdersListQuery)(OrdersListWithIntl);
+export default graphql(OrdersListQuery, OrdersListQueryOptions)(OrdersListWithIntl);
