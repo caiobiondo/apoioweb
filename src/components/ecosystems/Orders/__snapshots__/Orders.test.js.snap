@@ -10,7 +10,6 @@ exports[`Orders should render the orders page 1`] = `
       "flexDirection": "column",
       "justifyContent": "center",
       "overflowY": "scroll",
-      "padding": 24,
     }
   }
   transitionEnabled={true}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormButton } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
 
-import { Header, Body, Status } from './Order.styles';
+import { Header, Body, Status, Label } from './Order.styles';
 
 import CustomCard from 'components/molecules/CustomCard/CustomCard';
 
@@ -16,9 +16,9 @@ const renderFields = fields => {
     .filter(key => fields[key])
     .map(key => (
       <div key={key}>
-        <label>
+        <Label>
           <FormattedMessage id={key} />
-        </label>
+        </Label>
         <div>{fields[key]}</div>
       </div>
     ));
@@ -58,7 +58,11 @@ const Order = ({ statusType, left, middle, right }) => {
 
         <FormButton
           link={right.details}
-          label={<FormattedMessage id="orderDetails" />}
+          label={
+            <Label>
+              <FormattedMessage id="orderDetails" />
+            </Label>
+          }
           backgroundColor="#fff"
           labelColor="#000"
           flat={false}

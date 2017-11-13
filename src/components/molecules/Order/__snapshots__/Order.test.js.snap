@@ -10,12 +10,12 @@ exports[`Order should render an order card 1`] = `
   >
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderNumber"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           #123
         </div>
@@ -23,34 +23,34 @@ exports[`Order should render an order card 1`] = `
     </styled.div>
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderCycle"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           cycle
         </div>
       </div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderDate"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           date
         </div>
       </div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderEstimatedDeliveryDate"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           estimatedDeliveryDate
         </div>
@@ -63,12 +63,12 @@ exports[`Order should render an order card 1`] = `
   >
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderValue"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           R$ 123
         </div>
@@ -76,12 +76,12 @@ exports[`Order should render an order card 1`] = `
     </styled.div>
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderTotalScore"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           100
         </div>
@@ -104,10 +104,12 @@ exports[`Order should render an order card 1`] = `
       disabled={false}
       flat={false}
       label={
-        <FormattedMessage
-          id="orderDetails"
-          values={Object {}}
-        />
+        <styled.label>
+          <FormattedMessage
+            id="orderDetails"
+            values={Object {}}
+          />
+        </styled.label>
       }
       labelColor="#000"
       link="link"
@@ -127,12 +129,12 @@ exports[`Order should render an order card without some field 1`] = `
   >
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderNumber"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           #123
         </div>
@@ -146,12 +148,12 @@ exports[`Order should render an order card without some field 1`] = `
   >
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderValue"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           R$ 123
         </div>
@@ -159,12 +161,12 @@ exports[`Order should render an order card without some field 1`] = `
     </styled.div>
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderTotalScore"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           100
         </div>
@@ -187,10 +189,12 @@ exports[`Order should render an order card without some field 1`] = `
       disabled={false}
       flat={false}
       label={
-        <FormattedMessage
-          id="orderDetails"
-          values={Object {}}
-        />
+        <styled.label>
+          <FormattedMessage
+            id="orderDetails"
+            values={Object {}}
+          />
+        </styled.label>
       }
       labelColor="#000"
       link="link"
@@ -210,12 +214,12 @@ exports[`Order should render an order card without status 1`] = `
   >
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderNumber"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           #123
         </div>
@@ -223,34 +227,34 @@ exports[`Order should render an order card without status 1`] = `
     </styled.div>
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderCycle"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           cycle
         </div>
       </div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderDate"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           date
         </div>
       </div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderEstimatedDeliveryDate"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           estimatedDeliveryDate
         </div>
@@ -263,12 +267,12 @@ exports[`Order should render an order card without status 1`] = `
   >
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderValue"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           R$ 123
         </div>
@@ -276,12 +280,12 @@ exports[`Order should render an order card without status 1`] = `
     </styled.div>
     <styled.div>
       <div>
-        <label>
+        <styled.label>
           <FormattedMessage
             id="orderTotalScore"
             values={Object {}}
           />
-        </label>
+        </styled.label>
         <div>
           100
         </div>
@@ -297,10 +301,12 @@ exports[`Order should render an order card without status 1`] = `
       disabled={false}
       flat={false}
       label={
-        <FormattedMessage
-          id="orderDetails"
-          values={Object {}}
-        />
+        <styled.label>
+          <FormattedMessage
+            id="orderDetails"
+            values={Object {}}
+          />
+        </styled.label>
       }
       labelColor="#000"
       link="link"

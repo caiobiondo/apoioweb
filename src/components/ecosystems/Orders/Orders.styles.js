@@ -3,5 +3,4 @@ export const scrolledContainer = {
   flexDirection: 'column',
   justifyContent: 'center',
   overflowY: 'scroll',
-  padding: 24,
 };
