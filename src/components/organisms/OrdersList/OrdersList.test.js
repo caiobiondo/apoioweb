@@ -9,6 +9,20 @@ const intl = {
   formatNumber: value => `formatedNumber ${value}`,
 };
 
+const shallowOrderList = (loading, onLoadFinished) => {
+  const orders = [];
+  const fetchMore = jest.fn();
+
+  return shallow(
+    <OrdersList
+      loading={loading}
+      orders={orders}
+      fetchMore={fetchMore}
+      onLoadFinished={onLoadFinished}
+    />,
+  );
+};
+
 describe('OrdersList', () => {
   it('should render an order list', () => {
     const renderer = new ShallowRenderer();
@@ -75,20 +89,10 @@ describe('OrdersList', () => {
 
   it('should call onLoadFinished when loading is changed to false', () => {
     const loading = true;
-    const orders = [];
-    const fetchMore = jest.fn();
     const onLoadFinished = jest.fn();
 
-    const result = shallow(
-      <OrdersList
-        loading={loading}
-        orders={orders}
-        fetchMore={fetchMore}
-        onLoadFinished={onLoadFinished}
-      />,
-    );
+    const result = shallowOrderList(loading, onLoadFinished);
     const instance = result.instance();
-
     instance.componentWillReceiveProps({ loading: false });
 
     expect(onLoadFinished).toBeCalled();
@@ -96,20 +100,10 @@ describe('OrdersList', () => {
 
   it('should not call onLoadFinished when loading is changed to true', () => {
     const loading = false;
-    const orders = [];
-    const fetchMore = jest.fn();
     const onLoadFinished = jest.fn();
 
-    const result = shallow(
-      <OrdersList
-        loading={loading}
-        orders={orders}
-        fetchMore={fetchMore}
-        onLoadFinished={onLoadFinished}
-      />,
-    );
+    const result = shallowOrderList(loading, onLoadFinished);
     const instance = result.instance();
-
     instance.componentWillReceiveProps({ loading: true });
 
     expect(onLoadFinished).not.toBeCalled();
