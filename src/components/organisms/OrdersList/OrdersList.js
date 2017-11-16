@@ -69,7 +69,6 @@ export class OrdersList extends Component {
             <FormattedMessage id="loading" />
           </LoadingWrapper>
         }
-        useWindow={false}
       >
         <List>{orders.map(order => renderOrder(order, intl))}</List>
       </InfiniteScroll>
