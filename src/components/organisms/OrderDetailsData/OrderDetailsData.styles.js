@@ -58,6 +58,11 @@ export const OrderData = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-family: Roboto-Regular;
+
+  & + & {
+    padding-top: 32px;
+    border-top: 1px dotted ${gray150};
+  }
 `;
 
 export const OrderDataTitle = styled.div`
@@ -124,8 +129,8 @@ export const SectionTitleSymbol = styled.div`
 
   svg {
     fill: ${orange100};
-    width: 100%;
-    height: auto;
+    height: 20px;
+    width: 20px;
   }
 `;
 
