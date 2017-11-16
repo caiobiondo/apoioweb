@@ -47,7 +47,7 @@ const renderOrder = (order, intl) => {
 
 export class OrdersList extends Component {
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.loading) {
+    if (!nextProps.loading && this.props.onLoadFinished) {
       this.props.onLoadFinished();
     }
   }

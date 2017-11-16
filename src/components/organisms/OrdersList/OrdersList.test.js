@@ -1,5 +1,6 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
 import { OrdersList } from './OrdersList';
 
 const intl = {
@@ -70,5 +71,47 @@ describe('OrdersList', () => {
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
+  });
+
+  it('should call onLoadFinished when loading is changed to false', () => {
+    const loading = true;
+    const orders = [];
+    const fetchMore = jest.fn();
+    const onLoadFinished = jest.fn();
+
+    const result = shallow(
+      <OrdersList
+        loading={loading}
+        orders={orders}
+        fetchMore={fetchMore}
+        onLoadFinished={onLoadFinished}
+      />,
+    );
+    const instance = result.instance();
+
+    instance.componentWillReceiveProps({ loading: false });
+
+    expect(onLoadFinished).toBeCalled();
+  });
+
+  it('should not call onLoadFinished when loading is changed to true', () => {
+    const loading = false;
+    const orders = [];
+    const fetchMore = jest.fn();
+    const onLoadFinished = jest.fn();
+
+    const result = shallow(
+      <OrdersList
+        loading={loading}
+        orders={orders}
+        fetchMore={fetchMore}
+        onLoadFinished={onLoadFinished}
+      />,
+    );
+    const instance = result.instance();
+
+    instance.componentWillReceiveProps({ loading: true });
+
+    expect(onLoadFinished).not.toBeCalled();
   });
 });
