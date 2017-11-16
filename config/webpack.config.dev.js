@@ -12,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const convertDimensions = require('./webpack/svgo/convertDimensions');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -143,11 +144,28 @@ module.exports = {
           },
           {
             test: /\.svg$/,
-            loader: 'svg-react-loader',
             include: [paths.naturaUiComponents, paths.appSrc],
-            query: {
-              classIdPrefix: '[name].[hash]'
-            },
+            use: [
+              {
+                loader: 'svg-react-loader',
+                options: {
+                  query: {
+                    classIdPrefix: '[name].[hash]'
+                  },
+                }
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeUselessStrokeAndFill: true },
+                    { convertPathData: false },
+                    { removeTitle: true },
+                    { custom: convertDimensions },
+                  ],
+                }
+              },
+            ],
           },
           // Process JS with Babel.
           {
