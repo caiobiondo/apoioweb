@@ -46,10 +46,16 @@ const renderOrder = (order, intl) => {
 };
 
 export class OrdersList extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.loading) {
+      this.props.onLoadFinished();
+    }
+  }
+
   render() {
     const { loading, orders, fetchMore, intl } = this.props;
     if (loading && !orders) {
-      return <Loading />;
+      return <Loading background="transparent" />;
     }
     if (!loading && orders && orders.length === 0) {
       return <EmptyOrders />;

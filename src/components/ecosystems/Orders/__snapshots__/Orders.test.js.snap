@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Orders should render the orders page 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "flex": "1 1 0",
-      "flexDirection": "column",
-      "justifyContent": "center",
-      "overflowY": "scroll",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
->
-  <Apollo(OrdersList) />
-</Paper>
+<styled.div>
+  <Paper
+    circle={false}
+    rounded={true}
+    style={Object {}}
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <Apollo(OrdersList)
+      onLoadFinished={[Function]}
+    />
+  </Paper>
+</styled.div>
 `;

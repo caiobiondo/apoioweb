@@ -5,7 +5,6 @@ import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from 'infra/ApolloClientCreator';
 import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY } from 'config';
 
-import { Main } from './App.styles';
 import Orders from 'components/ecosystems/Orders/Orders';
 import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
 
@@ -25,10 +24,10 @@ export default class App extends Component {
         <IntlProvider locale={locale} messages={flattenMessages(messages[locale])}>
           <ApolloProvider client={client}>
             <BrowserRouter>
-              <Main>
+              <div>
                 <Route exact path="/my-orders" component={Orders} />
                 <Route path="/my-orders/:id" component={OrderDetails} />
-              </Main>
+              </div>
             </BrowserRouter>
           </ApolloProvider>
         </IntlProvider>
