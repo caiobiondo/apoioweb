@@ -1,11 +1,26 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
 import { OrdersList } from './OrdersList';
 
 const intl = {
   formatCurrency: value => `formatedCurrency ${value}`,
   formatDate: value => `formatedDate ${value}`,
   formatNumber: value => `formatedNumber ${value}`,
+};
+
+const shallowOrderList = (loading, onLoadFinished) => {
+  const orders = [];
+  const fetchMore = jest.fn();
+
+  return shallow(
+    <OrdersList
+      loading={loading}
+      orders={orders}
+      fetchMore={fetchMore}
+      onLoadFinished={onLoadFinished}
+    />,
+  );
 };
 
 describe('OrdersList', () => {
@@ -70,5 +85,27 @@ describe('OrdersList', () => {
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
+  });
+
+  it('should call onLoadFinished when loading is changed to false', () => {
+    const loading = true;
+    const onLoadFinished = jest.fn();
+
+    const result = shallowOrderList(loading, onLoadFinished);
+    const instance = result.instance();
+    instance.componentWillReceiveProps({ loading: false });
+
+    expect(onLoadFinished).toBeCalled();
+  });
+
+  it('should not call onLoadFinished when loading is changed to true', () => {
+    const loading = false;
+    const onLoadFinished = jest.fn();
+
+    const result = shallowOrderList(loading, onLoadFinished);
+    const instance = result.instance();
+    instance.componentWillReceiveProps({ loading: true });
+
+    expect(onLoadFinished).not.toBeCalled();
   });
 });

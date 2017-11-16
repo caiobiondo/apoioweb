@@ -2,7 +2,7 @@
 
 exports[`OrdersList should render a loading indicator 1`] = `
 <Loading
-  background="#FFFFFF"
+  background="transparent"
   visible={true}
   zIndex={9999}
 />
