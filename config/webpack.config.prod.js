@@ -13,6 +13,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const convertDimensions = require('./webpack/svgo/convertDimensions');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -154,6 +155,31 @@ module.exports = {
               compact: true,
             },
           },
+          {
+            test: /\.svg$/,
+            include: [paths.naturaUiComponents, paths.appSrc],
+            use: [
+              {
+                loader: 'svg-react-loader',
+                options: {
+                  query: {
+                    classIdPrefix: '[name].[hash]'
+                  },
+                }
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeUselessStrokeAndFill: true },
+                    { convertPathData: false },
+                    { removeTitle: true },
+                    { custom: convertDimensions },
+                  ],
+                }
+              },
+            ],
+          },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -218,7 +244,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
