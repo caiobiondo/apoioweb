@@ -4,6 +4,7 @@ import { spSmall, spMedium } from 'styles/spacing';
 
 export const List = styled.ul`
   padding-left: 0;
+  padding-top: ${spMedium};
   margin: ${spMedium};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {

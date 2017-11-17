@@ -44,7 +44,7 @@ const Order = ({ statusType, left, middle, right }) => {
         <Body>{renderFields(left.body)}</Body>
       </CustomCard.Section>
 
-      <CustomCard.Section alignItems="flex-start">
+      <CustomCard.Section alignItems="flex-start" justifyContent="space-between">
         <Header>{renderFields(middle.header)}</Header>
         <Body>{renderFields(middle.body)}</Body>
       </CustomCard.Section>

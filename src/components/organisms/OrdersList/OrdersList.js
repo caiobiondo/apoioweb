@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Loading } from 'natura-ui';
+import { Loading, CircularProgress } from 'natura-ui';
 import { List, LoadingWrapper } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from 'components/molecules/Order/Order';
 import EmptyOrders from 'components/molecules/EmptyOrders/EmptyOrders';
 import { graphql } from 'react-apollo';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -63,10 +63,10 @@ export class OrdersList extends Component {
     return (
       <InfiniteScroll
         loadMore={fetchMore}
-        hasMore={true}
+        hasMore={false}
         loader={
           <LoadingWrapper>
-            <FormattedMessage id="loading" />
+            <CircularProgress thickness={2} />
           </LoadingWrapper>
         }
       >
