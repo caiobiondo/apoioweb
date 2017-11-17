@@ -63,7 +63,7 @@ export class OrdersList extends Component {
     return (
       <InfiniteScroll
         loadMore={fetchMore}
-        hasMore={true}
+        hasMore={false}
         loader={
           <LoadingWrapper>
             <CircularProgress thickness={2} />
