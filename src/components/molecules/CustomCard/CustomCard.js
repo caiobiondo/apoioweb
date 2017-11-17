@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'natura-ui';
+import { Paper } from 'natura-ui';
 
 import CustomCardSection from 'components/atoms/CustomCardSection/CustomCardSection';
 import CustomCardText from 'components/atoms/CustomCardText/CustomCardText';
@@ -10,10 +10,10 @@ import { Wrapper, Border, Content, cardStyle } from './CustomCard.styles';
 
 const CustomCard = ({ color, children }) => (
   <Wrapper>
-    <Card style={cardStyle}>
+    <Paper style={cardStyle}>
       {color && <Border color={color} />}
       <Content>{children}</Content>
-    </Card>
+    </Paper>
   </Wrapper>
 );
 
