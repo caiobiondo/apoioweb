@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderAddButton should render a floating button with add order icon 1`] = `
+<Unknown
+  iconWrapper={[Function]}
+>
+  <Icon
+    file="ico_add_box"
+  />
+</Unknown>
+`;

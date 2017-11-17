@@ -10,10 +10,16 @@ export const scrolledContainer = {
 };
 
 export const Main = styled.div`
-  display: flex;
   margin: ${spMedium};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin: ${spMedium} 0;
   }
+`;
+
+export const OrderAddButtonContainer = styled.div`
+  position: fixed;
+  right: 0;
+  bottom: 65px;
+  z-index: 9999;
 `;
