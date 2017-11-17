@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { gray300, gray900 } from 'styles/colors';
+import { RobotoRegular } from 'styles/typography';
 
 export const Header = styled.div`
   margin-bottom: 25px;
@@ -52,5 +53,5 @@ export const Status = styled.div`
 `;
 
 export const Label = styled.label`
-  font-family: Roboto-Regular;
+  font-family: ${RobotoRegular};
 `;

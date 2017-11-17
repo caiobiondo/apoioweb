@@ -29,7 +29,7 @@ exports[`OrdersList should render an order list 1`] = `
   ref={null}
   threshold={250}
   useCapture={false}
-  useWindow={false}
+  useWindow={true}
 >
   <styled.ul>
     <Order
