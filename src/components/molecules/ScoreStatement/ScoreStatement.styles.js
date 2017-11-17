@@ -14,5 +14,5 @@ export const SignSeparator = styled.div`
 
 export const Block = styled.div`
   display: inline-block;
-  margin: 0 29px;
+  margin: 0 35px;
 `;

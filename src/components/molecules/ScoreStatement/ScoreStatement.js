@@ -22,7 +22,7 @@ const getCardText = points => `${points} pts`;
 const translate = label => <FormattedMessage id={label} />;
 
 const ScoreStatement = props => {
-  const { growthStatus } = props;
+  const { growthStatus, cardsColor } = props;
 
   return (
     <Wrapper>
@@ -31,7 +31,7 @@ const ScoreStatement = props => {
           cardStyle={cardStyle}
           contentStyle={cardContentStyle}
           title={translate('naturaNetworkPointsTitle')}
-          titleColor={'#c47f5b'}
+          titleColor={cardsColor}
           titleStyle={cardTitleStyle}
         >
           {getCardText(growthStatus.periodNaturaNetwork)}
@@ -47,7 +47,7 @@ const ScoreStatement = props => {
           cardStyle={cardStyle}
           contentStyle={cardContentStyle}
           title={translate('directSalesPointsTitle')}
-          titleColor={'#c47f5b'}
+          titleColor={cardsColor}
           titleStyle={cardTitleStyle}
         >
           {getCardText(growthStatus.periodDirectSales)}
@@ -63,7 +63,7 @@ const ScoreStatement = props => {
           cardStyle={cardStyle}
           contentStyle={cardContentStyle}
           title={translate('totalPointsTitle')}
-          titleColor={'#c47f5b'}
+          titleColor={cardsColor}
           titleStyle={cardTitleStyle}
         >
           {getCardText(growthStatus.periodTotalPoints)}

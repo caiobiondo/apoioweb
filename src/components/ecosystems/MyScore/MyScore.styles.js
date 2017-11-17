@@ -1,6 +1,8 @@
-export const scrolledContainer = {
-  flex: '1 1 0',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  overflowY: 'scroll',
-};
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: scroll;
+`;

@@ -8,28 +8,49 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   BarSeparator,
   BigTitle,
+  ContentWrapper,
   DottedSeparator,
   Explanation,
   PageTitle,
+  ScoreProgressWrapper,
+  ScoreStatementWrapper,
   ScoreToNextLevelWrapper,
-  ScoreWrapper,
+  ScoreToNextLevel,
   SmallTitle,
-  Switcher,
   Wrapper,
 } from './PeriodScore.styles';
 
-import Progress from './Progress/Progress';
-import ScoreStatement from './ScoreStatement/ScoreStatement';
+import ScoreStatement from 'components/molecules/ScoreStatement/ScoreStatement';
+import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
+import PointsCycleSelection from 'components/molecules/PointsCycleSelection/PointsCycleSelection';
 
-const getCurrentLevel = growthStatus => {
-  if (!growthStatus) {
-    return {};
+import GrowthStatus from './GrowthStatus';
+
+const cycleSelected = () => {
+  console.log('cycle selected');
+};
+
+const isOnLastLevel = (currentLevel, nextLevel) => {
+  return !nextLevel || !nextLevel.id || currentLevel.id === nextLevel.id;
+};
+
+const renderScoreToNextLevelMessage = (growthStatus, currentLevel, nextLevel) => {
+  if (isOnLastLevel(currentLevel, nextLevel)) {
+    return null;
   }
-  const { currentLevelId } = growthStatus;
 
-  return growthStatus.currentPlan.levels.find(level => {
-    return level.levelId === currentLevelId;
-  });
+  const pointsToNextLevel = GrowthStatus.getPointsToNextLevel(growthStatus, currentLevel);
+
+  return (
+    <ScoreToNextLevelWrapper>
+      <ScoreToNextLevel>
+        <FormattedMessage
+          id="pointsToNextLevel"
+          values={{ points: <b>{pointsToNextLevel}</b>, nextLevelName: nextLevel.text }}
+        />
+      </ScoreToNextLevel>
+    </ScoreToNextLevelWrapper>
+  );
 };
 
 const PeriodScore = props => {
@@ -40,7 +61,9 @@ const PeriodScore = props => {
     return <Loading />;
   }
 
-  const currentLevel = getCurrentLevel(growthStatus);
+  const currentLevel = GrowthStatus.getCurrentLevel(growthStatus);
+  const lastLevel = GrowthStatus.getLastLevel(growthStatus, currentLevel);
+  const nextLevel = GrowthStatus.getNextLevel(growthStatus, currentLevel);
 
   return (
     <Wrapper>
@@ -52,26 +75,46 @@ const PeriodScore = props => {
         <FormattedMessage id="scoreExplanation" />
       </Explanation>
 
-      <BigTitle>
-        <FormattedMessage id="totalScoreInPeriod" />
-      </BigTitle>
+      <ContentWrapper>
+        <BigTitle>
+          <FormattedMessage id="totalScoreInPeriod" />
+        </BigTitle>
 
-      <Progress growthStatus={props.growthStatus} currentLevel={currentLevel} />
+        <ScoreProgressWrapper>
+          <ScoreProgress
+            currentPoints={props.growthStatus.periodTotalPoints}
+            currentLevel={currentLevel}
+            nextLevel={nextLevel}
+            lastLevel={lastLevel}
+            isOnLastLevel={isOnLastLevel(currentLevel, nextLevel)}
+          />
+        </ScoreProgressWrapper>
 
-      <ScoreToNextLevelWrapper />
-      <BarSeparator />
-      <SmallTitle>
-        <FormattedMessage id="yourScoreDemonstration" />
-      </SmallTitle>
+        {renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel)}
 
-      <ScoreStatement growthStatus={props.growthStatus} currentLevel={currentLevel} />
-      <DottedSeparator color={currentLevel.color} />
+        <BarSeparator color={currentLevel.color} />
 
-      <SmallTitle>
-        <FormattedMessage id="scoreStatementInPeriod" />
-      </SmallTitle>
+        <SmallTitle>
+          <FormattedMessage id="yourScoreDemonstration" />
+        </SmallTitle>
 
-      <Switcher />
+        <ScoreStatementWrapper>
+          <ScoreStatement growthStatus={growthStatus} cardsColor={currentLevel.color} />
+        </ScoreStatementWrapper>
+
+        <DottedSeparator color={currentLevel.color} />
+
+        <SmallTitle>
+          <FormattedMessage id="scoreStatementInPeriod" />
+        </SmallTitle>
+
+        <PointsCycleSelection
+          onCycleClick={cycleSelected}
+          startCycle={growthStatus.periodStartCycle}
+          endCycle={growthStatus.periodEndCycle}
+          currentCycle={growthStatus.cycle}
+        />
+      </ContentWrapper>
     </Wrapper>
   );
 };

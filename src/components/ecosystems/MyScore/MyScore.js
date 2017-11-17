@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Paper } from 'natura-ui';
 import PeriodScore from 'components/organisms/PeriodScore/PeriodScore';
-import { scrolledContainer } from './MyScore.styles';
+import { Wrapper } from './MyScore.styles';
 
 class MyScore extends Component {
   render() {
     return (
-      <Paper style={scrolledContainer}>
+      <Wrapper>
         <PeriodScore />
-      </Paper>
+      </Wrapper>
     );
   }
 }

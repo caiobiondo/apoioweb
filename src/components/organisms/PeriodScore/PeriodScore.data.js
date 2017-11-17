@@ -8,6 +8,9 @@ export const PeriodScoreQuery = gql`
       periodTotalPoints
       periodNaturaNetwork
       periodDirectSales
+      periodStartCycle
+      periodEndCycle
+      cycle
       currentPlan {
         growthPlanName
         levels {

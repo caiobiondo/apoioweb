@@ -11,5 +11,6 @@ export default {
     naturaNetworkPointsTitle: 'Rede Natura',
     directSalesPointsTitle: 'Presencial',
     totalPointsTitle: 'Total',
+    pointsToNextLevel: 'Faltam {points} pontos para {nextLevelName}',
   },
 };
