@@ -4,7 +4,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import OrderDetailsDataQuery from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 
-import { Card, Icon } from 'natura-ui';
+import { Paper, Icon } from 'natura-ui';
 import {
   SectionTitle,
   SectionTitleSymbol,
@@ -112,9 +112,7 @@ export class OrderDetailsData extends Component {
       <OrderData>
         <OrderDatumLong>
           <OrderDatumValue>
-            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${
-              address.bairro
-            }`}
+            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${address.bairro}`}
           </OrderDatumValue>
           <OrderDatumValue>{`${address.cidade} - ${address.estado}`}</OrderDatumValue>
           <OrderDatumValue>
@@ -179,7 +177,7 @@ export class OrderDetailsData extends Component {
     return (
       <div>
         <OrderDetailsCard>
-          <Card>
+          <Paper>
             <SectionTitle>
               <SectionTitleSymbol>
                 <Icon file="ico_info" />
@@ -395,10 +393,10 @@ export class OrderDetailsData extends Component {
                 </OrderInfosRow>
               </OrderInfosColumn>
             </OrderInfos>
-          </Card>
+          </Paper>
         </OrderDetailsCard>
         <OrderDetailsCard>
-          <Card>
+          <Paper>
             <SectionTitle>
               <SectionTitleSymbol>
                 <Icon file="ico_box" />
@@ -414,7 +412,7 @@ export class OrderDetailsData extends Component {
               </OrderItemsQuantityWrapper>
               {this.renderOrderItems(order.itemEnviadoCaixa)}
             </OrderItemsInfos>
-          </Card>
+          </Paper>
         </OrderDetailsCard>
       </div>
     );
