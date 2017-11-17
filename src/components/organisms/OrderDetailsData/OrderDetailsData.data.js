@@ -49,6 +49,16 @@ const OrderDetailsDataQuery = gql`
         data
         id
       }
+      itemEnviadoCaixa {
+        codigoProduto
+        quantidadePontosUnitario
+        quantidadePontosTotal
+        produto {
+          descricao
+        }
+        quantidadeItem
+        valorTotal
+      }
     }
   }
 `;
