@@ -150,6 +150,7 @@ export const OrderItemsInfos = styled.div`
 
 export const OrderItemsQuantityWrapper = styled.div`
   margin-top: 40px;
+  margin-bottom: 15px;
   font-size: ${fs18};
   color: ${gray890};
 `;
@@ -238,20 +239,27 @@ export const OrderItemProductCode = styled.span`
 
 export const OrderItemsHeader = styled.div`
   font-family: Roboto-Regular;
-  font-size: ${fs14};
+  font-size: ${fs12};
   text-transform: uppercase;
   color: ${gray200};
   display: flex;
+  align-items: center;
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    display: none;
+  }
 `;
 
-// export const OrderItemsHeaderProductDescription = styled.div`
-//
-// `;
-//
-// export const OrderItemsHeaderProductValuesWrapper = styled.div`
-//
-// `;
-//
-// export const OrderItemsHeaderProductValueLabel = styled.div`
-//
-// `;
+export const OrderItemsHeaderProductDescription = styled.div`
+  flex: 1 1 40%;
+`;
+
+export const OrderItemsHeaderProductValuesWrapper = styled.div`
+  flex: 1 1 60%;
+  text-align: center;
+  display: flex;
+`;
+
+export const OrderItemsHeaderProductValueLabel = styled.div`
+  flex: 1 1 33%;
+`;
