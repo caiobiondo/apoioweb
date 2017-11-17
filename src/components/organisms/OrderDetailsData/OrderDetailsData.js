@@ -45,11 +45,19 @@ export class OrderDetailsData extends Component {
     return (
       <div>
         <OrderItemsHeader>
-          <OrderItemsHeaderProductDescription>Produto</OrderItemsHeaderProductDescription>
+          <OrderItemsHeaderProductDescription>
+            <FormattedMessage id="orderItemProduct" />
+          </OrderItemsHeaderProductDescription>
           <OrderItemsHeaderProductValuesWrapper>
-            <OrderItemsHeaderProductValueLabel>Quantidade</OrderItemsHeaderProductValueLabel>
-            <OrderItemsHeaderProductValueLabel>Valor</OrderItemsHeaderProductValueLabel>
-            <OrderItemsHeaderProductValueLabel>Pontos</OrderItemsHeaderProductValueLabel>
+            <OrderItemsHeaderProductValueLabel>
+              <FormattedMessage id="orderItemQuantity" />
+            </OrderItemsHeaderProductValueLabel>
+            <OrderItemsHeaderProductValueLabel>
+              <FormattedMessage id="orderItemValue" />
+            </OrderItemsHeaderProductValueLabel>
+            <OrderItemsHeaderProductValueLabel>
+              <FormattedMessage id="orderItemPoints" />
+            </OrderItemsHeaderProductValueLabel>
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
         {(orderItems || []).map(orderItem => this.renderOrderItem(orderItem))}
@@ -71,17 +79,23 @@ export class OrderDetailsData extends Component {
           </OrderItemProductDescriptionWrapper>
           <OrderItemDatumMediumLong>
             <OrderItemDatumShort>
-              <OrderItemProductDatumLabel>Quantidade</OrderItemProductDatumLabel>
+              <OrderItemProductDatumLabel>
+                <FormattedMessage id="orderItemQuantity" />
+              </OrderItemProductDatumLabel>
               <OrderItemProductDatumValue>{orderItem.quantidadeItem}</OrderItemProductDatumValue>
             </OrderItemDatumShort>
             <OrderItemDatumShort>
-              <OrderItemProductDatumLabel>Valor</OrderItemProductDatumLabel>
+              <OrderItemProductDatumLabel>
+                <FormattedMessage id="orderItemValue" />
+              </OrderItemProductDatumLabel>
               <OrderItemProductDatumValue>
                 {formatCurrency(orderItem.valorTotal, intl)}
               </OrderItemProductDatumValue>
             </OrderItemDatumShort>
             <OrderItemDatumShort>
-              <OrderItemProductDatumLabel>Pontos</OrderItemProductDatumLabel>
+              <OrderItemProductDatumLabel>
+                <FormattedMessage id="orderItemPoints" />
+              </OrderItemProductDatumLabel>
               <OrderItemProductDatumValue>
                 {orderItem.quantidadePontosTotal}
               </OrderItemProductDatumValue>
