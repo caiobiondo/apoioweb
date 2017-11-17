@@ -7,6 +7,7 @@ import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY } from 'config';
 
 import Orders from 'components/ecosystems/Orders/Orders';
 import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
+import MyScore from 'components/ecosystems/MyScore/MyScore';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 
@@ -27,6 +28,7 @@ export default class App extends Component {
               <div>
                 <Route exact path="/my-orders" component={Orders} />
                 <Route path="/my-orders/:id" component={OrderDetails} />
+                <Route path="/my-score" component={MyScore} />
               </div>
             </BrowserRouter>
           </ApolloProvider>
