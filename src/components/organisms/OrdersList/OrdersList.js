@@ -57,7 +57,7 @@ export class OrdersList extends Component {
     if (loading && !orders) {
       return <Loading background="transparent" />;
     }
-    if (!loading && orders && orders.length === 0) {
+    if (!loading && (!orders || orders.length === 0)) {
       return <EmptyOrders />;
     }
     return (
