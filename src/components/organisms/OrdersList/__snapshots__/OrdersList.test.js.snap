@@ -13,15 +13,19 @@ exports[`OrdersList should render an empty list indicator 1`] = `<EmptyOrders />
 exports[`OrdersList should render an order list 1`] = `
 <InfiniteScroll
   element="div"
-  hasMore={true}
+  hasMore={false}
   initialLoad={true}
   isReverse={false}
   loadMore={[Function]}
   loader={
     <styled.div>
-      <FormattedMessage
-        id="loading"
-        values={Object {}}
+      <CircularProgress
+        max={100}
+        min={0}
+        mode="indeterminate"
+        size={40}
+        thickness={2}
+        value={0}
       />
     </styled.div>
   }
