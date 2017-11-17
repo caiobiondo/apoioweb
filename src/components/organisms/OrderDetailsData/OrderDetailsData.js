@@ -4,7 +4,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import OrderDetailsDataQuery from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 
-import { Paper, Icon } from 'natura-ui';
+import { Paper, Icon, Loading } from 'natura-ui';
 import {
   SectionTitle,
   SectionTitleSymbol,
@@ -173,7 +173,7 @@ export class OrderDetailsData extends Component {
     const { order } = data;
 
     if (data.loading) {
-      return null;
+      return <Loading background="transparent" />;
     }
 
     return (
