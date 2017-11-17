@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Paper } from 'natura-ui';
 import OrdersList from 'components/organisms/OrdersList/OrdersList';
-import { scrolledContainer, Main } from './Orders.styles';
+import OrderAddButton from 'components/atoms/OrderAddButton/OrderAddButton';
+import { scrolledContainer, Main, OrderAddButtonContainer } from './Orders.styles';
 
 class Orders extends Component {
   state = {
@@ -17,6 +18,11 @@ class Orders extends Component {
     const containerStyle = loading ? {} : scrolledContainer;
     return (
       <Main>
+        {!loading && (
+          <OrderAddButtonContainer>
+            <OrderAddButton />
+          </OrderAddButtonContainer>
+        )}
         <Paper style={containerStyle}>
           <OrdersList onLoadFinished={this.onLoadFinished} />
         </Paper>
