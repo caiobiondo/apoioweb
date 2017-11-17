@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { gray100 } from 'styles/colors';
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
@@ -11,7 +12,7 @@ export const Wrapper = styled.div`
   align-items: ${props => props.alignItems};
 
   &:not(:last-child) {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid ${gray100};
   }
 
   @media (min-width: 1024px) {
@@ -21,7 +22,7 @@ export const Wrapper = styled.div`
 
     &:not(:last-child) {
       border-bottom: none;
-      border-right: 1px solid #eee;
+      border-right: 1px solid ${gray100};
     }
   }
 `;

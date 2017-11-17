@@ -11,10 +11,20 @@ export function flattenMessages(nestedMessages, prefix = '') {
   }, {});
 }
 
-export function formatDate(isoDate, intl) {
+export function formatDate(isoDate, intl, defaultValue = null) {
+  if (!isoDate) return defaultValue;
+
   return intl.formatDate(new Date(isoDate), { day: 'numeric', month: 'numeric', year: 'numeric' });
 }
 
-export function formatCurrency(price, intl) {
+export function formatTime(isoDate, intl, defaultValue = null) {
+  if (!isoDate) return defaultValue;
+
+  return intl.formatTime(new Date(isoDate));
+}
+
+export function formatCurrency(price, intl, defaultValue = null) {
+  if (!price) return defaultValue;
+
   return intl.formatNumber(price, { currency: 'BRL', style: 'currency' });
 }

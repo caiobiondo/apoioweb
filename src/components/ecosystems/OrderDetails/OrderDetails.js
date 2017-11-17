@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
+import OrderDetailsData from 'components/organisms/OrderDetailsData/OrderDetailsData';
 
 class OrderDetails extends Component {
   render() {
     const { id } = this.props.match.params;
-    return (
-      <div>
-        <h2>Meu pedido #{id}</h2>
-        <p>Infos do pedido</p>
-      </div>
-    );
+    return <OrderDetailsData orderId={id} />;
   }
 }
 

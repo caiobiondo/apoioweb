@@ -12,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const convertDimensions = require('./webpack/svgo/convertDimensions');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -141,6 +142,31 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+          {
+            test: /\.svg$/,
+            include: [paths.naturaUiComponents, paths.appSrc],
+            use: [
+              {
+                loader: 'svg-react-loader',
+                options: {
+                  query: {
+                    classIdPrefix: '[name].[hash]'
+                  },
+                }
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeUselessStrokeAndFill: true },
+                    { convertPathData: false },
+                    { removeTitle: true },
+                    { custom: convertDimensions },
+                  ],
+                }
+              },
+            ],
+          },
           // Process JS with Babel.
           {
             test: /\.(js|jsx)$/,
@@ -201,7 +227,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
