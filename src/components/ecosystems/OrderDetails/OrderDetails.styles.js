@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { spMedium } from 'styles/spacing';
+import { spMedium, spPage } from 'styles/spacing';
 
-export const OrderDetails = styled.div`
-  margin: ${spMedium};
+export const OrderDetailsWrapper = styled.div`
+  margin: ${spMedium} ${spPage} ${spMedium} ${spMedium};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin: ${spMedium} 0;
