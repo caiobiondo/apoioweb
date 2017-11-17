@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { spMedium } from 'styles/spacing';
+import { spMedium, spPage } from 'styles/spacing';
 
 export const scrolledContainer = {
   flex: '1 1 0',
   flexDirection: 'column',
   justifyContent: 'center',
-  paddingBottom: spMedium,
+  paddingBottom: spPage,
 };
 
 export const Main = styled.div`
-  margin: ${spMedium};
+  margin: ${spMedium} ${spPage} ${spMedium} ${spMedium};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin: ${spMedium} 0;
@@ -19,7 +19,7 @@ export const Main = styled.div`
 
 export const OrderAddButtonContainer = styled.div`
   position: fixed;
-  right: 0;
+  right: 42px;
   bottom: 65px;
   z-index: 9999;
 `;
