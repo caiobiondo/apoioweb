@@ -2,16 +2,22 @@
 
 exports[`EmptyOrders should render a empty orders indicator 1`] = `
 <styled.div>
-  <span>
-    Imagem
-  </span>
-  <FormattedMessage
-    id="ordersEmptyList"
-    values={Object {}}
-  />
-  <FormattedMessage
-    id="ordersWithoutOrders"
-    values={Object {}}
-  />
+  <styled.div>
+    <Icon
+      file="ico_box"
+    />
+  </styled.div>
+  <styled.div>
+    <FormattedMessage
+      id="ordersEmptyList"
+      values={Object {}}
+    />
+  </styled.div>
+  <styled.div>
+    <FormattedMessage
+      id="ordersWithoutOrders"
+      values={Object {}}
+    />
+  </styled.div>
 </styled.div>
 `;
