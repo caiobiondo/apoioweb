@@ -30,7 +30,6 @@ export default {
     orderItems: 'Ítens do Pedido',
     orderItemsBoughtQuantity: 'Comprados',
     orderItemsQuantity: 'Quantidade de ítens',
-    orderNumber: 'Número do pedido',
     orderNumber: 'Número do Pedido',
     orderPayment: 'Pagamento',
     orderPaymentMessage: 'O pagamento para este pedido foi dividido da seguinte forma',
