@@ -13,12 +13,21 @@ describe('Orders', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('should render the orders page without scrolled container (not loading)', () => {
+  it('should render the orders page with scrolled container (not loading)', () => {
     const result = shallow(<Orders />);
     const instance = result.instance();
 
-    instance.onLoadFinished();
+    instance.onLoadFinished(false, false);
 
-    expect(instance.state).toEqual({ loading: false });
+    expect(instance.state).toEqual({ empty: false, loading: false });
+  });
+
+  it('should render the orders page without scrolled container (empty)', () => {
+    const result = shallow(<Orders />);
+    const instance = result.instance();
+
+    instance.onLoadFinished(true, false);
+
+    expect(instance.state).toEqual({ empty: true, loading: false });
   });
 });

@@ -3,6 +3,10 @@ import OrderDetailsData from 'components/organisms/OrderDetailsData/OrderDetails
 import { OrderDetailsWrapper } from './OrderDetails.styles';
 
 class OrderDetails extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { id } = this.props.match.params;
     return (

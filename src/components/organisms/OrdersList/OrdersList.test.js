@@ -93,7 +93,7 @@ describe('OrdersList', () => {
 
     const result = shallowOrderList(loading, onLoadFinished);
     const instance = result.instance();
-    instance.componentWillReceiveProps({ loading: false });
+    instance.componentWillReceiveProps({ loading: false, onLoadFinished });
 
     expect(onLoadFinished).toBeCalled();
   });

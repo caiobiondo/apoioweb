@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Loading, CircularProgress } from 'natura-ui';
-import { List, LoadingWrapper } from './OrdersList.styles';
+import { Loading, CircularProgress, Paper } from 'natura-ui';
+import { List, LoadingWrapper, scrolledContainer, fullContainer } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from 'components/molecules/Order/Order';
 import EmptyOrders from 'components/molecules/EmptyOrders/EmptyOrders';
@@ -46,32 +46,46 @@ const renderOrder = (order, intl) => {
 };
 
 export class OrdersList extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.loading && this.props.onLoadFinished) {
-      this.props.onLoadFinished();
+  componentWillReceiveProps({ loading, orders, onLoadFinished }) {
+    if (!loading && onLoadFinished) {
+      this.props.onLoadFinished(this._empty(loading, orders), this._loading(loading, orders));
     }
+  }
+
+  _loading(loading, orders) {
+    return loading && !orders;
+  }
+
+  _empty(loading, orders) {
+    return !loading && (!orders || orders.length === 0);
   }
 
   render() {
     const { loading, orders, fetchMore, intl } = this.props;
-    if (loading && !orders) {
+    if (this._loading(loading, orders)) {
       return <Loading background="transparent" />;
     }
-    if (!loading && (!orders || orders.length === 0)) {
-      return <EmptyOrders />;
+    if (this._empty(loading, orders)) {
+      return (
+        <Paper style={fullContainer}>
+          <EmptyOrders />
+        </Paper>
+      );
     }
     return (
-      <InfiniteScroll
-        loadMore={fetchMore}
-        hasMore={false}
-        loader={
-          <LoadingWrapper>
-            <CircularProgress thickness={2} />
-          </LoadingWrapper>
-        }
-      >
-        <List>{orders.map(order => renderOrder(order, intl))}</List>
-      </InfiniteScroll>
+      <Paper style={scrolledContainer}>
+        <InfiniteScroll
+          loadMore={fetchMore}
+          hasMore={false}
+          loader={
+            <LoadingWrapper>
+              <CircularProgress thickness={2} />
+            </LoadingWrapper>
+          }
+        >
+          <List>{orders.map(order => renderOrder(order, intl))}</List>
+        </InfiniteScroll>
+      </Paper>
     );
   }
 }
