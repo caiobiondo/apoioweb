@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import OrderDetailsDataQuery from './OrderDetailsData.data';
+import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
+import withUserData from 'hocs/withUserData/withUserData';
 
 import { Paper, Icon, Loading } from 'natura-ui';
 import {
@@ -423,4 +424,8 @@ export class OrderDetailsData extends Component {
 
 export const OrderDetailsDataWithIntl = injectIntl(OrderDetailsData);
 
-export default graphql(OrderDetailsDataQuery)(OrderDetailsDataWithIntl);
+export const OrderDetailsDataWithData = graphql(OrderDetailsQuery, OrderDetailsQueryOptions)(
+  OrderDetailsDataWithIntl,
+);
+
+export default withUserData(OrderDetailsDataWithData);
