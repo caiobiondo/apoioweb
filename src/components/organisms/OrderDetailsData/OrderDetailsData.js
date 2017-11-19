@@ -52,7 +52,7 @@ export class OrderDetailsData extends Component {
             <OrderItemsHeaderProductValueLabel>Pontos</OrderItemsHeaderProductValueLabel>
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
-        {orderItems.map(orderItem => this.renderOrderItem(orderItem))}
+        {(orderItems || []).map(orderItem => this.renderOrderItem(orderItem))}
       </div>
     );
   }
@@ -411,7 +411,7 @@ export class OrderDetailsData extends Component {
             <OrderItemsInfos>
               <OrderItemsQuantityWrapper>
                 <FormattedMessage id="orderItemsBoughtQuantity" />
-                <OrderItemsQuantity>({order.itemEnviadoCaixa.length})</OrderItemsQuantity>
+                <OrderItemsQuantity>({(order.itemEnviadoCaixa || []).length})</OrderItemsQuantity>
               </OrderItemsQuantityWrapper>
               {this.renderOrderItems(order.itemEnviadoCaixa)}
             </OrderItemsInfos>
