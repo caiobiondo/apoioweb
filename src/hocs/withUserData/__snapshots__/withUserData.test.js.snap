@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withUserData HOC should render a loading indicator 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`withUserData HOC should render a loading indicator 2`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`withUserData HOC should render the child component with user props 1`] = `
+<WrappedComponent
+  data={
+    Object {
+      "user": Object {
+        "cdCanalCaptacao": 12,
+        "codigo": 11,
+        "codigoCentro": 13,
+      },
+    }
+  }
+  user={
+    Object {
+      "cdCanalCaptacao": 12,
+      "codigo": 11,
+      "codigoCentro": 13,
+    }
+  }
+/>
+`;

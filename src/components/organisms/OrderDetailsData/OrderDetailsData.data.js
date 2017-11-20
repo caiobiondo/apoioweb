@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-const OrderDetailsDataQuery = gql`
-  query OrderDetailsDataQuery($orderId: Int!) {
-    order(id: $orderId) {
+export const OrderDetailsQuery = gql`
+  query OrderDetailsQuery($orderId: Int!, $channelId: Int!, $costCenter: Int) {
+    order(id: $orderId, channelId: $channelId, costCenter: $costCenter) {
       codigoPedido
       ciclo
       dataPedido
@@ -63,4 +63,14 @@ const OrderDetailsDataQuery = gql`
   }
 `;
 
-export default OrderDetailsDataQuery;
+export const OrderDetailsQueryOptions = {
+  options(props) {
+    return {
+      variables: {
+        orderId: props.orderId,
+        channelId: props.user.cdCanalCaptacao,
+        costCenter: props.user.codigoCentro,
+      },
+    };
+  },
+};

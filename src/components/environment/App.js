@@ -8,6 +8,7 @@ import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY } from 'config';
 import Orders from 'components/ecosystems/Orders/Orders';
 import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
 import MyScore from 'components/ecosystems/MyScore/MyScore';
+import withAuthentication from 'hocs/withAuthentication';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 
@@ -26,9 +27,9 @@ export default class App extends Component {
           <ApolloProvider client={client}>
             <BrowserRouter>
               <div>
-                <Route exact path="/my-orders" component={Orders} />
-                <Route path="/my-orders/:id" component={OrderDetails} />
-                <Route path="/my-score" component={MyScore} />
+                <Route exact path="/my-orders" component={withAuthentication(Orders)} />
+                <Route path="/my-orders/:id" component={withAuthentication(OrderDetails)} />
+                <Route path="/my-score" component={withAuthentication(MyScore)} />
               </div>
             </BrowserRouter>
           </ApolloProvider>

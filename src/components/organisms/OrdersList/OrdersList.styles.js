@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { spSmall, spMedium } from 'styles/spacing';
+import { spSmall, spMedium, spPage } from 'styles/spacing';
 
 export const List = styled.ul`
   padding-left: 0;
@@ -15,3 +15,14 @@ export const List = styled.ul`
 export const LoadingWrapper = styled.div`
   text-align: center;
 `;
+
+export const scrolledContainer = {
+  flex: '1 1 0',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  paddingBottom: spPage,
+};
+
+export const fullContainer = {
+  height: '100%',
+};
