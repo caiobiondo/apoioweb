@@ -11,7 +11,6 @@ export const OrderDetailsWrapper = {
 
 export const OrderInfos = styled.div`
   display: flex;
-  padding-top: 36px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-direction: column;
@@ -117,27 +116,6 @@ export const OrderDatumValue = styled.span`
   & + & {
     margin-top: 13.5px;
   }
-`;
-
-export const SectionTitle = styled.div`
-  display: flex;
-`;
-
-export const SectionTitleSymbol = styled.div`
-  margin-right: 20px;
-  display: inline-block;
-
-  svg {
-    fill: ${orange100};
-    height: 20px;
-    width: 20px;
-  }
-`;
-
-export const SectionTitleLabel = styled.span`
-  vertical-align: middle;
-  font-size: ${fs18};
-  color: ${gray890};
 `;
 
 export const OrderItemsInfos = styled.div`

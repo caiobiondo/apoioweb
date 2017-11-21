@@ -4,12 +4,11 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 import withUserData from 'hocs/withUserData/withUserData';
+import { gray890, orange100 } from 'styles/colors';
 
+import SectionTitle from './molecules/SectionTitle';
 import { Paper, Icon, Loading } from 'natura-ui';
 import {
-  SectionTitle,
-  SectionTitleSymbol,
-  SectionTitleLabel,
   OrderDetailsWrapper,
   OrderInfos,
   OrderInfosColumn,
@@ -194,20 +193,15 @@ export class OrderDetailsData extends Component {
     return (
       <div>
         <Paper style={OrderDetailsWrapper}>
-          <SectionTitle>
-            <SectionTitleSymbol>
-              <Icon file="ico_info" />
-            </SectionTitleSymbol>
-            <SectionTitleLabel>
-              <FormattedMessage id="orderInformations" />
-            </SectionTitleLabel>
+          <SectionTitle iconName="ico_info">
+            <FormattedMessage id="orderInformations" />
           </SectionTitle>
           <OrderInfos>
             <OrderInfosColumn>
               <OrderInfosRow>
-                <OrderDataTitle>
+                <SectionTitle color={orange100}>
                   <FormattedMessage id="orderData" />
-                </OrderDataTitle>
+                </SectionTitle>
                 <OrderData>
                   <OrderDatumShort>
                     <OrderDatumLabel>
@@ -260,9 +254,9 @@ export class OrderDetailsData extends Component {
                 </OrderData>
               </OrderInfosRow>
               <OrderInfosRow>
-                <OrderDataTitle>
+                <SectionTitle color={orange100}>
                   <FormattedMessage id="orderValues" />
-                </OrderDataTitle>
+                </SectionTitle>
                 <OrderData>
                   <OrderDatumShort>
                     <OrderDatumLabel>
@@ -411,13 +405,8 @@ export class OrderDetailsData extends Component {
           </OrderInfos>
         </Paper>
         <Paper style={OrderDetailsWrapper}>
-          <SectionTitle>
-            <SectionTitleSymbol>
-              <Icon file="ico_box" />
-            </SectionTitleSymbol>
-            <SectionTitleLabel>
-              <FormattedMessage id="orderItems" />
-            </SectionTitleLabel>
+          <SectionTitle iconName="ico_box">
+            <FormattedMessage id="orderItems" />
           </SectionTitle>
           <OrderItemsInfos>
             <OrderItemsQuantityWrapper>
