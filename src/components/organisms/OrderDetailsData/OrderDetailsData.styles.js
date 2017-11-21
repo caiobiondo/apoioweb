@@ -2,15 +2,14 @@ import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { gray150, gray200, gray600, gray890, orange100 } from 'styles/colors';
 import { fs10, fs12, fs14, fs18 } from 'styles/typography';
+import { spMedium } from 'styles/spacing';
 
 export const OrderDetailsCard = styled.div`
   > div {
     padding: 30px;
   }
 
-  & + & {
-    margin-top: 25px;
-  }
+  margin-bottom: ${spMedium};
 `;
 
 export const OrderInfos = styled.div`
