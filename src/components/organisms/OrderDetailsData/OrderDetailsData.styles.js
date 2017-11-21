@@ -4,13 +4,10 @@ import { gray150, gray200, gray600, gray890, orange100 } from 'styles/colors';
 import { fs10, fs12, fs14, fs18 } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
 
-export const OrderDetailsCard = styled.div`
-  > div {
-    padding: 30px;
-  }
-
-  margin-bottom: ${spMedium};
-`;
+export const OrderDetailsWrapper = {
+  padding: '30px',
+  marginBottom: spMedium,
+};
 
 export const OrderInfos = styled.div`
   display: flex;
