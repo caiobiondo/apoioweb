@@ -6,7 +6,7 @@ import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 import withUserData from 'hocs/withUserData/withUserData';
 import { orange100 } from 'styles/colors';
 
-import SectionTitle from './molecules/SectionTitle';
+import SectionTitle from './molecules/SectionTitle/SectionTitle';
 import { Paper, Loading } from 'natura-ui';
 import {
   OrderDetailsWrapper,
@@ -30,7 +30,6 @@ import {
   OrderItemProductDatumValue,
   OrderItemWrapper,
   OrderData,
-  OrderDataTitle,
   OrderDatumShort,
   OrderDatumShortMedium,
   OrderDatumMedium,
