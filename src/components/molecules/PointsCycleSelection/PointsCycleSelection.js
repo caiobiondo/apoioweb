@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Paper } from 'natura-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CenterWrapper,
-  Wrapper,
+  WrapperStyles,
   LabelsBlock,
   CycleButton,
   LineBreak,
@@ -58,7 +59,7 @@ const PointsCycleSelection = props => {
 
   return (
     <CenterWrapper>
-      <Wrapper>
+      <Paper style={WrapperStyles}>
         <LabelsBlock>
           <CycleNumber>
             <FormattedMessage id="cycleLabel" />
@@ -69,7 +70,7 @@ const PointsCycleSelection = props => {
           </CycleText>
         </LabelsBlock>
         {cycles.map(cycle => renderCycle(currentCycle, cycle, onClick))}
-      </Wrapper>
+      </Paper>
     </CenterWrapper>
   );
 };
