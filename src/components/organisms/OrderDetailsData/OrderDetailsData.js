@@ -4,10 +4,10 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 import withUserData from 'hocs/withUserData/withUserData';
-import { gray890, orange100 } from 'styles/colors';
+import { orange100 } from 'styles/colors';
 
 import SectionTitle from './molecules/SectionTitle';
-import { Paper, Icon, Loading } from 'natura-ui';
+import { Paper, Loading } from 'natura-ui';
 import {
   OrderDetailsWrapper,
   OrderInfos,
@@ -193,15 +193,11 @@ export class OrderDetailsData extends Component {
     return (
       <div>
         <Paper style={OrderDetailsWrapper}>
-          <SectionTitle iconName="ico_info">
-            <FormattedMessage id="orderInformations" />
-          </SectionTitle>
+          <SectionTitle iconName="ico_info" value="orderInformations" />
           <OrderInfos>
             <OrderInfosColumn>
               <OrderInfosRow>
-                <SectionTitle color={orange100}>
-                  <FormattedMessage id="orderData" />
-                </SectionTitle>
+                <SectionTitle color={orange100} value="orderData" />
                 <OrderData>
                   <OrderDatumShort>
                     <OrderDatumLabel>
@@ -254,9 +250,7 @@ export class OrderDetailsData extends Component {
                 </OrderData>
               </OrderInfosRow>
               <OrderInfosRow>
-                <SectionTitle color={orange100}>
-                  <FormattedMessage id="orderValues" />
-                </SectionTitle>
+                <SectionTitle color={orange100} value="orderValues" />
                 <OrderData>
                   <OrderDatumShort>
                     <OrderDatumLabel>
@@ -293,9 +287,7 @@ export class OrderDetailsData extends Component {
                 </OrderData>
               </OrderInfosRow>
               <OrderInfosRow>
-                <OrderDataTitle>
-                  <FormattedMessage id="orderPayment" />
-                </OrderDataTitle>
+                <SectionTitle color={orange100} value="orderPayment" />
                 <OrderData>
                   <OrderDatumLong>
                     <OrderDatumLabel>
@@ -306,9 +298,7 @@ export class OrderDetailsData extends Component {
                 </OrderData>
               </OrderInfosRow>
               <OrderInfosRow>
-                <OrderDataTitle>
-                  <FormattedMessage id="orderReceipt" />
-                </OrderDataTitle>
+                <SectionTitle color={orange100} value="orderReceipt" />
                 <OrderData>
                   <OrderDatumShort>
                     <OrderDatumLabel>
@@ -335,9 +325,7 @@ export class OrderDetailsData extends Component {
             </OrderInfosColumn>
             <OrderInfosColumn>
               <OrderInfosRow>
-                <OrderDataTitle>
-                  <FormattedMessage id="orderDelivery" />
-                </OrderDataTitle>
+                <SectionTitle color={orange100} value="orderDelivery" />
                 <OrderData>
                   <OrderDatumMedium>
                     <OrderDatumLabel>
@@ -390,24 +378,18 @@ export class OrderDetailsData extends Component {
                 </OrderData>
               </OrderInfosRow>
               <OrderInfosRow>
-                <OrderDataTitle>
-                  <FormattedMessage id="orderEvents" />
-                </OrderDataTitle>
+                <SectionTitle color={orange100} value="orderEvents" />
                 {this.renderEvents(order.ocorrencias)}
               </OrderInfosRow>
               <OrderInfosRow>
-                <OrderDataTitle>
-                  <FormattedMessage id="orderDeliveryAddress" />
-                </OrderDataTitle>
+                <SectionTitle color={orange100} value="orderDeliveryAddress" />
                 {this.renderAddress(order.entrega.enderecoEntrega)}
               </OrderInfosRow>
             </OrderInfosColumn>
           </OrderInfos>
         </Paper>
         <Paper style={OrderDetailsWrapper}>
-          <SectionTitle iconName="ico_box">
-            <FormattedMessage id="orderItems" />
-          </SectionTitle>
+          <SectionTitle iconName="ico_box" value="orderItems" />
           <OrderItemsInfos>
             <OrderItemsQuantityWrapper>
               <FormattedMessage id="orderItemsBoughtQuantity" />
