@@ -39,8 +39,4 @@ export const OrderDatumLabel = styled.label`
 export const OrderDatumValue = styled.span`
   color: ${gray600};
   font-size: ${fs18};
-
-  & + & {
-    margin-top: 13.5px;
-  }
 `;

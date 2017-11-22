@@ -10,6 +10,7 @@ export default {
     orderDate: 'Data do pedido',
     orderDelivery: 'Entrega',
     orderDeliveryAddress: 'Endereço de entrega',
+    orderDeliveryAddressZipcode: 'CEP',
     orderDeliveryEstimatedDate: 'Previsão de entrega',
     orderDeliveryExtendedEstimatedDate: 'Prev. entrega prorrogada',
     orderDeliveryFirstTryDate: 'Data primeira tentativa',

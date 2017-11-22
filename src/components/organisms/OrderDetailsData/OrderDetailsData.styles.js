@@ -82,7 +82,7 @@ export const OrderDatumValue = styled.span`
   font-size: ${fs18};
 
   & + & {
-    margin-top: 13.5px;
+    margin-top: 5px;
   }
 `;
 

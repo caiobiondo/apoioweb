@@ -17,6 +17,7 @@ const SectionTitle = props => {
 
 SectionTitle.propTypes = {
   iconName: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default SectionTitle;

@@ -37,6 +37,8 @@ import {
 
 export class OrderDetailsData extends Component {
   renderOrderItems(orderItems) {
+    if (!orderItems) return null;
+
     return (
       <div>
         <OrderItemsHeader>
@@ -55,7 +57,7 @@ export class OrderDetailsData extends Component {
             </OrderItemsHeaderProductValueLabel>
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
-        {(orderItems || []).map((orderItem, index) => this.renderOrderItem(orderItem, index))}
+        {orderItems.map((orderItem, index) => this.renderOrderItem(orderItem, index))}
       </div>
     );
   }
@@ -117,18 +119,23 @@ export class OrderDetailsData extends Component {
     );
   }
 
+  renderAddressStreet({ tipoLogradouro, nomeLogradouro, numero, bairro }) {
+    return `${tipoLogradouro} ${nomeLogradouro}, ${numero} - ${bairro}`;
+  }
+
+  renderAddressZipcode({ cep }) {
+    return ` ${cep.slice(0, 5)}-${cep.slice(5)}`;
+  }
+
   renderAddress(address) {
     return (
       <OrderData>
         <OrderDatum type="long">
-          <OrderDatumValue>
-            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${
-              address.bairro
-            }`}
-          </OrderDatumValue>
+          <OrderDatumValue>{this.renderAddressStreet(address)}</OrderDatumValue>
           <OrderDatumValue>{`${address.cidade} - ${address.estado}`}</OrderDatumValue>
           <OrderDatumValue>
-            CEP: {`${address.cep.slice(0, 5)}-${address.cep.slice(5)}`}
+            <FormattedMessage id="orderDeliveryAddressZipcode" />:
+            {this.renderAddressZipcode(address)}
           </OrderDatumValue>
         </OrderDatum>
       </OrderData>
@@ -141,22 +148,15 @@ export class OrderDetailsData extends Component {
 
   renderEvent(event) {
     const { intl } = this.props;
+    const { id, ocorrencia, motivo, solucao, data } = event;
 
     return (
-      <OrderData key={event.id}>
-        <OrderDatum type="long" label="orderEvents" value={event.ocorrencia} />
-        <OrderDatum type="long" label="orderEventMotive" value={event.motivo} />
-        <OrderDatum type="long" label="orderEventSolution" value={event.solucao} />
-        <OrderDatum
-          type="medium"
-          label="orderEventDate"
-          value={formatDate(event.data, intl, '-')}
-        />
-        <OrderDatum
-          type="medium"
-          label="orderEventHour"
-          value={formatTime(event.data, intl, '-')}
-        />
+      <OrderData key={id}>
+        <OrderDatum type="long" label="orderEvents" value={ocorrencia} />
+        <OrderDatum type="long" label="orderEventMotive" value={motivo} />
+        <OrderDatum type="long" label="orderEventSolution" value={solucao} />
+        <OrderDatum type="medium" label="orderEventDate" value={formatDate(data, intl, '-')} />
+        <OrderDatum type="medium" label="orderEventHour" value={formatTime(data, intl, '-')} />
       </OrderData>
     );
   }
@@ -231,11 +231,9 @@ export class OrderDetailsData extends Component {
               <OrderInfosRow>
                 <SectionTitle color={orange100} value="orderPayment" />
                 <OrderData>
-                  <OrderDatum
-                    type="long"
-                    label="orderPaymentMessage"
-                    value={this.renderPaymentMethods(order.formasPagamento)}
-                  />
+                  <OrderDatum type="long" label="orderPaymentMessage">
+                    {this.renderPaymentMethods(order.formasPagamento)}
+                  </OrderDatum>
                 </OrderData>
               </OrderInfosRow>
 

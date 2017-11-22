@@ -11,7 +11,7 @@ import {
 } from './OrderDatum.styles';
 
 const OrderDatum = props => {
-  const { type, label, value } = props;
+  const { type, label, value, children } = props;
 
   const OrderDatumContent = Wrapper => {
     return (
@@ -21,7 +21,7 @@ const OrderDatum = props => {
             <FormattedMessage id={label} />
           </OrderDatumLabel>
         )}
-        <OrderDatumValue>{value}</OrderDatumValue>
+        {value ? <OrderDatumValue>{value}</OrderDatumValue> : children}
       </Wrapper>
     );
   };
@@ -39,7 +39,9 @@ const OrderDatum = props => {
 };
 
 OrderDatum.propTypes = {
-  iconName: PropTypes.string,
+  type: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default OrderDatum;
