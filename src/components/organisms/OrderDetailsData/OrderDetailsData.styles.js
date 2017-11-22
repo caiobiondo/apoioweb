@@ -70,38 +70,6 @@ export const OrderDataTitle = styled.div`
   margin-bottom: 26.5px;
 `;
 
-export const OrderDatum = styled.div`
-  margin-bottom: 32px;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const OrderDatumShort = OrderDatum.extend`
-  flex: 0 1 33%;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 100%;
-  }
-`;
-
-export const OrderDatumShortMedium = OrderDatumShort.extend`
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 50%;
-  }
-`;
-
-export const OrderDatumMedium = OrderDatum.extend`
-  flex: 0 1 50%;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 100%;
-  }
-`;
-
-export const OrderDatumLong = OrderDatum.extend`
-  flex: 1 1 100%;
-`;
-
 export const OrderDatumLabel = styled.label`
   color: ${gray200};
   text-transform: uppercase;

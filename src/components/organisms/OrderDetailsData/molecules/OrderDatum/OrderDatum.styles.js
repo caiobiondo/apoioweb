@@ -3,13 +3,13 @@ import { Responsive } from '@entria/components';
 import { fs18, fs10 } from 'styles/typography';
 import { gray600, gray200 } from 'styles/colors';
 
-export const OrderDatum = styled.div`
+export const OrderDatumBase = styled.div`
   margin-bottom: 32px;
   display: flex;
   flex-direction: column;
 `;
 
-export const OrderDatumShort = OrderDatum.extend`
+export const OrderDatumShort = OrderDatumBase.extend`
   flex: 0 1 33%;
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
@@ -17,13 +17,7 @@ export const OrderDatumShort = OrderDatum.extend`
   }
 `;
 
-export const OrderDatumShortMedium = OrderDatumShort.extend`
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 50%;
-  }
-`;
-
-export const OrderDatumMedium = OrderDatum.extend`
+export const OrderDatumMedium = OrderDatumBase.extend`
   flex: 0 1 50%;
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
@@ -31,7 +25,7 @@ export const OrderDatumMedium = OrderDatum.extend`
   }
 `;
 
-export const OrderDatumLong = OrderDatum.extend`
+export const OrderDatumLong = OrderDatumBase.extend`
   flex: 1 1 100%;
 `;
 
