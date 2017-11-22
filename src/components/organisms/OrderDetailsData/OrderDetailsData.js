@@ -7,6 +7,8 @@ import withUserData from 'hocs/withUserData/withUserData';
 import { orange100 } from 'styles/colors';
 
 import SectionTitle from './molecules/SectionTitle/SectionTitle';
+import OrderDatum from './molecules/OrderDatum/OrderDatum';
+
 import { Paper, Loading } from 'natura-ui';
 import {
   OrderDetailsWrapper,
@@ -185,6 +187,8 @@ export class OrderDetailsData extends Component {
     const { data, intl } = this.props;
     const { order } = data;
 
+    const dataPedido = formatDate(order.dataPedido, intl, '-');
+
     if (data.loading) {
       return <Loading background="transparent" />;
     }
@@ -198,24 +202,9 @@ export class OrderDetailsData extends Component {
               <OrderInfosRow>
                 <SectionTitle color={orange100} value="orderData" />
                 <OrderData>
-                  <OrderDatumShort>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderNumber" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.codigoPedido}</OrderDatumValue>
-                  </OrderDatumShort>
-                  <OrderDatumShortMedium>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderCycle" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.ciclo}</OrderDatumValue>
-                  </OrderDatumShortMedium>
-                  <OrderDatumShortMedium>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderDate" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{formatDate(order.dataPedido, intl, '-')}</OrderDatumValue>
-                  </OrderDatumShortMedium>
+                  <OrderDatum type="short" label="orderNumber" value={order.codigoPedido} />
+                  <OrderDatum type="shortMedium" label="orderCycle" value={order.ciclo} />
+                  <OrderDatum type="medium" label="orderData" value={dataPedido} />
                   <OrderDatumLong>
                     <OrderDatumLabel>
                       <FormattedMessage id="orderStatus" />
