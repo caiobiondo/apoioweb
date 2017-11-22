@@ -3,8 +3,7 @@ import { Loading } from 'natura-ui';
 import { PeriodScoreQuery, PeriodScoreQueryOptions } from './PeriodScore.data';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
-// import { formatDate, formatCurrency } from 'locale/utils';
-// import InfiniteScroll from 'react-infinite-scroller';
+
 import {
   BarSeparator,
   BigTitle,
@@ -26,8 +25,8 @@ import PointsCycleSelection from 'components/molecules/PointsCycleSelection/Poin
 
 import GrowthStatus from './GrowthStatus';
 
-const cycleSelected = () => {
-  console.log('cycle selected');
+const cycleSelected = cycleNumber => {
+  console.log('cycle selected', cycleNumber);
 };
 
 const isOnLastLevel = (currentLevel, nextLevel) => {

@@ -2,20 +2,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Wrapper, CycleButton } from './PointsCycleSelection.styles';
+import {
+  CenterWrapper,
+  Wrapper,
+  LabelsBlock,
+  CycleButton,
+  LineBreak,
+  CycleNumber,
+  CycleText,
+} from './PointsCycleSelection.styles';
 
-const renderCycle = (currentCycle, number, onClick) => {
-  return <CycleButton onClick={onClick}>number</CycleButton>;
+const getCycleText = (cycleNumber, currentCycleNumber) => {
+  if (cycleNumber === currentCycleNumber) {
+    return <FormattedMessage id="current" />;
+  }
+
+  if (cycleNumber > currentCycleNumber) {
+    return '\u00A0';
+  }
+
+  return `${cycleNumber * 128} pts`;
 };
 
-const getCycles = (startCycle, endCycle) => {
+const renderCycle = (currentCycle, cycle, onClick) => {
+  return (
+    <CycleButton onClick={() => onClick(cycle)} key={cycle.number}>
+      <CycleNumber>{cycle.number}</CycleNumber>
+      <LineBreak />
+      <CycleText>{cycle.text}</CycleText>
+    </CycleButton>
+  );
+};
+
+const getCycles = (startCycle, endCycle, currentCycle) => {
   const range = [...Array(endCycle).keys()];
+  const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
+  return range.reduce((cycles, cycleNumber) => {
+    cycleNumber += 1;
 
-  return range.reduce((cycles, cycle) => {
-    cycle += 1;
-
-    if (cycle >= startCycle) {
-      cycles.push(cycle);
+    if (cycleNumber >= startCycle) {
+      cycles.push({
+        number: cycleNumber,
+        text: getCycleText(cycleNumber, currentCycleNumber),
+      });
     }
 
     return cycles;
@@ -25,13 +54,24 @@ const getCycles = (startCycle, endCycle) => {
 const PointsCycleSelection = props => {
   const { startCycle, endCycle, currentCycle } = props;
   const onClick = props.onCycleClick;
-  const cycles = getCycles(startCycle, endCycle);
-  return null;
-  // return (
-  //   <Wrapper>
-  //     {cycles.map(number => renderCycle(currentCycle, number, onClick))}
-  //   </Wrapper>
-  // );
+  const cycles = getCycles(startCycle, endCycle, currentCycle);
+
+  return (
+    <CenterWrapper>
+      <Wrapper>
+        <LabelsBlock>
+          <CycleNumber>
+            <FormattedMessage id="cycleLabel" />
+          </CycleNumber>
+          <LineBreak />
+          <CycleText>
+            <FormattedMessage id="scoreLabel" />
+          </CycleText>
+        </LabelsBlock>
+        {cycles.map(cycle => renderCycle(currentCycle, cycle, onClick))}
+      </Wrapper>
+    </CenterWrapper>
+  );
 };
 
 export default injectIntl(PointsCycleSelection);

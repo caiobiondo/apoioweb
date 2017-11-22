@@ -67,6 +67,7 @@ export const DottedSeparator = styled.div`
 export const ContentWrapper = styled.div`
   width: 85%;
   margin: 0 auto;
+  margin-bottom: 20px;
 `;
 
 export const Switcher = styled.div``;

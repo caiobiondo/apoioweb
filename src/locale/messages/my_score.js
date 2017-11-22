@@ -12,5 +12,10 @@ export default {
     directSalesPointsTitle: 'Presencial',
     totalPointsTitle: 'Total',
     pointsToNextLevel: 'Faltam {points} pontos para {nextLevelName}',
+    cycleLabel: 'Ciclo:',
+    scoreLabel: 'Pontuação:',
+    current: 'atual',
+    currentPeriod: 'Período Atual',
+    lastPeriod: 'Período Anterior',
   },
 };
