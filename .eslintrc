@@ -8,6 +8,7 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "max-len": ["error", 150],
     "eqeqeq": ["error", "always"],
     "camelcase": "error",
     "comma-style": ["error", "last"],

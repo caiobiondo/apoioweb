@@ -33,7 +33,6 @@ import {
   OrderItemWrapper,
   OrderData,
   OrderDatumShort,
-  OrderDatumShortMedium,
   OrderDatumMedium,
   OrderDatumLong,
   OrderDatumLabel,
@@ -187,8 +186,6 @@ export class OrderDetailsData extends Component {
     const { data, intl } = this.props;
     const { order } = data;
 
-    const dataPedido = formatDate(order.dataPedido, intl, '-');
-
     if (data.loading) {
       return <Loading background="transparent" />;
     }
@@ -204,39 +201,23 @@ export class OrderDetailsData extends Component {
                 <OrderData>
                   <OrderDatum type="short" label="orderNumber" value={order.codigoPedido} />
                   <OrderDatum type="shortMedium" label="orderCycle" value={order.ciclo} />
-                  <OrderDatum type="medium" label="orderData" value={dataPedido} />
-                  <OrderDatumLong>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderStatus" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.status}</OrderDatumValue>
-                  </OrderDatumLong>
-                  <OrderDatumShortMedium>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderItemsQuantity" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.quantidadeItens}</OrderDatumValue>
-                  </OrderDatumShortMedium>
-                  <OrderDatumShortMedium>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderTotalScore" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.pontos}</OrderDatumValue>
-                  </OrderDatumShortMedium>
-                  <OrderDatumShort>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderReception" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.meioCaptacao}</OrderDatumValue>
-                  </OrderDatumShort>
-                  <OrderDatumLong>
-                    <OrderDatumLabel>
-                      <FormattedMessage id="orderPaymentSlip" />
-                    </OrderDatumLabel>
-                    <OrderDatumValue>{order.envioBoleto}</OrderDatumValue>
-                  </OrderDatumLong>
+                  <OrderDatum
+                    type="shortMedium"
+                    label="orderData"
+                    value={formatDate(order.dataPedido, intl, '-')}
+                  />
+                  <OrderDatum type="long" label="orderStatus" value={order.status} />
+                  <OrderDatum
+                    type="shortMedium"
+                    label="orderItemsQuantity"
+                    value={order.quantidadeItens}
+                  />
+                  <OrderDatum type="shortMedium" label="orderTotalScore" value={order.pontos} />
+                  <OrderDatum type="short" label="orderReception" value={order.meioCaptacao} />
+                  <OrderDatum type="long" label="orderPaymentSlip" value={order.envioBoleto} />
                 </OrderData>
               </OrderInfosRow>
+
               <OrderInfosRow>
                 <SectionTitle color={orange100} value="orderValues" />
                 <OrderData>
@@ -274,6 +255,7 @@ export class OrderDetailsData extends Component {
                   </OrderDatumShort>
                 </OrderData>
               </OrderInfosRow>
+
               <OrderInfosRow>
                 <SectionTitle color={orange100} value="orderPayment" />
                 <OrderData>
@@ -285,6 +267,7 @@ export class OrderDetailsData extends Component {
                   </OrderDatumLong>
                 </OrderData>
               </OrderInfosRow>
+
               <OrderInfosRow>
                 <SectionTitle color={orange100} value="orderReceipt" />
                 <OrderData>
@@ -311,6 +294,7 @@ export class OrderDetailsData extends Component {
                 </OrderData>
               </OrderInfosRow>
             </OrderInfosColumn>
+
             <OrderInfosColumn>
               <OrderInfosRow>
                 <SectionTitle color={orange100} value="orderDelivery" />
