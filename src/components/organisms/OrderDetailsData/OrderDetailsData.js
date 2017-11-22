@@ -87,17 +87,13 @@ export class OrderDetailsData extends Component {
               <OrderItemProductDatumLabel>
                 <FormattedMessage id="orderItemValue" />
               </OrderItemProductDatumLabel>
-              <OrderItemProductDatumValue>
-                {formatCurrency(orderItem.valorTotal, intl)}
-              </OrderItemProductDatumValue>
+              <OrderItemProductDatumValue>{formatCurrency(orderItem.valorTotal, intl)}</OrderItemProductDatumValue>
             </OrderItemDatumShort>
             <OrderItemDatumShort>
               <OrderItemProductDatumLabel>
                 <FormattedMessage id="orderItemPoints" />
               </OrderItemProductDatumLabel>
-              <OrderItemProductDatumValue>
-                {orderItem.quantidadePontosTotal}
-              </OrderItemProductDatumValue>
+              <OrderItemProductDatumValue>{orderItem.quantidadePontosTotal}</OrderItemProductDatumValue>
             </OrderItemDatumShort>
           </OrderItemDatumMediumLong>
         </OrderItem>
@@ -126,14 +122,10 @@ export class OrderDetailsData extends Component {
       <OrderData>
         <OrderDatumLong>
           <OrderDatumValue>
-            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${
-              address.bairro
-            }`}
+            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${address.bairro}`}
           </OrderDatumValue>
           <OrderDatumValue>{`${address.cidade} - ${address.estado}`}</OrderDatumValue>
-          <OrderDatumValue>
-            CEP: {`${address.cep.slice(0, 5)}-${address.cep.slice(5)}`}
-          </OrderDatumValue>
+          <OrderDatumValue>CEP: {`${address.cep.slice(0, 5)}-${address.cep.slice(5)}`}</OrderDatumValue>
         </OrderDatumLong>
       </OrderData>
     );
@@ -201,17 +193,9 @@ export class OrderDetailsData extends Component {
                 <OrderData>
                   <OrderDatum type="short" label="orderNumber" value={order.codigoPedido} />
                   <OrderDatum type="shortMedium" label="orderCycle" value={order.ciclo} />
-                  <OrderDatum
-                    type="shortMedium"
-                    label="orderData"
-                    value={formatDate(order.dataPedido, intl, '-')}
-                  />
+                  <OrderDatum type="shortMedium" label="orderData" value={formatDate(order.dataPedido, intl, '-')} />
                   <OrderDatum type="long" label="orderStatus" value={order.status} />
-                  <OrderDatum
-                    type="shortMedium"
-                    label="orderItemsQuantity"
-                    value={order.quantidadeItens}
-                  />
+                  <OrderDatum type="shortMedium" label="orderItemsQuantity" value={order.quantidadeItens} />
                   <OrderDatum type="shortMedium" label="orderTotalScore" value={order.pontos} />
                   <OrderDatum type="short" label="orderReception" value={order.meioCaptacao} />
                   <OrderDatum type="long" label="orderPaymentSlip" value={order.envioBoleto} />
@@ -249,9 +233,7 @@ export class OrderDetailsData extends Component {
                     <OrderDatumLabel>
                       <FormattedMessage id="orderValue" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatCurrency(order.vlAPagarSomaTaxa, intl)}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatCurrency(order.vlAPagarSomaTaxa, intl)}</OrderDatumValue>
                   </OrderDatumShort>
                 </OrderData>
               </OrderInfosRow>
@@ -281,9 +263,7 @@ export class OrderDetailsData extends Component {
                     <OrderDatumLabel>
                       <FormattedMessage id="orderReceiptEmitDate" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatDate(order.dataEmissaoNotaFiscal, intl, '-')}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatDate(order.dataEmissaoNotaFiscal, intl, '-')}</OrderDatumValue>
                   </OrderDatumShort>
                   <OrderDatumShort>
                     <OrderDatumLabel>
@@ -303,17 +283,13 @@ export class OrderDetailsData extends Component {
                     <OrderDatumLabel>
                       <FormattedMessage id="orderDeliveryEstimatedDate" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatDate(order.entrega.dtPrevisaoEntrega, intl, '-')}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatDate(order.entrega.dtPrevisaoEntrega, intl, '-')}</OrderDatumValue>
                   </OrderDatumMedium>
                   <OrderDatumMedium>
                     <OrderDatumLabel>
                       <FormattedMessage id="orderDeliveryNewEstimatedDate" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatDate(order.entrega.dtNovaPrevisaoEntrega, intl, '-')}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatDate(order.entrega.dtNovaPrevisaoEntrega, intl, '-')}</OrderDatumValue>
                   </OrderDatumMedium>
                   <OrderDatumMedium>
                     <OrderDatumLabel>
@@ -327,25 +303,19 @@ export class OrderDetailsData extends Component {
                     <OrderDatumLabel>
                       <FormattedMessage id="orderDeliveryFirstTryDate" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatDate(order.entrega.dtPrimeiraTentativaEntrega, intl, '-')}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatDate(order.entrega.dtPrimeiraTentativaEntrega, intl, '-')}</OrderDatumValue>
                   </OrderDatumMedium>
                   <OrderDatumMedium>
                     <OrderDatumLabel>
                       <FormattedMessage id="orderDeliverySecondTryDate" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatDate(order.entrega.dtSegundaTentativaEntrega, intl, '-')}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatDate(order.entrega.dtSegundaTentativaEntrega, intl, '-')}</OrderDatumValue>
                   </OrderDatumMedium>
                   <OrderDatumMedium>
                     <OrderDatumLabel>
                       <FormattedMessage id="orderDeliveryRealDate" />
                     </OrderDatumLabel>
-                    <OrderDatumValue>
-                      {formatDate(order.entrega.dtRealEntrega, intl, '-')}
-                    </OrderDatumValue>
+                    <OrderDatumValue>{formatDate(order.entrega.dtRealEntrega, intl, '-')}</OrderDatumValue>
                   </OrderDatumMedium>
                 </OrderData>
               </OrderInfosRow>
@@ -377,8 +347,6 @@ export class OrderDetailsData extends Component {
 
 export const OrderDetailsDataWithIntl = injectIntl(OrderDetailsData);
 
-export const OrderDetailsDataWithData = graphql(OrderDetailsQuery, OrderDetailsQueryOptions)(
-  OrderDetailsDataWithIntl,
-);
+export const OrderDetailsDataWithData = graphql(OrderDetailsQuery, OrderDetailsQueryOptions)(OrderDetailsDataWithIntl);
 
 export default withUserData(OrderDetailsDataWithData);
