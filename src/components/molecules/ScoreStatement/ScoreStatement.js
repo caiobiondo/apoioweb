@@ -15,8 +15,8 @@ const cardContentStyle = {
 };
 
 const cardStyle = {
-  height: '117px',
-  width: '117px',
+  height: '121px',
+  width: '121px',
 };
 
 const cardTitleStyle = {

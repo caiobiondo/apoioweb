@@ -66,3 +66,15 @@ export const CycleNumber = styled.span`
 export const CycleText = styled.span`
   font-size: 8.4px;
 `;
+
+export const IconWrapper = styled.div`
+  display: inline-block;
+  margin-right: 6.5px;
+  position: relative;
+  top: -1px;
+  svg {
+    height: 7px;
+    width: 7px;
+    fill: ${props => props.color};
+  }
+`;

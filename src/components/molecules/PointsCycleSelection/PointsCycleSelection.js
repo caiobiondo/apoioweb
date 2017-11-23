@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper } from 'natura-ui';
+import { Paper, Icon } from 'natura-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CenterWrapper,
@@ -14,6 +14,7 @@ import {
   LineBreak,
   CycleNumber,
   CycleText,
+  IconWrapper,
 } from './PointsCycleSelection.styles';
 
 const getCycleText = (cycleNumber, currentCycleNumber, points) => {
@@ -26,13 +27,24 @@ const getCycleText = (cycleNumber, currentCycleNumber, points) => {
 
 const renderCycle = (currentCycleNumber, cycle, currentLevelColor, onClick) => {
   let icon, color, background;
+
   if (cycle.points > 0) {
     color = '#66a944';
+    icon = (
+      <IconWrapper color={color}>
+        <Icon file="ico_check" />
+      </IconWrapper>
+    );
   } else if (cycle.number == currentCycleNumber) {
     color = '#fff';
     background = currentLevelColor;
   } else if (cycle.points === 0) {
     color = '#e03726';
+    icon = (
+      <IconWrapper color={color}>
+        <Icon file="ico_times" />
+      </IconWrapper>
+    );
   }
 
   return (
