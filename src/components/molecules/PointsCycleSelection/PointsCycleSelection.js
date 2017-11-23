@@ -6,6 +6,9 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CenterWrapper,
   WrapperStyles,
+  PeriodSwitcherStyles,
+  PeriodSwitcherActiveButton,
+  PeriodSwitcherButton,
   LabelsBlock,
   CycleButton,
   LineBreak,
@@ -86,6 +89,16 @@ const PointsCycleSelection = props => {
 
   return (
     <CenterWrapper>
+      <Paper style={PeriodSwitcherStyles}>
+        <PeriodSwitcherActiveButton>
+          <FormattedMessage id="currentPeriod" />
+        </PeriodSwitcherActiveButton>
+
+        <PeriodSwitcherButton>
+          <FormattedMessage id="lastPeriod" />
+        </PeriodSwitcherButton>
+      </Paper>
+
       <Paper style={WrapperStyles}>
         <LabelsBlock>
           <FormattedMessage id="cycleLabel" />

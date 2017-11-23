@@ -18,5 +18,7 @@ export default {
     currentPeriod: 'Período Atual',
     lastPeriod: 'Período Anterior',
     cyclePoints: '{points} pts',
+    currentPeriod: 'Período atual',
+    lastPeriod: 'Período anterior',
   },
 };

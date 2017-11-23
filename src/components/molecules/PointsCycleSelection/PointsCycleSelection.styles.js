@@ -13,6 +13,29 @@ export const WrapperStyles = {
   minHeight: '86px',
 };
 
+export const PeriodSwitcherStyles = {
+  borderRadius: '10px',
+  color: 'rgba(84, 84, 84, 0.4)',
+  height: '30px',
+  display: 'inline-block',
+  marginTop: '27px',
+  marginBottom: '45px',
+};
+
+export const PeriodSwitcherButton = styled.a`
+  font-size: 13.3px;
+  line-height: 30px;
+  display: inline-block;
+  width: 133px;
+  font-family: Lato-Regular;
+  border-radius: 10px;
+`;
+
+export const PeriodSwitcherActiveButton = PeriodSwitcherButton.extend`
+  background-color: #444;
+  color: #fff;
+`;
+
 export const CycleButton = styled.a`
   border-radius: 10px;
   display: inline-block;
