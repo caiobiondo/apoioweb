@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyOrders should render a empty orders indicator 1`] = `
-<styled.div>
-  <styled.div>
+<EmptyOrdersstyles__Container>
+  <EmptyOrdersstyles__IconWrapper>
     <Icon
       file="ico_box"
     />
-  </styled.div>
-  <styled.div>
+  </EmptyOrdersstyles__IconWrapper>
+  <EmptyOrdersstyles__Title>
     <FormattedMessage
       id="ordersEmptyList"
       values={Object {}}
     />
-  </styled.div>
-  <styled.div>
+  </EmptyOrdersstyles__Title>
+  <EmptyOrdersstyles__Description>
     <FormattedMessage
       id="ordersWithoutOrders"
       values={Object {}}
     />
-  </styled.div>
-</styled.div>
+  </EmptyOrdersstyles__Description>
+</EmptyOrdersstyles__Container>
 `;

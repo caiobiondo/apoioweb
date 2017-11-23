@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Orders should render the orders page 1`] = `
-<styled.div
+<Ordersstyles__Main
   empty={false}
   loading={true}
 >
   <Apollo(OrdersList)
     onLoadFinished={[Function]}
   />
-</styled.div>
+</Ordersstyles__Main>
 `;

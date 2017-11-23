@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomCardSection should render a custom card section 1`] = `
-<styled.div
+<CustomCardSectionstyles__Wrapper
   alignItems="center"
   justifyContent="center"
 >
   content
-</styled.div>
+</CustomCardSectionstyles__Wrapper>
 `;
 
 exports[`CustomCardSection should render a custom card section with custom style 1`] = `
-<styled.div
+<CustomCardSectionstyles__Wrapper
   alignItems="space-between"
   justifyContent="flex-start"
 >
   content
-</styled.div>
+</CustomCardSectionstyles__Wrapper>
 `;
