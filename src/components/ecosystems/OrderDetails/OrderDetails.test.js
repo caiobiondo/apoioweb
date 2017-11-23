@@ -9,7 +9,7 @@ const routerParams = {
   },
 };
 
-fdescribe('OrderDetails', () => {
+describe('OrderDetails', () => {
   it('renders the order details page', () => {
     const renderer = new ShallowRenderer();
 
