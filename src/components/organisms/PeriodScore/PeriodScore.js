@@ -3,6 +3,7 @@ import { Loading } from 'natura-ui';
 import { PeriodScoreQuery, PeriodScoreQueryOptions } from './PeriodScore.data';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import withUserData from 'hocs/withUserData/withUserData';
 
 import {
   BarSeparator,
@@ -120,4 +121,7 @@ const PeriodScore = props => {
 
 export const PeriodScoreWithIntl = injectIntl(PeriodScore);
 
-export default graphql(PeriodScoreQuery, PeriodScoreQueryOptions)(PeriodScoreWithIntl);
+const PeriodScoreWithData = graphql(PeriodScoreQuery, PeriodScoreQueryOptions)(PeriodScoreWithIntl);
+// export default graphql(PeriodScoreQuery, PeriodScoreQueryOptions)(PeriodScoreWithIntl);
+
+export default withUserData(PeriodScoreWithData);
