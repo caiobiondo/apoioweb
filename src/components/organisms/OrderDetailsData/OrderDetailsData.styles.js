@@ -118,17 +118,7 @@ export const OrderItemWrapper = styled.div`
   margin-top: 20px;
 `;
 
-export const OrderItemDatumShort = styled.div`
-  flex: 1 1 40%;
-  align-self: center;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    display: flex;
-    align-self: stretch;
-  }
-`;
-
-export const OrderItemDatumMediumLong = styled.div`
+export const OrderItemProductDataWrapper = styled.div`
   display: flex;
   flex: 1 1 60%;
   align-self: center;
@@ -138,24 +128,6 @@ export const OrderItemDatumMediumLong = styled.div`
     flex-direction: column;
     align-self: stretch;
     text-align: initial;
-  }
-`;
-
-export const OrderItemProductDatumLabel = styled.div`
-  font-size: ${fs14};
-  color: ${gray200};
-  display: none;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex: 1 1 50%;
-    display: inline-block;
-  }
-`;
-
-export const OrderItemProductDatumValue = styled.div`
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex: 1 1 50%;
-    text-align: end;
   }
 `;
 

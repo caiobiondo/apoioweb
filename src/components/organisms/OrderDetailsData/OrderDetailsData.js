@@ -8,6 +8,7 @@ import { orange100 } from 'styles/colors';
 
 import SectionTitle from './molecules/SectionTitle/SectionTitle';
 import OrderDatum from './molecules/OrderDatum/OrderDatum';
+import OrderItemDatum from './molecules/OrderItemDatum/OrderItemDatum';
 
 import { Paper, Loading } from 'natura-ui';
 import {
@@ -23,13 +24,10 @@ import {
   OrderItemsHeaderProductValuesWrapper,
   OrderItemsHeaderProductValueLabel,
   OrderItem,
-  OrderItemDatumShort,
-  OrderItemDatumMediumLong,
+  OrderItemProductDataWrapper,
   OrderItemProductDescription,
   OrderItemProductDescriptionWrapper,
   OrderItemProductCode,
-  OrderItemProductDatumLabel,
-  OrderItemProductDatumValue,
   OrderItemWrapper,
   OrderData,
   OrderDatumValue,
@@ -62,42 +60,34 @@ export class OrderDetailsData extends Component {
     );
   }
 
+  renderOrderItemProductCode(orderItem) {
+    const { codigoProduto, quantidadePontosUnitario } = orderItem;
+    const pointsElement = React.createElement(FormattedMessage, { id: 'orderItemPoints' });
+
+    return (
+      <OrderItemProductCode>
+        <FormattedMessage id="orderItemProductCode" />
+        : {codigoProduto} ({quantidadePontosUnitario} {pointsElement})
+      </OrderItemProductCode>
+    );
+  }
+
   renderOrderItem(orderItem, index) {
     const { intl } = this.props;
+    const { produto: { descricao }, quantidadeItem, valorTotal, quantidadePontosTotal } = orderItem;
 
     return (
       <OrderItemWrapper key={index}>
         <OrderItem>
           <OrderItemProductDescriptionWrapper>
-            <OrderItemProductDescription>{orderItem.produto.descricao}</OrderItemProductDescription>
-            <OrderItemProductCode>
-              Código: {orderItem.codigoProduto} ({orderItem.quantidadePontosUnitario} pontos)
-            </OrderItemProductCode>
+            <OrderItemProductDescription>{descricao}</OrderItemProductDescription>
+            {this.renderOrderItemProductCode(orderItem)}
           </OrderItemProductDescriptionWrapper>
-          <OrderItemDatumMediumLong>
-            <OrderItemDatumShort>
-              <OrderItemProductDatumLabel>
-                <FormattedMessage id="orderItemQuantity" />
-              </OrderItemProductDatumLabel>
-              <OrderItemProductDatumValue>{orderItem.quantidadeItem}</OrderItemProductDatumValue>
-            </OrderItemDatumShort>
-            <OrderItemDatumShort>
-              <OrderItemProductDatumLabel>
-                <FormattedMessage id="orderItemValue" />
-              </OrderItemProductDatumLabel>
-              <OrderItemProductDatumValue>
-                {formatCurrency(orderItem.valorTotal, intl)}
-              </OrderItemProductDatumValue>
-            </OrderItemDatumShort>
-            <OrderItemDatumShort>
-              <OrderItemProductDatumLabel>
-                <FormattedMessage id="orderItemPoints" />
-              </OrderItemProductDatumLabel>
-              <OrderItemProductDatumValue>
-                {orderItem.quantidadePontosTotal}
-              </OrderItemProductDatumValue>
-            </OrderItemDatumShort>
-          </OrderItemDatumMediumLong>
+          <OrderItemProductDataWrapper>
+            <OrderItemDatum label="orderItemQuantity" value={quantidadeItem} />
+            <OrderItemDatum label="orderItemValue" value={formatCurrency(valorTotal, intl)} />
+            <OrderItemDatum label="orderItemPoints" value={quantidadePontosTotal} />
+          </OrderItemProductDataWrapper>
         </OrderItem>
       </OrderItemWrapper>
     );
@@ -146,9 +136,8 @@ export class OrderDetailsData extends Component {
     return events.map(event => this.renderEvent(event));
   }
 
-  renderEvent(event) {
+  renderEvent({ id, ocorrencia, motivo, solucao, data }) {
     const { intl } = this.props;
-    const { id, ocorrencia, motivo, solucao, data } = event;
 
     return (
       <OrderData key={id}>
@@ -161,11 +150,169 @@ export class OrderDetailsData extends Component {
     );
   }
 
-  render() {
-    const { data, intl } = this.props;
-    const { order } = data;
+  renderOrderData(order) {
+    const {
+      codigoPedido,
+      ciclo,
+      dataPedido,
+      status,
+      quantidadeItens,
+      pontos,
+      meioCaptacao,
+      envioBoleto,
+    } = order;
+    const { intl } = this.props;
 
-    if (data.loading) {
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderData" />
+        <OrderData>
+          <OrderDatum type="short" label="orderNumber" value={codigoPedido} />
+          <OrderDatum type="short" label="orderCycle" value={ciclo} />
+          <OrderDatum type="short" label="orderData" value={formatDate(dataPedido, intl, '-')} />
+          <OrderDatum type="long" label="orderStatus" value={status} />
+          <OrderDatum type="short" label="orderItemsQuantity" value={quantidadeItens} />
+          <OrderDatum type="short" label="orderTotalScore" value={pontos} />
+          <OrderDatum type="short" label="orderReception" value={meioCaptacao} />
+          <OrderDatum type="long" label="orderPaymentSlip" value={envioBoleto} />
+        </OrderData>
+      </OrderInfosRow>
+    );
+  }
+
+  renderOrderValues({ valor, vlTaxaReal, qtdParcelas, valorParcela, vlAPagarSomaTaxa }) {
+    const { intl } = this.props;
+
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderValues" />
+        <OrderData>
+          <OrderDatum
+            type="short"
+            label="orderDetailsOrderValue"
+            value={formatCurrency(valor, intl)}
+          />
+          <OrderDatum type="short" label="orderTaxValue" value={formatCurrency(vlTaxaReal, intl)} />
+          <OrderDatum type="short" label="orderInstallmentsNumber" value={qtdParcelas} />
+          <OrderDatum
+            type="short"
+            label="orderInstallmentValue"
+            value={formatCurrency(valorParcela, intl)}
+          />
+          <OrderDatum
+            type="short"
+            label="orderValue"
+            value={formatCurrency(vlAPagarSomaTaxa, intl)}
+          />
+        </OrderData>
+      </OrderInfosRow>
+    );
+  }
+
+  renderOrderPaymentMethods({ formasPagamento }) {
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderPayment" />
+        <OrderData>
+          <OrderDatum type="long" label="orderPaymentMessage">
+            {this.renderPaymentMethods(formasPagamento)}
+          </OrderDatum>
+        </OrderData>
+      </OrderInfosRow>
+    );
+  }
+
+  renderOrderReceipt({ numeroNotaFiscal, dataEmissaoNotaFiscal, modeloComercial }) {
+    const { intl } = this.props;
+
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderReceipt" />
+        <OrderData>
+          <OrderDatum type="short" label="orderReceiptNumber" value={numeroNotaFiscal} />
+          <OrderDatum
+            type="short"
+            label="orderReceiptEmitDate"
+            value={formatDate(dataEmissaoNotaFiscal, intl, '-')}
+          />
+          <OrderDatum type="short" label="orderReceiptModel" value={modeloComercial} />
+        </OrderData>
+      </OrderInfosRow>
+    );
+  }
+
+  renderOrderDelivery({ entrega }) {
+    const {
+      dtPrevisaoEntrega,
+      dtNovaPrevisaoEntrega,
+      dtPrevisaoEntregaProrrogada,
+      dtPrimeiraTentativaEntrega,
+      dtSegundaTentativaEntrega,
+      dtRealEntrega,
+    } = entrega;
+    const { intl } = this.props;
+
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderDelivery" />
+        <OrderData>
+          <OrderDatum
+            type="medium"
+            label="orderDeliveryEstimatedDate"
+            value={formatDate(dtPrevisaoEntrega, intl, '-')}
+          />
+          <OrderDatum
+            type="medium"
+            label="orderDeliveryNewEstimatedDate"
+            value={formatDate(dtNovaPrevisaoEntrega, intl, '-')}
+          />
+          <OrderDatum
+            type="medium"
+            label="orderDeliveryExtendedEstimatedDate"
+            value={formatDate(dtPrevisaoEntregaProrrogada, intl, '-')}
+          />
+          <OrderDatum
+            type="medium"
+            label="orderDeliveryFirstTryDate"
+            value={formatDate(dtPrimeiraTentativaEntrega, intl, '-')}
+          />
+          <OrderDatum
+            type="medium"
+            label="orderDeliverySecondTryDate"
+            value={formatDate(dtSegundaTentativaEntrega, intl, '-')}
+          />
+          <OrderDatum
+            type="medium"
+            label="orderDeliveryRealDate"
+            value={formatDate(dtRealEntrega, intl, '-')}
+          />
+        </OrderData>
+      </OrderInfosRow>
+    );
+  }
+
+  renderOrderEvents({ ocorrencias }) {
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderEvents" />
+        {this.renderEvents(ocorrencias)}
+      </OrderInfosRow>
+    );
+  }
+
+  renderOrderDeliveryAddress({ entrega: { enderecoEntrega } }) {
+    return (
+      <OrderInfosRow>
+        <SectionTitle color={orange100} value="orderDeliveryAddress" />
+        {this.renderAddress(enderecoEntrega)}
+      </OrderInfosRow>
+    );
+  }
+
+  render() {
+    const { data: { order, loading } } = this.props;
+
+    if (loading) {
       return <Loading background="transparent" />;
     }
 
@@ -175,134 +322,16 @@ export class OrderDetailsData extends Component {
           <SectionTitle iconName="ico_info" value="orderInformations" />
           <OrderInfos>
             <OrderInfosColumn>
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderData" />
-                <OrderData>
-                  <OrderDatum type="short" label="orderNumber" value={order.codigoPedido} />
-                  <OrderDatum type="short" label="orderCycle" value={order.ciclo} />
-                  <OrderDatum
-                    type="short"
-                    label="orderData"
-                    value={formatDate(order.dataPedido, intl, '-')}
-                  />
-                  <OrderDatum type="long" label="orderStatus" value={order.status} />
-                  <OrderDatum
-                    type="short"
-                    label="orderItemsQuantity"
-                    value={order.quantidadeItens}
-                  />
-                  <OrderDatum type="short" label="orderTotalScore" value={order.pontos} />
-                  <OrderDatum type="short" label="orderReception" value={order.meioCaptacao} />
-                  <OrderDatum type="long" label="orderPaymentSlip" value={order.envioBoleto} />
-                </OrderData>
-              </OrderInfosRow>
-
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderValues" />
-                <OrderData>
-                  <OrderDatum
-                    type="short"
-                    label="orderDetailsOrderValue"
-                    value={formatCurrency(order.valor, intl)}
-                  />
-                  <OrderDatum
-                    type="short"
-                    label="orderTaxValue"
-                    value={formatCurrency(order.vlTaxaReal, intl)}
-                  />
-                  <OrderDatum
-                    type="short"
-                    label="orderInstallmentsNumber"
-                    value={order.qtdParcelas}
-                  />
-                  <OrderDatum
-                    type="short"
-                    label="orderInstallmentValue"
-                    value={formatCurrency(order.valorParcela, intl)}
-                  />
-                  <OrderDatum
-                    type="short"
-                    label="orderValue"
-                    value={formatCurrency(order.vlAPagarSomaTaxa, intl)}
-                  />
-                </OrderData>
-              </OrderInfosRow>
-
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderPayment" />
-                <OrderData>
-                  <OrderDatum type="long" label="orderPaymentMessage">
-                    {this.renderPaymentMethods(order.formasPagamento)}
-                  </OrderDatum>
-                </OrderData>
-              </OrderInfosRow>
-
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderReceipt" />
-                <OrderData>
-                  <OrderDatum
-                    type="short"
-                    label="orderReceiptNumber"
-                    value={order.numeroNotaFiscal}
-                  />
-                  <OrderDatum
-                    type="short"
-                    label="orderReceiptEmitDate"
-                    value={formatDate(order.dataEmissaoNotaFiscal, intl, '-')}
-                  />
-                  <OrderDatum
-                    type="short"
-                    label="orderReceiptModel"
-                    value={order.modeloComercial}
-                  />
-                </OrderData>
-              </OrderInfosRow>
+              {this.renderOrderData(order)}
+              {this.renderOrderValues(order)}
+              {this.renderOrderPaymentMethods(order)}
+              {this.renderOrderReceipt(order)}
             </OrderInfosColumn>
 
             <OrderInfosColumn>
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderDelivery" />
-                <OrderData>
-                  <OrderDatum
-                    type="medium"
-                    label="orderDeliveryEstimatedDate"
-                    value={formatDate(order.entrega.dtPrevisaoEntrega, intl, '-')}
-                  />
-                  <OrderDatum
-                    type="medium"
-                    label="orderDeliveryNewEstimatedDate"
-                    value={formatDate(order.entrega.dtNovaPrevisaoEntrega, intl, '-')}
-                  />
-                  <OrderDatum
-                    type="medium"
-                    label="orderDeliveryExtendedEstimatedDate"
-                    value={formatDate(order.entrega.dtPrevisaoEntregaProrrogada, intl, '-')}
-                  />
-                  <OrderDatum
-                    type="medium"
-                    label="orderDeliveryFirstTryDate"
-                    value={formatDate(order.entrega.dtPrimeiraTentativaEntrega, intl, '-')}
-                  />
-                  <OrderDatum
-                    type="medium"
-                    label="orderDeliverySecondTryDate"
-                    value={formatDate(order.entrega.dtSegundaTentativaEntrega, intl, '-')}
-                  />
-                  <OrderDatum
-                    type="medium"
-                    label="orderDeliveryRealDate"
-                    value={formatDate(order.entrega.dtRealEntrega, intl, '-')}
-                  />
-                </OrderData>
-              </OrderInfosRow>
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderEvents" />
-                {this.renderEvents(order.ocorrencias)}
-              </OrderInfosRow>
-              <OrderInfosRow>
-                <SectionTitle color={orange100} value="orderDeliveryAddress" />
-                {this.renderAddress(order.entrega.enderecoEntrega)}
-              </OrderInfosRow>
+              {this.renderOrderDelivery(order)}
+              {this.renderOrderEvents(order)}
+              {this.renderOrderDeliveryAddress(order)}
             </OrderInfosColumn>
           </OrderInfos>
         </Paper>

@@ -29,6 +29,7 @@ export default {
     orderInstallmentsNumber: 'Nº de parcelas',
     orderInstallmentValue: 'Valor da parcela',
     orderItemProduct: 'Produto',
+    orderItemProductCode: 'Código',
     orderItemQuantity: 'Quantidade',
     orderItemValue: 'Valor',
     orderItemPoints: 'Pontos',
