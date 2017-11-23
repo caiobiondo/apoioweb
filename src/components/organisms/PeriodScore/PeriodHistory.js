@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper } from 'natura-ui';
+import { Paper, Icon } from 'natura-ui';
 import { Wrapper, TableStyle } from './PeriodHistory.styles';
 
 import {
@@ -13,6 +13,10 @@ import {
 } from 'material-ui/Table';
 
 const tableData = {
+  columns: ['icon', 'order', 'date', 'points', 'value'],
+  renderer: {
+    icon: iconPath => <Icon file={iconPath} />,
+  },
   header: {
     icon: 'Icon',
     order: 'Order',
@@ -20,37 +24,43 @@ const tableData = {
     points: 'Points',
     value: 'Value',
   },
-  columns: ['icon', 'order', 'date', 'points', 'value'],
   body: [
     {
-      icon: 'mobile',
+      icon: 'ico_info',
       order: '#361352429',
       date: '24/02/2016',
       points: '10',
       value: '37.34',
     },
     {
-      icon: 'mobile',
+      icon: 'ico_info',
       order: '#361352429',
       date: '24/02/2016',
       points: '10',
       value: '37.34',
     },
     {
-      icon: 'mobile',
+      icon: 'ico_info',
       order: '#361352429',
       date: '24/02/2016',
       points: '10',
       value: '37.34',
     },
     {
-      icon: 'mobile',
+      icon: 'ico_info',
       order: '#361352429',
       date: '24/02/2016',
       points: '10',
       value: '37.34',
     },
   ],
+};
+
+const renderCell = (value, key) => {
+  if (tableData.renderer && !tableData.renderer[key]) {
+    return <TableRowColumn>{value}</TableRowColumn>;
+  }
+  return <TableRowColumn>{tableData.renderer[key](value)}</TableRowColumn>;
 };
 
 const renderTableHeader = () => {
@@ -74,7 +84,7 @@ const renderTableBody = () => {
         return (
           <TableRow style={{ border: 'none' }}>
             {Object.keys(row).map((key, index) => {
-              return <TableRowColumn>{row[key]}</TableRowColumn>;
+              return renderCell(row[key], key);
             })}
           </TableRow>
         );
