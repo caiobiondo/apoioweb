@@ -30,6 +30,7 @@ import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
 import PointsCycleSelection from 'components/molecules/PointsCycleSelection/PointsCycleSelection';
 
 import GrowthStatus from './GrowthStatus';
+import PeriodHistory from './PeriodHistory';
 
 const cycleSelected = cycleNumber => {
   console.log('cycle selected', cycleNumber);
@@ -140,6 +141,7 @@ const PeriodScore = props => {
       <ContentWrapper>
         {renderScore(props, currentLevel)}
         {renderCycles(props, currentLevel)}
+        <PeriodHistory />
       </ContentWrapper>
     </Wrapper>
   );
