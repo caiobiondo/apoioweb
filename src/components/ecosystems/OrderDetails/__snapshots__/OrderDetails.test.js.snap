@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderDetails renders the order details page 1`] = `
+<OrderDetailsstyles__OrderDetailsWrapper>
+  <Apollo(WithUserDataComponent)
+    orderId="1"
+  />
+</OrderDetailsstyles__OrderDetailsWrapper>
+`;
