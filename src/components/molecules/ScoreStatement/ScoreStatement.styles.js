@@ -16,3 +16,18 @@ export const Block = styled.div`
   display: inline-block;
   margin: 0 35px;
 `;
+
+export const IconWrapper = styled.div`
+  display: inline-block;
+  margin-right: 7.5px;
+  overflow: hidden;
+  svg {
+    height: 12.5px;
+    width: 13px;
+    fill: ${props => props.color};
+  }
+`;
+
+export const MergedIconWrapper = styled.div`
+  display: inline-block;
+`;
