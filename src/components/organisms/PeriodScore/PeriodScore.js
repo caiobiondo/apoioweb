@@ -72,6 +72,7 @@ const renderCycles = props => {
         startCycle={growthStatus.periodStartCycle}
         endCycle={growthStatus.periodEndCycle}
         currentCycle={growthStatus.cycle}
+        scoreCycles={scoreCycles.totalScore}
       />
     </Wrapper>
   );

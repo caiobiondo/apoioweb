@@ -13,7 +13,7 @@ import {
   CycleText,
 } from './PointsCycleSelection.styles';
 
-const getCycleText = (cycleNumber, currentCycleNumber) => {
+const getDefaultCycleText = (cycleNumber, currentCycleNumber) => {
   if (cycleNumber === currentCycleNumber) {
     return <FormattedMessage id="current" />;
   }
@@ -22,7 +22,7 @@ const getCycleText = (cycleNumber, currentCycleNumber) => {
     return '\u00A0';
   }
 
-  return `${cycleNumber * 128} pts`;
+  return '';
 };
 
 const renderCycle = (currentCycle, cycle, onClick) => {
@@ -35,27 +35,38 @@ const renderCycle = (currentCycle, cycle, onClick) => {
   );
 };
 
-const getCycles = (startCycle, endCycle, currentCycle) => {
+const getCycles = (startCycle, endCycle, currentCycle, scoreCycles) => {
   const range = [...Array(endCycle).keys()];
   const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
-  return range.reduce((cycles, cycleNumber) => {
+  let cycles = range.reduce((cycles, cycleNumber) => {
     cycleNumber += 1;
 
     if (cycleNumber >= startCycle) {
-      cycles.push({
+      cycles[cycleNumber] = {
         number: cycleNumber,
-        text: getCycleText(cycleNumber, currentCycleNumber),
-      });
+        text: getDefaultCycleText(cycleNumber, currentCycleNumber),
+      };
     }
 
     return cycles;
   }, []);
+
+  /* eslint-disable camelcase */
+  scoreCycles.forEach(cycle => {
+    cycles[cycle.nm_cycle] = {
+      number: cycle.nm_cycle,
+      text: <FormattedMessage id="cyclePoints" values={{ points: cycle.vl_score }} />,
+    };
+  });
+  /* eslint-enable camelcase */
+
+  return cycles;
 };
 
 const PointsCycleSelection = props => {
-  const { startCycle, endCycle, currentCycle } = props;
+  const { startCycle, endCycle, currentCycle, scoreCycles } = props;
   const onClick = props.onCycleClick;
-  const cycles = getCycles(startCycle, endCycle, currentCycle);
+  const cycles = getCycles(startCycle, endCycle, currentCycle, scoreCycles);
 
   return (
     <CenterWrapper>

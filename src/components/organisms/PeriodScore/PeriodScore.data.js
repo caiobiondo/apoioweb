@@ -84,7 +84,7 @@ export const ScoreCyclesQuery = gql`
     ) {
       totalScore {
         nm_cycle
-        vl_value
+        vl_score
       }
     }
   }
