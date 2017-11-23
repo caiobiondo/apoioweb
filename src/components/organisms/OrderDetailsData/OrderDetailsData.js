@@ -60,8 +60,7 @@ export class OrderDetailsData extends Component {
     );
   }
 
-  renderOrderItemProductCode(orderItem) {
-    const { codigoProduto, quantidadePontosUnitario } = orderItem;
+  renderOrderItemProductCode({ codigoProduto, quantidadePontosUnitario }) {
     const pointsElement = React.createElement(FormattedMessage, { id: 'orderItemPoints' });
 
     return (
@@ -99,12 +98,12 @@ export class OrderDetailsData extends Component {
     });
   }
 
-  renderPaymentMethod(paymentMethod, index) {
+  renderPaymentMethod({ descricaoWeb, valorAcumulado }, index) {
     const { intl } = this.props;
 
     return (
       <OrderDatumValue key={index}>
-        {`${paymentMethod.descricaoWeb} - ${formatCurrency(paymentMethod.valorAcumulado, intl)}`}
+        {`${descricaoWeb} - ${formatCurrency(valorAcumulado, intl)}`}
       </OrderDatumValue>
     );
   }
