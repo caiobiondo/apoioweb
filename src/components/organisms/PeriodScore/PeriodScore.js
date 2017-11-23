@@ -58,7 +58,7 @@ const renderScoreToNextLevelMessage = (growthStatus, currentLevel, nextLevel) =>
   );
 };
 
-const renderCycles = props => {
+const renderCycles = (props, currentLevel) => {
   const { growthStatus, scoreCycles } = props;
 
   return (
@@ -72,16 +72,16 @@ const renderCycles = props => {
         startCycle={growthStatus.periodStartCycle}
         endCycle={growthStatus.periodEndCycle}
         currentCycle={growthStatus.cycle}
+        currentLevelColor={currentLevel.color}
         scoreCycles={scoreCycles.totalScore}
       />
     </Wrapper>
   );
 };
 
-const renderScore = props => {
+const renderScore = (props, currentLevel) => {
   const { growthStatus } = props;
 
-  const currentLevel = GrowthStatus.getCurrentLevel(growthStatus);
   const lastLevel = GrowthStatus.getLastLevel(growthStatus, currentLevel);
   const nextLevel = GrowthStatus.getNextLevel(growthStatus, currentLevel);
 
@@ -119,11 +119,13 @@ const renderScore = props => {
 };
 
 const PeriodScore = props => {
-  const { loadingScore, loadingCycles } = props;
+  const { loadingScore, loadingCycles, growthStatus } = props;
 
   if (loadingScore || loadingCycles) {
     return <Loading />;
   }
+
+  const currentLevel = GrowthStatus.getCurrentLevel(growthStatus);
 
   return (
     <Wrapper>
@@ -136,8 +138,8 @@ const PeriodScore = props => {
       </Explanation>
 
       <ContentWrapper>
-        {renderScore(props)}
-        {renderCycles(props)}
+        {renderScore(props, currentLevel)}
+        {renderCycles(props, currentLevel)}
       </ContentWrapper>
     </Wrapper>
   );

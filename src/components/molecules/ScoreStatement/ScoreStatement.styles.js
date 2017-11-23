@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 `;
 
 export const SignSeparator = styled.div`
-  font-family: GillSans;
+  font-family: Lato-Regular;
   font-size: 17.5px;
   font-weight: 300;
   text-align: center;

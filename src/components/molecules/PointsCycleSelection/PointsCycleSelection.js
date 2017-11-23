@@ -13,38 +13,51 @@ import {
   CycleText,
 } from './PointsCycleSelection.styles';
 
-const getDefaultCycleText = (cycleNumber, currentCycleNumber) => {
+const getCycleText = (cycleNumber, currentCycleNumber, points) => {
   if (cycleNumber === currentCycleNumber) {
     return <FormattedMessage id="current" />;
   }
 
-  if (cycleNumber > currentCycleNumber) {
-    return '\u00A0';
-  }
-
-  return '';
+  return <FormattedMessage id="cyclePoints" values={{ points }} />;
 };
 
-const renderCycle = (currentCycle, cycle, onClick) => {
+const renderCycle = (currentCycleNumber, cycle, currentLevelColor, onClick) => {
+  let icon, color, background;
+  if (cycle.points > 0) {
+    color = '#66a944';
+  } else if (cycle.number == currentCycleNumber) {
+    color = '#fff';
+    background = currentLevelColor;
+  } else if (cycle.points === 0) {
+    color = '#e03726';
+  }
+
   return (
-    <CycleButton onClick={() => onClick(cycle)} key={cycle.number}>
-      <CycleNumber>{cycle.number}</CycleNumber>
+    <CycleButton
+      onClick={() => onClick(cycle)}
+      key={cycle.number}
+      color={color}
+      background={background}
+    >
+      <CycleNumber>
+        {icon}
+        {cycle.number}
+      </CycleNumber>
       <LineBreak />
       <CycleText>{cycle.text}</CycleText>
     </CycleButton>
   );
 };
 
-const getCycles = (startCycle, endCycle, currentCycle, scoreCycles) => {
+const getCycles = (startCycle, endCycle, currentCycleNumber, scoreCycles) => {
   const range = [...Array(endCycle).keys()];
-  const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
   let cycles = range.reduce((cycles, cycleNumber) => {
     cycleNumber += 1;
 
     if (cycleNumber >= startCycle) {
       cycles[cycleNumber] = {
         number: cycleNumber,
-        text: getDefaultCycleText(cycleNumber, currentCycleNumber),
+        text: '\u00A0',
       };
     }
 
@@ -53,9 +66,11 @@ const getCycles = (startCycle, endCycle, currentCycle, scoreCycles) => {
 
   /* eslint-disable camelcase */
   scoreCycles.forEach(cycle => {
+    const points = cycle.vl_score;
     cycles[cycle.nm_cycle] = {
       number: cycle.nm_cycle,
-      text: <FormattedMessage id="cyclePoints" values={{ points: cycle.vl_score }} />,
+      text: getCycleText(cycle.nm_cycle, currentCycleNumber, points),
+      points,
     };
   });
   /* eslint-enable camelcase */
@@ -64,23 +79,20 @@ const getCycles = (startCycle, endCycle, currentCycle, scoreCycles) => {
 };
 
 const PointsCycleSelection = props => {
-  const { startCycle, endCycle, currentCycle, scoreCycles } = props;
+  const { startCycle, endCycle, currentCycle, scoreCycles, currentLevelColor } = props;
   const onClick = props.onCycleClick;
-  const cycles = getCycles(startCycle, endCycle, currentCycle, scoreCycles);
+  const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
+  const cycles = getCycles(startCycle, endCycle, currentCycleNumber, scoreCycles);
 
   return (
     <CenterWrapper>
       <Paper style={WrapperStyles}>
         <LabelsBlock>
-          <CycleNumber>
-            <FormattedMessage id="cycleLabel" />
-          </CycleNumber>
+          <FormattedMessage id="cycleLabel" />
           <LineBreak />
-          <CycleText>
-            <FormattedMessage id="scoreLabel" />
-          </CycleText>
+          <FormattedMessage id="scoreLabel" />
         </LabelsBlock>
-        {cycles.map(cycle => renderCycle(currentCycle, cycle, onClick))}
+        {cycles.map(cycle => renderCycle(currentCycleNumber, cycle, currentLevelColor, onClick))}
       </Paper>
     </CenterWrapper>
   );
