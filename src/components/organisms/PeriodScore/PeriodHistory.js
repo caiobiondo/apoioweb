@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Icon } from 'natura-ui';
-import { Wrapper, TableStyle } from './PeriodHistory.styles';
+import { Wrapper, TableStyle, IconWrapper } from './PeriodHistory.styles';
 
 import {
   Table,
@@ -15,7 +15,15 @@ import {
 const tableData = {
   columns: ['icon', 'order', 'date', 'points', 'value'],
   renderer: {
-    icon: iconPath => <Icon file={iconPath} />,
+    icon: iconPath => (
+      <IconWrapper>
+        <Icon file={iconPath} />
+      </IconWrapper>
+    ),
+    order: value => `Pedido ${value}`,
+    date: value => `Data ${value}`,
+    points: value => `${value}pts`,
+    value: value => `R$ ${value}`,
   },
   header: {
     icon: 'Icon',

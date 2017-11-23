@@ -16,3 +16,7 @@ export const PageTitle = styled.h1`
   line-height: 1.19;
   text-align: left;
 `;
+
+export const IconWrapper = styled.div`
+  width: 30px;
+`;
