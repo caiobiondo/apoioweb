@@ -25,13 +25,6 @@ const tableData = {
     points: value => `${value}pts`,
     value: value => `R$ ${value}`,
   },
-  header: {
-    icon: 'Icon',
-    order: 'Order',
-    date: 'Date',
-    points: 'Points',
-    value: 'Value',
-  },
   body: [
     {
       icon: 'ico_info',
@@ -68,7 +61,11 @@ const renderCell = (value, key) => {
   if (tableData.renderer && !tableData.renderer[key]) {
     return <TableRowColumn>{value}</TableRowColumn>;
   }
-  return <TableRowColumn>{tableData.renderer[key](value)}</TableRowColumn>;
+  return (
+    <TableRowColumn style={{ padding: '15px', fontSize: '17px', color: '#888', fontWeight: '100' }}>
+      {tableData.renderer[key](value)}
+    </TableRowColumn>
+  );
 };
 
 const renderTableHeader = () => {
