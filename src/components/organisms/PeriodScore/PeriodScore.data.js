@@ -49,7 +49,6 @@ export const PeriodScoreQuery = gql`
 
 export const PeriodScoreQueryOptions = {
   options(props) {
-    console.log(props.user);
     return {
       forceFetch: true,
       variables: {
@@ -66,8 +65,46 @@ export const PeriodScoreQueryOptions = {
   },
   props({ data: { loading, growthStatus } }) {
     return {
-      loading,
+      loadingScore: loading,
       growthStatus,
+    };
+  },
+};
+
+export const ScoreCyclesQuery = gql`
+  query ScoreCyclesQuery(
+    $consultantId: Int!
+    $consultantCommercialModelId: Int!
+    $consultantCountryId: Int!
+  ) {
+    scoreCycles(
+      consultantId: $consultantId
+      consultantCommercialModelId: $consultantCommercialModelId
+      consultantCountryId: $consultantCountryId
+    ) {
+      totalScore {
+        nm_cycle
+        vl_value
+      }
+    }
+  }
+`;
+
+export const ScoreCyclesQueryOptions = {
+  options(props) {
+    return {
+      forceFetch: true,
+      variables: {
+        consultantId: props.user.codigo,
+        consultantCommercialModelId: 1,
+        consultantCountryId: 1,
+      },
+    };
+  },
+  props({ data: { loading, scoreCycles } }) {
+    return {
+      loadingCycles: loading,
+      scoreCycles,
     };
   },
 };
