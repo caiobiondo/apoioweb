@@ -5,6 +5,7 @@ export const Wrapper = styled(Paper)`
   padding: 50px 100px;
   margin: 10px 0;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
   border-radius: 10px !important;
 `;
 
@@ -56,4 +57,18 @@ export const IconWrapper = styled.figure`
   display: block;
   margin: 8px 0 15px;
   width: 25px;
+`;
+
+export const CloseButton = styled.a`
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 27px;
+  display: block;
+
+  svg {
+    height: 24px;
+    width: 24px;
+    fill: #000;
+  }
 `;

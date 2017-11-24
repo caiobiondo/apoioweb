@@ -6,6 +6,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   Wrapper,
   IconWrapper,
+  CloseButton,
   OrderHistoryHeader,
   OrderHistoryTitle,
   OrderHistoryPoints,
@@ -82,6 +83,9 @@ const PeriodHistory = props => {
 
   return (
     <Wrapper>
+      <CloseButton onClick={props.onClose}>
+        <Icon file="ico_times" />
+      </CloseButton>
       <OrderHistoryHeader>
         <OrderHistoryTitle>
           <FormattedMessage id="orderHistory" />

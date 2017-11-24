@@ -41,12 +41,16 @@ class PeriodScore extends Component {
     this.isOnLastLevel = this.isOnLastLevel.bind(this);
     this.cycleSelected = this.cycleSelected.bind(this);
     this.renderPeriodHistory = this.renderPeriodHistory.bind(this);
-
+    this.resetCycleSelection = this.resetCycleSelection.bind(this);
     this.state = {};
   }
 
   cycleSelected(cycle) {
     this.setState({ selectedCycleNumber: cycle.number });
+  }
+
+  resetCycleSelection() {
+    this.setState({ selectedCycleNumber: null });
   }
 
   isOnLastLevel(currentLevel, nextLevel) {
@@ -58,7 +62,7 @@ class PeriodScore extends Component {
       return null;
     }
 
-    return <PeriodHistory />;
+    return <PeriodHistory onClose={this.resetCycleSelection} />;
   }
 
   renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel) {
