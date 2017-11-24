@@ -25,9 +25,9 @@ const PeriodHistory = props => {
   const tableData = {
     columns: ['icon', 'order', 'date', 'points', 'value'],
     style: {
-      icon: { width: '12%' },
+      icon: { width: '10%' },
       order: { width: '30%' },
-      date: { width: '26%' },
+      date: { width: '28%' },
       points: { width: '15%' },
       value: { width: '15%', textAlign: 'right' },
     },

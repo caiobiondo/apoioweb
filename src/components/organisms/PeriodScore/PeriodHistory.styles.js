@@ -19,6 +19,7 @@ export const PageTitle = styled.h1`
 export const OrderHistoryHeader = styled.header`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
 export const OrderHistoryTitle = styled.h3`
@@ -52,6 +53,6 @@ export const OrderHistoryPoint = styled.li`
 
 export const IconWrapper = styled.figure`
   display: block;
-  margin: 10px 0;
+  margin: 8px 0 15px;
   width: 25px;
 `;

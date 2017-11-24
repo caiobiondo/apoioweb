@@ -72,8 +72,13 @@ const NaturaTable = props => {
     );
   };
 
+  let customTableStyle = TableStyle;
+  if (data.style && data.style.tableStyle) {
+    customTableStyle = { ...TableStyle, ...data.style.tableStyle };
+  }
+
   return (
-    <Table style={TableStyle}>
+    <Table style={customTableStyle}>
       {renderTableHeader()}
       {renderTableBody()}
       {renderTableFooter()}
