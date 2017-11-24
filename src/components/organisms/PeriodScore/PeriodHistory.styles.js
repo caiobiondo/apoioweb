@@ -7,20 +7,6 @@ export const Wrapper = {
   boxShadow: '0 0 25px 0 rgba(0,0,0,0.1)',
 };
 
-export const TableStyle = {
-  background: 'none',
-};
-
-export const TableRowStyle = {
-  border: 'none',
-};
-
-export const TableCellStyle = {
-  padding: '15px 0',
-  fontSize: '17px',
-  color: '#888',
-};
-
 export const PageTitle = styled.h1`
   color: #f3971f;
   font-family: Roboto-Light;

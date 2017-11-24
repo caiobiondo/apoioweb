@@ -1,29 +1,17 @@
 import React from 'react';
 import { Paper, Icon } from 'natura-ui';
 import { formatCurrency } from 'locale/utils';
+import NaturaTable from 'components/organisms/Table/Table';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   Wrapper,
-  TableStyle,
-  TableRowStyle,
-  TableCellStyle,
   IconWrapper,
   OrderHistoryHeader,
   OrderHistoryTitle,
   OrderHistoryPoints,
   OrderHistoryPoint,
 } from './PeriodHistory.styles';
-import { injectIntl, FormattedMessage } from 'react-intl';
-
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-  TableFooter,
-} from 'material-ui/Table';
 
 const PeriodHistory = props => {
   const { intl } = props;
@@ -86,65 +74,6 @@ const PeriodHistory = props => {
     ],
   };
 
-  const renderCell = (value, key) => {
-    let cellStyle = TableCellStyle;
-
-    if (tableData.renderer && !tableData.renderer[key])
-      return <TableRowColumn key={key}>{value}</TableRowColumn>;
-
-    if (tableData.style && tableData.style[key])
-      cellStyle = { ...TableCellStyle, ...tableData.style[key] };
-
-    return (
-      <TableRowColumn key={key} style={cellStyle}>
-        {tableData.renderer[key](value)}
-      </TableRowColumn>
-    );
-  };
-
-  const renderTableHeader = () => {
-    if (!tableData.header) return null;
-    return (
-      <TableHeader adjustForCheckbox={false} displaySelectAll={false} enableSelectAll={false}>
-        <TableRow style={{ border: 'none' }}>
-          {tableData.columns.map(cell => {
-            return <TableHeaderColumn key={cell}>{tableData.header[cell]}</TableHeaderColumn>;
-          })}
-        </TableRow>
-      </TableHeader>
-    );
-  };
-
-  const renderTableBody = () => {
-    if (!tableData.body) return null;
-    return (
-      <TableBody displayRowCheckbox={false}>
-        {tableData.body.map((row, index) => {
-          return (
-            <TableRow key={index} style={TableRowStyle}>
-              {tableData.columns.map(cell => {
-                return renderCell(row[cell], cell);
-              })}
-            </TableRow>
-          );
-        })}
-      </TableBody>
-    );
-  };
-
-  const renderTableFooter = () => {
-    if (!tableData.footer) return null;
-    return (
-      <TableFooter adjustForCheckbox={false} displaySelectAll={false} enableSelectAll={false}>
-        <TableRow style={{ border: 'none' }}>
-          {tableData.columns.map(cell => {
-            return <TableRowColumn key={cell}>{tableData.header[cell]}</TableRowColumn>;
-          })}
-        </TableRow>
-      </TableFooter>
-    );
-  };
-
   return (
     <Paper zDepth={2} style={Wrapper}>
       <OrderHistoryHeader>
@@ -161,11 +90,7 @@ const PeriodHistory = props => {
           })}
         </OrderHistoryPoints>
       </OrderHistoryHeader>
-      <Table style={TableStyle}>
-        {renderTableHeader()}
-        {renderTableBody()}
-        {renderTableFooter()}
-      </Table>
+      <NaturaTable data={tableData} />
     </Paper>
   );
 };
