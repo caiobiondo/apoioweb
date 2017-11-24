@@ -2,9 +2,6 @@ export default {
   'en-US': {},
   'pt-BR': {
     checkYourScore: 'Confira sua Pontuação',
-    noDataToGenerateGraphExplanation: 'Não há dados.',
-    scoreExplanation:
-      'Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.',
     current: 'atual',
     currentPeriod: 'Período atual',
     cycleLabel: 'Ciclo:',
@@ -12,7 +9,12 @@ export default {
     directSalesPointsTitle: 'Presencial',
     lastPeriod: 'Período anterior',
     naturaNetworkPointsTitle: 'Rede Natura',
+    noDataToGenerateGraphExplanation: 'Não há dados.',
+    order: 'Pedido',
+    orderHistory: 'Histórico de Pedidos',
     pointsToNextLevel: 'Faltam {points} pontos para {nextLevelName}',
+    scoreExplanation:
+      'Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.',
     scoreLabel: 'Pontuação:',
     scoreStatementInPeriod: 'Extrato de Pontos no Período',
     totalPointsTitle: 'Total',

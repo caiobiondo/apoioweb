@@ -1,6 +1,15 @@
 import React from 'react';
 import { Paper, Icon } from 'natura-ui';
-import { Wrapper, TableStyle, IconWrapper } from './PeriodHistory.styles';
+import {
+  Wrapper,
+  TableStyle,
+  IconWrapper,
+  OrderHistoryHeader,
+  OrderHistoryTitle,
+  OrderHistoryPoints,
+  OrderHistoryPoint,
+} from './PeriodHistory.styles';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   Table,
@@ -11,6 +20,12 @@ import {
   TableRowColumn,
   TableFooter,
 } from 'material-ui/Table';
+
+const points = {
+  digital: 10,
+  presencial: 10,
+  totalCicles: 10,
+};
 
 const tableData = {
   columns: ['icon', 'order', 'date', 'points', 'value'],
@@ -62,7 +77,7 @@ const renderCell = (value, key) => {
     return <TableRowColumn>{value}</TableRowColumn>;
   }
   return (
-    <TableRowColumn style={{ padding: '15px', fontSize: '17px', color: '#888', fontWeight: '100' }}>
+    <TableRowColumn style={{ padding: '15px 0', fontSize: '17px', color: '#888' }}>
       {tableData.renderer[key](value)}
     </TableRowColumn>
   );
@@ -111,8 +126,22 @@ const renderTableFooter = () => {
   );
 };
 
-const TableExampleSimple = () => (
+const PeriodHistory = () => (
   <Paper zDepth={2} style={Wrapper}>
+    <OrderHistoryHeader>
+      <OrderHistoryTitle>
+        <FormattedMessage id="orderHistory" />
+      </OrderHistoryTitle>
+      <OrderHistoryPoints>
+        {Object.keys(points).map((key, index) => {
+          return (
+            <OrderHistoryPoint>
+              {key}: {points[key]}pts
+            </OrderHistoryPoint>
+          );
+        })}
+      </OrderHistoryPoints>
+    </OrderHistoryHeader>
     <Table style={TableStyle}>
       {renderTableHeader()}
       {renderTableBody()}
@@ -121,4 +150,5 @@ const TableExampleSimple = () => (
   </Paper>
 );
 
-export default TableExampleSimple;
+const PeriodHistoryIntl = injectIntl(PeriodHistory);
+export default PeriodHistoryIntl;
