@@ -1,30 +1,51 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
 import { shallow } from 'enzyme';
 import OrderDetails from './OrderDetails';
+import OrderDetailsData from 'components/organisms/OrderDetailsData/OrderDetailsData';
 
-const routerParams = {
-  params: {
-    id: '1',
-  },
+const setup = propOverrides => {
+  const props = Object.assign({ match: { params: { id: 1 } } }, propOverrides);
+
+  const result = shallow(<OrderDetails {...props} />);
+
+  return {
+    props,
+    result,
+  };
 };
 
 describe('OrderDetails', () => {
   it('renders the order details page', () => {
-    const renderer = new ShallowRenderer();
+    // given
+    // when
+    const { result } = setup();
 
-    renderer.render(<OrderDetails match={routerParams} />);
-    const result = renderer.getRenderOutput();
-
+    // then
     expect(result).toMatchSnapshot();
   });
 
   it('scrolls to the top of the page', () => {
+    // given
     const scrollToMock = jest.fn();
     window.scrollTo = scrollToMock;
 
-    shallow(<OrderDetails match={routerParams} />);
+    // when
+    setup();
 
+    // then
     expect(scrollToMock).toBeCalledWith(0, 0);
+  });
+
+  it('sends order id to child element', () => {
+    // given
+    const orderId = 1;
+
+    // when
+    const { result } = setup({ match: { params: { id: orderId } } });
+    const expectedElement = result.find(OrderDetailsData);
+
+    // then
+    expect(expectedElement.props().orderId).toBeDefined();
+    expect(expectedElement.props().orderId).toEqual(orderId);
   });
 });
