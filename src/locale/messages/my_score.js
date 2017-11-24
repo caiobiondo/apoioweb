@@ -20,5 +20,8 @@ export default {
     totalPointsTitle: 'Total',
     totalScoreInPeriod: 'Pontuação Total no Período',
     yourScoreDemonstration: 'Demonstrativo da sua pontuação',
+    digital: 'Digital',
+    presential: 'Presencial',
+    totalInCycle: 'Total no ciclo',
   },
 };

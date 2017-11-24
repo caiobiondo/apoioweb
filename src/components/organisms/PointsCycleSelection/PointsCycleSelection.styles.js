@@ -47,6 +47,7 @@ export const CycleButton = styled.a`
   color: ${props => props.color};
   background-color: ${props => props.background};
   cursor: pointer;
+  position: relative;
 `;
 
 export const LabelsBlock = styled.a`
@@ -78,4 +79,21 @@ export const IconWrapper = styled.div`
     width: 7px;
     fill: ${props => props.color};
   }
+`;
+
+export const SelectedCyclePointer = styled.div`
+  border: 1px solid #dadada;
+  border-bottom: none;
+  border-right: none;
+  background: white;
+  position: absolute;
+  bottom: -34px;
+  z-index: 1;
+  cursor: default;
+  pointer-events: none;
+  width: 26px;
+  height: 26px;
+  left: 50%;
+
+  transform: translateX(-50%) rotate(45deg);
 `;

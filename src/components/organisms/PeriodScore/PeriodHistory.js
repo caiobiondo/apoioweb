@@ -81,13 +81,20 @@ const PeriodHistory = props => {
           <FormattedMessage id="orderHistory" />
         </OrderHistoryTitle>
         <OrderHistoryPoints>
-          {Object.keys(points).map((key, index) => {
-            return (
-              <OrderHistoryPoint key={key}>
-                {key}: {points[key]}pts
-              </OrderHistoryPoint>
-            );
-          })}
+          <OrderHistoryPoint>
+            <FormattedMessage id="digital" />:&nbsp;
+            <FormattedMessage id="cyclePoints" values={{ points: 900 }} />
+          </OrderHistoryPoint>
+
+          <OrderHistoryPoint>
+            <FormattedMessage id="presential" />:&nbsp;
+            <FormattedMessage id="cyclePoints" values={{ points: 772 }} />
+          </OrderHistoryPoint>
+
+          <OrderHistoryPoint>
+            <FormattedMessage id="totalInCycle" />:&nbsp;
+            <FormattedMessage id="cyclePoints" values={{ points: 1672 }} />
+          </OrderHistoryPoint>
         </OrderHistoryPoints>
       </OrderHistoryHeader>
       <NaturaTable data={tableData} />

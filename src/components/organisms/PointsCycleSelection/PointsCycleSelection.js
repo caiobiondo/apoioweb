@@ -5,16 +5,17 @@ import { Paper, Icon } from 'natura-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CenterWrapper,
-  WrapperStyles,
-  PeriodSwitcherStyles,
-  PeriodSwitcherActiveButton,
-  PeriodSwitcherButton,
-  LabelsBlock,
   CycleButton,
-  LineBreak,
   CycleNumber,
   CycleText,
   IconWrapper,
+  LabelsBlock,
+  LineBreak,
+  PeriodSwitcherActiveButton,
+  PeriodSwitcherButton,
+  PeriodSwitcherStyles,
+  SelectedCyclePointer,
+  WrapperStyles,
 } from './PointsCycleSelection.styles';
 
 const getCycleText = (cycleNumber, currentCycleNumber, points) => {
@@ -25,8 +26,9 @@ const getCycleText = (cycleNumber, currentCycleNumber, points) => {
   return <FormattedMessage id="cyclePoints" values={{ points }} />;
 };
 
-const renderCycle = (currentCycleNumber, cycle, currentLevelColor, onClick) => {
-  let icon, color, background;
+const renderCycle = (cycle, props) => {
+  const { currentCycleNumber, currentLevelColor, onCycleClick, selectedCycleNumber } = props;
+  let icon, color, background, selectedCyclePointer;
 
   if (cycle.points > 0) {
     color = '#66a944';
@@ -47,9 +49,13 @@ const renderCycle = (currentCycleNumber, cycle, currentLevelColor, onClick) => {
     );
   }
 
+  if (selectedCycleNumber === cycle.number) {
+    selectedCyclePointer = <SelectedCyclePointer />;
+  }
+
   return (
     <CycleButton
-      onClick={() => onClick(cycle)}
+      onClick={() => onCycleClick(cycle)}
       key={cycle.number}
       color={color}
       background={background}
@@ -60,11 +66,13 @@ const renderCycle = (currentCycleNumber, cycle, currentLevelColor, onClick) => {
       </CycleNumber>
       <LineBreak />
       <CycleText>{cycle.text}</CycleText>
+      {selectedCyclePointer}
     </CycleButton>
   );
 };
 
-const getCycles = (startCycle, endCycle, currentCycleNumber, scoreCycles) => {
+const getCycles = props => {
+  const { startCycle, endCycle, currentCycleNumber, scoreCycles } = props;
   const range = [...Array(endCycle).keys()];
   let cycles = range.reduce((cycles, cycleNumber) => {
     cycleNumber += 1;
@@ -94,10 +102,9 @@ const getCycles = (startCycle, endCycle, currentCycleNumber, scoreCycles) => {
 };
 
 const PointsCycleSelection = props => {
-  const { startCycle, endCycle, currentCycle, scoreCycles, currentLevelColor } = props;
+  const { startCycle, endCycle, currentCycleNumber, scoreCycles, currentLevelColor } = props;
   const onClick = props.onCycleClick;
-  const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
-  const cycles = getCycles(startCycle, endCycle, currentCycleNumber, scoreCycles);
+  const cycles = getCycles(props);
 
   return (
     <CenterWrapper>
@@ -117,7 +124,8 @@ const PointsCycleSelection = props => {
           <LineBreak />
           <FormattedMessage id="scoreLabel" />
         </LabelsBlock>
-        {cycles.map(cycle => renderCycle(currentCycleNumber, cycle, currentLevelColor, onClick))}
+
+        {cycles.map(cycle => renderCycle(cycle, props))}
       </Paper>
     </CenterWrapper>
   );
