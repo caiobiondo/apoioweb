@@ -21,7 +21,7 @@ export const BigTitle = styled.h2`
 
 export const SmallTitle = styled.h3`
   color: ${grayTitleColor};
-  font-family: NaturaSans-Bold
+  font-family: NaturaSans-Bold;
   font-size: 21px;
   font-weight: bold;
   text-align: center;

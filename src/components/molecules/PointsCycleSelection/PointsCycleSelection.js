@@ -1,75 +1,124 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Paper, Icon } from 'natura-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CenterWrapper,
-  Wrapper,
+  WrapperStyles,
+  PeriodSwitcherStyles,
+  PeriodSwitcherActiveButton,
+  PeriodSwitcherButton,
   LabelsBlock,
   CycleButton,
   LineBreak,
   CycleNumber,
   CycleText,
+  IconWrapper,
 } from './PointsCycleSelection.styles';
 
-const getCycleText = (cycleNumber, currentCycleNumber) => {
+const getCycleText = (cycleNumber, currentCycleNumber, points) => {
   if (cycleNumber === currentCycleNumber) {
     return <FormattedMessage id="current" />;
   }
 
-  if (cycleNumber > currentCycleNumber) {
-    return '\u00A0';
-  }
-
-  return `${cycleNumber * 128} pts`;
+  return <FormattedMessage id="cyclePoints" values={{ points }} />;
 };
 
-const renderCycle = (currentCycle, cycle, onClick) => {
+const renderCycle = (currentCycleNumber, cycle, currentLevelColor, onClick) => {
+  let icon, color, background;
+
+  if (cycle.points > 0) {
+    color = '#66a944';
+    icon = (
+      <IconWrapper color={color}>
+        <Icon file="ico_check" />
+      </IconWrapper>
+    );
+  } else if (cycle.number == currentCycleNumber) {
+    color = '#fff';
+    background = currentLevelColor;
+  } else if (cycle.points === 0) {
+    color = '#e03726';
+    icon = (
+      <IconWrapper color={color}>
+        <Icon file="ico_times" />
+      </IconWrapper>
+    );
+  }
+
   return (
-    <CycleButton onClick={() => onClick(cycle)} key={cycle.number}>
-      <CycleNumber>{cycle.number}</CycleNumber>
+    <CycleButton
+      onClick={() => onClick(cycle)}
+      key={cycle.number}
+      color={color}
+      background={background}
+    >
+      <CycleNumber>
+        {icon}
+        {cycle.number}
+      </CycleNumber>
       <LineBreak />
       <CycleText>{cycle.text}</CycleText>
     </CycleButton>
   );
 };
 
-const getCycles = (startCycle, endCycle, currentCycle) => {
+const getCycles = (startCycle, endCycle, currentCycleNumber, scoreCycles) => {
   const range = [...Array(endCycle).keys()];
-  const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
-  return range.reduce((cycles, cycleNumber) => {
+  let cycles = range.reduce((cycles, cycleNumber) => {
     cycleNumber += 1;
 
     if (cycleNumber >= startCycle) {
-      cycles.push({
+      cycles[cycleNumber] = {
         number: cycleNumber,
-        text: getCycleText(cycleNumber, currentCycleNumber),
-      });
+        text: '\u00A0',
+      };
     }
 
     return cycles;
   }, []);
+
+  /* eslint-disable camelcase */
+  scoreCycles.forEach(cycle => {
+    const points = cycle.vl_score;
+    cycles[cycle.nm_cycle] = {
+      number: cycle.nm_cycle,
+      text: getCycleText(cycle.nm_cycle, currentCycleNumber, points),
+      points,
+    };
+  });
+  /* eslint-enable camelcase */
+
+  return cycles;
 };
 
 const PointsCycleSelection = props => {
-  const { startCycle, endCycle, currentCycle } = props;
+  const { startCycle, endCycle, currentCycle, scoreCycles, currentLevelColor } = props;
   const onClick = props.onCycleClick;
-  const cycles = getCycles(startCycle, endCycle, currentCycle);
+  const currentCycleNumber = parseInt(currentCycle.split('/')[0]);
+  const cycles = getCycles(startCycle, endCycle, currentCycleNumber, scoreCycles);
 
   return (
     <CenterWrapper>
-      <Wrapper>
+      <Paper style={PeriodSwitcherStyles}>
+        <PeriodSwitcherActiveButton>
+          <FormattedMessage id="currentPeriod" />
+        </PeriodSwitcherActiveButton>
+
+        <PeriodSwitcherButton>
+          <FormattedMessage id="lastPeriod" />
+        </PeriodSwitcherButton>
+      </Paper>
+
+      <Paper style={WrapperStyles}>
         <LabelsBlock>
-          <CycleNumber>
-            <FormattedMessage id="cycleLabel" />
-          </CycleNumber>
+          <FormattedMessage id="cycleLabel" />
           <LineBreak />
-          <CycleText>
-            <FormattedMessage id="scoreLabel" />
-          </CycleText>
+          <FormattedMessage id="scoreLabel" />
         </LabelsBlock>
-        {cycles.map(cycle => renderCycle(currentCycle, cycle, onClick))}
-      </Wrapper>
+        {cycles.map(cycle => renderCycle(currentCycleNumber, cycle, currentLevelColor, onClick))}
+      </Paper>
     </CenterWrapper>
   );
 };
