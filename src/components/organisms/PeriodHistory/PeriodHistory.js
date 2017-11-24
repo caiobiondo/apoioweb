@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Icon, Table } from 'natura-ui';
+import { Icon, Table } from 'natura-ui';
 import { formatCurrency } from 'locale/utils';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
@@ -15,12 +15,6 @@ import {
 
 const PeriodHistory = props => {
   const { intl } = props;
-
-  const points = {
-    digital: 10,
-    presencial: 10,
-    totalCicles: 10,
-  };
 
   const tableData = {
     columns: ['icon', 'order', 'date', 'points', 'value'],
@@ -52,31 +46,31 @@ const PeriodHistory = props => {
       },
       {
         icon: 'ico_marker',
-        order: '#361352429',
-        date: '24/02/2016',
-        points: '10',
-        value: '37.34',
+        order: '#361352428',
+        date: '25/02/2016',
+        points: '11',
+        value: '38.34',
       },
       {
         icon: 'ico_monitor',
-        order: '#361352429',
-        date: '24/02/2016',
-        points: '10',
-        value: '37.34',
+        order: '#361352427',
+        date: '23/02/2016',
+        points: '12',
+        value: '39.34',
       },
       {
         icon: 'ico_monitor',
-        order: '#361352429',
-        date: '24/02/2016',
-        points: '10',
-        value: '37.34',
+        order: '#361352437',
+        date: '20/02/2016',
+        points: '18',
+        value: '37.14',
       },
       {
         icon: 'ico_marker',
-        order: '#361352429',
-        date: '24/02/2016',
-        points: '10',
-        value: '37.34',
+        order: '#361352729',
+        date: '29/02/2016',
+        points: '135',
+        value: '2038.34',
       },
     ],
   };
