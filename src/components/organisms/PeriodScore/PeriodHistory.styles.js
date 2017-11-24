@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { Paper } from 'natura-ui';
 
-export const Wrapper = {
-  borderRadius: '10px',
-  padding: '50px 175px',
-  margin: '10px 0',
-  boxShadow: '0 0 25px 0 rgba(0,0,0,0.1)',
-};
+export const Wrapper = styled(Paper)`
+  padding: 50px 100px;
+  margin: 10px 0;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px !important;
+`;
 
 export const PageTitle = styled.h1`
   color: #f3971f;

@@ -11,6 +11,7 @@ export const WrapperStyles = {
   display: 'inline-block',
   fontFamily: 'Lato-Regular',
   minHeight: '86px',
+  width: '100%',
 };
 
 export const PeriodSwitcherStyles = {

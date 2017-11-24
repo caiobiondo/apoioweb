@@ -75,7 +75,7 @@ const PeriodHistory = props => {
   };
 
   return (
-    <Paper zDepth={2} style={Wrapper}>
+    <Wrapper>
       <OrderHistoryHeader>
         <OrderHistoryTitle>
           <FormattedMessage id="orderHistory" />
@@ -91,7 +91,7 @@ const PeriodHistory = props => {
         </OrderHistoryPoints>
       </OrderHistoryHeader>
       <NaturaTable data={tableData} />
-    </Paper>
+    </Wrapper>
   );
 };
 
