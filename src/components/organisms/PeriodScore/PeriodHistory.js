@@ -3,6 +3,8 @@ import { Paper, Icon } from 'natura-ui';
 import {
   Wrapper,
   TableStyle,
+  TableRowStyle,
+  TableCellStyle,
   IconWrapper,
   OrderHistoryHeader,
   OrderHistoryTitle,
@@ -29,6 +31,13 @@ const points = {
 
 const tableData = {
   columns: ['icon', 'order', 'date', 'points', 'value'],
+  style: {
+    icon: { width: '14%' },
+    order: { width: '30%' },
+    date: { width: '24%' },
+    points: { width: '15%' },
+    value: { width: '15%', textAlign: 'right' },
+  },
   renderer: {
     icon: iconPath => (
       <IconWrapper>
@@ -73,11 +82,16 @@ const tableData = {
 };
 
 const renderCell = (value, key) => {
-  if (tableData.renderer && !tableData.renderer[key]) {
-    return <TableRowColumn>{value}</TableRowColumn>;
-  }
+  let cellStyle = TableCellStyle;
+
+  if (tableData.renderer && !tableData.renderer[key])
+    return <TableRowColumn key={key}>{value}</TableRowColumn>;
+
+  if (tableData.style && tableData.style[key])
+    cellStyle = { ...TableCellStyle, ...tableData.style[key] };
+
   return (
-    <TableRowColumn style={{ padding: '15px 0', fontSize: '17px', color: '#888' }}>
+    <TableRowColumn key={key} style={cellStyle}>
       {tableData.renderer[key](value)}
     </TableRowColumn>
   );
@@ -89,7 +103,7 @@ const renderTableHeader = () => {
     <TableHeader adjustForCheckbox={false} displaySelectAll={false} enableSelectAll={false}>
       <TableRow style={{ border: 'none' }}>
         {Object.keys(tableData.header).map((key, index) => {
-          return <TableHeaderColumn>{tableData.header[key]}</TableHeaderColumn>;
+          return <TableHeaderColumn key={key}>{tableData.header[key]}</TableHeaderColumn>;
         })}
       </TableRow>
     </TableHeader>
@@ -100,11 +114,11 @@ const renderTableBody = () => {
   if (!tableData.body) return null;
   return (
     <TableBody displayRowCheckbox={false}>
-      {tableData.body.map(row => {
+      {tableData.body.map((row, index) => {
         return (
-          <TableRow style={{ border: 'none' }}>
-            {Object.keys(row).map((key, index) => {
-              return renderCell(row[key], key);
+          <TableRow key={index} style={TableRowStyle}>
+            {tableData.columns.map(cell => {
+              return renderCell(row[cell], cell);
             })}
           </TableRow>
         );
@@ -119,7 +133,7 @@ const renderTableFooter = () => {
     <TableFooter adjustForCheckbox={false} displaySelectAll={false} enableSelectAll={false}>
       <TableRow style={{ border: 'none' }}>
         {Object.keys(tableData.header).map((key, index) => {
-          return <TableRowColumn>{tableData.header[key]}</TableRowColumn>;
+          return <TableRowColumn key={key}>{tableData.header[key]}</TableRowColumn>;
         })}
       </TableRow>
     </TableFooter>
@@ -135,7 +149,7 @@ const PeriodHistory = () => (
       <OrderHistoryPoints>
         {Object.keys(points).map((key, index) => {
           return (
-            <OrderHistoryPoint>
+            <OrderHistoryPoint key={key}>
               {key}: {points[key]}pts
             </OrderHistoryPoint>
           );
