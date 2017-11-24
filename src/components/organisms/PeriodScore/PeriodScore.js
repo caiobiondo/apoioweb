@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Loading } from 'natura-ui';
-import { PeriodScoreQuery, PeriodScoreQueryOptions } from './PeriodScore.data';
-import { graphql } from 'react-apollo';
+import {
+  PeriodScoreQuery,
+  PeriodScoreQueryOptions,
+  ScoreCyclesQuery,
+  ScoreCyclesQueryOptions,
+} from './PeriodScore.data';
+import { graphql, compose } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
-// import { formatDate, formatCurrency } from 'locale/utils';
-// import InfiniteScroll from 'react-infinite-scroller';
+import withUserData from 'hocs/withUserData/withUserData';
+
 import {
   BarSeparator,
   BigTitle,
@@ -22,75 +27,109 @@ import {
 
 import ScoreStatement from 'components/molecules/ScoreStatement/ScoreStatement';
 import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
-import PointsCycleSelection from 'components/molecules/PointsCycleSelection/PointsCycleSelection';
+import PointsCycleSelection from 'components/organisms/PointsCycleSelection/PointsCycleSelection';
 
 import GrowthStatus from './GrowthStatus';
+import PeriodHistory from '../PeriodHistory/PeriodHistory';
 
-const cycleSelected = () => {
-  console.log('cycle selected');
-};
-
-const isOnLastLevel = (currentLevel, nextLevel) => {
-  return !nextLevel || !nextLevel.id || currentLevel.id === nextLevel.id;
-};
-
-const renderScoreToNextLevelMessage = (growthStatus, currentLevel, nextLevel) => {
-  if (isOnLastLevel(currentLevel, nextLevel)) {
-    return null;
+class PeriodScore extends Component {
+  constructor(props) {
+    super(props);
+    this.renderScore = this.renderScore.bind(this);
+    this.renderCycles = this.renderCycles.bind(this);
+    this.renderScoreToNextLevelMessage = this.renderScoreToNextLevelMessage.bind(this);
+    this.isOnLastLevel = this.isOnLastLevel.bind(this);
+    this.cycleSelected = this.cycleSelected.bind(this);
+    this.renderPeriodHistory = this.renderPeriodHistory.bind(this);
+    this.resetCycleSelection = this.resetCycleSelection.bind(this);
+    this.state = {};
   }
 
-  const pointsToNextLevel = GrowthStatus.getPointsToNextLevel(growthStatus, currentLevel);
+  cycleSelected(cycle) {
+    this.setState({ selectedCycleNumber: cycle.number });
+  }
 
-  return (
-    <ScoreToNextLevelWrapper>
-      <ScoreToNextLevel>
-        <FormattedMessage
-          id="pointsToNextLevel"
-          values={{ points: <b>{pointsToNextLevel}</b>, nextLevelName: nextLevel.text }}
+  resetCycleSelection() {
+    this.setState({ selectedCycleNumber: null });
+  }
+
+  isOnLastLevel(currentLevel, nextLevel) {
+    return !nextLevel || !nextLevel.id || currentLevel.id === nextLevel.id;
+  }
+
+  renderPeriodHistory() {
+    if (!this.state.selectedCycleNumber) {
+      return null;
+    }
+
+    return <PeriodHistory onClose={this.resetCycleSelection} />;
+  }
+
+  renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel) {
+    if (this.isOnLastLevel(currentLevel, nextLevel)) {
+      return null;
+    }
+
+    const pointsToNextLevel = GrowthStatus.getPointsToNextLevel(growthStatus, currentLevel);
+
+    return (
+      <ScoreToNextLevelWrapper>
+        <ScoreToNextLevel>
+          <FormattedMessage
+            id="pointsToNextLevel"
+            values={{ points: <b>{pointsToNextLevel}</b>, nextLevelName: nextLevel.text }}
+          />
+        </ScoreToNextLevel>
+      </ScoreToNextLevelWrapper>
+    );
+  }
+
+  renderCycles(currentLevel) {
+    const { growthStatus, scoreCycles } = this.props;
+    const currentCycleNumber = parseInt(growthStatus.cycle.split('/')[0], 10);
+
+    return (
+      <Wrapper>
+        <SmallTitle>
+          <FormattedMessage id="scoreStatementInPeriod" />
+        </SmallTitle>
+
+        <PointsCycleSelection
+          onCycleClick={this.cycleSelected}
+          startCycle={growthStatus.periodStartCycle}
+          endCycle={growthStatus.periodEndCycle}
+          currentCycleNumber={currentCycleNumber}
+          currentLevelColor={currentLevel.color}
+          scoreCycles={scoreCycles.totalScore}
+          selectedCycleNumber={this.state.selectedCycleNumber}
         />
-      </ScoreToNextLevel>
-    </ScoreToNextLevelWrapper>
-  );
-};
-
-const PeriodScore = props => {
-  console.log(props);
-  const { loading, growthStatus } = props;
-
-  if (loading && !growthStatus) {
-    return <Loading />;
+      </Wrapper>
+    );
   }
 
-  const currentLevel = GrowthStatus.getCurrentLevel(growthStatus);
-  const lastLevel = GrowthStatus.getLastLevel(growthStatus, currentLevel);
-  const nextLevel = GrowthStatus.getNextLevel(growthStatus, currentLevel);
+  renderScore(currentLevel) {
+    const { growthStatus } = this.props;
 
-  return (
-    <Wrapper>
-      <PageTitle>
-        <FormattedMessage id="checkYourScore" />
-      </PageTitle>
+    const lastLevel = GrowthStatus.getLastLevel(growthStatus, currentLevel);
+    const nextLevel = GrowthStatus.getNextLevel(growthStatus, currentLevel);
 
-      <Explanation>
-        <FormattedMessage id="scoreExplanation" />
-      </Explanation>
-
-      <ContentWrapper>
+    return (
+      <Wrapper>
         <BigTitle>
           <FormattedMessage id="totalScoreInPeriod" />
         </BigTitle>
 
         <ScoreProgressWrapper>
           <ScoreProgress
-            currentPoints={props.growthStatus.periodTotalPoints}
+            currentPoints={this.props.growthStatus.periodTotalPoints}
             currentLevel={currentLevel}
             nextLevel={nextLevel}
             lastLevel={lastLevel}
-            isOnLastLevel={isOnLastLevel(currentLevel, nextLevel)}
+            isOnLastLevel={this.isOnLastLevel(currentLevel, nextLevel)}
           />
         </ScoreProgressWrapper>
 
-        {renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel)}
+        {this.renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel)}
 
         <BarSeparator color={currentLevel.color} />
 
@@ -103,22 +142,44 @@ const PeriodScore = props => {
         </ScoreStatementWrapper>
 
         <DottedSeparator color={currentLevel.color} />
+      </Wrapper>
+    );
+  }
 
-        <SmallTitle>
-          <FormattedMessage id="scoreStatementInPeriod" />
-        </SmallTitle>
+  render() {
+    const { loadingScore, loadingCycles, growthStatus } = this.props;
 
-        <PointsCycleSelection
-          onCycleClick={cycleSelected}
-          startCycle={growthStatus.periodStartCycle}
-          endCycle={growthStatus.periodEndCycle}
-          currentCycle={growthStatus.cycle}
-        />
-      </ContentWrapper>
-    </Wrapper>
-  );
-};
+    if (loadingScore || loadingCycles) {
+      return <Loading />;
+    }
+
+    const currentLevel = GrowthStatus.getCurrentLevel(growthStatus);
+
+    return (
+      <Wrapper>
+        <PageTitle>
+          <FormattedMessage id="checkYourScore" />
+        </PageTitle>
+
+        <Explanation>
+          <FormattedMessage id="scoreExplanation" />
+        </Explanation>
+
+        <ContentWrapper>
+          {this.renderScore(currentLevel)}
+          {this.renderCycles(currentLevel)}
+          {this.renderPeriodHistory()}
+        </ContentWrapper>
+      </Wrapper>
+    );
+  }
+}
 
 export const PeriodScoreWithIntl = injectIntl(PeriodScore);
 
-export default graphql(PeriodScoreQuery, PeriodScoreQueryOptions)(PeriodScoreWithIntl);
+const PeriodScoreWithData = compose(
+  graphql(PeriodScoreQuery, PeriodScoreQueryOptions),
+  graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions),
+)(PeriodScoreWithIntl);
+
+export default withUserData(PeriodScoreWithData);

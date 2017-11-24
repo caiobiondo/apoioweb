@@ -21,7 +21,7 @@ export const BigTitle = styled.h2`
 
 export const SmallTitle = styled.h3`
   color: ${grayTitleColor};
-  font-family: NaturaSans-Bold
+  font-family: NaturaSans-Bold;
   font-size: 21px;
   font-weight: bold;
   text-align: center;
@@ -67,6 +67,7 @@ export const DottedSeparator = styled.div`
 export const ContentWrapper = styled.div`
   width: 85%;
   margin: 0 auto;
+  margin-bottom: 20px;
 `;
 
 export const Switcher = styled.div``;
