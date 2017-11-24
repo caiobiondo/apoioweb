@@ -6,6 +6,20 @@ export const UserDataQuery = gql`
       codigo
       cdCanalCaptacao
       codigoCentro
+      estrutura {
+        gerenciaMercado {
+          codigo
+        }
+        regiaoEstrategica {
+          codigo
+        }
+        gerenciaVenda {
+          codigo
+        }
+        setor {
+          codigo
+        }
+      }
     }
   }
 `;

@@ -12,6 +12,6 @@ export const Wrapper = styled.div`
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
   width: auto;
   display: inline-block;
-  font-family: GillSans;
+  font-family: Lato-Regular;
   height: 71px;
 `;
