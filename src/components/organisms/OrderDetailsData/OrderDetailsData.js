@@ -113,7 +113,9 @@ export class OrderDetailsData extends Component {
       <OrderData>
         <OrderDatumLong>
           <OrderDatumValue>
-            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${address.bairro}`}
+            {`${address.tipoLogradouro} ${address.nomeLogradouro}, ${address.numero} - ${
+              address.bairro
+            }`}
           </OrderDatumValue>
           <OrderDatumValue>{`${address.cidade} - ${address.estado}`}</OrderDatumValue>
           <OrderDatumValue>

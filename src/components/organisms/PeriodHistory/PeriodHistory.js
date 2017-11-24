@@ -1,7 +1,6 @@
 import React from 'react';
-import { Paper, Icon } from 'natura-ui';
+import { Paper, Icon, Table } from 'natura-ui';
 import { formatCurrency } from 'locale/utils';
-import NaturaTable from 'components/organisms/Table/Table';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
@@ -44,28 +43,35 @@ const PeriodHistory = props => {
     },
     body: [
       {
-        icon: 'ico_info',
+        icon: 'ico_monitor',
         order: '#361352429',
         date: '24/02/2016',
         points: '10',
         value: '37.34',
       },
       {
-        icon: 'ico_info',
+        icon: 'ico_marker',
         order: '#361352429',
         date: '24/02/2016',
         points: '10',
         value: '37.34',
       },
       {
-        icon: 'ico_info',
+        icon: 'ico_monitor',
         order: '#361352429',
         date: '24/02/2016',
         points: '10',
         value: '37.34',
       },
       {
-        icon: 'ico_info',
+        icon: 'ico_monitor',
+        order: '#361352429',
+        date: '24/02/2016',
+        points: '10',
+        value: '37.34',
+      },
+      {
+        icon: 'ico_marker',
         order: '#361352429',
         date: '24/02/2016',
         points: '10',
@@ -97,7 +103,7 @@ const PeriodHistory = props => {
           </OrderHistoryPoint>
         </OrderHistoryPoints>
       </OrderHistoryHeader>
-      <NaturaTable data={tableData} />
+      <Table data={tableData} />
     </Wrapper>
   );
 };

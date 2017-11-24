@@ -30,7 +30,7 @@ import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
 import PointsCycleSelection from 'components/organisms/PointsCycleSelection/PointsCycleSelection';
 
 import GrowthStatus from './GrowthStatus';
-import PeriodHistory from './PeriodHistory';
+import PeriodHistory from '../PeriodHistory/PeriodHistory';
 
 class PeriodScore extends Component {
   constructor(props) {
