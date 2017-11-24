@@ -14,7 +14,7 @@ export const TableRowStyle = {
 };
 
 export const TableCellStyle = {
-  padding: '15px 0',
+  padding: '10px 0',
   fontSize: '17px',
   color: '#888',
 };

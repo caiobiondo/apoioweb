@@ -52,6 +52,6 @@ export const OrderHistoryPoint = styled.li`
 
 export const IconWrapper = styled.figure`
   display: block;
-  margin-left: 0;
-  width: 30px;
+  margin: 10px 0;
+  width: 25px;
 `;
