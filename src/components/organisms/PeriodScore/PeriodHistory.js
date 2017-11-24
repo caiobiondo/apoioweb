@@ -102,8 +102,8 @@ const renderTableHeader = () => {
   return (
     <TableHeader adjustForCheckbox={false} displaySelectAll={false} enableSelectAll={false}>
       <TableRow style={{ border: 'none' }}>
-        {Object.keys(tableData.header).map((key, index) => {
-          return <TableHeaderColumn key={key}>{tableData.header[key]}</TableHeaderColumn>;
+        {tableData.columns.map(cell => {
+          return <TableHeaderColumn key={cell}>{tableData.header[cell]}</TableHeaderColumn>;
         })}
       </TableRow>
     </TableHeader>
@@ -132,8 +132,8 @@ const renderTableFooter = () => {
   return (
     <TableFooter adjustForCheckbox={false} displaySelectAll={false} enableSelectAll={false}>
       <TableRow style={{ border: 'none' }}>
-        {Object.keys(tableData.header).map((key, index) => {
-          return <TableRowColumn key={key}>{tableData.header[key]}</TableRowColumn>;
+        {tableData.columns.map(cell => {
+          return <TableRowColumn key={cell}>{tableData.header[cell]}</TableRowColumn>;
         })}
       </TableRow>
     </TableFooter>
