@@ -8,18 +8,20 @@ export const PeriodScoreQuery = gql`
     $commercialStructureSalesManagementId: Int!
     $commercialStructureSectorId: Int!
     $consultantCommercialModelId: Int!
-    $comercialStructureCountryId: Int!
+    $commercialStructureCountryId: Int!
     $consultantCountryId: Int!
+    $commercialStructureGroupId: Int!
   ) {
     growthStatus(
       consultantId: $consultantId
+      consultantCountryId: $consultantCountryId
+      consultantCommercialModelId: $consultantCommercialModelId
+      commercialStructureCountryId: $commercialStructureCountryId
       commercialStructureMarketManagementId: $commercialStructureMarketManagementId
       commercialStructureStrategicRegionId: $commercialStructureStrategicRegionId
       commercialStructureSalesManagementId: $commercialStructureSalesManagementId
       commercialStructureSectorId: $commercialStructureSectorId
-      consultantCommercialModelId: $consultantCommercialModelId
-      comercialStructureCountryId: $comercialStructureCountryId
-      consultantCountryId: $consultantCountryId
+      commercialStructureGroupId: $commercialStructureGroupId
     ) {
       currentLevelName
       currentLevelId
@@ -58,8 +60,9 @@ export const PeriodScoreQueryOptions = {
         commercialStructureSalesManagementId: props.user.estrutura.gerenciaVenda.codigo,
         commercialStructureSectorId: props.user.estrutura.setor.codigo,
         consultantCommercialModelId: 1,
-        comercialStructureCountryId: 1,
+        commercialStructureCountryId: 1,
         consultantCountryId: 1,
+        commercialStructureGroupId: 8186, //fix
       },
     };
   },
@@ -76,11 +79,17 @@ export const ScoreCyclesQuery = gql`
     $consultantId: Int!
     $consultantCommercialModelId: Int!
     $consultantCountryId: Int!
+    $cycleStart: Int!
+    $cycleEnd: Int!
+    $cycle: Int!
   ) {
     scoreCycles(
       consultantId: $consultantId
       consultantCommercialModelId: $consultantCommercialModelId
       consultantCountryId: $consultantCountryId
+      cycleStart: $cycleStart
+      cycleEnd: $cycleEnd
+      cycle: $cycle
     ) {
       totalScore {
         nm_cycle
@@ -98,6 +107,9 @@ export const ScoreCyclesQueryOptions = {
         consultantId: props.user.codigo,
         consultantCommercialModelId: 1,
         consultantCountryId: 1,
+        cycleStart: 1, //fix
+        cycleEnd: 10, //fix
+        cycle: 201711, //fix
       },
     };
   },
