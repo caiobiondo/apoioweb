@@ -48,4 +48,15 @@ describe('SectionTitle', () => {
     // then
     expect(expectedElement).toHaveLength(0);
   });
+
+  it('renders children elements', () => {
+    // given
+    const childrenElements = <div />;
+
+    // when
+    const result = shallow(<SectionTitle>{childrenElements}</SectionTitle>);
+
+    // then
+    expect(result.contains(childrenElements)).toBeTruthy();
+  });
 });
