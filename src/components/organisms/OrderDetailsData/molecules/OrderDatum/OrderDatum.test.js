@@ -1,13 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrderItemDatum from './OrderItemDatum';
-import { OrderItemDatumValue } from './OrderItemDatum.styles';
+import OrderDatum from './OrderDatum';
+import { OrderDatumValue, OrderDatumLabel } from './OrderDatum.styles';
 import { FormattedMessage } from 'react-intl';
+import 'jest-styled-components';
 
 const setup = propOverrides => {
-  const props = Object.assign({ label: '', value: '' }, propOverrides);
+  const props = Object.assign({ type: '', label: '', value: '' }, propOverrides);
 
-  const result = shallow(<OrderItemDatum {...props} />);
+  const result = shallow(<OrderDatum {...props} />);
 
   return {
     props,
@@ -15,8 +16,8 @@ const setup = propOverrides => {
   };
 };
 
-describe('OrderItemDatum', () => {
-  it('renders an order item datum', () => {
+describe('OrderDatum', () => {
+  it('renders an order datum', () => {
     // given
     // when
     const { result } = setup();
@@ -44,7 +45,7 @@ describe('OrderItemDatum', () => {
 
     // when
     const { result } = setup({ label: messageId });
-    const expectedElement = result.find(FormattedMessage);
+    const expectedElement = result.find(OrderDatumLabel);
 
     // then
     expect(expectedElement).toHaveLength(0);
@@ -56,7 +57,7 @@ describe('OrderItemDatum', () => {
 
     // when
     const { result } = setup({ value });
-    const expectedElement = result.find(OrderItemDatumValue);
+    const expectedElement = result.find(OrderDatumValue);
 
     // then
     expect(expectedElement).toHaveLength(1);
@@ -69,7 +70,7 @@ describe('OrderItemDatum', () => {
 
     // when
     const { result } = setup({ value });
-    const expectedElement = result.find(OrderItemDatumValue);
+    const expectedElement = result.find(OrderDatumValue);
 
     // then
     expect(expectedElement).toHaveLength(0);
@@ -80,9 +81,42 @@ describe('OrderItemDatum', () => {
     const childrenElements = <div />;
 
     // when
-    const result = shallow(<OrderItemDatum>{childrenElements}</OrderItemDatum>);
+    const result = shallow(<OrderDatum>{childrenElements}</OrderDatum>);
 
     // then
     expect(result.contains(childrenElements)).toBeTruthy();
+  });
+
+  it('renders short wrapper', () => {
+    // given
+    const type = 'short';
+
+    // when
+    const { result } = setup({ type });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders medium wrapper', () => {
+    // given
+    const type = 'medium';
+
+    // when
+    const { result } = setup({ type });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders long wrapper', () => {
+    // given
+    const type = 'long';
+
+    // when
+    const { result } = setup({ type });
+
+    // then
+    expect(result).toMatchSnapshot();
   });
 });

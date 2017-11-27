@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderDatum renders an order datum 1`] = `<OrderDatumstyles__OrderDatumBase />`;
+
+exports[`OrderDatum renders long wrapper 1`] = `<OrderDatumstyles__OrderDatumBase />`;
+
+exports[`OrderDatum renders medium wrapper 1`] = `<OrderDatumstyles__OrderDatumBase />`;
+
+exports[`OrderDatum renders short wrapper 1`] = `<OrderDatumstyles__OrderDatumBase />`;
