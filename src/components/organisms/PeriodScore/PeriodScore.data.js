@@ -31,6 +31,7 @@ export const PeriodScoreQuery = gql`
       periodStartCycle
       periodEndCycle
       cycle
+      parsedCycle
       currentPlan {
         growthPlanName
         levels {
@@ -62,7 +63,7 @@ export const PeriodScoreQueryOptions = {
         consultantCommercialModelId: 1,
         commercialStructureCountryId: 1,
         consultantCountryId: 1,
-        commercialStructureGroupId: 8186, //fix
+        commercialStructureGroupId: 0, //props.user.estrutura.grupo.codigo,
       },
     };
   },
@@ -101,15 +102,16 @@ export const ScoreCyclesQuery = gql`
 
 export const ScoreCyclesQueryOptions = {
   options(props) {
+    console.log(props);
     return {
       forceFetch: true,
       variables: {
         consultantId: props.user.codigo,
         consultantCommercialModelId: 1,
         consultantCountryId: 1,
-        cycleStart: 1, //fix
-        cycleEnd: 10, //fix
-        cycle: 201711, //fix
+        cycleStart: props.growthStatus.periodStartCycle,
+        cycleEnd: props.growthStatus.periodEndCycle,
+        cycle: props.growthStatus.cycle,
       },
     };
   },

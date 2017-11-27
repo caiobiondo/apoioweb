@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Loading } from 'natura-ui';
-import {
-  PeriodScoreQuery,
-  PeriodScoreQueryOptions,
-  ScoreCyclesQuery,
-  ScoreCyclesQueryOptions,
-} from './PeriodScore.data';
-import { graphql, compose } from 'react-apollo';
+import { PeriodScoreQuery, PeriodScoreQueryOptions } from './PeriodScore.data';
+import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import withUserData from 'hocs/withUserData/withUserData';
 
@@ -27,10 +22,10 @@ import {
 
 import ScoreStatement from 'components/molecules/ScoreStatement/ScoreStatement';
 import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
-import PointsCycleSelection from 'components/organisms/PointsCycleSelection/PointsCycleSelection';
 
 import GrowthStatus from './GrowthStatus';
 import PeriodHistory from '../PeriodHistory/PeriodHistory';
+import ScoreCycles from './ScoreCycles';
 
 class PeriodScore extends Component {
   constructor(props) {
@@ -85,25 +80,13 @@ class PeriodScore extends Component {
   }
 
   renderCycles(currentLevel) {
-    const { growthStatus, scoreCycles } = this.props;
-    const currentCycleNumber = parseInt(growthStatus.cycle.split('/')[0], 10);
-
     return (
-      <Wrapper>
-        <SmallTitle>
-          <FormattedMessage id="scoreStatementInPeriod" />
-        </SmallTitle>
-
-        <PointsCycleSelection
-          onCycleClick={this.cycleSelected}
-          startCycle={growthStatus.periodStartCycle}
-          endCycle={growthStatus.periodEndCycle}
-          currentCycleNumber={currentCycleNumber}
-          currentLevelColor={currentLevel.color}
-          scoreCycles={scoreCycles.totalScore}
-          selectedCycleNumber={this.state.selectedCycleNumber}
-        />
-      </Wrapper>
+      <ScoreCycles
+        growthStatus={this.props.growthStatus}
+        currentLevel={currentLevel}
+        selectedCycleNumber={this.state.selectedCycleNumber}
+        cycleSelected={this.cycleSelected}
+      />
     );
   }
 
@@ -147,9 +130,9 @@ class PeriodScore extends Component {
   }
 
   render() {
-    const { loadingScore, loadingCycles, growthStatus } = this.props;
+    const { loadingScore, growthStatus } = this.props;
 
-    if (loadingScore || loadingCycles) {
+    if (loadingScore) {
       return <Loading />;
     }
 
@@ -177,9 +160,8 @@ class PeriodScore extends Component {
 
 export const PeriodScoreWithIntl = injectIntl(PeriodScore);
 
-const PeriodScoreWithData = compose(
-  graphql(PeriodScoreQuery, PeriodScoreQueryOptions),
-  graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions),
-)(PeriodScoreWithIntl);
+export const PeriodScoreWithPeriodScoreData = graphql(PeriodScoreQuery, PeriodScoreQueryOptions)(
+  PeriodScoreWithIntl,
+);
 
-export default withUserData(PeriodScoreWithData);
+export default withUserData(PeriodScoreWithPeriodScoreData);
