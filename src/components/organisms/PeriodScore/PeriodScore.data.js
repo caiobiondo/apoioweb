@@ -84,7 +84,6 @@ export const ScoreCyclesQuery = gql`
 
 export const ScoreCyclesQueryOptions = {
   options(props) {
-    console.log(props);
     return {
       forceFetch: true,
       variables: {
