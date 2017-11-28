@@ -6,9 +6,11 @@ import {
   OrderDatumShort,
   OrderDatumMedium,
   OrderDatumLong,
+} from './OrderDatum.styles';
+import {
   OrderDatumLabel,
   OrderDatumValue,
-} from './OrderDatum.styles';
+} from 'components/organisms/OrderDetailsData/OrderDetailsData.styles';
 
 const OrderDatum = props => {
   const { type, label, value, children } = props;

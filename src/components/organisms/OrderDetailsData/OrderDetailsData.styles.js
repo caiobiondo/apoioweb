@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray150, gray200, gray600, gray890, orange100 } from 'styles/colors';
-import { fs10, fs12, fs14, fs18 } from 'styles/typography';
+import { gray150, gray200, gray890, orange100 } from 'styles/colors';
+import { fs12, fs14, fs18 } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
 
 export const OrderDetailsWrapper = {
@@ -68,22 +68,6 @@ export const OrderDataTitle = styled.div`
   color: ${orange100};
   font-size: ${fs18};
   margin-bottom: 26.5px;
-`;
-
-export const OrderDatumLabel = styled.label`
-  color: ${gray200};
-  text-transform: uppercase;
-  font-size: ${fs10};
-  margin-bottom: 13.5px;
-`;
-
-export const OrderDatumValue = styled.span`
-  color: ${gray600};
-  font-size: ${fs18};
-
-  & + & {
-    margin-top: 5px;
-  }
 `;
 
 export const OrderItemsInfos = styled.div`

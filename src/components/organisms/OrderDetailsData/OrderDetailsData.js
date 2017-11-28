@@ -30,8 +30,8 @@ import {
   OrderItemProductCode,
   OrderItemWrapper,
   OrderData,
-  OrderDatumValue,
 } from './OrderDetailsData.styles';
+import { OrderDatumValue } from './molecules/OrderDatum/OrderDatum.styles';
 
 export class OrderDetailsData extends Component {
   renderOrderItems(orderItems) {

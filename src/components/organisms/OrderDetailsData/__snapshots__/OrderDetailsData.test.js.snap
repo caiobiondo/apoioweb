@@ -111,16 +111,16 @@ exports[`OrderDetailsData renders order details 1`] = `
               label="orderPaymentMessage"
               type="long"
             >
-              <OrderDetailsDatastyles__OrderDatumValue
+              <OrderDatumstyles__OrderDatumValue
                 key="0"
               >
                 21/42 DIAS - formatedNumber 401.78238616943355
-              </OrderDetailsDatastyles__OrderDatumValue>
-              <OrderDetailsDatastyles__OrderDatumValue
+              </OrderDatumstyles__OrderDatumValue>
+              <OrderDatumstyles__OrderDatumValue
                 key="1"
               >
                 21/42 DIAS - formatedNumber 401.78238616943355
-              </OrderDetailsDatastyles__OrderDatumValue>
+              </OrderDatumstyles__OrderDatumValue>
             </OrderDatum>
           </OrderDetailsDatastyles__OrderData>
         </OrderDetailsDatastyles__OrderInfosRow>
@@ -318,20 +318,20 @@ exports[`OrderDetailsData renders order details 1`] = `
             <OrderDatum
               type="long"
             >
-              <OrderDetailsDatastyles__OrderDatumValue>
+              <OrderDatumstyles__OrderDatumValue>
                 R ACUCENA, 0 - XANGRI LA
-              </OrderDetailsDatastyles__OrderDatumValue>
-              <OrderDetailsDatastyles__OrderDatumValue>
+              </OrderDatumstyles__OrderDatumValue>
+              <OrderDatumstyles__OrderDatumValue>
                 CONTAGEM - MG
-              </OrderDetailsDatastyles__OrderDatumValue>
-              <OrderDetailsDatastyles__OrderDatumValue>
+              </OrderDatumstyles__OrderDatumValue>
+              <OrderDatumstyles__OrderDatumValue>
                 <FormattedMessage
                   id="orderDeliveryAddressZipcode"
                   values={Object {}}
                 />
                 :
                  32187-090
-              </OrderDetailsDatastyles__OrderDatumValue>
+              </OrderDatumstyles__OrderDatumValue>
             </OrderDatum>
           </OrderDetailsDatastyles__OrderData>
         </OrderDetailsDatastyles__OrderInfosRow>
