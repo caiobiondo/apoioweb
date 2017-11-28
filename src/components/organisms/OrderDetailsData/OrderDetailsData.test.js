@@ -9,9 +9,9 @@ const setup = propOverrides => {
     {
       intl: {
         formatCurrency: value => `formatedCurrency ${value}`,
-        formatDate: value => `formatedDate ${value}`,
+        formatDate: value => `formatedDate`,
         formatNumber: value => `formatedNumber ${value}`,
-        formatTime: value => `formatedTime ${value}`,
+        formatTime: value => `formatedTime`,
       },
       data: orderData,
     },
