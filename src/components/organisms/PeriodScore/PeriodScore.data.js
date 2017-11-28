@@ -7,16 +7,10 @@ export const PeriodScoreQuery = gql`
     $commercialStructureStrategicRegionId: Int!
     $commercialStructureSalesManagementId: Int!
     $commercialStructureSectorId: Int!
-    $consultantCommercialModelId: Int!
-    $commercialStructureCountryId: Int!
-    $consultantCountryId: Int!
     $commercialStructureGroupId: Int!
   ) {
     growthStatus(
       consultantId: $consultantId
-      consultantCountryId: $consultantCountryId
-      consultantCommercialModelId: $consultantCommercialModelId
-      commercialStructureCountryId: $commercialStructureCountryId
       commercialStructureMarketManagementId: $commercialStructureMarketManagementId
       commercialStructureStrategicRegionId: $commercialStructureStrategicRegionId
       commercialStructureSalesManagementId: $commercialStructureSalesManagementId
@@ -60,9 +54,6 @@ export const PeriodScoreQueryOptions = {
         commercialStructureStrategicRegionId: props.user.estrutura.regiaoEstrategica.codigo,
         commercialStructureSalesManagementId: props.user.estrutura.gerenciaVenda.codigo,
         commercialStructureSectorId: props.user.estrutura.setor.codigo,
-        consultantCommercialModelId: 1,
-        commercialStructureCountryId: 1,
-        consultantCountryId: 1,
         commercialStructureGroupId: 0, //props.user.estrutura.grupo.codigo,
       },
     };
@@ -76,18 +67,9 @@ export const PeriodScoreQueryOptions = {
 };
 
 export const ScoreCyclesQuery = gql`
-  query ScoreCyclesQuery(
-    $consultantId: Int!
-    $consultantCommercialModelId: Int!
-    $consultantCountryId: Int!
-    $cycleStart: Int!
-    $cycleEnd: Int!
-    $cycle: Int!
-  ) {
+  query ScoreCyclesQuery($consultantId: Int!, $cycleStart: Int!, $cycleEnd: Int!, $cycle: Int!) {
     scoreCycles(
       consultantId: $consultantId
-      consultantCommercialModelId: $consultantCommercialModelId
-      consultantCountryId: $consultantCountryId
       cycleStart: $cycleStart
       cycleEnd: $cycleEnd
       cycle: $cycle
@@ -107,8 +89,6 @@ export const ScoreCyclesQueryOptions = {
       forceFetch: true,
       variables: {
         consultantId: props.user.codigo,
-        consultantCommercialModelId: 1,
-        consultantCountryId: 1,
         cycleStart: props.growthStatus.periodStartCycle,
         cycleEnd: props.growthStatus.periodEndCycle,
         cycle: props.growthStatus.cycle,
