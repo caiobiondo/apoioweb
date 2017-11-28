@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionTitle renders the section title 1`] = `
+<SectionTitlestyles__SectionTitleWrapper
+  iconName=""
+  value=""
+>
+  <Icon
+    file=""
+  />
+</SectionTitlestyles__SectionTitleWrapper>
+`;

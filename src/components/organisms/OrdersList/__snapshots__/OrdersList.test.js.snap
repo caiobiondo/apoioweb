@@ -46,7 +46,7 @@ exports[`OrdersList should render an order list 1`] = `
     isReverse={false}
     loadMore={[Function]}
     loader={
-      <styled.div>
+      <OrdersListstyles__LoadingWrapper>
         <CircularProgress
           max={100}
           min={0}
@@ -55,7 +55,7 @@ exports[`OrdersList should render an order list 1`] = `
           thickness={2}
           value={0}
         />
-      </styled.div>
+      </OrdersListstyles__LoadingWrapper>
     }
     pageStart={0}
     ref={null}
@@ -63,7 +63,7 @@ exports[`OrdersList should render an order list 1`] = `
     useCapture={false}
     useWindow={true}
   >
-    <styled.ul>
+    <OrdersListstyles__List>
       <Order
         left={
           Object {
@@ -128,7 +128,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         statusType="pending"
       />
-    </styled.ul>
+    </OrdersListstyles__List>
   </InfiniteScroll>
 </Paper>
 `;

@@ -2,6 +2,6 @@
 
 exports[`Wrapper should render a wrapper 1`] = `
 <div
-  className="sc-bdVaJa igCuui"
+  className="CustomCardSectionstyles__Wrapper-kofQWm gBBakA"
 />
 `;

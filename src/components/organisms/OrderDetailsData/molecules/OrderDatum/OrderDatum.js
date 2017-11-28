@@ -1,0 +1,49 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import {
+  OrderDatumBase,
+  OrderDatumShort,
+  OrderDatumMedium,
+  OrderDatumLong,
+} from './OrderDatum.styles';
+import {
+  OrderDatumLabel,
+  OrderDatumValue,
+} from 'components/organisms/OrderDetailsData/OrderDetailsData.styles';
+
+const OrderDatum = props => {
+  const { type, label, value, children } = props;
+
+  const OrderDatumContent = Wrapper => {
+    return (
+      <Wrapper>
+        {label && (
+          <OrderDatumLabel>
+            <FormattedMessage id={label} />
+          </OrderDatumLabel>
+        )}
+        {value ? <OrderDatumValue>{value}</OrderDatumValue> : children}
+      </Wrapper>
+    );
+  };
+
+  switch (type) {
+    case 'short':
+      return OrderDatumContent(OrderDatumShort);
+    case 'medium':
+      return OrderDatumContent(OrderDatumMedium);
+    case 'long':
+      return OrderDatumContent(OrderDatumLong);
+    default:
+      return OrderDatumContent(OrderDatumBase);
+  }
+};
+
+OrderDatum.propTypes = {
+  type: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
+export default OrderDatum;

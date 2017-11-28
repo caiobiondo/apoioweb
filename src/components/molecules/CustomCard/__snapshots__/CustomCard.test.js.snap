@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomCard should render a custom card 1`] = `
-<styled.div>
+<CustomCardstyles__Wrapper>
   <Paper
     circle={false}
     rounded={true}
@@ -17,7 +17,7 @@ exports[`CustomCard should render a custom card 1`] = `
     transitionEnabled={true}
     zDepth={1}
   >
-    <styled.div>
+    <CustomCardstyles__Content>
       <CardSection
         alignItems="center"
         justifyContent="center"
@@ -40,13 +40,13 @@ exports[`CustomCard should render a custom card 1`] = `
           text
         </CustomCardText>
       </CardSection>
-    </styled.div>
+    </CustomCardstyles__Content>
   </Paper>
-</styled.div>
+</CustomCardstyles__Wrapper>
 `;
 
 exports[`CustomCard should render a custom card with colored border 1`] = `
-<styled.div>
+<CustomCardstyles__Wrapper>
   <Paper
     circle={false}
     rounded={true}
@@ -62,10 +62,10 @@ exports[`CustomCard should render a custom card with colored border 1`] = `
     transitionEnabled={true}
     zDepth={1}
   >
-    <styled.div
+    <CustomCardstyles__Border
       color="#fff"
     />
-    <styled.div>
+    <CustomCardstyles__Content>
       <CardSection
         alignItems="center"
         justifyContent="center"
@@ -88,7 +88,7 @@ exports[`CustomCard should render a custom card with colored border 1`] = `
           text
         </CustomCardText>
       </CardSection>
-    </styled.div>
+    </CustomCardstyles__Content>
   </Paper>
-</styled.div>
+</CustomCardstyles__Wrapper>
 `;

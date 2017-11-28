@@ -1,21 +1,16 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray150, gray200, gray600, gray890, orange100 } from 'styles/colors';
-import { fs10, fs12, fs14, fs18 } from 'styles/typography';
+import { gray150, gray200, gray890, orange100 } from 'styles/colors';
+import { fs12, fs14, fs18 } from 'styles/typography';
+import { spMedium } from 'styles/spacing';
 
-export const OrderDetailsCard = styled.div`
-  > div {
-    padding: 30px;
-  }
-
-  & + & {
-    margin-top: 25px;
-  }
-`;
+export const OrderDetailsWrapper = {
+  padding: '30px',
+  marginBottom: spMedium,
+};
 
 export const OrderInfos = styled.div`
   display: flex;
-  padding-top: 36px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-direction: column;
@@ -75,75 +70,6 @@ export const OrderDataTitle = styled.div`
   margin-bottom: 26.5px;
 `;
 
-export const OrderDatum = styled.div`
-  margin-bottom: 32px;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const OrderDatumShort = OrderDatum.extend`
-  flex: 0 1 33%;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 100%;
-  }
-`;
-
-export const OrderDatumShortMedium = OrderDatumShort.extend`
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 50%;
-  }
-`;
-
-export const OrderDatumMedium = OrderDatum.extend`
-  flex: 0 1 50%;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex-basis: 100%;
-  }
-`;
-
-export const OrderDatumLong = OrderDatum.extend`
-  flex: 1 1 100%;
-`;
-
-export const OrderDatumLabel = styled.label`
-  color: ${gray200};
-  text-transform: uppercase;
-  font-size: ${fs10};
-  margin-bottom: 13.5px;
-`;
-
-export const OrderDatumValue = styled.span`
-  color: ${gray600};
-  font-size: ${fs18};
-
-  & + & {
-    margin-top: 13.5px;
-  }
-`;
-
-export const SectionTitle = styled.div`
-  display: flex;
-`;
-
-export const SectionTitleSymbol = styled.div`
-  margin-right: 20px;
-  display: inline-block;
-
-  svg {
-    fill: ${orange100};
-    height: 20px;
-    width: 20px;
-  }
-`;
-
-export const SectionTitleLabel = styled.span`
-  vertical-align: middle;
-  font-size: ${fs18};
-  color: ${gray890};
-`;
-
 export const OrderItemsInfos = styled.div`
   display: block;
 `;
@@ -176,17 +102,7 @@ export const OrderItemWrapper = styled.div`
   margin-top: 20px;
 `;
 
-export const OrderItemDatumShort = styled.div`
-  flex: 1 1 40%;
-  align-self: center;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    display: flex;
-    align-self: stretch;
-  }
-`;
-
-export const OrderItemDatumMediumLong = styled.div`
+export const OrderItemProductDataWrapper = styled.div`
   display: flex;
   flex: 1 1 60%;
   align-self: center;
@@ -196,24 +112,6 @@ export const OrderItemDatumMediumLong = styled.div`
     flex-direction: column;
     align-self: stretch;
     text-align: initial;
-  }
-`;
-
-export const OrderItemProductDatumLabel = styled.div`
-  font-size: ${fs14};
-  color: ${gray200};
-  display: none;
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex: 1 1 50%;
-    display: inline-block;
-  }
-`;
-
-export const OrderItemProductDatumValue = styled.div`
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    flex: 1 1 50%;
-    text-align: end;
   }
 `;
 
