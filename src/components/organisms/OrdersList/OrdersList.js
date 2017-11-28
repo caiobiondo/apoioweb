@@ -10,10 +10,10 @@ import { formatDate, formatCurrency } from 'locale/utils';
 import InfiniteScroll from 'react-infinite-scroller';
 
 const renderOrder = (order, intl) => {
-  const orderDate = formatDate(order.dataPedido, intl);
-  const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl);
-  const orderValue = formatCurrency(order.valor, intl);
-  const orderProfitsValue = formatCurrency(order.valorLucro, intl);
+  const orderDate = formatDate(order.dataPedido, intl, '-');
+  const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl, '-');
+  const orderValue = formatCurrency(order.valor, intl, '-');
+  const orderProfitsValue = formatCurrency(order.valorLucro, intl, '-');
   return (
     <Order
       key={order.codigoPedido}
