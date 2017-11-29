@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const OrderDetailsQuery = gql`
   query OrderDetailsQuery($orderId: Int!, $channelId: Int!, $costCenter: Int) {
-    order(id: $orderId, channelId: $channelId, costCenter: $costCenter) {
+    order(gid: $orderId, channelId: $channelId, costCenter: $costCenter) {
       codigoPedido
       ciclo
       dataPedido

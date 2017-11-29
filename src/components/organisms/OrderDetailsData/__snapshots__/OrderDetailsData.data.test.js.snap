@@ -21,7 +21,7 @@ Object {
                 "kind": "Argument",
                 "name": Object {
                   "kind": "Name",
-                  "value": "id",
+                  "value": "gid",
                 },
                 "value": Object {
                   "kind": "Variable",
@@ -714,7 +714,7 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 1264,
+    "end": 1265,
     "start": 0,
   },
 }
