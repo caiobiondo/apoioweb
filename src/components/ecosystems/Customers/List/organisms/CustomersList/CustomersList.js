@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
-import InfiniteScroll from 'react-infinite-scroller';
 
 import {
-  List,
+  CustomerName,
   LoadingWrapper,
-  scrolledContainer,
   fullContainer,
   cellStyle,
   Wrapper,
+  TableWrapper,
+  NameLabel,
+  Avatar,
 } from './CustomersList.styles';
 import { CustomersListQuery, CustomersListQueryOptions } from './CustomersList.data';
 import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
@@ -33,8 +34,19 @@ class CustomersList extends Component {
     return !loading && (!orders || orders.length === 0);
   }
 
+  renderName({ value, row }) {
+    const names = value.split(' ');
+    const initials = names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
+    return (
+      <CustomerName>
+        <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : initials}</Avatar>
+        <NameLabel>{value}</NameLabel>
+      </CustomerName>
+    );
+  }
+
   render() {
-    const { loading, customers, fetchMore, intl } = this.props;
+    const { loading, customers } = this.props;
     if (this.loading(loading, customers)) {
       return <Loading background="transparent" />;
     }
@@ -55,6 +67,9 @@ class CustomersList extends Component {
         phone: cellStyle,
         operator: cellStyle,
       },
+      renderer: {
+        name: this.renderName,
+      },
       header: {
         name: 'Nome',
         email: 'Email',
@@ -67,24 +82,11 @@ class CustomersList extends Component {
     console.log(tableData);
     return (
       <Paper style={Wrapper}>
-        <Table data={tableData} />
+        <TableWrapper>
+          <Table data={tableData} />
+        </TableWrapper>
       </Paper>
     );
-
-    // <List>{orders.map(order => renderOrder(order, intl))}</List>
-    // return (
-    //   <Wrapper>
-    //     <Paper style={scrolledContainer}>
-    //       <InfiniteScroll
-    //         loadMore={fetchMore}
-    //         hasMore={false}
-    //         loader={this.loader}
-    //       >
-    //
-    //       </InfiniteScroll>
-    //     </Paper>
-    //   </Wrapper>
-    // );
   }
 }
 

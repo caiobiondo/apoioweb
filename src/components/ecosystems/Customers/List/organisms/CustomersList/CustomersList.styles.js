@@ -11,8 +11,46 @@ export const Wrapper = {
 };
 
 export const cellStyle = {
-  padding: '30px 30px',
+  padding: '10px 30px',
+  lineHeight: '50px',
 };
+
+export const TableWrapper = styled.div`
+  tr:hover {
+    background: #f6f6f6;
+  }
+`;
+
+export const CustomerName = styled.div`
+  display: flex;
+`;
+
+export const Avatar = styled.figure`
+  display: block;
+  border-radius: 100%;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 54px;
+  color: #fff;
+  background: #f39919;
+  margin-left: 0;
+  overflow: hidden;
+  margin-right: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const NameLabel = styled.figure`
+  display: block;
+  height: 50px;
+  line-height: 54px;
+  margin-left: 0;
+  margin-right: 0;
+`;
 
 export const List = styled.ul`
   padding-left: 0;
