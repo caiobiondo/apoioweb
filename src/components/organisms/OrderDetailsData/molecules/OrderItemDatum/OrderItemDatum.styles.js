@@ -10,6 +10,7 @@ export const OrderItemDatumWrapper = styled.div`
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     display: flex;
     align-self: stretch;
+    flex-basis: auto;
   }
 `;
 

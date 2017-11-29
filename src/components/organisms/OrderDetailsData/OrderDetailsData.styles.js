@@ -92,6 +92,7 @@ export const OrderItem = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -112,27 +113,57 @@ export const OrderItemProductDataWrapper = styled.div`
     flex-direction: column;
     align-self: stretch;
     text-align: initial;
+    flex-basis: auto;
   }
 `;
 
 export const OrderItemProductDescriptionWrapper = styled.div`
   flex: 1 1 40%;
   align-self: center;
+  display: flex;
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     align-self: stretch;
+    flex-basis: auto;
+    margin-bottom: 15px;
   }
 `;
 
-export const OrderItemProductDescription = styled.div`
+export const OrderItemProductDescriptionCode = styled.div`
   font-size: ${fs14};
   color: ${gray890};
   margin-bottom: 7px;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
 `;
 
-export const OrderItemProductCode = styled.span`
+export const OrderItemProductDescription = styled.div`
+  margin-bottom: 10px;
+`;
+
+export const OrderItemProductCode = styled.div`
   font-size: ${fs12};
   color: ${gray200};
+`;
+
+export const OrderItemProductImageWrapper = styled.div`
+  margin: 0 25px 0 15px;
+
+  svg {
+    width: 50px;
+  }
+
+  img {
+    width: 75px;
+  }
+`;
+
+export const OrderItemProductImageFallback = styled.div`
+  svg {
+    fill: ${gray200};
+    width: 50px;
+  }
 `;
 
 export const OrderItemsHeader = styled.div`

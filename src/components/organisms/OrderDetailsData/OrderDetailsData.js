@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import Img from 'react-image';
 import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 import withUserData from 'hocs/withUserData/withUserData';
@@ -10,7 +11,7 @@ import SectionTitle from './molecules/SectionTitle/SectionTitle';
 import OrderDatum from './molecules/OrderDatum/OrderDatum';
 import OrderItemDatum from './molecules/OrderItemDatum/OrderItemDatum';
 
-import { Paper, Loading } from 'natura-ui';
+import { Paper, Loading, Icon } from 'natura-ui';
 import {
   OrderDetailsWrapper,
   OrderInfos,
@@ -24,10 +25,13 @@ import {
   OrderItemsHeaderProductValuesWrapper,
   OrderItemsHeaderProductValueLabel,
   OrderItem,
-  OrderItemProductDataWrapper,
+  OrderItemProductDescriptionCode,
   OrderItemProductDescription,
-  OrderItemProductDescriptionWrapper,
   OrderItemProductCode,
+  OrderItemProductDataWrapper,
+  OrderItemProductDescriptionWrapper,
+  OrderItemProductImageWrapper,
+  OrderItemProductImageFallback,
   OrderItemWrapper,
   OrderData,
 } from './OrderDetailsData.styles';
@@ -71,6 +75,26 @@ export class OrderDetailsData extends Component {
     );
   }
 
+  renderOrderItemProductImageFallback() {
+    return (
+      <OrderItemProductImageFallback>
+        <Icon file="ico_photo" />
+      </OrderItemProductImageFallback>
+    );
+  }
+
+  renderOrderItemProductImage({ codigoProduto, produto: { descricao } }) {
+    const imageUrl = `http://rede.natura.net/image/sku/145x145/${codigoProduto}_1.jpg`;
+    const fallbackImage = this.renderOrderItemProductImageFallback();
+    const loader = React.createElement(Loading);
+
+    return (
+      <OrderItemProductImageWrapper>
+        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
+      </OrderItemProductImageWrapper>
+    );
+  }
+
   renderOrderItem(orderItem, index) {
     const { intl } = this.props;
     const { produto: { descricao }, quantidadeItem, valorTotal, quantidadePontosTotal } = orderItem;
@@ -79,8 +103,11 @@ export class OrderDetailsData extends Component {
       <OrderItemWrapper key={index}>
         <OrderItem>
           <OrderItemProductDescriptionWrapper>
-            <OrderItemProductDescription>{descricao}</OrderItemProductDescription>
-            {this.renderOrderItemProductCode(orderItem)}
+            {this.renderOrderItemProductImage(orderItem)}
+            <OrderItemProductDescriptionCode>
+              <OrderItemProductDescription>{descricao}</OrderItemProductDescription>
+              {this.renderOrderItemProductCode(orderItem)}
+            </OrderItemProductDescriptionCode>
           </OrderItemProductDescriptionWrapper>
           <OrderItemProductDataWrapper>
             <OrderItemDatum label="orderItemQuantity" value={quantidadeItem} />
