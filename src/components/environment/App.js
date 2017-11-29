@@ -9,6 +9,7 @@ import Orders from 'components/ecosystems/Orders/Orders';
 import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
 import MyScore from 'components/ecosystems/MyScore';
 import CustomerDetails from 'components/ecosystems/Customers/Details';
+import CustomersList from 'components/ecosystems/Customers/List';
 import withAuthentication from 'hocs/withAuthentication';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
@@ -35,6 +36,7 @@ export default class App extends Component {
                 <Route exact path="/my-orders" component={withAuthentication(Orders)} />
                 <Route path="/my-orders/:id" component={withAuthentication(OrderDetails)} />
                 <Route path="/my-score" component={withAuthentication(MyScore)} />
+                <Route path="/customers" component={withAuthentication(CustomersList)} />
                 <Route
                   path="/my-customers/:customerId"
                   component={withAuthentication(CustomerDetails)}
