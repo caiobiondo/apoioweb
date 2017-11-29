@@ -69,8 +69,8 @@ exports[`OrdersList should render an order list 1`] = `
           Object {
             "body": Object {
               "orderCycle": "13/2017",
-              "orderDate": "formatedDate Sun Oct 08 2017 22:27:48 GMT+0000 (UTC)",
-              "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 03:00:00 GMT+0000 (UTC)",
+              "orderDate": "formatedDate Sun Oct 08 2017 19:27:48 GMT-0300 (-03)",
+              "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 00:00:00 GMT-0300 (-03)",
             },
             "header": Object {
               "orderNumber": "#311619650",
@@ -101,8 +101,8 @@ exports[`OrdersList should render an order list 1`] = `
           Object {
             "body": Object {
               "orderCycle": "13/2017",
-              "orderDate": "formatedDate Sun Oct 08 2017 22:27:48 GMT+0000 (UTC)",
-              "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 03:00:00 GMT+0000 (UTC)",
+              "orderDate": "formatedDate Sun Oct 08 2017 19:27:48 GMT-0300 (-03)",
+              "orderEstimatedDeliveryDate": "formatedDate Fri Oct 13 2017 00:00:00 GMT-0300 (-03)",
             },
             "header": Object {
               "orderNumber": "#311619651",

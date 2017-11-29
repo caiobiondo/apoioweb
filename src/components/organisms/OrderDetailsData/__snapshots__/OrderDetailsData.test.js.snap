@@ -400,25 +400,47 @@ exports[`OrderDetailsData renders order details 1`] = `
         >
           <OrderDetailsDatastyles__OrderItem>
             <OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
-              <OrderDetailsDatastyles__OrderItemProductDescription>
-                POLPA HIDRAT CORPO ANDIROBA EKOS        
-              </OrderDetailsDatastyles__OrderItemProductDescription>
-              <OrderDetailsDatastyles__OrderItemProductCode>
-                <FormattedMessage
-                  id="orderItemProductCode"
-                  values={Object {}}
+              <OrderDetailsDatastyles__OrderItemProductImageWrapper>
+                <Img
+                  decode={true}
+                  loader={
+                    <Loading
+                      background="#FFFFFF"
+                      visible={true}
+                      zIndex={9999}
+                    />
+                  }
+                  src="http://rede.natura.net/image/sku/145x145/29415_1.jpg"
+                  unloader={
+                    <OrderDetailsDatastyles__OrderItemProductImageFallback>
+                      <Icon
+                        file="ico_photo"
+                      />
+                    </OrderDetailsDatastyles__OrderItemProductImageFallback>
+                  }
                 />
-                : 
-                29415
-                 (
-                8
-                 
-                <FormattedMessage
-                  id="orderItemPoints"
-                  values={Object {}}
-                />
-                )
-              </OrderDetailsDatastyles__OrderItemProductCode>
+              </OrderDetailsDatastyles__OrderItemProductImageWrapper>
+              <OrderDetailsDatastyles__OrderItemProductDescriptionCode>
+                <OrderDetailsDatastyles__OrderItemProductDescription>
+                  POLPA HIDRAT CORPO ANDIROBA EKOS        
+                </OrderDetailsDatastyles__OrderItemProductDescription>
+                <OrderDetailsDatastyles__OrderItemProductCode>
+                  <FormattedMessage
+                    id="orderItemProductCode"
+                    values={Object {}}
+                  />
+                  : 
+                  29415
+                   (
+                  8
+                   
+                  <FormattedMessage
+                    id="orderItemPoints"
+                    values={Object {}}
+                  />
+                  )
+                </OrderDetailsDatastyles__OrderItemProductCode>
+              </OrderDetailsDatastyles__OrderItemProductDescriptionCode>
             </OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
             <OrderDetailsDatastyles__OrderItemProductDataWrapper>
               <OrderItemDatum
@@ -441,25 +463,47 @@ exports[`OrderDetailsData renders order details 1`] = `
         >
           <OrderDetailsDatastyles__OrderItem>
             <OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
-              <OrderDetailsDatastyles__OrderItemProductDescription>
-                SOU SAB BARRA CREMOSIDADE 5X90G         
-              </OrderDetailsDatastyles__OrderItemProductDescription>
-              <OrderDetailsDatastyles__OrderItemProductCode>
-                <FormattedMessage
-                  id="orderItemProductCode"
-                  values={Object {}}
+              <OrderDetailsDatastyles__OrderItemProductImageWrapper>
+                <Img
+                  decode={true}
+                  loader={
+                    <Loading
+                      background="#FFFFFF"
+                      visible={true}
+                      zIndex={9999}
+                    />
+                  }
+                  src="http://rede.natura.net/image/sku/145x145/38889_1.jpg"
+                  unloader={
+                    <OrderDetailsDatastyles__OrderItemProductImageFallback>
+                      <Icon
+                        file="ico_photo"
+                      />
+                    </OrderDetailsDatastyles__OrderItemProductImageFallback>
+                  }
                 />
-                : 
-                38889
-                 (
-                2
-                 
-                <FormattedMessage
-                  id="orderItemPoints"
-                  values={Object {}}
-                />
-                )
-              </OrderDetailsDatastyles__OrderItemProductCode>
+              </OrderDetailsDatastyles__OrderItemProductImageWrapper>
+              <OrderDetailsDatastyles__OrderItemProductDescriptionCode>
+                <OrderDetailsDatastyles__OrderItemProductDescription>
+                  SOU SAB BARRA CREMOSIDADE 5X90G         
+                </OrderDetailsDatastyles__OrderItemProductDescription>
+                <OrderDetailsDatastyles__OrderItemProductCode>
+                  <FormattedMessage
+                    id="orderItemProductCode"
+                    values={Object {}}
+                  />
+                  : 
+                  38889
+                   (
+                  2
+                   
+                  <FormattedMessage
+                    id="orderItemPoints"
+                    values={Object {}}
+                  />
+                  )
+                </OrderDetailsDatastyles__OrderItemProductCode>
+              </OrderDetailsDatastyles__OrderItemProductDescriptionCode>
             </OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
             <OrderDetailsDatastyles__OrderItemProductDataWrapper>
               <OrderItemDatum
