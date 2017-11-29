@@ -5,7 +5,7 @@ import { OrdersList } from './OrdersList';
 
 const intl = {
   formatCurrency: value => `formatedCurrency ${value}`,
-  formatDate: value => `formatedDate ${value}`,
+  formatDate: value => `formatedDate`,
   formatNumber: value => `formatedNumber ${value}`,
 };
 
