@@ -21,7 +21,7 @@ Object {
                 "kind": "Argument",
                 "name": Object {
                   "kind": "Name",
-                  "value": "gid",
+                  "value": "orderId",
                 },
                 "value": Object {
                   "kind": "Variable",
