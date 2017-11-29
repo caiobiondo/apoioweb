@@ -59,7 +59,13 @@ class PeriodScore extends Component {
       return null;
     }
 
-    return <PeriodHistory onClose={this.resetCycleSelection} />;
+    return (
+      <PeriodHistory
+        onClose={this.resetCycleSelection}
+        year={this.props.growthStatus.currentPlan.growthPlanYear}
+        cycleNumber={this.state.selectedCycleNumber}
+      />
+    );
   }
 
   renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel) {

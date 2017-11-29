@@ -28,6 +28,7 @@ export const PeriodScoreQuery = gql`
       parsedCycle
       currentPlan {
         growthPlanName
+        growthPlanYear
         levels {
           levelId
           levelName

@@ -1,7 +1,14 @@
 import React from 'react';
 import { Icon, Table } from 'natura-ui';
-import { formatCurrency } from 'locale/utils';
+import { formatCurrency, formatDate } from 'locale/utils';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { graphql, compose } from 'react-apollo';
+import {
+  DirectOrdersQuery,
+  DirectOrdersQueryOptions,
+  EcommerceOrdersQuery,
+  EcommerceOrdersQueryOptions,
+} from './PeriodHistory.data';
 
 import {
   Wrapper,
@@ -13,67 +20,73 @@ import {
   OrderHistoryPoint,
 } from './PeriodHistory.styles';
 
+const ORDER_ICONS = {
+  ecommerce: 'ico_monitor',
+  direct: 'ico_marker',
+};
+
+const buildTableBody = props => {
+  const allOrders = [...props.ecommerceOrders, ...props.directOrders];
+  return allOrders.sort((a, b) => {
+    if (a.entryOrderDate > b.entryOrderDate) {
+      return 1;
+    }
+
+    if (a.entryOrderDate < b.entryOrderDate) {
+      return -1;
+    }
+
+    return 0;
+  });
+};
+
+const getPointsFrom = orders => {
+  if (!orders) {
+    return 0;
+  }
+
+  return orders.reduce((points, order) => {
+    if (!order.totalOrderPoints) {
+      return points;
+    }
+
+    return points + order.totalOrderPoints;
+  }, 0);
+};
+
 const PeriodHistory = props => {
   const { intl } = props;
 
+  if (props.loadingDirectOrders || props.loadingEcommerceOrders) {
+    return null;
+  }
+
   const tableData = {
-    columns: ['icon', 'order', 'date', 'points', 'value'],
+    columns: ['type', 'orderNumber', 'entryOrderDate', 'totalOrderPoints', 'totalOrderValue'],
     style: {
       icon: { width: '10%' },
-      order: { width: '30%' },
-      date: { width: '28%' },
-      points: { width: '15%' },
-      value: { width: '15%', textAlign: 'right' },
+      orderNumber: { width: '30%' },
+      entryOrderDate: { width: '28%' },
+      totalOrderPoints: { width: '15%' },
+      totalOrderValue: { width: '15%', textAlign: 'right' },
     },
     renderer: {
-      icon: iconPath => (
+      type: orderType => (
         <IconWrapper>
-          <Icon file={iconPath} />
+          <Icon file={ORDER_ICONS[orderType]} />
         </IconWrapper>
       ),
-      order: value => `Pedido ${value}`,
-      date: value => `Data ${value}`,
-      points: value => `${value}pts`,
-      value: value => formatCurrency(value, intl),
+      orderNumber: value => `Pedido ${value}`,
+      entryOrderDate: value => `Data ${formatDate(value, intl)}`,
+      totalOrderPoints: value => `${value}pts`,
+      totalOrderValue: value => formatCurrency(value, intl),
     },
-    body: [
-      {
-        icon: 'ico_monitor',
-        order: '#361352429',
-        date: '24/02/2016',
-        points: '10',
-        value: '37.34',
-      },
-      {
-        icon: 'ico_marker',
-        order: '#361352428',
-        date: '25/02/2016',
-        points: '11',
-        value: '38.34',
-      },
-      {
-        icon: 'ico_monitor',
-        order: '#361352427',
-        date: '23/02/2016',
-        points: '12',
-        value: '39.34',
-      },
-      {
-        icon: 'ico_monitor',
-        order: '#361352437',
-        date: '20/02/2016',
-        points: '18',
-        value: '37.14',
-      },
-      {
-        icon: 'ico_marker',
-        order: '#361352729',
-        date: '29/02/2016',
-        points: '135',
-        value: '2038.34',
-      },
-    ],
+    body: buildTableBody(props),
   };
+
+  const ecommercePoints = getPointsFrom(props.ecommerceOrders);
+  const directPoints = getPointsFrom(props.directOrders);
+  const totalPoints = ecommercePoints + directPoints;
 
   return (
     <Wrapper>
@@ -87,17 +100,17 @@ const PeriodHistory = props => {
         <OrderHistoryPoints>
           <OrderHistoryPoint>
             <FormattedMessage id="digital" />:&nbsp;
-            <FormattedMessage id="cyclePoints" values={{ points: 900 }} />
+            <FormattedMessage id="cyclePoints" values={{ points: ecommercePoints }} />
           </OrderHistoryPoint>
 
           <OrderHistoryPoint>
             <FormattedMessage id="presential" />:&nbsp;
-            <FormattedMessage id="cyclePoints" values={{ points: 772 }} />
+            <FormattedMessage id="cyclePoints" values={{ points: directPoints }} />
           </OrderHistoryPoint>
 
           <OrderHistoryPoint>
             <FormattedMessage id="totalInCycle" />:&nbsp;
-            <FormattedMessage id="cyclePoints" values={{ points: 1672 }} />
+            <FormattedMessage id="cyclePoints" values={{ points: totalPoints }} />
           </OrderHistoryPoint>
         </OrderHistoryPoints>
       </OrderHistoryHeader>
@@ -107,4 +120,10 @@ const PeriodHistory = props => {
 };
 
 const PeriodHistoryIntl = injectIntl(PeriodHistory);
-export default PeriodHistoryIntl;
+
+const PeriodHistoryWithData = compose(
+  graphql(DirectOrdersQuery, DirectOrdersQueryOptions),
+  graphql(EcommerceOrdersQuery, EcommerceOrdersQueryOptions),
+)(PeriodHistoryIntl);
+
+export default PeriodHistoryWithData;

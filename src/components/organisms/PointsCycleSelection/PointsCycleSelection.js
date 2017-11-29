@@ -15,6 +15,7 @@ import {
   PeriodSwitcherButton,
   PeriodSwitcherStyles,
   SelectedCyclePointer,
+  SelectedCyclePointerWrapper,
   WrapperStyles,
 } from './PointsCycleSelection.styles';
 
@@ -50,7 +51,11 @@ const renderCycle = (cycle, props) => {
   }
 
   if (selectedCycleNumber === cycle.number) {
-    selectedCyclePointer = <SelectedCyclePointer />;
+    selectedCyclePointer = (
+      <SelectedCyclePointerWrapper>
+        <SelectedCyclePointer />
+      </SelectedCyclePointerWrapper>
+    );
   }
 
   return (
