@@ -4,9 +4,10 @@ import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import withUserData from 'hocs/withUserData/withUserData';
 
-import { SmallTitle, Wrapper } from './PeriodScore.styles';
+import { SmallTitle, Wrapper, PeriodTogglerWrapper } from './PeriodScore.styles';
 
 import PointsCycleSelection from 'components/organisms/PointsCycleSelection/PointsCycleSelection';
+import PeriodToggler from 'components/molecules/PeriodToggler';
 
 const ScoreCycles = props => {
   const currentCycleNumber = parseInt(props.growthStatus.parsedCycle.split('/')[0], 10);
@@ -21,6 +22,13 @@ const ScoreCycles = props => {
         <FormattedMessage id="scoreStatementInPeriod" />
       </SmallTitle>
 
+      <PeriodTogglerWrapper>
+        <PeriodToggler
+          activePeriod={props.selectedPeriod}
+          changeSelectedPeriod={props.changeSelectedPeriod}
+        />
+      </PeriodTogglerWrapper>
+
       <PointsCycleSelection
         onCycleClick={props.cycleSelected}
         startCycle={props.growthStatus.periodStartCycle}
@@ -34,10 +42,10 @@ const ScoreCycles = props => {
   );
 };
 
-export const PeriodScoreWithIntl = injectIntl(ScoreCycles);
+export const ScoreCyclesWithIntl = injectIntl(ScoreCycles);
 
-export const PeriodScoreWithScoreCycleData = graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions)(
-  PeriodScoreWithIntl,
+export const ScoreCyclesData = graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions)(
+  ScoreCyclesWithIntl,
 );
 
-export default withUserData(PeriodScoreWithScoreCycleData);
+export default withUserData(ScoreCyclesData);

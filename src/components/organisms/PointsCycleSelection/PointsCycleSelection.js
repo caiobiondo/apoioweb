@@ -11,9 +11,6 @@ import {
   IconWrapper,
   LabelsBlock,
   LineBreak,
-  PeriodSwitcherActiveButton,
-  PeriodSwitcherButton,
-  PeriodSwitcherStyles,
   SelectedCyclePointer,
   SelectedCyclePointerWrapper,
   WrapperStyles,
@@ -113,16 +110,6 @@ const PointsCycleSelection = props => {
 
   return (
     <CenterWrapper>
-      <Paper style={PeriodSwitcherStyles}>
-        <PeriodSwitcherActiveButton>
-          <FormattedMessage id="currentPeriod" />
-        </PeriodSwitcherActiveButton>
-
-        <PeriodSwitcherButton>
-          <FormattedMessage id="lastPeriod" />
-        </PeriodSwitcherButton>
-      </Paper>
-
       <Paper style={WrapperStyles}>
         <LabelsBlock>
           <FormattedMessage id="cycleLabel" />

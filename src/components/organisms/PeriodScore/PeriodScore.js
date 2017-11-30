@@ -15,8 +15,6 @@ import {
   PageTitle,
   ScoreProgressWrapper,
   ScoreStatementWrapper,
-  ScoreToNextLevelWrapper,
-  ScoreToNextLevel,
   SmallTitle,
   Wrapper,
   LevelListWrapper,
@@ -24,6 +22,7 @@ import {
 
 import ScoreStatement from 'components/molecules/ScoreStatement/ScoreStatement';
 import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
+import ScoreToNextLevel from 'components/atoms/ScoreToNextLevel';
 
 import GrowthStatus from './GrowthStatus';
 import PeriodHistory from '../PeriodHistory/PeriodHistory';
@@ -39,7 +38,14 @@ class PeriodScore extends Component {
     this.cycleSelected = this.cycleSelected.bind(this);
     this.renderPeriodHistory = this.renderPeriodHistory.bind(this);
     this.resetCycleSelection = this.resetCycleSelection.bind(this);
-    this.state = {};
+    this.changeSelectedPeriod = this.changeSelectedPeriod.bind(this);
+    this.state = {
+      selectedPeriod: 'current',
+    };
+  }
+
+  changeSelectedPeriod(period) {
+    this.setState({ selectedPeriod: period });
   }
 
   cycleSelected(cycle) {
@@ -75,16 +81,7 @@ class PeriodScore extends Component {
 
     const pointsToNextLevel = GrowthStatus.getPointsToNextLevel(growthStatus, currentLevel);
 
-    return (
-      <ScoreToNextLevelWrapper>
-        <ScoreToNextLevel>
-          <FormattedMessage
-            id="pointsToNextLevel"
-            values={{ points: <b>{pointsToNextLevel}</b>, nextLevelName: nextLevel.text }}
-          />
-        </ScoreToNextLevel>
-      </ScoreToNextLevelWrapper>
-    );
+    return <ScoreToNextLevel points={pointsToNextLevel} nextLevelName={nextLevel.text} />;
   }
 
   renderCycles(currentLevel) {
@@ -94,6 +91,8 @@ class PeriodScore extends Component {
         currentLevel={currentLevel}
         selectedCycleNumber={this.state.selectedCycleNumber}
         cycleSelected={this.cycleSelected}
+        changeSelectedPeriod={this.changeSelectedPeriod}
+        selectedPeriod={this.state.selectedPeriod}
       />
     );
   }
