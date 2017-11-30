@@ -148,13 +148,13 @@ export const OrderItemProductCode = styled.div`
 `;
 
 export const OrderItemProductImageWrapper = styled.div`
-  margin: 0 25px 0 15px;
-
   svg {
+    margin: 0 35px 0 30px;
     width: 50px;
   }
 
   img {
+    margin: 0 25px 0 15px;
     width: 75px;
   }
 `;
