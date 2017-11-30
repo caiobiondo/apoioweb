@@ -46,8 +46,20 @@ export const BarSeparator = styled.div`
   width: 42px;
 `;
 
+export const LevelListWrapper = styled.div`
+  margin-top: 20px;
+  position: absolute;
+  right: -70px;
+  display: none;
+`;
+
 export const ScoreProgressWrapper = styled.div`
   margin-top: 53px;
+  position: relative;
+
+  &:hover ${LevelListWrapper} {
+    display: block;
+  }
 `;
 
 export const ScoreStatementWrapper = styled.div`

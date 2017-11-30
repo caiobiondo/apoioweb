@@ -23,5 +23,7 @@ export default {
     digital: 'Digital',
     presential: 'Presencial',
     totalInCycle: 'Total no ciclo',
+    levelRange: '{start} - {end}',
+    pointsFrom: 'a partir de {points}',
   },
 };

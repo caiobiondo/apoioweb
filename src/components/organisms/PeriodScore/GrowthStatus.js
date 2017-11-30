@@ -1,3 +1,6 @@
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 const parseLevel = level => {
   if (!level) {
     return {};
@@ -25,22 +28,22 @@ const growthStatusHasLevelData = growthStatus => {
   );
 };
 
-const getLastLevel = (growthStatus, currentLevel) => {
+const getPreviousLevel = (growthStatus, currentLevel) => {
   const currentLevelSequence = currentLevel.sequence;
-  let lastLevelSequence;
-  let lastLevel;
+  let previousLevelSequence;
+  let previousLevel;
 
   for (const level of growthStatus.currentPlan.levels) {
     if (
-      (!lastLevelSequence && level.levelSequence < currentLevelSequence) ||
-      (level.levelSequence > lastLevelSequence && level.levelSequence < currentLevelSequence)
+      (!previousLevelSequence && level.levelSequence < currentLevelSequence) ||
+      (level.levelSequence > previousLevelSequence && level.levelSequence < currentLevelSequence)
     ) {
-      lastLevel = level;
-      lastLevelSequence = level.levelSequence;
+      previousLevel = level;
+      previousLevelSequence = level.levelSequence;
     }
   }
 
-  return parseLevel(lastLevel);
+  return parseLevel(previousLevel);
 };
 
 const getNextLevel = (growthStatus, currentLevel) => {
@@ -78,10 +81,44 @@ const getPointsToNextLevel = (growthStatus, currentLevel) => {
   return currentLevel.points - growthStatus.periodTotalPoints;
 };
 
+const parseAllLevels = growthStatus => {
+  const levels = [];
+
+  const numberOfLevels = growthStatus.currentPlan.levels.length;
+  for (const level of growthStatus.currentPlan.levels) {
+    const parsedLevel = parseLevel(level);
+    if (level.levelSequence === numberOfLevels) {
+      parsedLevel.pointsText = (
+        <FormattedMessage
+          id="pointsFrom"
+          values={{
+            points: level.levelPointsRangeStart,
+          }}
+        />
+      );
+    } else {
+      parsedLevel.pointsText = (
+        <FormattedMessage
+          id="levelRange"
+          values={{
+            start: level.levelPointsRangeStart || 0,
+            end: level.levelPointsRangeEnd,
+          }}
+        />
+      );
+    }
+
+    levels.push(parsedLevel);
+  }
+
+  return levels;
+};
+
 export default {
   parseLevel,
+  parseAllLevels,
   growthStatusHasLevelData,
-  getLastLevel,
+  getPreviousLevel,
   getNextLevel,
   getCurrentLevel,
   getPointsToNextLevel,
