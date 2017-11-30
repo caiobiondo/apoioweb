@@ -11,7 +11,7 @@ export const Wrapper = {
 };
 
 export const cellStyle = {
-  padding: '10px 30px',
+  padding: '0px 30px',
   lineHeight: '50px',
 };
 
@@ -30,6 +30,7 @@ export const Avatar = styled.figure`
   border-radius: 100%;
   text-align: center;
   width: 50px;
+  min-width: 50px;
   height: 50px;
   line-height: 54px;
   color: #fff;

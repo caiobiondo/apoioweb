@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
+import Checkbox from '../../molecules/Checkbox';
 
 import {
   CustomerName,
@@ -19,11 +20,48 @@ import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
 class CustomersList extends Component {
   constructor(props) {
     super(props);
+
     this.loader = (
       <LoadingWrapper>
         <CircularProgress thickness={2} />
       </LoadingWrapper>
     );
+
+    this.renderName = this.renderName.bind(this);
+    this.renderSelect = this.renderSelect.bind(this);
+    this.selectCustomer = this.selectCustomer.bind(this);
+
+    this.state = {
+      data: {
+        columns: ['select', 'name', 'email', 'phone', 'operator'],
+        style: {
+          select: {
+            width: '5%',
+            ...cellStyle,
+          },
+          name: cellStyle,
+          email: cellStyle,
+          phone: cellStyle,
+          operator: cellStyle,
+        },
+        renderer: {
+          name: this.renderName,
+          select: this.renderSelect,
+        },
+        header: {
+          name: 'NOME',
+          email: 'EMAIL',
+          phone: 'TELEFONE',
+          operator: 'OPERADORA',
+        },
+      },
+      selectedCustomers: [],
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const data = { ...this.state.data, body: nextProps.customers };
+    this.setState({ data });
   }
 
   loading(loading, orders) {
@@ -32,6 +70,20 @@ class CustomersList extends Component {
 
   empty(loading, orders) {
     return !loading && (!orders || orders.length === 0);
+  }
+
+  selectCustomer(selectedCustomer) {
+    let selectedCustomers = [];
+    if (this.state.selectedCustomers.filter(c => c.code === selectedCustomer.code).length) {
+      selectedCustomers = this.state.selectedCustomers.filter(
+        c => c.code !== selectedCustomer.code,
+      );
+      this.props.select(selectedCustomers);
+      return this.setState({ selectedCustomers });
+    }
+    selectedCustomers = [...this.state.selectedCustomers, selectedCustomer];
+    this.props.select(selectedCustomers);
+    this.setState({ selectedCustomers });
   }
 
   renderName({ value, row }) {
@@ -45,8 +97,22 @@ class CustomersList extends Component {
     );
   }
 
+  renderSelect({ row }) {
+    const isSelected = this.state.selectedCustomers.filter(customer => customer.code === row.code);
+
+    if (true) {
+      return (
+        <div onClick={() => this.selectCustomer(row)}>
+          <Checkbox checked={isSelected.length} />
+        </div>
+      );
+    }
+  }
+
   render() {
     const { loading, customers } = this.props;
+    const { data } = this.state;
+
     if (this.loading(loading, customers)) {
       return <Loading background="transparent" />;
     }
@@ -59,31 +125,10 @@ class CustomersList extends Component {
       );
     }
 
-    const tableData = {
-      columns: ['name', 'email', 'phone', 'operator'],
-      style: {
-        name: cellStyle,
-        email: cellStyle,
-        phone: cellStyle,
-        operator: cellStyle,
-      },
-      renderer: {
-        name: this.renderName,
-      },
-      header: {
-        name: 'Nome',
-        email: 'Email',
-        phone: 'Telefone',
-        operator: 'Operadore',
-      },
-      body: customers,
-    };
-
-    console.log(tableData);
     return (
       <Paper style={Wrapper}>
         <TableWrapper>
-          <Table data={tableData} />
+          <Table data={data} />
         </TableWrapper>
       </Paper>
     );
