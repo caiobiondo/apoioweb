@@ -195,7 +195,7 @@ export class OrderDetailsData extends Component {
         <OrderData>
           <OrderDatum type="short" label="orderNumber" value={codigoPedido} />
           <OrderDatum type="short" label="orderCycle" value={ciclo} />
-          <OrderDatum type="short" label="orderData" value={formatDate(dataPedido, intl, '-')} />
+          <OrderDatum type="short" label="orderDate" value={formatDate(dataPedido, intl, '-')} />
           <OrderDatum type="long" label="orderStatus" value={status} />
           <OrderDatum type="short" label="orderItemsQuantity" value={quantidadeItens} />
           <OrderDatum type="short" label="orderTotalScore" value={pontos} />
