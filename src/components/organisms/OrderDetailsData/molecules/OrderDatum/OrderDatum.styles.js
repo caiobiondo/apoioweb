@@ -7,6 +7,8 @@ export const OrderDatumBase = styled.div`
   margin-bottom: 32px;
   display: flex;
   flex-direction: column;
+
+  flex: 0 1 auto;
 `;
 
 export const OrderDatumShort = OrderDatumBase.extend`
