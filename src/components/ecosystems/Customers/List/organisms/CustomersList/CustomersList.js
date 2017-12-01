@@ -39,7 +39,10 @@ class CustomersList extends Component {
             width: '5%',
             ...cellStyle,
           },
-          name: cellStyle,
+          name: {
+            color: '#222',
+            ...cellStyle,
+          },
           email: cellStyle,
           phone: cellStyle,
           operator: cellStyle,
@@ -102,7 +105,10 @@ class CustomersList extends Component {
 
     if (true) {
       return (
-        <div onClick={() => this.selectCustomer(row)}>
+        <div
+          className={isSelected.length ? 'is-selected' : ''}
+          onClick={() => this.selectCustomer(row)}
+        >
           <Checkbox checked={isSelected.length} />
         </div>
       );
@@ -110,7 +116,7 @@ class CustomersList extends Component {
   }
 
   render() {
-    const { loading, customers } = this.props;
+    const { loading, customers, selected } = this.props;
     const { data } = this.state;
 
     if (this.loading(loading, customers)) {

@@ -16,7 +16,26 @@ export const cellStyle = {
 };
 
 export const TableWrapper = styled.div`
+  table tr td:first-child div {
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+
+  tr {
+    transition: all 0.2s ease;
+    background: #ffffff;
+
+    td:first-child .is-selected,
+    td:first-child .is-selected * {
+      opacity: 1;
+    }
+  }
+
   tr:hover {
+    td:first-child div {
+      opacity: 1;
+    }
+
     background: #f6f6f6;
   }
 `;
