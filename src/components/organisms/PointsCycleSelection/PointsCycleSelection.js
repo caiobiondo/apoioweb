@@ -16,8 +16,8 @@ import {
   WrapperStyles,
 } from './PointsCycleSelection.styles';
 
-const getCycleText = (cycleNumber, currentCycleNumber, points) => {
-  if (cycleNumber === currentCycleNumber) {
+const getCycleText = (cycleNumber, currentCycleNumber, points, currentPeriodSelected) => {
+  if (cycleNumber === currentCycleNumber && currentPeriodSelected) {
     return <FormattedMessage id="current" />;
   }
 
@@ -25,8 +25,8 @@ const getCycleText = (cycleNumber, currentCycleNumber, points) => {
 };
 
 const renderCycle = (cycle, props) => {
-  const { currentCycleNumber, currentLevelColor, onCycleClick, selectedCycleNumber } = props;
   let icon, color, background, selectedCyclePointer;
+  const currentPeriodSelected = props.selectedPeriod === 'current';
 
   if (cycle.points > 0) {
     color = '#66a944';
@@ -35,9 +35,9 @@ const renderCycle = (cycle, props) => {
         <Icon file="ico_check" />
       </IconWrapper>
     );
-  } else if (cycle.number == currentCycleNumber) {
+  } else if (cycle.number == props.currentCycleNumber && currentPeriodSelected) {
     color = '#fff';
-    background = currentLevelColor;
+    background = props.currentLevelColor;
   } else if (cycle.points === 0) {
     color = '#e03726';
     icon = (
@@ -47,7 +47,7 @@ const renderCycle = (cycle, props) => {
     );
   }
 
-  if (selectedCycleNumber === cycle.number) {
+  if (props.selectedCycleNumber === cycle.number) {
     selectedCyclePointer = (
       <SelectedCyclePointerWrapper>
         <SelectedCyclePointer />
@@ -57,7 +57,7 @@ const renderCycle = (cycle, props) => {
 
   return (
     <CycleButton
-      onClick={() => onCycleClick(cycle)}
+      onClick={() => props.onCycleClick(cycle)}
       key={cycle.number}
       color={color}
       background={background}
@@ -75,6 +75,7 @@ const renderCycle = (cycle, props) => {
 
 const getCycles = props => {
   const { startCycle, endCycle, currentCycleNumber, scoreCycles } = props;
+  const currentPeriodSelected = props.selectedPeriod === 'current';
   const range = [...Array(endCycle).keys()];
   let cycles = range.reduce((cycles, cycleNumber) => {
     cycleNumber += 1;
@@ -94,7 +95,7 @@ const getCycles = props => {
     const points = cycle.vl_score;
     cycles[cycle.nm_cycle] = {
       number: cycle.nm_cycle,
-      text: getCycleText(cycle.nm_cycle, currentCycleNumber, points),
+      text: getCycleText(cycle.nm_cycle, currentCycleNumber, points, currentPeriodSelected),
       points,
     };
   });

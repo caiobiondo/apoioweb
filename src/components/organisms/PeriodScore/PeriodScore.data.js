@@ -85,13 +85,19 @@ export const ScoreCyclesQuery = gql`
 
 export const ScoreCyclesQueryOptions = {
   options(props) {
+    let cycle = props.growthStatus.cycle;
+
+    if (props.selectedPeriod === 'last') {
+      cycle = props.previousPeriod.start;
+    }
+
     return {
       forceFetch: true,
       variables: {
         consultantId: props.user.codigo,
         cycleStart: props.growthStatus.periodStartCycle,
         cycleEnd: props.growthStatus.periodEndCycle,
-        cycle: props.growthStatus.cycle,
+        cycle: cycle,
       },
     };
   },
@@ -99,6 +105,32 @@ export const ScoreCyclesQueryOptions = {
     return {
       loadingCycles: loading,
       scoreCycles,
+    };
+  },
+};
+
+export const PreviousPeriodQuery = gql`
+  query PreviousPeriodQuery($cycle: String!) {
+    previousPeriod(cycle: $cycle) {
+      start
+      year
+    }
+  }
+`;
+
+export const PreviousPeriodQueryOptions = {
+  options(props) {
+    return {
+      forceFetch: true,
+      variables: {
+        cycle: props.growthStatus.cycle,
+      },
+    };
+  },
+  props({ data: { loading, previousPeriod } }) {
+    return {
+      loadingPreviousPeriod: loading,
+      previousPeriod,
     };
   },
 };

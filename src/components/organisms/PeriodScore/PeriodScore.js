@@ -25,7 +25,6 @@ import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
 import ScoreToNextLevel from 'components/atoms/ScoreToNextLevel';
 
 import GrowthStatus from './GrowthStatus';
-import PeriodHistory from '../PeriodHistory/PeriodHistory';
 import ScoreCycles from './ScoreCycles';
 
 class PeriodScore extends Component {
@@ -36,9 +35,9 @@ class PeriodScore extends Component {
     this.renderScoreToNextLevelMessage = this.renderScoreToNextLevelMessage.bind(this);
     this.isOnLastLevel = this.isOnLastLevel.bind(this);
     this.cycleSelected = this.cycleSelected.bind(this);
-    this.renderPeriodHistory = this.renderPeriodHistory.bind(this);
     this.resetCycleSelection = this.resetCycleSelection.bind(this);
     this.changeSelectedPeriod = this.changeSelectedPeriod.bind(this);
+
     this.state = {
       selectedPeriod: 'current',
     };
@@ -46,6 +45,7 @@ class PeriodScore extends Component {
 
   changeSelectedPeriod(period) {
     this.setState({ selectedPeriod: period });
+    this.resetCycleSelection();
   }
 
   cycleSelected(cycle) {
@@ -58,20 +58,6 @@ class PeriodScore extends Component {
 
   isOnLastLevel(currentLevel, nextLevel) {
     return !nextLevel || !nextLevel.id || currentLevel.id === nextLevel.id;
-  }
-
-  renderPeriodHistory() {
-    if (!this.state.selectedCycleNumber) {
-      return null;
-    }
-
-    return (
-      <PeriodHistory
-        onClose={this.resetCycleSelection}
-        year={this.props.growthStatus.currentPlan.growthPlanYear}
-        cycleNumber={this.state.selectedCycleNumber}
-      />
-    );
   }
 
   renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel) {
@@ -87,6 +73,7 @@ class PeriodScore extends Component {
   renderCycles(currentLevel) {
     return (
       <ScoreCycles
+        key={this.state.selectedPeriod}
         growthStatus={this.props.growthStatus}
         currentLevel={currentLevel}
         selectedCycleNumber={this.state.selectedCycleNumber}
@@ -161,7 +148,6 @@ class PeriodScore extends Component {
         <ContentWrapper>
           {this.renderScore(currentLevel)}
           {this.renderCycles(currentLevel)}
-          {this.renderPeriodHistory()}
         </ContentWrapper>
       </Wrapper>
     );

@@ -1,18 +1,44 @@
 import React from 'react';
-import { ScoreCyclesQuery, ScoreCyclesQueryOptions } from './PeriodScore.data';
-import { graphql } from 'react-apollo';
+import {
+  ScoreCyclesQuery,
+  ScoreCyclesQueryOptions,
+  PreviousPeriodQuery,
+  PreviousPeriodQueryOptions,
+} from './PeriodScore.data';
+import { graphql, compose } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import withUserData from 'hocs/withUserData/withUserData';
+import PeriodHistory from '../PeriodHistory/PeriodHistory';
 
 import { SmallTitle, Wrapper, PeriodTogglerWrapper } from './PeriodScore.styles';
 
 import PointsCycleSelection from 'components/organisms/PointsCycleSelection/PointsCycleSelection';
 import PeriodToggler from 'components/molecules/PeriodToggler';
 
+const renderPeriodHistory = props => {
+  if (!props.selectedCycleNumber) {
+    return null;
+  }
+
+  let periodHistoryYear = props.growthStatus.currentPlan.growthPlanYear;
+
+  if (props.selectedPeriod !== 'current') {
+    periodHistoryYear = props.previousPeriod.year;
+  }
+
+  return (
+    <PeriodHistory
+      onClose={() => props.cycleSelected(null)}
+      year={periodHistoryYear}
+      cycleNumber={props.selectedCycleNumber}
+    />
+  );
+};
+
 const ScoreCycles = props => {
   const currentCycleNumber = parseInt(props.growthStatus.parsedCycle.split('/')[0], 10);
 
-  if (props.loadingCycles) {
+  if (props.loadingCycles || props.loadingPreviousPeriod) {
     return null;
   }
 
@@ -37,15 +63,19 @@ const ScoreCycles = props => {
         currentLevelColor={props.currentLevel.color}
         scoreCycles={props.scoreCycles.totalScore}
         selectedCycleNumber={props.selectedCycleNumber}
+        selectedPeriod={props.selectedPeriod}
       />
+
+      {renderPeriodHistory(props)}
     </Wrapper>
   );
 };
 
 export const ScoreCyclesWithIntl = injectIntl(ScoreCycles);
 
-export const ScoreCyclesData = graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions)(
-  ScoreCyclesWithIntl,
-);
+export const ScoreCyclesData = compose(
+  graphql(PreviousPeriodQuery, PreviousPeriodQueryOptions),
+  graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions),
+)(ScoreCyclesWithIntl);
 
 export default withUserData(ScoreCyclesData);
