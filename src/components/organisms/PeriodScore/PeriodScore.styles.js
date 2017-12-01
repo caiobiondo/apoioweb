@@ -28,17 +28,6 @@ export const SmallTitle = styled.h3`
 `;
 
 export const Explanation = styled.div``;
-export const ScoreToNextLevelWrapper = styled.div`
-  text-align: center;
-  margin-top: 30px;
-`;
-
-export const ScoreToNextLevel = styled.span`
-  border: 1px solid #707070;
-  padding: 4px 10px;
-  font-family: Roboto-Regular;
-  font-size: 10px;
-`;
 
 export const BarSeparator = styled.div`
   border: 2.5px solid ${props => props.color};
@@ -80,6 +69,10 @@ export const ContentWrapper = styled.div`
   width: 85%;
   margin: 0 auto;
   margin-bottom: 20px;
+`;
+
+export const PeriodTogglerWrapper = styled.div`
+  text-align: center;
 `;
 
 export const Switcher = styled.div``;

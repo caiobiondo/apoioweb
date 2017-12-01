@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 
-export const CenterWrapper = styled.div`
-  text-align: center;
+export const WrapperStyles = {
+  borderRadius: '10px',
+  color: 'rgba(84, 84, 84, 0.4)',
+  height: '30px',
+  display: 'inline-block',
+  marginTop: '27px',
+  marginBottom: '45px',
+};
+
+export const Button = styled.a`
+  font-size: 13.3px;
+  line-height: 30px;
+  display: inline-block;
+  width: 133px;
+  font-family: Lato-Regular;
+  border-radius: 10px;
+  cursor: pointer;
 `;
 
-export const Wrapper = styled.div`
-  text-align: center;
-  padding: 9px 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
-  width: auto;
-  display: inline-block;
-  font-family: Lato-Regular;
-  height: 71px;
+export const ActiveButton = Button.extend`
+  background-color: #444;
+  color: #fff;
 `;
