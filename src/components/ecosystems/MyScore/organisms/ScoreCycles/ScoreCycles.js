@@ -4,16 +4,17 @@ import {
   ScoreCyclesQueryOptions,
   PreviousPeriodQuery,
   PreviousPeriodQueryOptions,
-} from './PeriodScore.data';
+} from './ScoreCycles.data';
 import { graphql, compose } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import withUserData from 'hocs/withUserData/withUserData';
 import PeriodHistory from '../PeriodHistory/PeriodHistory';
 
-import { SmallTitle, Wrapper, PeriodTogglerWrapper } from './PeriodScore.styles';
+import { SmallTitle, PeriodTogglerWrapper } from '../MyScore/MyScore.styles';
+import { Wrapper } from './ScoreCycles.styles';
 
-import PointsCycleSelection from 'components/organisms/PointsCycleSelection/PointsCycleSelection';
-import PeriodToggler from 'components/molecules/PeriodToggler';
+import PointsCycleSelection from '../PointsCycleSelection';
+import PeriodToggler from '../../molecules/PeriodToggler';
 
 const renderPeriodHistory = props => {
   if (!props.selectedCycleNumber) {

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`MyScore should render the my score page 1`] = `
-<MyScorestyles__Wrapper>
-  <Apollo(WithUserDataComponent) />
-</MyScorestyles__Wrapper>
-`;

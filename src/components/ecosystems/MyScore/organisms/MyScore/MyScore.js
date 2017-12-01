@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Loading } from 'natura-ui';
-import { PeriodScoreQuery, PeriodScoreQueryOptions } from './PeriodScore.data';
+import { MyScoreQuery, MyScoreQueryOptions } from './MyScore.data';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import withUserData from 'hocs/withUserData/withUserData';
-import LevelList from 'components/atoms/LevelList';
+import LevelList from '../../atoms/LevelList';
 
 import {
   BarSeparator,
@@ -18,16 +18,16 @@ import {
   SmallTitle,
   Wrapper,
   LevelListWrapper,
-} from './PeriodScore.styles';
+} from './MyScore.styles';
 
-import ScoreStatement from 'components/molecules/ScoreStatement/ScoreStatement';
-import ScoreProgress from 'components/molecules/ScoreProgress/ScoreProgress';
-import ScoreToNextLevel from 'components/atoms/ScoreToNextLevel';
+import ScoreStatement from '../../molecules/ScoreStatement/ScoreStatement';
+import ScoreProgress from '../../molecules/ScoreProgress/ScoreProgress';
+import ScoreToNextLevel from '../../atoms/ScoreToNextLevel';
 
 import GrowthStatus from './GrowthStatus';
-import ScoreCycles from './ScoreCycles';
+import ScoreCycles from '../ScoreCycles';
 
-class PeriodScore extends Component {
+class MyScore extends Component {
   constructor(props) {
     super(props);
     this.renderScore = this.renderScore.bind(this);
@@ -154,10 +154,8 @@ class PeriodScore extends Component {
   }
 }
 
-export const PeriodScoreWithIntl = injectIntl(PeriodScore);
+export const MyScoreWithIntl = injectIntl(MyScore);
 
-export const PeriodScoreWithPeriodScoreData = graphql(PeriodScoreQuery, PeriodScoreQueryOptions)(
-  PeriodScoreWithIntl,
-);
+export const MyScoreWithData = graphql(MyScoreQuery, MyScoreQueryOptions)(MyScoreWithIntl);
 
-export default withUserData(PeriodScoreWithPeriodScoreData);
+export default withUserData(MyScoreWithData);
