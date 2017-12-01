@@ -4,6 +4,7 @@ import { PeriodScoreQuery, PeriodScoreQueryOptions } from './PeriodScore.data';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import withUserData from 'hocs/withUserData/withUserData';
+import LevelList from 'components/atoms/LevelList';
 
 import {
   BarSeparator,
@@ -18,6 +19,7 @@ import {
   ScoreToNextLevel,
   SmallTitle,
   Wrapper,
+  LevelListWrapper,
 } from './PeriodScore.styles';
 
 import ScoreStatement from 'components/molecules/ScoreStatement/ScoreStatement';
@@ -93,9 +95,9 @@ class PeriodScore extends Component {
   renderScore(currentLevel) {
     const { growthStatus } = this.props;
 
-    const lastLevel = GrowthStatus.getLastLevel(growthStatus, currentLevel);
+    const previousLevel = GrowthStatus.getPreviousLevel(growthStatus, currentLevel);
     const nextLevel = GrowthStatus.getNextLevel(growthStatus, currentLevel);
-
+    const allLevels = GrowthStatus.parseAllLevels(growthStatus);
     return (
       <Wrapper>
         <BigTitle>
@@ -107,9 +109,12 @@ class PeriodScore extends Component {
             currentPoints={this.props.growthStatus.periodTotalPoints}
             currentLevel={currentLevel}
             nextLevel={nextLevel}
-            lastLevel={lastLevel}
+            previousLevel={previousLevel}
             isOnLastLevel={this.isOnLastLevel(currentLevel, nextLevel)}
           />
+          <LevelListWrapper>
+            <LevelList levels={allLevels} />
+          </LevelListWrapper>
         </ScoreProgressWrapper>
 
         {this.renderScoreToNextLevelMessage(growthStatus, currentLevel, nextLevel)}

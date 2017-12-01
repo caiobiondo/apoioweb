@@ -16,7 +16,7 @@ const getCurrentPointsPercentage = (currentPoints, currentLevel) => {
 };
 
 const ScoreProgress = props => {
-  const { currentLevel, lastLevel, nextLevel, currentPoints, isOnLastLevel } = props;
+  const { currentLevel, previousLevel, nextLevel, currentPoints, isOnLastLevel } = props;
 
   if (isOnLastLevel) {
     currentLevel.points = null;
@@ -25,7 +25,7 @@ const ScoreProgress = props => {
   return (
     <LevelProgressBar
       currentLevel={currentLevel}
-      lastLevel={lastLevel}
+      previousLevel={previousLevel}
       nextLevel={nextLevel}
       sliderText={getSliderText(currentPoints)}
       sliderTextColor={'#fff'}
