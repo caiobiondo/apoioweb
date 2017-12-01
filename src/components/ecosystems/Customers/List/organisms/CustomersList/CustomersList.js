@@ -29,7 +29,9 @@ class CustomersList extends Component {
 
     this.renderName = this.renderName.bind(this);
     this.renderSelect = this.renderSelect.bind(this);
+    this.renderSelectAll = this.renderSelectAll.bind(this);
     this.selectCustomer = this.selectCustomer.bind(this);
+    this.selectAllCustomers = this.selectAllCustomers.bind(this);
 
     this.state = {
       data: {
@@ -50,6 +52,9 @@ class CustomersList extends Component {
         renderer: {
           name: this.renderName,
           select: this.renderSelect,
+          thead: {
+            select: this.renderSelectAll,
+          },
         },
         header: {
           name: 'NOME',
@@ -77,13 +82,14 @@ class CustomersList extends Component {
 
   selectCustomer(selectedCustomer) {
     let selectedCustomers = [];
-    if (this.state.selectedCustomers.filter(c => c.code === selectedCustomer.code).length) {
+    if (this.state.selectedCustomers.find(customer => customer.code === selectedCustomer.code)) {
       selectedCustomers = this.state.selectedCustomers.filter(
         c => c.code !== selectedCustomer.code,
       );
       this.props.select(selectedCustomers);
       return this.setState({ selectedCustomers });
     }
+
     selectedCustomers = [...this.state.selectedCustomers, selectedCustomer];
     this.props.select(selectedCustomers);
     this.setState({ selectedCustomers });
@@ -101,22 +107,39 @@ class CustomersList extends Component {
   }
 
   renderSelect({ row }) {
-    const isSelected = this.state.selectedCustomers.filter(customer => customer.code === row.code);
+    const isSelected = this.state.selectedCustomers.find(customer => customer.code === row.code);
 
     if (true) {
       return (
-        <div
-          className={isSelected.length ? 'is-selected' : ''}
-          onClick={() => this.selectCustomer(row)}
-        >
-          <Checkbox checked={isSelected.length} />
+        <div className={isSelected ? 'is-selected' : ''} onClick={() => this.selectCustomer(row)}>
+          <Checkbox checked={isSelected} />
         </div>
       );
     }
   }
 
+  selectAllCustomers() {
+    const { customers } = this.props;
+    const { selectedCustomers } = this.state;
+
+    if (selectedCustomers.length === customers.length) {
+      this.props.select([]);
+      return this.setState({ selectedCustomers: [] });
+    }
+    this.props.select(customers);
+    this.setState({ selectedCustomers: customers });
+  }
+
+  renderSelectAll() {
+    return (
+      <div onClick={() => this.selectAllCustomers()}>
+        <Checkbox />
+      </div>
+    );
+  }
+
   render() {
-    const { loading, customers, selected } = this.props;
+    const { loading, customers } = this.props;
     const { data } = this.state;
 
     if (this.loading(loading, customers)) {
