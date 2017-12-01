@@ -2,7 +2,12 @@ import styled from 'styled-components';
 
 const grayTitleColor = '#545454';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+`;
 
 export const PageTitle = styled.h1`
   color: #f3971f;
