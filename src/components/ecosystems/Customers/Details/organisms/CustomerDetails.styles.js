@@ -40,6 +40,10 @@ export const CustomerAvatar = styled.div`
   margin-right: 45px;
 `;
 
+export const CustomerAvatarStyle = {
+  backgroundColor: orange100,
+};
+
 export const CustomerDataWrapper = styled.div`
   flex: 1 1 auto;
 `;

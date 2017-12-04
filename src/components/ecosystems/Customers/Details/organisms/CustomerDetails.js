@@ -11,6 +11,7 @@ import {
   CustomerDetailsSectionTitleWrapper,
   CustomerAvatarWrapper,
   CustomerAvatar,
+  CustomerAvatarStyle,
   CustomerDataWrapper,
   CustomerData,
   CustomerName,
@@ -48,7 +49,9 @@ export class CustomerDetails extends Component {
         <CustomerDetailsData>
           <CustomerAvatarWrapper>
             <CustomerAvatar>
-              <Avatar size="120">JV</Avatar>
+              <Avatar size="120" style={CustomerAvatarStyle}>
+                JV
+              </Avatar>
             </CustomerAvatar>
           </CustomerAvatarWrapper>
           <CustomerDataWrapper>
