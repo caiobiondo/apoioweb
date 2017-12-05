@@ -15,6 +15,8 @@ export const cellStyle = {
 };
 
 export const TableWrapper = styled.div`
+  padding: 0px 20px;
+
   table tr td:first-child div {
     opacity: 0;
     transition: all 0.2s ease;

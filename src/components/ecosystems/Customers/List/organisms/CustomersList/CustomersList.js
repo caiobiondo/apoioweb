@@ -38,7 +38,7 @@ class CustomersList extends Component {
         columns: ['select', 'name', 'email', 'phone', 'operator'],
         style: {
           select: {
-            width: '5%',
+            width: '6%',
             ...cellStyle,
           },
           name: {
