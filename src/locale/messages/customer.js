@@ -5,10 +5,14 @@ export default {
     customerAddress: 'Endereço',
     customerBirthdate: 'Data de nascimento',
     customerFullName: 'Nome completo',
-    customerGenre: 'Gênero',
+    customerGender: 'Gênero',
     customerNotes: 'Notas',
     customerOtherTelephoneNumbers: 'Outros telefones',
     customerProfile: 'Perfil do Cliente',
+    gender: {
+      male: 'Masculino',
+      female: 'Feminino',
+    },
   },
 };
 /* eslint-disable sort-keys */

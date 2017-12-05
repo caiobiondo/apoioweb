@@ -31,7 +31,10 @@ export default class App extends Component {
                 <Route exact path="/my-orders" component={withAuthentication(Orders)} />
                 <Route path="/my-orders/:id" component={withAuthentication(OrderDetails)} />
                 <Route path="/my-score" component={withAuthentication(MyScore)} />
-                <Route path="/customers/:id" component={withAuthentication(CustomerDetails)} />
+                <Route
+                  path="/customers/:customerId"
+                  component={withAuthentication(CustomerDetails)}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>

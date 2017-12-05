@@ -2,9 +2,17 @@ import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { gray150, gray200, gray700, gray890, orange100 } from 'styles/colors';
 import { fs10, fs16, fs32, NaturaBold, RobotoRegular } from 'styles/typography';
-import { spMedium } from 'styles/spacing';
+import { spMedium, spPage } from 'styles/spacing';
 
-import { SectionTitleWrapper } from 'components/organisms/OrderDetailsData/molecules/SectionTitle';
+import { SectionTitleWrapper } from 'components/molecules/SectionTitle/SectionTitle.styles';
+
+export const Main = styled.div`
+  margin: ${spMedium} ${spPage} ${spMedium} ${spMedium};
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    margin: ${spMedium} 0;
+  }
+`;
 
 export const CustomerDetailsWrapper = {
   padding: '30px',
@@ -19,7 +27,7 @@ export const CustomerDetailsSectionTitleWrapper = styled.div`
 
 export const CustomerDetailsData = styled.div`
   display: flex;
-  margin: 0 128px 72px 128px;
+  margin: 0 100px 72px 100px;
   font-family: ${RobotoRegular};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
@@ -34,10 +42,12 @@ export const CustomerDetailsData = styled.div`
 
 export const CustomerAvatarWrapper = styled.div`
   flex: 0 1 auto;
-`;
-
-export const CustomerAvatar = styled.div`
   margin-right: 45px;
+
+  > div {
+    width: 115px;
+    height: 115px;
+  }
 `;
 
 export const CustomerAvatarStyle = {
