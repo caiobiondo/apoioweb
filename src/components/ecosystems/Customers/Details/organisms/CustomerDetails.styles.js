@@ -61,6 +61,7 @@ export const CustomerData = styled.div`
 
   &:first-of-type {
     margin: 20px 0;
+    justify-content: flex-start;
   }
 
   &:first-of-type + & {
