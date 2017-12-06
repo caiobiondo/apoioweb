@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { gray700, gray150 } from 'styles/colors';
-import { fs18, fs28, fw700, fw900, RobotoRegular } from 'styles/typography';
+import { fs18, fs28, fw900, RobotoRegular } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
 
 export const Container = styled.div`
