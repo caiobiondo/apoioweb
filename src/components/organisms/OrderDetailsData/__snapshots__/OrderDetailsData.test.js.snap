@@ -37,7 +37,7 @@ exports[`OrderDetailsData renders order details 1`] = `
               value="14/2017"
             />
             <OrderDatum
-              label="orderData"
+              label="orderDate"
               type="short"
               value="formatedDate"
             />
