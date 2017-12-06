@@ -10,12 +10,15 @@ export const Wrapper = {
 };
 
 export const cellStyle = {
-  padding: '0px 30px',
+  padding: '0px 20px',
   lineHeight: '50px',
+  color: '#c0c0c0',
+  fontSize: '15px',
+  fontFamily: 'Roboto',
 };
 
 export const TableWrapper = styled.div`
-  padding: 0px 20px;
+  padding: 20px 20px;
 
   table tr td:first-child div {
     opacity: 0;
@@ -32,7 +35,13 @@ export const TableWrapper = styled.div`
     }
   }
 
-  tr:hover {
+  thead tr th {
+    color: #c0c0c0 !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+  }
+
+  tbody tr:hover {
     td:first-child div {
       opacity: 1;
     }

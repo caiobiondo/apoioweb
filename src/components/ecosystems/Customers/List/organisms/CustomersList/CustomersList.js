@@ -38,12 +38,14 @@ class CustomersList extends Component {
         columns: ['select', 'name', 'email', 'phone', 'operator'],
         style: {
           select: {
-            width: '6%',
+            width: '1px',
             ...cellStyle,
           },
           name: {
-            color: '#222',
             ...cellStyle,
+            color: '#222',
+            fontSize: '17px',
+            fontWeight: '500',
           },
           email: cellStyle,
           phone: cellStyle,

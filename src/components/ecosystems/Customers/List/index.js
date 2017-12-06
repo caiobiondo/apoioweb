@@ -3,20 +3,22 @@ import CustomersList from './organisms/CustomersList';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { Main, OrderAddButtonContainer } from './index.styles';
+import { Main, OrderAddButtonContainer, Bold } from './index.styles';
 
 class CustomersListWrapper extends Component {
   constructor(props) {
     super(props);
     this.selectCustomer = this.selectCustomer.bind(this);
+    this.removeCustomerModal = this.removeCustomerModal.bind(this);
     this.removeCustomer = this.removeCustomer.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.onCloseModal = this.onCloseModal.bind(this);
   }
 
   state = {
     empty: false,
     isCustomerSelected: false,
     customersSelected: [],
+    open: false,
   };
 
   onLoadFinished = (empty, loading) => {
@@ -27,39 +29,52 @@ class CustomersListWrapper extends Component {
     this.setState({ isCustomerSelected: customers.length, customersSelected: customers });
   }
 
-  removeCustomer() {
-    if (this.state.isCustomerSelected) this.setState({ open: true });
+  removeCustomerModal() {
+    const { isCustomerSelected } = this.state;
+    if (isCustomerSelected) this.setState({ open: true });
   }
 
-  handleClose() {
+  removeCustomer() {
+    const { customersSelected } = this.state;
     this.setState({ open: false });
+    console.log(customersSelected);
+  }
+
+  onCloseModal() {
+    this.setState({ open: false });
+  }
+
+  renderSelectedCustomers() {
+    const { customersSelected } = this.state;
+    return customersSelected.map(cutomer => `${cutomer.name}, `);
   }
 
   render() {
     const { loading, isCustomerSelected } = this.state;
     const actions = [
-      <FlatButton label="Cancel" primary={true} onClick={this.handleClose} />,
+      <FlatButton label="Cancelar" primary={true} onClick={this.onCloseModal} />,
       <FlatButton
-        label="Submit"
+        label="Deletar"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.removeCustomer}
       />,
     ];
     return (
       <Main loading={loading}>
         <OrderAddButtonContainer remove={isCustomerSelected}>
-          <CustomerButton action={this.removeCustomer} remove={isCustomerSelected} />
+          <CustomerButton action={this.removeCustomerModal} remove={isCustomerSelected} />
         </OrderAddButtonContainer>
         <CustomersList select={this.selectCustomer} />
         <Dialog
-          title="Dialog With Actions"
+          title="Excluir Cliente?"
           actions={actions}
           modal={false}
           open={this.state.open}
-          onRequestClose={this.handleClose}
+          onRequestClose={this.removeCustomer}
         >
-          The actions in this window were passed in as an array of React objects.
+          Tem certeza que deseja deletar <Bold>{this.renderSelectedCustomers()}</Bold> da sua lista
+          lista de clientes?
         </Dialog>
       </Main>
     );
