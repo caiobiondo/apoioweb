@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { gray700, gray150 } from 'styles/colors';
-import { fs18, fs28, fw700, NaturaBold, RobotoRegular } from 'styles/typography';
+import { fs18, fs28, fw900, RobotoRegular } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
 
 export const Container = styled.div`
@@ -26,9 +26,8 @@ export const IconWrapper = styled.div`
 export const Title = styled.div`
   color: ${gray700};
   opacity: 0.8;
-  font-family: ${NaturaBold};
   font-size: ${fs28};
-  font-weight: ${fw700};
+  font-weight: ${fw900};
   padding-bottom: ${spMedium};
 `;
 
