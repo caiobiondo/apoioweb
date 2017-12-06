@@ -147,7 +147,8 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "resolver": "<rootDir>/config/jest/directoryNamedResolve.js"
   },
   "babel": {
     "presets": [
