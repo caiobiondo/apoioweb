@@ -82,7 +82,7 @@ export class CustomerDetails extends Component {
           </CustomerDetailsSectionTitleWrapper>
           <CustomerDetailsData>
             <CustomerAvatarWrapper>
-              <Avatar style={CustomerAvatarStyle}>
+              <Avatar size={115} style={CustomerAvatarStyle}>
                 {customer.name
                   .replace(/[^a-zA-Z- ]/g, '')
                   .match(/\b\w/g)

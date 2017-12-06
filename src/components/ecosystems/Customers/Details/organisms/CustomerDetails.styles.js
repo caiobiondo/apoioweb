@@ -43,11 +43,6 @@ export const CustomerDetailsData = styled.div`
 export const CustomerAvatarWrapper = styled.div`
   flex: 0 1 auto;
   margin-right: 45px;
-
-  > div {
-    width: 115px;
-    height: 115px;
-  }
 `;
 
 export const CustomerAvatarStyle = {
