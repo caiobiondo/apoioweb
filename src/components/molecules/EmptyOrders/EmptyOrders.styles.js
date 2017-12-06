@@ -37,4 +37,5 @@ export const Description = styled.div`
   opacity: 0.8;
   font-family: ${RobotoRegular};
   font-size: ${fs18};
+  text-align: center;
 `;
