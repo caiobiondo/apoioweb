@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { fs14 } from 'styles/typography';
 import { gray200 } from 'styles/colors';
+import { spSmall } from 'styles/spacing';
 
 export const OrderItemDatumWrapper = styled.div`
   flex: 1 1 40%;
@@ -11,6 +12,7 @@ export const OrderItemDatumWrapper = styled.div`
     display: flex;
     align-self: stretch;
     flex-basis: auto;
+    padding: ${spSmall};
   }
 `;
 
