@@ -21,21 +21,37 @@ import {
   CustomerDatumHalfWrapper,
   CustomerDataTelephones,
   CustomerDataAddresses,
+  CustomerDatumAddress,
 } from './CustomerDetails.styles';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import CustomerDatum from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum';
-import {
-  CustomerDatumLabel,
-  CustomerDatumValue,
-} from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum.styles';
+import { CustomerDatumValue } from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum.styles';
 
 import { Paper, Loading } from 'natura-ui';
 import { Avatar } from 'material-ui';
 
 export class CustomerDetails extends Component {
-  renderPhone({ phone, provider }) {
+  renderAddresses(addresses) {
+    if (!addresses) return null;
+
+    return addresses.map((address, index) => {
+      return this.renderAddress(address, index);
+    });
+  }
+
+  renderAddress(address, index) {
     return (
-      <CustomerDatumTelephone>
+      <CustomerDatumAddress key={index}>
+        <CustomerDatumValue>{this.renderStreetName(address)}</CustomerDatumValue>
+        <CustomerDatumValue>{this.renderNeighborhoodZipcode(address)}</CustomerDatumValue>
+        <CustomerDatumValue>{this.renderCityState(address)}</CustomerDatumValue>
+      </CustomerDatumAddress>
+    );
+  }
+
+  renderPhone({ phone, provider }, index) {
+    return (
+      <CustomerDatumTelephone key={index}>
         <CustomerDatumTelephoneNumber>{phone}</CustomerDatumTelephoneNumber>
         <CustomerDatumTelephoneProvider>{provider}</CustomerDatumTelephoneProvider>
       </CustomerDatumTelephone>
@@ -43,8 +59,8 @@ export class CustomerDetails extends Component {
   }
 
   renderPhones(phones) {
-    return phones.map(phone => {
-      return this.renderPhone(phone);
+    return phones.map((phone, index) => {
+      return this.renderPhone(phone, index);
     });
   }
 
@@ -74,6 +90,14 @@ export class CustomerDetails extends Component {
       gender = <FormattedMessage id={`gender.${customer.gender}`} />;
     }
 
+    const nameInitials = customer.name
+      .replace(/[^a-zA-Z- ]/g, '')
+      .match(/\b\w/g)
+      .join('');
+    const email = customer.emails && customer.emails[0] && customer.emails[0].email;
+    const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
+    const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
+
     return (
       <Main>
         <Paper style={CustomerDetailsWrapper}>
@@ -83,24 +107,15 @@ export class CustomerDetails extends Component {
           <CustomerDetailsData>
             <CustomerAvatarWrapper>
               <Avatar size={115} style={CustomerAvatarStyle}>
-                {customer.name
-                  .replace(/[^a-zA-Z- ]/g, '')
-                  .match(/\b\w/g)
-                  .join('')}
+                {nameInitials}
               </Avatar>
             </CustomerAvatarWrapper>
             <CustomerDataWrapper>
               <CustomerData primary>
                 <CustomerName>{customer.name}</CustomerName>
-                <CustomerDatumValue>
-                  {customer.emails && customer.emails[0] && customer.emails[0].email}
-                </CustomerDatumValue>
-                <CustomerDatumValue>
-                  {customer.phones && customer.phones[0] && customer.phones[0].phone}
-                </CustomerDatumValue>
-                <CustomerDatumValue>
-                  {customer.phones && customer.phones[0] && customer.phones[0].provider}
-                </CustomerDatumValue>
+                <CustomerDatumValue>{email}</CustomerDatumValue>
+                <CustomerDatumValue>{phone}</CustomerDatumValue>
+                <CustomerDatumValue>{phoneProvider}</CustomerDatumValue>
               </CustomerData>
               <CustomerData secondary>
                 <CustomerDatum label="customerFullName" value={customer.name} />
@@ -123,21 +138,7 @@ export class CustomerDetails extends Component {
                   <CustomerDataTitle>
                     <FormattedMessage id="customerAddress" />
                   </CustomerDataTitle>
-                  <CustomerDatumValue>
-                    {customer.addresses &&
-                      customer.addresses[0] &&
-                      this.renderStreetName(customer.addresses[0])}
-                  </CustomerDatumValue>
-                  <CustomerDatumValue>
-                    {customer.addresses &&
-                      customer.addresses[0] &&
-                      this.renderNeighborhoodZipcode(customer.addresses[0])}
-                  </CustomerDatumValue>
-                  <CustomerDatumValue>
-                    {customer.addresses &&
-                      customer.addresses[0] &&
-                      this.renderCityState(customer.addresses[0])}
-                  </CustomerDatumValue>
+                  {this.renderAddresses(customer.addresses)}
                 </CustomerDataAddresses>
               </CustomerData>
               <CustomerData secondary>

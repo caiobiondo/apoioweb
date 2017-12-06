@@ -21,5 +21,5 @@ export const CustomerDatumValue = styled.div`
   font-size: ${fs16};
 
   flex: 1 1 auto;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `;

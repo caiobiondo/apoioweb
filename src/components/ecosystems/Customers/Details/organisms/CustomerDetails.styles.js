@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray150, gray200, gray700, gray890, orange100 } from 'styles/colors';
-import { fs10, fs16, fs32, NaturaBold, RobotoRegular } from 'styles/typography';
+import { gray150, gray700, gray890, orange100 } from 'styles/colors';
+import { fs16, fs32, NaturaBold, RobotoRegular } from 'styles/typography';
 import { spMedium, spPage } from 'styles/spacing';
 
 import { SectionTitleWrapper } from 'components/molecules/SectionTitle/SectionTitle.styles';
@@ -125,6 +125,12 @@ export const CustomerDataAddresses = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-basis: auto;
+  }
+`;
+
+export const CustomerDatumAddress = styled.div`
+  & + & {
+    margin-top: 20px;
   }
 `;
 

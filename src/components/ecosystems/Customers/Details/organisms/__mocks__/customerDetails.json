@@ -1,0 +1,31 @@
+{
+  "customer": {
+    "id": 50221,
+    "nickname": "teste vizir",
+    "name": "teste vizir",
+    "gender": "",
+    "comment": "",
+    "emails": [
+      {
+        "email": "fellipe@vizir.com.br"
+      }
+    ],
+    "phones": [
+      {
+        "phone": "1133313433",
+        "provider": "TIM"
+      }
+    ],
+    "addresses": [
+      {
+        "additional_address": "",
+        "city": "BARUERI",
+        "neighborhood": "JARDIM TUPANCI",
+        "street_name": "R WERNER GOLDBERG",
+        "street_number": "222",
+        "state": "SP",
+        "zipcode": "06414-025"
+      }
+    ]
+  }
+}
