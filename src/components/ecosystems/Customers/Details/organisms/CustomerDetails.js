@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { formatDate } from 'locale/utils';
@@ -13,7 +14,9 @@ import {
   CustomerAvatarStyle,
   CustomerDataWrapper,
   CustomerData,
+  CustomerNameWrapper,
   CustomerName,
+  CustomerEditWrapper,
   CustomerDataTitle,
   CustomerDatumTelephoneNumber,
   CustomerDatumTelephoneProvider,
@@ -27,7 +30,7 @@ import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import CustomerDatum from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum';
 import { CustomerDatumValue } from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum.styles';
 
-import { Paper, Loading } from 'natura-ui';
+import { Paper, Loading, Icon } from 'natura-ui';
 import { Avatar } from 'material-ui';
 
 export class CustomerDetails extends Component {
@@ -97,6 +100,7 @@ export class CustomerDetails extends Component {
     const email = customer.emails && customer.emails[0] && customer.emails[0].email;
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
+    const profileEditUrl = `/customers/${customer.id}/edit`;
 
     return (
       <Main>
@@ -112,7 +116,14 @@ export class CustomerDetails extends Component {
             </CustomerAvatarWrapper>
             <CustomerDataWrapper>
               <CustomerData primary>
-                <CustomerName>{customer.name}</CustomerName>
+                <CustomerNameWrapper>
+                  <CustomerName>{customer.name}</CustomerName>
+                  <CustomerEditWrapper>
+                    <Link to={profileEditUrl}>
+                      <Icon file="ico_pencil" />
+                    </Link>
+                  </CustomerEditWrapper>
+                </CustomerNameWrapper>
                 <CustomerDatumValue>{email}</CustomerDatumValue>
                 <CustomerDatumValue>{phone}</CustomerDatumValue>
                 <CustomerDatumValue>{phoneProvider}</CustomerDatumValue>
