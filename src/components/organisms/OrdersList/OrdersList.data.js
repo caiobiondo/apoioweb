@@ -37,15 +37,15 @@ export const OrdersListQueryOptions = {
       forceFetch: true,
     };
   },
-  props({ data: { loading, orders, fetchMore, error } }) {
+  props({ data }) {
     return {
-      error,
-      loading: loading,
-      orders: orders,
+      data,
+      loading: data.loading,
+      orders: data.orders,
       fetchMore() {
-        return fetchMore({
+        return data.fetchMore({
           variables: {
-            offset: orders.length,
+            offset: data.orders.length,
           },
           updateQuery: updateQuery,
         });

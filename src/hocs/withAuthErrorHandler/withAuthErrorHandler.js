@@ -3,8 +3,8 @@ import React, { PureComponent } from 'react';
 export const WithAuthErrorHandler = Component => {
   return class WithAuthErrorHandlerComponent extends PureComponent {
     render() {
-      const { error } = this.props;
-      if (error && error.toString().includes('#REDIRECT_TO_LOGIN#')) {
+      const { data } = this.props;
+      if (data.error && data.error.toString().includes('#REDIRECT_TO_LOGIN#')) {
         localStorage.clear();
         window.location.href = '/login';
         return;

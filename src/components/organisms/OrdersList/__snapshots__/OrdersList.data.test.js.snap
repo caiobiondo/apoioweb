@@ -215,7 +215,11 @@ Object {
 
 exports[`OrdersListQuery should be the correct query props 1`] = `
 Object {
-  "error": undefined,
+  "data": Object {
+    "fetchMore": [Function],
+    "loading": true,
+    "orders": Array [],
+  },
   "fetchMore": [Function],
   "loading": true,
   "orders": Array [],
