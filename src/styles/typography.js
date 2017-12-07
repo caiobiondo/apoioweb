@@ -13,12 +13,15 @@ export const fw900 = '900';
 export const fs10 = '10px';
 export const fs12 = '12px';
 export const fs14 = '14px';
+export const fs16 = '16px';
 export const fs18 = '18px';
 export const fs28 = '28px';
+export const fs32 = '32px';
 
 //
 // Font Families
 //
 
 export const NaturaBold = 'NaturaSans-Bold';
+export const NaturaRegular = 'NaturaSans-Regular';
 export const RobotoRegular = 'Roboto-Regular';

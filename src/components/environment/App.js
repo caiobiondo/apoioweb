@@ -3,11 +3,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from 'infra/ApolloClientCreator';
-import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY } from 'config';
+import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY, CNO_TOKEN_LOCAL_STORAGE_KEY } from 'config';
 
 import Orders from 'components/ecosystems/Orders/Orders';
 import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
 import MyScore from 'components/ecosystems/MyScore';
+import CustomerDetails from 'components/ecosystems/Customers/Details';
 import withAuthentication from 'hocs/withAuthentication';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
@@ -17,7 +18,11 @@ import { locale, flattenMessages, messages } from 'locale/index';
 setupGlobals();
 setupFonts();
 
-const client = new ApolloClientCreator(GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY).create();
+const client = new ApolloClientCreator(
+  GRAPHQL_URI,
+  ACCESS_TOKEN_LOCAL_STORAGE_KEY,
+  CNO_TOKEN_LOCAL_STORAGE_KEY,
+).create();
 
 export default class App extends Component {
   render() {
@@ -30,6 +35,10 @@ export default class App extends Component {
                 <Route exact path="/my-orders" component={withAuthentication(Orders)} />
                 <Route path="/my-orders/:id" component={withAuthentication(OrderDetails)} />
                 <Route path="/my-score" component={withAuthentication(MyScore)} />
+                <Route
+                  path="/customers/:customerId"
+                  component={withAuthentication(CustomerDetails)}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>

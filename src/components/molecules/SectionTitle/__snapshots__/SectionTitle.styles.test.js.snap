@@ -40,7 +40,7 @@ exports[`SectionTitle styles renders SectionTitle with default values 1`] = `
 .c0 svg {
   margin-right: 20px;
   display: inline-block;
-  fill: #f4a652;
+  fill: #f3971f;
   height: 20px;
   width: 20px;
 }
@@ -65,7 +65,7 @@ exports[`SectionTitle styles renders SectionTitleWrapper 1`] = `
 .c0 svg {
   margin-right: 20px;
   display: inline-block;
-  fill: #f4a652;
+  fill: #f3971f;
   height: 20px;
   width: 20px;
 }

@@ -13,4 +13,4 @@ export const gray700 = '#777777';
 export const gray890 = '#333333';
 export const gray900 = '#222222';
 
-export const orange100 = '#f4a652';
+export const orange100 = '#f3971f';

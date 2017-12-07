@@ -7,7 +7,7 @@ import { formatDate, formatTime, formatCurrency } from 'locale/utils';
 import withUserData from 'hocs/withUserData/withUserData';
 import { orange100 } from 'styles/colors';
 
-import SectionTitle from './molecules/SectionTitle/SectionTitle';
+import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import OrderDatum from './molecules/OrderDatum/OrderDatum';
 import OrderItemDatum from './molecules/OrderItemDatum/OrderItemDatum';
 
