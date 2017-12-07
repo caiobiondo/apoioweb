@@ -9,11 +9,26 @@ import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 class RemoveCustomerButton extends Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps);
+    const customersIdToBeRemoved = nextProps.selected.map(({ id }) => id);
     if (nextProps.selected.length) {
-      this.props.mutate({
-        variables: { input: { ids: nextProps.selected.map(({ id }) => id) } },
-        refetchQueries: [{ query: CustomersListQuery }],
-      });
+      this.props
+        .mutate({
+          variables: { input: { ids: customersIdToBeRemoved } },
+          optimisticResponse: {
+            removeCustomers: { ids: customersIdToBeRemoved },
+          },
+          update: (store, { data: { removeCustomers } }) => {
+            const data = store.readQuery({ query: CustomersListQuery });
+            data.customers = data.customers.filter(
+              ({ id }) => !customersIdToBeRemoved.includes(id),
+            );
+            store.writeQuery({ query: CustomersListQuery, data });
+          },
+          // refetchQueries: [{ query: CustomersListQuery }],
+        })
+        .then(() => {
+          console.log('uhul!');
+        });
     }
   }
 
