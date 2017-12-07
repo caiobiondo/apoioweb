@@ -37,9 +37,21 @@ exports[`CustomerDetails renders customer details 1`] = `
         <CustomerDetailsstyles__CustomerData
           primary={true}
         >
-          <CustomerDetailsstyles__CustomerName>
-            teste vizir
-          </CustomerDetailsstyles__CustomerName>
+          <CustomerDetailsstyles__CustomerNameWrapper>
+            <CustomerDetailsstyles__CustomerName>
+              teste vizir
+            </CustomerDetailsstyles__CustomerName>
+            <CustomerDetailsstyles__CustomerEditWrapper>
+              <Link
+                replace={false}
+                to="/customers/50221/edit"
+              >
+                <Icon
+                  file="ico_pencil"
+                />
+              </Link>
+            </CustomerDetailsstyles__CustomerEditWrapper>
+          </CustomerDetailsstyles__CustomerNameWrapper>
           <CustomerDatumstyles__CustomerDatumValue>
             fellipe@vizir.com.br
           </CustomerDatumstyles__CustomerDatumValue>
