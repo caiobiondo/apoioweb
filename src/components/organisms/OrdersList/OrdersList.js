@@ -95,6 +95,4 @@ export const OrdersListWithAuthErrorHandler = withAuthErrorHandler(OrdersList);
 
 export const OrdersListWithIntl = injectIntl(OrdersListWithAuthErrorHandler);
 
-// export const OrdersListWithIntl = injectIntl(OrdersList);
-
 export default graphql(OrdersListQuery, OrdersListQueryOptions)(OrdersListWithIntl);
