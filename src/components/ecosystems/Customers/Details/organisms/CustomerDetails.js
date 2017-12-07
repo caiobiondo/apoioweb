@@ -100,6 +100,7 @@ export class CustomerDetails extends Component {
     const email = customer.emails && customer.emails[0] && customer.emails[0].email;
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
+    const profileEditUrl = `/customers/${customer.id}/edit`;
 
     return (
       <Main>
@@ -118,7 +119,7 @@ export class CustomerDetails extends Component {
                 <CustomerNameWrapper>
                   <CustomerName>{customer.name}</CustomerName>
                   <CustomerEditWrapper>
-                    <Link to={`/customers/${customer.id}/edit`}>
+                    <Link to={profileEditUrl}>
                       <Icon file="ico_pencil" />
                     </Link>
                   </CustomerEditWrapper>
