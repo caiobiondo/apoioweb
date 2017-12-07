@@ -8,6 +8,7 @@ import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
 import InfiniteScroll from 'react-infinite-scroller';
+import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 
 const renderOrder = (order, intl) => {
   const orderDate = formatDate(order.dataPedido, intl, '-');
@@ -90,6 +91,8 @@ export class OrdersList extends Component {
   }
 }
 
-export const OrdersListWithIntl = injectIntl(OrdersList);
+export const OrdersListWithAuthErrorHandler = withAuthErrorHandler(OrdersList);
+
+export const OrdersListWithIntl = injectIntl(OrdersListWithAuthErrorHandler);
 
 export default graphql(OrdersListQuery, OrdersListQueryOptions)(OrdersListWithIntl);
