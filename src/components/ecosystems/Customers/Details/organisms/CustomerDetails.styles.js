@@ -78,16 +78,31 @@ export const CustomerData = styled.div`
   }
 `;
 
-export const CustomerName = styled.div`
+export const CustomerNameWrapper = styled.div`
   font-family: ${NaturaBold};
   font-size: ${fs32};
   color: ${gray890};
   margin-bottom: 10px;
 
   flex: 1 1 100%;
+  display: flex;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-basis: auto;
+  }
+`;
+
+export const CustomerName = styled.div`
+  flex: 0 1 auto;
+  margin-right: 15px;
+`;
+
+export const CustomerEditWrapper = styled.div`
+  flex: 0 1 auto;
+
+  svg {
+    fill: ${gray890};
+    width: 13px;
   }
 `;
 
