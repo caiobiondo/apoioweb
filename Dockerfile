@@ -1,18 +1,5 @@
-FROM node:8.9
+FROM registrynatura.azurecr.io/nginx-front
+MAINTAINER Infra Digital Natura <infradigital@natura.net>
 
-WORKDIR /app
-
-COPY natura-ui-key /tmp/natura-ui-key
-COPY ssh_config /etc/ssh/ssh_config
-RUN chmod 400 /tmp/natura-ui-key
-
-COPY package.json .
-COPY package-lock.json .
-
-RUN npm install
-COPY . /app
-
-RUN npm run build
-RUN npm run transpile
-
-CMD ["npm", "run", "start:prod"]
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY build /usr/share/nginx/html

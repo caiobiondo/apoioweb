@@ -16,7 +16,7 @@ jobs:
             - node_modules
       - run:
           name: Build
-          command: cp .env.prod .env && npm run build
+          command: npm run build:staging
       - run:
           name: Install react-deploy-s3
           command: sudo npm i -g react-deploy-s3
