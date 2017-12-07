@@ -84,7 +84,8 @@ export const Avatar = styled.figure`
   width: 50px;
   min-width: 50px;
   height: 50px;
-  line-height: 54px;
+  line-height: 50px;
+  font-size: 17px;
   color: #fff;
   background: #f39919;
   margin-left: 0;

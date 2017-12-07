@@ -70,31 +70,42 @@ class CustomersList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const data = { ...this.state.data, body: nextProps.customers };
-    this.setState({ data });
+
+    const { customers } = nextProps.data;
+    const { data } = this.state;
+
+    const parsedCutomers = customers.map(customer => ({
+      id: customer.id,
+      name: customer.name,
+      email: customer.emails && customer.emails[0].email,
+      phone: customer.phones && customer.phones[0].phone,
+      operator: customer.phones && customer.phones[0].phone,
+      avatar: '',
+    }));
+
+    this.setState({ data: { ...data, body: parsedCutomers } });
   }
 
-  loading(loading, orders) {
+  isLoading(loading, orders) {
     return loading && !orders;
   }
 
-  empty(loading, orders) {
+  isEmpty(loading, orders) {
     return !loading && (!orders || orders.length === 0);
   }
 
-  selectCustomer(selectedCustomer) {
-    let selectedCustomers = [];
-    if (this.state.selectedCustomers.find(customer => customer.code === selectedCustomer.code)) {
-      selectedCustomers = this.state.selectedCustomers.filter(
-        c => c.code !== selectedCustomer.code,
-      );
-      this.props.select(selectedCustomers);
-      return this.setState({ selectedCustomers });
+
+  selectCustomer(customer) {
+    const { selectedCustomers } = this.state;
+    const newSelected = selectedCustomers.filter(({ id }) => id !== customer.id);
+
+    if (newSelected.length !== selectedCustomers.length) {
+      this.props.select(newSelected);
+      return this.setState({ selectedCustomers: newSelected });
     }
 
-    selectedCustomers = [...this.state.selectedCustomers, selectedCustomer];
-    this.props.select(selectedCustomers);
-    this.setState({ selectedCustomers });
+    this.props.select([...selectedCustomers, customer]);
+    this.setState({ selectedCustomers: [...selectedCustomers, customer] });
   }
 
   renderName({ value, row }) {
@@ -109,27 +120,26 @@ class CustomersList extends Component {
   }
 
   renderSelect({ row }) {
-    const isSelected = this.state.selectedCustomers.find(customer => customer.code === row.code);
-
-    if (true) {
-      return (
-        <div className={isSelected ? 'is-selected' : ''} onClick={() => this.selectCustomer(row)}>
-          <Checkbox checked={isSelected} />
-        </div>
-      );
-    }
+    const isSelected = this.state.selectedCustomers.find(custmr => custmr.id === row.id);
+    return (
+      <div className={isSelected ? 'is-selected' : ''} onClick={() => this.selectCustomer(row)}>
+        <Checkbox checked={isSelected} />
+      </div>
+    );
   }
 
   selectAllCustomers() {
-    const { customers } = this.props;
+    const { select } = this.props;
+    const { customers } = this.props.data;
     const { selectedCustomers } = this.state;
 
     if (selectedCustomers.length === customers.length) {
-      this.props.select([]);
-      return this.setState({ selectedCustomers: [] });
+      this.setState({ selectedCustomers: [] });
+      return select([]);
     }
-    this.props.select(customers);
+
     this.setState({ selectedCustomers: customers });
+    return select(customers);
   }
 
   renderSelectAll() {
@@ -141,14 +151,15 @@ class CustomersList extends Component {
   }
 
   render() {
-    const { loading, customers } = this.props;
+    const { isLoading, isEmpty } = this;
+    const { loading, customers } = this.props.data;
     const { data } = this.state;
 
-    if (this.loading(loading, customers)) {
+    if (isLoading(loading, customers)) {
       return <Loading background="transparent" />;
     }
 
-    if (this.empty(loading, customers)) {
+    if (isEmpty(loading, customers)) {
       return (
         <Paper style={fullContainer}>
           <EmptyCustomers />
@@ -167,5 +178,4 @@ class CustomersList extends Component {
 }
 
 export const CustomersListWithIntl = injectIntl(CustomersList);
-
-export default graphql(CustomersListQuery, CustomersListQueryOptions)(CustomersListWithIntl);
+export default graphql(CustomersListQuery)(CustomersListWithIntl);
