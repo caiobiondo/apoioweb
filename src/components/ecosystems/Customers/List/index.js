@@ -3,7 +3,8 @@ import CustomersList from './organisms/CustomersList';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { Main, OrderAddButtonContainer, Bold } from './index.styles';
+import { Main, Bold } from './index.styles';
+import RemoveCustomerButton from './organisms/RemoveCustomerButton';
 
 class CustomersListWrapper extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class CustomersListWrapper extends Component {
   removeCustomer() {
     const { customersSelected } = this.state;
     this.setState({ open: false });
-    console.log(customersSelected);
+    // console.log(customersSelected);
   }
 
   onCloseModal() {
@@ -50,7 +51,7 @@ class CustomersListWrapper extends Component {
   }
 
   render() {
-    const { loading, isCustomerSelected } = this.state;
+    const { loading, isCustomerSelected, customersSelected } = this.state;
     const actions = [
       <FlatButton label="Cancelar" primary={true} onClick={this.onCloseModal} />,
       <FlatButton
@@ -62,9 +63,9 @@ class CustomersListWrapper extends Component {
     ];
     return (
       <Main loading={loading}>
-        <OrderAddButtonContainer remove={isCustomerSelected}>
+        <RemoveCustomerButton selected={customersSelected} remove={isCustomerSelected}>
           <CustomerButton action={this.removeCustomerModal} remove={isCustomerSelected} />
-        </OrderAddButtonContainer>
+        </RemoveCustomerButton>
         <CustomersList select={this.selectCustomer} />
         <Dialog
           title="Excluir Cliente?"

@@ -14,38 +14,3 @@ export const CustomersListQuery = gql`
     }
   }
 `;
-
-export const updateQuery = (previousResult, { fetchMoreResult }) => {
-  if (!fetchMoreResult) {
-    return previousResult;
-  }
-  return Object.assign({}, previousResult, {
-    customers: [...previousResult.customers, ...fetchMoreResult.customers],
-  });
-};
-
-export const CustomersListQueryOptions = {
-  options(props) {
-    return {
-      variables: {
-        limit: ITEMS_PER_PAGE,
-        offset: 0,
-      },
-      forceFetch: true,
-    };
-  },
-  props({ data: { loading, customers, fetchMore } }) {
-    return {
-      loading,
-      customers,
-      fetchMore() {
-        return fetchMore({
-          variables: {
-            offset: customers.length,
-          },
-          updateQuery: updateQuery,
-        });
-      },
-    };
-  },
-};

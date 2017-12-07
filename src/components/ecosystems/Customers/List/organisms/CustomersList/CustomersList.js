@@ -79,7 +79,7 @@ class CustomersList extends Component {
       name: customer.name,
       email: customer.emails && customer.emails[0].email,
       phone: customer.phones && customer.phones[0].phone,
-      operator: customer.phones && customer.phones[0].phone,
+      operator: customer.phones && customer.phones[0].provider,
       avatar: '',
     }));
 
