@@ -15,6 +15,7 @@ export const fs12 = '12px';
 export const fs14 = '14px';
 export const fs16 = '16px';
 export const fs18 = '18px';
+export const fs20 = '20px';
 export const fs28 = '28px';
 export const fs32 = '32px';
 

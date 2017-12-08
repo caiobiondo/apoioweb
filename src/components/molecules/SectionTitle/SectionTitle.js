@@ -9,7 +9,7 @@ const SectionTitle = props => {
 
   return (
     <SectionTitleWrapper {...props}>
-      <Icon file={iconName} />
+      {iconName && <Icon file={iconName} />}
       {value ? <FormattedMessage id={value} /> : children}
     </SectionTitleWrapper>
   );
