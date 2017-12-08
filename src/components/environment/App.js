@@ -36,7 +36,7 @@ export default class App extends Component {
                 <Route path="/my-orders/:id" component={withAuthentication(OrderDetails)} />
                 <Route path="/my-score" component={withAuthentication(MyScore)} />
                 <Route
-                  path="/customers/:customerId"
+                  path="/my-customers/:customerId"
                   component={withAuthentication(CustomerDetails)}
                 />
               </div>
