@@ -76,7 +76,12 @@ exports[`CustomerDetails renders customer details 1`] = `
             />
             <CustomerDatum
               label="customerGender"
-              value={null}
+              value={
+                <FormattedMessage
+                  id="gender.male"
+                  values={Object {}}
+                />
+              }
             />
           </CustomerDetailsstyles__CustomerDatumHalfWrapper>
         </CustomerDetailsstyles__CustomerData>
