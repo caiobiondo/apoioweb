@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 
-const LOGIN_PATH = '/login';
+export const LOGIN_PATH = '/login';
+export const API_AUTH_ERROR_MSG = '#REDIRECT_TO_LOGIN#';
 
-const needRedirectToLogin = ({ error }) => {
-  return error && error.toString().includes('#REDIRECT_TO_LOGIN#');
+export const needRedirectToLogin = ({ error }) => {
+  return error && error.toString().includes(API_AUTH_ERROR_MSG);
 };
 
-const redirectToLogin = () => {
+export const redirectToLogin = () => {
   localStorage.clear();
   window.location.href = LOGIN_PATH;
 };
@@ -23,7 +24,6 @@ export const WithAuthErrorHandler = Component => {
   };
 };
 
-export default function withAuthErrorHandler(Component) {
-  const WithAuthErrorHandlerComponent = WithAuthErrorHandler(Component);
-  return WithAuthErrorHandlerComponent;
-}
+export default Component => {
+  return WithAuthErrorHandler(Component);
+};
