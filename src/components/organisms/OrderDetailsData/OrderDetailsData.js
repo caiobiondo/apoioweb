@@ -78,7 +78,7 @@ export class OrderDetailsData extends Component {
   renderOrderItemProductImageFallback() {
     return (
       <OrderItemProductImageFallback>
-        <Icon file="ico_photo" />
+        <Icon file="ico_pictureless" />
       </OrderItemProductImageFallback>
     );
   }
