@@ -1,13 +1,22 @@
 import React, { PureComponent } from 'react';
 
+const LOGIN_PATH = '/login';
+
+const needRedirectToLogin = ({ error }) => {
+  return error && error.toString().includes('#REDIRECT_TO_LOGIN#');
+};
+
+const redirectToLogin = () => {
+  localStorage.clear();
+  window.location.href = LOGIN_PATH;
+};
+
 export const WithAuthErrorHandler = Component => {
   return class WithAuthErrorHandlerComponent extends PureComponent {
     render() {
-      const { data } = this.props;
-      if (data.error && data.error.toString().includes('#REDIRECT_TO_LOGIN#')) {
-        localStorage.clear();
-        window.location.href = '/login';
-        return;
+      if (needRedirectToLogin(this.props.data)) {
+        redirectToLogin();
+        return null;
       }
       return <Component {...this.props} />;
     }
