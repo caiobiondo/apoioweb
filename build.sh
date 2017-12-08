@@ -13,6 +13,12 @@ cp ssh_config /etc/ssh/ssh_config
 chmod 400 /tmp/natura-ui-key
 
 npm install
+
+export COVERALLS_REPO_TOKEN=4I6sqkL2LkdopzjyPYqQEaNgZdrWnfOnM
+
+npm run coverage
+npm run coverage:upload
+
 npm run ${build_target}
 
 chmod 777 build -R
