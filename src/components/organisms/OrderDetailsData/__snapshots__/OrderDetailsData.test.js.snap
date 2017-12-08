@@ -414,7 +414,7 @@ exports[`OrderDetailsData renders order details 1`] = `
                   unloader={
                     <OrderDetailsDatastyles__OrderItemProductImageFallback>
                       <Icon
-                        file="ico_photo"
+                        file="ico_pictureless"
                       />
                     </OrderDetailsDatastyles__OrderItemProductImageFallback>
                   }
@@ -477,7 +477,7 @@ exports[`OrderDetailsData renders order details 1`] = `
                   unloader={
                     <OrderDetailsDatastyles__OrderItemProductImageFallback>
                       <Icon
-                        file="ico_photo"
+                        file="ico_pictureless"
                       />
                     </OrderDetailsDatastyles__OrderItemProductImageFallback>
                   }
