@@ -29,6 +29,7 @@ export const Title = styled.div`
   font-size: ${fs28};
   font-weight: ${fw900};
   padding-bottom: ${spMedium};
+  text-align: center;
 `;
 
 export const Description = styled.div`
