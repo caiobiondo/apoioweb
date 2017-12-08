@@ -14,3 +14,8 @@ export const OrderAddButtonContainer = styled.div`
     right: ${spMedium};
   }
 `;
+
+export const Bold = styled.span`
+  font-weight: 800;
+  color: #000;
+`;

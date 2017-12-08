@@ -65,7 +65,6 @@ class CustomersList extends Component {
           operator: 'OPERADORA',
         },
       },
-      selectedCustomers: [],
     };
   }
 
@@ -77,9 +76,9 @@ class CustomersList extends Component {
     const parsedCutomers = customers.map(customer => ({
       id: customer.id,
       name: customer.name,
-      email: customer.emails && customer.emails[0].email,
-      phone: customer.phones && customer.phones[0].phone,
-      operator: customer.phones && customer.phones[0].provider,
+      email: customer.emails && customer.emails.length && customer.emails[0].email,
+      phone: customer.phones && customer.phones.length && customer.phones[0].phone,
+      operator: customer.phones && customer.phones.length && customer.phones[0].provider,
       avatar: '',
     }));
 
@@ -96,16 +95,18 @@ class CustomersList extends Component {
 
 
   selectCustomer(customer) {
-    const { selectedCustomers } = this.state;
-    const newSelected = selectedCustomers.filter(({ id }) => id !== customer.id);
+    const { select } = this.props;
+    select(customer);
+  }
 
-    if (newSelected.length !== selectedCustomers.length) {
-      this.props.select(newSelected);
-      return this.setState({ selectedCustomers: newSelected });
-    }
-
-    this.props.select([...selectedCustomers, customer]);
-    this.setState({ selectedCustomers: [...selectedCustomers, customer] });
+  selectAllCustomers() {
+    const { select } = this.props;
+    const { customers } = this.props.data;
+    return customers.map(customer =>
+      setTimeout(() => {
+        select(customer);
+      }, 1),
+    );
   }
 
   renderName({ value, row }) {
@@ -120,26 +121,12 @@ class CustomersList extends Component {
   }
 
   renderSelect({ row }) {
-    const isSelected = this.state.selectedCustomers.find(custmr => custmr.id === row.id);
+    const isSelected = this.props.selectedCustomers.find(custmr => custmr.id === row.id);
     return (
       <div className={isSelected ? 'is-selected' : ''} onClick={() => this.selectCustomer(row)}>
         <Checkbox checked={isSelected} />
       </div>
     );
-  }
-
-  selectAllCustomers() {
-    const { select } = this.props;
-    const { customers } = this.props.data;
-    const { selectedCustomers } = this.state;
-
-    if (selectedCustomers.length === customers.length) {
-      this.setState({ selectedCustomers: [] });
-      return select([]);
-    }
-
-    this.setState({ selectedCustomers: customers });
-    return select(customers);
   }
 
   renderSelectAll() {

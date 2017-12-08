@@ -2,11 +2,6 @@ import styled, { css } from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spMedium, spPage } from 'styles/spacing';
 
-export const Bold = styled.span`
-  font-weight: 800;
-  color: #000;
-`;
-
 const FullContainer = css`
   position: absolute;
   top: 0;
