@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-
+import { Responsive } from '@entria/components';
 import { gray700, gray150 } from 'styles/colors';
-import { fs18, fs28, fw900, RobotoRegular } from 'styles/typography';
+import { fs14, fs18, fs20, fs28, fw900, RobotoRegular } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
 
 export const Container = styled.div`
@@ -21,6 +21,13 @@ export const IconWrapper = styled.div`
     width: 93px;
     fill: ${gray150};
   }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    svg {
+      height: 71.5px;
+      width: 83px;
+    }
+  }
 `;
 
 export const Title = styled.div`
@@ -30,6 +37,10 @@ export const Title = styled.div`
   font-weight: ${fw900};
   padding-bottom: ${spMedium};
   text-align: center;
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    font-size: ${fs20};
+  }
 `;
 
 export const Description = styled.div`
@@ -38,4 +49,8 @@ export const Description = styled.div`
   font-family: ${RobotoRegular};
   font-size: ${fs18};
   text-align: center;
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    font-size: ${fs14};
+  }
 `;
