@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyScore renders my score 1`] = `
+<MyScorestyles__Wrapper>
+  <MyScorestyles__PageTitle>
+    <FormattedMessage
+      id="checkYourScore"
+      values={Object {}}
+    />
+  </MyScorestyles__PageTitle>
+  <MyScorestyles__Explanation>
+    <FormattedMessage
+      id="scoreExplanation"
+      values={Object {}}
+    />
+  </MyScorestyles__Explanation>
+  <MyScorestyles__ContentWrapper>
+    <MyScorestyles__Wrapper>
+      <MyScorestyles__BigTitle>
+        <FormattedMessage
+          id="totalScoreInPeriod"
+          values={Object {}}
+        />
+      </MyScorestyles__BigTitle>
+      <MyScorestyles__ScoreProgressWrapper>
+        <ScoreProgress
+          currentLevel={Object {}}
+          isOnLastLevel={true}
+          nextLevel={Object {}}
+          previousLevel={Object {}}
+        />
+        <MyScorestyles__LevelListWrapper>
+          <LevelList
+            levels={
+              Array [
+                Object {
+                  "color": "rgb(undefined, undefined, undefined)",
+                  "id": 1,
+                  "points": undefined,
+                  "pointsText": <FormattedMessage
+                    id="levelRange"
+                    values={
+                          Object {
+                                "end": undefined,
+                                "start": 0,
+                              }
+                    }
+              />,
+                  "sequence": undefined,
+                  "text": undefined,
+                },
+                Object {
+                  "color": "rgb(undefined, undefined, undefined)",
+                  "id": 2,
+                  "points": undefined,
+                  "pointsText": <FormattedMessage
+                    id="levelRange"
+                    values={
+                          Object {
+                                "end": undefined,
+                                "start": 0,
+                              }
+                    }
+              />,
+                  "sequence": undefined,
+                  "text": undefined,
+                },
+              ]
+            }
+          />
+        </MyScorestyles__LevelListWrapper>
+      </MyScorestyles__ScoreProgressWrapper>
+      <MyScorestyles__BarSeparator />
+      <MyScorestyles__SmallTitle>
+        <FormattedMessage
+          id="yourScoreDemonstration"
+          values={Object {}}
+        />
+      </MyScorestyles__SmallTitle>
+      <MyScorestyles__ScoreStatementWrapper>
+        <ScoreStatement
+          growthStatus={
+            Object {
+              "currentPlan": Object {
+                "levels": Array [
+                  Object {
+                    "levelId": 1,
+                  },
+                  Object {
+                    "levelId": 2,
+                  },
+                ],
+              },
+            }
+          }
+        />
+      </MyScorestyles__ScoreStatementWrapper>
+      <MyScorestyles__DottedSeparator />
+    </MyScorestyles__Wrapper>
+    <Apollo(WithUserDataComponent)
+      changeSelectedPeriod={[Function]}
+      currentLevel={Object {}}
+      cycleSelected={[Function]}
+      growthStatus={
+        Object {
+          "currentPlan": Object {
+            "levels": Array [
+              Object {
+                "levelId": 1,
+              },
+              Object {
+                "levelId": 2,
+              },
+            ],
+          },
+        }
+      }
+      key="current"
+      selectedPeriod="current"
+    />
+  </MyScorestyles__ContentWrapper>
+</MyScorestyles__Wrapper>
+`;

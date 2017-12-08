@@ -1,6 +1,9 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import { WithAuthErrorHandler } from './withAuthErrorHandler';
+import WithAuthErrorHandler, {
+  needRedirectToLogin,
+  API_AUTH_ERROR_MSG,
+} from './withAuthErrorHandler';
 
 class WrappedComponent extends React.Component {
   render() {
@@ -9,6 +12,17 @@ class WrappedComponent extends React.Component {
 }
 
 describe('withUserData HOC', () => {
+  it('should return true when there is an api auth error message', () => {
+    //given
+    const data = { error: API_AUTH_ERROR_MSG };
+
+    //when
+    const result = needRedirectToLogin(data);
+
+    //then
+    expect(result).toBeTruthy();
+  });
+
   it('should render the child component without auth api error', () => {
     const renderer = new ShallowRenderer();
     const data = {};

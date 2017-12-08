@@ -4,7 +4,9 @@ import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { formatDate } from 'locale/utils';
 import { CustomerDetailsQuery, CustomerDetailsQueryOptions } from './CustomerDetails.data';
+import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import withUserData from 'hocs/withUserData/withUserData';
+
 import {
   Main,
   CustomerDetailsWrapper,
@@ -165,6 +167,8 @@ export class CustomerDetails extends Component {
     );
   }
 }
+
+export const CustomerDetailsWithAuthErrorHandler = withAuthErrorHandler(CustomerDetails);
 
 export const CustomerDetailsWithIntl = injectIntl(CustomerDetails);
 
