@@ -102,11 +102,7 @@ class CustomersList extends Component {
   selectAllCustomers() {
     const { select } = this.props;
     const { customers } = this.props.data;
-    return customers.map(customer =>
-      setTimeout(() => {
-        select(customer);
-      }, 1),
-    );
+    select(customers);
   }
 
   renderName({ value, row }) {

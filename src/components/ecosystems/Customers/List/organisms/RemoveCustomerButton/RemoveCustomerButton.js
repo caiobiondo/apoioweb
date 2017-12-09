@@ -64,7 +64,6 @@ class RemoveCustomerButton extends Component {
   }
 
   render() {
-    console.log(this.props);
     const actions = [
       <FlatButton label="Cancelar" primary={true} onClick={this.onCloseModal} />,
       <FlatButton

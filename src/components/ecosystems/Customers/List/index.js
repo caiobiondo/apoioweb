@@ -21,13 +21,21 @@ class CustomersListWrapper extends Component {
 
   selectCustomer(customer) {
     const { selectedCustomers } = this.state;
+
+    if (customer.length) {
+      const costumers = customer.length !== selectedCustomers.length ? customer : [];
+      return this.setState({
+        selectedCustomers: [...costumers],
+      });
+    }
+
     const newSelected = selectedCustomers.filter(({ id }) => id !== customer.id);
 
     if (newSelected.length !== selectedCustomers.length) {
       return this.setState({ selectedCustomers: newSelected });
     }
 
-    this.setState({
+    return this.setState({
       selectedCustomers: [...selectedCustomers, customer],
     });
   }
@@ -38,7 +46,6 @@ class CustomersListWrapper extends Component {
 
   render() {
     const { loading, selectedCustomers } = this.state;
-    console.log(selectedCustomers);
     return (
       <Main loading={loading}>
         <RemoveCustomerButton
