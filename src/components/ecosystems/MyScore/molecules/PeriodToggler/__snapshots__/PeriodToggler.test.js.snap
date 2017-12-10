@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeriodToggler renders a period toggler 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "borderRadius": "10px",
+      "color": "rgba(84, 84, 84, 0.4)",
+      "display": "inline-block",
+      "height": "30px",
+      "marginBottom": "45px",
+      "marginTop": "27px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PeriodTogglerstyles__Button
+    onClick={[Function]}
+  >
+    <FormattedMessage
+      id="currentPeriod"
+      values={Object {}}
+    />
+  </PeriodTogglerstyles__Button>
+  <PeriodTogglerstyles__Button
+    onClick={[Function]}
+  >
+    <FormattedMessage
+      id="lastPeriod"
+      values={Object {}}
+    />
+  </PeriodTogglerstyles__Button>
+</Paper>
+`;
+
+exports[`PeriodToggler renders a period toggler with last active period 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "borderRadius": "10px",
+      "color": "rgba(84, 84, 84, 0.4)",
+      "display": "inline-block",
+      "height": "30px",
+      "marginBottom": "45px",
+      "marginTop": "27px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PeriodTogglerstyles__Button
+    onClick={[Function]}
+  >
+    <FormattedMessage
+      id="currentPeriod"
+      values={Object {}}
+    />
+  </PeriodTogglerstyles__Button>
+  <PeriodTogglerstyles__Button
+    onClick={[Function]}
+  >
+    <FormattedMessage
+      id="lastPeriod"
+      values={Object {}}
+    />
+  </PeriodTogglerstyles__Button>
+</Paper>
+`;

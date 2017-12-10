@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Paper } from 'natura-ui';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { WrapperStyles, ActiveButton, Button } from './PeriodToggler.styles';
 
 const changeSelectedPeriod = (props, period) => {
@@ -36,4 +36,9 @@ const PeriodToggler = props => {
   );
 };
 
-export default injectIntl(PeriodToggler);
+PeriodToggler.propTypes = {
+  activePeriod: PropTypes.string,
+  changeSelectedPeriod: PropTypes.func,
+};
+
+export default PeriodToggler;
