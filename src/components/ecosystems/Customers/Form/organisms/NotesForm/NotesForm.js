@@ -1,6 +1,5 @@
 import React from 'react';
-import { FormText } from 'natura-ui';
-import { Wrapper, Title, HelpText } from './NotesForm.styles';
+import { Wrapper, Title, HelpText, FormText } from './NotesForm.styles';
 import { translate } from '../../Shared/Utils';
 
 import { withFormik } from 'formik';

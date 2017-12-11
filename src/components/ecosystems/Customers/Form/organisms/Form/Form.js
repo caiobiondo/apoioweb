@@ -14,10 +14,18 @@ class CustomerForm extends Component {
     super(props);
 
     this.addPhoneToCustomer = this.addPhoneToCustomer.bind(this);
+    this.goToPreviousStep = this.goToPreviousStep.bind(this);
+    this.goToNextStep = this.goToNextStep.bind(this);
+    this.renderCurrentForm = this.renderCurrentForm.bind(this);
+    this.goToStep = this.goToStep.bind(this);
+  }
+
+  scrollTop() {
+    window.scrollTo(0, 0);
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    this.scrollTop();
   }
 
   addPhoneToCustomer() {
@@ -28,9 +36,40 @@ class CustomerForm extends Component {
     });
   }
 
-  render() {
+  goToStep(step) {
+    this.scrollTop();
+
+    this.setState({ currentStep: step });
+  }
+
+  goToPreviousStep() {
+    this.goToStep(this.state.currentStep - 1);
+  }
+
+  goToNextStep() {
+    this.goToStep(this.state.currentStep + 1);
+  }
+
+  renderCurrentForm() {
     const customer = this.getCustomer();
-    console.log('render');
+    const step = this.state.currentStep;
+
+    if (step === 1) {
+      return <BasicInfoForm customer={customer} addNewPhone={this.addPhoneToCustomer} />;
+    }
+
+    if (step === 2) {
+      return <AddressForm customer={customer} />;
+    }
+
+    if (step === 3) {
+      return <NotesForm customer={customer} />;
+    }
+
+    return null;
+  }
+
+  render() {
     return (
       <Wrapper>
         <PageTitle>
@@ -42,16 +81,14 @@ class CustomerForm extends Component {
         </PageText>
 
         <FormWrapper>
-          <BasicInfoForm customer={customer} addNewPhone={this.addPhoneToCustomer} />
-          <AddressForm customer={customer} />
-          <NotesForm customer={customer} />
+          {this.renderCurrentForm()}
 
           <FormButtonsWrapper>
-            <FormButton>
+            <FormButton onClick={this.goToPreviousStep}>
               <FormattedMessage id="formCustomerBack" />
             </FormButton>
 
-            <FormButton primary>
+            <FormButton onClick={this.goToNextStep} primary>
               <FormattedMessage id="formCustomerNext" />
             </FormButton>
           </FormButtonsWrapper>
