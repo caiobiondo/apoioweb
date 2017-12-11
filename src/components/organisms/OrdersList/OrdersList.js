@@ -39,7 +39,7 @@ const renderOrder = (order, intl) => {
         },
       }}
       right={{
-        details: `my-orders/${order.codigoPedido}`,
+        details: `/my-orders/${order.codigoPedido}`,
         status: order.status,
       }}
     />
