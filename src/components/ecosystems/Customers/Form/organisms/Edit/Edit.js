@@ -1,4 +1,4 @@
-import CustomerForm from './Form';
+import CustomerForm from '../Form';
 
 class EditCustomerForm extends CustomerForm {
   constructor(props) {

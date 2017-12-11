@@ -1,3 +1,3 @@
-export { default as EditCustomer } from './Edit';
+export { default as EditCustomer } from './organisms/Edit';
 
-export { default as NewCustomer } from './New';
+export { default as NewCustomer } from './organisms/New';
