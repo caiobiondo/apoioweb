@@ -13,6 +13,7 @@ import CustomersList from 'components/ecosystems/Customers/List';
 import withAuthentication from 'hocs/withAuthentication';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
+import { EditCustomer, NewCustomer } from 'components/ecosystems/Customers/Form';
 
 import { locale, flattenMessages, messages } from 'locale/index';
 
@@ -41,6 +42,8 @@ export default class App extends Component {
                   path="/my-customers/:customerId"
                   component={withAuthentication(CustomerDetails)}
                 />
+                <Route path="/my-customers/new" component={withAuthentication(NewCustomer)} />
+                <Route path="/my-customers/:id/edit" component={withAuthentication(EditCustomer)} />
               </div>
             </BrowserRouter>
           </ApolloProvider>

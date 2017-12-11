@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validateCustomer should correctly validate the phones 1`] = `
+Object {
+  "phones": Array [
+    Object {
+      "phone": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerPhone"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+    },
+    Object {
+      "phone": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerPhone"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+    },
+    undefined,
+  ],
+}
+`;
+
+exports[`validateCustomer should return the correct error messages 1`] = `
+Object {
+  "birthDate": Array [
+    <FormattedMessage
+      id="required"
+      values={
+            Object {
+                  "field": <FormattedMessage
+                    id="formCustomerBirthDate"
+                    values={Object {}}
+            />,
+                }
+      }
+/>,
+  ],
+  "fullName": Array [
+    <FormattedMessage
+      id="required"
+      values={
+            Object {
+                  "field": <FormattedMessage
+                    id="formCustomerFullName"
+                    values={Object {}}
+            />,
+                }
+      }
+/>,
+  ],
+  "gender": Array [
+    <FormattedMessage
+      id="required"
+      values={
+            Object {
+                  "field": <FormattedMessage
+                    id="formCustomerGender"
+                    values={Object {}}
+            />,
+                }
+      }
+/>,
+  ],
+}
+`;
+
+exports[`validatePhone should return the correct error messages 1`] = `
+Object {
+  "phone": Array [
+    <FormattedMessage
+      id="required"
+      values={
+            Object {
+                  "field": <FormattedMessage
+                    id="formCustomerPhone"
+                    values={Object {}}
+            />,
+                }
+      }
+/>,
+  ],
+}
+`;

@@ -1,4 +1,3 @@
-/* eslint-enable sort-keys */
 export default {
   'en-US': {},
   'pt-BR': {
@@ -18,10 +17,26 @@ export default {
     customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',
     customerShouldBeRemovedWarning:
       'Tem certeza que deseja deletar {names} da sua lista de clientes?',
+    formCustomerName: 'Nome / Apelido',
+    formCustomerFullName: 'Nome Completo',
+    formCustomerGender: 'Gênero',
+    formCustomerBirthDate: 'Nascimento',
+    formCustomerEmail: 'Email',
+    formCustomerPhone: 'Telefone',
+    formCustomerPhoneCarrier: 'Operadora',
+    formCustomerPhoneHelpText: 'Recomendamos o registro do telefone celular',
+    formCustomerAddAnotherPhone: 'Adicionar outro telefone',
+    formCustomerProfile: 'Perfil do Cliente',
+    formCustomerProfileDirect: 'Presencial',
+    formCustomerProfileEcommerce: 'Digital',
+    formCustomerNext: 'Próximo',
+    formCustomerBack: 'Voltar',
+    formCustomerTitle: 'Cadastro de Novos Clientes',
+    formCustomerText:
+      'Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.',
     gender: {
       M: 'Masculino',
       F: 'Feminino',
     },
   },
 };
-/* eslint-disable sort-keys */
