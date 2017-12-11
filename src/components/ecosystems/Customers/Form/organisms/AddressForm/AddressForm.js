@@ -1,8 +1,7 @@
 import React from 'react';
-
-import PhoneForm from '../../molecules/PhoneForm';
-import { FormInput, FormSelect, RowWithHalfInputs } from '../../Shared/Styles';
-import { ZipCodeSearchLink, Wrapper } from './AddressForm.styles';
+import { SEARCH_ZIP_URL } from 'config';
+import { FormInput, RowWithHalfInputs } from '../../Shared/Styles';
+import { ZipCodeSearchLink, NumberRow, CityRow, Wrapper, Title } from './AddressForm.styles';
 import { translate } from '../../Shared/Utils';
 
 import { withFormik } from 'formik';
@@ -21,6 +20,9 @@ const InnerForm = ({
   const index = 0;
   return (
     <Wrapper>
+      <Title>
+        <FormattedMessage id="formCustomerAddress" />
+      </Title>
       <RowWithHalfInputs>
         <FormInput
           type="text"
@@ -34,7 +36,7 @@ const InnerForm = ({
           dirty={touched.zipCode}
         />
 
-        <ZipCodeSearchLink>
+        <ZipCodeSearchLink href={SEARCH_ZIP_URL} target="_blank">
           <FormattedMessage id="formCustomerForgotZip" />
         </ZipCodeSearchLink>
       </RowWithHalfInputs>
@@ -51,28 +53,32 @@ const InnerForm = ({
         dirty={touched.address}
       />
 
-      <FormInput
-        type="text"
-        name={`addresses.${index}.number`}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        label={translate('formCustomerNumber')}
-        value={values.phones[index].number}
-        required={true}
-        error={errors.number}
-        dirty={touched.number}
-      />
-      <FormInput
-        type="text"
-        name={`addresses.${index}.complement`}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        label={translate('formCustomerComplement')}
-        value={values.phones[index].complement}
-        required={true}
-        error={errors.complement}
-        dirty={touched.complement}
-      />
+      <NumberRow>
+        <FormInput
+          type="text"
+          name={`addresses.${index}.number`}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          label={translate('formCustomerNumber')}
+          value={values.phones[index].number}
+          required={true}
+          error={errors.number}
+          dirty={touched.number}
+        />
+
+        <FormInput
+          type="text"
+          name={`addresses.${index}.complement`}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          label={translate('formCustomerComplement')}
+          value={values.phones[index].complement}
+          required={true}
+          error={errors.complement}
+          dirty={touched.complement}
+        />
+      </NumberRow>
+
       <FormInput
         type="text"
         name={`addresses.${index}.neighborhood`}
@@ -84,28 +90,31 @@ const InnerForm = ({
         error={errors.neighborhood}
         dirty={touched.neighborhood}
       />
-      <FormInput
-        type="text"
-        name={`addresses.${index}.city`}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        label={translate('formCustomerCity')}
-        value={values.phones[index].city}
-        required={true}
-        error={errors.city}
-        dirty={touched.city}
-      />
-      <FormInput
-        type="text"
-        name={`addresses.${index}.state`}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        label={translate('formCustomerState')}
-        value={values.phones[index].state}
-        required={true}
-        error={errors.state}
-        dirty={touched.state}
-      />
+
+      <CityRow>
+        <FormInput
+          type="text"
+          name={`addresses.${index}.city`}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          label={translate('formCustomerCity')}
+          value={values.phones[index].city}
+          required={true}
+          error={errors.city}
+          dirty={touched.city}
+        />
+        <FormInput
+          type="text"
+          name={`addresses.${index}.state`}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          label={translate('formCustomerState')}
+          value={values.phones[index].state}
+          required={true}
+          error={errors.state}
+          dirty={touched.state}
+        />
+      </CityRow>
     </Wrapper>
   );
 };
