@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Icon } from 'natura-ui';
 
-import { Container, IconWrapper, Title, Description } from './EmptyCustomers.styles';
+import { Container, IconWrapper, Title } from './EmptyCustomers.styles';
 
 const EmptyCustomers = () => {
   return (

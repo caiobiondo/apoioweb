@@ -13,11 +13,6 @@ export const Wrapper = styled.div`
     width: 30px;
     height: 30px;
     transition: all 0.3s ease;
-    transform: rotate(
-      ${props => {
-        return !props.remove ? '-135deg' : '0deg';
-      }}
-    );
   }
 
   ${props => {

@@ -3,10 +3,11 @@ import { FloatingActionButton, Icon } from 'natura-ui';
 import { IconWrapper, Wrapper } from './CustomerButton.styles';
 
 const OrderAddButton = props => {
+  const icon = props.remove ? 'ico_trash' : 'ico_customer_add';
   return (
-    <Wrapper onClick={() => props.action()} remove={props.remove}>
+    <Wrapper onClick={() => props.action()}>
       <FloatingActionButton iconWrapper={IconWrapper}>
-        <Icon file="ico_times" />
+        <Icon file={icon} />
       </FloatingActionButton>
     </Wrapper>
   );
