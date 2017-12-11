@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
 import Checkbox from '../../molecules/Checkbox';
 
 import {
@@ -13,6 +14,7 @@ import {
   TableWrapper,
   NameLabel,
   Avatar,
+  LinkStyle,
 } from './CustomersList.styles';
 import { CustomersListQuery, CustomersListQueryOptions } from './CustomersList.data';
 import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
@@ -53,6 +55,9 @@ class CustomersList extends Component {
         },
         renderer: {
           name: this.renderName,
+          email: this.renderCell,
+          phone: this.renderCell,
+          operator: this.renderCell,
           select: this.renderSelect,
           thead: {
             select: this.renderSelectAll,
@@ -105,13 +110,25 @@ class CustomersList extends Component {
     select(customers);
   }
 
+  renderCell({ value, row }) {
+    return (
+      <div>
+        {value}
+        <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
+      </div>
+    );
+  }
+
   renderName({ value, row }) {
     const names = value.split(' ');
     const initials = names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
     return (
       <CustomerName>
         <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : initials}</Avatar>
-        <NameLabel>{value}</NameLabel>
+        <NameLabel>
+          {value}
+          <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
+        </NameLabel>
       </CustomerName>
     );
   }

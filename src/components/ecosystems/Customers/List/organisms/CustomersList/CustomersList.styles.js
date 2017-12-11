@@ -10,11 +10,20 @@ export const Wrapper = {
 };
 
 export const cellStyle = {
+  position: 'relative',
   padding: '0px 20px',
   lineHeight: '50px',
   color: '#c0c0c0',
   fontSize: '15px',
   fontFamily: 'Roboto',
+};
+
+export const LinkStyle = {
+  position: 'absolute',
+  height: '100%',
+  width: '100%',
+  left: 0,
+  top: 0,
 };
 
 export const TableWrapper = styled.div`
