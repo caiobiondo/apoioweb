@@ -9,7 +9,7 @@ export const needRedirectToLogin = ({ error }) => {
 
 export const redirectToLogin = () => {
   localStorage.clear();
-  window.location.href = LOGIN_PATH;
+  window.location.assign(LOGIN_PATH);
 };
 
 export const WithAuthErrorHandler = Component => {

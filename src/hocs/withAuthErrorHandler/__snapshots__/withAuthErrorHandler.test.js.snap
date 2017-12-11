@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withUserData HOC should not render the child component when occurs an api auth error 1`] = `
+exports[`withAuthErrorHandler HOC should not render the child component when occurs an api auth error 1`] = `
 <WrappedComponent
   data={
     Object {
@@ -12,7 +12,7 @@ exports[`withUserData HOC should not render the child component when occurs an a
 />
 `;
 
-exports[`withUserData HOC should render the child component without auth api error 1`] = `
+exports[`withAuthErrorHandler HOC should render the child component without auth api error 1`] = `
 <WrappedComponent
   data={Object {}}
 />
