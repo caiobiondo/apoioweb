@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { CardWithTitle, Icon } from 'natura-ui';
 import {
   Wrapper,
@@ -118,4 +118,4 @@ ScoreStatement.defaultProps = {
   growthStatus: {},
 };
 
-export default injectIntl(ScoreStatement);
+export default ScoreStatement;

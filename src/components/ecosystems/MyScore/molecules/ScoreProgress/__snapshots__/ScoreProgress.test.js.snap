@@ -4,17 +4,23 @@ exports[`ScoreProgress renders a score progress 1`] = `
 <LevelProgressBar
   currentLevel={
     Object {
-      "points": "1",
+      "color": "black",
+      "points": 1,
+      "text": "1",
     }
   }
   nextLevel={
     Object {
-      "points": "1",
+      "color": "black",
+      "points": 3,
+      "text": "3",
     }
   }
   previousLevel={
     Object {
-      "points": "1",
+      "color": "black",
+      "points": 2,
+      "text": "2",
     }
   }
   sliderText="1 pts"

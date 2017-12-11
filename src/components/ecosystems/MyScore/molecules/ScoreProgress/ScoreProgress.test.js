@@ -8,13 +8,19 @@ const setup = propOverrides => {
   const props = Object.assign(
     {
       currentLevel: {
-        points: '1',
+        points: 1,
+        text: '1',
+        color: 'black',
       },
       previousLevel: {
-        points: '1',
+        points: 2,
+        text: '2',
+        color: 'black',
       },
       nextLevel: {
-        points: '1',
+        points: 3,
+        text: '3',
+        color: 'black',
       },
       currentPoints: '1',
       isOnLastLevel: false,
