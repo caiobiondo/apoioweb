@@ -71,9 +71,9 @@ const PeriodHistory = props => {
       totalOrderValue: { width: '15%', textAlign: 'right' },
     },
     renderer: {
-      type: orderType => (
+      type: ({ value }) => (
         <IconWrapper>
-          <Icon file={ORDER_ICONS[orderType]} />
+          <Icon file={ORDER_ICONS[value]} />
         </IconWrapper>
       ),
       orderNumber: value => `Pedido ${value}`,
