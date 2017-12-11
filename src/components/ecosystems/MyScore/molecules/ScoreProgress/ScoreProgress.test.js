@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ScoreProgress from './ScoreProgress';
+import { LevelProgressBar } from 'natura-ui';
 import 'jest-styled-components';
 
 const setup = propOverrides => {
@@ -37,5 +38,18 @@ describe('ScoreProgress', () => {
 
     // then
     expect(result).toMatchSnapshot();
+  });
+
+  describe('when on last level', () => {
+    it('renders 100 percent', () => {
+      // given
+      const props = { isOnLastLevel: true };
+      // when
+      const { result } = setup(props);
+      const progressBar = result.find(LevelProgressBar);
+
+      // then
+      expect(progressBar.props().value).toBe(100);
+    });
   });
 });
