@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 import { LevelProgressBar } from 'natura-ui';
 
 const getSliderText = currentPoints => {
@@ -35,11 +34,11 @@ const ScoreProgress = props => {
 };
 
 ScoreProgress.propTypes = {
-  growthStatus: PropTypes.object,
+  currentLevel: PropTypes.object,
+  previousLevel: PropTypes.object,
+  nextLevel: PropTypes.object,
+  currentPoints: PropTypes.string,
+  isOnLastLevel: PropTypes.bool,
 };
 
-ScoreProgress.defaultProps = {
-  growthStatus: {},
-};
-
-export default injectIntl(ScoreProgress);
+export default ScoreProgress;

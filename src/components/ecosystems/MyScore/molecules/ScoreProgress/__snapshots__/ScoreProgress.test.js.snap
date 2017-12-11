@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreProgress renders a score progress 1`] = `
+<LevelProgressBar
+  currentLevel={
+    Object {
+      "color": "black",
+      "points": 1,
+      "text": "1",
+    }
+  }
+  nextLevel={
+    Object {
+      "color": "black",
+      "points": 3,
+      "text": "3",
+    }
+  }
+  previousLevel={
+    Object {
+      "color": "black",
+      "points": 2,
+      "text": "2",
+    }
+  }
+  sliderText="1 pts"
+  sliderTextColor="#fff"
+  sliderWidth="72px"
+  value={100}
+/>
+`;

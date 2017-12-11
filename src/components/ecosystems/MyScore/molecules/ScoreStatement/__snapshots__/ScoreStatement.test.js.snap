@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreStatement renders a score statement 1`] = `
+<ScoreStatementstyles__Wrapper>
+  <ScoreStatementstyles__Block>
+    <CardWithTitle
+      cardStyle={
+        Object {
+          "height": "121px",
+          "width": "121px",
+        }
+      }
+      contentStyle={
+        Object {
+          "fontFamily": "Roboto-Regular",
+        }
+      }
+      icon={
+        <ScoreStatementstyles__IconWrapper
+          color={undefined}
+          style={Object {}}
+        >
+          <Icon
+            file="ico_monitor"
+          />
+        </ScoreStatementstyles__IconWrapper>
+      }
+      title={
+        <FormattedMessage
+          id="naturaNetworkPointsTitle"
+          values={Object {}}
+        />
+      }
+      titleColor="#000"
+      titleStyle={
+        Object {
+          "textAlign": "left",
+        }
+      }
+    >
+      1 pts
+    </CardWithTitle>
+  </ScoreStatementstyles__Block>
+  <ScoreStatementstyles__Block>
+    <ScoreStatementstyles__SignSeparator>
+      +
+    </ScoreStatementstyles__SignSeparator>
+  </ScoreStatementstyles__Block>
+  <ScoreStatementstyles__Block>
+    <CardWithTitle
+      cardStyle={
+        Object {
+          "height": "121px",
+          "width": "121px",
+        }
+      }
+      contentStyle={
+        Object {
+          "fontFamily": "Roboto-Regular",
+        }
+      }
+      icon={
+        <ScoreStatementstyles__IconWrapper
+          color={undefined}
+          style={Object {}}
+        >
+          <Icon
+            file="ico_marker"
+          />
+        </ScoreStatementstyles__IconWrapper>
+      }
+      title={
+        <FormattedMessage
+          id="directSalesPointsTitle"
+          values={Object {}}
+        />
+      }
+      titleColor="#000"
+      titleStyle={
+        Object {
+          "textAlign": "left",
+        }
+      }
+    >
+      2 pts
+    </CardWithTitle>
+  </ScoreStatementstyles__Block>
+  <ScoreStatementstyles__Block>
+    <ScoreStatementstyles__SignSeparator>
+      =
+    </ScoreStatementstyles__SignSeparator>
+  </ScoreStatementstyles__Block>
+  <ScoreStatementstyles__Block>
+    <CardWithTitle
+      cardStyle={
+        Object {
+          "height": "121px",
+          "width": "121px",
+        }
+      }
+      contentStyle={
+        Object {
+          "fontFamily": "Roboto-Regular",
+        }
+      }
+      icon={
+        <ScoreStatementstyles__MergedIconWrapper>
+          <ScoreStatementstyles__IconWrapper
+            color={undefined}
+            style={
+              Object {
+                "borderRight": "0.5px solid undefined",
+                "marginRight": "1px",
+                "width": "7px",
+              }
+            }
+          >
+            <Icon
+              file="ico_monitor"
+            />
+          </ScoreStatementstyles__IconWrapper>
+          <ScoreStatementstyles__IconWrapper
+            color={undefined}
+            style={
+              Object {
+                "borderRight": "0.5px solid undefined",
+                "transform": "scaleX(-1)",
+                "width": "7px",
+              }
+            }
+          >
+            <Icon
+              file="ico_marker"
+            />
+          </ScoreStatementstyles__IconWrapper>
+        </ScoreStatementstyles__MergedIconWrapper>
+      }
+      title={
+        <FormattedMessage
+          id="totalPointsTitle"
+          values={Object {}}
+        />
+      }
+      titleColor="#000"
+      titleStyle={
+        Object {
+          "textAlign": "left",
+        }
+      }
+    >
+      3 pts
+    </CardWithTitle>
+  </ScoreStatementstyles__Block>
+</ScoreStatementstyles__Wrapper>
+`;
