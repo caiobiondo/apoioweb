@@ -42,7 +42,7 @@ export default class App extends Component {
                   path="/my-customers/:customerId"
                   component={withAuthentication(CustomerDetails)}
                 />
-                <Route path="/my-customers/new" component={withAuthentication(NewCustomer)} />
+                <Route path="/new-customer" component={withAuthentication(NewCustomer)} />
                 <Route path="/my-customers/:id/edit" component={withAuthentication(EditCustomer)} />
               </div>
             </BrowserRouter>
