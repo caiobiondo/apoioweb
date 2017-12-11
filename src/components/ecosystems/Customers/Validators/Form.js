@@ -45,4 +45,8 @@ const validateCustomer = customer => {
   return customerErrors;
 };
 
-export { validateCustomer, validatePhone };
+const validateCustomerAddress = () => {
+  return {};
+};
+
+export { validateCustomer, validateCustomerAddress, validatePhone };

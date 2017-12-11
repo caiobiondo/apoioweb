@@ -4,9 +4,9 @@ import { FormInput as BaseFormInput, FormSelect as BaseFormSelect } from 'natura
 export const INPUT_BOTTOM_SPACING = '27px';
 
 export const RowWithHalfInputs = styled.div`
-  margin-bottom: ${INPUT_BOTTOM_SPACING};
   display: flex;
-
+  align-items: center;
+  justify-content: center;
   & > * {
     width: 45%;
     display: inline-block;

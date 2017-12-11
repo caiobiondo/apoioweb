@@ -6,6 +6,7 @@ import { FormButton } from 'natura-ui';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import BasicInfoForm from '../BasicInfoForm';
+import AddressForm from '../AddressForm';
 
 class CustomerForm extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class CustomerForm extends Component {
 
         <FormWrapper>
           <BasicInfoForm customer={customer} addNewPhone={this.addPhoneToCustomer} />
+          <AddressForm customer={customer} />
 
           <FormButtonsWrapper>
             <FormButton>

@@ -1,20 +1,5 @@
 import styled from 'styled-components';
 import { RobotoRegular } from 'styles/typography';
-import { INPUT_BOTTOM_SPACING } from '../../Shared/Styles';
-export const RowWithHalfInputs = styled.div`
-  margin-bottom: ${INPUT_BOTTOM_SPACING};
-  display: flex;
-
-  & > * {
-    width: 45%;
-    display: inline-block;
-    margin: 0;
-
-    &:first-child {
-      margin-right: 10%;
-    }
-  }
-`;
 
 export const CustomerPhoneHelpTextWrapper = styled.span`
   font-size: 14px;
