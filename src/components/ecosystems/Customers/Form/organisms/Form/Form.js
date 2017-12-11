@@ -7,6 +7,7 @@ import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import BasicInfoForm from '../BasicInfoForm';
 import AddressForm from '../AddressForm';
+import NotesForm from '../NotesForm';
 
 class CustomerForm extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class CustomerForm extends Component {
         <FormWrapper>
           <BasicInfoForm customer={customer} addNewPhone={this.addPhoneToCustomer} />
           <AddressForm customer={customer} />
+          <NotesForm customer={customer} />
 
           <FormButtonsWrapper>
             <FormButton>

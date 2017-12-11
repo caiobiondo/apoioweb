@@ -43,6 +43,9 @@ export default {
     formCustomerState: 'UF',
     formCustomerTitle: 'Cadastro de Novos Clientes',
     formCustomerZipCode: 'CEP',
+    formCustomerNotes: 'Notas',
+    formCustomerNotesText:
+      'Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)',
     formCustomerText:
       'Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.',
     gender: {
