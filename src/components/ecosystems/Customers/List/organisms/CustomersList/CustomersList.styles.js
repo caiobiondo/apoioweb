@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spPage } from 'styles/spacing';
-import { gray300, white, orange100 } from 'styles/colors';
+import { gray300, gray400, white, orange100 } from 'styles/colors';
 import { LoadingWrapperStyle } from 'styles/mixins';
 
 export const Wrapper = {
@@ -18,6 +18,10 @@ export const cellStyle = {
   color: gray300,
   fontSize: '15px',
   fontFamily: 'Roboto',
+};
+
+export const SelectedRowStyle = {
+  background: gray400,
 };
 
 export const LinkStyle = {

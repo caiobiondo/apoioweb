@@ -10,6 +10,7 @@ import {
   LoadingWrapper,
   fullContainer,
   cellStyle,
+  SelectedRowStyle,
   Wrapper,
   TableWrapper,
   NameLabel,
@@ -67,9 +68,8 @@ class CustomersList extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { customers } = nextProps.data;
-    const { data } = this.state;
+  componentWillReceiveProps({ data, selectedCustomers }) {
+    const { customers } = data;
 
     const parsedCutomers = (customers || []).map(customer => ({
       id: customer.id,
@@ -78,9 +78,10 @@ class CustomersList extends Component {
       phone: customer.phones && customer.phones.length && customer.phones[0].phone,
       operator: customer.phones && customer.phones.length && customer.phones[0].provider,
       avatar: '',
+      style: this.isSelected(customer, selectedCustomers) ? SelectedRowStyle : null,
     }));
 
-    this.setState({ data: { ...data, body: parsedCutomers } });
+    this.setState({ data: { ...this.state.data, body: parsedCutomers } });
   }
 
   isLoading(loading, orders) {
@@ -90,6 +91,10 @@ class CustomersList extends Component {
   isEmpty(loading, orders) {
     return !loading && (!orders || orders.length === 0);
   }
+
+  isSelected = (customer, selectedCustomers) => {
+    return selectedCustomers.filter(({ id }) => id === customer.id).length;
+  };
 
   selectCustomer = customer => {
     const { select } = this.props;

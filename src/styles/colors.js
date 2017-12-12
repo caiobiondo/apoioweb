@@ -8,6 +8,7 @@ export const gray100 = '#eeeeee';
 export const gray150 = '#dddddd';
 export const gray200 = '#bbbbbb';
 export const gray300 = '#8e8e8e';
+export const gray400 = '#f7f7f7';
 export const gray600 = '#606060';
 export const gray700 = '#777777';
 export const gray890 = '#333333';
