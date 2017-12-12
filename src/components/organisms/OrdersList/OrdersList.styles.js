@@ -13,9 +13,7 @@ export const List = styled.ul`
   }
 `;
 
-export const LoadingWrapper = styled.div`
-  ${LoadingWrapperStyle};
-`;
+export const LoadingWrapper = LoadingWrapperStyle;
 
 export const scrolledContainer = {
   flex: '1 1 0',

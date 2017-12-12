@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spMedium } from 'styles/spacing';
 
@@ -25,7 +25,7 @@ export const Center = css`
   height: 100%;
 `;
 
-export const LoadingWrapperStyle = css`
+export const LoadingWrapperStyle = styled.dev`
   display: flex;
   flex-direction: column;
   justify-content: center;

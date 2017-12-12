@@ -117,9 +117,7 @@ export const NameLabel = styled.figure`
   margin-right: 0;
 `;
 
-export const LoadingWrapper = styled.div`
-  ${LoadingWrapperStyle};
-`;
+export const LoadingWrapper = LoadingWrapperStyle;
 
 export const scrolledContainer = {
   flex: '1 1 0',
