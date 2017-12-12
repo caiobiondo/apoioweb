@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Wrapper, FormWrapper, FormButtonsWrapper, PageTitle, PageText } from './Form.styles';
 
-import { FormButton } from 'natura-ui';
+import { FormButton, WizardSteps } from 'natura-ui';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import BasicInfoForm from '../BasicInfoForm';
@@ -13,11 +13,18 @@ class CustomerForm extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      steps: [
+        { completed: false, current: true, label: 'Informações Pessoais' },
+        { completed: false, current: false, label: 'Endereço' },
+        { completed: false, current: false, label: 'Notas' },
+      ],
+      currentStep: 0,
+    };
+
     this.addPhoneToCustomer = this.addPhoneToCustomer.bind(this);
-    this.goToPreviousStep = this.goToPreviousStep.bind(this);
-    this.goToNextStep = this.goToNextStep.bind(this);
-    this.renderCurrentForm = this.renderCurrentForm.bind(this);
-    this.goToStep = this.goToStep.bind(this);
+    this.changeStep = this.changeStep.bind(this);
+    this.renderFormStep = this.renderFormStep.bind(this);
   }
 
   scrollTop() {
@@ -36,42 +43,61 @@ class CustomerForm extends Component {
     });
   }
 
-  goToStep(step) {
+  changeStep(event, change) {
+    event.stopPropagation();
     this.scrollTop();
 
-    this.setState({ currentStep: step });
+    const { currentStep } = this.state;
+
+    const steps = this.state.steps.map((step, index) => {
+      if (index < currentStep + change) {
+        step.current = false;
+        step.completed = true;
+      } else if (index === currentStep + change) {
+        step.current = true;
+        step.completed = false;
+      } else {
+        step.current = false;
+        step.completed = false;
+      }
+
+      return step;
+    });
+
+    this.setState({ steps, currentStep: currentStep + change });
   }
 
-  goToPreviousStep() {
-    this.goToStep(this.state.currentStep - 1);
-  }
+  renderFormStep(customer, currentStep) {
+    const forms = [
+      {
+        element: BasicInfoForm,
+        props: { customer, addNewPhone: this.addPhoneToCustomer },
+      },
+      {
+        element: AddressForm,
+        props: { customer },
+      },
+      {
+        element: NotesForm,
+        props: { customer },
+      },
+    ];
 
-  goToNextStep() {
-    this.goToStep(this.state.currentStep + 1);
-  }
+    if (!forms[currentStep]) return null;
 
-  renderCurrentForm() {
-    const customer = this.getCustomer();
-    const step = this.state.currentStep;
+    const Form = forms[currentStep].element;
+    const props = forms[currentStep].props;
 
-    if (step === 1) {
-      return <BasicInfoForm customer={customer} addNewPhone={this.addPhoneToCustomer} />;
-    }
-
-    if (step === 2) {
-      return <AddressForm customer={customer} />;
-    }
-
-    if (step === 3) {
-      return <NotesForm customer={customer} />;
-    }
-
-    return null;
+    return <Form {...props} />;
   }
 
   render() {
+    const customer = this.getCustomer();
+    const { currentStep } = this.state;
+
     return (
       <Wrapper>
+        <WizardSteps steps={this.state.steps} />
         <PageTitle>
           <FormattedMessage id="formCustomerTitle" />
         </PageTitle>
@@ -81,14 +107,13 @@ class CustomerForm extends Component {
         </PageText>
 
         <FormWrapper>
-          {this.renderCurrentForm()}
-
+          {this.renderFormStep(customer, currentStep)}
           <FormButtonsWrapper>
-            <FormButton onClick={this.goToPreviousStep}>
+            <FormButton onClick={event => this.changeStep(event, -1)}>
               <FormattedMessage id="formCustomerBack" />
             </FormButton>
 
-            <FormButton onClick={this.goToNextStep} primary>
+            <FormButton primary onClick={event => this.changeStep(event, 1)}>
               <FormattedMessage id="formCustomerNext" />
             </FormButton>
           </FormButtonsWrapper>

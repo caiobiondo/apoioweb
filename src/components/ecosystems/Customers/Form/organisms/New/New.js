@@ -3,13 +3,13 @@ import CustomerForm from '../Form';
 class NewCustomerForm extends CustomerForm {
   constructor(props) {
     super(props);
-    this.state = {
+
+    Object.assign(this.state, {
       customer: {
         phones: [{}],
         addresses: [{}],
       },
-      currentStep: 1,
-    };
+    });
 
     this.getCustomer = this.getCustomer.bind(this);
     this.setCustomer = this.setCustomer.bind(this);
