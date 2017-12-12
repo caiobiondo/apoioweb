@@ -102,6 +102,7 @@ export const Avatar = styled.figure`
   margin-left: 0;
   overflow: hidden;
   margin-right: 20px;
+  text-transform: uppercase;
 
   img {
     width: 100%;

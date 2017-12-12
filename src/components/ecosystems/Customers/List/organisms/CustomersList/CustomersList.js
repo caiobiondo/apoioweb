@@ -29,12 +29,6 @@ class CustomersList extends Component {
       </LoadingWrapper>
     );
 
-    this.renderName = this.renderName.bind(this);
-    this.renderSelect = this.renderSelect.bind(this);
-    this.renderSelectAll = this.renderSelectAll.bind(this);
-    this.selectCustomer = this.selectCustomer.bind(this);
-    this.selectAllCustomers = this.selectAllCustomers.bind(this);
-
     this.state = {
       data: {
         columns: ['select', 'name', 'email', 'phone', 'operator'],
@@ -77,7 +71,7 @@ class CustomersList extends Component {
     const { customers } = nextProps.data;
     const { data } = this.state;
 
-    const parsedCutomers = customers.map(customer => ({
+    const parsedCutomers = (customers || []).map(customer => ({
       id: customer.id,
       name: customer.name,
       email: customer.emails && customer.emails.length && customer.emails[0].email,
@@ -97,27 +91,27 @@ class CustomersList extends Component {
     return !loading && (!orders || orders.length === 0);
   }
 
-  selectCustomer(customer) {
+  selectCustomer = customer => {
     const { select } = this.props;
     select(customer);
-  }
+  };
 
-  selectAllCustomers() {
+  selectAllCustomers = () => {
     const { select } = this.props;
     const { customers } = this.props.data;
     select(customers);
-  }
+  };
 
-  renderCell({ value, row }) {
+  renderCell = ({ value, row }) => {
     return (
       <div>
         {value}
         <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
       </div>
     );
-  }
+  };
 
-  renderName({ value, row }) {
+  renderName = ({ value, row }) => {
     const names = value.split(' ');
     const initials = names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
     return (
@@ -129,24 +123,24 @@ class CustomersList extends Component {
         </NameLabel>
       </CustomerName>
     );
-  }
+  };
 
-  renderSelect({ row }) {
+  renderSelect = ({ row }) => {
     const isSelected = this.props.selectedCustomers.find(custmr => custmr.id === row.id);
     return (
       <div className={isSelected ? 'is-selected' : ''} onClick={() => this.selectCustomer(row)}>
         <Checkbox checked={isSelected} />
       </div>
     );
-  }
+  };
 
-  renderSelectAll() {
+  renderSelectAll = () => {
     return (
       <div onClick={() => this.selectAllCustomers()}>
         <Checkbox />
       </div>
     );
-  }
+  };
 
   render() {
     const { isLoading, isEmpty } = this;
