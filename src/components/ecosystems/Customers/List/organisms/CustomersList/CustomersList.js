@@ -117,11 +117,13 @@ class CustomersList extends Component {
   };
 
   renderName = ({ value, row }) => {
-    const names = value.split(' ');
-    const initials = names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
+    const nameInitials = value
+      .replace(/[^a-zA-Z- ]/g, '')
+      .match(/\b\w/g)
+      .join('');
     return (
       <CustomerName>
-        <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : initials}</Avatar>
+        <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : nameInitials}</Avatar>
         <NameLabel>
           {value}
           <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
