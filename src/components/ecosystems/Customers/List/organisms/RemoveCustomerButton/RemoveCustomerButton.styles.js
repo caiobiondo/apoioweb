@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spMedium } from 'styles/spacing';
 
-export const OrderAddButtonContainer = styled.div`
+export const CustomerAddButtonContainer = styled.div`
   position: fixed;
   right: 42px;
   bottom: ${props => {

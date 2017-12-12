@@ -6,7 +6,7 @@ import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 
 import { injectIntl } from 'react-intl';
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
-import { OrderAddButtonContainer, Bold } from './RemoveCustomerButton.styles';
+import { CustomerAddButtonContainer, Bold } from './RemoveCustomerButton.styles';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
 class RemoveCustomerButton extends Component {
@@ -74,7 +74,7 @@ class RemoveCustomerButton extends Component {
       />,
     ];
     return (
-      <OrderAddButtonContainer remove={this.props.remove}>
+      <CustomerAddButtonContainer remove={this.props.remove}>
         <CustomerButton action={this.removeCustomerModal} remove={this.props.isCustomerSelected} />
         <Dialog
           title="Excluir Cliente?"
@@ -86,7 +86,7 @@ class RemoveCustomerButton extends Component {
           Tem certeza que deseja deletar <Bold>{this.renderSelectedCustomers()}</Bold> da sua lista
           lista de clientes?
         </Dialog>
-      </OrderAddButtonContainer>
+      </CustomerAddButtonContainer>
     );
   }
 }
