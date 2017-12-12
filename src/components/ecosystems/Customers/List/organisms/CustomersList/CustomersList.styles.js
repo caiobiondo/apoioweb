@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { spSmall, spMedium, spPage } from 'styles/spacing';
+import { spPage } from 'styles/spacing';
 import { gray300, white, orange100 } from 'styles/colors';
 
 export const Wrapper = {

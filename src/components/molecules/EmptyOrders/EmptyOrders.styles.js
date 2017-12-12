@@ -3,13 +3,10 @@ import { Responsive } from '@entria/components';
 import { gray700, gray150 } from 'styles/colors';
 import { fs14, fs18, fs20, fs28, fw900, RobotoRegular } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
+import { Center } from 'styles/mixins';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  ${Center};
 `;
 
 export const IconWrapper = styled.div`
