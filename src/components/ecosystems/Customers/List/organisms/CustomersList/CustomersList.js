@@ -16,7 +16,7 @@ import {
   Avatar,
   LinkStyle,
 } from './CustomersList.styles';
-import { CustomersListQuery, CustomersListQueryOptions } from './CustomersList.data';
+import { CustomersListQuery } from './CustomersList.data';
 import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
 
 class CustomersList extends Component {
@@ -74,7 +74,6 @@ class CustomersList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     const { customers } = nextProps.data;
     const { data } = this.state;
 
@@ -97,7 +96,6 @@ class CustomersList extends Component {
   isEmpty(loading, orders) {
     return !loading && (!orders || orders.length === 0);
   }
-
 
   selectCustomer(customer) {
     const { select } = this.props;

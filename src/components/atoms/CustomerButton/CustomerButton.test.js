@@ -1,12 +1,12 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import OrderAddButton from './OrderAddButton';
+import CustomerButton from './CustomerButton';
 
-describe('OrderAddButton', () => {
+describe('CustomerButton', () => {
   it('should render a floating button with add order icon', () => {
     const renderer = new ShallowRenderer();
 
-    renderer.render(<OrderAddButton />);
+    renderer.render(<CustomerButton />);
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
