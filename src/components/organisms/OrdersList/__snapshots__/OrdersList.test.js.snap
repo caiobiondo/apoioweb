@@ -46,7 +46,7 @@ exports[`OrdersList should render an order list 1`] = `
     isReverse={false}
     loadMore={[Function]}
     loader={
-      <OrdersListstyles__LoadingWrapper>
+      <mixins__LoadingWrapperStyle>
         <CircularProgress
           max={100}
           min={0}
@@ -55,7 +55,7 @@ exports[`OrdersList should render an order list 1`] = `
           thickness={2}
           value={0}
         />
-      </OrdersListstyles__LoadingWrapper>
+      </mixins__LoadingWrapperStyle>
     }
     pageStart={0}
     ref={null}
