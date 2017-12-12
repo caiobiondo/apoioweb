@@ -1,4 +1,5 @@
 import CustomerForm from '../Form';
+import { withRouter } from 'react-router-dom';
 
 class NewCustomerForm extends CustomerForm {
   constructor(props) {
@@ -24,4 +25,4 @@ class NewCustomerForm extends CustomerForm {
   }
 }
 
-export default NewCustomerForm;
+export default withRouter(NewCustomerForm);

@@ -40,6 +40,7 @@ export default {
     formCustomerProfile: 'Perfil do Cliente',
     formCustomerProfileDirect: 'Presencial',
     formCustomerProfileEcommerce: 'Digital',
+    formCustomerRegister: 'Cadastrar',
     formCustomerState: 'UF',
     formCustomerTitle: 'Cadastro de Novos Clientes',
     formCustomerZipCode: 'CEP',

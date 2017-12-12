@@ -1,4 +1,5 @@
 import CustomerForm from '../Form';
+import { withRouter } from 'react-router-dom';
 
 class EditCustomerForm extends CustomerForm {
   constructor(props) {
@@ -13,4 +14,4 @@ class EditCustomerForm extends CustomerForm {
   }
 }
 
-export default EditCustomerForm;
+export default withRouter(EditCustomerForm);

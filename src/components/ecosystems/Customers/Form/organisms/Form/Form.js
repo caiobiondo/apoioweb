@@ -49,6 +49,10 @@ class CustomerForm extends Component {
 
     const { currentStep } = this.state;
 
+    if (currentStep + change < 0) {
+      this.props.history.goBack();
+    }
+
     const steps = this.state.steps.map((step, index) => {
       if (index < currentStep + change) {
         step.current = false;
@@ -91,6 +95,30 @@ class CustomerForm extends Component {
     return <Form {...props} />;
   }
 
+  renderFormButtons() {
+    const { currentStep } = this.state;
+
+    return (
+      <FormButtonsWrapper>
+        <FormButton onClick={event => this.changeStep(event, -1)}>
+          <FormattedMessage id="formCustomerBack" />
+        </FormButton>
+
+        {currentStep === this.state.steps.length - 1 && (
+          <FormButton primary onClick={event => this.changeStep(event, 1)}>
+            <FormattedMessage id="formCustomerRegister" />
+          </FormButton>
+        )}
+
+        {currentStep < this.state.steps.length - 1 && (
+          <FormButton primary onClick={event => this.changeStep(event, 1)}>
+            <FormattedMessage id="formCustomerNext" />
+          </FormButton>
+        )}
+      </FormButtonsWrapper>
+    );
+  }
+
   render() {
     const customer = this.getCustomer();
     const { currentStep } = this.state;
@@ -108,15 +136,7 @@ class CustomerForm extends Component {
 
         <FormWrapper>
           {this.renderFormStep(customer, currentStep)}
-          <FormButtonsWrapper>
-            <FormButton onClick={event => this.changeStep(event, -1)}>
-              <FormattedMessage id="formCustomerBack" />
-            </FormButton>
-
-            <FormButton primary onClick={event => this.changeStep(event, 1)}>
-              <FormattedMessage id="formCustomerNext" />
-            </FormButton>
-          </FormButtonsWrapper>
+          {this.renderFormButtons()}
         </FormWrapper>
       </Wrapper>
     );
