@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spSmall, spMedium, spPage } from 'styles/spacing';
+import { gray300, white, orange100 } from 'styles/colors';
 
 export const Wrapper = {
   flex: '1 1 0',
@@ -13,7 +14,7 @@ export const cellStyle = {
   position: 'relative',
   padding: '0px 20px',
   lineHeight: '50px',
-  color: '#c0c0c0',
+  color: gray300,
   fontSize: '15px',
   fontFamily: 'Roboto',
 };
@@ -36,7 +37,7 @@ export const TableWrapper = styled.div`
 
   tr {
     transition: all 0.2s ease;
-    background: #ffffff;
+    background: ${white};
 
     td:first-child .is-selected,
     td:first-child .is-selected * {
@@ -45,7 +46,7 @@ export const TableWrapper = styled.div`
   }
 
   thead tr th {
-    color: #c0c0c0 !important;
+    color: ${gray300} !important;
     font-size: 15px !important;
     font-weight: 400 !important;
   }
@@ -95,8 +96,8 @@ export const Avatar = styled.figure`
   height: 50px;
   line-height: 50px;
   font-size: 17px;
-  color: #fff;
-  background: #f39919;
+  color: ${white};
+  background: ${orange100};
   margin-left: 0;
   overflow: hidden;
   margin-right: 20px;
