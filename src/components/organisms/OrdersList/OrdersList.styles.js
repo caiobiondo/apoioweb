@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spSmall, spMedium, spPage } from 'styles/spacing';
+import { LoadingWrapperStyle } from 'styles/mixins';
 
 export const List = styled.ul`
   padding-left: 0;
@@ -13,7 +14,7 @@ export const List = styled.ul`
 `;
 
 export const LoadingWrapper = styled.div`
-  text-align: center;
+  ${LoadingWrapperStyle};
 `;
 
 export const scrolledContainer = {

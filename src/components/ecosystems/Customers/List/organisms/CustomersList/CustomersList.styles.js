@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spPage } from 'styles/spacing';
 import { gray300, white, orange100 } from 'styles/colors';
+import { LoadingWrapperStyle } from 'styles/mixins';
 
 export const Wrapper = {
   flex: '1 1 0',
@@ -117,7 +118,7 @@ export const NameLabel = styled.figure`
 `;
 
 export const LoadingWrapper = styled.div`
-  text-align: center;
+  ${LoadingWrapperStyle};
 `;
 
 export const scrolledContainer = {

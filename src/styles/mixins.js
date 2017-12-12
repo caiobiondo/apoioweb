@@ -24,3 +24,11 @@ export const Center = css`
   align-items: center;
   height: 100%;
 `;
+
+export const LoadingWrapperStyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
