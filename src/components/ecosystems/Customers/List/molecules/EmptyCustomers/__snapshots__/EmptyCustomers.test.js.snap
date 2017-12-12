@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyCustomers should render a empty orders indicator 1`] = `
+<EmptyCustomersstyles__Container>
+  <EmptyCustomersstyles__IconWrapper>
+    <Icon
+      file="ico_box"
+    />
+  </EmptyCustomersstyles__IconWrapper>
+  <EmptyCustomersstyles__Title>
+    <FormattedMessage
+      id="customersEmptyList"
+      values={Object {}}
+    />
+  </EmptyCustomersstyles__Title>
+</EmptyCustomersstyles__Container>
+`;

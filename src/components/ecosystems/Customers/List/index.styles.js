@@ -14,16 +14,3 @@ export const Main = styled.div`
     return props.loading || props.empty ? Full : null;
   }};
 `;
-
-export const OrderAddButtonContainer = styled.div`
-  position: fixed;
-  right: 42px;
-  bottom: ${props => {
-    return props.empty ? '20%' : '10%';
-  }};
-  z-index: 9999;
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    right: ${spMedium};
-  }
-`;

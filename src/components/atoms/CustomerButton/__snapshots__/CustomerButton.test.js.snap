@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerButton should render a floating button with add order icon 1`] = `
+<CustomerButtonstyles__Wrapper
+  onClick={[Function]}
+>
+  <Unknown
+    iconWrapper={[Function]}
+  >
+    <Icon
+      file="ico_add_customer"
+    />
+  </Unknown>
+</CustomerButtonstyles__Wrapper>
+`;
