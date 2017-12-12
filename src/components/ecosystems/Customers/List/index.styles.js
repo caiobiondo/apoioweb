@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spMedium, spPage } from 'styles/spacing';
 
-const FullContainer = css`
+const Full = css`
   position: absolute;
   top: 0;
   left: 0;
@@ -25,6 +25,6 @@ export const Main = styled.div`
   }
 
   ${props => {
-    return props.loading || props.empty ? FullContainer : null;
+    return props.loading || props.empty ? Full : null;
   }};
 `;

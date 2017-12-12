@@ -116,16 +116,6 @@ export const NameLabel = styled.figure`
   margin-right: 0;
 `;
 
-export const List = styled.ul`
-  padding-left: 0;
-  padding-top: ${spMedium};
-  margin: ${spMedium};
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    margin: ${spSmall};
-  }
-`;
-
 export const LoadingWrapper = styled.div`
   text-align: center;
 `;

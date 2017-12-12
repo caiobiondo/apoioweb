@@ -2,18 +2,18 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Icon } from 'natura-ui';
 
-import { Container, IconWrapper, Title } from './EmptyCustomers.styles';
+import { EmptyContainer, IconWrapper, Title } from './EmptyCustomers.styles';
 
 const EmptyCustomers = () => {
   return (
-    <Container>
+    <EmptyContainer>
       <IconWrapper>
         <Icon file="ico_box" />
       </IconWrapper>
       <Title>
         <FormattedMessage id="customersEmptyList" />
       </Title>
-    </Container>
+    </EmptyContainer>
   );
 };
 

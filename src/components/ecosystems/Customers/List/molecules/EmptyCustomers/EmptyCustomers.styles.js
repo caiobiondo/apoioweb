@@ -4,7 +4,7 @@ import { gray700, gray150 } from 'styles/colors';
 import { fs18, fs28, fw700, NaturaBold, RobotoRegular } from 'styles/typography';
 import { spMedium } from 'styles/spacing';
 
-export const Container = styled.div`
+export const EmptyContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
