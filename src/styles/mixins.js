@@ -25,7 +25,7 @@ export const Center = css`
   height: 100%;
 `;
 
-export const LoadingWrapperStyle = styled.dev`
+export const LoadingWrapperStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
