@@ -1,0 +1,534 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomersList Organism should parse customers and update internal data state (with selected customer) 1`] = `
+Object {
+  "body": Array [
+    Object {
+      "avatar": "",
+      "email": "an-email",
+      "id": 123,
+      "name": "a name",
+      "operator": "a provider",
+      "phone": "a-phone",
+      "style": Object {
+        "background": "#f7f7f7",
+      },
+    },
+  ],
+  "columns": Array [
+    "select",
+    "name",
+    "email",
+    "phone",
+    "operator",
+  ],
+  "header": Object {
+    "email": <FormattedMessage
+      id="customerEmail"
+      values={Object {}}
+/>,
+    "name": <FormattedMessage
+      id="customerName"
+      values={Object {}}
+/>,
+    "operator": <FormattedMessage
+      id="customerPhoneProvider"
+      values={Object {}}
+/>,
+    "phone": <FormattedMessage
+      id="customerPhone"
+      values={Object {}}
+/>,
+  },
+  "renderer": Object {
+    "email": [Function],
+    "name": [Function],
+    "operator": [Function],
+    "phone": [Function],
+    "select": [Function],
+    "thead": Object {
+      "select": [Function],
+    },
+  },
+  "style": Object {
+    "email": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "name": Object {
+      "color": "#222",
+      "fontFamily": "Roboto",
+      "fontSize": "17px",
+      "fontWeight": "500",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "operator": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "phone": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "select": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+      "width": "1px",
+    },
+  },
+}
+`;
+
+exports[`CustomersList Organism should parse customers and update internal data state (with undefined customers) 1`] = `
+Object {
+  "body": Array [],
+  "columns": Array [
+    "select",
+    "name",
+    "email",
+    "phone",
+    "operator",
+  ],
+  "header": Object {
+    "email": <FormattedMessage
+      id="customerEmail"
+      values={Object {}}
+/>,
+    "name": <FormattedMessage
+      id="customerName"
+      values={Object {}}
+/>,
+    "operator": <FormattedMessage
+      id="customerPhoneProvider"
+      values={Object {}}
+/>,
+    "phone": <FormattedMessage
+      id="customerPhone"
+      values={Object {}}
+/>,
+  },
+  "renderer": Object {
+    "email": [Function],
+    "name": [Function],
+    "operator": [Function],
+    "phone": [Function],
+    "select": [Function],
+    "thead": Object {
+      "select": [Function],
+    },
+  },
+  "style": Object {
+    "email": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "name": Object {
+      "color": "#222",
+      "fontFamily": "Roboto",
+      "fontSize": "17px",
+      "fontWeight": "500",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "operator": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "phone": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "select": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+      "width": "1px",
+    },
+  },
+}
+`;
+
+exports[`CustomersList Organism should parse customers and update internal data state 1`] = `
+Object {
+  "body": Array [
+    Object {
+      "avatar": "",
+      "email": "an-email",
+      "id": 123,
+      "name": "a name",
+      "operator": "a provider",
+      "phone": "a-phone",
+      "style": null,
+    },
+  ],
+  "columns": Array [
+    "select",
+    "name",
+    "email",
+    "phone",
+    "operator",
+  ],
+  "header": Object {
+    "email": <FormattedMessage
+      id="customerEmail"
+      values={Object {}}
+/>,
+    "name": <FormattedMessage
+      id="customerName"
+      values={Object {}}
+/>,
+    "operator": <FormattedMessage
+      id="customerPhoneProvider"
+      values={Object {}}
+/>,
+    "phone": <FormattedMessage
+      id="customerPhone"
+      values={Object {}}
+/>,
+  },
+  "renderer": Object {
+    "email": [Function],
+    "name": [Function],
+    "operator": [Function],
+    "phone": [Function],
+    "select": [Function],
+    "thead": Object {
+      "select": [Function],
+    },
+  },
+  "style": Object {
+    "email": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "name": Object {
+      "color": "#222",
+      "fontFamily": "Roboto",
+      "fontSize": "17px",
+      "fontWeight": "500",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "operator": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "phone": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+    },
+    "select": Object {
+      "color": "#8e8e8e",
+      "fontFamily": "Roboto",
+      "fontSize": "15px",
+      "lineHeight": "50px",
+      "padding": "0px 20px",
+      "position": "relative",
+      "width": "1px",
+    },
+  },
+}
+`;
+
+exports[`CustomersList Organism should render a customers list 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "flex": "1 1 0",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "overflowY": "scroll",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <CustomersListstyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "columns": Array [
+            "select",
+            "name",
+            "email",
+            "phone",
+            "operator",
+          ],
+          "header": Object {
+            "email": <FormattedMessage
+              id="customerEmail"
+              values={Object {}}
+        />,
+            "name": <FormattedMessage
+              id="customerName"
+              values={Object {}}
+        />,
+            "operator": <FormattedMessage
+              id="customerPhoneProvider"
+              values={Object {}}
+        />,
+            "phone": <FormattedMessage
+              id="customerPhone"
+              values={Object {}}
+        />,
+          },
+          "renderer": Object {
+            "email": [Function],
+            "name": [Function],
+            "operator": [Function],
+            "phone": [Function],
+            "select": [Function],
+            "thead": Object {
+              "select": [Function],
+            },
+          },
+          "style": Object {
+            "email": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "name": Object {
+              "color": "#222",
+              "fontFamily": "Roboto",
+              "fontSize": "17px",
+              "fontWeight": "500",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "operator": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "phone": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "select": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+              "width": "1px",
+            },
+          },
+        }
+      }
+    />
+  </CustomersListstyles__TableWrapper>
+</Paper>
+`;
+
+exports[`CustomersList Organism should render a loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`CustomersList Organism should render an empty indicator 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    icon="ico_box"
+    titleId="customersEmptyList"
+  />
+</Paper>
+`;
+
+exports[`CustomersList Organism should render default cell 1`] = `
+<div>
+  a value
+  <Link
+    replace={false}
+    style={
+      Object {
+        "height": "100%",
+        "left": 0,
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+      }
+    }
+    to="/my-customers/123"
+  />
+</div>
+`;
+
+exports[`CustomersList Organism should render name cell 1`] = `
+<CustomersListstyles__CustomerName>
+  <CustomersListstyles__Avatar>
+    an
+  </CustomersListstyles__Avatar>
+  <CustomersListstyles__NameLabel>
+    a name
+    <Link
+      replace={false}
+      style={
+        Object {
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        }
+      }
+      to="/my-customers/123"
+    />
+  </CustomersListstyles__NameLabel>
+</CustomersListstyles__CustomerName>
+`;
+
+exports[`CustomersList Organism should render name cell with avatar 1`] = `
+<CustomersListstyles__CustomerName>
+  <CustomersListstyles__Avatar>
+    <img
+      alt="a name"
+      src="an avatar"
+    />
+  </CustomersListstyles__Avatar>
+  <CustomersListstyles__NameLabel>
+    a name
+    <Link
+      replace={false}
+      style={
+        Object {
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        }
+      }
+      to="/my-customers/123"
+    />
+  </CustomersListstyles__NameLabel>
+</CustomersListstyles__CustomerName>
+`;
+
+exports[`CustomersList Organism should render select all 1`] = `
+<div
+  onClick={[Function]}
+>
+  <Checkbox
+    checked={false}
+    disabled={false}
+    onCheck={[Function]}
+  />
+</div>
+`;
+
+exports[`CustomersList Organism should render select when not selected 1`] = `
+<div
+  className=""
+  onClick={[Function]}
+>
+  <Checkbox
+    checked={false}
+    disabled={false}
+    onCheck={[Function]}
+  />
+</div>
+`;
+
+exports[`CustomersList Organism should render select when selected 1`] = `
+<div
+  className="is-selected"
+  onClick={[Function]}
+>
+  <Checkbox
+    checked={
+      Object {
+        "emails": Array [
+          Object {
+            "email": "an-email",
+          },
+        ],
+        "id": 123,
+        "name": "a name",
+        "phones": Array [
+          Object {
+            "phone": "a-phone",
+            "provider": "a provider",
+          },
+        ],
+      }
+    }
+    disabled={false}
+    onCheck={[Function]}
+  />
+</div>
+`;

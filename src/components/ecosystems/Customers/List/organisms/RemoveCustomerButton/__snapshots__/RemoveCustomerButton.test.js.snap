@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveCustomerButton should render the add customers button 1`] = `
+<RemoveCustomerButtonstyles__CustomerAddButtonContainer>
+  <OrderAddButton
+    action={[Function]}
+    remove={false}
+  />
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="cancel"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={Object {}}
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="remove"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={Object {}}
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="formatedMessage [object Object]"
+  >
+    <FormattedMessage
+      id="customerShouldBeRemovedWarning"
+      values={
+        Object {
+          "names": <b />,
+        }
+      }
+    />
+  </Dialog>
+</RemoveCustomerButtonstyles__CustomerAddButtonContainer>
+`;
+
+exports[`RemoveCustomerButton should render the remove customers button 1`] = `
+<RemoveCustomerButtonstyles__CustomerAddButtonContainer>
+  <OrderAddButton
+    action={[Function]}
+    remove={true}
+  />
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="cancel"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={Object {}}
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="remove"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={Object {}}
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="formatedMessage [object Object]"
+  >
+    <FormattedMessage
+      id="customerShouldBeRemovedWarning"
+      values={
+        Object {
+          "names": <b />,
+        }
+      }
+    />
+  </Dialog>
+</RemoveCustomerButtonstyles__CustomerAddButtonContainer>
+`;

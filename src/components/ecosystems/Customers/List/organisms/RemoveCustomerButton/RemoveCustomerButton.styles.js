@@ -6,16 +6,11 @@ export const CustomerAddButtonContainer = styled.div`
   position: fixed;
   right: 42px;
   bottom: ${props => {
-    return props.empty ? '20%' : '10%';
+    return props.empty ? '24%' : '12%';
   }};
   z-index: 9999;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     right: ${spMedium};
   }
-`;
-
-export const Bold = styled.span`
-  font-weight: 800;
-  color: #000;
 `;

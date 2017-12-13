@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
-import CustomersList from './organisms/CustomersList';
+import CustomersList from './organisms/CustomersList/CustomersList';
 import { Main } from './index.styles';
-import RemoveCustomerButton from './organisms/RemoveCustomerButton';
+import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustomerButton';
 
 class CustomersListWrapper extends Component {
-  constructor(props) {
-    super(props);
-    this.selectCustomer = this.selectCustomer.bind(this);
-    this.onRemoveCustomer = this.onRemoveCustomer.bind(this);
-  }
-
   state = {
-    empty: false,
     selectedCustomers: [],
   };
 
-  onLoadFinished = (empty, loading) => {
-    this.setState({ empty: empty, loading: loading });
-  };
-
-  selectCustomer(customer) {
+  onSelectCustomer = customer => {
     const { selectedCustomers } = this.state;
 
-    if (customer.length) {
+    if (Array.isArray(customer)) {
       const costumers = customer.length !== selectedCustomers.length ? customer : [];
       return this.setState({
         selectedCustomers: [...costumers],
@@ -38,22 +27,22 @@ class CustomersListWrapper extends Component {
     return this.setState({
       selectedCustomers: [...selectedCustomers, customer],
     });
-  }
+  };
 
-  onRemoveCustomer() {
+  onRemoveCustomer = () => {
     this.setState({ selectedCustomers: [] });
-  }
+  };
 
   render() {
-    const { loading, selectedCustomers } = this.state;
+    const { selectedCustomers } = this.state;
     return (
-      <Main loading={loading}>
+      <Main>
         <RemoveCustomerButton
           selected={selectedCustomers}
-          remove={this.onRemoveCustomer}
+          onRemove={this.onRemoveCustomer}
           isCustomerSelected={selectedCustomers.length}
         />
-        <CustomersList select={this.selectCustomer} selectedCustomers={selectedCustomers} />
+        <CustomersList onSelect={this.onSelectCustomer} selectedCustomers={selectedCustomers} />
       </Main>
     );
   }

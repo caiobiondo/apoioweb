@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { graphql } from 'react-apollo';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-import Checkbox from '../../molecules/Checkbox';
+import Checkbox from 'components/atoms/Checkbox/Checkbox';
 
 import {
   CustomerName,
   LoadingWrapper,
   fullContainer,
   cellStyle,
+  SelectedRowStyle,
   Wrapper,
   TableWrapper,
   NameLabel,
@@ -17,24 +18,11 @@ import {
   LinkStyle,
 } from './CustomersList.styles';
 import { CustomersListQuery } from './CustomersList.data';
-import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
 
-class CustomersList extends Component {
+export class CustomersList extends Component {
   constructor(props) {
     super(props);
-
-    this.loader = (
-      <LoadingWrapper>
-        <CircularProgress thickness={2} />
-      </LoadingWrapper>
-    );
-
-    this.renderName = this.renderName.bind(this);
-    this.renderSelect = this.renderSelect.bind(this);
-    this.renderSelectAll = this.renderSelectAll.bind(this);
-    this.selectCustomer = this.selectCustomer.bind(this);
-    this.selectAllCustomers = this.selectAllCustomers.bind(this);
-
     this.state = {
       data: {
         columns: ['select', 'name', 'email', 'phone', 'operator'],
@@ -64,89 +52,99 @@ class CustomersList extends Component {
           },
         },
         header: {
-          name: 'NOME',
-          email: 'EMAIL',
-          phone: 'TELEFONE',
-          operator: 'OPERADORA',
+          name: <FormattedMessage id="customerName" />,
+          email: <FormattedMessage id="customerEmail" />,
+          phone: <FormattedMessage id="customerPhone" />,
+          operator: <FormattedMessage id="customerPhoneProvider" />,
         },
       },
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { customers } = nextProps.data;
-    const { data } = this.state;
+  loader = (
+    <LoadingWrapper>
+      <CircularProgress thickness={2} />
+    </LoadingWrapper>
+  );
 
-    const parsedCutomers = customers.map(customer => ({
+  componentWillReceiveProps({ data, selectedCustomers }) {
+    const { customers } = data;
+
+    const parsedCustomers = (customers || []).map(customer => ({
       id: customer.id,
       name: customer.name,
       email: customer.emails && customer.emails.length && customer.emails[0].email,
       phone: customer.phones && customer.phones.length && customer.phones[0].phone,
       operator: customer.phones && customer.phones.length && customer.phones[0].provider,
       avatar: '',
+      style: this.isSelected(customer, selectedCustomers) ? SelectedRowStyle : null,
     }));
 
-    this.setState({ data: { ...data, body: parsedCutomers } });
+    this.setState({ data: { ...this.state.data, body: parsedCustomers } });
   }
 
-  isLoading(loading, orders) {
-    return loading && !orders;
-  }
+  isLoading = (loading, customers) => {
+    return loading && !customers;
+  };
 
-  isEmpty(loading, orders) {
-    return !loading && (!orders || orders.length === 0);
-  }
+  isEmpty = (loading, customers) => {
+    return !loading && (!customers || customers.length === 0);
+  };
 
-  selectCustomer(customer) {
-    const { select } = this.props;
-    select(customer);
-  }
+  isSelected = (customer, selectedCustomers) => {
+    return selectedCustomers.find(({ id }) => id === customer.id);
+  };
 
-  selectAllCustomers() {
-    const { select } = this.props;
+  selectCustomer = customer => {
+    this.props.onSelect(customer);
+  };
+
+  selectAllCustomers = () => {
     const { customers } = this.props.data;
-    select(customers);
-  }
+    this.props.onSelect(customers);
+  };
 
-  renderCell({ value, row }) {
+  renderCell = ({ value, row }) => {
     return (
       <div>
         {value}
         <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
       </div>
     );
-  }
+  };
 
-  renderName({ value, row }) {
-    const names = value.split(' ');
-    const initials = names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
+  renderName = ({ value, row }) => {
+    const nameInitials = value
+      .replace(/[^a-zA-Z- ]/g, '')
+      .match(/\b\w/g)
+      .join('');
     return (
       <CustomerName>
-        <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : initials}</Avatar>
+        <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : nameInitials}</Avatar>
         <NameLabel>
           {value}
           <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
         </NameLabel>
       </CustomerName>
     );
-  }
+  };
 
-  renderSelect({ row }) {
-    const isSelected = this.props.selectedCustomers.find(custmr => custmr.id === row.id);
+  renderSelect = ({ row }) => {
+    const isSelected = this.isSelected(row, this.props.selectedCustomers);
     return (
       <div className={isSelected ? 'is-selected' : ''} onClick={() => this.selectCustomer(row)}>
         <Checkbox checked={isSelected} />
       </div>
     );
-  }
+  };
 
-  renderSelectAll() {
+  renderSelectAll = () => {
     return (
       <div onClick={() => this.selectAllCustomers()}>
         <Checkbox />
       </div>
     );
-  }
+  };
 
   render() {
     const { isLoading, isEmpty } = this;
@@ -160,7 +158,7 @@ class CustomersList extends Component {
     if (isEmpty(loading, customers)) {
       return (
         <Paper style={fullContainer}>
-          <EmptyCustomers />
+          <EmptyList icon="ico_box" titleId="customersEmptyList" />
         </Paper>
       );
     }
@@ -175,5 +173,4 @@ class CustomersList extends Component {
   }
 }
 
-export const CustomersListWithIntl = injectIntl(CustomersList);
-export default graphql(CustomersListQuery)(CustomersListWithIntl);
+export default graphql(CustomersListQuery)(CustomersList);
