@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Icon } from 'natura-ui';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import {
   CenterWrapper,
   CycleButton,
@@ -124,4 +124,4 @@ const PointsCycleSelection = props => {
   );
 };
 
-export default injectIntl(PointsCycleSelection);
+export default PointsCycleSelection;
