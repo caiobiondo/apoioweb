@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
-import { CustomerAddButtonContainer, Bold } from './RemoveCustomerButton.styles';
+import { CustomerAddButtonContainer } from './RemoveCustomerButton.styles';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
 class RemoveCustomerButton extends Component {
@@ -50,30 +51,46 @@ class RemoveCustomerButton extends Component {
 
   renderSelectedCustomers = () => {
     const { selected } = this.props;
-    return selected.map(cutomer => `${cutomer.name}, `);
+    return selected.map(customer => customer.name).join(', ');
   };
 
   render() {
+    const { intl } = this.props;
+    const title = intl.formatMessage({ id: 'customerShouldBeRemoved' });
+    const selectedCustomers = this.renderSelectedCustomers();
     const actions = [
-      <FlatButton label="Cancelar" primary={true} onClick={this.onCloseModal} />,
-      <FlatButton label="Deletar" primary={true} onClick={this.removeCustomer} />,
+      <FlatButton
+        label={<FormattedMessage id="cancel" />}
+        primary={true}
+        onClick={this.onCloseModal}
+      />,
+      <FlatButton
+        label={<FormattedMessage id="remove" />}
+        primary={true}
+        onClick={this.removeCustomer}
+      />,
     ];
     return (
       <CustomerAddButtonContainer remove={this.props.remove}>
         <CustomerButton action={this.removeCustomerModal} remove={this.props.isCustomerSelected} />
         <Dialog
-          title="Excluir Cliente?"
+          title={title}
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.removeCustomer}
         >
-          Tem certeza que deseja deletar <Bold>{this.renderSelectedCustomers()}</Bold> da sua lista
-          lista de clientes?
+          <FormattedMessage
+            id="customerShouldBeRemovedWarning"
+            values={{
+              names: <b>{selectedCustomers}</b>,
+            }}
+          />
         </Dialog>
       </CustomerAddButtonContainer>
     );
   }
 }
 
-export default graphql(RemoveCustomersMutation)(RemoveCustomerButton);
+export const RemoveCustomerButtonWithIntl = injectIntl(RemoveCustomerButton);
+export default graphql(RemoveCustomersMutation)(RemoveCustomerButtonWithIntl);

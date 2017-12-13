@@ -13,6 +13,10 @@ export default {
     customerPhone: 'Telefone',
     customerPhoneProvider: 'Operadora',
     customerProfile: 'Perfil do Cliente',
+    customerShouldBeRemoved: 'Excluir Cliente?',
+    customersEmptyList: 'Lista de clientes vazia',
+    customerShouldBeRemovedWarning:
+      'Tem certeza que deseja deletar {names} da sua lista de clientes?',
     gender: {
       male: 'Masculino',
       female: 'Feminino',
