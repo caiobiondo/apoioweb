@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveCustomerButton Styles should render the container with 12% from bottom 1`] = `
+<div
+  className="RemoveCustomerButtonstyles__CustomerAddButtonContainer-ikvvOz jYxQDt"
+/>
+`;
+
+exports[`RemoveCustomerButton Styles should render the container with 24% from bottom 1`] = `
+<div
+  className="RemoveCustomerButtonstyles__CustomerAddButtonContainer-ikvvOz dGxZen"
+/>
+`;

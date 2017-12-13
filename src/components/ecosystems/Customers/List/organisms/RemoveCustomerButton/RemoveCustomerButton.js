@@ -9,7 +9,7 @@ import { CustomersListQuery } from '../CustomersList/CustomersList.data';
 import { CustomerAddButtonContainer } from './RemoveCustomerButton.styles';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
-class RemoveCustomerButton extends Component {
+export class RemoveCustomerButton extends Component {
   state = {
     open: false,
   };
@@ -31,25 +31,16 @@ class RemoveCustomerButton extends Component {
   };
 
   removeCustomer = () => {
-    const { selected } = this.props;
-    const customersIdToBeRemoved = selected.map(({ id }) => id);
+    const ids = this.customersIdToBeRemoved();
 
-    if (selected.length) {
+    if (this.props.selected && this.props.selected.length) {
       this.props
         .mutate({
-          variables: { input: { ids: customersIdToBeRemoved } },
+          variables: { input: { ids: ids } },
           optimisticResponse: {
-            removeCustomers: { ids: customersIdToBeRemoved },
+            removeCustomers: { ids: ids },
           },
-          update: (store, { data: { removeCustomers } }) => {
-            const data = store.readQuery({ query: CustomersListQuery });
-            data.customers = data.customers.filter(
-              ({ id }) => !customersIdToBeRemoved.includes(id),
-            );
-            store.writeQuery({ query: CustomersListQuery, data });
-            this.setState({ open: false });
-            this.props.remove();
-          },
+          update: this.onUpdate,
         })
         .then(() => {
           console.log('uhul!');
@@ -57,8 +48,20 @@ class RemoveCustomerButton extends Component {
     }
   };
 
+  customersIdToBeRemoved = () => {
+    return this.props.selected.map(({ id }) => id);
+  };
+
   onCloseModal = () => {
     this.setState({ open: false });
+  };
+
+  onUpdate = (store, { data: { removeCustomers } }) => {
+    const data = store.readQuery({ query: CustomersListQuery });
+    data.customers = data.customers.filter(({ id }) => !removeCustomers.ids.includes(id));
+    store.writeQuery({ query: CustomersListQuery, data });
+    this.setState({ open: false });
+    this.props.onRemove();
   };
 
   renderSelectedCustomers = () => {

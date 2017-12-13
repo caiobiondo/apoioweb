@@ -44,7 +44,7 @@ class CustomersListWrapper extends Component {
       <Main loading={loading}>
         <RemoveCustomerButton
           selected={selectedCustomers}
-          remove={this.onRemoveCustomer}
+          onRemove={this.onRemoveCustomer}
           isCustomerSelected={selectedCustomers.length}
         />
         <CustomersList select={this.selectCustomer} selectedCustomers={selectedCustomers} />
