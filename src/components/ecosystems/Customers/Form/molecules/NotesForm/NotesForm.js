@@ -2,10 +2,9 @@ import React from 'react';
 import { Wrapper, Title, HelpText, FormText } from './NotesForm.styles';
 import { translate } from '../../Shared/Utils';
 
-import { withFormik } from 'formik';
 import { FormattedMessage } from 'react-intl';
 
-const InnerForm = ({
+const NotesForm = ({
   values,
   touched,
   handleChange,
@@ -14,6 +13,8 @@ const InnerForm = ({
   isSubmitting,
   errors = {},
 }) => {
+  values = values.customer || {};
+
   return (
     <Wrapper>
       <Title>
@@ -26,22 +27,14 @@ const InnerForm = ({
 
       <FormText
         type="text"
-        name="notes"
+        name="customer.comment"
         onChange={handleChange}
         onBlur={handleBlur}
         label={translate('formCustomerNotes')}
-        value={values.notes}
+        value={values.comment}
       />
     </Wrapper>
   );
 };
-
-const NotesForm = withFormik({
-  mapPropsToValues: props => props.customer,
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    debugger;
-    console.log(values);
-  },
-})(InnerForm);
 
 export default NotesForm;

@@ -15,30 +15,31 @@ const PhoneForm = ({
 }) => {
   errors = (errors.phones && errors.phones[index]) || {};
   touched = (touched.phones && touched.phones[index]) || {};
+  values = (values.phones && values.phones[index]) || {};
 
   return (
     <PhoneWrapper>
       <RowWithHalfInputs>
         <FormInput
           type="text"
-          name={`phones.${index}.phone`}
+          name={`customer.phones.${index}.phone`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerPhone')}
-          value={values.phones[index].phone}
+          value={values.phone}
           required={true}
           error={errors.phone}
           dirty={touched.phone}
         />
         <FormInput
           type="text"
-          name={`phones.${index}.carrier`}
+          name={`customer.phones.${index}.provider`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerPhoneCarrier')}
-          value={values.phones[index].carrier}
-          error={errors.carrier}
-          dirty={touched.carrier}
+          value={values.provider}
+          error={errors.provider}
+          dirty={touched.provider}
         />
       </RowWithHalfInputs>
     </PhoneWrapper>

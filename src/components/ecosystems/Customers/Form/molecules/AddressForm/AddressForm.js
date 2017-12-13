@@ -1,91 +1,93 @@
 import React from 'react';
 import { SEARCH_ZIP_URL } from 'config';
-import { FormInput, RowWithHalfInputs } from '../../Shared/Styles';
+import { FormInput, RowWithLink } from '../../Shared/Styles';
 import { ZipCodeSearchLink, NumberRow, CityRow, Wrapper, Title } from './AddressForm.styles';
 import { translate } from '../../Shared/Utils';
 
-import { withFormik } from 'formik';
-import { validateCustomerAddress } from '../../../Validators/Form';
 import { FormattedMessage } from 'react-intl';
 
-const InnerForm = ({
+const getAddressesData = (object, index) => {
+  return (object.customer && object.customer.addresses && object.customer.addresses[index]) || {};
+};
+
+const AddressForm = ({
   values,
-  touched,
   handleChange,
   handleBlur,
-  handleSubmit,
   isSubmitting,
   errors = {},
+  touched = {},
 }) => {
   const index = 0;
+  values = getAddressesData(values, index);
+  errors = getAddressesData(errors, index);
+  touched = getAddressesData(touched, index);
+
   return (
     <Wrapper>
       <Title>
         <FormattedMessage id="formCustomerAddress" />
       </Title>
-      <RowWithHalfInputs>
+      <RowWithLink>
         <FormInput
           type="text"
-          name={`addresses.${index}.zipCode`}
+          name={`customer.addresses.${index}.zipcode`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerZipCode')}
-          value={values.addresses[index].zipCode}
+          value={values.zipcode}
           required={true}
-          error={errors.zipCode}
-          dirty={touched.zipCode}
+          error={errors.zipcode}
+          dirty={touched.zipcode}
         />
 
         <ZipCodeSearchLink href={SEARCH_ZIP_URL} target="_blank">
           <FormattedMessage id="formCustomerForgotZip" />
         </ZipCodeSearchLink>
-      </RowWithHalfInputs>
+      </RowWithLink>
 
       <FormInput
         type="text"
-        name={`addresses.${index}.address`}
+        name={`customer.addresses.${index}.street_name`}
         onChange={handleChange}
         onBlur={handleBlur}
         label={translate('formCustomerAddress')}
-        value={values.addresses[index].address}
+        value={values.street_name}
         required={true}
-        error={errors.address}
-        dirty={touched.address}
+        error={errors.street_name}
+        dirty={touched.street_name}
       />
 
       <NumberRow>
         <FormInput
           type="text"
-          name={`addresses.${index}.number`}
+          name={`customer.addresses.${index}.street_number`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerNumber')}
-          value={values.addresses[index].number}
+          value={values.street_number}
           required={true}
-          error={errors.number}
-          dirty={touched.number}
+          error={errors.street_number}
+          dirty={touched.street_number}
         />
 
         <FormInput
           type="text"
-          name={`addresses.${index}.complement`}
+          name={`customer.addresses.${index}.additional_address`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerComplement')}
-          value={values.addresses[index].complement}
-          required={true}
-          error={errors.complement}
-          dirty={touched.complement}
+          value={values.additional_address}
         />
       </NumberRow>
 
       <FormInput
         type="text"
-        name={`addresses.${index}.neighborhood`}
+        name={`customer.addresses.${index}.neighborhood`}
         onChange={handleChange}
         onBlur={handleBlur}
         label={translate('formCustomerNeighborhood')}
-        value={values.addresses[index].neighborhood}
+        value={values.neighborhood}
         required={true}
         error={errors.neighborhood}
         dirty={touched.neighborhood}
@@ -94,22 +96,22 @@ const InnerForm = ({
       <CityRow>
         <FormInput
           type="text"
-          name={`addresses.${index}.city`}
+          name={`customer.addresses.${index}.city`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerCity')}
-          value={values.addresses[index].city}
+          value={values.city}
           required={true}
           error={errors.city}
           dirty={touched.city}
         />
         <FormInput
           type="text"
-          name={`addresses.${index}.state`}
+          name={`customer.addresses.${index}.state`}
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerState')}
-          value={values.addresses[index].state}
+          value={values.state}
           required={true}
           error={errors.state}
           dirty={touched.state}
@@ -118,15 +120,5 @@ const InnerForm = ({
     </Wrapper>
   );
 };
-
-const AddressForm = withFormik({
-  mapPropsToValues: props => props.customer,
-  // enableReinitialize: true,
-  validate: validateCustomerAddress,
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    debugger;
-    console.log(values);
-  },
-})(InnerForm);
 
 export default AddressForm;

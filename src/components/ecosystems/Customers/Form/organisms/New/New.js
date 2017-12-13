@@ -1,28 +1,40 @@
 import CustomerForm from '../Form';
 import { withRouter } from 'react-router-dom';
+import { CreateCustomerMutation } from './New.data';
+import { graphql } from 'react-apollo';
+import { withFormik } from 'formik';
+import validateForm from '../../../Validators/Form';
 
 class NewCustomerForm extends CustomerForm {
   constructor(props) {
     super(props);
 
-    Object.assign(this.state, {
-      customer: {
-        phones: [{}],
-        addresses: [{}],
-      },
-    });
-
     this.getCustomer = this.getCustomer.bind(this);
-    this.setCustomer = this.setCustomer.bind(this);
   }
 
   getCustomer() {
-    return this.state.customer;
-  }
-
-  setCustomer(customer) {
-    this.setState({ customer: customer });
+    return this.props.values.customer;
   }
 }
 
-export default withRouter(NewCustomerForm);
+const NewCustomerFormWithMutation = graphql(CreateCustomerMutation)(NewCustomerForm);
+
+const BasicInfoForm = withFormik({
+  mapPropsToValues: props => {
+    return {
+      customer: {
+        phones: [{}],
+        addresses: [{}],
+        emails: [{}],
+      },
+    };
+  },
+  enableReinitialize: true,
+  validate: values => {
+    return {
+      customer: validateForm(values.customer),
+    };
+  },
+})(NewCustomerFormWithMutation);
+
+export default withRouter(BasicInfoForm);

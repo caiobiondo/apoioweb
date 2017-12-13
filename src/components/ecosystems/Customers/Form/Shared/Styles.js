@@ -5,8 +5,7 @@ export const INPUT_BOTTOM_SPACING = '27px';
 
 export const RowWithHalfInputs = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   & > * {
     width: 45%;
     display: inline-block;
@@ -16,6 +15,11 @@ export const RowWithHalfInputs = styled.div`
       margin-right: 10%;
     }
   }
+`;
+
+export const RowWithLink = RowWithHalfInputs.extend`
+  align-items: center;
+  justify-content: center;
 `;
 
 export const FormInput = styled(BaseFormInput)`

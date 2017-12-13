@@ -18,8 +18,6 @@ export const ZipCodeSearchLink = styled.a`
 
 export const NumberRow = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
 
   & > * {
     display: inline-block;
@@ -38,8 +36,6 @@ export const NumberRow = styled.div`
 
 export const CityRow = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
 
   & > * {
     display: inline-block;

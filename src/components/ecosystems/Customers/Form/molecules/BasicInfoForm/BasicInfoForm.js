@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PhoneForm from '../../molecules/PhoneForm';
+import PhoneForm from '../PhoneForm';
 import { FormInput, FormSelect, RowWithHalfInputs } from '../../Shared/Styles';
 import { Icon } from 'natura-ui';
 import {
@@ -11,24 +11,22 @@ import {
 } from './BasicInfoForm.styles';
 import { translate } from '../../Shared/Utils';
 
-import { withFormik } from 'formik';
-import { validateCustomer } from '../../../Validators/Form';
 import { FormattedMessage } from 'react-intl';
 
 const getCustomerGenderOptions = () => {
   return [
     {
       label: 'Masculino',
-      value: 'masc',
+      value: 'male',
     },
     {
       label: 'Feminino',
-      value: 'fem',
+      value: 'female',
     },
   ];
 };
 
-const InnerForm = ({
+const BasicInfoForm = ({
   values,
   touched,
   handleChange,
@@ -38,32 +36,35 @@ const InnerForm = ({
   errors = {},
   addNewPhone,
 }) => {
+  values = values.customer || {};
+  errors = errors.customer || {};
+  touched = touched.customer || {};
   return (
     <Wrapper>
       <FormInput
         type="text"
-        name="name"
+        name="customer.nickname"
         onChange={handleChange}
         onBlur={handleBlur}
         label={translate('formCustomerName')}
-        value={values.name}
+        value={values.nickname}
       />
 
       <FormInput
         type="text"
-        name="fullName"
+        name="customer.name"
         onChange={handleChange}
         onBlur={handleBlur}
         label={translate('formCustomerFullName')}
-        value={values.fullName}
-        error={errors.fullName}
-        dirty={touched.fullName}
+        value={values.name}
+        error={errors.name}
+        dirty={touched.name}
         required={true}
       />
 
       <RowWithHalfInputs>
         <FormSelect
-          name="gender"
+          name="customer.gender"
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerGender')}
@@ -76,16 +77,27 @@ const InnerForm = ({
 
         <FormInput
           type="date"
-          name="birthDate"
+          name="customer.birthday"
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerBirthDate')}
-          value={values.birthDate}
-          error={errors.birthDate}
-          dirty={touched.birthDate}
+          value={values.birthday}
+          error={errors.birthday}
+          dirty={touched.birthday}
           required={true}
         />
       </RowWithHalfInputs>
+
+      <FormInput
+        type="text"
+        name="customer.emails.0.email"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        label={translate('formCustomerEmail')}
+        value={values.emails[0].email}
+        error={errors.email}
+        dirty={touched.email}
+      />
 
       {values.phones.map((phone, i) => {
         return (
@@ -116,15 +128,5 @@ const InnerForm = ({
     </Wrapper>
   );
 };
-
-const BasicInfoForm = withFormik({
-  mapPropsToValues: props => props.customer,
-  enableReinitialize: true,
-  validate: validateCustomer,
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    debugger;
-    console.log(values);
-  },
-})(InnerForm);
 
 export default BasicInfoForm;
