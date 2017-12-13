@@ -11,7 +11,7 @@ class CustomersListWrapper extends Component {
   onSelectCustomer = customer => {
     const { selectedCustomers } = this.state;
 
-    if (customer.length) {
+    if (Array.isArray(customer)) {
       const costumers = customer.length !== selectedCustomers.length ? customer : [];
       return this.setState({
         selectedCustomers: [...costumers],

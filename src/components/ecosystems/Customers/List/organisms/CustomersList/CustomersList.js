@@ -83,12 +83,12 @@ export class CustomersList extends Component {
     this.setState({ data: { ...this.state.data, body: parsedCustomers } });
   }
 
-  isLoading = (loading, orders) => {
-    return loading && !orders;
+  isLoading = (loading, customers) => {
+    return loading && !customers;
   };
 
-  isEmpty = (loading, orders) => {
-    return !loading && (!orders || orders.length === 0);
+  isEmpty = (loading, customers) => {
+    return !loading && (!customers || customers.length === 0);
   };
 
   isSelected = (customer, selectedCustomers) => {
