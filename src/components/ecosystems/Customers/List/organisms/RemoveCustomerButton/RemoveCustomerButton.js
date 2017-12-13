@@ -18,6 +18,18 @@ class RemoveCustomerButton extends Component {
     this.setState({ open: true });
   };
 
+  goToCustomerForm = () => {
+    console.log('opens here customer add form');
+  };
+
+  onButtonAction = () => {
+    if (this.props.isCustomerSelected) {
+      this.removeCustomerModal();
+    } else {
+      this.goToCustomerForm();
+    }
+  };
+
   removeCustomer = () => {
     const { selected } = this.props;
     const customersIdToBeRemoved = selected.map(({ id }) => id);
@@ -70,9 +82,10 @@ class RemoveCustomerButton extends Component {
         onClick={this.removeCustomer}
       />,
     ];
+
     return (
-      <CustomerAddButtonContainer remove={this.props.remove}>
-        <CustomerButton action={this.removeCustomerModal} remove={this.props.isCustomerSelected} />
+      <CustomerAddButtonContainer>
+        <CustomerButton action={this.onButtonAction} remove={this.props.isCustomerSelected} />
         <Dialog
           title={title}
           actions={actions}
