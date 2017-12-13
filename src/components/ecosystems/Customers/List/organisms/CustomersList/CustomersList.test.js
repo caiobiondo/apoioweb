@@ -1,7 +1,6 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { CustomersList } from './CustomersList';
 
 describe('CustomersList Organism', () => {

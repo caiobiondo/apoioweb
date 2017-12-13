@@ -17,9 +17,6 @@ export default {
     customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',
     customerShouldBeRemovedWarning:
       'Tem certeza que deseja deletar {names} da sua lista de clientes?',
-    formCustomerName: 'Nome / Apelido',
-    formCustomerFullName: 'Nome Completo',
-    formCustomerGender: 'Gênero',
     formCustomerAddAnotherPhone: 'Adicionar outro telefone',
     formCustomerAddress: 'Endereço',
     formCustomerBack: 'Voltar',
@@ -33,6 +30,9 @@ export default {
     formCustomerName: 'Nome / Apelido',
     formCustomerNeighborhood: 'Bairro',
     formCustomerNext: 'Próximo',
+    formCustomerNotes: 'Notas',
+    formCustomerNotesText:
+      'Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)',
     formCustomerNumber: 'Número',
     formCustomerPhone: 'Telefone',
     formCustomerPhoneCarrier: 'Operadora',
@@ -42,13 +42,10 @@ export default {
     formCustomerProfileEcommerce: 'Digital',
     formCustomerRegister: 'Cadastrar',
     formCustomerState: 'UF',
-    formCustomerTitle: 'Cadastro de Novos Clientes',
-    formCustomerZipCode: 'CEP',
-    formCustomerNotes: 'Notas',
-    formCustomerNotesText:
-      'Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)',
     formCustomerText:
       'Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.',
+    formCustomerTitle: 'Cadastro de Novos Clientes',
+    formCustomerZipCode: 'CEP',
     gender: {
       M: 'Masculino',
       F: 'Feminino',
