@@ -54,7 +54,7 @@ const getPointsFrom = orders => {
   }, 0);
 };
 
-const PeriodHistory = props => {
+export const PeriodHistory = props => {
   const { intl } = props;
 
   if (props.loadingDirectOrders || props.loadingEcommerceOrders) {
