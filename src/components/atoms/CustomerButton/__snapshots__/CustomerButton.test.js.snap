@@ -4,12 +4,12 @@ exports[`CustomerButton should render a floating button with add order icon 1`] 
 <CustomerButtonstyles__Wrapper
   onClick={[Function]}
 >
-  <Unknown
+  <CustomFloatingActionButton
     iconWrapper={[Function]}
   >
     <Icon
       file="ico_add_customer"
     />
-  </Unknown>
+  </CustomFloatingActionButton>
 </CustomerButtonstyles__Wrapper>
 `;
