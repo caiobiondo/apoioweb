@@ -5,15 +5,10 @@ import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustome
 
 class CustomersListWrapper extends Component {
   state = {
-    empty: false,
     selectedCustomers: [],
   };
 
-  onLoadFinished = (empty, loading) => {
-    this.setState({ empty: empty, loading: loading });
-  };
-
-  selectCustomer = customer => {
+  onSelectCustomer = customer => {
     const { selectedCustomers } = this.state;
 
     if (customer.length) {
@@ -39,15 +34,15 @@ class CustomersListWrapper extends Component {
   };
 
   render() {
-    const { loading, selectedCustomers } = this.state;
+    const { selectedCustomers } = this.state;
     return (
-      <Main loading={loading}>
+      <Main>
         <RemoveCustomerButton
           selected={selectedCustomers}
           onRemove={this.onRemoveCustomer}
           isCustomerSelected={selectedCustomers.length}
         />
-        <CustomersList select={this.selectCustomer} selectedCustomers={selectedCustomers} />
+        <CustomersList onSelect={this.onSelectCustomer} selectedCustomers={selectedCustomers} />
       </Main>
     );
   }

@@ -96,14 +96,12 @@ export class CustomersList extends Component {
   };
 
   selectCustomer = customer => {
-    const { select } = this.props;
-    select(customer);
+    this.props.onSelect(customer);
   };
 
   selectAllCustomers = () => {
-    const { select } = this.props;
     const { customers } = this.props.data;
-    select(customers);
+    this.props.onSelect(customers);
   };
 
   renderCell = ({ value, row }) => {
