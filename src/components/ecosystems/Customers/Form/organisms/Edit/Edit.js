@@ -1,17 +1,36 @@
 import CustomerForm from '../Form';
+import { UpdateCustomerMutation, FindCustomerQuery, FindCustomerQueryOptions } from './Edit.data';
+import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
+import { withFormik } from 'formik';
+import validateForm from '../../../Validators/Form';
 
 class EditCustomerForm extends CustomerForm {
-  constructor(props) {
-    super(props);
-    const { id } = this.props.match.params;
-    this.customer = { id: id };
-    this.getCustomer = this.getCustomer.bind(this);
-  }
+  render() {
+    if (this.props.loading || !this.props.customer) {
+      return null;
+    }
 
-  getCustomer() {
-    return this.customer;
+    return super.render();
   }
 }
 
-export default withRouter(EditCustomerForm);
+const EditCustomerFormWithFormik = withFormik({
+  mapPropsToValues: props => {
+    return { customer: props.customer };
+  },
+  enableReinitialize: true,
+  validate: values => {
+    return {
+      customer: validateForm(values.customer),
+    };
+  },
+})(EditCustomerForm);
+
+const EditCustomerFormWithMutation = graphql(UpdateCustomerMutation)(EditCustomerFormWithFormik);
+
+const EditCustomerFormWithData = graphql(FindCustomerQuery, FindCustomerQueryOptions)(
+  EditCustomerFormWithMutation,
+);
+
+export default withRouter(EditCustomerFormWithData);

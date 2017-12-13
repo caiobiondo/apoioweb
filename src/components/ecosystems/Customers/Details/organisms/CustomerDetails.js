@@ -101,7 +101,7 @@ export class CustomerDetails extends Component {
     const email = customer.emails && customer.emails[0] && customer.emails[0].email;
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
-    const profileEditUrl = `/customers/${customer.id}/edit`;
+    const profileEditUrl = `/edit-customer/${customer.id}`;
 
     return (
       <Main>

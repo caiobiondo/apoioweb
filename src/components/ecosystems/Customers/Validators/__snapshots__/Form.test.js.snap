@@ -1,6 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`validateCustomer should correctly validate the phones 1`] = `
+exports[`validateForm should correctly validate the addresses 1`] = `
+Object {
+  "addresses": Array [
+    Object {
+      "city": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerCity"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "neighborhood": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerNeighborhood"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "state": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerState"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "street_number": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerNumber"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "zipcode": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerZipCode"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+    },
+    Object {
+      "city": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerCity"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "neighborhood": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerNeighborhood"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "state": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerState"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "street_name": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerAddress"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "street_number": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerNumber"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+      "zipcode": Array [
+        <FormattedMessage
+          id="required"
+          values={
+                    Object {
+                              "field": <FormattedMessage
+                                id="formCustomerZipCode"
+                                values={Object {}}
+                    />,
+                            }
+          }
+/>,
+      ],
+    },
+    Object {},
+  ],
+}
+`;
+
+exports[`validateForm should correctly validate the phones 1`] = `
 Object {
   "phones": Array [
     Object {
@@ -33,33 +188,20 @@ Object {
 />,
       ],
     },
-    undefined,
+    Object {},
   ],
 }
 `;
 
-exports[`validateCustomer should return the correct error messages 1`] = `
+exports[`validateForm should return the correct error messages 1`] = `
 Object {
-  "birthDate": Array [
+  "birthday": Array [
     <FormattedMessage
       id="required"
       values={
             Object {
                   "field": <FormattedMessage
                     id="formCustomerBirthDate"
-                    values={Object {}}
-            />,
-                }
-      }
-/>,
-  ],
-  "fullName": Array [
-    <FormattedMessage
-      id="required"
-      values={
-            Object {
-                  "field": <FormattedMessage
-                    id="formCustomerFullName"
                     values={Object {}}
             />,
                 }
@@ -79,18 +221,13 @@ Object {
       }
 />,
   ],
-}
-`;
-
-exports[`validatePhone should return the correct error messages 1`] = `
-Object {
-  "phone": Array [
+  "name": Array [
     <FormattedMessage
       id="required"
       values={
             Object {
                   "field": <FormattedMessage
-                    id="formCustomerPhone"
+                    id="formCustomerFullName"
                     values={Object {}}
             />,
                 }

@@ -45,7 +45,7 @@ exports[`CustomerDetails renders customer details 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/customers/50221/edit"
+                to="/edit-customer/50221"
               >
                 <Icon
                   file="ico_pencil"

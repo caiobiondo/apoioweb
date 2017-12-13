@@ -1,27 +1,27 @@
-import { validateCustomer, validatePhone } from './Form';
+import validateForm from './Form';
 
-describe('validateCustomer', () => {
+describe('validateForm', () => {
   it('should not return errors when the customer is valid', () => {
     const customer = {
-      fullName: 'Full name',
+      name: 'Full name',
       gender: 'Test',
-      birthDate: new Date(),
+      birthday: new Date(),
     };
 
-    expect(validateCustomer(customer)).toEqual({});
+    expect(validateForm(customer)).toEqual({});
   });
 
   it('should return the correct error messages', () => {
     const customer = {};
 
-    expect(validateCustomer(customer)).toMatchSnapshot();
+    expect(validateForm(customer)).toMatchSnapshot();
   });
 
   it('should correctly validate the phones', () => {
     const customer = {
-      fullName: 'Full name',
+      name: 'Full name',
       gender: 'Test',
-      birthDate: new Date(),
+      birthday: new Date(),
       phones: [
         {
           carrier: 'carrier',
@@ -33,22 +33,32 @@ describe('validateCustomer', () => {
       ],
     };
 
-    expect(validateCustomer(customer)).toMatchSnapshot();
+    expect(validateForm(customer)).toMatchSnapshot();
   });
-});
 
-describe('validatePhone', () => {
-  it('should not return errors when the phone is valid', () => {
-    const phone = {
-      phone: '123124123',
+  it('should correctly validate the addresses', () => {
+    /* eslint-disable camelcase */
+    const customer = {
+      name: 'Full name',
+      gender: 'Test',
+      birthday: new Date(),
+      addresses: [
+        {
+          street_name: 'name',
+        },
+        {},
+        {
+          zipcode: 'zipcode',
+          street_name: 'street_name',
+          street_number: 'street_number',
+          neighborhood: 'neighborhood',
+          city: 'city',
+          state: 'state',
+        },
+      ],
     };
+    /* eslint-enable camelcase */
 
-    expect(validatePhone(phone)).toEqual({});
-  });
-
-  it('should return the correct error messages', () => {
-    const phone = {};
-
-    expect(validatePhone(phone)).toMatchSnapshot();
+    expect(validateForm(customer)).toMatchSnapshot();
   });
 });

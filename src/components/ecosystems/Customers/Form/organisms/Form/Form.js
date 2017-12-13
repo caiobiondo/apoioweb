@@ -8,6 +8,7 @@ import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import BasicInfoForm from '../../molecules/BasicInfoForm';
 import AddressForm from '../../molecules/AddressForm';
 import NotesForm from '../../molecules/NotesForm';
+import removeTypename from 'utils/removeTypename';
 
 class CustomerForm extends Component {
   constructor(props) {
@@ -27,6 +28,11 @@ class CustomerForm extends Component {
     this.changeStep = this.changeStep.bind(this);
     this.renderFormStep = this.renderFormStep.bind(this);
     this.submitFormData = this.submitFormData.bind(this);
+    this.getCustomer = this.getCustomer.bind(this);
+  }
+
+  getCustomer() {
+    return this.props.values.customer;
   }
 
   scrollTop() {
@@ -35,11 +41,6 @@ class CustomerForm extends Component {
 
   componentDidMount() {
     this.scrollTop();
-    setInterval(() => {
-      console.log('this.getCustomer()');
-      console.log(this.props.values);
-      console.log('this.getCustomer()');
-    }, 5000);
   }
 
   addPhoneToCustomer() {
@@ -50,7 +51,7 @@ class CustomerForm extends Component {
   submitFormData() {
     this.props
       .mutate({
-        variables: { input: this.getCustomer() },
+        variables: { input: removeTypename(this.getCustomer()) },
       })
       .then(res => {
         console.log(res);

@@ -5,21 +5,11 @@ import { graphql } from 'react-apollo';
 import { withFormik } from 'formik';
 import validateForm from '../../../Validators/Form';
 
-class NewCustomerForm extends CustomerForm {
-  constructor(props) {
-    super(props);
-
-    this.getCustomer = this.getCustomer.bind(this);
-  }
-
-  getCustomer() {
-    return this.props.values.customer;
-  }
-}
+class NewCustomerForm extends CustomerForm {}
 
 const NewCustomerFormWithMutation = graphql(CreateCustomerMutation)(NewCustomerForm);
 
-const BasicInfoForm = withFormik({
+const NewCustomerFormWithFormik = withFormik({
   mapPropsToValues: props => {
     return {
       customer: {
@@ -37,4 +27,4 @@ const BasicInfoForm = withFormik({
   },
 })(NewCustomerFormWithMutation);
 
-export default withRouter(BasicInfoForm);
+export default withRouter(NewCustomerFormWithFormik);
