@@ -54,6 +54,7 @@ export const TableWrapper = styled.div`
     color: ${gray300} !important;
     font-size: 15px !important;
     font-weight: 400 !important;
+    text-transform: uppercase;
   }
 
   tbody tr:hover {

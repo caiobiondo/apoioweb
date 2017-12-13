@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { graphql } from 'react-apollo';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import Checkbox from '../../molecules/Checkbox';
 
@@ -20,58 +20,54 @@ import {
 import { CustomersListQuery } from './CustomersList.data';
 import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
 
-class CustomersList extends Component {
-  constructor(props) {
-    super(props);
+export class CustomersList extends Component {
+  loader = (
+    <LoadingWrapper>
+      <CircularProgress thickness={2} />
+    </LoadingWrapper>
+  );
 
-    this.loader = (
-      <LoadingWrapper>
-        <CircularProgress thickness={2} />
-      </LoadingWrapper>
-    );
-
-    this.state = {
-      data: {
-        columns: ['select', 'name', 'email', 'phone', 'operator'],
-        style: {
-          select: {
-            width: '1px',
-            ...cellStyle,
-          },
-          name: {
-            ...cellStyle,
-            color: '#222',
-            fontSize: '17px',
-            fontWeight: '500',
-          },
-          email: cellStyle,
-          phone: cellStyle,
-          operator: cellStyle,
+  state = {
+    data: {
+      columns: ['select', 'name', 'email', 'phone', 'operator'],
+      style: {
+        select: {
+          width: '1px',
+          ...cellStyle,
         },
-        renderer: {
-          name: this.renderName,
-          email: this.renderCell,
-          phone: this.renderCell,
-          operator: this.renderCell,
-          select: this.renderSelect,
-          thead: {
-            select: this.renderSelectAll,
-          },
+        name: {
+          ...cellStyle,
+          color: '#222',
+          fontSize: '17px',
+          fontWeight: '500',
         },
-        header: {
-          name: 'NOME',
-          email: 'EMAIL',
-          phone: 'TELEFONE',
-          operator: 'OPERADORA',
+        email: cellStyle,
+        phone: cellStyle,
+        operator: cellStyle,
+      },
+      renderer: {
+        name: this.renderName,
+        email: this.renderCell,
+        phone: this.renderCell,
+        operator: this.renderCell,
+        select: this.renderSelect,
+        thead: {
+          select: this.renderSelectAll,
         },
       },
-    };
-  }
+      header: {
+        name: <FormattedMessage id="customerName" />,
+        email: <FormattedMessage id="customerEmail" />,
+        phone: <FormattedMessage id="customerPhone" />,
+        operator: <FormattedMessage id="customerPhoneProvider" />,
+      },
+    },
+  };
 
   componentWillReceiveProps({ data, selectedCustomers }) {
     const { customers } = data;
 
-    const parsedCutomers = (customers || []).map(customer => ({
+    const parsedCustomers = (customers || []).map(customer => ({
       id: customer.id,
       name: customer.name,
       email: customer.emails && customer.emails.length && customer.emails[0].email,
@@ -81,7 +77,7 @@ class CustomersList extends Component {
       style: this.isSelected(customer, selectedCustomers) ? SelectedRowStyle : null,
     }));
 
-    this.setState({ data: { ...this.state.data, body: parsedCutomers } });
+    this.setState({ data: { ...this.state.data, body: parsedCustomers } });
   }
 
   isLoading(loading, orders) {
@@ -176,5 +172,4 @@ class CustomersList extends Component {
   }
 }
 
-export const CustomersListWithIntl = injectIntl(CustomersList);
-export default graphql(CustomersListQuery)(CustomersListWithIntl);
+export default graphql(CustomersListQuery)(CustomersList);

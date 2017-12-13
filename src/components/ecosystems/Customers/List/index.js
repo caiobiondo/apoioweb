@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import CustomersList from './organisms/CustomersList';
+import CustomersList from './organisms/CustomersList/CustomersList';
 import { Main } from './index.styles';
-import RemoveCustomerButton from './organisms/RemoveCustomerButton';
+import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustomerButton';
 
 class CustomersListWrapper extends Component {
-  constructor(props) {
-    super(props);
-    this.selectCustomer = this.selectCustomer.bind(this);
-    this.onRemoveCustomer = this.onRemoveCustomer.bind(this);
-  }
-
   state = {
     empty: false,
     selectedCustomers: [],
@@ -19,7 +13,7 @@ class CustomersListWrapper extends Component {
     this.setState({ empty: empty, loading: loading });
   };
 
-  selectCustomer(customer) {
+  selectCustomer = customer => {
     const { selectedCustomers } = this.state;
 
     if (customer.length) {
@@ -38,11 +32,11 @@ class CustomersListWrapper extends Component {
     return this.setState({
       selectedCustomers: [...selectedCustomers, customer],
     });
-  }
+  };
 
-  onRemoveCustomer() {
+  onRemoveCustomer = () => {
     this.setState({ selectedCustomers: [] });
-  }
+  };
 
   render() {
     const { loading, selectedCustomers } = this.state;

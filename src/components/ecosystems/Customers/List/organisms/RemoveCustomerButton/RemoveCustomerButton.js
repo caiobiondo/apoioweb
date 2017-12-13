@@ -4,29 +4,20 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 
-import { injectIntl } from 'react-intl';
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
 import { CustomerAddButtonContainer, Bold } from './RemoveCustomerButton.styles';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
 class RemoveCustomerButton extends Component {
-  constructor(props) {
-    super(props);
-    this.renderSelectedCustomers = this.renderSelectedCustomers.bind(this);
-    this.removeCustomerModal = this.removeCustomerModal.bind(this);
-    this.removeCustomer = this.removeCustomer.bind(this);
-    this.onCloseModal = this.onCloseModal.bind(this);
-  }
-
   state = {
     open: false,
   };
 
-  removeCustomerModal() {
+  removeCustomerModal = () => {
     this.setState({ open: true });
-  }
+  };
 
-  removeCustomer() {
+  removeCustomer = () => {
     const { selected } = this.props;
     const customersIdToBeRemoved = selected.map(({ id }) => id);
 
@@ -46,32 +37,26 @@ class RemoveCustomerButton extends Component {
             this.setState({ open: false });
             this.props.remove();
           },
-          // refetchQueries: [{ query: CustomersListQuery }],
         })
         .then(() => {
           console.log('uhul!');
         });
     }
-  }
+  };
 
-  onCloseModal() {
+  onCloseModal = () => {
     this.setState({ open: false });
-  }
+  };
 
-  renderSelectedCustomers() {
+  renderSelectedCustomers = () => {
     const { selected } = this.props;
     return selected.map(cutomer => `${cutomer.name}, `);
-  }
+  };
 
   render() {
     const actions = [
       <FlatButton label="Cancelar" primary={true} onClick={this.onCloseModal} />,
-      <FlatButton
-        label="Deletar"
-        primary={true}
-        keyboardFocused={true}
-        onClick={this.removeCustomer}
-      />,
+      <FlatButton label="Deletar" primary={true} onClick={this.removeCustomer} />,
     ];
     return (
       <CustomerAddButtonContainer remove={this.props.remove}>
@@ -91,5 +76,4 @@ class RemoveCustomerButton extends Component {
   }
 }
 
-export const RemoveCustomerButtonWithIntl = injectIntl(RemoveCustomerButton);
-export default graphql(RemoveCustomersMutation)(RemoveCustomerButtonWithIntl);
+export default graphql(RemoveCustomersMutation)(RemoveCustomerButton);
