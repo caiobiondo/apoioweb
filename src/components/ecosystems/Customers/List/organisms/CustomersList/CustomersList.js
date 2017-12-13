@@ -3,7 +3,7 @@ import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-import Checkbox from '../../molecules/Checkbox';
+import Checkbox from 'components/atoms/Checkbox';
 
 import {
   CustomerName,
@@ -18,7 +18,7 @@ import {
   LinkStyle,
 } from './CustomersList.styles';
 import { CustomersListQuery } from './CustomersList.data';
-import EmptyCustomers from '../../molecules/EmptyCustomers/EmptyCustomers';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
 
 export class CustomersList extends Component {
   loader = (
@@ -157,7 +157,7 @@ export class CustomersList extends Component {
     if (isEmpty(loading, customers)) {
       return (
         <Paper style={fullContainer}>
-          <EmptyCustomers />
+          <EmptyList icon="ico_box" titleId="customersEmptyList" />
         </Paper>
       );
     }

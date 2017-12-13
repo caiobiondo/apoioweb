@@ -20,7 +20,11 @@ exports[`OrdersList should render an empty list indicator 1`] = `
   transitionEnabled={true}
   zDepth={1}
 >
-  <EmptyOrders />
+  <EmptyList
+    descriptionId="ordersWithoutOrders"
+    icon="ico_box"
+    titleId="ordersEmptyList"
+  />
 </Paper>
 `;
 

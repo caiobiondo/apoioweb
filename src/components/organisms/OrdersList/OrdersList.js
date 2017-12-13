@@ -3,7 +3,7 @@ import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { List, LoadingWrapper, scrolledContainer, fullContainer } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from 'components/molecules/Order/Order';
-import EmptyOrders from 'components/molecules/EmptyOrders/EmptyOrders';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
@@ -69,7 +69,7 @@ export class OrdersList extends Component {
     if (this._empty(loading, orders)) {
       return (
         <Paper style={fullContainer}>
-          <EmptyOrders />
+          <EmptyList icon="ico_box" titleId="ordersEmptyList" descriptionId="ordersWithoutOrders" />
         </Paper>
       );
     }
