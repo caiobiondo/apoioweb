@@ -2,17 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { PeriodHistory } from './PeriodHistory';
 
-const setup = propOverrides => {
-  const props = Object.assign({}, propOverrides);
-
-  const result = shallow(<PeriodHistory {...props} />);
-
-  return {
-    props,
-    result,
-  };
-};
-
 describe('PeriodHistory', () => {
   it('renders period history when ecommerce order is older then direct order', () => {
     // given
@@ -30,7 +19,7 @@ describe('PeriodHistory', () => {
     };
 
     // when
-    const { result } = setup(props);
+    const result = shallow(<PeriodHistory {...props} />);
 
     // then
     expect(result).toMatchSnapshot();
@@ -52,7 +41,7 @@ describe('PeriodHistory', () => {
     };
 
     // when
-    const { result } = setup(props);
+    const result = shallow(<PeriodHistory {...props} />);
 
     // then
     expect(result).toMatchSnapshot();
@@ -74,7 +63,7 @@ describe('PeriodHistory', () => {
     };
 
     // when
-    const { result } = setup(props);
+    const result = shallow(<PeriodHistory {...props} />);
 
     // then
     expect(result).toMatchSnapshot();
@@ -88,7 +77,7 @@ describe('PeriodHistory', () => {
     };
 
     // when
-    const { result } = setup(props);
+    const result = shallow(<PeriodHistory {...props} />);
 
     // then
     expect(result).toMatchSnapshot();
