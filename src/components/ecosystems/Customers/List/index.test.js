@@ -26,6 +26,16 @@ describe('CustomersList Ecosystem', () => {
     });
   });
 
+  it('should update empty and loading state', () => {
+    const expectedState = { selectedCustomers: [], empty: true, loading: false };
+
+    const result = shallow(<CustomersList />);
+    const instance = result.instance();
+    instance.onLoadFinished(true, false);
+
+    expect(instance.state).toEqual(expectedState);
+  });
+
   it('should add customer to selected customers empty array', () => {
     const expectedState = { selectedCustomers: [{ id: 123 }], empty: false, loading: true };
     const customer = { id: 123 };
