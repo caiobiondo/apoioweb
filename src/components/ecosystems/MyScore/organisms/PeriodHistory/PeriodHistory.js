@@ -54,7 +54,7 @@ const getPointsFrom = orders => {
   }, 0);
 };
 
-const PeriodHistory = props => {
+export const PeriodHistory = props => {
   const { intl } = props;
 
   if (props.loadingDirectOrders || props.loadingEcommerceOrders) {
@@ -76,9 +76,15 @@ const PeriodHistory = props => {
           <Icon file={ORDER_ICONS[value]} />
         </IconWrapper>
       ),
-      orderNumber: value => `Pedido ${value}`,
-      entryOrderDate: value => `Data ${formatDate(value, intl)}`,
-      totalOrderPoints: value => `${value}pts`,
+      orderNumber: value => (
+        <FormattedMessage id="periodHistoryOrderNumber" values={{ number: value }} />
+      ),
+      entryOrderDate: value => (
+        <FormattedMessage id="entryOrderDate" values={{ date: formatDate(value, intl) }} />
+      ),
+      totalOrderPoints: value => (
+        <FormattedMessage id="totalOrderPoints" values={{ points: value }} />
+      ),
       totalOrderValue: value => formatCurrency(value, intl),
     },
     body: buildTableBody(props),
