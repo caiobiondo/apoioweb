@@ -7,6 +7,7 @@ export const CustomerDetailsQuery = gql`
       nickname
       name
       gender
+      birthday
       comment
       emails {
         email
