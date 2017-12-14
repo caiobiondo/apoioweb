@@ -36,7 +36,7 @@ const renderPeriodHistory = props => {
   );
 };
 
-const ScoreCycles = props => {
+export const ScoreCycles = props => {
   const currentCycleNumber = parseInt(props.growthStatus.parsedCycle.split('/')[0], 10);
 
   if (props.loadingCycles || props.loadingPreviousPeriod) {
