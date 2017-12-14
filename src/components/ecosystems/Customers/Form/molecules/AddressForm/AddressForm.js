@@ -31,6 +31,7 @@ const AddressForm = ({
       <RowWithLink>
         <FormInput
           type="text"
+          mask="99999-999"
           name={`customer.addresses.${index}.zipcode`}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -115,6 +116,7 @@ const AddressForm = ({
           required={true}
           error={errors.state}
           dirty={touched.state}
+          maxlength="2"
         />
       </CityRow>
     </Wrapper>

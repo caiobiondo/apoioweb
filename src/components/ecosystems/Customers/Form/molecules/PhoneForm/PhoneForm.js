@@ -29,6 +29,7 @@ const PhoneForm = ({
           value={values.phone}
           required={true}
           error={errors.phone}
+          mask="(99) 99999-9999"
           dirty={touched.phone}
         />
         <FormInput

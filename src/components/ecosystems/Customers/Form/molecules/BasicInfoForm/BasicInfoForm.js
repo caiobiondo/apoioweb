@@ -17,11 +17,11 @@ const getCustomerGenderOptions = () => {
   return [
     {
       label: 'Masculino',
-      value: 'male',
+      value: 'm',
     },
     {
       label: 'Feminino',
-      value: 'female',
+      value: 'f',
     },
   ];
 };
