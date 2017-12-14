@@ -53,6 +53,10 @@ export default {
     gender: {
       M: 'Masculino',
       F: 'Feminino',
+      m: 'Masculino',
+      male: 'Masculino',
+      f: 'Feminino',
+      female: 'Feminino',
     },
   },
 };

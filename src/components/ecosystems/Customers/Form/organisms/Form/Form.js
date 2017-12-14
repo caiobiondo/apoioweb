@@ -62,6 +62,11 @@ class CustomerForm extends Component {
 
   validate(customer) {
     const errors = validateForm(this.getCustomer());
+
+    if (!errors) {
+      return true;
+    }
+
     return Object.keys(errors).every(key => {
       let stepToGo = 0;
       let message = 'formCustomerErrorsCustomerMessage';
@@ -84,12 +89,16 @@ class CustomerForm extends Component {
       return;
     }
 
+    this.setState({ submitting: true });
+
     this.props
       .mutate({
         variables: { input: removeTypename(this.getCustomer()) },
       })
-      .then(res => {
-        console.log(res);
+      .then(response => {
+        const { data } = response;
+        const customer = (data.createCustomer || data.updateCustomer).customer;
+        this.props.history.push(`/my-customers/${customer.id}`);
       });
   }
 
@@ -152,11 +161,16 @@ class CustomerForm extends Component {
   renderFormButtons() {
     return (
       <FormButtonsWrapper>
-        <FormButton onClick={event => this.changeStep(event, -1)}>
+        <FormButton disabled={this.state.submitting} onClick={event => this.changeStep(event, -1)}>
           <FormattedMessage id="formCustomerBack" />
         </FormButton>
 
-        <FormButton primary type="submit" onClick={event => this.changeStep(event, 1)}>
+        <FormButton
+          disabled={this.state.submitting}
+          primary
+          type="submit"
+          onClick={event => this.changeStep(event, 1)}
+        >
           <FormattedMessage id={this.getNextButtonLabel()} />
         </FormButton>
       </FormButtonsWrapper>
