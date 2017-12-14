@@ -1,5 +1,6 @@
 import 'url-search-params-polyfill';
 import { addLocaleData } from 'react-intl';
+import IntlMessageFormat from 'intl-messageformat';
 
 import en from 'react-intl/locale-data/en';
 import pt from 'react-intl/locale-data/pt';
@@ -10,7 +11,11 @@ const currentLocale = () => {
 };
 
 addLocaleData([...en, ...pt]);
-
 export const locale = currentLocale();
 export const messages = require('./messages').default;
 export const flattenMessages = require('./utils').flattenMessages;
+
+export const translate = (messageId, values = {}) => {
+  const formatter = new IntlMessageFormat(messages[locale][messageId], locale);
+  return formatter.format(values);
+};

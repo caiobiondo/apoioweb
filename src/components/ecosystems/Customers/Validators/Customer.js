@@ -1,4 +1,4 @@
-import validate from 'validate.js';
+import validate from 'utils/validate';
 import { translateFormError } from 'locale/utils';
 
 const CUSTOMER_CONSTRAINTS = {
@@ -22,4 +22,4 @@ const CUSTOMER_CONSTRAINTS = {
   },
 };
 
-export default customer => validate(customer, CUSTOMER_CONSTRAINTS) || null;
+export default customer => validate(customer, CUSTOMER_CONSTRAINTS);

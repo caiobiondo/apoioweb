@@ -1,4 +1,4 @@
-import validate from 'validate.js';
+import validate from 'utils/validate';
 import { translateFormError } from 'locale/utils';
 
 const PHONE_CONSTRAINTS = {
@@ -10,4 +10,4 @@ const PHONE_CONSTRAINTS = {
   },
 };
 
-export default phone => validate(phone, PHONE_CONSTRAINTS) || null;
+export default phone => validate(phone, PHONE_CONSTRAINTS);

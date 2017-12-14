@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper, Title, HelpText, FormText } from './NotesForm.styles';
-import { translate } from '../../Shared/Utils';
+import { translate } from 'locale';
 
 import { FormattedMessage } from 'react-intl';
 

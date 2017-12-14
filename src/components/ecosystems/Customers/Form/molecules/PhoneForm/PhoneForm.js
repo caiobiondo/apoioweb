@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormInput, RowWithHalfInputs } from '../../Shared/Styles';
 import { PhoneWrapper } from './PhoneForm.styles';
-import { translate } from '../../Shared/Utils';
+import { translate } from 'locale';
 
 const PhoneForm = ({
   values,

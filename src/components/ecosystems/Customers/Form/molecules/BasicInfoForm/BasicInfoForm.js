@@ -9,7 +9,7 @@ import {
   AddPhoneIconWrapper,
   Wrapper,
 } from './BasicInfoForm.styles';
-import { translate } from '../../Shared/Utils';
+import { translate } from 'locale';
 
 import { FormattedMessage } from 'react-intl';
 

@@ -1,4 +1,4 @@
-import validate from 'validate.js';
+import validate from 'utils/validate';
 import { translateFormError } from 'locale/utils';
 
 /* eslint-disable camelcase */
@@ -42,4 +42,4 @@ const ADDRESS_CONSTRAINTS = {
 };
 /* eslint-enable camelcase */
 
-export default address => validate(address, ADDRESS_CONSTRAINTS) || null;
+export default address => validate(address, ADDRESS_CONSTRAINTS);

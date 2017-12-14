@@ -5,149 +5,39 @@ Object {
   "addresses": Array [
     Object {
       "city": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerCity"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Cidade é obrigatório",
       ],
       "neighborhood": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerNeighborhood"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Bairro é obrigatório",
       ],
       "state": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerState"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "UF é obrigatório",
       ],
       "street_number": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerNumber"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Número é obrigatório",
       ],
       "zipcode": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerZipCode"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "CEP é obrigatório",
       ],
     },
     Object {
       "city": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerCity"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Cidade é obrigatório",
       ],
       "neighborhood": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerNeighborhood"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Bairro é obrigatório",
       ],
       "state": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerState"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "UF é obrigatório",
       ],
       "street_name": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerAddress"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Endereço é obrigatório",
       ],
       "street_number": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerNumber"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Número é obrigatório",
       ],
       "zipcode": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerZipCode"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "CEP é obrigatório",
       ],
     },
     null,
@@ -160,32 +50,12 @@ Object {
   "phones": Array [
     Object {
       "phone": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerPhone"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Telefone é obrigatório",
       ],
     },
     Object {
       "phone": Array [
-        <FormattedMessage
-          id="required"
-          values={
-                    Object {
-                              "field": <FormattedMessage
-                                id="formCustomerPhone"
-                                values={Object {}}
-                    />,
-                            }
-          }
-/>,
+        "Telefone é obrigatório",
       ],
     },
     null,
@@ -196,43 +66,13 @@ Object {
 exports[`validateForm should return the correct error messages 1`] = `
 Object {
   "birthday": Array [
-    <FormattedMessage
-      id="required"
-      values={
-            Object {
-                  "field": <FormattedMessage
-                    id="formCustomerBirthDate"
-                    values={Object {}}
-            />,
-                }
-      }
-/>,
+    "Nascimento é obrigatório",
   ],
   "gender": Array [
-    <FormattedMessage
-      id="required"
-      values={
-            Object {
-                  "field": <FormattedMessage
-                    id="formCustomerGender"
-                    values={Object {}}
-            />,
-                }
-      }
-/>,
+    "Gênero é obrigatório",
   ],
   "name": Array [
-    <FormattedMessage
-      id="required"
-      values={
-            Object {
-                  "field": <FormattedMessage
-                    id="formCustomerFullName"
-                    values={Object {}}
-            />,
-                }
-      }
-/>,
+    "Nome Completo é obrigatório",
   ],
 }
 `;

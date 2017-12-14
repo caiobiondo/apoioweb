@@ -1,5 +1,4 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { translate } from 'locale';
 
 export function flattenMessages(nestedMessages, prefix = '') {
   return Object.keys(nestedMessages).reduce((messages, key) => {
@@ -33,7 +32,7 @@ export function formatCurrency(price, intl, defaultValue = null) {
 }
 
 export function translateFormError(fieldTranslationName, errorType) {
-  const translatedField = <FormattedMessage id={fieldTranslationName} />;
+  const translatedField = translate(fieldTranslationName);
 
-  return <FormattedMessage id={errorType} values={{ field: translatedField }} />;
+  return translate(errorType, { field: translatedField });
 }

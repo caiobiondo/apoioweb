@@ -2,7 +2,7 @@ import React from 'react';
 import { SEARCH_ZIP_URL } from 'config';
 import { FormInput, RowWithLink } from '../../Shared/Styles';
 import { ZipCodeSearchLink, NumberRow, CityRow, Wrapper, Title } from './AddressForm.styles';
-import { translate } from '../../Shared/Utils';
+import { translate } from 'locale';
 
 import { FormattedMessage } from 'react-intl';
 

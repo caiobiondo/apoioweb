@@ -10,7 +10,7 @@ import AddressForm from '../../molecules/AddressForm';
 import NotesForm from '../../molecules/NotesForm';
 import validateForm from '../../../Validators/Form';
 import removeTypename from 'utils/removeTypename';
-import { translate } from '../../Shared/Utils';
+import { translate } from 'locale';
 
 class CustomerForm extends Component {
   constructor(props) {
