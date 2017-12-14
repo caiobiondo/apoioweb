@@ -15,7 +15,7 @@ describe('CustomersList Ecosystem', () => {
 
   it('should set selectedCustomers to an empty array', () => {
     const originalState = { selectedCustomers: [{ id: 123 }] };
-    const expectedState = { selectedCustomers: [] };
+    const expectedState = { selectedCustomers: [], empty: false, loading: true };
 
     const result = shallow(<CustomersList />);
     const instance = result.instance();
@@ -26,8 +26,18 @@ describe('CustomersList Ecosystem', () => {
     });
   });
 
+  it('should update empty and loading state', () => {
+    const expectedState = { selectedCustomers: [], empty: true, loading: false };
+
+    const result = shallow(<CustomersList />);
+    const instance = result.instance();
+    instance.onLoadFinished(true, false);
+
+    expect(instance.state).toEqual(expectedState);
+  });
+
   it('should add customer to selected customers empty array', () => {
-    const expectedState = { selectedCustomers: [{ id: 123 }] };
+    const expectedState = { selectedCustomers: [{ id: 123 }], empty: false, loading: true };
     const customer = { id: 123 };
 
     const result = shallow(<CustomersList />);
@@ -39,7 +49,11 @@ describe('CustomersList Ecosystem', () => {
 
   it('should add customer to selected customers', () => {
     const originalState = { selectedCustomers: [{ id: 123 }] };
-    const expectedState = { selectedCustomers: [{ id: 123 }, { id: 124 }] };
+    const expectedState = {
+      selectedCustomers: [{ id: 123 }, { id: 124 }],
+      empty: false,
+      loading: true,
+    };
     const customer = { id: 124 };
 
     const result = shallow(<CustomersList />);
@@ -53,7 +67,11 @@ describe('CustomersList Ecosystem', () => {
 
   it('should add a list of customers to selected customers', () => {
     const originalState = { selectedCustomers: [] };
-    const expectedState = { selectedCustomers: [{ id: 124 }, { id: 125 }] };
+    const expectedState = {
+      selectedCustomers: [{ id: 124 }, { id: 125 }],
+      empty: false,
+      loading: true,
+    };
     const customers = [{ id: 124 }, { id: 125 }];
 
     const result = shallow(<CustomersList />);
@@ -67,7 +85,7 @@ describe('CustomersList Ecosystem', () => {
 
   it('should remove a list of customers from selected customers', () => {
     const originalState = { selectedCustomers: [{ id: 124 }, { id: 125 }] };
-    const expectedState = { selectedCustomers: [] };
+    const expectedState = { selectedCustomers: [], empty: false, loading: true };
     const customers = [];
 
     const result = shallow(<CustomersList />);
@@ -81,7 +99,7 @@ describe('CustomersList Ecosystem', () => {
 
   it('should remove a customer from selected customers', () => {
     const originalState = { selectedCustomers: [{ id: 124 }, { id: 125 }] };
-    const expectedState = { selectedCustomers: [{ id: 125 }] };
+    const expectedState = { selectedCustomers: [{ id: 125 }], empty: false, loading: true };
     const customer = { id: 124 };
 
     const result = shallow(<CustomersList />);
@@ -95,7 +113,7 @@ describe('CustomersList Ecosystem', () => {
 
   it('should remove all customers from selected customers', () => {
     const originalState = { selectedCustomers: [{ id: 125 }] };
-    const expectedState = { selectedCustomers: [] };
+    const expectedState = { selectedCustomers: [], empty: false, loading: true };
     const customer = [{ id: 125 }];
 
     const result = shallow(<CustomersList />);

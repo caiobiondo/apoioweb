@@ -403,7 +403,8 @@ exports[`CustomersList Organism should render an empty indicator 1`] = `
   zDepth={1}
 >
   <EmptyList
-    icon="ico_box"
+    descriptionId="customersEmptyListDescription"
+    icon="ico_add_customer"
     titleId="customersEmptyList"
   />
 </Paper>

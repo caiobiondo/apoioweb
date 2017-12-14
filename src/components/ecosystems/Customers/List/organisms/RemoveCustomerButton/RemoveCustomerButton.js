@@ -6,7 +6,6 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
-import { CustomerAddButtonContainer } from './RemoveCustomerButton.styles';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
 export class RemoveCustomerButton extends Component {
@@ -86,25 +85,23 @@ export class RemoveCustomerButton extends Component {
       />,
     ];
 
-    return (
-      <CustomerAddButtonContainer>
-        <CustomerButton action={this.onButtonAction} remove={this.props.isCustomerSelected} />
-        <Dialog
-          title={title}
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.removeCustomer}
-        >
-          <FormattedMessage
-            id="customerShouldBeRemovedWarning"
-            values={{
-              names: <b>{selectedCustomers}</b>,
-            }}
-          />
-        </Dialog>
-      </CustomerAddButtonContainer>
-    );
+    return [
+      <CustomerButton action={this.onButtonAction} remove={this.props.isCustomerSelected} />,
+      <Dialog
+        title={title}
+        actions={actions}
+        modal={false}
+        open={this.state.open}
+        onRequestClose={this.removeCustomer}
+      >
+        <FormattedMessage
+          id="customerShouldBeRemovedWarning"
+          values={{
+            names: <b>{selectedCustomers}</b>,
+          }}
+        />
+      </Dialog>,
+    ];
   }
 }
 

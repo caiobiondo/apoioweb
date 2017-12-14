@@ -131,7 +131,7 @@ export class MyScore extends Component {
     const { loadingScore, growthStatus } = this.props;
 
     if (loadingScore) {
-      return <Loading />;
+      return <Loading background="transparent" />;
     }
 
     const currentLevel = GrowthStatus.getCurrentLevel(growthStatus);

@@ -367,4 +367,31 @@ describe('CustomersList Organism', () => {
 
     expect(instance.state.data).toMatchSnapshot();
   });
+
+  it('should notify onLoadFinished callback when not loading', () => {
+    const onLoadFinished = jest.fn();
+    const customer = {
+      id: 123,
+      name: 'a name',
+      emails: [{ email: 'an-email' }],
+      phones: [{ phone: 'a-phone', provider: 'a provider' }],
+    };
+    const selectedCustomers = [customer];
+    const data = {
+      loading: false,
+      customers: [customer],
+    };
+
+    const result = shallow(
+      <CustomersList
+        onLoadFinished={onLoadFinished}
+        selectedCustomers={selectedCustomers}
+        data={data}
+      />,
+    );
+    const instance = result.instance();
+    instance.componentWillReceiveProps({ data, selectedCustomers });
+
+    expect(onLoadFinished).toBeCalledWith(false, false);
+  });
 });

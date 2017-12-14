@@ -68,7 +68,7 @@ export class CustomersList extends Component {
   );
 
   componentWillReceiveProps({ data, selectedCustomers }) {
-    const { customers } = data;
+    const { loading, customers } = data;
 
     const parsedCustomers = (customers || []).map(customer => ({
       id: customer.id,
@@ -81,7 +81,18 @@ export class CustomersList extends Component {
     }));
 
     this.setState({ data: { ...this.state.data, body: parsedCustomers } });
+
+    this.notifyLoadFinish(loading, customers);
   }
+
+  notifyLoadFinish = (loading, customers) => {
+    if (!loading && this.props.onLoadFinished) {
+      this.props.onLoadFinished(
+        this.isEmpty(loading, customers),
+        this.isLoading(loading, customers),
+      );
+    }
+  };
 
   isLoading = (loading, customers) => {
     return loading && !customers;
@@ -158,7 +169,11 @@ export class CustomersList extends Component {
     if (isEmpty(loading, customers)) {
       return (
         <Paper style={fullContainer}>
-          <EmptyList icon="ico_box" titleId="customersEmptyList" />
+          <EmptyList
+            icon="ico_add_customer"
+            titleId="customersEmptyList"
+            descriptionId="customersEmptyListDescription"
+          />
         </Paper>
       );
     }
