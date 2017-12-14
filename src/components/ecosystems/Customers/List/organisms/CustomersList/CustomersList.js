@@ -169,7 +169,11 @@ export class CustomersList extends Component {
     if (isEmpty(loading, customers)) {
       return (
         <Paper style={fullContainer}>
-          <EmptyList icon="ico_box" titleId="customersEmptyList" />
+          <EmptyList
+            icon="ico_add_customer"
+            titleId="customersEmptyList"
+            descriptionId="customersEmptyListDescription"
+          />
         </Paper>
       );
     }

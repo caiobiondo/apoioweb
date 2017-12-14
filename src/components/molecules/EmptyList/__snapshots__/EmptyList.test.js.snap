@@ -16,7 +16,7 @@ exports[`EmptyList should render an empty customers indicator 1`] = `
 <EmptyListstyles__Container>
   <EmptyListstyles__IconWrapper>
     <Icon
-      file="ico_box"
+      file="ico_add_customer"
     />
   </EmptyListstyles__IconWrapper>
   <EmptyListstyles__Title>
@@ -25,7 +25,12 @@ exports[`EmptyList should render an empty customers indicator 1`] = `
       values={Object {}}
     />
   </EmptyListstyles__Title>
-  <EmptyListstyles__Description />
+  <EmptyListstyles__Description>
+    <FormattedMessage
+      id="customersEmptyListDescription"
+      values={Object {}}
+    />
+  </EmptyListstyles__Description>
 </EmptyListstyles__Container>
 `;
 

@@ -26,7 +26,13 @@ describe('EmptyList', () => {
   it('should render an empty customers indicator', () => {
     const renderer = new ShallowRenderer();
 
-    renderer.render(<EmptyList icon="ico_box" titleId="customersEmptyList" />);
+    renderer.render(
+      <EmptyList
+        icon="ico_add_customer"
+        titleId="customersEmptyList"
+        descriptionId="customersEmptyListDescription"
+      />,
+    );
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();

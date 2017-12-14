@@ -15,6 +15,7 @@ export default {
     customerProfile: 'Perfil do Cliente',
     customerShouldBeRemoved: 'Excluir Cliente?',
     customersEmptyList: 'Lista de clientes vazia',
+    customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',
     customerShouldBeRemovedWarning:
       'Tem certeza que deseja deletar {names} da sua lista de clientes?',
     gender: {
