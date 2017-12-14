@@ -27,6 +27,7 @@ exports[`CustomerDetails renders customer details 1`] = `
           style={
             Object {
               "backgroundColor": "#f3971f",
+              "textTransform": "uppercase",
             }
           }
         >
@@ -72,7 +73,6 @@ exports[`CustomerDetails renders customer details 1`] = `
           <CustomerDetailsstyles__CustomerDatumHalfWrapper>
             <CustomerDatum
               label="customerBirthdate"
-              value={null}
             />
             <CustomerDatum
               label="customerGender"
@@ -121,13 +121,419 @@ exports[`CustomerDetails renders customer details 1`] = `
         <CustomerDetailsstyles__CustomerData
           secondary={true}
         >
-          <CustomerDetailsstyles__CustomerDataTitle>
-            <FormattedMessage
-              id="customerNotes"
-              values={Object {}}
+          <CustomerDetailsstyles__CustomerDatumNotes>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerNotes"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDatumstyles__CustomerDatumValue />
+          </CustomerDetailsstyles__CustomerDatumNotes>
+        </CustomerDetailsstyles__CustomerData>
+      </CustomerDetailsstyles__CustomerDataWrapper>
+    </CustomerDetailsstyles__CustomerDetailsData>
+  </Paper>
+</CustomerDetailsstyles__Main>
+`;
+
+exports[`CustomerDetails renders customer details with additional phones 1`] = `
+<CustomerDetailsstyles__Main>
+  <Paper
+    circle={false}
+    rounded={true}
+    style={
+      Object {
+        "marginBottom": "24px",
+        "padding": "30px",
+      }
+    }
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <CustomerDetailsstyles__CustomerDetailsSectionTitleWrapper>
+      <SectionTitle
+        iconName="ico_info"
+        value="customerProfile"
+      />
+    </CustomerDetailsstyles__CustomerDetailsSectionTitleWrapper>
+    <CustomerDetailsstyles__CustomerDetailsData>
+      <CustomerDetailsstyles__CustomerAvatarWrapper>
+        <Avatar
+          size={115}
+          style={
+            Object {
+              "backgroundColor": "#f3971f",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          tv
+        </Avatar>
+      </CustomerDetailsstyles__CustomerAvatarWrapper>
+      <CustomerDetailsstyles__CustomerDataWrapper>
+        <CustomerDetailsstyles__CustomerData
+          primary={true}
+        >
+          <CustomerDetailsstyles__CustomerNameWrapper>
+            <CustomerDetailsstyles__CustomerName>
+              teste vizir
+            </CustomerDetailsstyles__CustomerName>
+            <CustomerDetailsstyles__CustomerEditWrapper>
+              <Link
+                replace={false}
+                to="/customers/50221/edit"
+              >
+                <Icon
+                  file="ico_pencil"
+                />
+              </Link>
+            </CustomerDetailsstyles__CustomerEditWrapper>
+          </CustomerDetailsstyles__CustomerNameWrapper>
+          <CustomerDatumstyles__CustomerDatumValue>
+            fellipe@vizir.com.br
+          </CustomerDatumstyles__CustomerDatumValue>
+          <CustomerDatumstyles__CustomerDatumValue>
+            1133313433
+          </CustomerDatumstyles__CustomerDatumValue>
+          <CustomerDatumstyles__CustomerDatumValue>
+            TIM
+          </CustomerDatumstyles__CustomerDatumValue>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDatum
+            label="customerFullName"
+            value="teste vizir"
+          />
+          <CustomerDetailsstyles__CustomerDatumHalfWrapper>
+            <CustomerDatum
+              label="customerBirthdate"
             />
-          </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDatum
+              label="customerGender"
+              value={
+                <FormattedMessage
+                  id="gender.male"
+                  values={Object {}}
+                />
+              }
+            />
+          </CustomerDetailsstyles__CustomerDatumHalfWrapper>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDetailsstyles__CustomerDataTelephones>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerOtherTelephoneNumbers"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumTelephone
+              key="0"
+            >
+              <CustomerDetailsstyles__CustomerDatumTelephoneNumber>
+                1133313432
+              </CustomerDetailsstyles__CustomerDatumTelephoneNumber>
+              <CustomerDetailsstyles__CustomerDatumTelephoneProvider>
+                VIVO
+              </CustomerDetailsstyles__CustomerDatumTelephoneProvider>
+            </CustomerDetailsstyles__CustomerDatumTelephone>
+          </CustomerDetailsstyles__CustomerDataTelephones>
+          <CustomerDetailsstyles__CustomerDataAddresses>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerAddress"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumAddress
+              key="0"
+            >
+              <CustomerDatumstyles__CustomerDatumValue>
+                R WERNER GOLDBERG, 222
+              </CustomerDatumstyles__CustomerDatumValue>
+              <CustomerDatumstyles__CustomerDatumValue>
+                JARDIM TUPANCI - 06414-025
+              </CustomerDatumstyles__CustomerDatumValue>
+              <CustomerDatumstyles__CustomerDatumValue>
+                BARUERI - SP
+              </CustomerDatumstyles__CustomerDatumValue>
+            </CustomerDetailsstyles__CustomerDatumAddress>
+          </CustomerDetailsstyles__CustomerDataAddresses>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDetailsstyles__CustomerDatumNotes>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerNotes"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDatumstyles__CustomerDatumValue />
+          </CustomerDetailsstyles__CustomerDatumNotes>
+        </CustomerDetailsstyles__CustomerData>
+      </CustomerDetailsstyles__CustomerDataWrapper>
+    </CustomerDetailsstyles__CustomerDetailsData>
+  </Paper>
+</CustomerDetailsstyles__Main>
+`;
+
+exports[`CustomerDetails renders customer details without addresses 1`] = `
+<CustomerDetailsstyles__Main>
+  <Paper
+    circle={false}
+    rounded={true}
+    style={
+      Object {
+        "marginBottom": "24px",
+        "padding": "30px",
+      }
+    }
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <CustomerDetailsstyles__CustomerDetailsSectionTitleWrapper>
+      <SectionTitle
+        iconName="ico_info"
+        value="customerProfile"
+      />
+    </CustomerDetailsstyles__CustomerDetailsSectionTitleWrapper>
+    <CustomerDetailsstyles__CustomerDetailsData>
+      <CustomerDetailsstyles__CustomerAvatarWrapper>
+        <Avatar
+          size={115}
+          style={
+            Object {
+              "backgroundColor": "#f3971f",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          tv
+        </Avatar>
+      </CustomerDetailsstyles__CustomerAvatarWrapper>
+      <CustomerDetailsstyles__CustomerDataWrapper>
+        <CustomerDetailsstyles__CustomerData
+          primary={true}
+        >
+          <CustomerDetailsstyles__CustomerNameWrapper>
+            <CustomerDetailsstyles__CustomerName>
+              teste vizir
+            </CustomerDetailsstyles__CustomerName>
+            <CustomerDetailsstyles__CustomerEditWrapper>
+              <Link
+                replace={false}
+                to="/customers/50221/edit"
+              >
+                <Icon
+                  file="ico_pencil"
+                />
+              </Link>
+            </CustomerDetailsstyles__CustomerEditWrapper>
+          </CustomerDetailsstyles__CustomerNameWrapper>
+          <CustomerDatumstyles__CustomerDatumValue>
+            fellipe@vizir.com.br
+          </CustomerDatumstyles__CustomerDatumValue>
+          <CustomerDatumstyles__CustomerDatumValue>
+            1133313433
+          </CustomerDatumstyles__CustomerDatumValue>
+          <CustomerDatumstyles__CustomerDatumValue>
+            TIM
+          </CustomerDatumstyles__CustomerDatumValue>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDatum
+            label="customerFullName"
+            value="teste vizir"
+          />
+          <CustomerDetailsstyles__CustomerDatumHalfWrapper>
+            <CustomerDatum
+              label="customerBirthdate"
+            />
+            <CustomerDatum
+              label="customerGender"
+              value={
+                <FormattedMessage
+                  id="gender.male"
+                  values={Object {}}
+                />
+              }
+            />
+          </CustomerDetailsstyles__CustomerDatumHalfWrapper>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDetailsstyles__CustomerDataTelephones>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerOtherTelephoneNumbers"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+          </CustomerDetailsstyles__CustomerDataTelephones>
+          <CustomerDetailsstyles__CustomerDataAddresses>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerAddress"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+          </CustomerDetailsstyles__CustomerDataAddresses>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDetailsstyles__CustomerDatumNotes>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerNotes"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDatumstyles__CustomerDatumValue />
+          </CustomerDetailsstyles__CustomerDatumNotes>
+        </CustomerDetailsstyles__CustomerData>
+      </CustomerDetailsstyles__CustomerDataWrapper>
+    </CustomerDetailsstyles__CustomerDetailsData>
+  </Paper>
+</CustomerDetailsstyles__Main>
+`;
+
+exports[`CustomerDetails renders customer details without phones 1`] = `
+<CustomerDetailsstyles__Main>
+  <Paper
+    circle={false}
+    rounded={true}
+    style={
+      Object {
+        "marginBottom": "24px",
+        "padding": "30px",
+      }
+    }
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <CustomerDetailsstyles__CustomerDetailsSectionTitleWrapper>
+      <SectionTitle
+        iconName="ico_info"
+        value="customerProfile"
+      />
+    </CustomerDetailsstyles__CustomerDetailsSectionTitleWrapper>
+    <CustomerDetailsstyles__CustomerDetailsData>
+      <CustomerDetailsstyles__CustomerAvatarWrapper>
+        <Avatar
+          size={115}
+          style={
+            Object {
+              "backgroundColor": "#f3971f",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          tv
+        </Avatar>
+      </CustomerDetailsstyles__CustomerAvatarWrapper>
+      <CustomerDetailsstyles__CustomerDataWrapper>
+        <CustomerDetailsstyles__CustomerData
+          primary={true}
+        >
+          <CustomerDetailsstyles__CustomerNameWrapper>
+            <CustomerDetailsstyles__CustomerName>
+              teste vizir
+            </CustomerDetailsstyles__CustomerName>
+            <CustomerDetailsstyles__CustomerEditWrapper>
+              <Link
+                replace={false}
+                to="/customers/50221/edit"
+              >
+                <Icon
+                  file="ico_pencil"
+                />
+              </Link>
+            </CustomerDetailsstyles__CustomerEditWrapper>
+          </CustomerDetailsstyles__CustomerNameWrapper>
+          <CustomerDatumstyles__CustomerDatumValue>
+            fellipe@vizir.com.br
+          </CustomerDatumstyles__CustomerDatumValue>
           <CustomerDatumstyles__CustomerDatumValue />
+          <CustomerDatumstyles__CustomerDatumValue />
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDatum
+            label="customerFullName"
+            value="teste vizir"
+          />
+          <CustomerDetailsstyles__CustomerDatumHalfWrapper>
+            <CustomerDatum
+              label="customerBirthdate"
+            />
+            <CustomerDatum
+              label="customerGender"
+              value={
+                <FormattedMessage
+                  id="gender.male"
+                  values={Object {}}
+                />
+              }
+            />
+          </CustomerDetailsstyles__CustomerDatumHalfWrapper>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDetailsstyles__CustomerDataTelephones>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerOtherTelephoneNumbers"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+          </CustomerDetailsstyles__CustomerDataTelephones>
+          <CustomerDetailsstyles__CustomerDataAddresses>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerAddress"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumAddress
+              key="0"
+            >
+              <CustomerDatumstyles__CustomerDatumValue>
+                R WERNER GOLDBERG, 222
+              </CustomerDatumstyles__CustomerDatumValue>
+              <CustomerDatumstyles__CustomerDatumValue>
+                JARDIM TUPANCI - 06414-025
+              </CustomerDatumstyles__CustomerDatumValue>
+              <CustomerDatumstyles__CustomerDatumValue>
+                BARUERI - SP
+              </CustomerDatumstyles__CustomerDatumValue>
+            </CustomerDetailsstyles__CustomerDatumAddress>
+          </CustomerDetailsstyles__CustomerDataAddresses>
+        </CustomerDetailsstyles__CustomerData>
+        <CustomerDetailsstyles__CustomerData
+          secondary={true}
+        >
+          <CustomerDetailsstyles__CustomerDatumNotes>
+            <CustomerDetailsstyles__CustomerDataTitle>
+              <FormattedMessage
+                id="customerNotes"
+                values={Object {}}
+              />
+            </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDatumstyles__CustomerDatumValue />
+          </CustomerDetailsstyles__CustomerDatumNotes>
         </CustomerDetailsstyles__CustomerData>
       </CustomerDetailsstyles__CustomerDataWrapper>
     </CustomerDetailsstyles__CustomerDetailsData>

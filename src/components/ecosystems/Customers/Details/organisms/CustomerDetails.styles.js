@@ -47,6 +47,7 @@ export const CustomerAvatarWrapper = styled.div`
 
 export const CustomerAvatarStyle = {
   backgroundColor: orange100,
+  textTransform: 'uppercase',
 };
 
 export const CustomerDataWrapper = styled.div`
@@ -165,6 +166,16 @@ export const CustomerDatumHalfWrapper = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-direction: column;
+    flex-basis: auto;
+  }
+`;
+
+export const CustomerDatumNotes = styled.div`
+  display: flex;
+  flex: 1 1 50%;
+  flex-direction: column;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-basis: auto;
   }
 `;

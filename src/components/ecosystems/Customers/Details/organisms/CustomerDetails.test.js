@@ -36,6 +36,60 @@ describe('CustomerDetails', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('renders customer details without addresses', () => {
+    // given
+    // when
+    const { result } = setup({
+      data: {
+        customer: {
+          ...customerDetails.customer,
+          addresses: null,
+        },
+      },
+    });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders customer details without phones', () => {
+    // given
+    // when
+    const { result } = setup({
+      data: {
+        customer: {
+          ...customerDetails.customer,
+          phones: null,
+        },
+      },
+    });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders customer details with additional phones', () => {
+    // given
+    // when
+    const { result } = setup({
+      data: {
+        customer: {
+          ...customerDetails.customer,
+          phones: [
+            ...customerDetails.customer.phones,
+            {
+              phone: '1133313432',
+              provider: 'VIVO',
+            },
+          ],
+        },
+      },
+    });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
   it('renders loading screen', () => {
     // given
     const props = {

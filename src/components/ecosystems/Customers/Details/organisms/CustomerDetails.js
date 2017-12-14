@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { formatDate } from 'locale/utils';
 import { CustomerDetailsQuery, CustomerDetailsQueryOptions } from './CustomerDetails.data';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import withUserData from 'hocs/withUserData/withUserData';
@@ -27,6 +26,7 @@ import {
   CustomerDataTelephones,
   CustomerDataAddresses,
   CustomerDatumAddress,
+  CustomerDatumNotes,
 } from './CustomerDetails.styles';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import CustomerDatum from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum';
@@ -64,7 +64,9 @@ export class CustomerDetails extends Component {
   }
 
   renderPhones(phones) {
-    return phones.map((phone, index) => {
+    if (!phones) return null;
+
+    return phones.slice(1).map((phone, index) => {
       return this.renderPhone(phone, index);
     });
   }
@@ -84,16 +86,13 @@ export class CustomerDetails extends Component {
   }
 
   render() {
-    const { data: { customer, loading }, intl } = this.props;
+    const { data: { customer, loading } } = this.props;
 
     if (loading) {
       return <Loading background="transparent" />;
     }
 
-    let gender = null;
-    if (customer.gender) {
-      gender = <FormattedMessage id={`gender.${customer.gender}`} />;
-    }
+    const gender = customer.gender ? <FormattedMessage id={`gender.${customer.gender}`} /> : '-';
 
     const nameInitials = customer.name
       .replace(/[^a-zA-Z- ]/g, '')
@@ -133,10 +132,7 @@ export class CustomerDetails extends Component {
               <CustomerData secondary>
                 <CustomerDatum label="customerFullName" value={customer.name} />
                 <CustomerDatumHalfWrapper>
-                  <CustomerDatum
-                    label="customerBirthdate"
-                    value={formatDate(customer.birthday, intl)}
-                  />
+                  <CustomerDatum label="customerBirthdate" value={customer.birthday} />
                   <CustomerDatum label="customerGender" value={gender} />
                 </CustomerDatumHalfWrapper>
               </CustomerData>
@@ -145,7 +141,7 @@ export class CustomerDetails extends Component {
                   <CustomerDataTitle>
                     <FormattedMessage id="customerOtherTelephoneNumbers" />
                   </CustomerDataTitle>
-                  {this.renderPhones(customer.phones.slice(1))}
+                  {this.renderPhones(customer.phones)}
                 </CustomerDataTelephones>
                 <CustomerDataAddresses>
                   <CustomerDataTitle>
@@ -155,10 +151,12 @@ export class CustomerDetails extends Component {
                 </CustomerDataAddresses>
               </CustomerData>
               <CustomerData secondary>
-                <CustomerDataTitle>
-                  <FormattedMessage id="customerNotes" />
-                </CustomerDataTitle>
-                <CustomerDatumValue>{customer.comment}</CustomerDatumValue>
+                <CustomerDatumNotes>
+                  <CustomerDataTitle>
+                    <FormattedMessage id="customerNotes" />
+                  </CustomerDataTitle>
+                  <CustomerDatumValue>{customer.comment}</CustomerDatumValue>
+                </CustomerDatumNotes>
               </CustomerData>
             </CustomerDataWrapper>
           </CustomerDetailsData>
