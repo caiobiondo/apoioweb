@@ -19,8 +19,8 @@ export default {
     customerShouldBeRemovedWarning:
       'Tem certeza que deseja deletar {names} da sua lista de clientes?',
     gender: {
-      male: 'Masculino',
-      female: 'Feminino',
+      M: 'Masculino',
+      F: 'Feminino',
     },
   },
 };
