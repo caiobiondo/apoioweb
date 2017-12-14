@@ -46,6 +46,10 @@ export default {
       'Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.',
     formCustomerTitle: 'Cadastro de Novos Clientes',
     formCustomerZipCode: 'CEP',
+    formCustomerErrorsCustomerMessage:
+      'As informações pessoais do cliente estão inválidas, por favor, revise-as e tente novamente.',
+    formCustomerErrorsAddressMessage:
+      'As informações de endereço do cliente estão inválidas, por favor, revise-as e tente novamente.',
     gender: {
       M: 'Masculino',
       F: 'Feminino',

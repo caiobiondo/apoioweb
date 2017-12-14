@@ -14,7 +14,7 @@ const AddressForm = ({
   values,
   handleChange,
   handleBlur,
-  isSubmitting,
+  submitted,
   errors = {},
   touched = {},
 }) => {
@@ -39,7 +39,7 @@ const AddressForm = ({
           value={values.zipcode}
           required={true}
           error={errors.zipcode}
-          dirty={touched.zipcode}
+          dirty={touched.zipcode || submitted}
         />
 
         <ZipCodeSearchLink href={SEARCH_ZIP_URL} target="_blank">
@@ -56,7 +56,7 @@ const AddressForm = ({
         value={values.street_name}
         required={true}
         error={errors.street_name}
-        dirty={touched.street_name}
+        dirty={touched.street_name || submitted}
       />
 
       <NumberRow>
@@ -69,7 +69,7 @@ const AddressForm = ({
           value={values.street_number}
           required={true}
           error={errors.street_number}
-          dirty={touched.street_number}
+          dirty={touched.street_number || submitted}
         />
 
         <FormInput
@@ -91,7 +91,7 @@ const AddressForm = ({
         value={values.neighborhood}
         required={true}
         error={errors.neighborhood}
-        dirty={touched.neighborhood}
+        dirty={touched.neighborhood || submitted}
       />
 
       <CityRow>
@@ -104,7 +104,7 @@ const AddressForm = ({
           value={values.city}
           required={true}
           error={errors.city}
-          dirty={touched.city}
+          dirty={touched.city || submitted}
         />
         <FormInput
           type="text"
@@ -115,7 +115,7 @@ const AddressForm = ({
           value={values.state}
           required={true}
           error={errors.state}
-          dirty={touched.state}
+          dirty={touched.state || submitted}
           maxlength="2"
         />
       </CityRow>

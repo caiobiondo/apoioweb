@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { RobotoRegular, NaturaBold } from 'styles/typography';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.form``;
 
 export const FormWrapper = styled.div`
   margin: 0 auto;

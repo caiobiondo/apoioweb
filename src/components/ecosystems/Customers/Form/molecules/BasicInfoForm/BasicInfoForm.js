@@ -32,13 +32,14 @@ const getMaxValueToBirthday = () => {
 };
 
 const BasicInfoForm = ({
-  values,
-  touched,
   handleChange,
   handleBlur,
   handleSubmit,
   isSubmitting,
+  submitted,
   errors = {},
+  values = {},
+  touched = {},
   addNewPhone,
 }) => {
   values = values.customer || {};
@@ -63,7 +64,7 @@ const BasicInfoForm = ({
         label={translate('formCustomerFullName')}
         value={values.name}
         error={errors.name}
-        dirty={touched.name}
+        dirty={touched.name || submitted}
         required={true}
       />
 
@@ -75,7 +76,7 @@ const BasicInfoForm = ({
           label={translate('formCustomerGender')}
           value={values.gender}
           error={errors.gender}
-          dirty={touched.gender}
+          dirty={touched.gender || submitted}
           required={true}
           options={getCustomerGenderOptions()}
         />
@@ -88,7 +89,7 @@ const BasicInfoForm = ({
           label={translate('formCustomerBirthDate')}
           value={values.birthday}
           error={errors.birthday}
-          dirty={touched.birthday}
+          dirty={touched.birthday || submitted}
           min="1899-01-01"
           max={getMaxValueToBirthday()}
           required={true}
@@ -103,7 +104,7 @@ const BasicInfoForm = ({
         label={translate('formCustomerEmail')}
         value={values.emails[0].email}
         error={errors.email}
-        dirty={touched.email}
+        dirty={touched.email || submitted}
       />
 
       {values.phones.map((phone, i) => {
@@ -116,7 +117,7 @@ const BasicInfoForm = ({
             handleChange={handleChange}
             handleBlur={handleBlur}
             handleSubmit={handleSubmit}
-            isSubmitting={isSubmitting}
+            submitted={submitted}
             errors={errors}
           />
         );

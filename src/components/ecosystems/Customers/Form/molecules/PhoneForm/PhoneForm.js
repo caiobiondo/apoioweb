@@ -10,7 +10,7 @@ const PhoneForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  isSubmitting,
+  submitted,
   index,
 }) => {
   errors = (errors.phones && errors.phones[index]) || {};
@@ -30,7 +30,7 @@ const PhoneForm = ({
           required={true}
           error={errors.phone}
           mask="(99) 99999-9999"
-          dirty={touched.phone}
+          dirty={touched.phone || submitted}
         />
         <FormInput
           type="text"
@@ -40,7 +40,7 @@ const PhoneForm = ({
           label={translate('formCustomerPhoneCarrier')}
           value={values.provider}
           error={errors.provider}
-          dirty={touched.provider}
+          dirty={touched.provider || submitted}
         />
       </RowWithHalfInputs>
     </PhoneWrapper>

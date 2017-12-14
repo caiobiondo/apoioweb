@@ -42,4 +42,4 @@ const ADDRESS_CONSTRAINTS = {
 };
 /* eslint-enable camelcase */
 
-export default address => validate(address, ADDRESS_CONSTRAINTS) || {};
+export default address => validate(address, ADDRESS_CONSTRAINTS) || null;

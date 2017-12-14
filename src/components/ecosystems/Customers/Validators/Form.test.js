@@ -8,7 +8,7 @@ describe('validateForm', () => {
       birthday: new Date(),
     };
 
-    expect(validateForm(customer)).toEqual({});
+    expect(validateForm(customer)).toEqual(null);
   });
 
   it('should return the correct error messages', () => {
@@ -36,6 +36,21 @@ describe('validateForm', () => {
     expect(validateForm(customer)).toMatchSnapshot();
   });
 
+  it('should return null if there is no error in the phones', () => {
+    const customer = {
+      name: 'Full name',
+      gender: 'Test',
+      birthday: new Date(),
+      phones: [
+        {
+          phone: '123',
+        },
+      ],
+    };
+
+    expect(validateForm(customer)).toEqual(null);
+  });
+
   it('should correctly validate the addresses', () => {
     /* eslint-disable camelcase */
     const customer = {
@@ -60,5 +75,54 @@ describe('validateForm', () => {
     /* eslint-enable camelcase */
 
     expect(validateForm(customer)).toMatchSnapshot();
+  });
+
+  it('should return null if there is no error in the addresses', () => {
+    /* eslint-disable camelcase */
+    const customer = {
+      name: 'Full name',
+      gender: 'Test',
+      birthday: new Date(),
+      addresses: [
+        {
+          zipcode: 'zipcode',
+          street_name: 'street_name',
+          street_number: 'street_number',
+          neighborhood: 'neighborhood',
+          city: 'city',
+          state: 'state',
+        },
+      ],
+    };
+    /* eslint-enable camelcase */
+
+    expect(validateForm(customer)).toEqual(null);
+  });
+
+  it('should return null if there is no error in the addresses or phones', () => {
+    /* eslint-disable camelcase */
+    const customer = {
+      name: 'Full name',
+      gender: 'Test',
+      birthday: new Date(),
+      addresses: [
+        {
+          zipcode: 'zipcode',
+          street_name: 'street_name',
+          street_number: 'street_number',
+          neighborhood: 'neighborhood',
+          city: 'city',
+          state: 'state',
+        },
+      ],
+      phones: [
+        {
+          phone: '123',
+        },
+      ],
+    };
+    /* eslint-enable camelcase */
+
+    expect(validateForm(customer)).toEqual(null);
   });
 });

@@ -8,7 +8,9 @@ import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import BasicInfoForm from '../../molecules/BasicInfoForm';
 import AddressForm from '../../molecules/AddressForm';
 import NotesForm from '../../molecules/NotesForm';
+import validateForm from '../../../Validators/Form';
 import removeTypename from 'utils/removeTypename';
+import { translate } from '../../Shared/Utils';
 
 class CustomerForm extends Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class CustomerForm extends Component {
         { completed: false, current: false, label: 'Notas' },
       ],
       currentStep: 0,
+      submitted: false,
     };
 
     this.addPhoneToCustomer = this.addPhoneToCustomer.bind(this);
@@ -29,6 +32,9 @@ class CustomerForm extends Component {
     this.renderFormStep = this.renderFormStep.bind(this);
     this.submitFormData = this.submitFormData.bind(this);
     this.getCustomer = this.getCustomer.bind(this);
+    this.handleFormError = this.handleFormError.bind(this);
+    this.validate = this.validate.bind(this);
+    this.goToStep = this.goToStep.bind(this);
   }
 
   getCustomer() {
@@ -48,7 +54,36 @@ class CustomerForm extends Component {
     this.props.setFieldValue('customer.phones', [...customer.phones, {}]);
   }
 
-  submitFormData() {
+  handleFormError(stepToGo, message) {
+    this.props.setTouched(true);
+    this.goToStep(stepToGo);
+    window.alert(translate(message));
+  }
+
+  validate(customer) {
+    const errors = validateForm(this.getCustomer());
+    return Object.keys(errors).every(key => {
+      let stepToGo = 0;
+      let message = 'formCustomerErrorsCustomerMessage';
+
+      if (key === 'addresses') {
+        stepToGo = 1;
+        message = 'formCustomerErrorsAddressMessage';
+      }
+
+      this.handleFormError(stepToGo, message);
+      return false;
+    });
+  }
+
+  submitFormData(event) {
+    this.props.handleSubmit(event);
+
+    this.setState({ submitted: true });
+    if (!this.validate()) {
+      return;
+    }
+
     this.props
       .mutate({
         variables: { input: removeTypename(this.getCustomer()) },
@@ -58,21 +93,8 @@ class CustomerForm extends Component {
       });
   }
 
-  changeStep(event, change) {
-    event.stopPropagation();
+  goToStep(stepToGo) {
     this.scrollTop();
-
-    const stepToGo = this.state.currentStep + change;
-
-    if (stepToGo < 0) {
-      this.props.history.goBack();
-      return;
-    }
-
-    if (stepToGo >= this.state.steps.length) {
-      this.submitFormData();
-      return;
-    }
 
     const steps = this.state.steps.map((step, index) => {
       if (index < stepToGo) {
@@ -92,34 +114,50 @@ class CustomerForm extends Component {
     this.setState({ steps, currentStep: stepToGo });
   }
 
+  changeStep(event, change) {
+    const stepToGo = this.state.currentStep + change;
+
+    if (stepToGo >= this.state.steps.length) {
+      return;
+    }
+
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (stepToGo < 0) {
+      this.props.history.goBack();
+      return;
+    }
+
+    this.goToStep(stepToGo);
+  }
+
   renderFormStep() {
-    const { currentStep } = this.state;
+    const { currentStep, submitted } = this.state;
     const { formsByStep } = this;
-    if (!formsByStep[currentStep]) return null;
-
     const Form = formsByStep[currentStep];
+    if (!Form) return null;
 
-    return <Form {...this.props} addNewPhone={this.addPhoneToCustomer} />;
+    return <Form {...this.props} addNewPhone={this.addPhoneToCustomer} submitted={submitted} />;
+  }
+
+  getNextButtonLabel() {
+    const { currentStep } = this.state;
+
+    if (currentStep === this.state.steps.length - 1) return 'formCustomerRegister';
+
+    return 'formCustomerNext';
   }
 
   renderFormButtons() {
-    const { currentStep } = this.state;
-
-    let nextButtonLabel;
-    if (currentStep === this.state.steps.length - 1) {
-      nextButtonLabel = 'formCustomerRegister';
-    } else {
-      nextButtonLabel = 'formCustomerNext';
-    }
-
     return (
       <FormButtonsWrapper>
         <FormButton onClick={event => this.changeStep(event, -1)}>
           <FormattedMessage id="formCustomerBack" />
         </FormButton>
 
-        <FormButton primary onClick={event => this.changeStep(event, 1)}>
-          <FormattedMessage id={nextButtonLabel} />
+        <FormButton primary type="submit" onClick={event => this.changeStep(event, 1)}>
+          <FormattedMessage id={this.getNextButtonLabel()} />
         </FormButton>
       </FormButtonsWrapper>
     );
@@ -127,7 +165,7 @@ class CustomerForm extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper onSubmit={this.submitFormData}>
         <WizardSteps steps={this.state.steps} />
         <PageTitle>
           <FormattedMessage id="formCustomerTitle" />

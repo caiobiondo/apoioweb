@@ -1,17 +1,40 @@
 import validateCustomer from './Customer';
 import validatePhone from './Phone';
-import validateCustomerAddress from './Address';
+import validateAddress from './Address';
+
+const validatePhones = customer => {
+  const phoneErrors = customer.phones.map(validatePhone);
+  const anyError = phoneErrors.some(error => !!error);
+  return anyError ? phoneErrors : null;
+};
+
+const validateAddresses = customer => {
+  const addressErrors = customer.addresses.map(validateAddress);
+  const anyError = addressErrors.some(error => !!error);
+  return anyError ? addressErrors : null;
+};
 
 export default customer => {
-  const customerErrors = validateCustomer(customer) || {};
+  let errors = {},
+    anyError = false;
+  const customerErrors = validateCustomer(customer);
+  const phoneErrors = customer.phones && validatePhones(customer);
+  const addressErrors = customer.addresses && validateAddresses(customer);
 
-  if (customer.phones) {
-    customerErrors.phones = customer.phones.map(validatePhone);
+  if (customerErrors) {
+    errors = customerErrors;
+    anyError = true;
   }
 
-  if (customer.addresses) {
-    customerErrors.addresses = customer.addresses.map(validateCustomerAddress);
+  if (phoneErrors) {
+    errors.phones = phoneErrors;
+    anyError = true;
   }
 
-  return customerErrors;
+  if (addressErrors) {
+    errors.addresses = addressErrors;
+    anyError = true;
+  }
+
+  return anyError ? errors : null;
 };

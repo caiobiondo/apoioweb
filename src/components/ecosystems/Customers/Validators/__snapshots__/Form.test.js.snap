@@ -150,7 +150,7 @@ Object {
 />,
       ],
     },
-    Object {},
+    null,
   ],
 }
 `;
@@ -188,7 +188,7 @@ Object {
 />,
       ],
     },
-    Object {},
+    null,
   ],
 }
 `;

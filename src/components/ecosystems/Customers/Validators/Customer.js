@@ -22,4 +22,4 @@ const CUSTOMER_CONSTRAINTS = {
   },
 };
 
-export default customer => validate(customer, CUSTOMER_CONSTRAINTS);
+export default customer => validate(customer, CUSTOMER_CONSTRAINTS) || null;

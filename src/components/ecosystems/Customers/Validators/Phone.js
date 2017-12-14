@@ -10,4 +10,4 @@ const PHONE_CONSTRAINTS = {
   },
 };
 
-export default phone => validate(phone, PHONE_CONSTRAINTS) || {};
+export default phone => validate(phone, PHONE_CONSTRAINTS) || null;
