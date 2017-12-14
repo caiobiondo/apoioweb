@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import CustomersList from './organisms/CustomersList/CustomersList';
-import { Main } from './index.styles';
+import { Main, ActionButtonContainer } from './index.styles';
 import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustomerButton';
 
 class CustomersListWrapper extends Component {
   state = {
+    empty: false,
+    loading: true,
     selectedCustomers: [],
+  };
+
+  onLoadFinished = (empty, loading) => {
+    this.setState({ empty: empty, loading: loading });
   };
 
   onSelectCustomer = customer => {
@@ -34,15 +40,23 @@ class CustomersListWrapper extends Component {
   };
 
   render() {
-    const { selectedCustomers } = this.state;
+    const { selectedCustomers, loading, empty } = this.state;
     return (
-      <Main>
-        <RemoveCustomerButton
-          selected={selectedCustomers}
-          onRemove={this.onRemoveCustomer}
-          isCustomerSelected={selectedCustomers.length}
+      <Main loading={loading} empty={empty}>
+        {!loading && (
+          <ActionButtonContainer empty={empty}>
+            <RemoveCustomerButton
+              selected={selectedCustomers}
+              onRemove={this.onRemoveCustomer}
+              isCustomerSelected={selectedCustomers.length}
+            />
+          </ActionButtonContainer>
+        )}
+        <CustomersList
+          onLoadFinished={this.onLoadFinished}
+          onSelect={this.onSelectCustomer}
+          selectedCustomers={selectedCustomers}
         />
-        <CustomersList onSelect={this.onSelectCustomer} selectedCustomers={selectedCustomers} />
       </Main>
     );
   }

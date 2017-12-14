@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomersList Ecosystem should render the customers list page 1`] = `
-<indexstyles__Main>
-  <Apollo(RemoveCustomerButton)
-    isCustomerSelected={0}
-    onRemove={[Function]}
-    selected={Array []}
-  />
+<indexstyles__Main
+  empty={false}
+  loading={true}
+>
   <Apollo(CustomersList)
+    onLoadFinished={[Function]}
     onSelect={[Function]}
     selectedCustomers={Array []}
   />
