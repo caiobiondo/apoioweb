@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Paper, Icon } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
 import {
-  CenterWrapper,
+  OuterWrapper,
+  InnerWrapper,
   CycleButton,
   CycleNumber,
   CycleText,
@@ -109,17 +110,19 @@ const PointsCycleSelection = props => {
   const cycles = getCycles(props);
 
   return (
-    <CenterWrapper>
-      <Paper style={WrapperStyles}>
-        <LabelsBlock>
-          <FormattedMessage id="cycleLabel" />
-          <LineBreak />
-          <FormattedMessage id="scoreLabel" />
-        </LabelsBlock>
+    <OuterWrapper>
+      <InnerWrapper>
+        <Paper style={WrapperStyles}>
+          <LabelsBlock>
+            <FormattedMessage id="cycleLabel" />
+            <LineBreak />
+            <FormattedMessage id="scoreLabel" />
+          </LabelsBlock>
 
-        {cycles.map(cycle => renderCycle(cycle, props))}
-      </Paper>
-    </CenterWrapper>
+          {cycles.map(cycle => renderCycle(cycle, props))}
+        </Paper>
+      </InnerWrapper>
+    </OuterWrapper>
   );
 };
 

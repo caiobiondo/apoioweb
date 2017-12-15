@@ -1,11 +1,23 @@
 import styled from 'styled-components';
+import { Responsive } from '@entria/components';
 
-export const CenterWrapper = styled.div`
+export const OuterWrapper = styled.div`
   text-align: center;
-  height: 100px;
-  overflow-x: auto;
-  width: 100%;
-  position: relative;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    height: 110px;
+    overflow-x: auto;
+    position: relative;
+    margin: 0 -50px;
+  }
+`;
+
+export const InnerWrapper = styled.div`
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    position: absolute;
+    left: 0;
+    width: 960px;
+  }
 `;
 
 export const WrapperStyles = {
@@ -15,10 +27,6 @@ export const WrapperStyles = {
   display: 'inline-block',
   fontFamily: 'Lato-Regular',
   minHeight: '86px',
-  width: '100%',
-  position: 'absolute',
-  left: '0',
-  width: '960px',
 };
 
 export const CycleButton = styled.a`
