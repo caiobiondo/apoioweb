@@ -103,7 +103,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export const PeriodTogglerWrapper = styled.div`
-  text-align: center;
+  width: 265px;
+  margin: 0 auto;
 `;
 
 export const Switcher = styled.div``;
