@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const CenterWrapper = styled.div`
   text-align: center;
+  height: 100px;
+  overflow-x: auto;
+  width: 100%;
+  position: relative;
 `;
 
 export const WrapperStyles = {
@@ -12,7 +16,9 @@ export const WrapperStyles = {
   fontFamily: 'Lato-Regular',
   minHeight: '86px',
   width: '100%',
-  position: 'relative',
+  position: 'absolute',
+  left: '0',
+  width: '960px',
 };
 
 export const CycleButton = styled.a`
