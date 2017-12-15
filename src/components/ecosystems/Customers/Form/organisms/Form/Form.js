@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Wrapper, FormWrapper, FormButtonsWrapper, PageTitle, PageText } from './Form.styles';
 
@@ -55,7 +56,6 @@ class CustomerForm extends Component {
   }
 
   handleFormError(stepToGo, message) {
-    this.props.setTouched(true);
     this.goToStep(stepToGo);
     window.alert(translate(message));
   }
@@ -197,5 +197,13 @@ class CustomerForm extends Component {
     );
   }
 }
+
+CustomerForm.propTypes = {
+  values: PropTypes.object,
+  setFieldValue: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  history: PropTypes.object,
+  mutate: PropTypes.func,
+};
 
 export default CustomerForm;

@@ -182,7 +182,7 @@ exports[`CustomerDetails renders customer details with additional phones 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/customers/50221/edit"
+                to="/edit-customer/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -329,7 +329,7 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/customers/50221/edit"
+                to="/edit-customer/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -453,7 +453,7 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/customers/50221/edit"
+                to="/edit-customer/50221"
               >
                 <Icon
                   file="ico_pencil"

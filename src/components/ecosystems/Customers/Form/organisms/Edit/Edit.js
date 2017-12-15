@@ -32,5 +32,5 @@ const EditCustomerFormWithMutation = graphql(UpdateCustomerMutation)(EditCustome
 const EditCustomerFormWithData = graphql(FindCustomerQuery, FindCustomerQueryOptions)(
   EditCustomerFormWithMutation,
 );
-
+export { EditCustomerFormWithFormik as EditCustomerForm };
 export default withRouter(EditCustomerFormWithData);
