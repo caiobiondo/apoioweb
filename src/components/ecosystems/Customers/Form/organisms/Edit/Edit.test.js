@@ -22,16 +22,13 @@ const fakeCustomer = () => {
     phones: [{ phone: '123456789' }],
     name: 'Name',
     gender: 'f',
-    birthday: new Date().toJSON(),
+    birthday: '1978-06-13',
   };
 };
 
 const setup = propOverrides => {
   const props = Object.assign(
     {
-      values: {},
-      setFieldValue: jest.fn(),
-      handleSubmit: jest.fn(),
       history: {
         back: jest.fn(),
       },
@@ -48,7 +45,7 @@ const setup = propOverrides => {
   };
 };
 
-describe('BaseEditCustomerForm', () => {
+describe('EditCustomerForm', () => {
   it('correctly renders the customer form when there is no customer in props', () => {
     const { result } = setup({ loading: false });
 

@@ -27,4 +27,5 @@ const NewCustomerFormWithFormik = withFormik({
   },
 })(NewCustomerFormWithMutation);
 
+export { NewCustomerFormWithFormik as NewCustomerForm };
 export default withRouter(NewCustomerFormWithFormik);

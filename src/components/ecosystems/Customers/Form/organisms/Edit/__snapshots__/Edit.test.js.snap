@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseEditCustomerForm correctly renders the customer form when the form is loading 1`] = `
+exports[`EditCustomerForm correctly renders the customer form when the form is loading 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -999,7 +999,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
                   "zipcode": "zipcode",
                 },
               ],
-              "birthday": "2017-12-15T18:30:06.101Z",
+              "birthday": "1978-06-13",
               "emails": Array [
                 Object {
                   "email": "test@test.com",
@@ -1014,7 +1014,6 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
               ],
             }
           }
-          handleSubmit={[Function]}
           history={
             Object {
               "back": [Function],
@@ -1022,8 +1021,6 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
           }
           loading={true}
           mutate={[Function]}
-          setFieldValue={[Function]}
-          values={Object {}}
         >
           <Formik
             customer={
@@ -1039,7 +1036,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
                     "zipcode": "zipcode",
                   },
                 ],
-                "birthday": "2017-12-15T18:30:06.101Z",
+                "birthday": "1978-06-13",
                 "emails": Array [
                   Object {
                     "email": "test@test.com",
@@ -1055,7 +1052,6 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
               }
             }
             enableReinitialize={true}
-            handleSubmit={[Function]}
             history={
               Object {
                 "back": [Function],
@@ -1075,7 +1071,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
                       "zipcode": "zipcode",
                     },
                   ],
-                  "birthday": "2017-12-15T18:30:06.101Z",
+                  "birthday": "1978-06-13",
                   "emails": Array [
                     Object {
                       "email": "test@test.com",
@@ -1096,11 +1092,9 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
             mutate={[Function]}
             onSubmit={[Function]}
             render={[Function]}
-            setFieldValue={[Function]}
             validate={[Function]}
             validateOnBlur={true}
             validateOnChange={true}
-            values={Object {}}
           >
             <EditCustomerForm
               customer={
@@ -1116,7 +1110,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
                       "zipcode": "zipcode",
                     },
                   ],
-                  "birthday": "2017-12-15T18:30:06.101Z",
+                  "birthday": "1978-06-13",
                   "emails": Array [
                     Object {
                       "email": "test@test.com",
@@ -1156,7 +1150,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
                         "zipcode": "zipcode",
                       },
                     ],
-                    "birthday": "2017-12-15T18:30:06.101Z",
+                    "birthday": "1978-06-13",
                     "emails": Array [
                       Object {
                         "email": "test@test.com",
@@ -1204,7 +1198,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
                         "zipcode": "zipcode",
                       },
                     ],
-                    "birthday": "2017-12-15T18:30:06.101Z",
+                    "birthday": "1978-06-13",
                     "emails": Array [
                       Object {
                         "email": "test@test.com",
@@ -1469,7 +1463,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when the form 
 </ThemeProvider>
 `;
 
-exports[`BaseEditCustomerForm correctly renders the customer form when there is no customer in props 1`] = `
+exports[`EditCustomerForm correctly renders the customer form when there is no customer in props 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -2455,7 +2449,6 @@ exports[`BaseEditCustomerForm correctly renders the customer form when there is 
         }
       >
         <C
-          handleSubmit={[Function]}
           history={
             Object {
               "back": [Function],
@@ -2463,12 +2456,9 @@ exports[`BaseEditCustomerForm correctly renders the customer form when there is 
           }
           loading={false}
           mutate={[Function]}
-          setFieldValue={[Function]}
-          values={Object {}}
         >
           <Formik
             enableReinitialize={true}
-            handleSubmit={[Function]}
             history={
               Object {
                 "back": [Function],
@@ -2484,11 +2474,9 @@ exports[`BaseEditCustomerForm correctly renders the customer form when there is 
             mutate={[Function]}
             onSubmit={[Function]}
             render={[Function]}
-            setFieldValue={[Function]}
             validate={[Function]}
             validateOnBlur={true}
             validateOnChange={true}
-            values={Object {}}
           >
             <EditCustomerForm
               dirty={false}
@@ -2779,7 +2767,7 @@ exports[`BaseEditCustomerForm correctly renders the customer form when there is 
 </ThemeProvider>
 `;
 
-exports[`BaseEditCustomerForm correctly renders the customer when the form is loaded 1`] = `
+exports[`EditCustomerForm correctly renders the customer when the form is loaded 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4287,7 +4275,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                   "zipcode": "zipcode",
                 },
               ],
-              "birthday": "2017-12-15T18:30:06.137Z",
+              "birthday": "1978-06-13",
               "emails": Array [
                 Object {
                   "email": "test@test.com",
@@ -4302,7 +4290,6 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
               ],
             }
           }
-          handleSubmit={[Function]}
           history={
             Object {
               "back": [Function],
@@ -4310,8 +4297,6 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
           }
           loading={false}
           mutate={[Function]}
-          setFieldValue={[Function]}
-          values={Object {}}
         >
           <Formik
             customer={
@@ -4327,7 +4312,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                     "zipcode": "zipcode",
                   },
                 ],
-                "birthday": "2017-12-15T18:30:06.137Z",
+                "birthday": "1978-06-13",
                 "emails": Array [
                   Object {
                     "email": "test@test.com",
@@ -4343,7 +4328,6 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
               }
             }
             enableReinitialize={true}
-            handleSubmit={[Function]}
             history={
               Object {
                 "back": [Function],
@@ -4363,7 +4347,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                       "zipcode": "zipcode",
                     },
                   ],
-                  "birthday": "2017-12-15T18:30:06.137Z",
+                  "birthday": "1978-06-13",
                   "emails": Array [
                     Object {
                       "email": "test@test.com",
@@ -4384,11 +4368,9 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
             mutate={[Function]}
             onSubmit={[Function]}
             render={[Function]}
-            setFieldValue={[Function]}
             validate={[Function]}
             validateOnBlur={true}
             validateOnChange={true}
-            values={Object {}}
           >
             <EditCustomerForm
               customer={
@@ -4404,7 +4386,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                       "zipcode": "zipcode",
                     },
                   ],
-                  "birthday": "2017-12-15T18:30:06.137Z",
+                  "birthday": "1978-06-13",
                   "emails": Array [
                     Object {
                       "email": "test@test.com",
@@ -4444,7 +4426,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                         "zipcode": "zipcode",
                       },
                     ],
-                    "birthday": "2017-12-15T18:30:06.137Z",
+                    "birthday": "1978-06-13",
                     "emails": Array [
                       Object {
                         "email": "test@test.com",
@@ -4492,7 +4474,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                         "zipcode": "zipcode",
                       },
                     ],
-                    "birthday": "2017-12-15T18:30:06.137Z",
+                    "birthday": "1978-06-13",
                     "emails": Array [
                       Object {
                         "email": "test@test.com",
@@ -4685,7 +4667,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                 "zipcode": "zipcode",
                               },
                             ],
-                            "birthday": "2017-12-15T18:30:06.137Z",
+                            "birthday": "1978-06-13",
                             "emails": Array [
                               Object {
                                 "email": "test@test.com",
@@ -4725,7 +4707,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                   "zipcode": "zipcode",
                                 },
                               ],
-                              "birthday": "2017-12-15T18:30:06.137Z",
+                              "birthday": "1978-06-13",
                               "emails": Array [
                                 Object {
                                   "email": "test@test.com",
@@ -4774,7 +4756,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                   "zipcode": "zipcode",
                                 },
                               ],
-                              "birthday": "2017-12-15T18:30:06.137Z",
+                              "birthday": "1978-06-13",
                               "emails": Array [
                                 Object {
                                   "email": "test@test.com",
@@ -6247,7 +6229,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                   onChange={[Function]}
                                   required={true}
                                   type="date"
-                                  value="2017-12-15T18:30:06.137Z"
+                                  value="1978-06-13"
                                 >
                                   <Input
                                     bordered={true}
@@ -6268,7 +6250,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                     required={true}
                                     showError={true}
                                     type="date"
-                                    value="2017-12-15T18:30:06.137Z"
+                                    value="1978-06-13"
                                   >
                                     <FormGroup
                                       bordered={true}
@@ -6292,7 +6274,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                       required={true}
                                       showError={true}
                                       type="date"
-                                      value="2017-12-15T18:30:06.137Z"
+                                      value="1978-06-13"
                                     >
                                       <styled.div
                                         className="c9"
@@ -6343,7 +6325,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                                 }
                                                 type="date"
                                                 underlineShow={true}
-                                                value="2017-12-15T18:30:06.137Z"
+                                                value="1978-06-13"
                                               >
                                                 <div
                                                   style={
@@ -6391,7 +6373,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                                       }
                                                     }
                                                     type="date"
-                                                    value="2017-12-15T18:30:06.137Z"
+                                                    value="1978-06-13"
                                                   />
                                                   <TextFieldUnderline
                                                     disabled={false}
@@ -7527,7 +7509,7 @@ exports[`BaseEditCustomerForm correctly renders the customer when the form is lo
                                       "zipcode": "zipcode",
                                     },
                                   ],
-                                  "birthday": "2017-12-15T18:30:06.137Z",
+                                  "birthday": "1978-06-13",
                                   "emails": Array [
                                     Object {
                                       "email": "test@test.com",
