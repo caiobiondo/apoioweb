@@ -8,9 +8,9 @@ const LevelList = props => {
       <ArrowUp />
       <Table>
         <TableBody>
-          {props.levels.map(level => {
+          {props.levels.map((level, index) => {
             return (
-              <TableRow color={level.color}>
+              <TableRow color={level.color} key={index}>
                 <TableCell>{level.text}</TableCell>
                 <TableCell>{level.pointsText}</TableCell>
               </TableRow>

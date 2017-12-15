@@ -37,7 +37,7 @@ ScoreProgress.propTypes = {
   currentLevel: PropTypes.object,
   previousLevel: PropTypes.object,
   nextLevel: PropTypes.object,
-  currentPoints: PropTypes.string,
+  currentPoints: PropTypes.number,
   isOnLastLevel: PropTypes.bool,
 };
 

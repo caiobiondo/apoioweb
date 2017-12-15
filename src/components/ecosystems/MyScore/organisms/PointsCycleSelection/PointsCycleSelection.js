@@ -57,7 +57,7 @@ const renderCycle = (cycle, props) => {
 
   return (
     <CycleButton
-      onClick={() => props.onCycleClick(cycle)}
+      onClick={() => props.onCycleClick(cycle.number)}
       key={cycle.number}
       color={color}
       background={background}
@@ -106,7 +106,6 @@ const getCycles = props => {
 
 const PointsCycleSelection = props => {
   const { startCycle, endCycle, currentCycleNumber, scoreCycles, currentLevelColor } = props;
-  const onClick = props.onCycleClick;
   const cycles = getCycles(props);
 
   return (
