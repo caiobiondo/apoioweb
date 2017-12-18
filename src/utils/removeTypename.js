@@ -6,7 +6,7 @@ const omitDeepArrayWalk = (array, key) => {
       return omitDeepArrayWalk(value, key);
     }
 
-    if (typeof value === 'object') {
+    if (typeof value === 'object' && value !== null) {
       return omitDeep(value, key);
     }
 

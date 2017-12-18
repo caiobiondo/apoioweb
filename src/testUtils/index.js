@@ -13,3 +13,18 @@ export const mount = component => {
     </ThemeProvider>,
   );
 };
+
+export const clickOnElementWithText = (element, selector, text, customEvent = null) => {
+  element.find(selector).forEach(toClick => {
+    if (toClick.text() === text) {
+      toClick.simulate('click');
+
+      if (customEvent) toClick.simulate(customEvent);
+    }
+  });
+};
+
+export const changeInputValue = (form, name, value) => {
+  const input = form.find(`[name="${name}"]`).get(0);
+  input.props.onChange({ target: { value, name }, persist: jest.fn() });
+};

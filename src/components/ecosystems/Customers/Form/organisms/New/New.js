@@ -7,8 +7,6 @@ import validateForm from '../../../Validators/Form';
 
 class NewCustomerForm extends CustomerForm {}
 
-const NewCustomerFormWithMutation = graphql(CreateCustomerMutation)(NewCustomerForm);
-
 const NewCustomerFormWithFormik = withFormik({
   mapPropsToValues: props => {
     return {
@@ -25,7 +23,9 @@ const NewCustomerFormWithFormik = withFormik({
       customer: validateForm(values.customer),
     };
   },
-})(NewCustomerFormWithMutation);
+})(NewCustomerForm);
+
+const NewCustomerFormWithMutation = graphql(CreateCustomerMutation)(NewCustomerFormWithFormik);
 
 export { NewCustomerFormWithFormik as NewCustomerForm };
-export default withRouter(NewCustomerFormWithFormik);
+export default withRouter(NewCustomerFormWithMutation);

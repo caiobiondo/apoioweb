@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditCustomerForm correctly renders the customer form when the form is loading 1`] = `
+exports[`EditCustomerForm rendering correctly renders the customer form when the form is loading 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -1016,7 +1016,7 @@ exports[`EditCustomerForm correctly renders the customer form when the form is l
           }
           history={
             Object {
-              "back": [Function],
+              "goBack": [Function],
             }
           }
           loading={true}
@@ -1054,7 +1054,7 @@ exports[`EditCustomerForm correctly renders the customer form when the form is l
             enableReinitialize={true}
             history={
               Object {
-                "back": [Function],
+                "goBack": [Function],
               }
             }
             initialValues={
@@ -1133,7 +1133,7 @@ exports[`EditCustomerForm correctly renders the customer form when the form is l
               handleSubmit={[Function]}
               history={
                 Object {
-                  "back": [Function],
+                  "goBack": [Function],
                 }
               }
               initialValues={
@@ -1463,7 +1463,7 @@ exports[`EditCustomerForm correctly renders the customer form when the form is l
 </ThemeProvider>
 `;
 
-exports[`EditCustomerForm correctly renders the customer form when there is no customer in props 1`] = `
+exports[`EditCustomerForm rendering correctly renders the customer form when there is no customer in props 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -2451,7 +2451,7 @@ exports[`EditCustomerForm correctly renders the customer form when there is no c
         <C
           history={
             Object {
-              "back": [Function],
+              "goBack": [Function],
             }
           }
           loading={false}
@@ -2461,7 +2461,7 @@ exports[`EditCustomerForm correctly renders the customer form when there is no c
             enableReinitialize={true}
             history={
               Object {
-                "back": [Function],
+                "goBack": [Function],
               }
             }
             initialValues={
@@ -2487,7 +2487,7 @@ exports[`EditCustomerForm correctly renders the customer form when there is no c
               handleSubmit={[Function]}
               history={
                 Object {
-                  "back": [Function],
+                  "goBack": [Function],
                 }
               }
               initialValues={
@@ -2767,7 +2767,7 @@ exports[`EditCustomerForm correctly renders the customer form when there is no c
 </ThemeProvider>
 `;
 
-exports[`EditCustomerForm correctly renders the customer when the form is loaded 1`] = `
+exports[`EditCustomerForm rendering correctly renders the customer when the form is loaded 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4292,7 +4292,7 @@ exports[`EditCustomerForm correctly renders the customer when the form is loaded
           }
           history={
             Object {
-              "back": [Function],
+              "goBack": [Function],
             }
           }
           loading={false}
@@ -4330,7 +4330,7 @@ exports[`EditCustomerForm correctly renders the customer when the form is loaded
             enableReinitialize={true}
             history={
               Object {
-                "back": [Function],
+                "goBack": [Function],
               }
             }
             initialValues={
@@ -4409,7 +4409,7 @@ exports[`EditCustomerForm correctly renders the customer when the form is loaded
               handleSubmit={[Function]}
               history={
                 Object {
-                  "back": [Function],
+                  "goBack": [Function],
                 }
               }
               initialValues={
@@ -4690,7 +4690,7 @@ exports[`EditCustomerForm correctly renders the customer when the form is loaded
                         handleSubmit={[Function]}
                         history={
                           Object {
-                            "back": [Function],
+                            "goBack": [Function],
                           }
                         }
                         initialValues={
