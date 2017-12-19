@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerAvatar should render correctly without any props 1`] = `
+<Avatar
+  size={40}
+/>
+`;
+
+exports[`CustomerAvatar should render the customer avatar 1`] = `
+<Avatar
+  size={40}
+>
+  <img
+    alt="customer name"
+    src="http://url.com"
+  />
+</Avatar>
+`;
+
+exports[`CustomerAvatar should render the customer initial if the avatar is not present 1`] = `
+<Avatar
+  size={40}
+>
+  cn
+</Avatar>
+`;

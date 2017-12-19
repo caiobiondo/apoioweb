@@ -431,9 +431,29 @@ exports[`CustomersList Organism should render default cell 1`] = `
 
 exports[`CustomersList Organism should render name cell 1`] = `
 <CustomersListstyles__CustomerName>
-  <CustomersListstyles__Avatar>
-    an
-  </CustomersListstyles__Avatar>
+  <CustomerAvatar
+    avatar=""
+    name="a name"
+    style={
+      Object {
+        "alignSelf": "center",
+        "background": "#f3971f",
+        "borderRadius": "100%",
+        "color": "#fff",
+        "display": "block",
+        "fontSize": "17px",
+        "height": "50px",
+        "lineHeight": "50px",
+        "marginLeft": "0",
+        "marginRight": "20px",
+        "minWidth": "50px",
+        "overflow": "hidden",
+        "textAlign": "center",
+        "textTransform": "uppercase",
+        "width": "50px",
+      }
+    }
+  />
   <CustomersListstyles__NameLabel>
     a name
     <Link
@@ -455,12 +475,29 @@ exports[`CustomersList Organism should render name cell 1`] = `
 
 exports[`CustomersList Organism should render name cell with avatar 1`] = `
 <CustomersListstyles__CustomerName>
-  <CustomersListstyles__Avatar>
-    <img
-      alt="a name"
-      src="an avatar"
-    />
-  </CustomersListstyles__Avatar>
+  <CustomerAvatar
+    avatar="an avatar"
+    name="a name"
+    style={
+      Object {
+        "alignSelf": "center",
+        "background": "#f3971f",
+        "borderRadius": "100%",
+        "color": "#fff",
+        "display": "block",
+        "fontSize": "17px",
+        "height": "50px",
+        "lineHeight": "50px",
+        "marginLeft": "0",
+        "marginRight": "20px",
+        "minWidth": "50px",
+        "overflow": "hidden",
+        "textAlign": "center",
+        "textTransform": "uppercase",
+        "width": "50px",
+      }
+    }
+  />
   <CustomersListstyles__NameLabel>
     a name
     <Link

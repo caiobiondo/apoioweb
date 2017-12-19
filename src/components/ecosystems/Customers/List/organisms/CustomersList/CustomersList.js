@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import Checkbox from 'components/atoms/Checkbox/Checkbox';
+import CustomerAvatar from 'components/atoms/CustomerAvatar';
 
 import {
   CustomerName,
@@ -14,7 +15,7 @@ import {
   Wrapper,
   TableWrapper,
   NameLabel,
-  Avatar,
+  CustomerAvatarStyle,
   LinkStyle,
 } from './CustomersList.styles';
 import { CustomersListQuery } from './CustomersList.data';
@@ -125,13 +126,9 @@ export class CustomersList extends Component {
   };
 
   renderName = ({ value, row }) => {
-    const nameInitials = value
-      .replace(/[^a-zA-Z- ]/g, '')
-      .match(/\b\w/g)
-      .join('');
     return (
       <CustomerName>
-        <Avatar>{row.avatar ? <img src={row.avatar} alt={value} /> : nameInitials}</Avatar>
+        <CustomerAvatar name={value} avatar={row.avatar} style={CustomerAvatarStyle} />
         <NameLabel>
           {value}
           <Link style={LinkStyle} to={`/my-customers/${row.id}`} />

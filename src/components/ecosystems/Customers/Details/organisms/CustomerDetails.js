@@ -5,7 +5,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { CustomerDetailsQuery, CustomerDetailsQueryOptions } from './CustomerDetails.data';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import withUserData from 'hocs/withUserData/withUserData';
-
+import CustomerAvatar from 'components/atoms/CustomerAvatar';
 import {
   Main,
   CustomerDetailsWrapper,
@@ -33,7 +33,6 @@ import CustomerDatum from 'components/ecosystems/Customers/Details/molecules/Cus
 import { CustomerDatumValue } from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum.styles';
 
 import { Paper, Loading, Icon } from 'natura-ui';
-import { Avatar } from 'material-ui';
 
 export class CustomerDetails extends Component {
   renderAddresses(addresses) {
@@ -94,10 +93,6 @@ export class CustomerDetails extends Component {
 
     const gender = customer.gender ? <FormattedMessage id={`gender.${customer.gender}`} /> : '-';
 
-    const nameInitials = customer.name
-      .replace(/[^a-zA-Z- ]/g, '')
-      .match(/\b\w/g)
-      .join('');
     const email = customer.emails && customer.emails[0] && customer.emails[0].email;
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
@@ -111,9 +106,7 @@ export class CustomerDetails extends Component {
           </CustomerDetailsSectionTitleWrapper>
           <CustomerDetailsData>
             <CustomerAvatarWrapper>
-              <Avatar size={115} style={CustomerAvatarStyle}>
-                {nameInitials}
-              </Avatar>
+              <CustomerAvatar name={customer.name} size={115} style={CustomerAvatarStyle} />
             </CustomerAvatarWrapper>
             <CustomerDataWrapper>
               <CustomerData primary>

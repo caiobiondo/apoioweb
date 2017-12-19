@@ -93,27 +93,45 @@ export const CustomerName = styled.div`
   display: flex;
 `;
 
-export const Avatar = styled.figure`
-  display: block;
-  border-radius: 100%;
-  text-align: center;
-  width: 50px;
-  min-width: 50px;
-  height: 50px;
-  line-height: 50px;
-  font-size: 17px;
-  color: ${white};
-  background: ${orange100};
-  margin-left: 0;
-  overflow: hidden;
-  margin-right: 20px;
-  text-transform: uppercase;
+// export const Avatar = styled.figure`
+//   display: block;
+//   border-radius: 100%;
+//   text-align: center;
+//   width: 50px;
+//   min-width: 50px;
+//   height: 50px;
+//   line-height: 50px;
+//   font-size: 17px;
+//   color: ${white};
+//   background: ${orange100};
+//   margin-left: 0;
+//   overflow: hidden;
+//   margin-right: 20px;
+//   text-transform: uppercase;
+//
+//   img {
+//     width: 100%;
+//     height: 100%;
+//   }
+// `;
 
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
+export const CustomerAvatarStyle = {
+  display: 'block',
+  alignSelf: 'center',
+  borderRadius: '100%',
+  textAlign: 'center',
+  width: '50px',
+  minWidth: '50px',
+  height: '50px',
+  lineHeight: '50px',
+  fontSize: '17px',
+  color: white,
+  background: orange100,
+  marginLeft: '0',
+  overflow: 'hidden',
+  marginRight: '20px',
+  textTransform: 'uppercase',
+};
 
 export const NameLabel = styled.figure`
   display: block;
