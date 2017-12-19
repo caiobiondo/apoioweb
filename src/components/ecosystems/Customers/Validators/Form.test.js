@@ -63,7 +63,7 @@ describe('validateForm', () => {
         },
         {},
         {
-          zipcode: 'zipcode',
+          zipcode: '12345678',
           street_name: 'street_name',
           street_number: 'street_number',
           neighborhood: 'neighborhood',
@@ -85,7 +85,7 @@ describe('validateForm', () => {
       birthday: new Date(),
       addresses: [
         {
-          zipcode: 'zipcode',
+          zipcode: '12345678',
           street_name: 'street_name',
           street_number: 'street_number',
           neighborhood: 'neighborhood',
@@ -107,7 +107,7 @@ describe('validateForm', () => {
       birthday: new Date(),
       addresses: [
         {
-          zipcode: 'zipcode',
+          zipcode: '12345-678',
           street_name: 'street_name',
           street_number: 'street_number',
           neighborhood: 'neighborhood',

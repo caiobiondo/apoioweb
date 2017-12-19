@@ -18,6 +18,7 @@ Object {
       ],
       "zipcode": Array [
         "CEP é obrigatório",
+        "CEP informado é inválido",
       ],
     },
     Object {
@@ -38,6 +39,7 @@ Object {
       ],
       "zipcode": Array [
         "CEP é obrigatório",
+        "CEP informado é inválido",
       ],
     },
     null,

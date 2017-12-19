@@ -11,7 +11,7 @@ describe('EditCustomerForm', () => {
       addresses: [
         {
           /* eslint-disable camelcase */
-          zipcode: 'zipcode',
+          zipcode: '01219-000',
           street_name: 'street_name',
           street_number: 'street_number',
           additional_address: 'additional_address',
