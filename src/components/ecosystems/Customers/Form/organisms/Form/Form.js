@@ -7,7 +7,7 @@ import { FormButton, WizardSteps } from 'natura-ui';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import BasicInfoForm from '../../molecules/BasicInfoForm';
-import AddressForm from '../../molecules/AddressForm';
+import AddressForm from '../AddressForm';
 import NotesForm from '../../molecules/NotesForm';
 import validateForm from '../../../Validators/Form';
 import removeTypename from 'utils/removeTypename';

@@ -54,7 +54,7 @@ describe('NewCustomerForm', () => {
     };
   };
 
-  let nextStepButtonText, backStepButtonText, submitStepButtonText;
+  let nextStepButtonText, submitStepButtonText;
 
   beforeEach(() => {
     const constantDate = new Date('2017-12-15T04:41:20');

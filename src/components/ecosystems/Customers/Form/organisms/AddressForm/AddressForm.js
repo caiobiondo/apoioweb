@@ -3,11 +3,29 @@ import { SEARCH_ZIP_URL } from 'config';
 import { FormInput, RowWithLink } from '../../Shared/Styles';
 import { ZipCodeSearchLink, NumberRow, CityRow, Wrapper, Title } from './AddressForm.styles';
 import { translate } from 'locale';
-
+import { fetchAddress } from './AddressForm.data';
 import { FormattedMessage } from 'react-intl';
+import debounce from 'lodash.debounce';
 
+const FULL_ZIPCODE_LENGTH = 9;
 const getAddressesData = (object, index) => {
   return (object.customer && object.customer.addresses && object.customer.addresses[index]) || {};
+};
+
+const setFormValuesFromZipCode = debounce((setFieldValue, zipCode, fieldPrefix) => {
+  console.log('zipCode');
+  fetchAddress(zipCode).then(address => {
+    Object.keys(address).forEach(attribute => {
+      setFieldValue(`${fieldPrefix}.${attribute}`, address[attribute]);
+    });
+  });
+}, 500);
+
+const zipCodeChanged = (setFieldValue, zipCode, fieldPrefix) => {
+  setFieldValue(`${fieldPrefix}.zipcode`, zipCode);
+  if (zipCode && zipCode.length === FULL_ZIPCODE_LENGTH) {
+    setFormValuesFromZipCode(setFieldValue, zipCode, fieldPrefix);
+  }
 };
 
 const AddressForm = ({
@@ -15,6 +33,7 @@ const AddressForm = ({
   handleChange,
   handleBlur,
   submitted,
+  setFieldValue,
   errors = {},
   touched = {},
 }) => {
@@ -33,7 +52,9 @@ const AddressForm = ({
           type="text"
           mask="99999-999"
           name={`customer.addresses.${index}.zipcode`}
-          onChange={handleChange}
+          onChange={event =>
+            zipCodeChanged(setFieldValue, event.target.value, `customer.addresses.${index}`)
+          }
           onBlur={handleBlur}
           label={translate('formCustomerZipCode')}
           value={values.zipcode}
@@ -55,6 +76,7 @@ const AddressForm = ({
         label={translate('formCustomerAddress')}
         value={values.street_name}
         required={true}
+        disabled={true}
         error={errors.street_name}
         dirty={touched.street_name || submitted}
       />
@@ -90,6 +112,7 @@ const AddressForm = ({
         label={translate('formCustomerNeighborhood')}
         value={values.neighborhood}
         required={true}
+        disabled={true}
         error={errors.neighborhood}
         dirty={touched.neighborhood || submitted}
       />
@@ -103,6 +126,7 @@ const AddressForm = ({
           label={translate('formCustomerCity')}
           value={values.city}
           required={true}
+          disabled={true}
           error={errors.city}
           dirty={touched.city || submitted}
         />
@@ -114,6 +138,7 @@ const AddressForm = ({
           label={translate('formCustomerState')}
           value={values.state}
           required={true}
+          disabled={true}
           error={errors.state}
           dirty={touched.state || submitted}
           maxlength="2"
