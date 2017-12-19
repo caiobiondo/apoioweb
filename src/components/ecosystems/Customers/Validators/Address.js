@@ -8,6 +8,9 @@ const ADDRESS_CONSTRAINTS = {
       allowEmpty: false,
       message: translateFormError('formCustomerZipCode', 'required'),
     },
+    zipCode: {
+      message: translateFormError('formCustomerZipCode', 'invalid'),
+    },
   },
   street_name: {
     presence: {
