@@ -106,11 +106,18 @@ const getCycles = props => {
 };
 
 const PointsCycleSelection = props => {
-  const { startCycle, endCycle, currentCycleNumber, scoreCycles, currentLevelColor } = props;
+  const {
+    startCycle,
+    endCycle,
+    currentCycleNumber,
+    scoreCycles,
+    currentLevelColor,
+    selectedCycleNumber,
+  } = props;
   const cycles = getCycles(props);
 
   return (
-    <OuterWrapper>
+    <OuterWrapper selected={selectedCycleNumber}>
       <InnerWrapper>
         <Paper style={WrapperStyles}>
           <LabelsBlock>

@@ -23,10 +23,11 @@ export default {
       'Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.',
     scoreLabel: 'Pontuação:',
     scoreStatementInPeriod: 'Extrato de Pontos no Período',
-    totalInCycle: 'Total no ciclo',
+    totalInCycle: 'Total',
     totalOrderPoints: '{points}pts',
     totalPointsTitle: 'Total',
     totalScoreInPeriod: 'Pontuação Total no Período',
     yourScoreDemonstration: 'Demonstrativo da sua pontuação',
+    date: 'Data',
   },
 };

@@ -12,6 +12,7 @@ export const fw900 = '900';
 // -------------------------------------
 export const fs10 = '10px';
 export const fs12 = '12px';
+export const fs13 = '13px';
 export const fs14 = '14px';
 export const fs15 = '15px';
 export const fs16 = '16px';

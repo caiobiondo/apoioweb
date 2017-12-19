@@ -3,12 +3,14 @@ import { Responsive } from '@entria/components';
 
 export const OuterWrapper = styled.div`
   text-align: center;
+  position: relative;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    height: 110px;
-    overflow-x: auto;
-    position: relative;
-    margin: 0 -50px;
+    height: 105px;
+    overflow-x: ${props => {
+      return props.selected ? 'hidden' : 'auto';
+    }};
+    margin: 0 -20%;
   }
 `;
 

@@ -18,6 +18,9 @@ import {
   OrderHistoryTitle,
   OrderHistoryPoints,
   OrderHistoryPoint,
+  OrderHistoryPointLabel,
+  TableWrapper,
+  TableDataWrapper,
 } from './PeriodHistory.styles';
 
 const ORDER_ICONS = {
@@ -65,10 +68,10 @@ export const PeriodHistory = props => {
     columns: ['type', 'orderNumber', 'entryOrderDate', 'totalOrderPoints', 'totalOrderValue'],
     style: {
       icon: { width: '10%' },
-      orderNumber: { width: '30%' },
+      orderNumber: { width: '25%' },
       entryOrderDate: { width: '28%' },
       totalOrderPoints: { width: '15%' },
-      totalOrderValue: { width: '15%', textAlign: 'right' },
+      totalOrderValue: { width: '20%', textAlign: 'right' },
     },
     renderer: {
       type: ({ value }) => (
@@ -76,16 +79,20 @@ export const PeriodHistory = props => {
           <Icon file={ORDER_ICONS[value]} />
         </IconWrapper>
       ),
-      orderNumber: value => (
-        <FormattedMessage id="periodHistoryOrderNumber" values={{ number: value }} />
+      orderNumber: ({ value }) => (
+        <TableDataWrapper>
+          <FormattedMessage id="order" />&nbsp;
+          {value}
+        </TableDataWrapper>
       ),
-      entryOrderDate: value => (
-        <FormattedMessage id="entryOrderDate" values={{ date: formatDate(value, intl) }} />
+      entryOrderDate: ({ value }) => (
+        <TableDataWrapper>
+          <FormattedMessage id="date" />&nbsp;
+          {formatDate(value, intl)}
+        </TableDataWrapper>
       ),
-      totalOrderPoints: value => (
-        <FormattedMessage id="totalOrderPoints" values={{ points: value }} />
-      ),
-      totalOrderValue: value => formatCurrency(value, intl),
+      totalOrderPoints: ({ value }) => `${value}pts`,
+      totalOrderValue: ({ value }) => formatCurrency(value, intl),
     },
     body: buildTableBody(props),
   };
@@ -105,12 +112,22 @@ export const PeriodHistory = props => {
         </OrderHistoryTitle>
         <OrderHistoryPoints>
           <OrderHistoryPoint>
-            <FormattedMessage id="digital" />:&nbsp;
+            <OrderHistoryPointLabel>
+              <span>
+                <FormattedMessage id="digital" />:&nbsp;
+              </span>
+              <Icon file="ico_monitor" />
+            </OrderHistoryPointLabel>
             <FormattedMessage id="cyclePoints" values={{ points: ecommercePoints }} />
           </OrderHistoryPoint>
 
           <OrderHistoryPoint>
-            <FormattedMessage id="presential" />:&nbsp;
+            <OrderHistoryPointLabel>
+              <span>
+                <FormattedMessage id="presential" />:&nbsp;
+              </span>
+              <Icon file="ico_marker" />
+            </OrderHistoryPointLabel>
             <FormattedMessage id="cyclePoints" values={{ points: directPoints }} />
           </OrderHistoryPoint>
 
@@ -120,7 +137,9 @@ export const PeriodHistory = props => {
           </OrderHistoryPoint>
         </OrderHistoryPoints>
       </OrderHistoryHeader>
-      <Table data={tableData} />
+      <TableWrapper>
+        <Table data={tableData} />
+      </TableWrapper>
     </Wrapper>
   );
 };
