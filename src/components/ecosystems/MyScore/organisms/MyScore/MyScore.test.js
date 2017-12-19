@@ -84,7 +84,7 @@ describe('MyScore', () => {
       result.instance().cycleSelected(cycle);
 
       // then
-      expect(result.state('selectedCycleNumber')).toBe(1);
+      expect(result.state('selectedCycleNumber')).toEqual(cycle);
     });
   });
 

@@ -1,200 +1,203 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PointsCycleSelection renders points cycle selection 1`] = `
-<PointsCycleSelectionstyles__CenterWrapper>
-  <Paper
-    circle={false}
-    rounded={true}
-    style={
-      Object {
-        "borderRadius": "10px",
-        "display": "inline-block",
-        "fontFamily": "Lato-Regular",
-        "minHeight": "86px",
-        "padding": "9px 20px",
-        "position": "relative",
-        "textAlign": "center",
-        "width": "100%",
+<PointsCycleSelectionstyles__OuterWrapper
+  selected={2}
+>
+  <PointsCycleSelectionstyles__InnerWrapper>
+    <Paper
+      circle={false}
+      rounded={true}
+      style={
+        Object {
+          "borderRadius": "10px",
+          "display": "inline-block",
+          "fontFamily": "Lato-Regular",
+          "minHeight": "86px",
+          "padding": "9px 20px",
+          "textAlign": "center",
+        }
       }
-    }
-    transitionEnabled={true}
-    zDepth={1}
-  >
-    <PointsCycleSelectionstyles__LabelsBlock>
-      <FormattedMessage
-        id="cycleLabel"
-        values={Object {}}
-      />
-      <PointsCycleSelectionstyles__LineBreak />
-      <FormattedMessage
-        id="scoreLabel"
-        values={Object {}}
-      />
-    </PointsCycleSelectionstyles__LabelsBlock>
-    <PointsCycleSelectionstyles__CycleButton
-      color="#66a944"
-      key="1"
-      onClick={[Function]}
+      transitionEnabled={true}
+      zDepth={1}
     >
-      <PointsCycleSelectionstyles__CycleNumber>
-        <PointsCycleSelectionstyles__IconWrapper
-          color="#66a944"
-        >
-          <Icon
-            file="ico_check"
-          />
-        </PointsCycleSelectionstyles__IconWrapper>
-        1
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
+      <PointsCycleSelectionstyles__LabelsBlock>
         <FormattedMessage
-          id="current"
+          id="cycleLabel"
           values={Object {}}
         />
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      color="#e03726"
-      key="2"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        <PointsCycleSelectionstyles__IconWrapper
-          color="#e03726"
-        >
-          <Icon
-            file="ico_times"
-          />
-        </PointsCycleSelectionstyles__IconWrapper>
-        2
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
+        <PointsCycleSelectionstyles__LineBreak />
         <FormattedMessage
-          id="cyclePoints"
-          values={
-            Object {
-              "points": 0,
-            }
-          }
+          id="scoreLabel"
+          values={Object {}}
         />
-      </PointsCycleSelectionstyles__CycleText>
-      <PointsCycleSelectionstyles__SelectedCyclePointerWrapper>
-        <PointsCycleSelectionstyles__SelectedCyclePointer />
-      </PointsCycleSelectionstyles__SelectedCyclePointerWrapper>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      color="#66a944"
-      key="3"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        <PointsCycleSelectionstyles__IconWrapper
-          color="#66a944"
-        >
-          <Icon
-            file="ico_check"
+      </PointsCycleSelectionstyles__LabelsBlock>
+      <PointsCycleSelectionstyles__CycleButton
+        color="#66a944"
+        key="1"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          <PointsCycleSelectionstyles__IconWrapper
+            color="#66a944"
+          >
+            <Icon
+              file="ico_check"
+            />
+          </PointsCycleSelectionstyles__IconWrapper>
+          1
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+          <FormattedMessage
+            id="current"
+            values={Object {}}
           />
-        </PointsCycleSelectionstyles__IconWrapper>
-        3
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-        <FormattedMessage
-          id="cyclePoints"
-          values={
-            Object {
-              "points": 1028,
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        background="#EAEAEA"
+        color="#e03726"
+        key="2"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          <PointsCycleSelectionstyles__IconWrapper
+            color="#e03726"
+          >
+            <Icon
+              file="ico_times"
+            />
+          </PointsCycleSelectionstyles__IconWrapper>
+          2
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+          <FormattedMessage
+            id="cyclePoints"
+            values={
+              Object {
+                "points": 0,
+              }
             }
-          }
-        />
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="4"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        4
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="5"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        5
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="6"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        6
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="7"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        7
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="8"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        8
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="9"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        9
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-    <PointsCycleSelectionstyles__CycleButton
-      key="10"
-      onClick={[Function]}
-    >
-      <PointsCycleSelectionstyles__CycleNumber>
-        10
-      </PointsCycleSelectionstyles__CycleNumber>
-      <PointsCycleSelectionstyles__LineBreak />
-      <PointsCycleSelectionstyles__CycleText>
-         
-      </PointsCycleSelectionstyles__CycleText>
-    </PointsCycleSelectionstyles__CycleButton>
-  </Paper>
-</PointsCycleSelectionstyles__CenterWrapper>
+          />
+        </PointsCycleSelectionstyles__CycleText>
+        <PointsCycleSelectionstyles__SelectedCyclePointerWrapper>
+          <PointsCycleSelectionstyles__SelectedCyclePointer />
+        </PointsCycleSelectionstyles__SelectedCyclePointerWrapper>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        color="#66a944"
+        key="3"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          <PointsCycleSelectionstyles__IconWrapper
+            color="#66a944"
+          >
+            <Icon
+              file="ico_check"
+            />
+          </PointsCycleSelectionstyles__IconWrapper>
+          3
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+          <FormattedMessage
+            id="cyclePoints"
+            values={
+              Object {
+                "points": 1028,
+              }
+            }
+          />
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="4"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          4
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="5"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          5
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="6"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          6
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="7"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          7
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="8"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          8
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="9"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          9
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
+        key="10"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          10
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+    </Paper>
+  </PointsCycleSelectionstyles__InnerWrapper>
+</PointsCycleSelectionstyles__OuterWrapper>
 `;

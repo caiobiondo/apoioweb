@@ -8,7 +8,7 @@ exports[`PeriodToggler renders a period toggler 1`] = `
     Object {
       "borderRadius": "10px",
       "color": "rgba(84, 84, 84, 0.4)",
-      "display": "inline-block",
+      "display": "flex",
       "height": "30px",
       "marginBottom": "45px",
       "marginTop": "27px",
@@ -44,7 +44,7 @@ exports[`PeriodToggler renders a period toggler with last active period 1`] = `
     Object {
       "borderRadius": "10px",
       "color": "rgba(84, 84, 84, 0.4)",
-      "display": "inline-block",
+      "display": "flex",
       "height": "30px",
       "marginBottom": "45px",
       "marginTop": "27px",

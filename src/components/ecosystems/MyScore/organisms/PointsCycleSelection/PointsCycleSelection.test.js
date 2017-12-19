@@ -57,11 +57,7 @@ describe('PointsCycleSelection', () => {
         .simulate('click');
 
       // then
-      expect(onCycleClick).toBeCalledWith({
-        number: 1,
-        points: 1012,
-        text: <FormattedMessage id="current" values={{}} />,
-      });
+      expect(onCycleClick).toBeCalledWith(1);
     });
 
     it('show orders from selected cycle', () => {
@@ -77,11 +73,7 @@ describe('PointsCycleSelection', () => {
         .simulate('click');
 
       // then
-      expect(onCycleClick).toBeCalledWith({
-        number: 1,
-        points: 1012,
-        text: <FormattedMessage id="cyclePoints" values={{ points: 1012 }} />,
-      });
+      expect(onCycleClick).toBeCalledWith(1);
     });
   });
 });
