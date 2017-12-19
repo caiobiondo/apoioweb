@@ -11,6 +11,11 @@ export const Wrapper = styled(Paper)`
   position: relative;
   border-radius: 10px !important;
 
+  min-height: 200px;
+  > div {
+    border-radius: 10px;
+  }
+
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin: 0 -15%;
     padding: 20px;

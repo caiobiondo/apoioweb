@@ -7,7 +7,7 @@ export const OuterWrapper = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     height: 105px;
-    overflow-x: ${props => {
+    overflow: ${props => {
       return props.selected ? 'hidden' : 'auto';
     }};
     margin: 0 -20%;
@@ -85,6 +85,10 @@ export const SelectedCyclePointer = styled.div`
   height: 26px;
 
   transform: rotate(45deg);
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: none;
+  }
 `;
 
 export const SelectedCyclePointerWrapper = styled.div`

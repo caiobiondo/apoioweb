@@ -54,6 +54,8 @@ const renderCycle = (cycle, props) => {
         <SelectedCyclePointer />
       </SelectedCyclePointerWrapper>
     );
+
+    background = '#EAEAEA';
   }
 
   return (

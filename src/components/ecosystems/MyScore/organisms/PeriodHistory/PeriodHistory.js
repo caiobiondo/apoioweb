@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Table } from 'natura-ui';
+import { Icon, Table, Loading } from 'natura-ui';
 import { formatCurrency, formatDate } from 'locale/utils';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { graphql, compose } from 'react-apollo';
@@ -61,7 +61,11 @@ export const PeriodHistory = props => {
   const { intl } = props;
 
   if (props.loadingDirectOrders || props.loadingEcommerceOrders) {
-    return null;
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
   }
 
   const tableData = {
@@ -91,7 +95,7 @@ export const PeriodHistory = props => {
           {formatDate(value, intl)}
         </TableDataWrapper>
       ),
-      totalOrderPoints: ({ value }) => `${value}pts`,
+      totalOrderPoints: ({ value }) => `${value} pts`,
       totalOrderValue: ({ value }) => formatCurrency(value, intl),
     },
     body: buildTableBody(props),
