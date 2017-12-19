@@ -50,7 +50,7 @@ export class MyScore extends Component {
   }
 
   cycleSelected(cycle) {
-    this.setState({ selectedCycleNumber: cycle.number });
+    this.setState({ selectedCycleNumber: cycle });
   }
 
   resetCycleSelection() {

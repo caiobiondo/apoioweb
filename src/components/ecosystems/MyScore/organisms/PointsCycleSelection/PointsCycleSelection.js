@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Paper, Icon } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
 import {
-  CenterWrapper,
+  OuterWrapper,
+  InnerWrapper,
   CycleButton,
   CycleNumber,
   CycleText,
@@ -53,11 +54,13 @@ const renderCycle = (cycle, props) => {
         <SelectedCyclePointer />
       </SelectedCyclePointerWrapper>
     );
+
+    background = '#EAEAEA';
   }
 
   return (
     <CycleButton
-      onClick={() => props.onCycleClick(cycle)}
+      onClick={() => props.onCycleClick(cycle.number)}
       key={cycle.number}
       color={color}
       background={background}
@@ -105,22 +108,30 @@ const getCycles = props => {
 };
 
 const PointsCycleSelection = props => {
-  const { startCycle, endCycle, currentCycleNumber, scoreCycles, currentLevelColor } = props;
-  const onClick = props.onCycleClick;
+  const {
+    startCycle,
+    endCycle,
+    currentCycleNumber,
+    scoreCycles,
+    currentLevelColor,
+    selectedCycleNumber,
+  } = props;
   const cycles = getCycles(props);
 
   return (
-    <CenterWrapper>
-      <Paper style={WrapperStyles}>
-        <LabelsBlock>
-          <FormattedMessage id="cycleLabel" />
-          <LineBreak />
-          <FormattedMessage id="scoreLabel" />
-        </LabelsBlock>
+    <OuterWrapper selected={selectedCycleNumber}>
+      <InnerWrapper>
+        <Paper style={WrapperStyles}>
+          <LabelsBlock>
+            <FormattedMessage id="cycleLabel" />
+            <LineBreak />
+            <FormattedMessage id="scoreLabel" />
+          </LabelsBlock>
 
-        {cycles.map(cycle => renderCycle(cycle, props))}
-      </Paper>
-    </CenterWrapper>
+          {cycles.map(cycle => renderCycle(cycle, props))}
+        </Paper>
+      </InnerWrapper>
+    </OuterWrapper>
   );
 };
 
