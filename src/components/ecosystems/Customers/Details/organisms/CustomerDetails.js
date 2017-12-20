@@ -115,7 +115,7 @@ export class CustomerDetails extends Component {
           </CustomerDetailsSectionTitleWrapper>
           <CustomerDetailsData>
             <CustomerAvatarWrapper>
-              <CustomerAvatar name={customer.name} size={115} style={CustomerAvatarStyle} />
+              <CustomerAvatar name={name} size={115} style={CustomerAvatarStyle} />
             </CustomerAvatarWrapper>
             <CustomerDataWrapper>
               <CustomerData primary>
