@@ -62,7 +62,7 @@ Array [
     bodyStyle={
         Object {
             "fontFamily": "Roboto",
-            "padding": 12,
+            "padding": "12px 25px",
           }
     }
     contentStyle={
@@ -156,7 +156,7 @@ Array [
     bodyStyle={
         Object {
             "fontFamily": "Roboto",
-            "padding": 12,
+            "padding": "12px 25px",
           }
     }
     contentStyle={

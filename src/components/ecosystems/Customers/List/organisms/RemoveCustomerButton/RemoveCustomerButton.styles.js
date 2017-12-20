@@ -5,7 +5,7 @@ export const dialogContainer = {
 
 export const dialogContent = {
   fontFamily: 'Roboto',
-  padding: 12,
+  padding: '12px 25px',
 };
 
 export const dialogTitle = {
