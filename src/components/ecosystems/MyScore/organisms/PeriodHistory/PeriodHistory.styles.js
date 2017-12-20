@@ -17,7 +17,7 @@ export const Wrapper = styled(Paper)`
   }
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    margin: 0 -15%;
+    margin: 0 -10%;
     padding: 20px;
   }
 `;
