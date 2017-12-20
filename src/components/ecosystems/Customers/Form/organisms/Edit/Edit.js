@@ -17,7 +17,27 @@ class EditCustomerForm extends CustomerForm {
 
 const EditCustomerFormWithFormik = withFormik({
   mapPropsToValues: props => {
-    return { customer: props.customer };
+    if (!props.customer) {
+      return { customer: null };
+    }
+
+    const addresses = props.customer.addresses || [];
+    const phones = props.customer.phones || [];
+    const emails = props.customer.emails || [];
+    return {
+      customer: {
+        ...props.customer,
+        addresses: addresses.map(address => {
+          return { ...address };
+        }),
+        phones: phones.map(phone => {
+          return { ...phone };
+        }),
+        emails: emails.map(email => {
+          return { ...email };
+        }),
+      },
+    };
   },
   enableReinitialize: true,
   validate: values => {
