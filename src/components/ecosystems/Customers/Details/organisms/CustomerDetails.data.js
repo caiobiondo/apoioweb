@@ -32,7 +32,7 @@ export const CustomerDetailsQuery = gql`
 export const CustomerDetailsQueryOptions = {
   options(props) {
     return {
-      cachePolicy: 'no-cache',
+      fetchPolicy: 'cache-and-network',
       forceFetch: true,
       variables: {
         customerId: props.match.params.customerId,
