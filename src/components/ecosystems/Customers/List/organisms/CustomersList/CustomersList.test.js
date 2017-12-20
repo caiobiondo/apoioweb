@@ -48,6 +48,7 @@ describe('CustomersList Organism', () => {
         {
           id: 123,
           name: 'a name',
+          nickname: 'a nickname',
           emails: [{ email: 'an-email' }],
           phones: [{ phone: 'a-phone', provider: 'a provider' }],
         },
@@ -71,6 +72,7 @@ describe('CustomersList Organism', () => {
         {
           id: 123,
           name: 'a name',
+          nickname: 'a nickname',
           emails: [{ email: 'an-email' }],
           phones: [{ phone: 'a-phone', provider: 'a provider' }],
         },
@@ -96,6 +98,7 @@ describe('CustomersList Organism', () => {
         {
           id: 123,
           name: 'a name',
+          nickname: 'a nickname',
           emails: [{ email: 'an-email' }],
           phones: [{ phone: 'a-phone', provider: 'a provider' }],
         },
@@ -123,6 +126,7 @@ describe('CustomersList Organism', () => {
         {
           id: 123,
           name: 'a name',
+          nickname: 'a nickname',
           emails: [{ email: 'an-email' }],
           phones: [{ phone: 'a-phone', provider: 'a provider' }],
         },
@@ -143,6 +147,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -167,6 +172,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -193,6 +199,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -216,6 +223,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
       avatar: 'an avatar',
@@ -240,6 +248,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -263,6 +272,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -286,6 +296,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -309,6 +320,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -349,6 +361,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };
@@ -372,6 +385,7 @@ describe('CustomersList Organism', () => {
     const customer = {
       id: 123,
       name: 'a name',
+      nickname: 'a nickname',
       emails: [{ email: 'an-email' }],
       phones: [{ phone: 'a-phone', provider: 'a provider' }],
     };

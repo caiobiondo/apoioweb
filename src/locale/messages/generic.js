@@ -3,7 +3,7 @@ export default {
   'en-US': {},
   'pt-BR': {
     cancel: 'Cancelar',
-    remove: 'Deletar',
+    remove: 'Excluir',
   },
 };
 /* eslint-disable sort-keys */

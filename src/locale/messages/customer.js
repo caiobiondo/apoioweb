@@ -2,7 +2,7 @@ export default {
   'en-US': {},
   'pt-BR': {
     customerAddress: 'Endereço',
-    customerBirthdate: 'Data de nascimento',
+    customerBirthdate: 'Data de aniversário',
     customerEmail: 'Email',
     customerFullName: 'Nome completo',
     customerGender: 'Gênero',
