@@ -43,6 +43,11 @@ export const CustomerDetailsData = styled.div`
 export const CustomerAvatarWrapper = styled.div`
   flex: 0 1 auto;
   margin-right: 45px;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    margin-right: 0;
+    text-align: center;
+  }
 `;
 
 export const CustomerAvatarStyle = {
@@ -90,6 +95,7 @@ export const CustomerNameWrapper = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-basis: auto;
+    justify-content: center;
   }
 `;
 
@@ -110,17 +116,31 @@ export const CustomerEditWrapper = styled.div`
 export const CustomerDatumTelephone = styled.div`
   display: flex;
   flex: 0 1 auto;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    justify-content: center;
+  }
 `;
 
 export const CustomerDatumTelephoneNumber = styled.div`
   flex: 1 1 50%;
   margin-bottom: 10px;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const CustomerDatumTelephoneProvider = styled.div`
   flex: 1 1 50%;
   margin-bottom: 10px;
   color: ${gray700};
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const CustomerDataTelephones = styled.div`
@@ -130,6 +150,8 @@ export const CustomerDataTelephones = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-basis: auto;
+    justify-content: center;
+    margin-bottom: 32px;
   }
 `;
 
@@ -141,12 +163,18 @@ export const CustomerDataAddresses = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-basis: auto;
+    justify-content: center;
   }
 `;
 
 export const CustomerDatumAddress = styled.div`
   & + & {
     margin-top: 20px;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -157,6 +185,10 @@ export const CustomerDataTitle = styled.div`
   flex: 0 1 auto;
 
   margin-bottom: 25px;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    padding-left: 12px;
+  }
 `;
 
 export const CustomerDatumHalfWrapper = styled.div`

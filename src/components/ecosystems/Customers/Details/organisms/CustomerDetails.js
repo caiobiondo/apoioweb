@@ -36,7 +36,9 @@ import { Paper, Loading, Icon } from 'natura-ui';
 
 export class CustomerDetails extends Component {
   renderAddresses(addresses) {
-    if (!addresses || !addresses.length) return '-';
+    if (!addresses || !addresses.length) {
+      return <CustomerDatumAddress>-</CustomerDatumAddress>;
+    }
 
     return addresses.map((address, index) => {
       return this.renderAddress(address, index);
@@ -56,14 +58,16 @@ export class CustomerDetails extends Component {
   renderPhone({ phone, provider }, index) {
     return (
       <CustomerDatumTelephone key={index}>
-        <CustomerDatumTelephoneNumber>{phone}</CustomerDatumTelephoneNumber>
-        <CustomerDatumTelephoneProvider>{provider}</CustomerDatumTelephoneProvider>
+        <CustomerDatumTelephoneNumber>{phone || '-'}</CustomerDatumTelephoneNumber>
+        <CustomerDatumTelephoneProvider>{provider || '-'}</CustomerDatumTelephoneProvider>
       </CustomerDatumTelephone>
     );
   }
 
   renderPhones(phones) {
-    if (!phones || !phones.length) return '-';
+    if (!phones || !phones.length || phones.length <= 1) {
+      return <CustomerDatumTelephone>-</CustomerDatumTelephone>;
+    }
 
     return phones.slice(1).map((phone, index) => {
       return this.renderPhone(phone, index);
