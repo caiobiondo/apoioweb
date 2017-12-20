@@ -7,6 +7,12 @@ import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 import { withRouter } from 'react-router-dom';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
+import {
+  dialogContainer,
+  dialogContent,
+  dialogTitle,
+  dialogActions,
+} from './RemoveCustomerButton.styles';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
 export class RemoveCustomerButton extends Component {
@@ -66,7 +72,7 @@ export class RemoveCustomerButton extends Component {
 
   renderSelectedCustomers = () => {
     const { selected } = this.props;
-    return selected.map(customer => customer.name).join(', ');
+    return selected.map(customer => customer.name || customer.nickname).join(', ');
   };
 
   render() {
@@ -76,13 +82,15 @@ export class RemoveCustomerButton extends Component {
     const actions = [
       <FlatButton
         label={<FormattedMessage id="cancel" />}
-        primary={true}
+        primary={false}
         onClick={this.onCloseModal}
+        labelStyle={dialogActions}
       />,
       <FlatButton
         label={<FormattedMessage id="remove" />}
         primary={true}
         onClick={this.removeCustomer}
+        labelStyle={dialogActions}
       />,
     ];
 
@@ -94,6 +102,9 @@ export class RemoveCustomerButton extends Component {
         modal={false}
         open={this.state.open}
         onRequestClose={this.removeCustomer}
+        contentStyle={dialogContainer}
+        bodyStyle={dialogContent}
+        titleStyle={dialogTitle}
       >
         <FormattedMessage
           id="customerShouldBeRemovedWarning"

@@ -19,13 +19,17 @@ Array [
                     />
               }
               labelPosition="after"
-              labelStyle={Object {}}
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
               onClick={[Function]}
               onKeyboardFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onTouchStart={[Function]}
-              primary={true}
+              primary={false}
               secondary={false}
         />,
             <FlatButton
@@ -38,7 +42,11 @@ Array [
                     />
               }
               labelPosition="after"
-              labelStyle={Object {}}
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
               onClick={[Function]}
               onKeyboardFocus={[Function]}
               onMouseEnter={[Function]}
@@ -51,11 +59,28 @@ Array [
     }
     autoDetectWindowHeight={true}
     autoScrollBodyContent={false}
+    bodyStyle={
+        Object {
+            "fontFamily": "Roboto",
+            "padding": 12,
+          }
+    }
+    contentStyle={
+        Object {
+            "maxWidth": "none",
+            "width": "40%",
+          }
+    }
     modal={false}
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
     title="formatedMessage [object Object]"
+    titleStyle={
+        Object {
+            "fontWeight": 800,
+          }
+    }
 >
     <FormattedMessage
         id="customerShouldBeRemovedWarning"
@@ -88,13 +113,17 @@ Array [
                     />
               }
               labelPosition="after"
-              labelStyle={Object {}}
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
               onClick={[Function]}
               onKeyboardFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onTouchStart={[Function]}
-              primary={true}
+              primary={false}
               secondary={false}
         />,
             <FlatButton
@@ -107,7 +136,11 @@ Array [
                     />
               }
               labelPosition="after"
-              labelStyle={Object {}}
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
               onClick={[Function]}
               onKeyboardFocus={[Function]}
               onMouseEnter={[Function]}
@@ -120,11 +153,28 @@ Array [
     }
     autoDetectWindowHeight={true}
     autoScrollBodyContent={false}
+    bodyStyle={
+        Object {
+            "fontFamily": "Roboto",
+            "padding": 12,
+          }
+    }
+    contentStyle={
+        Object {
+            "maxWidth": "none",
+            "width": "40%",
+          }
+    }
     modal={false}
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
     title="formatedMessage [object Object]"
+    titleStyle={
+        Object {
+            "fontWeight": 800,
+          }
+    }
 >
     <FormattedMessage
         id="customerShouldBeRemovedWarning"
