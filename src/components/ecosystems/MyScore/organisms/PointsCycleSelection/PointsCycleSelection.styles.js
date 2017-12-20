@@ -10,7 +10,7 @@ export const OuterWrapper = styled.div`
     overflow: ${props => {
       return props.selected ? 'hidden' : 'auto';
     }};
-    margin: 0 -20%;
+    margin: 0 -22%;
   }
 `;
 
