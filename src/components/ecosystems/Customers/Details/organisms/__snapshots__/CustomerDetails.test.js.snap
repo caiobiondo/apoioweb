@@ -96,6 +96,9 @@ exports[`CustomerDetails renders customer details 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumTelephone>
+              -
+            </CustomerDetailsstyles__CustomerDatumTelephone>
           </CustomerDetailsstyles__CustomerDataTelephones>
           <CustomerDetailsstyles__CustomerDataAddresses>
             <CustomerDetailsstyles__CustomerDataTitle>
@@ -386,6 +389,9 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumTelephone>
+              -
+            </CustomerDetailsstyles__CustomerDatumTelephone>
           </CustomerDetailsstyles__CustomerDataTelephones>
           <CustomerDetailsstyles__CustomerDataAddresses>
             <CustomerDetailsstyles__CustomerDataTitle>
@@ -394,7 +400,9 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
-            -
+            <CustomerDetailsstyles__CustomerDatumAddress>
+              -
+            </CustomerDetailsstyles__CustomerDatumAddress>
           </CustomerDetailsstyles__CustomerDataAddresses>
         </CustomerDetailsstyles__CustomerData>
         <CustomerDetailsstyles__CustomerData
@@ -514,7 +522,9 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
-            -
+            <CustomerDetailsstyles__CustomerDatumTelephone>
+              -
+            </CustomerDetailsstyles__CustomerDatumTelephone>
           </CustomerDetailsstyles__CustomerDataTelephones>
           <CustomerDetailsstyles__CustomerDataAddresses>
             <CustomerDetailsstyles__CustomerDataTitle>
