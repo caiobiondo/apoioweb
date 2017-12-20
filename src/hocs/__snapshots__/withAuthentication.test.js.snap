@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withAuthentication HOC should render the child component with user props 1`] = `
+<WrappedComponent
+  data={
+    Object {
+      "value": "test",
+    }
+  }
+/>
+`;

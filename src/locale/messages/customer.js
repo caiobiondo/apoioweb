@@ -1,4 +1,3 @@
-/* eslint-enable sort-keys */
 export default {
   'en-US': {},
   'pt-BR': {
@@ -18,10 +17,46 @@ export default {
     customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',
     customerShouldBeRemovedWarning:
       'Tem certeza que deseja deletar {names} da sua lista de clientes?',
+    formCustomerAddAnotherPhone: 'Adicionar outro telefone',
+    formCustomerAddress: 'Endereço',
+    formCustomerBack: 'Voltar',
+    formCustomerBirthDate: 'Nascimento',
+    formCustomerCity: 'Cidade',
+    formCustomerComplement: 'Complemento',
+    formCustomerEmail: 'Email',
+    formCustomerForgotZip: 'Não sei meu CEP',
+    formCustomerFullName: 'Nome Completo',
+    formCustomerGender: 'Gênero',
+    formCustomerName: 'Nome / Apelido',
+    formCustomerNeighborhood: 'Bairro',
+    formCustomerNext: 'Próximo',
+    formCustomerNotes: 'Notas',
+    formCustomerNotesText:
+      'Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)',
+    formCustomerNumber: 'Número',
+    formCustomerPhone: 'Telefone',
+    formCustomerPhoneCarrier: 'Operadora',
+    formCustomerPhoneHelpText: 'Recomendamos o registro do telefone celular',
+    formCustomerProfile: 'Perfil do Cliente',
+    formCustomerProfileDirect: 'Presencial',
+    formCustomerProfileEcommerce: 'Digital',
+    formCustomerRegister: 'Cadastrar',
+    formCustomerState: 'UF',
+    formCustomerText:
+      'Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.',
+    formCustomerTitle: 'Cadastro de Novos Clientes',
+    formCustomerZipCode: 'CEP',
+    formCustomerErrorsCustomerMessage:
+      'As informações pessoais do cliente estão inválidas, por favor, revise-as e tente novamente.',
+    formCustomerErrorsAddressMessage:
+      'As informações de endereço do cliente estão inválidas, por favor, revise-as e tente novamente.',
     gender: {
       M: 'Masculino',
       F: 'Feminino',
+      m: 'Masculino',
+      male: 'Masculino',
+      f: 'Feminino',
+      female: 'Feminino',
     },
   },
 };
-/* eslint-disable sort-keys */

@@ -71,13 +71,16 @@ describe('RemoveCustomerButton', () => {
     const selectedCustomers = [];
     const onRemove = jest.fn();
     const isCustomerSelected = false;
-
+    const mockHistory = {
+      push: jest.fn(),
+    };
     const result = shallow(
       <RemoveCustomerButton
         selected={selectedCustomers}
         onRemove={onRemove}
         isCustomerSelected={isCustomerSelected}
         intl={intl}
+        history={mockHistory}
       />,
     );
     const instance = result.instance();
@@ -85,6 +88,7 @@ describe('RemoveCustomerButton', () => {
     instance.onButtonAction();
 
     expect(instance.state).toEqual({ open: false });
+    expect(mockHistory.push.mock.calls.length).toEqual(1);
   });
 
   it('should set the internal state to not open when onCloseModal is triggered', () => {

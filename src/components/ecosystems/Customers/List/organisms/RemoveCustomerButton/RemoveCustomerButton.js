@@ -4,6 +4,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
+import { withRouter } from 'react-router-dom';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
@@ -18,7 +19,7 @@ export class RemoveCustomerButton extends Component {
   };
 
   goToCustomerForm = () => {
-    console.log('opens here customer add form');
+    this.props.history.push(`/new-customer`);
   };
 
   onButtonAction = () => {
@@ -42,7 +43,7 @@ export class RemoveCustomerButton extends Component {
           update: this.onUpdate,
         })
         .then(() => {
-          console.log('uhul!');
+          // console.log('uhul!');
         });
     }
   };
@@ -106,4 +107,5 @@ export class RemoveCustomerButton extends Component {
 }
 
 export const RemoveCustomerButtonWithIntl = injectIntl(RemoveCustomerButton);
-export default graphql(RemoveCustomersMutation)(RemoveCustomerButtonWithIntl);
+export const asd = graphql(RemoveCustomersMutation)(RemoveCustomerButtonWithIntl);
+export default withRouter(asd);

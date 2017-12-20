@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import PointsCycleSelection from './PointsCycleSelection';
 import { CycleButton } from './PointsCycleSelection.styles';
-import { FormattedMessage } from 'react-intl';
 
 const setup = propOverrides => {
   const props = Object.assign(
