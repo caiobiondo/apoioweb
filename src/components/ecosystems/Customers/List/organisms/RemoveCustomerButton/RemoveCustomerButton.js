@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 import { withRouter } from 'react-router-dom';
+import { translate } from 'locale';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
 import {
@@ -81,8 +82,7 @@ export class RemoveCustomerButton extends Component {
   };
 
   renderConfirmationDialog = () => {
-    const { intl } = this.props;
-    const title = intl.formatMessage({ id: 'customerShouldBeRemoved' });
+    const title = translate('customerShouldBeRemoved');
     const selectedCustomers = this.renderSelectedCustomers();
     const actions = [
       <FlatButton
@@ -121,8 +121,7 @@ export class RemoveCustomerButton extends Component {
   };
 
   renderSuccessDialog = () => {
-    const { intl } = this.props;
-    const title = intl.formatMessage({ id: 'customerRemoved' });
+    const title = translate('customerRemoved');
     const actions = [
       <FlatButton
         label={<FormattedMessage id="ok" />}
@@ -158,8 +157,5 @@ export class RemoveCustomerButton extends Component {
   }
 }
 
-export const RemoveCustomerButtonWithIntl = injectIntl(RemoveCustomerButton);
-export const RemoveCustomerButtonWithData = graphql(RemoveCustomersMutation)(
-  RemoveCustomerButtonWithIntl,
-);
+export const RemoveCustomerButtonWithData = graphql(RemoveCustomersMutation)(RemoveCustomerButton);
 export default withRouter(RemoveCustomerButtonWithData);

@@ -75,7 +75,7 @@ Array [
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
-    title="formatedMessage [object Object]"
+    title="Excluir Cliente?"
     titleStyle={
         Object {
             "fontWeight": 800,
@@ -169,7 +169,7 @@ Array [
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
-    title="formatedMessage [object Object]"
+    title="Excluir Cliente?"
     titleStyle={
         Object {
             "fontWeight": 800,
