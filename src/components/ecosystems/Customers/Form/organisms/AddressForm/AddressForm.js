@@ -53,6 +53,7 @@ const AddressForm = ({
           mask="99999-999"
           name={`customer.addresses.${index}.zipcode`}
           onChange={event =>
+            //eslint-disable-next-line
             zipCodeChanged(setFieldValue, event.target.value, `customer.addresses.${index}`)
           }
           onBlur={handleBlur}
