@@ -22,13 +22,16 @@ export const FindCustomerQuery = gql`
       comment
       birthday
       emails {
+        id
         email
       }
       phones {
+        id
         phone
         provider
       }
       addresses {
+        id
         additional_address
         city
         neighborhood
@@ -44,6 +47,7 @@ export const FindCustomerQuery = gql`
 export const FindCustomerQueryOptions = {
   options(props) {
     return {
+      cachePolicy: 'no-cache',
       forceFetch: true,
       variables: {
         customerId: props.match.params.id,
