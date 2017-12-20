@@ -35,6 +35,10 @@ import { CustomerDatumValue } from 'components/ecosystems/Customers/Details/mole
 import { Paper, Loading, Icon } from 'natura-ui';
 
 export class CustomerDetails extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   renderAddresses(addresses) {
     if (!addresses || !addresses.length) {
       return <CustomerDatumAddress>-</CustomerDatumAddress>;
