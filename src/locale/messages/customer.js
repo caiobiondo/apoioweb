@@ -2,7 +2,7 @@ export default {
   'en-US': {},
   'pt-BR': {
     customerAddress: 'Endereço',
-    customerBirthdate: 'Data de nascimento',
+    customerBirthdate: 'Data de aniversário',
     customerEmail: 'Email',
     customerFullName: 'Nome completo',
     customerGender: 'Gênero',
@@ -12,6 +12,7 @@ export default {
     customerPhone: 'Telefone',
     customerPhoneProvider: 'Operadora',
     customerProfile: 'Perfil do Cliente',
+    customerRemoved: 'Cliente excluído com sucesso!',
     customerShouldBeRemoved: 'Excluir Cliente?',
     customersEmptyList: 'Lista de clientes vazia',
     customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',

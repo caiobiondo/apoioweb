@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerButton Styles should include transform into Wrapper style 1`] = `
+<div
+  className="CustomerButtonstyles__Wrapper-gRgdPo dmSdaS"
+/>
+`;
+
+exports[`CustomerButton Styles should not include transform into Wrapper style 1`] = `
+<div
+  className="CustomerButtonstyles__Wrapper-gRgdPo dgmkhW"
+/>
+`;

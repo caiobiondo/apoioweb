@@ -7,7 +7,7 @@ Object {
       "avatar": "",
       "email": "an-email",
       "id": 123,
-      "name": "a name",
+      "name": "a nickname",
       "operator": "a provider",
       "phone": "a-phone",
       "style": Object {
@@ -189,7 +189,7 @@ Object {
       "avatar": "",
       "email": "an-email",
       "id": 123,
-      "name": "a name",
+      "name": "a nickname",
       "operator": "a provider",
       "phone": "a-phone",
       "style": null,
@@ -557,6 +557,7 @@ exports[`CustomersList Organism should render select when selected 1`] = `
         ],
         "id": 123,
         "name": "a name",
+        "nickname": "a nickname",
         "phones": Array [
           Object {
             "phone": "a-phone",

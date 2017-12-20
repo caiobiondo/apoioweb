@@ -73,6 +73,7 @@ exports[`CustomerDetails renders customer details 1`] = `
           <CustomerDetailsstyles__CustomerDatumHalfWrapper>
             <CustomerDatum
               label="customerBirthdate"
+              value="-"
             />
             <CustomerDatum
               label="customerGender"
@@ -95,6 +96,9 @@ exports[`CustomerDetails renders customer details 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumTelephone>
+              -
+            </CustomerDetailsstyles__CustomerDatumTelephone>
           </CustomerDetailsstyles__CustomerDataTelephones>
           <CustomerDetailsstyles__CustomerDataAddresses>
             <CustomerDetailsstyles__CustomerDataTitle>
@@ -128,7 +132,9 @@ exports[`CustomerDetails renders customer details 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
-            <CustomerDatumstyles__CustomerDatumValue />
+            <CustomerDatumstyles__CustomerDatumValue>
+              -
+            </CustomerDatumstyles__CustomerDatumValue>
           </CustomerDetailsstyles__CustomerDatumNotes>
         </CustomerDetailsstyles__CustomerData>
       </CustomerDetailsstyles__CustomerDataWrapper>
@@ -210,6 +216,7 @@ exports[`CustomerDetails renders customer details with additional phones 1`] = `
           <CustomerDetailsstyles__CustomerDatumHalfWrapper>
             <CustomerDatum
               label="customerBirthdate"
+              value="-"
             />
             <CustomerDatum
               label="customerGender"
@@ -275,7 +282,9 @@ exports[`CustomerDetails renders customer details with additional phones 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
-            <CustomerDatumstyles__CustomerDatumValue />
+            <CustomerDatumstyles__CustomerDatumValue>
+              -
+            </CustomerDatumstyles__CustomerDatumValue>
           </CustomerDetailsstyles__CustomerDatumNotes>
         </CustomerDetailsstyles__CustomerData>
       </CustomerDetailsstyles__CustomerDataWrapper>
@@ -357,6 +366,7 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
           <CustomerDetailsstyles__CustomerDatumHalfWrapper>
             <CustomerDatum
               label="customerBirthdate"
+              value="-"
             />
             <CustomerDatum
               label="customerGender"
@@ -379,6 +389,9 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumTelephone>
+              -
+            </CustomerDetailsstyles__CustomerDatumTelephone>
           </CustomerDetailsstyles__CustomerDataTelephones>
           <CustomerDetailsstyles__CustomerDataAddresses>
             <CustomerDetailsstyles__CustomerDataTitle>
@@ -387,6 +400,9 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumAddress>
+              -
+            </CustomerDetailsstyles__CustomerDatumAddress>
           </CustomerDetailsstyles__CustomerDataAddresses>
         </CustomerDetailsstyles__CustomerData>
         <CustomerDetailsstyles__CustomerData
@@ -399,7 +415,9 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
-            <CustomerDatumstyles__CustomerDatumValue />
+            <CustomerDatumstyles__CustomerDatumValue>
+              -
+            </CustomerDatumstyles__CustomerDatumValue>
           </CustomerDetailsstyles__CustomerDatumNotes>
         </CustomerDetailsstyles__CustomerData>
       </CustomerDetailsstyles__CustomerDataWrapper>
@@ -464,8 +482,12 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
           <CustomerDatumstyles__CustomerDatumValue>
             fellipe@vizir.com.br
           </CustomerDatumstyles__CustomerDatumValue>
-          <CustomerDatumstyles__CustomerDatumValue />
-          <CustomerDatumstyles__CustomerDatumValue />
+          <CustomerDatumstyles__CustomerDatumValue>
+            -
+          </CustomerDatumstyles__CustomerDatumValue>
+          <CustomerDatumstyles__CustomerDatumValue>
+            -
+          </CustomerDatumstyles__CustomerDatumValue>
         </CustomerDetailsstyles__CustomerData>
         <CustomerDetailsstyles__CustomerData
           secondary={true}
@@ -477,6 +499,7 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
           <CustomerDetailsstyles__CustomerDatumHalfWrapper>
             <CustomerDatum
               label="customerBirthdate"
+              value="-"
             />
             <CustomerDatum
               label="customerGender"
@@ -499,6 +522,9 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
+            <CustomerDetailsstyles__CustomerDatumTelephone>
+              -
+            </CustomerDetailsstyles__CustomerDatumTelephone>
           </CustomerDetailsstyles__CustomerDataTelephones>
           <CustomerDetailsstyles__CustomerDataAddresses>
             <CustomerDetailsstyles__CustomerDataTitle>
@@ -532,7 +558,9 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
                 values={Object {}}
               />
             </CustomerDetailsstyles__CustomerDataTitle>
-            <CustomerDatumstyles__CustomerDatumValue />
+            <CustomerDatumstyles__CustomerDatumValue>
+              -
+            </CustomerDatumstyles__CustomerDatumValue>
           </CustomerDetailsstyles__CustomerDatumNotes>
         </CustomerDetailsstyles__CustomerData>
       </CustomerDetailsstyles__CustomerDataWrapper>

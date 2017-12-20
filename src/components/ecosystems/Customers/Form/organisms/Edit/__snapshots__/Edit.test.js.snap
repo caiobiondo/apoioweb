@@ -859,7 +859,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "current": "atual",
             "currentPeriod": "Período atual",
             "customerAddress": "Endereço",
-            "customerBirthdate": "Data de nascimento",
+            "customerBirthdate": "Data de aniversário",
             "customerEmail": "Email",
             "customerFullName": "Nome completo",
             "customerGender": "Gênero",
@@ -869,6 +869,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "customerPhone": "Telefone",
             "customerPhoneProvider": "Operadora",
             "customerProfile": "Perfil do Cliente",
+            "customerRemoved": "Cliente excluído com sucesso!",
             "customerShouldBeRemoved": "Excluir Cliente?",
             "customerShouldBeRemovedWarning": "Tem certeza que deseja deletar {names} da sua lista de clientes?",
             "customersEmptyList": "Lista de clientes vazia",
@@ -920,6 +921,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "loading": "Carregando...",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
+            "ok": "OK",
             "order": "Pedido",
             "orderCycle": "Ciclo",
             "orderData": "Dados do pedido",
@@ -974,7 +976,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "pointsFrom": "a partir de {points}",
             "pointsToNextLevel": "Faltam {points} pontos para {nextLevelName}",
             "presential": "Presencial",
-            "remove": "Deletar",
+            "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
@@ -2324,7 +2326,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "current": "atual",
             "currentPeriod": "Período atual",
             "customerAddress": "Endereço",
-            "customerBirthdate": "Data de nascimento",
+            "customerBirthdate": "Data de aniversário",
             "customerEmail": "Email",
             "customerFullName": "Nome completo",
             "customerGender": "Gênero",
@@ -2334,6 +2336,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "customerPhone": "Telefone",
             "customerPhoneProvider": "Operadora",
             "customerProfile": "Perfil do Cliente",
+            "customerRemoved": "Cliente excluído com sucesso!",
             "customerShouldBeRemoved": "Excluir Cliente?",
             "customerShouldBeRemovedWarning": "Tem certeza que deseja deletar {names} da sua lista de clientes?",
             "customersEmptyList": "Lista de clientes vazia",
@@ -2385,6 +2388,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "loading": "Carregando...",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
+            "ok": "OK",
             "order": "Pedido",
             "orderCycle": "Ciclo",
             "orderData": "Dados do pedido",
@@ -2439,7 +2443,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "pointsFrom": "a partir de {points}",
             "pointsToNextLevel": "Faltam {points} pontos para {nextLevelName}",
             "presential": "Presencial",
-            "remove": "Deletar",
+            "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
@@ -2470,7 +2474,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             }
             initialValues={
               Object {
-                "customer": undefined,
+                "customer": null,
               }
             }
             isInitialValid={false}
@@ -2496,7 +2500,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
               }
               initialValues={
                 Object {
-                  "customer": undefined,
+                  "customer": null,
                 }
               }
               isSubmitting={false}
@@ -2519,7 +2523,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
               validateOnChange={true}
               values={
                 Object {
-                  "customer": undefined,
+                  "customer": null,
                 }
               }
             />
@@ -2773,6 +2777,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
 
 exports[`EditCustomerForm rendering correctly renders the customer when the form is loaded 1`] = `
 .c0 {
+  margin-bottom: 40px;
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2789,11 +2797,11 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   font-size: 14px;
 }
 
-.c1 {
+.c2 {
   margin: 20px auto 40px;
 }
 
-.c2 {
+.c3 {
   -webkit-transition: all 200ms;
   transition: all 200ms;
   display: -webkit-box;
@@ -2807,11 +2815,11 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   opacity: 1;
 }
 
-.c2:not(:last-child) {
+.c3:not(:last-child) {
   margin-bottom: 15px;
 }
 
-.c5 {
+.c6 {
   -webkit-transition: all 200ms;
   transition: all 200ms;
   display: -webkit-box;
@@ -2825,11 +2833,11 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   opacity: 0.5;
 }
 
-.c5:not(:last-child) {
+.c6:not(:last-child) {
   margin-bottom: 15px;
 }
 
-.c3 {
+.c4 {
   -webkit-transition: all 200ms;
   transition: all 200ms;
   display: -webkit-box;
@@ -2853,17 +2861,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   background: #f3971f;
 }
 
-.c3 svg {
+.c4 svg {
   fill: #fff;
 }
 
-.c4 {
+.c5 {
   color: #f3971f;
   padding-left: 15px;
   word-break: break-word;
 }
 
-.c6 {
+.c7 {
   color: #f3971f;
   font-size: 43px;
   font-family: NaturaSans-Bold;
@@ -2872,7 +2880,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   margin-bottom: 47px;
 }
 
-.c7 {
+.c8 {
   text-align: center;
   font-size: 16px;
   font-family: Roboto-Regular;
@@ -2880,16 +2888,16 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   margin-bottom: 113px;
 }
 
-.c8 {
+.c9 {
   margin: 0 auto;
   width: 480px;
 }
 
-.c9 {
+.c10 {
   margin-bottom: 27px;
 }
 
-.c10 {
+.c11 {
   -webkit-transition: all 200ms;
   transition: all 200ms;
   font-size: 14px;
@@ -2897,12 +2905,12 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   margin-bottom: 10px;
 }
 
-.c11 > div {
+.c12 > div {
   box-sizing: border-box;
   height: 55px !important;
 }
 
-.c11 > div input {
+.c12 > div input {
   -webkit-transition: 200ms all;
   transition: 200ms all;
   box-sizing: border-box;
@@ -2919,60 +2927,60 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   border-radius: 5px;
 }
 
-.c11 > div input::-webkit-input-placeholder {
+.c12 > div input::-webkit-input-placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c11 > div input::-moz-placeholder {
+.c12 > div input::-moz-placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c11 > div input:-ms-input-placeholder {
+.c12 > div input:-ms-input-placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c11 > div input::placeholder {
+.c12 > div input::placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c11 > div input:disabled {
+.c12 > div input:disabled {
   background-color: #eee !important;
 }
 
-.c11 > div div {
+.c12 > div div {
   display: none;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c12 > * {
+.c13 > * {
   width: 45%;
   display: inline-block;
   margin: 0;
 }
 
-.c12 > *:first-child {
+.c13 > *:first-child {
   margin-right: 10%;
 }
 
-.c13 {
+.c14 {
   margin-bottom: 27px;
 }
 
-.c14 {
+.c15 {
   position: relative;
   height: 55px !important;
   -webkit-transition: 200ms all;
@@ -2991,31 +2999,31 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   border-radius: 5px;
 }
 
-.c14::-webkit-input-placeholder {
+.c15::-webkit-input-placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c14::-moz-placeholder {
+.c15::-moz-placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c14:-ms-input-placeholder {
+.c15:-ms-input-placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c14::placeholder {
+.c15::placeholder {
   font-size: 14px;
   font-weight: 300;
   color: #d3d3d3;
 }
 
-.c15 {
+.c16 {
   border: none;
   outline: none;
   width: 100%;
@@ -3029,15 +3037,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   appearance: none;
 }
 
-.c15:disabled {
+.c16:disabled {
   background-color: #eee !important;
 }
 
-.c15::-ms-expand {
+.c16::-ms-expand {
   display: none;
 }
 
-.c16 {
+.c17 {
   position: absolute;
   right: 26px;
   top: 50%;
@@ -3059,19 +3067,19 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   align-items: center;
 }
 
-.c16 svg {
+.c17 svg {
   fill: #f3971f;
   width: 12px;
   height: 7px;
 }
 
-.c17 {
+.c18 {
   font-size: 14px;
   font-family: Roboto-Regular;
   color: #a9a9a9;
 }
 
-.c18 {
+.c19 {
   border-bottom-style: solid;
   border-color: #ddd;
   border-top-style: solid;
@@ -3086,12 +3094,12 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   text-transform: uppercase;
 }
 
-.c19 {
+.c20 {
   display: inline-block;
   margin-right: 25px;
 }
 
-.c19 svg {
+.c20 svg {
   height: 12px;
   width: 12px;
   fill: #bbbbbb;
@@ -3100,68 +3108,27 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   transform: rotate(45deg);
 }
 
-.c20 {
+.c21 {
   text-align: center;
 }
 
-.c20 > * {
+.c21 > * {
   display: inline-block;
   margin-right: 30px !important;
 }
 
-.c20 > *:last-child {
+.c21 > *:last-child {
   margin-right: 0 !important;
 }
 
-.c20 button {
+.c21 button {
   color: white;
   text-align: center;
 }
 
-.c20 button div {
+.c21 button div {
   text-align: center !important;
   display: inline !important;
-}
-
-.c21:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.c21 > div,
-.c21 > a > div {
-  min-width: 150px !important;
-  border-radius: 4px !important;
-  width: 100%;
-}
-
-.c21 > div > button,
-.c21 > a > div > button {
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  border-radius: 4px !important;
-  height: 44px !important;
-  line-height: initial !important;
-  background: #c9c9c9 !important;
-}
-
-.c21 > div > button > div > div,
-.c21 > a > div > button > div > div {
-  border-radius: 4px !important;
-  height: 44px !important;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c21 > div > button > div > div > span,
-.c21 > a > div > button > div > div > span {
-  width: 100%;
-  color: #fff !important;
 }
 
 .c22:not(:last-child) {
@@ -3182,7 +3149,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   border-radius: 4px !important;
   height: 44px !important;
   line-height: initial !important;
-  background: #f3971f !important;
+  background: #c9c9c9 !important;
 }
 
 .c22 > div > button > div > div,
@@ -3205,8 +3172,49 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   color: #fff !important;
 }
 
+.c23:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c23 > div,
+.c23 > a > div {
+  min-width: 150px !important;
+  border-radius: 4px !important;
+  width: 100%;
+}
+
+.c23 > div > button,
+.c23 > a > div > button {
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  border-radius: 4px !important;
+  height: 44px !important;
+  line-height: initial !important;
+  background: #f3971f !important;
+}
+
+.c23 > div > button > div > div,
+.c23 > a > div > button > div > div {
+  border-radius: 4px !important;
+  height: 44px !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c23 > div > button > div > div > span,
+.c23 > a > div > button > div > div > span {
+  width: 100%;
+  color: #fff !important;
+}
+
 @media (min-width:1024px) {
-  .c1 {
+  .c2 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -3228,7 +3236,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
 }
 
 @media (min-width:1024px) {
-  .c2 {
+  .c3 {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -3238,7 +3246,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
 }
 
 @media (min-width:1024px) {
-  .c5 {
+  .c6 {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -3248,22 +3256,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
 }
 
 @media (max-width:480px) {
-  .c8 {
+  .c9 {
     width: 100%;
-  }
-}
-
-@media (min-width:480px) {
-  .c21:not(:last-child) {
-    margin-bottom: 0px;
-    margin-right: 20px;
-  }
-}
-
-@media (min-width:480px) {
-  .c21 > div,
-  .c21 > a > div {
-    width: auto;
   }
 }
 
@@ -3277,6 +3271,20 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
 @media (min-width:480px) {
   .c22 > div,
   .c22 > a > div {
+    width: auto;
+  }
+}
+
+@media (min-width:480px) {
+  .c23:not(:last-child) {
+    margin-bottom: 0px;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width:480px) {
+  .c23 > div,
+  .c23 > a > div {
     width: auto;
   }
 }
@@ -4139,7 +4147,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "current": "atual",
             "currentPeriod": "Período atual",
             "customerAddress": "Endereço",
-            "customerBirthdate": "Data de nascimento",
+            "customerBirthdate": "Data de aniversário",
             "customerEmail": "Email",
             "customerFullName": "Nome completo",
             "customerGender": "Gênero",
@@ -4149,6 +4157,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "customerPhone": "Telefone",
             "customerPhoneProvider": "Operadora",
             "customerProfile": "Perfil do Cliente",
+            "customerRemoved": "Cliente excluído com sucesso!",
             "customerShouldBeRemoved": "Excluir Cliente?",
             "customerShouldBeRemovedWarning": "Tem certeza que deseja deletar {names} da sua lista de clientes?",
             "customersEmptyList": "Lista de clientes vazia",
@@ -4200,6 +4209,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "loading": "Carregando...",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
+            "ok": "OK",
             "order": "Pedido",
             "orderCycle": "Ciclo",
             "orderData": "Dados do pedido",
@@ -4254,7 +4264,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "pointsFrom": "a partir de {points}",
             "pointsToNextLevel": "Faltam {points} pontos para {nextLevelName}",
             "presential": "Presencial",
-            "remove": "Deletar",
+            "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
@@ -4501,7 +4511,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                 onSubmit={[Function]}
               >
                 <form
-                  className=""
+                  className="c0"
                   onSubmit={[Function]}
                 >
                   <WizardSteps
@@ -4527,11 +4537,11 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                   >
                     <styled.div>
                       <div
-                        className="c0"
+                        className="c1"
                       >
                         <styled.div>
                           <div
-                            className="c1"
+                            className="c2"
                           >
                             <styled.div
                               completed={false}
@@ -4539,13 +4549,13 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               key="0"
                             >
                               <div
-                                className="c2"
+                                className="c3"
                               >
                                 <styled.div
                                   completed={false}
                                 >
                                   <div
-                                    className="c3"
+                                    className="c4"
                                   >
                                     1
                                   </div>
@@ -4554,7 +4564,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   completed={false}
                                 >
                                   <div
-                                    className="c4"
+                                    className="c5"
                                   >
                                     Informações Pessoais
                                   </div>
@@ -4567,13 +4577,13 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               key="1"
                             >
                               <div
-                                className="c5"
+                                className="c6"
                               >
                                 <styled.div
                                   completed={false}
                                 >
                                   <div
-                                    className="c3"
+                                    className="c4"
                                   >
                                     2
                                   </div>
@@ -4582,7 +4592,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   completed={false}
                                 >
                                   <div
-                                    className="c4"
+                                    className="c5"
                                   >
                                     Endereço
                                   </div>
@@ -4595,13 +4605,13 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               key="2"
                             >
                               <div
-                                className="c5"
+                                className="c6"
                               >
                                 <styled.div
                                   completed={false}
                                 >
                                   <div
-                                    className="c3"
+                                    className="c4"
                                   >
                                     3
                                   </div>
@@ -4610,7 +4620,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   completed={false}
                                 >
                                   <div
-                                    className="c4"
+                                    className="c5"
                                   >
                                     Notas
                                   </div>
@@ -4624,7 +4634,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                   </WizardSteps>
                   <Formstyles__PageTitle>
                     <h1
-                      className="c6"
+                      className="c7"
                     >
                       <FormattedMessage
                         id="formCustomerTitle"
@@ -4638,7 +4648,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                   </Formstyles__PageTitle>
                   <Formstyles__PageText>
                     <p
-                      className="c7"
+                      className="c8"
                     >
                       <FormattedHTMLMessage
                         id="formCustomerText"
@@ -4656,7 +4666,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                   </Formstyles__PageText>
                   <Formstyles__FormWrapper>
                     <div
-                      className="c8"
+                      className="c9"
                     >
                       <BasicInfoForm
                         addNewPhone={[Function]}
@@ -4792,7 +4802,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                             >
                               <Input
                                 bordered={true}
-                                className="c9"
+                                className="c10"
                                 dirty={false}
                                 disabled={false}
                                 help=""
@@ -4810,7 +4820,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               >
                                 <FormGroup
                                   bordered={true}
-                                  className="c9"
+                                  className="c10"
                                   dirty={false}
                                   disabled={false}
                                   error={null}
@@ -4830,17 +4840,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   type="text"
                                 >
                                   <styled.div
-                                    className="c9"
+                                    className="c10"
                                   >
                                     <div
-                                      className="c9 "
+                                      className="c10 "
                                     >
                                       <styled.div
                                         error={false}
                                         focused={false}
                                       >
                                         <div
-                                          className="c10"
+                                          className="c11"
                                         >
                                           <label
                                             htmlFor="customer.nickname"
@@ -4854,7 +4864,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                         focused={false}
                                       >
                                         <div
-                                          className="c11"
+                                          className="c12"
                                         >
                                           <TextField
                                             disabled={false}
@@ -5418,7 +5428,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                             >
                               <Input
                                 bordered={true}
-                                className="c9"
+                                className="c10"
                                 dirty={false}
                                 disabled={false}
                                 help=""
@@ -5437,7 +5447,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               >
                                 <FormGroup
                                   bordered={true}
-                                  className="c9"
+                                  className="c10"
                                   dirty={false}
                                   disabled={false}
                                   error={null}
@@ -5458,17 +5468,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   value="Name"
                                 >
                                   <styled.div
-                                    className="c9"
+                                    className="c10"
                                   >
                                     <div
-                                      className="c9 "
+                                      className="c10 "
                                     >
                                       <styled.div
                                         error={false}
                                         focused={false}
                                       >
                                         <div
-                                          className="c10"
+                                          className="c11"
                                         >
                                           <label
                                             htmlFor="customer.name"
@@ -5483,7 +5493,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                         focused={false}
                                       >
                                         <div
-                                          className="c11"
+                                          className="c12"
                                         >
                                           <TextField
                                             disabled={false}
@@ -6037,7 +6047,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                             </Styles__FormInput>
                             <Styles__RowWithHalfInputs>
                               <div
-                                className="c12"
+                                className="c13"
                               >
                                 <Styles__FormSelect
                                   dirty={false}
@@ -6063,7 +6073,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   <Select
                                     blankOptionText="Selecione..."
                                     bordered={true}
-                                    className="c13"
+                                    className="c14"
                                     dirty={false}
                                     disabled={false}
                                     help=""
@@ -6093,7 +6103,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                     <FormGroup
                                       blankOptionText="Selecione..."
                                       bordered={true}
-                                      className="c13"
+                                      className="c14"
                                       dirty={false}
                                       disabled={false}
                                       error={null}
@@ -6124,17 +6134,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       value="f"
                                     >
                                       <styled.div
-                                        className="c13"
+                                        className="c14"
                                       >
                                         <div
-                                          className="c13 "
+                                          className="c14 "
                                         >
                                           <styled.div
                                             error={false}
                                             focused={false}
                                           >
                                             <div
-                                              className="c10"
+                                              className="c11"
                                             >
                                               <label
                                                 htmlFor="customer.gender"
@@ -6149,7 +6159,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             focused={false}
                                           >
                                             <div
-                                              className="c14"
+                                              className="c15"
                                             >
                                               <styled.select
                                                 bordered={true}
@@ -6163,7 +6173,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 value="f"
                                               >
                                                 <select
-                                                  className="c15"
+                                                  className="c16"
                                                   disabled={false}
                                                   id="customer.gender"
                                                   onBlur={[Function]}
@@ -6209,7 +6219,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                               </styled.select>
                                               <styled.div>
                                                 <div
-                                                  className="c16"
+                                                  className="c17"
                                                 >
                                                   <Icon
                                                     file="ico_arrow_down"
@@ -6239,7 +6249,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 >
                                   <Input
                                     bordered={true}
-                                    className="c9"
+                                    className="c10"
                                     dirty={false}
                                     disabled={false}
                                     help=""
@@ -6260,7 +6270,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   >
                                     <FormGroup
                                       bordered={true}
-                                      className="c9"
+                                      className="c10"
                                       dirty={false}
                                       disabled={false}
                                       error={null}
@@ -6283,17 +6293,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       value="1978-06-13"
                                     >
                                       <styled.div
-                                        className="c9"
+                                        className="c10"
                                       >
                                         <div
-                                          className="c9 "
+                                          className="c10 "
                                         >
                                           <styled.div
                                             error={false}
                                             focused={false}
                                           >
                                             <div
-                                              className="c10"
+                                              className="c11"
                                             >
                                               <label
                                                 htmlFor="customer.birthday"
@@ -6308,7 +6318,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             focused={false}
                                           >
                                             <div
-                                              className="c11"
+                                              className="c12"
                                             >
                                               <TextField
                                                 disabled={false}
@@ -6877,7 +6887,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                             >
                               <Input
                                 bordered={true}
-                                className="c9"
+                                className="c10"
                                 dirty={false}
                                 disabled={false}
                                 help=""
@@ -6896,7 +6906,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               >
                                 <FormGroup
                                   bordered={true}
-                                  className="c9"
+                                  className="c10"
                                   dirty={false}
                                   disabled={false}
                                   error={null}
@@ -6917,17 +6927,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   value="test@test.com"
                                 >
                                   <styled.div
-                                    className="c9"
+                                    className="c10"
                                   >
                                     <div
-                                      className="c9 "
+                                      className="c10 "
                                     >
                                       <styled.div
                                         error={false}
                                         focused={false}
                                       >
                                         <div
-                                          className="c10"
+                                          className="c11"
                                         >
                                           <label
                                             htmlFor="customer.emails.0.email"
@@ -6941,7 +6951,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                         focused={false}
                                       >
                                         <div
-                                          className="c11"
+                                          className="c12"
                                         >
                                           <TextField
                                             disabled={false}
@@ -7537,7 +7547,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 >
                                   <Styles__RowWithHalfInputs>
                                     <div
-                                      className="c12"
+                                      className="c13"
                                     >
                                       <Styles__FormInput
                                         dirty={false}
@@ -7552,7 +7562,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       >
                                         <Input
                                           bordered={true}
-                                          className="c9"
+                                          className="c10"
                                           dirty={false}
                                           disabled={false}
                                           help=""
@@ -7572,7 +7582,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                         >
                                           <FormGroup
                                             bordered={true}
-                                            className="c9"
+                                            className="c10"
                                             dirty={false}
                                             disabled={false}
                                             error={null}
@@ -7594,17 +7604,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             value="123456789"
                                           >
                                             <styled.div
-                                              className="c9"
+                                              className="c10"
                                             >
                                               <div
-                                                className="c9 "
+                                                className="c10 "
                                               >
                                                 <styled.div
                                                   error={false}
                                                   focused={false}
                                                 >
                                                   <div
-                                                    className="c10"
+                                                    className="c11"
                                                   >
                                                     <label
                                                       htmlFor="customer.phones.0.phone"
@@ -7619,7 +7629,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                   focused={false}
                                                 >
                                                   <div
-                                                    className="c11"
+                                                    className="c12"
                                                   >
                                                     <TextField
                                                       disabled={false}
@@ -8209,7 +8219,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       >
                                         <Input
                                           bordered={true}
-                                          className="c9"
+                                          className="c10"
                                           dirty={false}
                                           disabled={false}
                                           help=""
@@ -8227,7 +8237,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                         >
                                           <FormGroup
                                             bordered={true}
-                                            className="c9"
+                                            className="c10"
                                             dirty={false}
                                             disabled={false}
                                             error={null}
@@ -8247,17 +8257,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             type="text"
                                           >
                                             <styled.div
-                                              className="c9"
+                                              className="c10"
                                             >
                                               <div
-                                                className="c9 "
+                                                className="c10 "
                                               >
                                                 <styled.div
                                                   error={false}
                                                   focused={false}
                                                 >
                                                   <div
-                                                    className="c10"
+                                                    className="c11"
                                                   >
                                                     <label
                                                       htmlFor="customer.phones.0.provider"
@@ -8271,7 +8281,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                   focused={false}
                                                 >
                                                   <div
-                                                    className="c11"
+                                                    className="c12"
                                                   >
                                                     <TextField
                                                       disabled={false}
@@ -8830,7 +8840,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                             </PhoneForm>
                             <BasicInfoFormstyles__CustomerPhoneHelpTextWrapper>
                               <span
-                                className="c17"
+                                className="c18"
                               >
                                 <FormattedMessage
                                   id="formCustomerPhoneHelpText"
@@ -8846,12 +8856,12 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               onClick={[Function]}
                             >
                               <a
-                                className="c18"
+                                className="c19"
                                 onClick={[Function]}
                               >
                                 <BasicInfoFormstyles__AddPhoneIconWrapper>
                                   <div
-                                    className="c19"
+                                    className="c20"
                                   >
                                     <Icon
                                       file="ico_times"
@@ -8875,7 +8885,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                       </BasicInfoForm>
                       <Formstyles__FormButtonsWrapper>
                         <div
-                          className="c20"
+                          className="c21"
                         >
                           <FormButton
                             backgroundColor="#c9c9c9"
@@ -8894,7 +8904,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               primary={false}
                             >
                               <div
-                                className="c21"
+                                className="c22"
                                 disabled={false}
                                 onClick={[Function]}
                               >
@@ -9078,7 +9088,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               type="submit"
                             >
                               <div
-                                className="c22"
+                                className="c23"
                                 disabled={false}
                                 onClick={[Function]}
                                 type="submit"

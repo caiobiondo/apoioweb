@@ -73,7 +73,7 @@ export class CustomersList extends Component {
 
     const parsedCustomers = (customers || []).map(customer => ({
       id: customer.id,
-      name: customer.name,
+      name: customer.nickname || customer.name,
       email: customer.emails && customer.emails.length && customer.emails[0].email,
       phone: customer.phones && customer.phones.length && customer.phones[0].phone,
       operator: customer.phones && customer.phones.length && customer.phones[0].provider,
@@ -119,7 +119,7 @@ export class CustomersList extends Component {
   renderCell = ({ value, row }) => {
     return (
       <div>
-        {value}
+        {value || '-'}
         <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
       </div>
     );

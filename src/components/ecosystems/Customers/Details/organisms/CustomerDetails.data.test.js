@@ -20,6 +20,8 @@ describe('CustomerDetailsQuery', () => {
 
     // then
     expect(options).toEqual({
+      cachePolicy: 'no-cache',
+      forceFetch: true,
       variables: {
         customerId: 1,
       },

@@ -36,7 +36,9 @@ import { Paper, Loading, Icon } from 'natura-ui';
 
 export class CustomerDetails extends Component {
   renderAddresses(addresses) {
-    if (!addresses) return null;
+    if (!addresses || !addresses.length) {
+      return <CustomerDatumAddress>-</CustomerDatumAddress>;
+    }
 
     return addresses.map((address, index) => {
       return this.renderAddress(address, index);
@@ -56,14 +58,16 @@ export class CustomerDetails extends Component {
   renderPhone({ phone, provider }, index) {
     return (
       <CustomerDatumTelephone key={index}>
-        <CustomerDatumTelephoneNumber>{phone}</CustomerDatumTelephoneNumber>
-        <CustomerDatumTelephoneProvider>{provider}</CustomerDatumTelephoneProvider>
+        <CustomerDatumTelephoneNumber>{phone || '-'}</CustomerDatumTelephoneNumber>
+        <CustomerDatumTelephoneProvider>{provider || '-'}</CustomerDatumTelephoneProvider>
       </CustomerDatumTelephone>
     );
   }
 
   renderPhones(phones) {
-    if (!phones) return null;
+    if (!phones || !phones.length || phones.length <= 1) {
+      return <CustomerDatumTelephone>-</CustomerDatumTelephone>;
+    }
 
     return phones.slice(1).map((phone, index) => {
       return this.renderPhone(phone, index);
@@ -97,6 +101,7 @@ export class CustomerDetails extends Component {
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
     const profileEditUrl = `/edit-customer/${customer.id}`;
+    const name = customer.name || customer.nickname;
 
     return (
       <Main>
@@ -111,21 +116,21 @@ export class CustomerDetails extends Component {
             <CustomerDataWrapper>
               <CustomerData primary>
                 <CustomerNameWrapper>
-                  <CustomerName>{customer.name}</CustomerName>
+                  <CustomerName>{name}</CustomerName>
                   <CustomerEditWrapper>
                     <Link to={profileEditUrl}>
                       <Icon file="ico_pencil" />
                     </Link>
                   </CustomerEditWrapper>
                 </CustomerNameWrapper>
-                <CustomerDatumValue>{email}</CustomerDatumValue>
-                <CustomerDatumValue>{phone}</CustomerDatumValue>
-                <CustomerDatumValue>{phoneProvider}</CustomerDatumValue>
+                <CustomerDatumValue>{email || '-'}</CustomerDatumValue>
+                <CustomerDatumValue>{phone || '-'}</CustomerDatumValue>
+                <CustomerDatumValue>{phoneProvider || '-'}</CustomerDatumValue>
               </CustomerData>
               <CustomerData secondary>
-                <CustomerDatum label="customerFullName" value={customer.name} />
+                <CustomerDatum label="customerFullName" value={customer.name || '-'} />
                 <CustomerDatumHalfWrapper>
-                  <CustomerDatum label="customerBirthdate" value={customer.birthday} />
+                  <CustomerDatum label="customerBirthdate" value={customer.birthday || '-'} />
                   <CustomerDatum label="customerGender" value={gender} />
                 </CustomerDatumHalfWrapper>
               </CustomerData>
@@ -148,7 +153,7 @@ export class CustomerDetails extends Component {
                   <CustomerDataTitle>
                     <FormattedMessage id="customerNotes" />
                   </CustomerDataTitle>
-                  <CustomerDatumValue>{customer.comment}</CustomerDatumValue>
+                  <CustomerDatumValue>{customer.comment || '-'}</CustomerDatumValue>
                 </CustomerDatumNotes>
               </CustomerData>
             </CustomerDataWrapper>
