@@ -4,6 +4,10 @@ import { RobotoRegular, NaturaBold } from 'styles/typography';
 
 export const Wrapper = styled.form`
   margin-bottom: 40px;
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    padding: 20px;
+  }
 `;
 
 export const FormWrapper = styled.div`

@@ -3213,6 +3213,12 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   color: #fff !important;
 }
 
+@media (max-width:480px) {
+  .c0 {
+    padding: 20px;
+  }
+}
+
 @media (min-width:1024px) {
   .c2 {
     display: -webkit-box;
