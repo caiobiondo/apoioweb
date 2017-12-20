@@ -1,21 +1,21 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import CustomerButton from './CustomerButton';
+import { Wrapper } from './CustomerButton.styles';
 
-describe('CustomerButton', () => {
-  it('should render a floating button with add icon', () => {
+describe('CustomerButton Styles', () => {
+  it('should not include transform into Wrapper style', () => {
     const renderer = new ShallowRenderer();
 
-    renderer.render(<CustomerButton />);
+    renderer.render(<Wrapper remove={false} />);
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
   });
 
-  it('should render a floating button with remove icon', () => {
+  it('should include transform into Wrapper style', () => {
     const renderer = new ShallowRenderer();
 
-    renderer.render(<CustomerButton remove={true} />);
+    renderer.render(<Wrapper remove={true} />);
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();

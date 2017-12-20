@@ -1,14 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CustomerButton should render a floating button with add order icon 1`] = `
+exports[`CustomerButton should render a floating button with add icon 1`] = `
 <CustomerButtonstyles__Wrapper
-  onClick={[Function]}
+  onClick={undefined}
 >
   <CustomFloatingActionButton
     iconWrapper={[Function]}
   >
     <Icon
       file="ico_add_customer"
+    />
+  </CustomFloatingActionButton>
+</CustomerButtonstyles__Wrapper>
+`;
+
+exports[`CustomerButton should render a floating button with remove icon 1`] = `
+<CustomerButtonstyles__Wrapper
+  onClick={undefined}
+>
+  <CustomFloatingActionButton
+    iconWrapper={[Function]}
+  >
+    <Icon
+      file="ico_trash"
     />
   </CustomFloatingActionButton>
 </CustomerButtonstyles__Wrapper>

@@ -64,7 +64,7 @@ describe('RemoveCustomerButton', () => {
 
     instance.onButtonAction();
 
-    expect(instance.state).toEqual({ open: true });
+    expect(instance.state).toEqual({ open: true, success: false });
   });
 
   it('should not change state to open when action is triggered and remove is false', () => {
@@ -87,7 +87,7 @@ describe('RemoveCustomerButton', () => {
 
     instance.onButtonAction();
 
-    expect(instance.state).toEqual({ open: false });
+    expect(instance.state).toEqual({ open: false, success: false });
     expect(mockHistory.push.mock.calls.length).toEqual(1);
   });
 
@@ -109,7 +109,7 @@ describe('RemoveCustomerButton', () => {
 
     instance.onCloseModal();
 
-    expect(instance.state).toEqual({ open: false });
+    expect(instance.state).toEqual({ open: false, success: false });
   });
 
   it('should not call apollo mutate when selected items is empty', () => {
@@ -130,7 +130,7 @@ describe('RemoveCustomerButton', () => {
     const instance = result.instance();
     instance.removeCustomer();
 
-    expect(instance.state).toEqual({ open: false });
+    expect(instance.state).toEqual({ open: false, success: false });
     expect(mutateMock).not.toBeCalled();
   });
 
@@ -152,7 +152,7 @@ describe('RemoveCustomerButton', () => {
     const instance = result.instance();
     instance.removeCustomer();
 
-    expect(instance.state).toEqual({ open: false });
+    expect(instance.state).toEqual({ open: false, success: false });
     expect(mutateMock).toBeCalledWith({
       variables: { input: { ids: [123] } },
       optimisticResponse: {
@@ -162,9 +162,8 @@ describe('RemoveCustomerButton', () => {
     });
   });
 
-  it('should remove customers from data, update cache and call onRemove callback', () => {
+  it('should remove customers from data, update cache and set success to true', () => {
     const selectedCustomers = [{ id: 123 }];
-    const onRemove = jest.fn();
     const isCustomerSelected = true;
     const storeMock = {
       readQuery: jest.fn().mockReturnValue({ customers: selectedCustomers }),
@@ -177,7 +176,6 @@ describe('RemoveCustomerButton', () => {
     const result = shallow(
       <RemoveCustomerButton
         selected={selectedCustomers}
-        onRemove={onRemove}
         isCustomerSelected={isCustomerSelected}
         intl={intl}
       />,
@@ -187,7 +185,26 @@ describe('RemoveCustomerButton', () => {
 
     expect(storeMock.readQuery).toBeCalledWith({ query: CustomersListQuery });
     expect(storeMock.writeQuery).toBeCalledWith({ query: CustomersListQuery, data: expectedData });
-    expect(instance.state).toEqual({ open: false });
+    expect(instance.state).toEqual({ open: true, success: true });
+  });
+
+  it('should call onRemove callback and set success & open to false', () => {
+    const selectedCustomers = [{ id: 123 }];
+    const onRemove = jest.fn();
+    const isCustomerSelected = true;
+
+    const result = shallow(
+      <RemoveCustomerButton
+        selected={selectedCustomers}
+        onRemove={onRemove}
+        isCustomerSelected={isCustomerSelected}
+        intl={intl}
+      />,
+    );
+    const instance = result.instance();
+    instance.onFinish();
+
+    expect(instance.state).toEqual({ open: false, success: false });
     expect(onRemove).toBeCalled();
   });
 });
