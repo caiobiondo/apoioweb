@@ -12,6 +12,7 @@ export default {
     customerPhone: 'Telefone',
     customerPhoneProvider: 'Operadora',
     customerProfile: 'Perfil do Cliente',
+    customerRemoved: 'Cliente excluído com sucesso!',
     customerShouldBeRemoved: 'Excluir Cliente?',
     customersEmptyList: 'Lista de clientes vazia',
     customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',

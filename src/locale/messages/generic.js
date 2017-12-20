@@ -3,6 +3,7 @@ export default {
   'en-US': {},
   'pt-BR': {
     cancel: 'Cancelar',
+    ok: 'OK',
     remove: 'Excluir',
   },
 };
