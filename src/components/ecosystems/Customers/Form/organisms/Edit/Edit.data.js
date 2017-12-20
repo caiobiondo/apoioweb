@@ -22,13 +22,16 @@ export const FindCustomerQuery = gql`
       comment
       birthday
       emails {
+        id
         email
       }
       phones {
+        id
         phone
         provider
       }
       addresses {
+        id
         additional_address
         city
         neighborhood
