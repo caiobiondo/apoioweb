@@ -9,6 +9,7 @@ import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
 import InfiniteScroll from 'react-infinite-scroller';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
+import withErrorHandler from 'hocs/withErrorHandler/withErrorHandler';
 
 const renderOrder = (order, intl) => {
   const orderDate = formatDate(order.dataPedido, intl, '-');
@@ -91,7 +92,9 @@ export class OrdersList extends Component {
   }
 }
 
-export const OrdersListWithAuthErrorHandler = withAuthErrorHandler(OrdersList);
+export const OrdersListWithErrorHandler = withErrorHandler(OrdersList);
+
+export const OrdersListWithAuthErrorHandler = withAuthErrorHandler(OrdersListWithErrorHandler);
 
 export const OrdersListWithIntl = injectIntl(OrdersListWithAuthErrorHandler);
 

@@ -880,7 +880,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "date": "Data",
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
+            "dismiss": "OK, entendi",
             "entryOrderDate": "Data {date}",
+            "error": "Erro",
+            "errorMessage": "Desculpe, houve um erro no processamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -2350,7 +2353,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "date": "Data",
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
+            "dismiss": "OK, entendi",
             "entryOrderDate": "Data {date}",
+            "error": "Erro",
+            "errorMessage": "Desculpe, houve um erro no processamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -4180,7 +4186,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "date": "Data",
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
+            "dismiss": "OK, entendi",
             "entryOrderDate": "Data {date}",
+            "error": "Erro",
+            "errorMessage": "Desculpe, houve um erro no processamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -4876,6 +4885,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       </styled.div>
                                       <styled.div
                                         bordered={true}
+                                        error={false}
                                         focused={false}
                                       >
                                         <div
@@ -5505,6 +5515,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       </styled.div>
                                       <styled.div
                                         bordered={true}
+                                        error={false}
                                         focused={false}
                                       >
                                         <div
@@ -6171,6 +6182,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           </styled.div>
                                           <styled.div
                                             bordered={true}
+                                            error={false}
                                             focused={false}
                                           >
                                             <div
@@ -6330,6 +6342,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           </styled.div>
                                           <styled.div
                                             bordered={true}
+                                            error={false}
                                             focused={false}
                                           >
                                             <div
@@ -6963,6 +6976,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       </styled.div>
                                       <styled.div
                                         bordered={true}
+                                        error={false}
                                         focused={false}
                                       >
                                         <div
@@ -7641,6 +7655,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 </styled.div>
                                                 <styled.div
                                                   bordered={true}
+                                                  error={false}
                                                   focused={false}
                                                 >
                                                   <div
@@ -8293,6 +8308,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 </styled.div>
                                                 <styled.div
                                                   bordered={true}
+                                                  error={false}
                                                   focused={false}
                                                 >
                                                   <div
