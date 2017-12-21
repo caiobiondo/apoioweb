@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Modal, ModalButton } from 'natura-ui';
 import { withRouter } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 export const WithErrorHandler = Component => {
   return class WithErrorHandlerComponent extends PureComponent {
@@ -10,8 +11,12 @@ export const WithErrorHandler = Component => {
       this.renderComponent = this.renderComponent.bind(this);
       this.state = {
         open: false,
-        title: 'Erro',
-        body: 'Desculpe, houve um erro no processamento',
+        title: (
+          <h3>
+            <FormattedMessage id="error" />
+          </h3>
+        ),
+        body: <FormattedMessage id="errorMessage" />,
         actions: [<ModalButton label="OK, entendi" primary={true} onClick={this.handleClose} />],
         errored: false,
       };
