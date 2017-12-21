@@ -5,6 +5,7 @@ export default {
     cancel: 'Cancelar',
     ok: 'OK',
     remove: 'Excluir',
+    search: 'Buscar',
   },
 };
 /* eslint-disable sort-keys */
