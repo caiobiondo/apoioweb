@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import CustomersSearch from './organisms/CustomerSearch/CustomerSearch';
 import CustomersList from './organisms/CustomersList/CustomersList';
-import { Main, ActionButtonContainer } from './index.styles';
+import { Main, ActionButtonContainer, CustomersSearchContainer } from './index.styles';
 import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustomerButton';
 
 class CustomersListWrapper extends Component {
@@ -8,6 +9,7 @@ class CustomersListWrapper extends Component {
     empty: false,
     loading: true,
     selectedCustomers: [],
+    filters: null,
   };
 
   onLoadFinished = (empty, loading) => {
@@ -39,8 +41,12 @@ class CustomersListWrapper extends Component {
     this.setState({ selectedCustomers: [] });
   };
 
+  onSearch = filters => {
+    this.setState({ filters });
+  };
+
   render() {
-    const { selectedCustomers, loading, empty } = this.state;
+    const { selectedCustomers, loading, empty, filters } = this.state;
     return (
       <Main loading={loading} empty={empty}>
         {!loading && (
@@ -52,7 +58,13 @@ class CustomersListWrapper extends Component {
             />
           </ActionButtonContainer>
         )}
+        {!loading && (
+          <CustomersSearchContainer>
+            <CustomersSearch onSearch={this.onSearch} />
+          </CustomersSearchContainer>
+        )}
         <CustomersList
+          filters={filters}
           onLoadFinished={this.onLoadFinished}
           onSelect={this.onSelectCustomer}
           selectedCustomers={selectedCustomers}

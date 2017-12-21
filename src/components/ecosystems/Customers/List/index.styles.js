@@ -27,3 +27,7 @@ export const ActionButtonContainer = styled.div`
     right: ${spMedium};
   }
 `;
+
+export const CustomersSearchContainer = styled.div`
+  margin-bottom: ${spMedium};
+`;

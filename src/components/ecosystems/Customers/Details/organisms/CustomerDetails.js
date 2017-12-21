@@ -92,6 +92,17 @@ export class CustomerDetails extends Component {
     return `${city} - ${state}`;
   }
 
+  parseBirthday(date) {
+    if (!date) {
+      return null;
+    }
+    const dateParts = date.split('-');
+    if (dateParts.length !== 3) {
+      return null;
+    }
+    return `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+  }
+
   render() {
     const { data: { customer, loading } } = this.props;
 
@@ -106,6 +117,7 @@ export class CustomerDetails extends Component {
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
     const profileEditUrl = `/edit-customer/${customer.id}`;
     const name = customer.name || customer.nickname;
+    const birthday = this.parseBirthday(customer.birthday);
 
     return (
       <Main>
@@ -134,7 +146,7 @@ export class CustomerDetails extends Component {
               <CustomerData secondary>
                 <CustomerDatum label="customerFullName" value={customer.name || '-'} />
                 <CustomerDatumHalfWrapper>
-                  <CustomerDatum label="customerBirthdate" value={customer.birthday || '-'} />
+                  <CustomerDatum label="customerBirthdate" value={birthday || '-'} />
                   <CustomerDatum label="customerGender" value={gender} />
                 </CustomerDatumHalfWrapper>
               </CustomerData>

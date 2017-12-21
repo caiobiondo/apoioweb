@@ -6,6 +6,7 @@ exports[`CustomersList Ecosystem should render the customers list page 1`] = `
   loading={true}
 >
   <Apollo(CustomersList)
+    filters={null}
     onLoadFinished={[Function]}
     onSelect={[Function]}
     selectedCustomers={Array []}

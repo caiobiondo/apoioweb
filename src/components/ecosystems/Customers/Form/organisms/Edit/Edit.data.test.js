@@ -27,7 +27,7 @@ describe('FindCustomerQuery', () => {
         customerId: 'id',
       },
       forceFetch: true,
-      cachePolicy: 'no-cache',
+      fetchPolicy: 'cache-and-network',
     });
   });
 

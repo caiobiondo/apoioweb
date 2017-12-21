@@ -68,10 +68,12 @@ export class CustomersList extends Component {
     </LoadingWrapper>
   );
 
-  componentWillReceiveProps({ data, selectedCustomers }) {
+  componentWillReceiveProps({ data, selectedCustomers, filters }) {
     const { loading, customers } = data;
 
-    const parsedCustomers = (customers || []).map(customer => ({
+    const filteredCustomers = this.filterCustomers(customers, filters);
+
+    const parsedCustomers = filteredCustomers.map(customer => ({
       id: customer.id,
       name: customer.nickname || customer.name,
       email: customer.emails && customer.emails.length && customer.emails[0].email,
@@ -85,6 +87,21 @@ export class CustomersList extends Component {
 
     this.notifyLoadFinish(loading, customers);
   }
+
+  filterCustomers = (customers, filters) => {
+    if (!customers) {
+      return [];
+    }
+    if (!filters || !filters.name) {
+      return customers;
+    }
+    const regexp = new RegExp(filters.name.toLowerCase(), 'i');
+    return customers.filter(
+      customer =>
+        (customer.nickname && regexp.test(customer.nickname.toLowerCase())) ||
+        (customer.name && regexp.test(customer.name.toLowerCase())),
+    );
+  };
 
   notifyLoadFinish = (loading, customers) => {
     if (!loading && this.props.onLoadFinished) {

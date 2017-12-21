@@ -16,6 +16,7 @@ export default {
     customerShouldBeRemoved: 'Excluir Cliente?',
     customersEmptyList: 'Lista de clientes vazia',
     customersEmptyListDescription: 'Você ainda não possui clientes cadastrados',
+    customersSearchInfo: 'Preencha o campo abaixo para buscar seus clientes',
     customerShouldBeRemovedWarning:
       'Tem certeza que deseja deletar {names} da sua lista de clientes?',
     formCustomerAddAnotherPhone: 'Adicionar outro telefone',
@@ -59,5 +60,6 @@ export default {
       f: 'Feminino',
       female: 'Feminino',
     },
+    myCustomers: 'Meus Clientes',
   },
 };
