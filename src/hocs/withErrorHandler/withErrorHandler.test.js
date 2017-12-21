@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Modal } from 'natura-ui';
 import { WithErrorHandler } from './withErrorHandler';
-import ComponentWithError from './__mocks__/componentWithError';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { IntlProvider, intlShape } from 'react-intl';
 
 class WrappedComponent extends React.Component {
   render() {
@@ -67,20 +64,15 @@ describe('withErrorHandler HOC', () => {
 
     it("catches component's error", () => {
       // given
-      const MockedComponent = WithErrorHandler(ComponentWithError);
-      const muiTheme = getMuiTheme();
-      const messages = require('locale/messages').default['pt-BR']; // en.json
-      const intlProvider = new IntlProvider({ locale: 'pt-BR', messages });
-      const { intl } = intlProvider.getChildContext();
+      const MockedComponent = WithErrorHandler(WrappedComponent);
 
       // when
-      const result = mount(<MockedComponent intl={intl} />, {
-        context: { muiTheme, intl },
-        childContextTypes: { muiTheme: PropTypes.object, intl: intlShape },
-      });
+      const result = shallow(<MockedComponent />);
+      result.instance().componentDidCatch('error', 'info');
 
       // then
       expect(result.state().errored).toBeTruthy();
+      expect(result.state().open).toBeTruthy();
     });
 
     describe('when dismissing modal', () => {
