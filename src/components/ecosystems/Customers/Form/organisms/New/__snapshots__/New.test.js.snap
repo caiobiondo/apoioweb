@@ -1399,7 +1399,10 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "date": "Data",
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
+            "dismiss": "OK, entendi",
             "entryOrderDate": "Data {date}",
+            "error": "Erro",
+            "errorMessage": "Desculpe, houve um erro no processamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -1904,6 +1907,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       </styled.div>
                                       <styled.div
                                         bordered={true}
+                                        error={false}
                                         focused={false}
                                       >
                                         <div
@@ -2530,6 +2534,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       </styled.div>
                                       <styled.div
                                         bordered={true}
+                                        error={false}
                                         focused={false}
                                       >
                                         <div
@@ -3193,6 +3198,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           </styled.div>
                                           <styled.div
                                             bordered={true}
+                                            error={false}
                                             focused={false}
                                           >
                                             <div
@@ -3347,6 +3353,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           </styled.div>
                                           <styled.div
                                             bordered={true}
+                                            error={false}
                                             focused={false}
                                           >
                                             <div
@@ -3977,6 +3984,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       </styled.div>
                                       <styled.div
                                         bordered={true}
+                                        error={false}
                                         focused={false}
                                       >
                                         <div
@@ -4637,6 +4645,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                 </styled.div>
                                                 <styled.div
                                                   bordered={true}
+                                                  error={false}
                                                   focused={false}
                                                 >
                                                   <div
@@ -5289,6 +5298,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                 </styled.div>
                                                 <styled.div
                                                   bordered={true}
+                                                  error={false}
                                                   focused={false}
                                                 >
                                                   <div

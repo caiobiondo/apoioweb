@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withErrorHandler HOC when there are no errors renders 1`] = `
+<div>
+  <Modal
+    actions={
+      Array [
+        <ModalButton
+          label={
+              <FormattedMessage
+                  id="dismiss"
+                  values={Object {}}
+              />
+          }
+          onClick={[Function]}
+          primary={true}
+      />,
+      ]
+    }
+    maxWidth="85%"
+    open={false}
+    title={
+      <h3>
+        <FormattedMessage
+          id="error"
+          values={Object {}}
+        />
+      </h3>
+    }
+    width={425}
+  >
+    <FormattedMessage
+      id="errorMessage"
+      values={Object {}}
+    />
+  </Modal>
+  <WrappedComponent />
+</div>
+`;

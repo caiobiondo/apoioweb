@@ -17,7 +17,13 @@ export const WithErrorHandler = Component => {
           </h3>
         ),
         body: <FormattedMessage id="errorMessage" />,
-        actions: [<ModalButton label="OK, entendi" primary={true} onClick={this.handleClose} />],
+        actions: [
+          <ModalButton
+            label={<FormattedMessage id="dismiss" />}
+            primary={true}
+            onClick={this.handleClose}
+          />,
+        ],
         errored: false,
       };
     }

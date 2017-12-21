@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { shallow, mount } from 'enzyme';
 import { Modal } from 'natura-ui';
 import { WithErrorHandler } from './withErrorHandler';
+import ComponentWithError from './__mocks__/componentWithError';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { IntlProvider, intlShape } from 'react-intl';
 
 class WrappedComponent extends React.Component {
   render() {
@@ -9,7 +13,7 @@ class WrappedComponent extends React.Component {
   }
 }
 
-fdescribe('withErrorHandler HOC', () => {
+describe('withErrorHandler HOC', () => {
   describe('when there are no errors', () => {
     it('renders', () => {
       // given
@@ -59,6 +63,24 @@ fdescribe('withErrorHandler HOC', () => {
 
       // then
       expect(result.find(Modal).props().open).toBeTruthy();
+    });
+
+    it("catches component's error", () => {
+      // given
+      const MockedComponent = WithErrorHandler(ComponentWithError);
+      const muiTheme = getMuiTheme();
+      const messages = require('locale/messages').default['pt-BR']; // en.json
+      const intlProvider = new IntlProvider({ locale: 'pt-BR', messages });
+      const { intl } = intlProvider.getChildContext();
+
+      // when
+      const result = mount(<MockedComponent intl={intl} />, {
+        context: { muiTheme, intl },
+        childContextTypes: { muiTheme: PropTypes.object, intl: intlShape },
+      });
+
+      // then
+      expect(result.state().errored).toBeTruthy();
     });
 
     describe('when dismissing modal', () => {
