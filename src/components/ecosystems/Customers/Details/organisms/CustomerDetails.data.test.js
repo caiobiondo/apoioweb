@@ -20,7 +20,7 @@ describe('CustomerDetailsQuery', () => {
 
     // then
     expect(options).toEqual({
-      cachePolicy: 'no-cache',
+      fetchPolicy: 'cache-and-network',
       forceFetch: true,
       variables: {
         customerId: 1,
