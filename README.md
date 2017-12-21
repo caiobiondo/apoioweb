@@ -11,13 +11,17 @@ Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/face
 ## :rocket: Setup & Run (Linux)
 
 #### Installing dnsmasq
+
 For install dnsmasq just run
+
 ```bash
 sudo apt-get install dnsmasq # For Ubuntu
 brew install dnsmasq # For Mac
 ```
+
 #### Configuring dnsmasq
-Just create a file called /etc/dnsmasq.d/docker\_dns.conf with the following
+
+Just create a file called /etc/dnsmasq.d/docker_dns.conf with the following
 content
 
     address=/dev/127.0.0.1
@@ -37,10 +41,9 @@ about the reverse proxy.
       --name=nginx-domain-proxy \
       jwilder/nginx-proxy
 
-
 ### Setup
 
-First, add the ***natura-ui-key*** in the root of the project (ask to the administrator)
+First, add the **_natura-ui-key_** in the root of the project (ask to the administrator)
 
 Change the natura-ui-key permisssions
 
@@ -70,10 +73,9 @@ Access web via http://web.naturawebfv.docker
 
 Install and configure dinghy (https://github.com/codekitchen/dinghy)
 
-
 ### Setup
 
-First, add the ***natura-ui-key*** in the root of the project (ask to the administrator)
+First, add the **_natura-ui-key_** in the root of the project (ask to the administrator)
 
 Change the natura-ui-key permisssions
 
@@ -117,7 +119,7 @@ npm run lint
 
 ## :rotating_light: Production
 
-Add the ***natura-ui-key*** (ask to the administrator) in the root of the project via Jenkins
+Add the **_natura-ui-key_** (ask to the administrator) in the root of the project via Jenkins
 
 ## License
 
