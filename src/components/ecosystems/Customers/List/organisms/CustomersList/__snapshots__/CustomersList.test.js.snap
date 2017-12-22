@@ -410,9 +410,133 @@ exports[`CustomersList Organism should render an empty indicator 1`] = `
 </Paper>
 `;
 
+exports[`CustomersList Organism should render customers list filtered by name  1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "flex": "1 1 0",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "overflowY": "scroll",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <CustomersListstyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "columns": Array [
+            "select",
+            "name",
+            "email",
+            "phone",
+            "operator",
+          ],
+          "header": Object {
+            "email": <FormattedMessage
+              id="customerEmail"
+              values={Object {}}
+        />,
+            "name": <FormattedMessage
+              id="customerName"
+              values={Object {}}
+        />,
+            "operator": <FormattedMessage
+              id="customerPhoneProvider"
+              values={Object {}}
+        />,
+            "phone": <FormattedMessage
+              id="customerPhone"
+              values={Object {}}
+        />,
+          },
+          "renderer": Object {
+            "email": [Function],
+            "name": [Function],
+            "operator": [Function],
+            "phone": [Function],
+            "select": [Function],
+            "thead": Object {
+              "select": [Function],
+            },
+          },
+          "style": Object {
+            "email": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "name": Object {
+              "color": "#222",
+              "fontFamily": "Roboto",
+              "fontSize": "17px",
+              "fontWeight": "500",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "operator": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "phone": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+            },
+            "select": Object {
+              "color": "#8e8e8e",
+              "fontFamily": "Roboto",
+              "fontSize": "15px",
+              "lineHeight": "50px",
+              "padding": "0px 20px",
+              "position": "relative",
+              "width": "1px",
+            },
+          },
+        }
+      }
+    />
+  </CustomersListstyles__TableWrapper>
+</Paper>
+`;
+
 exports[`CustomersList Organism should render default cell 1`] = `
 <div>
   a value
+  <Link
+    replace={false}
+    style={
+      Object {
+        "height": "100%",
+        "left": 0,
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+      }
+    }
+    to="/my-customers/123"
+  />
+</div>
+`;
+
+exports[`CustomersList Organism should render default cell with null value 1`] = `
+<div>
+  -
   <Link
     replace={false}
     style={

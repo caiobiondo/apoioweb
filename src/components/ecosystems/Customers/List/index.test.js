@@ -20,6 +20,17 @@ describe('CustomersList Ecosystem', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('should update filters on state', () => {
+    const filters = { name: 'a name' };
+    const expectedState = { ...baseState, filters };
+
+    const result = shallow(<CustomersList />);
+    const instance = result.instance();
+    instance.onSearch(filters);
+
+    expect(instance.state).toEqual(expectedState);
+  });
+
   it('should set selectedCustomers to an empty array', () => {
     const originalState = { selectedCustomers: [{ id: 123 }] };
     const expectedState = { ...baseState };
