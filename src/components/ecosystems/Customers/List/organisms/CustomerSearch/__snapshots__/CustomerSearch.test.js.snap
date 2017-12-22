@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerSearch Organism should render input and submit button 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "padding": 30,
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_add_customer"
+    value="myCustomers"
+  />
+  <p>
+    Preencha o campo abaixo para buscar seus clientes
+  </p>
+  <CustomerSearchstyles__FormWrapper>
+    <CustomerSearchstyles__FormInput
+      label="Nome"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <CustomerSearchstyles__FormButtonWrapper>
+      <FormButton
+        backgroundColor="#c9c9c9"
+        disabled={false}
+        flat={true}
+        labelColor="#fff"
+        link={null}
+        onClick={[Function]}
+        primary={true}
+        type="submit"
+      >
+        Buscar
+      </FormButton>
+    </CustomerSearchstyles__FormButtonWrapper>
+  </CustomerSearchstyles__FormWrapper>
+</Paper>
+`;
