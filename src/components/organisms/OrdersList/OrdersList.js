@@ -16,6 +16,7 @@ const renderOrder = (order, intl) => {
   const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl, '-');
   const orderValue = formatCurrency(order.valor, intl, '-');
   const orderProfitsValue = formatCurrency(order.valorLucro, intl, '-');
+
   return (
     <Order
       key={order.codigoPedido}
