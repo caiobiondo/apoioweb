@@ -36,6 +36,27 @@ describe('CustomerDetails', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('renders customer details with empty data', () => {
+    // given
+    // when
+    const { result } = setup({
+      data: {
+        customer: {
+          name: null,
+          nickname: null,
+          birthday: null,
+          gender: null,
+          emails: null,
+          addresses: null,
+          phones: null,
+        },
+      },
+    });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
   it('renders customer details without addresses', () => {
     // given
     // when
@@ -60,6 +81,38 @@ describe('CustomerDetails', () => {
         customer: {
           ...customerDetails.customer,
           phones: null,
+        },
+      },
+    });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders customer details with invalid birthday', () => {
+    // given
+    // when
+    const { result } = setup({
+      data: {
+        customer: {
+          ...customerDetails.customer,
+          birthday: '20/1/1/2/2',
+        },
+      },
+    });
+
+    // then
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders customer details with phone without number and provider', () => {
+    // given
+    // when
+    const { result } = setup({
+      data: {
+        customer: {
+          ...customerDetails.customer,
+          phones: [{}, {}],
         },
       },
     });

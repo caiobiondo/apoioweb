@@ -2,6 +2,7 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { shallow } from 'enzyme';
 import { CustomersList } from './CustomersList';
+import toJson from 'enzyme-to-json';
 
 describe('CustomersList Organism', () => {
   it('should render a loading', () => {
@@ -61,6 +62,40 @@ describe('CustomersList Organism', () => {
     const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
+  });
+
+  it('should render customers list filtered by name ', () => {
+    const selectedCustomers = [];
+    const filters = {
+      name: 'anoth',
+    };
+    const data = {
+      loading: false,
+      customers: [
+        {
+          id: 123,
+          name: 'a name',
+          nickname: 'a nickname',
+          emails: [{ email: 'an-email' }],
+          phones: [{ phone: 'a-phone', provider: 'a provider' }],
+        },
+        {
+          id: 124,
+          name: 'another name',
+          nickname: null,
+          emails: [{ email: 'an-another-email' }],
+          phones: [{ phone: 'an-another-phone', provider: 'a provider' }],
+        },
+      ],
+    };
+
+    const result = shallow(
+      <CustomersList filters={filters} selectedCustomers={selectedCustomers} data={data} />,
+    );
+    const instance = result.instance();
+    instance.componentWillReceiveProps({ data, selectedCustomers, filters });
+
+    expect(toJson(result)).toMatchSnapshot();
   });
 
   it('should render select all', () => {
@@ -263,6 +298,30 @@ describe('CustomersList Organism', () => {
     );
     const instance = result.instance();
     const cell = instance.renderCell({ row: customer, value: 'a value' });
+
+    expect(cell).toMatchSnapshot();
+  });
+
+  it('should render default cell with null value', () => {
+    const onSelect = jest.fn();
+    const customer = {
+      id: 123,
+      name: 'a name',
+      nickname: 'a nickname',
+      emails: [{ email: 'an-email' }],
+      phones: [{ phone: 'a-phone', provider: 'a provider' }],
+    };
+    const selectedCustomers = [];
+    const data = {
+      loading: false,
+      customers: [customer],
+    };
+
+    const result = shallow(
+      <CustomersList onSelect={onSelect} selectedCustomers={selectedCustomers} data={data} />,
+    );
+    const instance = result.instance();
+    const cell = instance.renderCell({ row: customer, value: null });
 
     expect(cell).toMatchSnapshot();
   });

@@ -5,6 +5,7 @@
     "name": "teste vizir",
     "gender": "male",
     "comment": "",
+    "birthday": "2017-12-20",
     "emails": [
       {
         "email": "fellipe@vizir.com.br"
