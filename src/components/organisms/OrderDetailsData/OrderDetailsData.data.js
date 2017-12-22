@@ -54,7 +54,7 @@ export const OrderDetailsQuery = gql`
         quantidadePontosUnitario
         quantidadePontosTotal
         produto {
-          descricao
+          description
         }
         quantidadeItem
         valorTotal

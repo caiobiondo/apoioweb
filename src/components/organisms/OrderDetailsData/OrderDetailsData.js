@@ -83,7 +83,7 @@ export class OrderDetailsData extends Component {
     );
   }
 
-  renderOrderItemProductImage({ codigoProduto, produto: { descricao } }) {
+  renderOrderItemProductImage({ codigoProduto }) {
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${codigoProduto}_1.jpg`;
     const fallbackImage = this.renderOrderItemProductImageFallback();
     const loader = React.createElement(Loading);
@@ -97,7 +97,12 @@ export class OrderDetailsData extends Component {
 
   renderOrderItem(orderItem, index) {
     const { intl } = this.props;
-    const { produto: { descricao }, quantidadeItem, valorTotal, quantidadePontosTotal } = orderItem;
+    const {
+      produto: { description },
+      quantidadeItem,
+      valorTotal,
+      quantidadePontosTotal,
+    } = orderItem;
 
     return (
       <OrderItemWrapper key={index}>
@@ -105,7 +110,7 @@ export class OrderDetailsData extends Component {
           <OrderItemProductDescriptionWrapper>
             {this.renderOrderItemProductImage(orderItem)}
             <OrderItemProductDescriptionCode>
-              <OrderItemProductDescription>{descricao}</OrderItemProductDescription>
+              <OrderItemProductDescription>{description}</OrderItemProductDescription>
               {this.renderOrderItemProductCode(orderItem)}
             </OrderItemProductDescriptionCode>
           </OrderItemProductDescriptionWrapper>
