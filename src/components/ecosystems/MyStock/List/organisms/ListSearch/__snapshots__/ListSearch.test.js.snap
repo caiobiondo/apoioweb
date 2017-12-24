@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListSearch Organism should render input and submit button 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "18px",
+      "padding": 30,
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_forklift"
+    value="myStock"
+  />
+  <p>
+    Preencha o campo abaixo para buscar seus produtos
+  </p>
+  <ListSearchstyles__FormWrapper>
+    <ListSearchstyles__FormInput
+      label="Nome"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <ListSearchstyles__FormButtonWrapper>
+      <FormButton
+        backgroundColor="#c9c9c9"
+        disabled={false}
+        flat={true}
+        labelColor="#fff"
+        link={null}
+        onClick={[Function]}
+        primary={true}
+        type="submit"
+      >
+        Buscar
+      </FormButton>
+    </ListSearchstyles__FormButtonWrapper>
+  </ListSearchstyles__FormWrapper>
+</Paper>
+`;
