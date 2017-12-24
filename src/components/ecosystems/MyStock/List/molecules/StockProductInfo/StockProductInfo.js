@@ -6,7 +6,7 @@ import {
   ProductCode,
   ValuesWrapper,
   Wrapper,
-} from './TableInfoCell.styles';
+} from './StockProductInfo.styles';
 
 export default ({ product }) => {
   return (

@@ -6,22 +6,27 @@ import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 
-import TableStockCell from '../../molecules/TableStockCell';
-import TableInfoCell from '../../molecules/TableInfoCell';
+import StockProductQuantity from '../StockProductQuantity';
+import StockProductInfo from '../../molecules/StockProductInfo';
 
-import { WrapperStyle, TableWrapper, TableInfoCellWrapper, StockInputWrapper } from './List.styles';
+import {
+  WrapperStyle,
+  TableWrapper,
+  StockProductInfoWrapper,
+  StockInputWrapper,
+} from './List.styles';
 
 const renderInfoCell = ({ value, row }) => (
-  <TableInfoCellWrapper>
-    <TableInfoCell product={row} />
+  <StockProductInfoWrapper>
+    <StockProductInfo product={row} />
 
     <StockInputWrapper>
-      <TableStockCell product={row} />
+      <StockProductQuantity product={row} />
     </StockInputWrapper>
-  </TableInfoCellWrapper>
+  </StockProductInfoWrapper>
 );
 
-const renderStockCell = ({ value, row }) => <TableStockCell product={row} />;
+const renderStockCell = ({ value, row }) => <StockProductQuantity product={row} />;
 
 const TABLE_SCHEMA = {
   columns: ['info', 'stock'],

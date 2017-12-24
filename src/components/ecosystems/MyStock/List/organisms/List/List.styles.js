@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { gray300, white } from 'styles/colors';
-import TableStockCell from '../../molecules/TableStockCell';
 
 export const WrapperStyle = {
   flex: '1 1 0',
@@ -11,9 +10,8 @@ export const WrapperStyle = {
 };
 
 export const StockInputWrapper = styled.div``;
-// align-itens: flex
 
-export const TableInfoCellWrapper = styled.div`
+export const StockProductInfoWrapper = styled.div`
   ${StockInputWrapper} {
     display: none;
   }
