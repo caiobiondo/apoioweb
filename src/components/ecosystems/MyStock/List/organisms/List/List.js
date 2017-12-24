@@ -9,9 +9,17 @@ import { FormattedMessage } from 'react-intl';
 import TableStockCell from '../../molecules/TableStockCell';
 import TableInfoCell from '../../molecules/TableInfoCell';
 
-import { WrapperStyle, TableWrapper } from './List.styles';
+import { WrapperStyle, TableWrapper, TableInfoCellWrapper, StockInputWrapper } from './List.styles';
 
-const renderInfoCell = ({ value, row }) => <TableInfoCell product={row} />;
+const renderInfoCell = ({ value, row }) => (
+  <TableInfoCellWrapper>
+    <TableInfoCell product={row} />
+
+    <StockInputWrapper>
+      <TableStockCell product={row} />
+    </StockInputWrapper>
+  </TableInfoCellWrapper>
+);
 
 const renderStockCell = ({ value, row }) => <TableStockCell product={row} />;
 

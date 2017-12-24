@@ -8,11 +8,11 @@ export const Wrapper = styled.div`
   font-family: ${RobotoRegular};
   display: flex;
   align-items: center;
+  white-space: normal;
 `;
 
 export const ProductImage = styled(ImageWithFallback)`
   margin-right: 25px;
-  display: inline-block;
 `;
 
 export const ProductName = styled.div`
@@ -26,6 +26,4 @@ export const ProductCode = styled.div`
   text-transform: uppercase;
 `;
 
-export const ValuesWrapper = styled.div`
-  display: inline-block;
-`;
+export const ValuesWrapper = styled.div``;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { gray300, white } from 'styles/colors';
+import TableStockCell from '../../molecules/TableStockCell';
 
 export const WrapperStyle = {
   flex: '1 1 0',
@@ -9,12 +10,25 @@ export const WrapperStyle = {
   overflowY: 'scroll',
 };
 
+export const StockInputWrapper = styled.div``;
+// align-itens: flex
+
+export const TableInfoCellWrapper = styled.div`
+  ${StockInputWrapper} {
+    display: none;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    ${StockInputWrapper} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+`;
+
 export const TableWrapper = styled.div`
   padding: 20px 20px;
-
-  table tr td:first-child div {
-    transition: all 0.2s ease;
-  }
 
   tr {
     transition: all 0.2s ease;
@@ -26,6 +40,11 @@ export const TableWrapper = styled.div`
     font-size: 15px !important;
     font-weight: 400 !important;
     text-transform: uppercase;
+  }
+
+  tr th:last-child,
+  tr td:last-child {
+    width: 110px;
   }
 
   tbody tr:hover {
@@ -41,17 +60,7 @@ export const TableWrapper = styled.div`
     tr th:first-child,
     tr td:first-child {
       display: table-cell;
-      width: 1px !important;
-    }
-
-    tr th:nth-child(2),
-    tr td:nth-child(2) {
-      display: table-cell;
-    }
-
-    td:first-child,
-    td:first-child * {
-      opacity: 1 !important;
+      border-bottom: 1px solid ${gray300};
     }
   }
 `;
