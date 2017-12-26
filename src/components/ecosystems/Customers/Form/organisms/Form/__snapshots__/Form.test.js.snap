@@ -47,6 +47,7 @@ exports[`Form correctly renders the customer form 1`] = `
         }
       }
       mutate={[Function]}
+      removePhone={[Function]}
       setFieldValue={[Function]}
       submitted={false}
       values={Object {}}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormInput, RowWithHalfInputs } from '../../Shared/Styles';
-import { PhoneWrapper } from './PhoneForm.styles';
+import { FloatingActionButton, Icon } from 'natura-ui';
+import { FormInput } from '../../Shared/Styles';
+import { PhoneWrapper, IconWrapper, RemoveButton, RowWithButton } from './PhoneForm.styles';
 import { translate } from 'locale';
 
 const PhoneForm = ({
@@ -11,6 +12,7 @@ const PhoneForm = ({
   handleBlur,
   handleSubmit,
   submitted,
+  onRemove,
   index,
 }) => {
   errors = (errors.phones && errors.phones[index]) || {};
@@ -19,7 +21,7 @@ const PhoneForm = ({
 
   return (
     <PhoneWrapper>
-      <RowWithHalfInputs>
+      <RowWithButton>
         <FormInput
           type="text"
           name={`customer.phones.${index}.phone`}
@@ -42,7 +44,18 @@ const PhoneForm = ({
           error={errors.provider}
           dirty={touched.provider || submitted}
         />
-      </RowWithHalfInputs>
+        <FloatingActionButton
+          mini={true}
+          style={RemoveButton}
+          iconWrapper={IconWrapper}
+          onClick={() => {
+            onRemove(values);
+          }}
+          backgroundColor="red"
+        >
+          <Icon file="ico_trash" />
+        </FloatingActionButton>
+      </RowWithButton>
     </PhoneWrapper>
   );
 };

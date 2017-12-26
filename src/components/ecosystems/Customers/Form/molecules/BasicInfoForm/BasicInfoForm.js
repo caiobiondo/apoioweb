@@ -41,6 +41,7 @@ const BasicInfoForm = ({
   values = {},
   touched = {},
   addNewPhone,
+  removePhone,
 }) => {
   values = values.customer || {};
   errors = errors.customer || {};
@@ -110,7 +111,7 @@ const BasicInfoForm = ({
       {values.phones.map((phone, i) => {
         return (
           <PhoneForm
-            key={i}
+            key={phone.id}
             index={i}
             values={values}
             touched={touched}
@@ -119,6 +120,7 @@ const BasicInfoForm = ({
             handleSubmit={handleSubmit}
             submitted={submitted}
             errors={errors}
+            onRemove={removePhone}
           />
         );
       })}
