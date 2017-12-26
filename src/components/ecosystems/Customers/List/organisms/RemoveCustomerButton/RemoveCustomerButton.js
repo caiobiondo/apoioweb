@@ -27,7 +27,7 @@ export class RemoveCustomerButton extends Component {
   };
 
   goToCustomerForm = () => {
-    this.props.history.push(`/new-customer`);
+    this.props.history.push(`/my-customers/add`);
   };
 
   onButtonAction = () => {

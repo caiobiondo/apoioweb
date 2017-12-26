@@ -148,7 +148,7 @@ export class CustomersList extends Component {
         <CustomerAvatar name={value} avatar={row.avatar} style={CustomerAvatarStyle} />
         <NameLabel>
           {value}
-          <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
+          <Link style={LinkStyle} to={`/my-customers/detail/${row.id}`} />
         </NameLabel>
       </CustomerName>
     );
