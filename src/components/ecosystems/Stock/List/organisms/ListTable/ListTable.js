@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { Loading, Paper, Table } from 'natura-ui';
-import { MyStockProductsQuery, MyStockProductsQueryOptions } from './ListTable.data';
+import { StockProductsQuery, StockProductsQueryOptions } from './ListTable.data';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
@@ -42,6 +42,27 @@ export class ListTable extends Component {
       this.props.refetch();
     }
   }
+
+  componentWillReceiveProps({ stockProducts, loading }) {
+    this.notifyLoadFinish(loading, stockProducts);
+  }
+
+  notifyLoadFinish = (loading, stockProducts) => {
+    if (!loading && this.props.onLoadFinished) {
+      this.props.onLoadFinished(
+        this.isEmpty(loading, stockProducts),
+        this.isLoading(loading, stockProducts),
+      );
+    }
+  };
+
+  isLoading = (loading, stockProducts) => {
+    return loading && !stockProducts;
+  };
+
+  isEmpty = (loading, stockProducts) => {
+    return !loading && (!stockProducts || stockProducts.length === 0);
+  };
 
   renderInfoCell = ({ value, row }) => {
     return (
@@ -86,6 +107,6 @@ export class ListTable extends Component {
 
 const ListTableWithAuthErrorHandler = withAuthErrorHandler(ListTable);
 
-export default graphql(MyStockProductsQuery, MyStockProductsQueryOptions)(
+export default graphql(StockProductsQuery, StockProductsQueryOptions)(
   ListTableWithAuthErrorHandler,
 );

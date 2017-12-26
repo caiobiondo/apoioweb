@@ -10,13 +10,12 @@ import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
 import MyScore from 'components/ecosystems/MyScore';
 import CustomerDetails from 'components/ecosystems/Customers/Details';
 import CustomersList from 'components/ecosystems/Customers/List';
+import { EditCustomer, NewCustomer } from 'components/ecosystems/Customers/Form';
+import StockList from 'components/ecosystems/Stock/List';
+
 import withAuthentication from 'hocs/withAuthentication';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
-import { EditCustomer, NewCustomer } from 'components/ecosystems/Customers/Form';
-
-import { MyStockList } from 'components/ecosystems/MyStock';
-
 import { locale, flattenMessages, messages } from 'locale/index';
 
 setupGlobals();
@@ -39,7 +38,7 @@ export default class App extends Component {
                 <Route exact path="/my-orders" component={withAuthentication(Orders)} />
                 <Route path="/my-orders/:id" component={withAuthentication(OrderDetails)} />
                 <Route path="/my-score" component={withAuthentication(MyScore)} />
-                <Route path="/my-stock" component={withAuthentication(MyStockList)} />
+                <Route path="/my-stock" component={withAuthentication(StockList)} />
                 <Route exact path="/my-customers" component={withAuthentication(CustomersList)} />
                 <Route
                   path="/my-customers/:customerId"

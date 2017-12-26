@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockList Ecosystem should render the stock list page 1`] = `
+<indexstyles__Main
+  empty={false}
+  loading={true}
+>
+  <Apollo(WithAuthErrorHandlerComponent)
+    onLoadFinished={[Function]}
+    productSearch=""
+  />
+</indexstyles__Main>
+`;

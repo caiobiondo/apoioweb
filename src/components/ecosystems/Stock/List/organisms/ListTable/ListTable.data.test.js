@@ -1,14 +1,14 @@
-import { MyStockProductsQuery, MyStockProductsQueryOptions, updateQuery } from './ListTable.data';
+import { StockProductsQuery, StockProductsQueryOptions, updateQuery } from './ListTable.data';
 
 describe('MyStockProductsQuery', () => {
   it('should be the correct query', () => {
-    expect(MyStockProductsQuery).toMatchSnapshot();
+    expect(StockProductsQuery).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
     const props = { productSearch: 'search' };
 
-    const options = MyStockProductsQueryOptions.options(props);
+    const options = StockProductsQueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
@@ -30,7 +30,7 @@ describe('MyStockProductsQuery', () => {
       },
     };
 
-    const props = MyStockProductsQueryOptions.props(data);
+    const props = StockProductsQueryOptions.props(data);
     const fetchMoreResult = props.fetchMore();
 
     expect(props).toMatchSnapshot();
