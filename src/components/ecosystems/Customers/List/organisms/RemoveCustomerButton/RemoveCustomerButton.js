@@ -101,6 +101,7 @@ export class RemoveCustomerButton extends Component {
 
     return (
       <Dialog
+        key="confirmationDialog"
         title={title}
         actions={actions}
         modal={false}
@@ -133,6 +134,7 @@ export class RemoveCustomerButton extends Component {
 
     return (
       <Dialog
+        key="successDialog"
         title={title}
         actions={actions}
         modal={false}
@@ -151,7 +153,11 @@ export class RemoveCustomerButton extends Component {
       : this.renderConfirmationDialog();
 
     return [
-      <CustomerButton action={this.onButtonAction} remove={this.props.isCustomerSelected} />,
+      <CustomerButton
+        key="actionButton"
+        action={this.onButtonAction}
+        remove={this.props.isCustomerSelected}
+      />,
       dialog,
     ];
   }

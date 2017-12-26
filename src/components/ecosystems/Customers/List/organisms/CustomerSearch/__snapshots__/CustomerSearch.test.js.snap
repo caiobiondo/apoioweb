@@ -22,7 +22,9 @@ exports[`CustomerSearch Organism should render input and submit button 1`] = `
   <CustomerSearchstyles__FormWrapper>
     <CustomerSearchstyles__FormInput
       label="Nome"
+      name="customerSearch"
       onChange={[Function]}
+      onKeyPress={[Function]}
       type="text"
       value=""
     />
