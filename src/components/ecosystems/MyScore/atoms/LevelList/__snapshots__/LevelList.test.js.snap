@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LevelList should render correctly 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "borderRadius": "5px",
+      "marginTop": "18px",
+      "padding": "13px",
+      "position": "relative",
+      "width": "175px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <LevelListstyles__ArrowUp />
+  <LevelListstyles__Table>
+    <LevelListstyles__TableBody>
+      <LevelListstyles__TableRow
+        color="#ffcc00"
+        key="0"
+      >
+        <LevelListstyles__TableCell>
+          Level 1
+        </LevelListstyles__TableCell>
+        <LevelListstyles__TableCell>
+          from 200 pts
+        </LevelListstyles__TableCell>
+      </LevelListstyles__TableRow>
+      <LevelListstyles__TableRow
+        color="#ff0057"
+        key="1"
+      >
+        <LevelListstyles__TableCell>
+          Level 2
+        </LevelListstyles__TableCell>
+        <LevelListstyles__TableCell>
+          200 pts - 1000 pts
+        </LevelListstyles__TableCell>
+      </LevelListstyles__TableRow>
+      <LevelListstyles__TableRow
+        color="#045b04"
+        key="2"
+      >
+        <LevelListstyles__TableCell>
+          Start
+        </LevelListstyles__TableCell>
+        <LevelListstyles__TableCell>
+          after 1000 pts
+        </LevelListstyles__TableCell>
+      </LevelListstyles__TableRow>
+    </LevelListstyles__TableBody>
+  </LevelListstyles__Table>
+</Paper>
+`;

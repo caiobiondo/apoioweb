@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stock Product Quantity should render correctly 1`] = `
+<StockProductQuantitystyles__Wrapper>
+  <CounterInput
+    disabled={false}
+    min={0}
+    onChange={[Function]}
+    value={10}
+  />
+</StockProductQuantitystyles__Wrapper>
+`;

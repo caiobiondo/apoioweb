@@ -4,6 +4,7 @@ import orderMessages from './messages/order';
 import customerMessages from './messages/customer';
 import genericMessages from './messages/generic';
 import formValidationMessages from './messages/form_validation';
+import stockMessages from './messages/stock';
 
 export default {
   'en-US': {
@@ -12,6 +13,7 @@ export default {
     ...genericMessages['en-US'],
     ...myScoreMessages['en-US'],
     ...orderMessages['en-US'],
+    ...stockMessages['en-US'],
   },
   'pt-BR': {
     ...customerMessages['pt-BR'],
@@ -19,6 +21,7 @@ export default {
     ...genericMessages['pt-BR'],
     ...myScoreMessages['pt-BR'],
     ...orderMessages['pt-BR'],
+    ...stockMessages['pt-BR'],
   },
 };
 /* eslint-disable sort-keys */

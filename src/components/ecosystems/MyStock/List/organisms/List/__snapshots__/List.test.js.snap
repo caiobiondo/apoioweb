@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stock Product List should render the stock product list page 1`] = `
+<Liststyles__Wrapper>
+  <ListSearch
+    onSearch={[Function]}
+  />
+  <Apollo(WithAuthErrorHandlerComponent)
+    productSearch=""
+  />
+</Liststyles__Wrapper>
+`;

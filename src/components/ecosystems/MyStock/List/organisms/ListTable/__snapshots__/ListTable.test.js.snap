@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stock Product List Table should render correctly when loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`Stock Product List Table should render correctly when the list is empty 1`] = `
+<EmptyList
+  descriptionId="stockEmptyListDescription"
+  icon="ico_forklift"
+  titleId="stockEmptyList"
+/>
+`;
+
+exports[`Stock Product List Table should render correctly when the list is not empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "flex": "1 1 0",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "overflowY": "scroll",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <ListTablestyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "body": Array [
+            Object {
+              "name": "Product 1",
+            },
+            Object {
+              "name": "Product 2",
+            },
+            Object {
+              "name": "Product 3",
+            },
+          ],
+          "columns": Array [
+            "info",
+            "stock",
+          ],
+          "header": Object {
+            "info": <FormattedMessage
+              id="stockProductHeaderName"
+              values={Object {}}
+        />,
+            "stock": <FormattedMessage
+              id="stockProductHeaderQuantity"
+              values={Object {}}
+        />,
+          },
+          "renderer": Object {
+            "info": [Function],
+            "stock": [Function],
+          },
+          "style": Object {
+            "info": Object {},
+            "stock": Object {},
+          },
+        }
+      }
+    />
+  </ListTablestyles__TableWrapper>
+</Paper>
+`;

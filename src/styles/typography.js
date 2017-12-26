@@ -10,6 +10,7 @@ export const fw900 = '900';
 //
 // Font Sizes
 // -------------------------------------
+export const fs9 = '9px';
 export const fs10 = '10px';
 export const fs12 = '12px';
 export const fs13 = '13px';
