@@ -94,7 +94,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         right={
           Object {
-            "details": "/my-orders/311619650",
+            "details": "/my-orders/detail/311619650",
             "status": "CONCLUÍDO E APROVADO",
           }
         }
@@ -126,7 +126,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         right={
           Object {
-            "details": "/my-orders/311619651",
+            "details": "/my-orders/detail/311619651",
             "status": "CONCLUÍDO E APROVADO",
           }
         }
