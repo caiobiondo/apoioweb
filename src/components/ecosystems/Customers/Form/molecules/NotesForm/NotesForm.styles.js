@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { RobotoLight, RobotoRegular } from 'styles/typography';
 import { FormText as BaseFormText } from 'natura-ui';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  margin-bottom: 20px;
+`;
 
 export const Title = styled.h3`
   color: #f3971f;
@@ -20,5 +22,5 @@ export const HelpText = styled.p`
 `;
 
 export const FormText = styled(BaseFormText)`
-  height: 205px;
+  min-height: 155px;
 `;
