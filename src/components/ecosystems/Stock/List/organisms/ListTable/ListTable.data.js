@@ -2,8 +2,8 @@ import gql from 'graphql-tag';
 
 const ITEMS_PER_PAGE = 10;
 
-export const MyStockProductsQuery = gql`
-  query MyStockProductsQuery($offset: Int!, $limit: Int!, $productName: String) {
+export const StockProductsQuery = gql`
+  query StockProductsQuery($offset: Int!, $limit: Int!, $productName: String) {
     stockProducts(offset: $offset, limit: $limit, productName: $productName) {
       id
       userId
@@ -26,7 +26,7 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
   });
 };
 
-export const MyStockProductsQueryOptions = {
+export const StockProductsQueryOptions = {
   options(props) {
     return {
       variables: {

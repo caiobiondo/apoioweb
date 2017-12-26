@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { Loading, Paper, Table } from 'natura-ui';
-import { MyStockProductsQuery, MyStockProductsQueryOptions } from './ListTable.data';
+import { StockProductsQuery, StockProductsQueryOptions } from './ListTable.data';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
@@ -16,12 +16,9 @@ import {
   StockInputWrapper,
 } from './ListTable.styles';
 
-class ListTable extends Component {
+export class ListTable extends Component {
   constructor(props) {
     super(props);
-
-    this.renderInfoCell = this.renderInfoCell.bind(this);
-    this.renderStockCell = this.renderStockCell.bind(this);
 
     this.tableSchema = {
       columns: ['info', 'stock'],
@@ -46,7 +43,28 @@ class ListTable extends Component {
     }
   }
 
-  renderInfoCell({ value, row }) {
+  componentWillReceiveProps({ stockProducts, loading }) {
+    this.notifyLoadFinish(loading, stockProducts);
+  }
+
+  notifyLoadFinish = (loading, stockProducts) => {
+    if (!loading && this.props.onLoadFinished) {
+      this.props.onLoadFinished(
+        this.isEmpty(loading, stockProducts),
+        this.isLoading(loading, stockProducts),
+      );
+    }
+  };
+
+  isLoading = (loading, stockProducts) => {
+    return loading && !stockProducts;
+  };
+
+  isEmpty = (loading, stockProducts) => {
+    return !loading && (!stockProducts || stockProducts.length === 0);
+  };
+
+  renderInfoCell = ({ value, row }) => {
     return (
       <StockProductInfoWrapper>
         <StockProductInfo product={row} />
@@ -56,11 +74,11 @@ class ListTable extends Component {
         </StockInputWrapper>
       </StockProductInfoWrapper>
     );
-  }
+  };
 
-  renderStockCell({ value, row }) {
+  renderStockCell = ({ value, row }) => {
     return <StockProductQuantity product={row} />;
-  }
+  };
 
   render() {
     if (this.props.loading) {
@@ -87,10 +105,8 @@ class ListTable extends Component {
   }
 }
 
-export { ListTable };
-
 const ListTableWithAuthErrorHandler = withAuthErrorHandler(ListTable);
 
-export default graphql(MyStockProductsQuery, MyStockProductsQueryOptions)(
+export default graphql(StockProductsQuery, StockProductsQueryOptions)(
   ListTableWithAuthErrorHandler,
 );
