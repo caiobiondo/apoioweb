@@ -17,13 +17,6 @@ class StockProductQuantity extends Component {
       productQuantityBeforeSubmit: null,
       hideSubmittedMessageTimeout: null,
     };
-
-    this.quantityChanged = this.quantityChanged.bind(this);
-    this.getSubmitLabel = this.getSubmitLabel.bind(this);
-    this.submit = this.submit.bind(this);
-    this.getSubmittedLabel = this.getSubmittedLabel.bind(this);
-    this.renderSubmittedMessage = this.renderSubmittedMessage.bind(this);
-    this.renderBottom = this.renderBottom.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,7 +29,7 @@ class StockProductQuantity extends Component {
     }
   }
 
-  submit(event) {
+  submit = event => {
     const submittedQuantity = this.state.quantity;
     const productQuantityBeforeSubmit = this.state.productOriginalQuantity;
     event.stopPropagation();
@@ -69,21 +62,21 @@ class StockProductQuantity extends Component {
 
         this.setState({ hideSubmittedMessageTimeout });
       });
-  }
+  };
 
-  quantityChanged(quantity) {
+  quantityChanged = quantity => {
     this.setState({ quantity });
-  }
+  };
 
-  getSubmitLabel() {
+  getSubmitLabel = () => {
     if (this.state.quantity < this.state.productOriginalQuantity) {
       return <FormattedMessage id="stockProductRemove" />;
     }
 
     return <FormattedMessage id="stockProductAdd" />;
-  }
+  };
 
-  renderSubmitButton() {
+  renderSubmitButton = () => {
     const label = this.getSubmitLabel();
 
     return (
@@ -91,9 +84,9 @@ class StockProductQuantity extends Component {
         {label}
       </Button>
     );
-  }
+  };
 
-  getSubmittedLabel() {
+  getSubmittedLabel = () => {
     const quantity = this.state.productOriginalQuantity - this.state.productQuantityBeforeSubmit;
 
     if (quantity < 0) {
@@ -101,18 +94,18 @@ class StockProductQuantity extends Component {
     }
 
     return <FormattedMessage id="stockProductAdded" values={{ quantity }} />;
-  }
+  };
 
-  renderSubmittedMessage() {
+  renderSubmittedMessage = () => {
     return (
       <SubmittedMessage>
         <Icon file="ico_check" />
         {this.getSubmittedLabel()}
       </SubmittedMessage>
     );
-  }
+  };
 
-  renderBottom() {
+  renderBottom = () => {
     if (this.state.quantity !== this.state.productOriginalQuantity) {
       return this.renderSubmitButton();
     }
@@ -122,7 +115,7 @@ class StockProductQuantity extends Component {
     }
 
     return null;
-  }
+  };
 
   render() {
     return (

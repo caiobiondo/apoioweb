@@ -11,13 +11,11 @@ class StockList extends Component {
     this.state = {
       productSearch: '',
     };
-
-    this.onSearch = this.onSearch.bind(this);
   }
 
-  onSearch(productSearch) {
+  onSearch = productSearch => {
     this.setState({ productSearch });
-  }
+  };
 
   render() {
     return (

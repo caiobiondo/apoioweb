@@ -16,12 +16,9 @@ import {
   StockInputWrapper,
 } from './ListTable.styles';
 
-class ListTable extends Component {
+export class ListTable extends Component {
   constructor(props) {
     super(props);
-
-    this.renderInfoCell = this.renderInfoCell.bind(this);
-    this.renderStockCell = this.renderStockCell.bind(this);
 
     this.tableSchema = {
       columns: ['info', 'stock'],
@@ -46,7 +43,7 @@ class ListTable extends Component {
     }
   }
 
-  renderInfoCell({ value, row }) {
+  renderInfoCell = ({ value, row }) => {
     return (
       <StockProductInfoWrapper>
         <StockProductInfo product={row} />
@@ -56,11 +53,11 @@ class ListTable extends Component {
         </StockInputWrapper>
       </StockProductInfoWrapper>
     );
-  }
+  };
 
-  renderStockCell({ value, row }) {
+  renderStockCell = ({ value, row }) => {
     return <StockProductQuantity product={row} />;
-  }
+  };
 
   render() {
     if (this.props.loading) {
@@ -86,8 +83,6 @@ class ListTable extends Component {
     );
   }
 }
-
-export { ListTable };
 
 const ListTableWithAuthErrorHandler = withAuthErrorHandler(ListTable);
 
