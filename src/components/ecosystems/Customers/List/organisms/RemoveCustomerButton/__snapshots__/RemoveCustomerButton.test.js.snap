@@ -68,7 +68,6 @@ Array [
     contentStyle={
         Object {
             "maxWidth": "none",
-            "width": "40%",
           }
     }
     modal={false}
@@ -162,7 +161,6 @@ Array [
     contentStyle={
         Object {
             "maxWidth": "none",
-            "width": "40%",
           }
     }
     modal={false}

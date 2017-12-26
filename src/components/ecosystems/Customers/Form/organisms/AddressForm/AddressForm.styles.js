@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Responsive } from '@entria/components';
 import { RobotoLight } from 'styles/typography';
 
 export const Wrapper = styled.div``;
@@ -31,6 +32,16 @@ export const NumberRow = styled.div`
   & > *:last-child {
     margin-right: 0;
     width: 70%;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    & > *:first-child {
+      width: 50%;
+    }
+
+    & > *:last-child {
+      width: 50%;
+    }
   }
 `;
 

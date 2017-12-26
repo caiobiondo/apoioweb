@@ -492,6 +492,12 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   }
 }
 
+@media (max-width:480px) {
+  .c21 > * {
+    margin-right: 12px !important;
+  }
+}
+
 @media (min-width:480px) {
   .c22:not(:last-child) {
     margin-bottom: 0px;
