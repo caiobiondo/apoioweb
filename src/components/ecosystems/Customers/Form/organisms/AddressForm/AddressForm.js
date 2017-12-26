@@ -13,7 +13,6 @@ const getAddressesData = (object, index) => {
 };
 
 const setFormValuesFromZipCode = debounce((setFieldValue, zipCode, fieldPrefix) => {
-  console.log('zipCode');
   fetchAddress(zipCode).then(address => {
     Object.keys(address).forEach(attribute => {
       setFieldValue(`${fieldPrefix}.${attribute}`, address[attribute]);

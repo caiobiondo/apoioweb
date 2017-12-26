@@ -87,6 +87,8 @@ class ListTable extends Component {
   }
 }
 
+export { ListTable };
+
 const ListTableWithAuthErrorHandler = withAuthErrorHandler(ListTable);
 
 export default graphql(MyStockProductsQuery, MyStockProductsQueryOptions)(

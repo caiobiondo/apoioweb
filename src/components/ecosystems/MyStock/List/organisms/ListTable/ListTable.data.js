@@ -44,9 +44,10 @@ export const MyStockProductsQueryOptions = {
       loading: data.loading,
       stockProducts: data.stockProducts,
       fetchMore(productSearch) {
+        const offset = data.stockProducts ? data.stockProducts.length : 0;
         return data.fetchMore({
           variables: {
-            offset: data.stockProducts.length,
+            offset,
           },
           updateQuery: updateQuery,
         });

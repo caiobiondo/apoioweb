@@ -134,4 +134,6 @@ class StockProductQuantity extends Component {
   }
 }
 
+export { StockProductQuantity };
+
 export default graphql(UpdateStockProductMutation)(StockProductQuantity);
