@@ -39,6 +39,12 @@ export const FormButtonsWrapper = styled.div`
     text-align: center !important;
     display: inline !important;
   }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    & > * {
+      margin-right: 12px !important;
+    }
+  }
 `;
 
 export const PageTitle = styled.h1`
