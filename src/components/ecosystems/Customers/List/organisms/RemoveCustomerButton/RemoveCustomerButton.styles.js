@@ -1,5 +1,4 @@
 export const dialogContainer = {
-  width: '40%',
   maxWidth: 'none',
 };
 
