@@ -137,7 +137,7 @@ export class CustomersList extends Component {
     return (
       <div>
         {value || '-'}
-        <Link style={LinkStyle} to={`/my-customers/${row.id}`} />
+        <Link style={LinkStyle} to={`/my-customers/detail/${row.id}`} />
       </div>
     );
   };
