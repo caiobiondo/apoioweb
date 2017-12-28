@@ -27,7 +27,7 @@ exports[`Form correctly renders the customer form 1`] = `
   />
   <Formstyles__PageTitle>
     <FormattedMessage
-      id="formCustomerTitle"
+      id="formCustomerCreateTitle"
       values={Object {}}
     />
   </Formstyles__PageTitle>

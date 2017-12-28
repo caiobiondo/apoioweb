@@ -15,6 +15,7 @@ const NewCustomerFormWithFormik = withFormik({
         addresses: [{}],
         emails: [{}],
       },
+      editMode: false,
     };
   },
   enableReinitialize: true,

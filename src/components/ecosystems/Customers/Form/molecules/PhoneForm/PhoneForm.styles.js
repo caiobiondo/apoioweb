@@ -33,8 +33,7 @@ export const IconWrapper = styled.div`
 `;
 
 export const RemoveButton = {
-  alignSelf: 'flex-end',
   height: 40,
   width: 40,
-  marginBottom: 12,
+  marginTop: 32,
 };

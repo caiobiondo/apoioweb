@@ -1471,6 +1471,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "formCustomerBirthDate": "Nascimento",
             "formCustomerCity": "Cidade",
             "formCustomerComplement": "Complemento",
+            "formCustomerCreateTitle": "Cadastro de Novos Clientes",
+            "formCustomerEditTitle": "Edição de Cliente",
             "formCustomerEmail": "Email",
             "formCustomerErrorsAddressMessage": "As informações de endereço do cliente estão inválidas, por favor, revise-as e tente novamente.",
             "formCustomerErrorsCustomerMessage": "As informações pessoais do cliente estão inválidas, por favor, revise-as e tente novamente.",
@@ -1490,9 +1492,9 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "formCustomerProfileDirect": "Presencial",
             "formCustomerProfileEcommerce": "Digital",
             "formCustomerRegister": "Cadastrar",
+            "formCustomerSave": "Salvar",
             "formCustomerState": "UF",
             "formCustomerText": "Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.",
-            "formCustomerTitle": "Cadastro de Novos Clientes",
             "formCustomerZipCode": "CEP",
             "gender.F": "Feminino",
             "gender.M": "Masculino",
@@ -1616,6 +1618,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                     Object {},
                   ],
                 },
+                "editMode": false,
               }
             }
             isInitialValid={false}
@@ -1651,6 +1654,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       Object {},
                     ],
                   },
+                  "editMode": false,
                 }
               }
               isSubmitting={false}
@@ -1683,6 +1687,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       Object {},
                     ],
                   },
+                  "editMode": false,
                 }
               }
             >
@@ -1816,7 +1821,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       className="c7"
                     >
                       <FormattedMessage
-                        id="formCustomerTitle"
+                        id="formCustomerCreateTitle"
                         values={Object {}}
                       >
                         <span>
@@ -1873,6 +1878,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 Object {},
                               ],
                             },
+                            "editMode": false,
                           }
                         }
                         isSubmitting={false}
@@ -1907,6 +1913,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 Object {},
                               ],
                             },
+                            "editMode": false,
                           }
                         }
                       >
@@ -4650,7 +4657,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       <Styles__FormInput
                                         dirty={false}
                                         label="Telefone"
-                                        mask="(99) 99999-9999"
+                                        mask="(99) 9999-99999"
                                         name="customer.phones.0.phone"
                                         onBlur={[Function]}
                                         onChange={[Function]}
@@ -4665,7 +4672,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           help=""
                                           initialFocus={false}
                                           label="Telefone"
-                                          mask="(99) 99999-9999"
+                                          mask="(99) 9999-99999"
                                           maskChar=""
                                           maxlenght={null}
                                           name="customer.phones.0.phone"
@@ -4687,7 +4694,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                             help=""
                                             initialFocus={false}
                                             label="Telefone"
-                                            mask="(99) 99999-9999"
+                                            mask="(99) 9999-99999"
                                             maskChar=""
                                             maxlenght={null}
                                             name="customer.phones.0.phone"
@@ -4771,7 +4778,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                         <InputElement
                                                           disabled={false}
                                                           id="customer.phones.0.phone"
-                                                          mask="(99) 99999-9999"
+                                                          mask="(99) 9999-99999"
                                                           maskChar=""
                                                           onBlur={[Function]}
                                                           onChange={[Function]}
@@ -5937,9 +5944,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                         onClick={[Function]}
                                         style={
                                           Object {
-                                            "alignSelf": "flex-end",
                                             "height": 40,
-                                            "marginBottom": 12,
+                                            "marginTop": 32,
                                             "width": 40,
                                           }
                                         }
@@ -5952,9 +5958,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           secondary={false}
                                           style={
                                             Object {
-                                              "alignSelf": "flex-end",
                                               "height": 40,
-                                              "marginBottom": 12,
+                                              "marginTop": 32,
                                               "width": 40,
                                             }
                                           }
@@ -5965,11 +5970,10 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                             rounded={true}
                                             style={
                                               Object {
-                                                "alignSelf": "flex-end",
                                                 "backgroundColor": "transparent",
                                                 "display": "inline-block",
                                                 "height": 40,
-                                                "marginBottom": 12,
+                                                "marginTop": 32,
                                                 "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
                                                 "width": 40,
                                               }
@@ -5981,7 +5985,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                               style={
                                                 Object {
                                                   "WebkitTapHighlightColor": "rgba(0,0,0,0)",
-                                                  "alignSelf": "flex-end",
                                                   "backgroundColor": "transparent",
                                                   "borderRadius": "50%",
                                                   "boxShadow": "0 3px 10px rgba(0, 0, 0, 0.16),
@@ -5991,7 +5994,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                   "display": "inline-block",
                                                   "fontFamily": "NaturaSans-Regular",
                                                   "height": 40,
-                                                  "marginBottom": 12,
+                                                  "marginTop": 32,
                                                   "muiPrepared": true,
                                                   "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
                                                   "width": 40,

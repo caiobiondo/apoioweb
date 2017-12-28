@@ -50,9 +50,12 @@ class CustomerForm extends Component {
     const customer = this.getCustomer();
     const updatedPhones = customer.phones.map(p => {
       // TODO: The API is only changing the phone when phone number is changed, so to delete it, it requires to add this blank space at the end of the number
-      return p.id === phone.id ? { ...p, phone: `${p.phone} `, delete: true } : p;
+      if (phone.id) {
+        return p.id === phone.id ? { ...p, phone: `${p.phone} `, delete: true } : p;
+      }
+      return p.phone === phone.phone ? null : p;
     });
-    this.props.setFieldValue('customer.phones', updatedPhones);
+    this.props.setFieldValue('customer.phones', updatedPhones.filter(v => v));
   };
 
   handleFormError = (stepToGo, message) => {
@@ -159,8 +162,9 @@ class CustomerForm extends Component {
 
   getNextButtonLabel = () => {
     const { currentStep } = this.state;
+    const submitLabel = this.props.values.editMode ? 'formCustomerSave' : 'formCustomerRegister';
 
-    if (currentStep === this.state.steps.length - 1) return 'formCustomerRegister';
+    if (currentStep === this.state.steps.length - 1) return submitLabel;
 
     return 'formCustomerNext';
   };
@@ -185,11 +189,12 @@ class CustomerForm extends Component {
   };
 
   render() {
+    const title = this.props.values.editMode ? 'formCustomerEditTitle' : 'formCustomerCreateTitle';
     return (
       <Wrapper onSubmit={this.submitFormData}>
         <WizardSteps steps={this.state.steps} />
         <PageTitle>
-          <FormattedMessage id="formCustomerTitle" />
+          <FormattedMessage id={title} />
         </PageTitle>
 
         <PageText>

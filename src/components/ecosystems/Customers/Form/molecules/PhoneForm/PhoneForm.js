@@ -19,6 +19,9 @@ const PhoneForm = ({
   touched = (touched.phones && touched.phones[index]) || {};
   values = (values.phones && values.phones[index]) || {};
 
+  const phoneMask =
+    values.phone && values.phone.length > 14 ? '(99) 99999-9999' : '(99) 9999-99999';
+
   return (
     <PhoneWrapper>
       <RowWithButton>
@@ -31,7 +34,7 @@ const PhoneForm = ({
           value={values.phone}
           required={true}
           error={errors.phone}
-          mask="(99) 99999-9999"
+          mask={phoneMask}
           dirty={touched.phone || submitted}
         />
         <FormInput

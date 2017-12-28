@@ -37,6 +37,7 @@ const EditCustomerFormWithFormik = withFormik({
           return { ...email };
         }),
       },
+      editMode: true,
     };
   },
   enableReinitialize: true,
