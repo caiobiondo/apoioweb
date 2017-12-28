@@ -529,7 +529,7 @@ exports[`CustomersList Organism should render default cell 1`] = `
         "width": "100%",
       }
     }
-    to="/my-customers/123"
+    to="/my-customers/detail/123"
   />
 </div>
 `;
@@ -548,7 +548,7 @@ exports[`CustomersList Organism should render default cell with null value 1`] =
         "width": "100%",
       }
     }
-    to="/my-customers/123"
+    to="/my-customers/detail/123"
   />
 </div>
 `;
