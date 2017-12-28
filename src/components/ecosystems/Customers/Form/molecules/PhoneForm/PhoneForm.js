@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormInput, RowWithHalfInputs } from '../../Shared/Styles';
-import { PhoneWrapper } from './PhoneForm.styles';
+import { FloatingActionButton, Icon } from 'natura-ui';
+import { FormInput } from '../../Shared/Styles';
+import { PhoneWrapper, IconWrapper, RemoveButton, RowWithButton } from './PhoneForm.styles';
 import { translate } from 'locale';
 
 const PhoneForm = ({
@@ -11,15 +12,19 @@ const PhoneForm = ({
   handleBlur,
   handleSubmit,
   submitted,
+  onRemove,
   index,
 }) => {
   errors = (errors.phones && errors.phones[index]) || {};
   touched = (touched.phones && touched.phones[index]) || {};
   values = (values.phones && values.phones[index]) || {};
 
+  const phoneMask =
+    values.phone && values.phone.length > 14 ? '(99) 99999-9999' : '(99) 9999-99999';
+
   return (
     <PhoneWrapper>
-      <RowWithHalfInputs>
+      <RowWithButton>
         <FormInput
           type="text"
           name={`customer.phones.${index}.phone`}
@@ -29,7 +34,7 @@ const PhoneForm = ({
           value={values.phone}
           required={true}
           error={errors.phone}
-          mask="(99) 99999-9999"
+          mask={phoneMask}
           dirty={touched.phone || submitted}
         />
         <FormInput
@@ -42,7 +47,18 @@ const PhoneForm = ({
           error={errors.provider}
           dirty={touched.provider || submitted}
         />
-      </RowWithHalfInputs>
+        <FloatingActionButton
+          mini={true}
+          style={RemoveButton}
+          iconWrapper={IconWrapper}
+          onClick={() => {
+            onRemove(values);
+          }}
+          backgroundColor="red"
+        >
+          <Icon file="ico_minus" />
+        </FloatingActionButton>
+      </RowWithButton>
     </PhoneWrapper>
   );
 };

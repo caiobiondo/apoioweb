@@ -21,7 +21,7 @@ describe('EditCustomerForm', () => {
           /* eslint-enable camelcase */
         },
       ],
-      phones: [{ phone: '123456789' }],
+      phones: [{ id: 1, phone: '123456789' }],
       name: 'Name',
       gender: 'f',
       birthday: '1978-06-13',
@@ -80,7 +80,7 @@ describe('EditCustomerForm', () => {
 
   describe('rendering', () => {
     beforeEach(() => {
-      submitStepButtonText = translate('formCustomerRegister');
+      submitStepButtonText = translate('formCustomerSave');
       nextStepButtonText = translate('formCustomerNext');
       backStepButtonText = translate('formCustomerBack');
       fullNameLabel = translate('formCustomerFullName');
@@ -154,7 +154,12 @@ describe('EditCustomerForm', () => {
       mutateMock = jest.fn(() => fakePromise);
       alertMock = jest.fn();
       global.alert = alertMock;
-      form = setup({ customer: fakeCustomerInForm, loading: false, mutate: mutateMock }).result;
+      form = setup({
+        customer: fakeCustomerInForm,
+        editMode: true,
+        loading: false,
+        mutate: mutateMock,
+      }).result;
     });
 
     it('correctly calls the mutate function with the customer', () => {

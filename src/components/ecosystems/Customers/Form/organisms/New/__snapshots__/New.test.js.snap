@@ -299,12 +299,68 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 }
 
 .c18 {
+  margin-bottom: 8px;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c19 > * {
+  width: 45%;
+  display: inline-block;
+  margin: 0;
+}
+
+.c19 > *:first-child {
+  margin-right: 10%;
+}
+
+.c19 > * {
+  width: 40%;
+  display: inline-block;
+  margin: 0;
+}
+
+.c19 > *:first-child {
+  margin-right: 0;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c20 svg {
+  fill: #fff;
+  width: 15px;
+  height: 15px;
+}
+
+.c21 {
   font-size: 14px;
   font-family: Roboto-Regular;
   color: #a9a9a9;
 }
 
-.c19 {
+.c22 {
   border-bottom-style: solid;
   border-color: #ddd;
   border-top-style: solid;
@@ -319,12 +375,12 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   text-transform: uppercase;
 }
 
-.c20 {
+.c23 {
   display: inline-block;
   margin-right: 25px;
 }
 
-.c20 svg {
+.c23 svg {
   height: 12px;
   width: 12px;
   fill: #bbbbbb;
@@ -333,42 +389,42 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   transform: rotate(45deg);
 }
 
-.c21 {
+.c24 {
   text-align: center;
 }
 
-.c21 > * {
+.c24 > * {
   display: inline-block;
   margin-right: 30px !important;
 }
 
-.c21 > *:last-child {
+.c24 > *:last-child {
   margin-right: 0 !important;
 }
 
-.c21 button {
+.c24 button {
   color: white;
   text-align: center;
 }
 
-.c21 button div {
+.c24 button div {
   text-align: center !important;
   display: inline !important;
 }
 
-.c22:not(:last-child) {
+.c25:not(:last-child) {
   margin-bottom: 10px;
 }
 
-.c22 > div,
-.c22 > a > div {
+.c25 > div,
+.c25 > a > div {
   min-width: 150px !important;
   border-radius: 4px !important;
   width: 100%;
 }
 
-.c22 > div > button,
-.c22 > a > div > button {
+.c25 > div > button,
+.c25 > a > div > button {
   -webkit-transition: all 200ms;
   transition: all 200ms;
   border-radius: 4px !important;
@@ -377,8 +433,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   background: #c9c9c9 !important;
 }
 
-.c22 > div > button > div > div,
-.c22 > a > div > button > div > div {
+.c25 > div > button > div > div,
+.c25 > a > div > button > div > div {
   border-radius: 4px !important;
   height: 44px !important;
   display: -webkit-box;
@@ -391,25 +447,25 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   align-items: center;
 }
 
-.c22 > div > button > div > div > span,
-.c22 > a > div > button > div > div > span {
+.c25 > div > button > div > div > span,
+.c25 > a > div > button > div > div > span {
   width: 100%;
   color: #fff !important;
 }
 
-.c23:not(:last-child) {
+.c26:not(:last-child) {
   margin-bottom: 10px;
 }
 
-.c23 > div,
-.c23 > a > div {
+.c26 > div,
+.c26 > a > div {
   min-width: 150px !important;
   border-radius: 4px !important;
   width: 100%;
 }
 
-.c23 > div > button,
-.c23 > a > div > button {
+.c26 > div > button,
+.c26 > a > div > button {
   -webkit-transition: all 200ms;
   transition: all 200ms;
   border-radius: 4px !important;
@@ -418,8 +474,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   background: #f3971f !important;
 }
 
-.c23 > div > button > div > div,
-.c23 > a > div > button > div > div {
+.c26 > div > button > div > div,
+.c26 > a > div > button > div > div {
   border-radius: 4px !important;
   height: 44px !important;
   display: -webkit-box;
@@ -432,8 +488,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   align-items: center;
 }
 
-.c23 > div > button > div > div > span,
-.c23 > a > div > button > div > div > span {
+.c26 > div > button > div > div > span,
+.c26 > a > div > button > div > div > span {
   width: 100%;
   color: #fff !important;
 }
@@ -493,35 +549,35 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 }
 
 @media (max-width:480px) {
-  .c21 > * {
+  .c24 > * {
     margin-right: 12px !important;
   }
 }
 
 @media (min-width:480px) {
-  .c22:not(:last-child) {
+  .c25:not(:last-child) {
     margin-bottom: 0px;
     margin-right: 20px;
   }
 }
 
 @media (min-width:480px) {
-  .c22 > div,
-  .c22 > a > div {
+  .c25 > div,
+  .c25 > a > div {
     width: auto;
   }
 }
 
 @media (min-width:480px) {
-  .c23:not(:last-child) {
+  .c26:not(:last-child) {
     margin-bottom: 0px;
     margin-right: 20px;
   }
 }
 
 @media (min-width:480px) {
-  .c23 > div,
-  .c23 > a > div {
+  .c26 > div,
+  .c26 > a > div {
     width: auto;
   }
 }
@@ -1415,6 +1471,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "formCustomerBirthDate": "Nascimento",
             "formCustomerCity": "Cidade",
             "formCustomerComplement": "Complemento",
+            "formCustomerCreateTitle": "Cadastro de Novos Clientes",
+            "formCustomerEditTitle": "Edição de Cliente",
             "formCustomerEmail": "Email",
             "formCustomerErrorsAddressMessage": "As informações de endereço do cliente estão inválidas, por favor, revise-as e tente novamente.",
             "formCustomerErrorsCustomerMessage": "As informações pessoais do cliente estão inválidas, por favor, revise-as e tente novamente.",
@@ -1434,9 +1492,9 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "formCustomerProfileDirect": "Presencial",
             "formCustomerProfileEcommerce": "Digital",
             "formCustomerRegister": "Cadastrar",
+            "formCustomerSave": "Salvar",
             "formCustomerState": "UF",
             "formCustomerText": "Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.",
-            "formCustomerTitle": "Cadastro de Novos Clientes",
             "formCustomerZipCode": "CEP",
             "gender.F": "Feminino",
             "gender.M": "Masculino",
@@ -1560,6 +1618,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                     Object {},
                   ],
                 },
+                "editMode": false,
               }
             }
             isInitialValid={false}
@@ -1595,6 +1654,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       Object {},
                     ],
                   },
+                  "editMode": false,
                 }
               }
               isSubmitting={false}
@@ -1627,6 +1687,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       Object {},
                     ],
                   },
+                  "editMode": false,
                 }
               }
             >
@@ -1760,7 +1821,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       className="c7"
                     >
                       <FormattedMessage
-                        id="formCustomerTitle"
+                        id="formCustomerCreateTitle"
                         values={Object {}}
                       >
                         <span>
@@ -1817,11 +1878,13 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 Object {},
                               ],
                             },
+                            "editMode": false,
                           }
                         }
                         isSubmitting={false}
                         isValid={false}
                         mutate={[Function]}
+                        removePhone={[Function]}
                         resetForm={[Function]}
                         setError={[Function]}
                         setErrors={[Function]}
@@ -1850,6 +1913,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 Object {},
                               ],
                             },
+                            "editMode": false,
                           }
                         }
                       >
@@ -4564,7 +4628,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               handleChange={[Function]}
                               handleSubmit={[Function]}
                               index={0}
-                              key="0"
+                              key="new0"
+                              onRemove={[Function]}
                               submitted={false}
                               touched={Object {}}
                               values={
@@ -4583,16 +4648,16 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             >
                               <PhoneFormstyles__PhoneWrapper>
                                 <div
-                                  className=""
+                                  className="c18"
                                 >
                                   <Styles__RowWithHalfInputs>
                                     <div
-                                      className="c13"
+                                      className="c19"
                                     >
                                       <Styles__FormInput
                                         dirty={false}
                                         label="Telefone"
-                                        mask="(99) 99999-9999"
+                                        mask="(99) 9999-99999"
                                         name="customer.phones.0.phone"
                                         onBlur={[Function]}
                                         onChange={[Function]}
@@ -4607,7 +4672,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           help=""
                                           initialFocus={false}
                                           label="Telefone"
-                                          mask="(99) 99999-9999"
+                                          mask="(99) 9999-99999"
                                           maskChar=""
                                           maxlenght={null}
                                           name="customer.phones.0.phone"
@@ -4629,7 +4694,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                             help=""
                                             initialFocus={false}
                                             label="Telefone"
-                                            mask="(99) 99999-9999"
+                                            mask="(99) 9999-99999"
                                             maskChar=""
                                             maxlenght={null}
                                             name="customer.phones.0.phone"
@@ -4713,7 +4778,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                         <InputElement
                                                           disabled={false}
                                                           id="customer.phones.0.phone"
-                                                          mask="(99) 99999-9999"
+                                                          mask="(99) 9999-99999"
                                                           maskChar=""
                                                           onBlur={[Function]}
                                                           onChange={[Function]}
@@ -5872,6 +5937,204 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           </FormGroup>
                                         </Input>
                                       </Styles__FormInput>
+                                      <CustomFloatingActionButton
+                                        backgroundColor="red"
+                                        iconWrapper={[Function]}
+                                        mini={true}
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "height": 40,
+                                            "marginTop": 32,
+                                            "width": 40,
+                                          }
+                                        }
+                                      >
+                                        <FloatingActionButton
+                                          backgroundColor="red"
+                                          disabled={false}
+                                          mini={true}
+                                          onClick={[Function]}
+                                          secondary={false}
+                                          style={
+                                            Object {
+                                              "height": 40,
+                                              "marginTop": 32,
+                                              "width": 40,
+                                            }
+                                          }
+                                          zDepth={2}
+                                        >
+                                          <Paper
+                                            circle={true}
+                                            rounded={true}
+                                            style={
+                                              Object {
+                                                "backgroundColor": "transparent",
+                                                "display": "inline-block",
+                                                "height": 40,
+                                                "marginTop": 32,
+                                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                "width": 40,
+                                              }
+                                            }
+                                            transitionEnabled={true}
+                                            zDepth={2}
+                                          >
+                                            <div
+                                              style={
+                                                Object {
+                                                  "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+                                                  "backgroundColor": "transparent",
+                                                  "borderRadius": "50%",
+                                                  "boxShadow": "0 3px 10px rgba(0, 0, 0, 0.16),
+                                                         0 3px 10px rgba(0, 0, 0, 0.23)",
+                                                  "boxSizing": "border-box",
+                                                  "color": "#4F4F4F",
+                                                  "display": "inline-block",
+                                                  "fontFamily": "NaturaSans-Regular",
+                                                  "height": 40,
+                                                  "marginTop": 32,
+                                                  "muiPrepared": true,
+                                                  "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                  "width": 40,
+                                                }
+                                              }
+                                            >
+                                              <EnhancedButton
+                                                containerElement="button"
+                                                disabled={false}
+                                                focusRippleColor="#ffffff"
+                                                onBlur={[Function]}
+                                                onClick={[Function]}
+                                                onFocus={[Function]}
+                                                onKeyDown={[Function]}
+                                                onKeyUp={[Function]}
+                                                onKeyboardFocus={[Function]}
+                                                onMouseDown={[Function]}
+                                                onMouseEnter={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onMouseUp={[Function]}
+                                                onTouchEnd={[Function]}
+                                                onTouchStart={[Function]}
+                                                style={
+                                                  Object {
+                                                    "backgroundColor": "red",
+                                                    "borderRadius": "50%",
+                                                    "height": 40,
+                                                    "overflow": "hidden",
+                                                    "padding": 0,
+                                                    "textAlign": "center",
+                                                    "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                    "verticalAlign": "bottom",
+                                                    "width": 40,
+                                                  }
+                                                }
+                                                tabIndex={0}
+                                                touchRippleColor="#ffffff"
+                                                type="button"
+                                              >
+                                                <button
+                                                  disabled={false}
+                                                  onBlur={[Function]}
+                                                  onClick={[Function]}
+                                                  onFocus={[Function]}
+                                                  onKeyDown={[Function]}
+                                                  onKeyUp={[Function]}
+                                                  onMouseDown={[Function]}
+                                                  onMouseEnter={[Function]}
+                                                  onMouseLeave={[Function]}
+                                                  onMouseUp={[Function]}
+                                                  onTouchEnd={[Function]}
+                                                  onTouchStart={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                                                      "backgroundColor": "red",
+                                                      "border": 10,
+                                                      "borderRadius": "50%",
+                                                      "boxSizing": "border-box",
+                                                      "cursor": "pointer",
+                                                      "display": "inline-block",
+                                                      "fontFamily": "NaturaSans-Regular",
+                                                      "fontSize": "inherit",
+                                                      "fontWeight": "inherit",
+                                                      "height": 40,
+                                                      "margin": 0,
+                                                      "muiPrepared": true,
+                                                      "outline": "none",
+                                                      "overflow": "hidden",
+                                                      "padding": 0,
+                                                      "position": "relative",
+                                                      "textAlign": "center",
+                                                      "textDecoration": "none",
+                                                      "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                      "verticalAlign": "bottom",
+                                                      "width": 40,
+                                                    }
+                                                  }
+                                                  tabIndex={0}
+                                                  type="button"
+                                                >
+                                                  <TouchRipple
+                                                    abortOnScroll={true}
+                                                    color="#ffffff"
+                                                    key="touchRipple"
+                                                  >
+                                                    <div
+                                                      onMouseDown={[Function]}
+                                                      onMouseLeave={[Function]}
+                                                      onMouseUp={[Function]}
+                                                      onTouchEnd={[Function]}
+                                                      onTouchStart={[Function]}
+                                                    >
+                                                      <div
+                                                        style={
+                                                          Object {
+                                                            "muiPrepared": true,
+                                                            "top": 0,
+                                                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                          }
+                                                        }
+                                                      >
+                                                        <PhoneFormstyles__IconWrapper
+                                                          key=".0"
+                                                          style={
+                                                            Object {
+                                                              "color": "#ffffff",
+                                                              "fill": "#ffffff",
+                                                              "height": 40,
+                                                              "lineHeight": "40px",
+                                                            }
+                                                          }
+                                                        >
+                                                          <div
+                                                            className="c20"
+                                                            style={
+                                                              Object {
+                                                                "color": "#ffffff",
+                                                                "fill": "#ffffff",
+                                                                "height": 40,
+                                                                "lineHeight": "40px",
+                                                              }
+                                                            }
+                                                          >
+                                                            <Icon
+                                                              file="ico_minus"
+                                                            >
+                                                              <ico_minus.svg />
+                                                            </Icon>
+                                                          </div>
+                                                        </PhoneFormstyles__IconWrapper>
+                                                      </div>
+                                                    </div>
+                                                  </TouchRipple>
+                                                </button>
+                                              </EnhancedButton>
+                                            </div>
+                                          </Paper>
+                                        </FloatingActionButton>
+                                      </CustomFloatingActionButton>
                                     </div>
                                   </Styles__RowWithHalfInputs>
                                 </div>
@@ -5879,7 +6142,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             </PhoneForm>
                             <BasicInfoFormstyles__CustomerPhoneHelpTextWrapper>
                               <span
-                                className="c18"
+                                className="c21"
                               >
                                 <FormattedMessage
                                   id="formCustomerPhoneHelpText"
@@ -5895,12 +6158,12 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               onClick={[Function]}
                             >
                               <a
-                                className="c19"
+                                className="c22"
                                 onClick={[Function]}
                               >
                                 <BasicInfoFormstyles__AddPhoneIconWrapper>
                                   <div
-                                    className="c20"
+                                    className="c23"
                                   >
                                     <Icon
                                       file="ico_times"
@@ -5924,7 +6187,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       </BasicInfoForm>
                       <Formstyles__FormButtonsWrapper>
                         <div
-                          className="c21"
+                          className="c24"
                         >
                           <FormButton
                             backgroundColor="#c9c9c9"
@@ -5943,7 +6206,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               primary={false}
                             >
                               <div
-                                className="c22"
+                                className="c25"
                                 disabled={false}
                                 onClick={[Function]}
                               >
@@ -6127,7 +6390,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               type="submit"
                             >
                               <div
-                                className="c23"
+                                className="c26"
                                 disabled={false}
                                 onClick={[Function]}
                                 type="submit"

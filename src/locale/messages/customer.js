@@ -25,6 +25,7 @@ export default {
     formCustomerBirthDate: 'Nascimento',
     formCustomerCity: 'Cidade',
     formCustomerComplement: 'Complemento',
+    formCustomerEditTitle: 'Edição de Cliente',
     formCustomerEmail: 'Email',
     formCustomerForgotZip: 'Não sei meu CEP',
     formCustomerFullName: 'Nome Completo',
@@ -43,10 +44,11 @@ export default {
     formCustomerProfileDirect: 'Presencial',
     formCustomerProfileEcommerce: 'Digital',
     formCustomerRegister: 'Cadastrar',
+    formCustomerSave: 'Salvar',
     formCustomerState: 'UF',
     formCustomerText:
       'Preencha todos os campos abaixo para cadastrar novos clientes.<br/>Campos com * são de preenchimento obrigatório.',
-    formCustomerTitle: 'Cadastro de Novos Clientes',
+    formCustomerCreateTitle: 'Cadastro de Novos Clientes',
     formCustomerZipCode: 'CEP',
     formCustomerErrorsCustomerMessage:
       'As informações pessoais do cliente estão inválidas, por favor, revise-as e tente novamente.',

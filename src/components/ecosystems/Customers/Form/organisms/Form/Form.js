@@ -27,40 +27,43 @@ class CustomerForm extends Component {
       currentStep: 0,
       submitted: false,
     };
-
-    this.addPhoneToCustomer = this.addPhoneToCustomer.bind(this);
-    this.changeStep = this.changeStep.bind(this);
-    this.renderFormStep = this.renderFormStep.bind(this);
-    this.submitFormData = this.submitFormData.bind(this);
-    this.getCustomer = this.getCustomer.bind(this);
-    this.handleFormError = this.handleFormError.bind(this);
-    this.validate = this.validate.bind(this);
-    this.goToStep = this.goToStep.bind(this);
-  }
-
-  getCustomer() {
-    return this.props.values.customer;
-  }
-
-  scrollTop() {
-    window.scrollTo(0, 0);
   }
 
   componentDidMount() {
     this.scrollTop();
   }
 
-  addPhoneToCustomer() {
+  getCustomer = () => {
+    return this.props.values.customer;
+  };
+
+  scrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  addPhoneToCustomer = () => {
     const customer = this.getCustomer();
     this.props.setFieldValue('customer.phones', [...customer.phones, {}]);
-  }
+  };
 
-  handleFormError(stepToGo, message) {
+  removePhoneFromCustomer = phone => {
+    const customer = this.getCustomer();
+    const updatedPhones = customer.phones.map(p => {
+      // TODO: The API is only changing the phone when phone number is changed, so to delete it, it requires to add this blank space at the end of the number
+      if (phone.id) {
+        return p.id === phone.id ? { ...p, phone: `${p.phone} `, delete: true } : p;
+      }
+      return p.phone === phone.phone ? null : p;
+    });
+    this.props.setFieldValue('customer.phones', updatedPhones.filter(v => v));
+  };
+
+  handleFormError = (stepToGo, message) => {
     this.goToStep(stepToGo);
     window.alert(translate(message));
-  }
+  };
 
-  validate(customer) {
+  validate = customer => {
     const errors = validateForm(this.getCustomer());
 
     if (!errors) {
@@ -79,9 +82,9 @@ class CustomerForm extends Component {
       this.handleFormError(stepToGo, message);
       return false;
     });
-  }
+  };
 
-  submitFormData(event) {
+  submitFormData = event => {
     this.props.handleSubmit(event);
 
     this.setState({ submitted: true });
@@ -100,9 +103,9 @@ class CustomerForm extends Component {
         const customer = (data.createCustomer || data.updateCustomer).customer;
         this.props.history.push(`/my-customers/detail/${customer.id}`);
       });
-  }
+  };
 
-  goToStep(stepToGo) {
+  goToStep = stepToGo => {
     this.scrollTop();
 
     const steps = this.state.steps.map((step, index) => {
@@ -121,9 +124,9 @@ class CustomerForm extends Component {
     });
 
     this.setState({ steps, currentStep: stepToGo });
-  }
+  };
 
-  changeStep(event, change) {
+  changeStep = (event, change) => {
     const stepToGo = this.state.currentStep + change;
 
     if (stepToGo >= this.state.steps.length) {
@@ -139,26 +142,34 @@ class CustomerForm extends Component {
     }
 
     this.goToStep(stepToGo);
-  }
+  };
 
-  renderFormStep() {
+  renderFormStep = () => {
     const { currentStep, submitted } = this.state;
     const { formsByStep } = this;
     const Form = formsByStep[currentStep];
     if (!Form) return null;
 
-    return <Form {...this.props} addNewPhone={this.addPhoneToCustomer} submitted={submitted} />;
-  }
+    return (
+      <Form
+        {...this.props}
+        addNewPhone={this.addPhoneToCustomer}
+        removePhone={this.removePhoneFromCustomer}
+        submitted={submitted}
+      />
+    );
+  };
 
-  getNextButtonLabel() {
+  getNextButtonLabel = () => {
     const { currentStep } = this.state;
+    const submitLabel = this.props.values.editMode ? 'formCustomerSave' : 'formCustomerRegister';
 
-    if (currentStep === this.state.steps.length - 1) return 'formCustomerRegister';
+    if (currentStep === this.state.steps.length - 1) return submitLabel;
 
     return 'formCustomerNext';
-  }
+  };
 
-  renderFormButtons() {
+  renderFormButtons = () => {
     return (
       <FormButtonsWrapper>
         <FormButton disabled={this.state.submitting} onClick={event => this.changeStep(event, -1)}>
@@ -175,14 +186,15 @@ class CustomerForm extends Component {
         </FormButton>
       </FormButtonsWrapper>
     );
-  }
+  };
 
   render() {
+    const title = this.props.values.editMode ? 'formCustomerEditTitle' : 'formCustomerCreateTitle';
     return (
       <Wrapper onSubmit={this.submitFormData}>
         <WizardSteps steps={this.state.steps} />
         <PageTitle>
-          <FormattedMessage id="formCustomerTitle" />
+          <FormattedMessage id={title} />
         </PageTitle>
 
         <PageText>
