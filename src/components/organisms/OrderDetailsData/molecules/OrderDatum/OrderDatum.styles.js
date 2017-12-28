@@ -36,6 +36,7 @@ export const OrderDatumLabel = styled.label`
   text-transform: uppercase;
   font-size: ${fs10};
   margin-bottom: 13.5px;
+  padding-right: 10px;
 `;
 
 export const OrderDatumValue = styled.span`
