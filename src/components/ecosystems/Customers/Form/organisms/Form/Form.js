@@ -98,7 +98,7 @@ class CustomerForm extends Component {
       .then(response => {
         const { data } = response;
         const customer = (data.createCustomer || data.updateCustomer).customer;
-        this.props.history.push(`/my-customers/${customer.id}`);
+        this.props.history.push(`/my-customers/detail/${customer.id}`);
       });
   }
 
