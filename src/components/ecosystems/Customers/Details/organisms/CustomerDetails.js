@@ -116,7 +116,6 @@ export class CustomerDetails extends Component {
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
     const profileEditUrl = `/my-customers/edit/${customer.id}`;
-    const name = customer.name || customer.nickname;
     const birthday = this.parseBirthday(customer.birthday);
 
     return (
@@ -127,12 +126,12 @@ export class CustomerDetails extends Component {
           </CustomerDetailsSectionTitleWrapper>
           <CustomerDetailsData>
             <CustomerAvatarWrapper>
-              <CustomerAvatar name={name} size={115} style={CustomerAvatarStyle} />
+              <CustomerAvatar name={customer.nickname} size={115} style={CustomerAvatarStyle} />
             </CustomerAvatarWrapper>
             <CustomerDataWrapper>
               <CustomerData primary>
                 <CustomerNameWrapper>
-                  <CustomerName>{name}</CustomerName>
+                  <CustomerName>{customer.nickname}</CustomerName>
                   <CustomerEditWrapper>
                     <Link to={profileEditUrl}>
                       <Icon file="ico_pencil" />
