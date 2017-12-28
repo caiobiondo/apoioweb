@@ -4621,6 +4621,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               handleChange={[Function]}
                               handleSubmit={[Function]}
                               index={0}
+                              key="new0"
                               onRemove={[Function]}
                               submitted={false}
                               touched={Object {}}

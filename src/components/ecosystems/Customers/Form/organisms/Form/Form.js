@@ -48,7 +48,11 @@ class CustomerForm extends Component {
 
   removePhoneFromCustomer = phone => {
     const customer = this.getCustomer();
-    this.props.setFieldValue('customer.phones', customer.phones.filter(p => p.id !== phone.id));
+    const updatedPhones = customer.phones.map(p => {
+      // TODO: The API is only changing the phone when phone number is changed, so to delete it, it requires to add this blank space at the end of the number
+      return p.id === phone.id ? { ...p, phone: `${p.phone} `, delete: true } : p;
+    });
+    this.props.setFieldValue('customer.phones', updatedPhones);
   };
 
   handleFormError = (stepToGo, message) => {

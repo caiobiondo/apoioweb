@@ -21,7 +21,7 @@ describe('EditCustomerForm', () => {
           /* eslint-enable camelcase */
         },
       ],
-      phones: [{ phone: '123456789' }],
+      phones: [{ id: 1, phone: '123456789' }],
       name: 'Name',
       gender: 'f',
       birthday: '1978-06-13',

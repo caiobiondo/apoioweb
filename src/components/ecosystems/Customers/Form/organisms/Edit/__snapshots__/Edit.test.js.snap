@@ -1031,6 +1031,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
               "name": "Name",
               "phones": Array [
                 Object {
+                  "id": 1,
                   "phone": "123456789",
                 },
               ],
@@ -1068,6 +1069,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
                 "name": "Name",
                 "phones": Array [
                   Object {
+                    "id": 1,
                     "phone": "123456789",
                   },
                 ],
@@ -1103,6 +1105,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
                   "name": "Name",
                   "phones": Array [
                     Object {
+                      "id": 1,
                       "phone": "123456789",
                     },
                   ],
@@ -1142,6 +1145,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
                   "name": "Name",
                   "phones": Array [
                     Object {
+                      "id": 1,
                       "phone": "123456789",
                     },
                   ],
@@ -1182,6 +1186,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
                     "name": "Name",
                     "phones": Array [
                       Object {
+                        "id": 1,
                         "phone": "123456789",
                       },
                     ],
@@ -1230,6 +1235,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
                     "name": "Name",
                     "phones": Array [
                       Object {
+                        "id": 1,
                         "phone": "123456789",
                       },
                     ],
@@ -4423,6 +4429,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
               "name": "Name",
               "phones": Array [
                 Object {
+                  "id": 1,
                   "phone": "123456789",
                 },
               ],
@@ -4460,6 +4467,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                 "name": "Name",
                 "phones": Array [
                   Object {
+                    "id": 1,
                     "phone": "123456789",
                   },
                 ],
@@ -4495,6 +4503,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                   "name": "Name",
                   "phones": Array [
                     Object {
+                      "id": 1,
                       "phone": "123456789",
                     },
                   ],
@@ -4534,6 +4543,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                   "name": "Name",
                   "phones": Array [
                     Object {
+                      "id": 1,
                       "phone": "123456789",
                     },
                   ],
@@ -4574,6 +4584,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                     "name": "Name",
                     "phones": Array [
                       Object {
+                        "id": 1,
                         "phone": "123456789",
                       },
                     ],
@@ -4622,6 +4633,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                     "name": "Name",
                     "phones": Array [
                       Object {
+                        "id": 1,
                         "phone": "123456789",
                       },
                     ],
@@ -4815,6 +4827,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                             "name": "Name",
                             "phones": Array [
                               Object {
+                                "id": 1,
                                 "phone": "123456789",
                               },
                             ],
@@ -4855,6 +4868,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               "name": "Name",
                               "phones": Array [
                                 Object {
+                                  "id": 1,
                                   "phone": "123456789",
                                 },
                               ],
@@ -4905,6 +4919,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               "name": "Name",
                               "phones": Array [
                                 Object {
+                                  "id": 1,
                                   "phone": "123456789",
                                 },
                               ],
@@ -7637,6 +7652,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                               handleChange={[Function]}
                               handleSubmit={[Function]}
                               index={0}
+                              key="1"
                               onRemove={[Function]}
                               submitted={false}
                               touched={Object {}}
@@ -7663,6 +7679,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   "name": "Name",
                                   "phones": Array [
                                     Object {
+                                      "id": 1,
                                       "phone": "123456789",
                                     },
                                   ],
