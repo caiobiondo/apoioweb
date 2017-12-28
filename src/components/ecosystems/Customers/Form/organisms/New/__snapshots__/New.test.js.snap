@@ -6117,9 +6117,9 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                             }
                                                           >
                                                             <Icon
-                                                              file="ico_trash"
+                                                              file="ico_minus"
                                                             >
-                                                              <ico_trash.svg />
+                                                              <ico_minus.svg />
                                                             </Icon>
                                                           </div>
                                                         </PhoneFormstyles__IconWrapper>

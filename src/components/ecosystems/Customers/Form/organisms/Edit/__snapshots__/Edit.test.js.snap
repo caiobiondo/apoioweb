@@ -9167,9 +9167,9 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                             }
                                                           >
                                                             <Icon
-                                                              file="ico_trash"
+                                                              file="ico_minus"
                                                             >
-                                                              <ico_trash.svg />
+                                                              <ico_minus.svg />
                                                             </Icon>
                                                           </div>
                                                         </PhoneFormstyles__IconWrapper>

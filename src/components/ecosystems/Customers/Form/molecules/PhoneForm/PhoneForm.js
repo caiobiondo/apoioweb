@@ -53,7 +53,7 @@ const PhoneForm = ({
           }}
           backgroundColor="red"
         >
-          <Icon file="ico_trash" />
+          <Icon file="ico_minus" />
         </FloatingActionButton>
       </RowWithButton>
     </PhoneWrapper>
