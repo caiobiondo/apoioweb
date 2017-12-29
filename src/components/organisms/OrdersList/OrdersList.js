@@ -11,14 +11,20 @@ import InfiniteScroll from 'react-infinite-scroller';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import withErrorHandler from 'hocs/withErrorHandler/withErrorHandler';
 
-const renderOrder = (order, intl) => {
+const renderOrder = (order, importing, intl) => {
   const orderDate = formatDate(order.dataPedido, intl, '-');
   const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl, '-');
   const orderValue = formatCurrency(order.valor, intl, '-');
   const orderProfitsValue = formatCurrency(order.valorLucro, intl, '-');
 
+  let url = `/my-orders/detail/${order.codigoPedido}`;
+  if (importing) {
+    url = `/my-stock/import/orders/detail/${order.codigoPedido}`;
+  }
+
   return (
     <Order
+      importing={importing}
       key={order.codigoPedido}
       statusType={order.statusTipo}
       left={{
@@ -41,7 +47,7 @@ const renderOrder = (order, intl) => {
         },
       }}
       right={{
-        details: `/my-orders/detail/${order.codigoPedido}`,
+        details: url,
         status: order.status,
       }}
     />
@@ -64,7 +70,7 @@ export class OrdersList extends Component {
   }
 
   render() {
-    const { loading, orders, fetchMore, intl } = this.props;
+    const { loading, orders, fetchMore, importing, intl } = this.props;
     if (this._loading(loading, orders)) {
       return <Loading background="transparent" />;
     }
@@ -86,7 +92,7 @@ export class OrdersList extends Component {
             </LoadingWrapper>
           }
         >
-          <List>{orders.map(order => renderOrder(order, intl))}</List>
+          <List>{orders.map(order => renderOrder(order, importing, intl))}</List>
         </InfiniteScroll>
       </Paper>
     );

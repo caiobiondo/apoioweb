@@ -47,7 +47,9 @@ export const OrderInfosColumn = styled.div`
       flex-basis: auto;
 
       ${OrderInfosRow} {
-        padding-left: 0;
+        padding-left: 10px;
+        padding-top: 36px;
+        padding-bottom: 4px;
       }
     }
   }
@@ -165,6 +167,26 @@ export const OrderItemProductImageFallback = styled.div`
     width: 50px;
   }
 `;
+
+export const OrderItemImportButtonWrapper = styled.div`
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    margin: 0 auto;
+  }
+`;
+
+export const orderItemImportButtonStyles = {
+  labelStyle: {
+    fontFamily: 'Roboto-Medium',
+    fontSize: '10px',
+  },
+  buttonStyle: {
+    minWidth: '90px',
+  },
+  overlayStyle: {
+    minWidth: '90px',
+  },
+  height: '25px',
+};
 
 export const OrderItemsHeader = styled.div`
   font-family: Roboto-Regular;

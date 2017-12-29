@@ -4,6 +4,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import Img from 'react-image';
 import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 import { formatDate, formatTime, formatCurrency } from 'locale/utils';
+import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import withUserData from 'hocs/withUserData/withUserData';
 import { orange100 } from 'styles/colors';
 
@@ -11,7 +12,7 @@ import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import OrderDatum from './molecules/OrderDatum/OrderDatum';
 import OrderItemDatum from './molecules/OrderItemDatum/OrderItemDatum';
 
-import { Paper, Loading, Icon } from 'natura-ui';
+import { Paper, Loading, Icon, FormButton } from 'natura-ui';
 import {
   OrderDetailsWrapper,
   OrderInfos,
@@ -34,11 +35,21 @@ import {
   OrderItemProductImageFallback,
   OrderItemWrapper,
   OrderData,
+  OrderItemImportButtonWrapper,
+  orderItemImportButtonStyles,
 } from './OrderDetailsData.styles';
 import { OrderDatumValue } from './molecules/OrderDatum/OrderDatum.styles';
 
 export class OrderDetailsData extends Component {
+  constructor(props) {
+    super(props);
+
+    this.renderOrderItems = this.renderOrderItems.bind(this);
+    this.renderOrderItem = this.renderOrderItem.bind(this);
+  }
+
   renderOrderItems(orderItems) {
+    const { importing } = this.props;
     if (!orderItems) return null;
 
     return (
@@ -57,6 +68,7 @@ export class OrderDetailsData extends Component {
             <OrderItemsHeaderProductValueLabel>
               <FormattedMessage id="orderItemPoints" />
             </OrderItemsHeaderProductValueLabel>
+            {importing && <OrderItemsHeaderProductValueLabel />}
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
         {orderItems.map((orderItem, index) => this.renderOrderItem(orderItem, index))}
@@ -96,7 +108,7 @@ export class OrderDetailsData extends Component {
   }
 
   renderOrderItem(orderItem, index) {
-    const { intl } = this.props;
+    const { intl, importing } = this.props;
     const {
       produto: { description },
       quantidadeItem,
@@ -118,6 +130,17 @@ export class OrderDetailsData extends Component {
             <OrderItemDatum label="orderItemQuantity" value={quantidadeItem} />
             <OrderItemDatum label="orderItemValue" value={formatCurrency(valorTotal, intl)} />
             <OrderItemDatum label="orderItemPoints" value={quantidadePontosTotal} />
+            {importing && (
+              <OrderItemDatum>
+                <OrderItemImportButtonWrapper>
+                  <FormButton
+                    primary
+                    {...orderItemImportButtonStyles}
+                    label={<FormattedMessage id="orderItemImport" />}
+                  />
+                </OrderItemImportButtonWrapper>
+              </OrderItemDatum>
+            )}
           </OrderItemProductDataWrapper>
         </OrderItem>
       </OrderItemWrapper>
@@ -380,6 +403,8 @@ export class OrderDetailsData extends Component {
     );
   }
 }
+
+export const OrderDetailsDataWithAuthErrorHandler = withAuthErrorHandler(OrderDetailsData);
 
 export const OrderDetailsDataWithIntl = injectIntl(OrderDetailsData);
 
