@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { RobotoRegular, NaturaBold } from 'styles/typography';
+import { RobotoRegular, RobotoMedium, NaturaBold } from 'styles/typography';
 
 export const Wrapper = styled.form`
   margin-bottom: 40px;
@@ -19,33 +19,19 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormButtonsWrapper = styled.div`
-  text-align: center;
-
-  & > * {
-    display: inline-block;
-    margin-right: 30px !important;
-  }
-
-  & > *:last-child {
-    margin-right: 0 !important;
-  }
-
-  button {
-    color: white;
-    text-align: center;
-  }
-
-  button div {
-    text-align: center !important;
-    display: inline !important;
-  }
-
-  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
-    & > * {
-      margin-right: 12px !important;
-    }
+  display: flex;
+  justify-content: center;
+  > div + div {
+    margin-left: 30px;
   }
 `;
+
+export const formButtonStyles = {
+  labelStyle: {
+    fontFamily: RobotoMedium,
+  },
+  height: '50px',
+};
 
 export const PageTitle = styled.h1`
   color: #f3971f;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RobotoMedium, RobotoRegular } from 'styles/typography';
 import { FormInput as BaseFormInput } from 'natura-ui';
 import { Responsive } from '@entria/components';
 
@@ -9,6 +10,7 @@ export const Wrapper = {
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  font-family: ${RobotoRegular};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-direction: column;
@@ -16,37 +18,28 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormButtonWrapper = styled.div`
-  align-items: flex-end;
-  display: flex;
   margin-left: 20px;
-
-  button {
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  button div {
-    display: inline !important;
-  }
-
-  > div > div {
-    > button {
-      height: 54px !important;
-    }
-  }
+  display: flex;
+  align-items: flex-end;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-left: 0;
     margin-top: 20px;
-
-    > div,
-    > div > div {
-      width: 100%;
-    }
   }
 `;
 
+export const formButtonStyles = {
+  height: '54px',
+  labelStyle: {
+    fontFamily: RobotoMedium,
+  },
+};
+
 export const FormInput = styled(BaseFormInput)`
   flex: 1;
+`;
+
+export const CustomerSearchDescription = styled.div`
+  font-family: ${RobotoRegular};
+  margin: 16px 0;
 `;

@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { Paper, FormButton } from 'natura-ui';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import { translate } from 'locale';
-import { Wrapper, FormWrapper, FormButtonWrapper, FormInput } from './CustomerSearch.styles';
+import {
+  Wrapper,
+  FormWrapper,
+  FormButtonWrapper,
+  formButtonStyles,
+  FormInput,
+  CustomerSearchDescription,
+} from './CustomerSearch.styles';
 
 export class CustomerSearch extends Component {
   state = {
@@ -34,7 +41,7 @@ export class CustomerSearch extends Component {
     return (
       <Paper style={Wrapper}>
         <SectionTitle iconName="ico_add_customer" value="myCustomers" />
-        <p>{translate('customersSearchInfo')}</p>
+        <CustomerSearchDescription>{translate('customersSearchInfo')}</CustomerSearchDescription>
         <FormWrapper>
           <FormInput
             type="text"
@@ -45,9 +52,13 @@ export class CustomerSearch extends Component {
             value={name}
           />
           <FormButtonWrapper>
-            <FormButton primary type="submit" onClick={this.onSubmit}>
-              {translate('search')}
-            </FormButton>
+            <FormButton
+              primary
+              {...formButtonStyles}
+              type="submit"
+              onClick={this.onSubmit}
+              label={translate('search')}
+            />
           </FormButtonWrapper>
         </FormWrapper>
       </Paper>
