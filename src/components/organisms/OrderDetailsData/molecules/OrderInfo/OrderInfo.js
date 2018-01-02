@@ -8,7 +8,7 @@ import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import OrderDatum from '../OrderDatum/OrderDatum';
 
 import {
-  OrderDetailsWrapper,
+  Wrapper,
   OrderInfos,
   OrderInfosColumn,
   OrderInfosRow,
@@ -17,6 +17,13 @@ import {
 import { OrderDatumValue } from '../OrderDatum/OrderDatum.styles';
 
 export default class OrderInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: !props.importing,
+    };
+  }
+
   renderPaymentMethods = paymentMethods => {
     return paymentMethods.map((paymentMethod, index) => {
       return this.renderPaymentMethod(paymentMethod, index);
@@ -233,25 +240,39 @@ export default class OrderInfo extends Component {
     );
   };
 
-  render() {
-    const { order } = this.props;
-    return (
-      <Paper style={OrderDetailsWrapper}>
-        <SectionTitle iconName="ico_info" value="orderInformations" />
-        <OrderInfos>
-          <OrderInfosColumn>
-            {this.renderOrderData(order)}
-            {this.renderOrderValues(order)}
-            {this.renderOrderPaymentMethods(order)}
-            {this.renderOrderReceipt(order)}
-          </OrderInfosColumn>
+  onToggleSize = () => {
+    this.setState({ expanded: !this.state.expanded });
+  };
 
-          <OrderInfosColumn>
-            {this.renderOrderDelivery(order)}
-            {this.renderOrderEvents(order)}
-            {this.renderOrderDeliveryAddress(order)}
-          </OrderInfosColumn>
-        </OrderInfos>
+  render() {
+    const { order, importing } = this.props;
+    const { expanded } = this.state;
+
+    return (
+      <Paper style={Wrapper}>
+        <SectionTitle
+          iconName="ico_info"
+          value="orderInformations"
+          expandable={importing}
+          expanded={expanded}
+          onToggle={this.onToggleSize}
+        />
+        {expanded && (
+          <OrderInfos>
+            <OrderInfosColumn>
+              {this.renderOrderData(order)}
+              {this.renderOrderValues(order)}
+              {this.renderOrderPaymentMethods(order)}
+              {this.renderOrderReceipt(order)}
+            </OrderInfosColumn>
+
+            <OrderInfosColumn>
+              {this.renderOrderDelivery(order)}
+              {this.renderOrderEvents(order)}
+              {this.renderOrderDeliveryAddress(order)}
+            </OrderInfosColumn>
+          </OrderInfos>
+        )}
       </Paper>
     );
   }

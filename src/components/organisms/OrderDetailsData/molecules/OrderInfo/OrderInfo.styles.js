@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray150, gray200, gray890, orange100 } from 'styles/colors';
-import { fs12, fs14, fs18 } from 'styles/typography';
+import { gray150 } from 'styles/colors';
 import { spMedium } from 'styles/spacing';
 
-export const OrderDetailsWrapper = {
+export const Wrapper = {
   padding: '30px',
   marginBottom: spMedium,
 };
