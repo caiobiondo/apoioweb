@@ -390,26 +390,18 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 }
 
 .c24 {
-  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.c24 > * {
-  display: inline-block;
-  margin-right: 30px !important;
-}
-
-.c24 > *:last-child {
-  margin-right: 0 !important;
-}
-
-.c24 button {
-  color: white;
-  text-align: center;
-}
-
-.c24 button div {
-  text-align: center !important;
-  display: inline !important;
+.c24 > div + div {
+  margin-left: 30px;
 }
 
 .c25:not(:last-child) {
@@ -545,12 +537,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 @media (max-width:480px) {
   .c9 {
     width: 100%;
-  }
-}
-
-@media (max-width:480px) {
-  .c24 > * {
-    margin-right: 12px !important;
   }
 }
 
@@ -1533,9 +1519,11 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "orderEventSolution": "Solução para a consultora",
             "orderEvents": "Ocorrências",
             "orderHistory": "Histórico de Pedidos",
+            "orderImport": "Importar",
             "orderInformations": "Informações",
             "orderInstallmentValue": "Valor da parcela",
             "orderInstallmentsNumber": "Nº de parcelas",
+            "orderItemImport": "Importar",
             "orderItemPoints": "Pontos",
             "orderItemProduct": "Produto",
             "orderItemProductCode": "Código",
@@ -6193,7 +6181,19 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             backgroundColor="#c9c9c9"
                             disabled={false}
                             flat={true}
+                            height="50px"
+                            label={
+                              <FormattedMessage
+                                id="formCustomerBack"
+                                values={Object {}}
+                              />
+                            }
                             labelColor="#fff"
+                            labelStyle={
+                              Object {
+                                "fontFamily": "Roboto-Medium",
+                              }
+                            }
                             link={null}
                             onClick={[Function]}
                             primary={false}
@@ -6201,21 +6201,52 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             <styled.div
                               backgroundColor="#c9c9c9"
                               disabled={false}
+                              height="50px"
+                              label={
+                                <FormattedMessage
+                                  id="formCustomerBack"
+                                  values={Object {}}
+                                />
+                              }
                               labelColor="#fff"
+                              labelStyle={
+                                Object {
+                                  "fontFamily": "Roboto-Medium",
+                                }
+                              }
                               onClick={[Function]}
                               primary={false}
                             >
                               <div
                                 className="c25"
                                 disabled={false}
+                                height="50px"
+                                label={
+                                  <FormattedMessage
+                                    id="formCustomerBack"
+                                    values={Object {}}
+                                  />
+                                }
                                 onClick={[Function]}
                               >
                                 <RaisedButton
                                   backgroundColor="#c9c9c9"
                                   disabled={false}
                                   fullWidth={false}
+                                  height="50px"
+                                  label={
+                                    <FormattedMessage
+                                      id="formCustomerBack"
+                                      values={Object {}}
+                                    />
+                                  }
                                   labelColor="#fff"
                                   labelPosition="after"
+                                  labelStyle={
+                                    Object {
+                                      "fontFamily": "Roboto-Medium",
+                                    }
+                                  }
                                   onClick={[Function]}
                                   primary={false}
                                   secondary={false}
@@ -6256,6 +6287,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                         disabled={false}
                                         focusRippleColor="#fff"
                                         focusRippleOpacity={0.1}
+                                        height="50px"
                                         onBlur={[Function]}
                                         onClick={[Function]}
                                         onFocus={[Function]}
@@ -6287,6 +6319,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       >
                                         <button
                                           disabled={false}
+                                          height="50px"
                                           onBlur={[Function]}
                                           onClick={[Function]}
                                           onFocus={[Function]}
@@ -6352,14 +6385,35 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                   }
                                                 }
                                               >
-                                                <FormattedMessage
-                                                  id="formCustomerBack"
-                                                  values={Object {}}
+                                                <span
+                                                  key="labelElement"
+                                                  style={
+                                                    Object {
+                                                      "color": "#fff",
+                                                      "fontFamily": "Roboto-Medium",
+                                                      "fontSize": 14,
+                                                      "fontWeight": 500,
+                                                      "letterSpacing": 0,
+                                                      "margin": 0,
+                                                      "muiPrepared": true,
+                                                      "opacity": 1,
+                                                      "paddingLeft": 16,
+                                                      "paddingRight": 16,
+                                                      "position": "relative",
+                                                      "textTransform": "uppercase",
+                                                      "userSelect": "none",
+                                                    }
+                                                  }
                                                 >
-                                                  <span>
-                                                    Voltar
-                                                  </span>
-                                                </FormattedMessage>
+                                                  <FormattedMessage
+                                                    id="formCustomerBack"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Voltar
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </span>
                                               </div>
                                             </div>
                                           </TouchRipple>
@@ -6375,7 +6429,19 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             backgroundColor="#c9c9c9"
                             disabled={false}
                             flat={true}
+                            height="50px"
+                            label={
+                              <FormattedMessage
+                                id="formCustomerNext"
+                                values={Object {}}
+                              />
+                            }
                             labelColor="#fff"
+                            labelStyle={
+                              Object {
+                                "fontFamily": "Roboto-Medium",
+                              }
+                            }
                             link={null}
                             onClick={[Function]}
                             primary={true}
@@ -6384,7 +6450,19 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             <styled.div
                               backgroundColor="#c9c9c9"
                               disabled={false}
+                              height="50px"
+                              label={
+                                <FormattedMessage
+                                  id="formCustomerNext"
+                                  values={Object {}}
+                                />
+                              }
                               labelColor="#fff"
+                              labelStyle={
+                                Object {
+                                  "fontFamily": "Roboto-Medium",
+                                }
+                              }
                               onClick={[Function]}
                               primary={true}
                               type="submit"
@@ -6392,6 +6470,13 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               <div
                                 className="c26"
                                 disabled={false}
+                                height="50px"
+                                label={
+                                  <FormattedMessage
+                                    id="formCustomerNext"
+                                    values={Object {}}
+                                  />
+                                }
                                 onClick={[Function]}
                                 type="submit"
                               >
@@ -6399,8 +6484,20 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                   backgroundColor="#c9c9c9"
                                   disabled={false}
                                   fullWidth={false}
+                                  height="50px"
+                                  label={
+                                    <FormattedMessage
+                                      id="formCustomerNext"
+                                      values={Object {}}
+                                    />
+                                  }
                                   labelColor="#fff"
                                   labelPosition="after"
+                                  labelStyle={
+                                    Object {
+                                      "fontFamily": "Roboto-Medium",
+                                    }
+                                  }
                                   onClick={[Function]}
                                   primary={true}
                                   secondary={false}
@@ -6442,6 +6539,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                         disabled={false}
                                         focusRippleColor="#ffffff"
                                         focusRippleOpacity={0.16}
+                                        height="50px"
                                         onBlur={[Function]}
                                         onClick={[Function]}
                                         onFocus={[Function]}
@@ -6473,6 +6571,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       >
                                         <button
                                           disabled={false}
+                                          height="50px"
                                           onBlur={[Function]}
                                           onClick={[Function]}
                                           onFocus={[Function]}
@@ -6538,14 +6637,35 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                   }
                                                 }
                                               >
-                                                <FormattedMessage
-                                                  id="formCustomerNext"
-                                                  values={Object {}}
+                                                <span
+                                                  key="labelElement"
+                                                  style={
+                                                    Object {
+                                                      "color": "#ffffff",
+                                                      "fontFamily": "Roboto-Medium",
+                                                      "fontSize": 14,
+                                                      "fontWeight": 500,
+                                                      "letterSpacing": 0,
+                                                      "margin": 0,
+                                                      "muiPrepared": true,
+                                                      "opacity": 1,
+                                                      "paddingLeft": 16,
+                                                      "paddingRight": 16,
+                                                      "position": "relative",
+                                                      "textTransform": "uppercase",
+                                                      "userSelect": "none",
+                                                    }
+                                                  }
                                                 >
-                                                  <span>
-                                                    Próximo
-                                                  </span>
-                                                </FormattedMessage>
+                                                  <FormattedMessage
+                                                    id="formCustomerNext"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Próximo
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </span>
                                               </div>
                                             </div>
                                           </TouchRipple>

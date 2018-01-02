@@ -1,0 +1,450 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderItems renders order details items list (in importing mode) 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "24px",
+      "padding": "30px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_box"
+    value="orderItems"
+  />
+  <OrderItemsstyles__OrderItemsInfos>
+    <OrderItemsstyles__OrderItemsQuantityWrapper>
+      <FormattedMessage
+        id="orderItemsBoughtQuantity"
+        values={Object {}}
+      />
+      <OrderItemsstyles__OrderItemsQuantity>
+        (
+        2
+        )
+      </OrderItemsstyles__OrderItemsQuantity>
+    </OrderItemsstyles__OrderItemsQuantityWrapper>
+    <div>
+      <OrderItemsstyles__OrderItemsHeader>
+        <OrderItemsstyles__OrderItemsHeaderProductDescription>
+          <FormattedMessage
+            id="orderItemProduct"
+            values={Object {}}
+          />
+        </OrderItemsstyles__OrderItemsHeaderProductDescription>
+        <OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemQuantity"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemValue"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemPoints"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel />
+        </OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+      </OrderItemsstyles__OrderItemsHeader>
+      <OrderItemsstyles__OrderItemWrapper
+        key="0"
+      >
+        <OrderItemsstyles__OrderItem>
+          <OrderItemsstyles__OrderItemProductDescriptionWrapper>
+            <OrderItemsstyles__OrderItemProductImageWrapper>
+              <Img
+                decode={true}
+                loader={
+                  <Loading
+                    background="#FFFFFF"
+                    visible={true}
+                    zIndex={9999}
+                  />
+                }
+                src="http://rede.natura.net/image/sku/145x145/29415_1.jpg"
+                unloader={
+                  <OrderItemsstyles__OrderItemProductImageFallback>
+                    <Icon
+                      file="ico_pictureless"
+                    />
+                  </OrderItemsstyles__OrderItemProductImageFallback>
+                }
+              />
+            </OrderItemsstyles__OrderItemProductImageWrapper>
+            <OrderItemsstyles__OrderItemProductDescriptionCode>
+              <OrderItemsstyles__OrderItemProductDescription>
+                POLPA HIDRAT CORPO ANDIROBA EKOS        
+              </OrderItemsstyles__OrderItemProductDescription>
+              <OrderItemsstyles__OrderItemProductCode>
+                <FormattedMessage
+                  id="orderItemProductCode"
+                  values={Object {}}
+                />
+                : 
+                29415
+                 (
+                8
+                 
+                <FormattedMessage
+                  id="orderItemPoints"
+                  values={Object {}}
+                />
+                )
+              </OrderItemsstyles__OrderItemProductCode>
+            </OrderItemsstyles__OrderItemProductDescriptionCode>
+          </OrderItemsstyles__OrderItemProductDescriptionWrapper>
+          <OrderItemsstyles__OrderItemProductDataWrapper>
+            <OrderItemDatum
+              label="orderItemQuantity"
+              value={1}
+            />
+            <OrderItemDatum
+              label="orderItemValue"
+              value="formatedNumber 33.529998779296875"
+            />
+            <OrderItemDatum
+              label="orderItemPoints"
+              value={8}
+            />
+            <OrderItemDatum>
+              <OrderItemsstyles__OrderItemImportButtonWrapper>
+                <FormButton
+                  backgroundColor="#c9c9c9"
+                  buttonStyle={
+                    Object {
+                      "minWidth": "90px",
+                    }
+                  }
+                  disabled={false}
+                  flat={true}
+                  height="25px"
+                  label={
+                    <FormattedMessage
+                      id="orderItemImport"
+                      values={Object {}}
+                    />
+                  }
+                  labelColor="#fff"
+                  labelStyle={
+                    Object {
+                      "fontFamily": "Roboto-Medium",
+                      "fontSize": "10px",
+                    }
+                  }
+                  link={null}
+                  overlayStyle={
+                    Object {
+                      "minWidth": "90px",
+                    }
+                  }
+                  primary={true}
+                />
+              </OrderItemsstyles__OrderItemImportButtonWrapper>
+            </OrderItemDatum>
+          </OrderItemsstyles__OrderItemProductDataWrapper>
+        </OrderItemsstyles__OrderItem>
+      </OrderItemsstyles__OrderItemWrapper>
+      <OrderItemsstyles__OrderItemWrapper
+        key="1"
+      >
+        <OrderItemsstyles__OrderItem>
+          <OrderItemsstyles__OrderItemProductDescriptionWrapper>
+            <OrderItemsstyles__OrderItemProductImageWrapper>
+              <Img
+                decode={true}
+                loader={
+                  <Loading
+                    background="#FFFFFF"
+                    visible={true}
+                    zIndex={9999}
+                  />
+                }
+                src="http://rede.natura.net/image/sku/145x145/38889_1.jpg"
+                unloader={
+                  <OrderItemsstyles__OrderItemProductImageFallback>
+                    <Icon
+                      file="ico_pictureless"
+                    />
+                  </OrderItemsstyles__OrderItemProductImageFallback>
+                }
+              />
+            </OrderItemsstyles__OrderItemProductImageWrapper>
+            <OrderItemsstyles__OrderItemProductDescriptionCode>
+              <OrderItemsstyles__OrderItemProductDescription>
+                SOU SAB BARRA CREMOSIDADE 5X90G         
+              </OrderItemsstyles__OrderItemProductDescription>
+              <OrderItemsstyles__OrderItemProductCode>
+                <FormattedMessage
+                  id="orderItemProductCode"
+                  values={Object {}}
+                />
+                : 
+                38889
+                 (
+                2
+                 
+                <FormattedMessage
+                  id="orderItemPoints"
+                  values={Object {}}
+                />
+                )
+              </OrderItemsstyles__OrderItemProductCode>
+            </OrderItemsstyles__OrderItemProductDescriptionCode>
+          </OrderItemsstyles__OrderItemProductDescriptionWrapper>
+          <OrderItemsstyles__OrderItemProductDataWrapper>
+            <OrderItemDatum
+              label="orderItemQuantity"
+              value={1}
+            />
+            <OrderItemDatum
+              label="orderItemValue"
+              value="formatedNumber 8.399999618530273"
+            />
+            <OrderItemDatum
+              label="orderItemPoints"
+              value={2}
+            />
+            <OrderItemDatum>
+              <OrderItemsstyles__OrderItemImportButtonWrapper>
+                <FormButton
+                  backgroundColor="#c9c9c9"
+                  buttonStyle={
+                    Object {
+                      "minWidth": "90px",
+                    }
+                  }
+                  disabled={false}
+                  flat={true}
+                  height="25px"
+                  label={
+                    <FormattedMessage
+                      id="orderItemImport"
+                      values={Object {}}
+                    />
+                  }
+                  labelColor="#fff"
+                  labelStyle={
+                    Object {
+                      "fontFamily": "Roboto-Medium",
+                      "fontSize": "10px",
+                    }
+                  }
+                  link={null}
+                  overlayStyle={
+                    Object {
+                      "minWidth": "90px",
+                    }
+                  }
+                  primary={true}
+                />
+              </OrderItemsstyles__OrderItemImportButtonWrapper>
+            </OrderItemDatum>
+          </OrderItemsstyles__OrderItemProductDataWrapper>
+        </OrderItemsstyles__OrderItem>
+      </OrderItemsstyles__OrderItemWrapper>
+    </div>
+  </OrderItemsstyles__OrderItemsInfos>
+</Paper>
+`;
+
+exports[`OrderItems renders order details items list 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "24px",
+      "padding": "30px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_box"
+    value="orderItems"
+  />
+  <OrderItemsstyles__OrderItemsInfos>
+    <OrderItemsstyles__OrderItemsQuantityWrapper>
+      <FormattedMessage
+        id="orderItemsBoughtQuantity"
+        values={Object {}}
+      />
+      <OrderItemsstyles__OrderItemsQuantity>
+        (
+        2
+        )
+      </OrderItemsstyles__OrderItemsQuantity>
+    </OrderItemsstyles__OrderItemsQuantityWrapper>
+    <div>
+      <OrderItemsstyles__OrderItemsHeader>
+        <OrderItemsstyles__OrderItemsHeaderProductDescription>
+          <FormattedMessage
+            id="orderItemProduct"
+            values={Object {}}
+          />
+        </OrderItemsstyles__OrderItemsHeaderProductDescription>
+        <OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemQuantity"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemValue"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemPoints"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+        </OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+      </OrderItemsstyles__OrderItemsHeader>
+      <OrderItemsstyles__OrderItemWrapper
+        key="0"
+      >
+        <OrderItemsstyles__OrderItem>
+          <OrderItemsstyles__OrderItemProductDescriptionWrapper>
+            <OrderItemsstyles__OrderItemProductImageWrapper>
+              <Img
+                decode={true}
+                loader={
+                  <Loading
+                    background="#FFFFFF"
+                    visible={true}
+                    zIndex={9999}
+                  />
+                }
+                src="http://rede.natura.net/image/sku/145x145/29415_1.jpg"
+                unloader={
+                  <OrderItemsstyles__OrderItemProductImageFallback>
+                    <Icon
+                      file="ico_pictureless"
+                    />
+                  </OrderItemsstyles__OrderItemProductImageFallback>
+                }
+              />
+            </OrderItemsstyles__OrderItemProductImageWrapper>
+            <OrderItemsstyles__OrderItemProductDescriptionCode>
+              <OrderItemsstyles__OrderItemProductDescription>
+                POLPA HIDRAT CORPO ANDIROBA EKOS        
+              </OrderItemsstyles__OrderItemProductDescription>
+              <OrderItemsstyles__OrderItemProductCode>
+                <FormattedMessage
+                  id="orderItemProductCode"
+                  values={Object {}}
+                />
+                : 
+                29415
+                 (
+                8
+                 
+                <FormattedMessage
+                  id="orderItemPoints"
+                  values={Object {}}
+                />
+                )
+              </OrderItemsstyles__OrderItemProductCode>
+            </OrderItemsstyles__OrderItemProductDescriptionCode>
+          </OrderItemsstyles__OrderItemProductDescriptionWrapper>
+          <OrderItemsstyles__OrderItemProductDataWrapper>
+            <OrderItemDatum
+              label="orderItemQuantity"
+              value={1}
+            />
+            <OrderItemDatum
+              label="orderItemValue"
+              value="formatedNumber 33.529998779296875"
+            />
+            <OrderItemDatum
+              label="orderItemPoints"
+              value={8}
+            />
+          </OrderItemsstyles__OrderItemProductDataWrapper>
+        </OrderItemsstyles__OrderItem>
+      </OrderItemsstyles__OrderItemWrapper>
+      <OrderItemsstyles__OrderItemWrapper
+        key="1"
+      >
+        <OrderItemsstyles__OrderItem>
+          <OrderItemsstyles__OrderItemProductDescriptionWrapper>
+            <OrderItemsstyles__OrderItemProductImageWrapper>
+              <Img
+                decode={true}
+                loader={
+                  <Loading
+                    background="#FFFFFF"
+                    visible={true}
+                    zIndex={9999}
+                  />
+                }
+                src="http://rede.natura.net/image/sku/145x145/38889_1.jpg"
+                unloader={
+                  <OrderItemsstyles__OrderItemProductImageFallback>
+                    <Icon
+                      file="ico_pictureless"
+                    />
+                  </OrderItemsstyles__OrderItemProductImageFallback>
+                }
+              />
+            </OrderItemsstyles__OrderItemProductImageWrapper>
+            <OrderItemsstyles__OrderItemProductDescriptionCode>
+              <OrderItemsstyles__OrderItemProductDescription>
+                SOU SAB BARRA CREMOSIDADE 5X90G         
+              </OrderItemsstyles__OrderItemProductDescription>
+              <OrderItemsstyles__OrderItemProductCode>
+                <FormattedMessage
+                  id="orderItemProductCode"
+                  values={Object {}}
+                />
+                : 
+                38889
+                 (
+                2
+                 
+                <FormattedMessage
+                  id="orderItemPoints"
+                  values={Object {}}
+                />
+                )
+              </OrderItemsstyles__OrderItemProductCode>
+            </OrderItemsstyles__OrderItemProductDescriptionCode>
+          </OrderItemsstyles__OrderItemProductDescriptionWrapper>
+          <OrderItemsstyles__OrderItemProductDataWrapper>
+            <OrderItemDatum
+              label="orderItemQuantity"
+              value={1}
+            />
+            <OrderItemDatum
+              label="orderItemValue"
+              value="formatedNumber 8.399999618530273"
+            />
+            <OrderItemDatum
+              label="orderItemPoints"
+              value={2}
+            />
+          </OrderItemsstyles__OrderItemProductDataWrapper>
+        </OrderItemsstyles__OrderItem>
+      </OrderItemsstyles__OrderItemWrapper>
+    </div>
+  </OrderItemsstyles__OrderItemsInfos>
+</Paper>
+`;

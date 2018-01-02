@@ -2,527 +2,255 @@
 
 exports[`OrderDetailsData renders order details 1`] = `
 <div>
-  <Paper
-    circle={false}
-    rounded={true}
-    style={
+  <OrderInfo
+    intl={
       Object {
-        "marginBottom": "24px",
-        "padding": "30px",
+        "formatCurrency": [Function],
+        "formatDate": [Function],
+        "formatNumber": [Function],
+        "formatTime": [Function],
       }
     }
-    transitionEnabled={true}
-    zDepth={1}
-  >
-    <SectionTitle
-      iconName="ico_info"
-      value="orderInformations"
-    />
-    <OrderDetailsDatastyles__OrderInfos>
-      <OrderDetailsDatastyles__OrderInfosColumn>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderData"
-          />
-          <OrderDetailsDatastyles__OrderData>
-            <OrderDatum
-              label="orderNumber"
-              type="short"
-              value={378325469}
-            />
-            <OrderDatum
-              label="orderCycle"
-              type="short"
-              value="14/2017"
-            />
-            <OrderDatum
-              label="orderDate"
-              type="short"
-              value="formatedDate"
-            />
-            <OrderDatum
-              label="orderStatus"
-              type="long"
-              value="CONCLUÍDO E APROVADO"
-            />
-            <OrderDatum
-              label="orderItemsQuantity"
-              type="short"
-              value={1}
-            />
-            <OrderDatum
-              label="orderTotalScore"
-              type="short"
-              value={68}
-            />
-            <OrderDatum
-              label="orderReception"
-              type="short"
-              value="WEB"
-            />
-            <OrderDatum
-              label="orderPaymentSlip"
-              type="long"
-              value="Impresso e Enviado com o Pedido"
-            />
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderValues"
-          />
-          <OrderDetailsDatastyles__OrderData>
-            <OrderDatum
-              label="orderDetailsOrderValue"
-              type="short"
-              value="formatedNumber 390.0799865722656"
-            />
-            <OrderDatum
-              label="orderTaxValue"
-              type="short"
-              value="formatedNumber 11.702399597167968"
-            />
-            <OrderDatum
-              label="orderInstallmentsNumber"
-              type="short"
-              value={2}
-            />
-            <OrderDatum
-              label="orderInstallmentValue"
-              type="short"
-              value="formatedNumber 200.89"
-            />
-            <OrderDatum
-              label="orderValue"
-              type="short"
-              value="formatedNumber 401.78238616943355"
-            />
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderPayment"
-          />
-          <OrderDetailsDatastyles__OrderData>
-            <OrderDatum
-              label="orderPaymentMessage"
-              type="long"
-            >
-              <OrderDatumstyles__OrderDatumValue
-                key="0"
-              >
-                21/42 DIAS - formatedNumber 401.78238616943355
-              </OrderDatumstyles__OrderDatumValue>
-              <OrderDatumstyles__OrderDatumValue
-                key="1"
-              >
-                21/42 DIAS - formatedNumber 401.78238616943355
-              </OrderDatumstyles__OrderDatumValue>
-            </OrderDatum>
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderReceipt"
-          />
-          <OrderDetailsDatastyles__OrderData>
-            <OrderDatum
-              label="orderReceiptNumber"
-              type="short"
-              value={null}
-            />
-            <OrderDatum
-              label="orderReceiptEmitDate"
-              type="short"
-              value="-"
-            />
-            <OrderDatum
-              label="orderReceiptModel"
-              type="short"
-              value="Consultora"
-            />
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-      </OrderDetailsDatastyles__OrderInfosColumn>
-      <OrderDetailsDatastyles__OrderInfosColumn>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderDelivery"
-          />
-          <OrderDetailsDatastyles__OrderData>
-            <OrderDatum
-              label="orderDeliveryEstimatedDate"
-              type="medium"
-              value="formatedDate"
-            />
-            <OrderDatum
-              label="orderDeliveryNewEstimatedDate"
-              type="medium"
-              value="-"
-            />
-            <OrderDatum
-              label="orderDeliveryExtendedEstimatedDate"
-              type="medium"
-              value="-"
-            />
-            <OrderDatum
-              label="orderDeliveryFirstTryDate"
-              type="medium"
-              value="-"
-            />
-            <OrderDatum
-              label="orderDeliverySecondTryDate"
-              type="medium"
-              value="-"
-            />
-            <OrderDatum
-              label="orderDeliveryRealDate"
-              type="medium"
-              value="formatedDate"
-            />
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderEvents"
-          />
-          <OrderDetailsDatastyles__OrderData
-            key="87"
-          >
-            <OrderDatum
-              label="orderEvents"
-              type="long"
-              value="INFORMATIVA"
-            />
-            <OrderDatum
-              label="orderEventMotive"
-              type="long"
-              value="Saiu para Entrega"
-            />
-            <OrderDatum
-              label="orderEventSolution"
-              type="long"
-              value="Saiu para Entrega"
-            />
-            <OrderDatum
-              label="orderEventDate"
-              type="medium"
-              value="formatedDate"
-            />
-            <OrderDatum
-              label="orderEventHour"
-              type="medium"
-              value="formatedTime"
-            />
-          </OrderDetailsDatastyles__OrderData>
-          <OrderDetailsDatastyles__OrderData
-            key="66"
-          >
-            <OrderDatum
-              label="orderEvents"
-              type="long"
-              value="ENTREGA"
-            />
-            <OrderDatum
-              label="orderEventMotive"
-              type="long"
-              value="1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa."
-            />
-            <OrderDatum
-              label="orderEventSolution"
-              type="long"
-              value="1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa."
-            />
-            <OrderDatum
-              label="orderEventDate"
-              type="medium"
-              value="formatedDate"
-            />
-            <OrderDatum
-              label="orderEventHour"
-              type="medium"
-              value="formatedTime"
-            />
-          </OrderDetailsDatastyles__OrderData>
-          <OrderDetailsDatastyles__OrderData
-            key="49"
-          >
-            <OrderDatum
-              label="orderEvents"
-              type="long"
-              value="INFORMATIVA"
-            />
-            <OrderDatum
-              label="orderEventMotive"
-              type="long"
-              value="Chegada Filial Destino"
-            />
-            <OrderDatum
-              label="orderEventSolution"
-              type="long"
-              value="Chegada Filial Destino"
-            />
-            <OrderDatum
-              label="orderEventDate"
-              type="medium"
-              value="formatedDate"
-            />
-            <OrderDatum
-              label="orderEventHour"
-              type="medium"
-              value="formatedTime"
-            />
-          </OrderDetailsDatastyles__OrderData>
-          <OrderDetailsDatastyles__OrderData
-            key="88"
-          >
-            <OrderDatum
-              label="orderEvents"
-              type="long"
-              value="INFORMATIVA"
-            />
-            <OrderDatum
-              label="orderEventMotive"
-              type="long"
-              value="Coletado pela Transportadora"
-            />
-            <OrderDatum
-              label="orderEventSolution"
-              type="long"
-              value="Coletado pela Transportadora"
-            />
-            <OrderDatum
-              label="orderEventDate"
-              type="medium"
-              value="formatedDate"
-            />
-            <OrderDatum
-              label="orderEventHour"
-              type="medium"
-              value="formatedTime"
-            />
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-        <OrderDetailsDatastyles__OrderInfosRow>
-          <SectionTitle
-            color="#f3971f"
-            value="orderDeliveryAddress"
-          />
-          <OrderDetailsDatastyles__OrderData>
-            <OrderDatum
-              type="long"
-            >
-              <OrderDatumstyles__OrderDatumValue>
-                R ACUCENA, 0 - XANGRI LA
-              </OrderDatumstyles__OrderDatumValue>
-              <OrderDatumstyles__OrderDatumValue>
-                CONTAGEM - MG
-              </OrderDatumstyles__OrderDatumValue>
-              <OrderDatumstyles__OrderDatumValue>
-                <FormattedMessage
-                  id="orderDeliveryAddressZipcode"
-                  values={Object {}}
-                />
-                :
-                 32187-090
-              </OrderDatumstyles__OrderDatumValue>
-            </OrderDatum>
-          </OrderDetailsDatastyles__OrderData>
-        </OrderDetailsDatastyles__OrderInfosRow>
-      </OrderDetailsDatastyles__OrderInfosColumn>
-    </OrderDetailsDatastyles__OrderInfos>
-  </Paper>
-  <Paper
-    circle={false}
-    rounded={true}
-    style={
+    order={
       Object {
-        "marginBottom": "24px",
-        "padding": "30px",
+        "__typename": "Order",
+        "ciclo": "14/2017",
+        "codigoPedido": 378325469,
+        "dataEmissaoNotaFiscal": null,
+        "dataPedido": "2017-10-06T18:40:55.000Z",
+        "entrega": Object {
+          "__typename": "Delivery",
+          "dtNovaPrevisaoEntrega": null,
+          "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+          "dtPrevisaoEntregaProrrogada": null,
+          "dtPrimeiraTentativaEntrega": null,
+          "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+          "dtSegundaTentativaEntrega": null,
+          "enderecoEntrega": Object {
+            "__typename": "DeliveryAddress",
+            "bairro": "XANGRI LA",
+            "cep": "32187090",
+            "cidade": "CONTAGEM",
+            "complemento": "B",
+            "estado": "MG",
+            "nomeLogradouro": "ACUCENA",
+            "numero": "0",
+            "tipoLogradouro": "R",
+          },
+        },
+        "envioBoleto": "Impresso e Enviado com o Pedido",
+        "formasPagamento": Array [
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+        ],
+        "itemEnviadoCaixa": Array [
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 29415,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 8,
+            "quantidadePontosUnitario": 8,
+            "valorTotal": 33.529998779296875,
+          },
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 38889,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 2,
+            "quantidadePontosUnitario": 2,
+            "valorTotal": 8.399999618530273,
+          },
+        ],
+        "meioCaptacao": "WEB",
+        "modeloComercial": "Consultora",
+        "numeroNotaFiscal": null,
+        "ocorrencias": Array [
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-08T10:44:00.000Z",
+            "id": 87,
+            "motivo": "Saiu para Entrega",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Saiu para Entrega",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T16:39:00.000Z",
+            "id": 66,
+            "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+            "ocorrencia": "ENTREGA",
+            "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T05:40:00.000Z",
+            "id": 49,
+            "motivo": "Chegada Filial Destino",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Chegada Filial Destino",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-06T18:46:00.000Z",
+            "id": 88,
+            "motivo": "Coletado pela Transportadora",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Coletado pela Transportadora",
+          },
+        ],
+        "pontos": 68,
+        "qtdParcelas": 2,
+        "quantidadeItens": 1,
+        "status": "CONCLUÍDO E APROVADO",
+        "valor": 390.0799865722656,
+        "valorParcela": 200.89,
+        "vlAPagarSomaTaxa": 401.78238616943355,
+        "vlTaxaReal": 11.702399597167968,
       }
     }
-    transitionEnabled={true}
-    zDepth={1}
-  >
-    <SectionTitle
-      iconName="ico_box"
-      value="orderItems"
-    />
-    <OrderDetailsDatastyles__OrderItemsInfos>
-      <OrderDetailsDatastyles__OrderItemsQuantityWrapper>
-        <FormattedMessage
-          id="orderItemsBoughtQuantity"
-          values={Object {}}
-        />
-        <OrderDetailsDatastyles__OrderItemsQuantity>
-          (
-          2
-          )
-        </OrderDetailsDatastyles__OrderItemsQuantity>
-      </OrderDetailsDatastyles__OrderItemsQuantityWrapper>
-      <div>
-        <OrderDetailsDatastyles__OrderItemsHeader>
-          <OrderDetailsDatastyles__OrderItemsHeaderProductDescription>
-            <FormattedMessage
-              id="orderItemProduct"
-              values={Object {}}
-            />
-          </OrderDetailsDatastyles__OrderItemsHeaderProductDescription>
-          <OrderDetailsDatastyles__OrderItemsHeaderProductValuesWrapper>
-            <OrderDetailsDatastyles__OrderItemsHeaderProductValueLabel>
-              <FormattedMessage
-                id="orderItemQuantity"
-                values={Object {}}
-              />
-            </OrderDetailsDatastyles__OrderItemsHeaderProductValueLabel>
-            <OrderDetailsDatastyles__OrderItemsHeaderProductValueLabel>
-              <FormattedMessage
-                id="orderItemValue"
-                values={Object {}}
-              />
-            </OrderDetailsDatastyles__OrderItemsHeaderProductValueLabel>
-            <OrderDetailsDatastyles__OrderItemsHeaderProductValueLabel>
-              <FormattedMessage
-                id="orderItemPoints"
-                values={Object {}}
-              />
-            </OrderDetailsDatastyles__OrderItemsHeaderProductValueLabel>
-          </OrderDetailsDatastyles__OrderItemsHeaderProductValuesWrapper>
-        </OrderDetailsDatastyles__OrderItemsHeader>
-        <OrderDetailsDatastyles__OrderItemWrapper
-          key="0"
-        >
-          <OrderDetailsDatastyles__OrderItem>
-            <OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
-              <OrderDetailsDatastyles__OrderItemProductImageWrapper>
-                <Img
-                  decode={true}
-                  loader={
-                    <Loading
-                      background="#FFFFFF"
-                      visible={true}
-                      zIndex={9999}
-                    />
-                  }
-                  src="http://rede.natura.net/image/sku/145x145/29415_1.jpg"
-                  unloader={
-                    <OrderDetailsDatastyles__OrderItemProductImageFallback>
-                      <Icon
-                        file="ico_pictureless"
-                      />
-                    </OrderDetailsDatastyles__OrderItemProductImageFallback>
-                  }
-                />
-              </OrderDetailsDatastyles__OrderItemProductImageWrapper>
-              <OrderDetailsDatastyles__OrderItemProductDescriptionCode>
-                <OrderDetailsDatastyles__OrderItemProductDescription>
-                  POLPA HIDRAT CORPO ANDIROBA EKOS        
-                </OrderDetailsDatastyles__OrderItemProductDescription>
-                <OrderDetailsDatastyles__OrderItemProductCode>
-                  <FormattedMessage
-                    id="orderItemProductCode"
-                    values={Object {}}
-                  />
-                  : 
-                  29415
-                   (
-                  8
-                   
-                  <FormattedMessage
-                    id="orderItemPoints"
-                    values={Object {}}
-                  />
-                  )
-                </OrderDetailsDatastyles__OrderItemProductCode>
-              </OrderDetailsDatastyles__OrderItemProductDescriptionCode>
-            </OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
-            <OrderDetailsDatastyles__OrderItemProductDataWrapper>
-              <OrderItemDatum
-                label="orderItemQuantity"
-                value={1}
-              />
-              <OrderItemDatum
-                label="orderItemValue"
-                value="formatedNumber 33.529998779296875"
-              />
-              <OrderItemDatum
-                label="orderItemPoints"
-                value={8}
-              />
-            </OrderDetailsDatastyles__OrderItemProductDataWrapper>
-          </OrderDetailsDatastyles__OrderItem>
-        </OrderDetailsDatastyles__OrderItemWrapper>
-        <OrderDetailsDatastyles__OrderItemWrapper
-          key="1"
-        >
-          <OrderDetailsDatastyles__OrderItem>
-            <OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
-              <OrderDetailsDatastyles__OrderItemProductImageWrapper>
-                <Img
-                  decode={true}
-                  loader={
-                    <Loading
-                      background="#FFFFFF"
-                      visible={true}
-                      zIndex={9999}
-                    />
-                  }
-                  src="http://rede.natura.net/image/sku/145x145/38889_1.jpg"
-                  unloader={
-                    <OrderDetailsDatastyles__OrderItemProductImageFallback>
-                      <Icon
-                        file="ico_pictureless"
-                      />
-                    </OrderDetailsDatastyles__OrderItemProductImageFallback>
-                  }
-                />
-              </OrderDetailsDatastyles__OrderItemProductImageWrapper>
-              <OrderDetailsDatastyles__OrderItemProductDescriptionCode>
-                <OrderDetailsDatastyles__OrderItemProductDescription>
-                  SOU SAB BARRA CREMOSIDADE 5X90G         
-                </OrderDetailsDatastyles__OrderItemProductDescription>
-                <OrderDetailsDatastyles__OrderItemProductCode>
-                  <FormattedMessage
-                    id="orderItemProductCode"
-                    values={Object {}}
-                  />
-                  : 
-                  38889
-                   (
-                  2
-                   
-                  <FormattedMessage
-                    id="orderItemPoints"
-                    values={Object {}}
-                  />
-                  )
-                </OrderDetailsDatastyles__OrderItemProductCode>
-              </OrderDetailsDatastyles__OrderItemProductDescriptionCode>
-            </OrderDetailsDatastyles__OrderItemProductDescriptionWrapper>
-            <OrderDetailsDatastyles__OrderItemProductDataWrapper>
-              <OrderItemDatum
-                label="orderItemQuantity"
-                value={1}
-              />
-              <OrderItemDatum
-                label="orderItemValue"
-                value="formatedNumber 8.399999618530273"
-              />
-              <OrderItemDatum
-                label="orderItemPoints"
-                value={2}
-              />
-            </OrderDetailsDatastyles__OrderItemProductDataWrapper>
-          </OrderDetailsDatastyles__OrderItem>
-        </OrderDetailsDatastyles__OrderItemWrapper>
-      </div>
-    </OrderDetailsDatastyles__OrderItemsInfos>
-  </Paper>
+  />
+  <OrderItems
+    intl={
+      Object {
+        "formatCurrency": [Function],
+        "formatDate": [Function],
+        "formatNumber": [Function],
+        "formatTime": [Function],
+      }
+    }
+    order={
+      Object {
+        "__typename": "Order",
+        "ciclo": "14/2017",
+        "codigoPedido": 378325469,
+        "dataEmissaoNotaFiscal": null,
+        "dataPedido": "2017-10-06T18:40:55.000Z",
+        "entrega": Object {
+          "__typename": "Delivery",
+          "dtNovaPrevisaoEntrega": null,
+          "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+          "dtPrevisaoEntregaProrrogada": null,
+          "dtPrimeiraTentativaEntrega": null,
+          "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+          "dtSegundaTentativaEntrega": null,
+          "enderecoEntrega": Object {
+            "__typename": "DeliveryAddress",
+            "bairro": "XANGRI LA",
+            "cep": "32187090",
+            "cidade": "CONTAGEM",
+            "complemento": "B",
+            "estado": "MG",
+            "nomeLogradouro": "ACUCENA",
+            "numero": "0",
+            "tipoLogradouro": "R",
+          },
+        },
+        "envioBoleto": "Impresso e Enviado com o Pedido",
+        "formasPagamento": Array [
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+        ],
+        "itemEnviadoCaixa": Array [
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 29415,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 8,
+            "quantidadePontosUnitario": 8,
+            "valorTotal": 33.529998779296875,
+          },
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 38889,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 2,
+            "quantidadePontosUnitario": 2,
+            "valorTotal": 8.399999618530273,
+          },
+        ],
+        "meioCaptacao": "WEB",
+        "modeloComercial": "Consultora",
+        "numeroNotaFiscal": null,
+        "ocorrencias": Array [
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-08T10:44:00.000Z",
+            "id": 87,
+            "motivo": "Saiu para Entrega",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Saiu para Entrega",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T16:39:00.000Z",
+            "id": 66,
+            "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+            "ocorrencia": "ENTREGA",
+            "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T05:40:00.000Z",
+            "id": 49,
+            "motivo": "Chegada Filial Destino",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Chegada Filial Destino",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-06T18:46:00.000Z",
+            "id": 88,
+            "motivo": "Coletado pela Transportadora",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Coletado pela Transportadora",
+          },
+        ],
+        "pontos": 68,
+        "qtdParcelas": 2,
+        "quantidadeItens": 1,
+        "status": "CONCLUÍDO E APROVADO",
+        "valor": 390.0799865722656,
+        "valorParcela": 200.89,
+        "vlAPagarSomaTaxa": 401.78238616943355,
+        "vlTaxaReal": 11.702399597167968,
+      }
+    }
+  />
 </div>
 `;

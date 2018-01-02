@@ -57,31 +57,45 @@ exports[`Form correctly renders the customer form 1`] = `
         backgroundColor="#c9c9c9"
         disabled={false}
         flat={true}
+        height="50px"
+        label={
+          <FormattedMessage
+            id="formCustomerBack"
+            values={Object {}}
+          />
+        }
         labelColor="#fff"
+        labelStyle={
+          Object {
+            "fontFamily": "Roboto-Medium",
+          }
+        }
         link={null}
         onClick={[Function]}
         primary={false}
-      >
-        <FormattedMessage
-          id="formCustomerBack"
-          values={Object {}}
-        />
-      </FormButton>
+      />
       <FormButton
         backgroundColor="#c9c9c9"
         disabled={false}
         flat={true}
+        height="50px"
+        label={
+          <FormattedMessage
+            id="formCustomerNext"
+            values={Object {}}
+          />
+        }
         labelColor="#fff"
+        labelStyle={
+          Object {
+            "fontFamily": "Roboto-Medium",
+          }
+        }
         link={null}
         onClick={[Function]}
         primary={true}
         type="submit"
-      >
-        <FormattedMessage
-          id="formCustomerNext"
-          values={Object {}}
-        />
-      </FormButton>
+      />
     </Formstyles__FormButtonsWrapper>
   </Formstyles__FormWrapper>
 </Formstyles__Wrapper>
