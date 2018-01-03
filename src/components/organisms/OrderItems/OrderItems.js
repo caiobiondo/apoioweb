@@ -4,7 +4,7 @@ import Img from 'react-image';
 import { formatCurrency } from 'locale/utils';
 
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
-import OrderItemDatum from '../OrderItemDatum/OrderItemDatum';
+import OrderItemDatum from '../OrderDetailsData/molecules/OrderItemDatum/OrderItemDatum';
 
 import { Paper, Loading, Icon, FormButton } from 'natura-ui';
 import {

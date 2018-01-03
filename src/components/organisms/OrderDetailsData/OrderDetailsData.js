@@ -8,7 +8,7 @@ import withUserData from 'hocs/withUserData/withUserData';
 import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 
 import OrderInfo from './molecules/OrderInfo/OrderInfo';
-import OrderItems from './molecules/OrderItems/OrderItems';
+import OrderItems from '../../organisms/OrderItems/OrderItems';
 
 export class OrderDetailsData extends Component {
   render() {

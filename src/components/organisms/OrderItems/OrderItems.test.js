@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import OrderItems from './OrderItems';
-import orderData from '../../__mocks__/orderData.json';
+import orderData from '../OrderDetailsData/__mocks__/orderData.json';
 
 const setup = propOverrides => {
   const props = Object.assign(
