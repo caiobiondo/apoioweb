@@ -30,6 +30,7 @@ export default {
     orderInstallmentsNumber: 'Nº de parcelas',
     orderInstallmentValue: 'Valor da parcela',
     orderItemImport: 'Importar',
+    orderItemImported: 'Importado',
     orderItemProduct: 'Produto',
     orderItemProductCode: 'Código',
     orderItemQuantity: 'Quantidade',

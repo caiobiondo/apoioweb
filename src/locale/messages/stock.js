@@ -10,6 +10,7 @@ export default {
     stockProductCode: 'Código: {code}',
     stockProductHeaderName: 'Produto',
     stockProductHeaderQuantity: 'Quantidade',
+    stockProductImported: 'Produto importado para o estoque com sucesso!',
     stockProductRemove: 'Remover',
     stockProductRemoved: '{quantity, number} {quantity, plural, one {Removido} other {Removidos} }',
     stockSearchInfo: 'Preencha o campo abaixo para buscar seus produtos',
