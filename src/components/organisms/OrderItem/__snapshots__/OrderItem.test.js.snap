@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderItem renders order details item (in importing mode) 1`] = `
+<OrderItemstyles__OrderItemWrapper>
+  <OrderItemstyles__OrderItemProductDescriptionWrapper>
+    <OrderItemstyles__OrderItemProductImageWrapper>
+      <Img
+        decode={true}
+        loader={
+          <Loading
+            background="#FFFFFF"
+            visible={true}
+            zIndex={9999}
+          />
+        }
+        src="http://rede.natura.net/image/sku/145x145/29415_1.jpg"
+        unloader={
+          <OrderItemstyles__OrderItemProductImageFallback>
+            <Icon
+              file="ico_pictureless"
+            />
+          </OrderItemstyles__OrderItemProductImageFallback>
+        }
+      />
+    </OrderItemstyles__OrderItemProductImageWrapper>
+    <OrderItemstyles__OrderItemProductDescriptionCode>
+      <OrderItemstyles__OrderItemProductDescription>
+        POLPA HIDRAT CORPO ANDIROBA EKOS        
+      </OrderItemstyles__OrderItemProductDescription>
+      <OrderItemstyles__OrderItemProductCode>
+        <FormattedMessage
+          id="orderItemProductCode"
+          values={Object {}}
+        />
+        : 
+        29415
+         (
+        8
+         
+        <FormattedMessage
+          id="orderItemPoints"
+          values={Object {}}
+        />
+        )
+      </OrderItemstyles__OrderItemProductCode>
+    </OrderItemstyles__OrderItemProductDescriptionCode>
+  </OrderItemstyles__OrderItemProductDescriptionWrapper>
+  <OrderItemstyles__OrderItemProductDataWrapper>
+    <OrderItemDatum
+      label="orderItemQuantity"
+      value={1}
+    />
+    <OrderItemDatum
+      label="orderItemValue"
+      value="formatedNumber 33.529998779296875"
+    />
+    <OrderItemDatum
+      label="orderItemPoints"
+      value={8}
+    />
+    <OrderItemDatum>
+      <OrderItemstyles__OrderItemImportButtonWrapper>
+        <FormButton
+          backgroundColor="#c9c9c9"
+          buttonStyle={
+            Object {
+              "minWidth": "90px",
+            }
+          }
+          disabled={false}
+          flat={true}
+          height="25px"
+          label={
+            <FormattedMessage
+              id="orderItemImport"
+              values={Object {}}
+            />
+          }
+          labelColor="#fff"
+          labelStyle={
+            Object {
+              "fontFamily": "Roboto-Medium",
+              "fontSize": "10px",
+            }
+          }
+          link={null}
+          overlayStyle={
+            Object {
+              "minWidth": "90px",
+            }
+          }
+          primary={true}
+        />
+      </OrderItemstyles__OrderItemImportButtonWrapper>
+    </OrderItemDatum>
+  </OrderItemstyles__OrderItemProductDataWrapper>
+</OrderItemstyles__OrderItemWrapper>
+`;
+
+exports[`OrderItem renders order details item 1`] = `
+<OrderItemstyles__OrderItemWrapper>
+  <OrderItemstyles__OrderItemProductDescriptionWrapper>
+    <OrderItemstyles__OrderItemProductImageWrapper>
+      <Img
+        decode={true}
+        loader={
+          <Loading
+            background="#FFFFFF"
+            visible={true}
+            zIndex={9999}
+          />
+        }
+        src="http://rede.natura.net/image/sku/145x145/29415_1.jpg"
+        unloader={
+          <OrderItemstyles__OrderItemProductImageFallback>
+            <Icon
+              file="ico_pictureless"
+            />
+          </OrderItemstyles__OrderItemProductImageFallback>
+        }
+      />
+    </OrderItemstyles__OrderItemProductImageWrapper>
+    <OrderItemstyles__OrderItemProductDescriptionCode>
+      <OrderItemstyles__OrderItemProductDescription>
+        POLPA HIDRAT CORPO ANDIROBA EKOS        
+      </OrderItemstyles__OrderItemProductDescription>
+      <OrderItemstyles__OrderItemProductCode>
+        <FormattedMessage
+          id="orderItemProductCode"
+          values={Object {}}
+        />
+        : 
+        29415
+         (
+        8
+         
+        <FormattedMessage
+          id="orderItemPoints"
+          values={Object {}}
+        />
+        )
+      </OrderItemstyles__OrderItemProductCode>
+    </OrderItemstyles__OrderItemProductDescriptionCode>
+  </OrderItemstyles__OrderItemProductDescriptionWrapper>
+  <OrderItemstyles__OrderItemProductDataWrapper>
+    <OrderItemDatum
+      label="orderItemQuantity"
+      value={1}
+    />
+    <OrderItemDatum
+      label="orderItemValue"
+      value="formatedNumber 33.529998779296875"
+    />
+    <OrderItemDatum
+      label="orderItemPoints"
+      value={8}
+    />
+  </OrderItemstyles__OrderItemProductDataWrapper>
+</OrderItemstyles__OrderItemWrapper>
+`;

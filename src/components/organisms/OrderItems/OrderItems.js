@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import Img from 'react-image';
-import { formatCurrency } from 'locale/utils';
+import { Paper } from 'natura-ui';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/Dialog';
+import { translate } from 'locale';
 
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
-import OrderItemDatum from '../OrderDetailsData/molecules/OrderItemDatum/OrderItemDatum';
+import { AddStockProductMutation } from './OrderItems.data';
+import OrderItem from '../OrderItem/OrderItem';
+import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 
-import { Paper, Loading, Icon, FormButton } from 'natura-ui';
 import {
   OrderDetailsWrapper,
   OrderItemsInfos,
@@ -16,20 +21,62 @@ import {
   OrderItemsHeaderProductDescription,
   OrderItemsHeaderProductValuesWrapper,
   OrderItemsHeaderProductValueLabel,
-  OrderItem,
-  OrderItemProductDescriptionCode,
-  OrderItemProductDescription,
-  OrderItemProductCode,
-  OrderItemProductDataWrapper,
-  OrderItemProductDescriptionWrapper,
-  OrderItemProductImageWrapper,
-  OrderItemProductImageFallback,
-  OrderItemWrapper,
-  OrderItemImportButtonWrapper,
-  orderItemImportButtonStyles,
 } from './OrderItems.styles';
 
-export default class OrderItems extends Component {
+export class OrderItems extends Component {
+  state = {
+    importedOrderItems: [],
+    importedModalOpened: false,
+  };
+
+  onImport = orderItem => {
+    this.props
+      .mutate({
+        variables: {
+          input: {
+            productCode: orderItem.codigoProduto,
+            stockQuantity: orderItem.quantidadeItem,
+          },
+        },
+      })
+      .then(() => {
+        this.setState({
+          importedModalOpened: true,
+          importedOrderItems: [...this.state.importedOrderItems, orderItem],
+        });
+      });
+  };
+
+  renderSuccessDialog = () => {
+    const title = translate('stockProductImported');
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        onClick={this.onFinish}
+        labelStyle={dialogActions}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="successDialog"
+        title={title}
+        actions={actions}
+        modal={false}
+        open={this.state.importedModalOpened}
+        onRequestClose={this.onFinish}
+        contentStyle={dialogContainer}
+        bodyStyle={dialogContent}
+        titleStyle={dialogTitle}
+      />
+    );
+  };
+
+  onFinish = () => {
+    this.setState({ importedModalOpened: false });
+  };
+
   renderOrderItems = orderItems => {
     const { importing } = this.props;
     if (!orderItems) return null;
@@ -53,79 +100,27 @@ export default class OrderItems extends Component {
             {importing && <OrderItemsHeaderProductValueLabel />}
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
-        {orderItems.map((orderItem, index) => this.renderOrderItem(orderItem, index))}
+        {orderItems.map(this.renderOrderItem)}
       </div>
     );
   };
 
-  renderOrderItemProductCode = ({ codigoProduto, quantidadePontosUnitario }) => {
-    const pointsElement = React.createElement(FormattedMessage, { id: 'orderItemPoints' });
+  renderOrderItem = orderItem => {
+    const imported = this.state.importedOrderItems.filter(i => i === orderItem).length > 0;
+
+    const onImportOrderItem = event => {
+      event.stopPropagation();
+      this.onImport(orderItem);
+    };
 
     return (
-      <OrderItemProductCode>
-        <FormattedMessage id="orderItemProductCode" />
-        : {codigoProduto} ({quantidadePontosUnitario} {pointsElement})
-      </OrderItemProductCode>
-    );
-  };
-
-  renderOrderItemProductImageFallback = () => {
-    return (
-      <OrderItemProductImageFallback>
-        <Icon file="ico_pictureless" />
-      </OrderItemProductImageFallback>
-    );
-  };
-
-  renderOrderItemProductImage = ({ codigoProduto }) => {
-    const imageUrl = `http://rede.natura.net/image/sku/145x145/${codigoProduto}_1.jpg`;
-    const fallbackImage = this.renderOrderItemProductImageFallback();
-    const loader = React.createElement(Loading);
-
-    return (
-      <OrderItemProductImageWrapper>
-        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
-      </OrderItemProductImageWrapper>
-    );
-  };
-
-  renderOrderItem = (orderItem, index) => {
-    const { intl, importing } = this.props;
-    const {
-      produto: { description },
-      quantidadeItem,
-      valorTotal,
-      quantidadePontosTotal,
-    } = orderItem;
-
-    return (
-      <OrderItemWrapper key={index}>
-        <OrderItem>
-          <OrderItemProductDescriptionWrapper>
-            {this.renderOrderItemProductImage(orderItem)}
-            <OrderItemProductDescriptionCode>
-              <OrderItemProductDescription>{description}</OrderItemProductDescription>
-              {this.renderOrderItemProductCode(orderItem)}
-            </OrderItemProductDescriptionCode>
-          </OrderItemProductDescriptionWrapper>
-          <OrderItemProductDataWrapper>
-            <OrderItemDatum label="orderItemQuantity" value={quantidadeItem} />
-            <OrderItemDatum label="orderItemValue" value={formatCurrency(valorTotal, intl)} />
-            <OrderItemDatum label="orderItemPoints" value={quantidadePontosTotal} />
-            {importing && (
-              <OrderItemDatum>
-                <OrderItemImportButtonWrapper>
-                  <FormButton
-                    primary
-                    {...orderItemImportButtonStyles}
-                    label={<FormattedMessage id="orderItemImport" />}
-                  />
-                </OrderItemImportButtonWrapper>
-              </OrderItemDatum>
-            )}
-          </OrderItemProductDataWrapper>
-        </OrderItem>
-      </OrderItemWrapper>
+      <OrderItem
+        {...this.props}
+        key={orderItem.codigoProduto}
+        orderItem={orderItem}
+        imported={imported}
+        onImport={onImportOrderItem}
+      />
     );
   };
 
@@ -141,7 +136,11 @@ export default class OrderItems extends Component {
           </OrderItemsQuantityWrapper>
           {this.renderOrderItems(order.itemEnviadoCaixa)}
         </OrderItemsInfos>
+        {this.renderSuccessDialog()}
       </Paper>
     );
   }
 }
+
+export const OrderItemsWithData = graphql(AddStockProductMutation)(OrderItems);
+export default withRouter(OrderItemsWithData);

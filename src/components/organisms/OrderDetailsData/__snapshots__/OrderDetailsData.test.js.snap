@@ -127,7 +127,7 @@ exports[`OrderDetailsData renders order details 1`] = `
       }
     }
   />
-  <OrderItems
+  <withRouter(Apollo(OrderItems))
     intl={
       Object {
         "formatCurrency": [Function],

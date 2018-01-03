@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderItems } from './OrderItems';
+import OrderItem from './OrderItem';
 import orderData from '../OrderDetailsData/__mocks__/orderData.json';
 
 const setup = propOverrides => {
@@ -12,13 +12,13 @@ const setup = propOverrides => {
         formatNumber: value => `formatedNumber ${value}`,
         formatTime: value => `formatedTime`,
       },
-      order: orderData.order,
+      orderItem: orderData.order.itemEnviadoCaixa[0],
       importing: false,
     },
     propOverrides,
   );
 
-  const result = shallow(<OrderItems {...props} />);
+  const result = shallow(<OrderItem {...props} />);
 
   return {
     props,
@@ -26,8 +26,8 @@ const setup = propOverrides => {
   };
 };
 
-describe('OrderItems', () => {
-  it('renders order details items list', () => {
+describe('OrderItem', () => {
+  it('renders order details item', () => {
     // given
     // when
     const { result } = setup();
@@ -36,7 +36,7 @@ describe('OrderItems', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('renders order details items list (in importing mode)', () => {
+  it('renders order details item (in importing mode)', () => {
     // given
     // when
     const { result } = setup({ importing: true });
