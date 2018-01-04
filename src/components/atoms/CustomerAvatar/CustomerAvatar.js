@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar } from 'material-ui';
+import { Avatar } from 'natura-ui';
 
 const CustomerAvatar = ({ name, avatar, ...props }) => {
   let nameInitials;
