@@ -2,7 +2,7 @@ import React from 'react';
 import { FloatingActionButton, Icon } from 'natura-ui';
 import { IconWrapper, Wrapper } from './CustomerButton.styles';
 
-const OrderAddButton = props => {
+const CustomerButton = props => {
   const icon = props.remove ? 'ico_trash' : 'ico_add_customer';
   return (
     <Wrapper onClick={props.action}>
@@ -13,4 +13,4 @@ const OrderAddButton = props => {
   );
 };
 
-export default OrderAddButton;
+export default CustomerButton;

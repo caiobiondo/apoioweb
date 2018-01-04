@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OrdersList from 'components/organisms/OrdersList/OrdersList';
-import { Main } from 'components/ecosystems/Orders/Orders.styles';
+import OrdersList from 'components/ecosystems/Orders/List/organisms/OrdersList/OrdersList';
+import { Main } from 'components/ecosystems/Orders/List/index.styles';
 
 class StockImportOrdersList extends Component {
   state = {

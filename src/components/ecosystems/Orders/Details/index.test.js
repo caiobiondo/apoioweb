@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrderDetails from './OrderDetails';
-import OrderDetailsData from 'components/organisms/OrderDetailsData/OrderDetailsData';
+import OrderDetails from './index';
+import OrderDetailsData from './organisms/OrderDetailsData/OrderDetailsData';
 
 const setup = propOverrides => {
   const props = Object.assign({ match: { params: { id: 1 } } }, propOverrides);

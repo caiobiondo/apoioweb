@@ -5,8 +5,8 @@ import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from 'infra/ApolloClientCreator';
 import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY, CNO_TOKEN_LOCAL_STORAGE_KEY } from 'config';
 
-import Orders from 'components/ecosystems/Orders/Orders';
-import OrderDetails from 'components/ecosystems/OrderDetails/OrderDetails';
+import Orders from 'components/ecosystems/Orders/List';
+import OrderDetails from 'components/ecosystems/Orders/Details';
 import MyScore from 'components/ecosystems/MyScore';
 import CustomerDetails from 'components/ecosystems/Customers/Details';
 import CustomersList from 'components/ecosystems/Customers/List';
