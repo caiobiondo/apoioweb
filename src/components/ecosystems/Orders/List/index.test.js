@@ -1,7 +1,7 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { shallow } from 'enzyme';
-import Orders from './Orders';
+import Orders from './index';
 
 describe('Orders', () => {
   it('should render the orders page', () => {

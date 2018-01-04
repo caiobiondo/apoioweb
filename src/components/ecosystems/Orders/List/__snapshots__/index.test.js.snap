@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Orders should render the orders page 1`] = `
-<Ordersstyles__Main
+<indexstyles__Main
   empty={false}
   loading={true}
 >
   <Apollo(WithAuthErrorHandlerComponent)
     onLoadFinished={[Function]}
   />
-</Ordersstyles__Main>
+</indexstyles__Main>
 `;

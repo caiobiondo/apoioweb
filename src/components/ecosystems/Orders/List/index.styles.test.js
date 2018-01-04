@@ -1,6 +1,6 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import { Main, OrderAddButtonContainer } from './Orders.styles';
+import { Main, OrderAddButtonContainer } from './index.styles';
 
 describe('Orders Styles', () => {
   it('should render the main container with full container mixin applied', () => {
