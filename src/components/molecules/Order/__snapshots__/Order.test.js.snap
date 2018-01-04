@@ -102,7 +102,7 @@ exports[`Order should render an order card 1`] = `
     <FormButton
       backgroundColor="#fff"
       disabled={false}
-      flat={true}
+      height="44px"
       label={
         <Orderstyles__Label>
           <FormattedMessage
@@ -188,7 +188,7 @@ exports[`Order should render an order card without some field 1`] = `
     <FormButton
       backgroundColor="#fff"
       disabled={false}
-      flat={true}
+      height="44px"
       label={
         <Orderstyles__Label>
           <FormattedMessage
@@ -301,7 +301,7 @@ exports[`Order should render an order card without status 1`] = `
     <FormButton
       backgroundColor="#fff"
       disabled={false}
-      flat={true}
+      height="44px"
       label={
         <Orderstyles__Label>
           <FormattedMessage

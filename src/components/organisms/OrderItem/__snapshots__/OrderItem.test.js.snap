@@ -68,7 +68,6 @@ exports[`OrderItem renders order details item (in importing mode) 1`] = `
             }
           }
           disabled={false}
-          flat={true}
           height="25px"
           label={
             <FormattedMessage
@@ -90,6 +89,7 @@ exports[`OrderItem renders order details item (in importing mode) 1`] = `
             }
           }
           primary={true}
+          raised={false}
         />
       </OrderItemstyles__OrderItemImportButtonWrapper>
     </OrderItemDatum>
