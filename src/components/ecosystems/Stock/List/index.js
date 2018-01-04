@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import StockSearch from './organisms/ListSearch';
 import StockList from './organisms/ListTable';
-import { Main, StockSearchContainer } from './index.styles';
+import StockAddButton from './organisms/StockAddButton';
+import { Main, StockSearchContainer, StockAddButtonContainer } from './index.styles';
 
 class StockListWrapper extends Component {
   state = {
@@ -26,6 +27,11 @@ class StockListWrapper extends Component {
           <StockSearchContainer>
             <StockSearch onSearch={this.onSearch} />
           </StockSearchContainer>
+        )}
+        {!loading && (
+          <StockAddButtonContainer empty={empty}>
+            <StockAddButton />
+          </StockAddButtonContainer>
         )}
         <StockList onLoadFinished={this.onLoadFinished} productSearch={this.state.productSearch} />
       </Main>

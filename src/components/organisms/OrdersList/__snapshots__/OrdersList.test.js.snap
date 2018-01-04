@@ -69,6 +69,7 @@ exports[`OrdersList should render an order list 1`] = `
   >
     <OrdersListstyles__List>
       <Order
+        importing={undefined}
         left={
           Object {
             "body": Object {
@@ -101,6 +102,7 @@ exports[`OrdersList should render an order list 1`] = `
         statusType="pending"
       />
       <Order
+        importing={undefined}
         left={
           Object {
             "body": Object {

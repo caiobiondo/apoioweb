@@ -8,12 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
-import {
-  dialogContainer,
-  dialogContent,
-  dialogTitle,
-  dialogActions,
-} from './RemoveCustomerButton.styles';
+import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 
 export class RemoveCustomerButton extends Component {

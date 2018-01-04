@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FormInput as BaseFormInput } from 'natura-ui';
 import { Responsive } from '@entria/components';
+import { white } from 'styles/colors';
 
 export const Wrapper = {
   padding: 30,
@@ -21,32 +22,27 @@ export const FormButtonWrapper = styled.div`
   display: flex;
   margin-left: 20px;
 
-  button {
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  button div {
-    display: inline !important;
-  }
-
-  > div > div {
-    > button {
-      height: 54px !important;
-    }
-  }
-
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-left: 0;
     margin-top: 20px;
 
+    button,
     > div,
     > div > div {
       width: 100%;
     }
   }
 `;
+
+export const searchButtonStyles = {
+  labelStyle: {
+    color: white,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontFamily: 'Roboto-Regular',
+  },
+  height: 54,
+};
 
 export const FormInput = styled(BaseFormInput)`
   flex: 1;

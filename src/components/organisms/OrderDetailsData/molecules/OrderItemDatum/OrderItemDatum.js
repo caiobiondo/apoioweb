@@ -24,7 +24,7 @@ const OrderItemDatum = props => {
 
 OrderItemDatum.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
 };
 
 export default OrderItemDatum;

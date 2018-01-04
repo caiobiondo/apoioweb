@@ -29,4 +29,5 @@ export const fs32 = '32px';
 export const NaturaBold = 'NaturaSans-Bold';
 export const NaturaRegular = 'NaturaSans-Regular';
 export const RobotoRegular = 'Roboto-Regular';
+export const RobotoMedium = 'Roboto-Medium';
 export const RobotoLight = 'Roboto-Light';

@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, FormWrapper, FormButtonsWrapper, PageTitle, PageText } from './Form.styles';
+import {
+  Wrapper,
+  FormWrapper,
+  FormButtonsWrapper,
+  PageTitle,
+  PageText,
+  formButtonStyles,
+} from './Form.styles';
 
 import { FormButton, WizardSteps } from 'natura-ui';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
@@ -172,18 +179,21 @@ class CustomerForm extends Component {
   renderFormButtons = () => {
     return (
       <FormButtonsWrapper>
-        <FormButton disabled={this.state.submitting} onClick={event => this.changeStep(event, -1)}>
-          <FormattedMessage id="formCustomerBack" />
-        </FormButton>
+        <FormButton
+          disabled={this.state.submitting}
+          onClick={event => this.changeStep(event, -1)}
+          label={<FormattedMessage id="formCustomerBack" />}
+          {...formButtonStyles}
+        />
 
         <FormButton
           disabled={this.state.submitting}
           primary
           type="submit"
           onClick={event => this.changeStep(event, 1)}
-        >
-          <FormattedMessage id={this.getNextButtonLabel()} />
-        </FormButton>
+          label={<FormattedMessage id={this.getNextButtonLabel()} />}
+          {...formButtonStyles}
+        />
       </FormButtonsWrapper>
     );
   };

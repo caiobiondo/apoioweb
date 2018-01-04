@@ -35,8 +35,26 @@ const colorByStatusType = statusType => {
   }
 };
 
-const Order = ({ statusType, left, middle, right }) => {
+const renderButtonMessage = importing => {
+  if (importing) {
+    return (
+      <Label>
+        <FormattedMessage id="orderImport" />
+      </Label>
+    );
+  }
+
+  return (
+    <Label>
+      <FormattedMessage id="orderDetails" />
+    </Label>
+  );
+};
+
+const Order = ({ statusType, left, middle, right, importing }) => {
   const color = colorByStatusType(statusType);
+  const buttonMessage = renderButtonMessage(importing);
+
   return (
     <CustomCard color={color}>
       <CustomCard.Section alignItems="flex-start">
@@ -58,14 +76,10 @@ const Order = ({ statusType, left, middle, right }) => {
 
         <FormButton
           link={right.details}
-          label={
-            <Label>
-              <FormattedMessage id="orderDetails" />
-            </Label>
-          }
+          label={buttonMessage}
           backgroundColor="#fff"
           labelColor="#000"
-          flat={false}
+          raised="true"
         />
       </CustomCard.Section>
     </CustomCard>

@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Paper, FormButton } from 'natura-ui';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import { translate } from 'locale';
-import { Wrapper, FormWrapper, FormButtonWrapper, FormInput } from './ListSearch.styles';
+import {
+  Wrapper,
+  FormWrapper,
+  FormButtonWrapper,
+  FormInput,
+  searchButtonStyles,
+} from './ListSearch.styles';
 
 export class ListSearch extends Component {
   state = {
@@ -33,9 +39,13 @@ export class ListSearch extends Component {
             value={name}
           />
           <FormButtonWrapper>
-            <FormButton primary type="submit" onClick={this.onSubmit}>
-              {translate('search')}
-            </FormButton>
+            <FormButton
+              {...searchButtonStyles}
+              primary
+              type="submit"
+              onClick={this.onSubmit}
+              label={translate('search')}
+            />
           </FormButtonWrapper>
         </FormWrapper>
       </Paper>

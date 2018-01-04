@@ -1,0 +1,366 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderInfo renders order details info (in importing mode - collapsed) 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "24px",
+      "padding": "30px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    expandable={true}
+    expanded={false}
+    iconName="ico_info"
+    onToggle={[Function]}
+    value="orderInformations"
+  />
+</Paper>
+`;
+
+exports[`OrderInfo renders order details info 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "24px",
+      "padding": "30px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    expandable={false}
+    expanded={true}
+    iconName="ico_info"
+    onToggle={[Function]}
+    value="orderInformations"
+  />
+  <OrderInfostyles__OrderInfos>
+    <OrderInfostyles__OrderInfosColumn>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderData"
+        />
+        <OrderInfostyles__OrderData>
+          <OrderDatum
+            label="orderNumber"
+            type="short"
+            value={378325469}
+          />
+          <OrderDatum
+            label="orderCycle"
+            type="short"
+            value="14/2017"
+          />
+          <OrderDatum
+            label="orderDate"
+            type="short"
+            value="formatedDate"
+          />
+          <OrderDatum
+            label="orderStatus"
+            type="long"
+            value="CONCLUÍDO E APROVADO"
+          />
+          <OrderDatum
+            label="orderItemsQuantity"
+            type="short"
+            value={1}
+          />
+          <OrderDatum
+            label="orderTotalScore"
+            type="short"
+            value={68}
+          />
+          <OrderDatum
+            label="orderReception"
+            type="short"
+            value="WEB"
+          />
+          <OrderDatum
+            label="orderPaymentSlip"
+            type="long"
+            value="Impresso e Enviado com o Pedido"
+          />
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderValues"
+        />
+        <OrderInfostyles__OrderData>
+          <OrderDatum
+            label="orderDetailsOrderValue"
+            type="short"
+            value="formatedNumber 390.0799865722656"
+          />
+          <OrderDatum
+            label="orderTaxValue"
+            type="short"
+            value="formatedNumber 11.702399597167968"
+          />
+          <OrderDatum
+            label="orderInstallmentsNumber"
+            type="short"
+            value={2}
+          />
+          <OrderDatum
+            label="orderInstallmentValue"
+            type="short"
+            value="formatedNumber 200.89"
+          />
+          <OrderDatum
+            label="orderValue"
+            type="short"
+            value="formatedNumber 401.78238616943355"
+          />
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderPayment"
+        />
+        <OrderInfostyles__OrderData>
+          <OrderDatum
+            label="orderPaymentMessage"
+            type="long"
+          >
+            <OrderDatumstyles__OrderDatumValue
+              key="0"
+            >
+              21/42 DIAS - formatedNumber 401.78238616943355
+            </OrderDatumstyles__OrderDatumValue>
+            <OrderDatumstyles__OrderDatumValue
+              key="1"
+            >
+              21/42 DIAS - formatedNumber 401.78238616943355
+            </OrderDatumstyles__OrderDatumValue>
+          </OrderDatum>
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderReceipt"
+        />
+        <OrderInfostyles__OrderData>
+          <OrderDatum
+            label="orderReceiptNumber"
+            type="short"
+            value={null}
+          />
+          <OrderDatum
+            label="orderReceiptEmitDate"
+            type="short"
+            value="-"
+          />
+          <OrderDatum
+            label="orderReceiptModel"
+            type="short"
+            value="Consultora"
+          />
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+    </OrderInfostyles__OrderInfosColumn>
+    <OrderInfostyles__OrderInfosColumn>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderDelivery"
+        />
+        <OrderInfostyles__OrderData>
+          <OrderDatum
+            label="orderDeliveryEstimatedDate"
+            type="medium"
+            value="formatedDate"
+          />
+          <OrderDatum
+            label="orderDeliveryNewEstimatedDate"
+            type="medium"
+            value="-"
+          />
+          <OrderDatum
+            label="orderDeliveryExtendedEstimatedDate"
+            type="medium"
+            value="-"
+          />
+          <OrderDatum
+            label="orderDeliveryFirstTryDate"
+            type="medium"
+            value="-"
+          />
+          <OrderDatum
+            label="orderDeliverySecondTryDate"
+            type="medium"
+            value="-"
+          />
+          <OrderDatum
+            label="orderDeliveryRealDate"
+            type="medium"
+            value="formatedDate"
+          />
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderEvents"
+        />
+        <OrderInfostyles__OrderData
+          key="87"
+        >
+          <OrderDatum
+            label="orderEvents"
+            type="long"
+            value="INFORMATIVA"
+          />
+          <OrderDatum
+            label="orderEventMotive"
+            type="long"
+            value="Saiu para Entrega"
+          />
+          <OrderDatum
+            label="orderEventSolution"
+            type="long"
+            value="Saiu para Entrega"
+          />
+          <OrderDatum
+            label="orderEventDate"
+            type="medium"
+            value="formatedDate"
+          />
+          <OrderDatum
+            label="orderEventHour"
+            type="medium"
+            value="formatedTime"
+          />
+        </OrderInfostyles__OrderData>
+        <OrderInfostyles__OrderData
+          key="66"
+        >
+          <OrderDatum
+            label="orderEvents"
+            type="long"
+            value="ENTREGA"
+          />
+          <OrderDatum
+            label="orderEventMotive"
+            type="long"
+            value="1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa."
+          />
+          <OrderDatum
+            label="orderEventSolution"
+            type="long"
+            value="1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa."
+          />
+          <OrderDatum
+            label="orderEventDate"
+            type="medium"
+            value="formatedDate"
+          />
+          <OrderDatum
+            label="orderEventHour"
+            type="medium"
+            value="formatedTime"
+          />
+        </OrderInfostyles__OrderData>
+        <OrderInfostyles__OrderData
+          key="49"
+        >
+          <OrderDatum
+            label="orderEvents"
+            type="long"
+            value="INFORMATIVA"
+          />
+          <OrderDatum
+            label="orderEventMotive"
+            type="long"
+            value="Chegada Filial Destino"
+          />
+          <OrderDatum
+            label="orderEventSolution"
+            type="long"
+            value="Chegada Filial Destino"
+          />
+          <OrderDatum
+            label="orderEventDate"
+            type="medium"
+            value="formatedDate"
+          />
+          <OrderDatum
+            label="orderEventHour"
+            type="medium"
+            value="formatedTime"
+          />
+        </OrderInfostyles__OrderData>
+        <OrderInfostyles__OrderData
+          key="88"
+        >
+          <OrderDatum
+            label="orderEvents"
+            type="long"
+            value="INFORMATIVA"
+          />
+          <OrderDatum
+            label="orderEventMotive"
+            type="long"
+            value="Coletado pela Transportadora"
+          />
+          <OrderDatum
+            label="orderEventSolution"
+            type="long"
+            value="Coletado pela Transportadora"
+          />
+          <OrderDatum
+            label="orderEventDate"
+            type="medium"
+            value="formatedDate"
+          />
+          <OrderDatum
+            label="orderEventHour"
+            type="medium"
+            value="formatedTime"
+          />
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+      <OrderInfostyles__OrderInfosRow>
+        <SectionTitle
+          color="#f3971f"
+          value="orderDeliveryAddress"
+        />
+        <OrderInfostyles__OrderData>
+          <OrderDatum
+            type="long"
+          >
+            <OrderDatumstyles__OrderDatumValue>
+              R ACUCENA, 0 - XANGRI LA
+            </OrderDatumstyles__OrderDatumValue>
+            <OrderDatumstyles__OrderDatumValue>
+              CONTAGEM - MG
+            </OrderDatumstyles__OrderDatumValue>
+            <OrderDatumstyles__OrderDatumValue>
+              <FormattedMessage
+                id="orderDeliveryAddressZipcode"
+                values={Object {}}
+              />
+              :
+               32187-090
+            </OrderDatumstyles__OrderDatumValue>
+          </OrderDatum>
+        </OrderInfostyles__OrderData>
+      </OrderInfostyles__OrderInfosRow>
+    </OrderInfostyles__OrderInfosColumn>
+  </OrderInfostyles__OrderInfos>
+</Paper>
+`;

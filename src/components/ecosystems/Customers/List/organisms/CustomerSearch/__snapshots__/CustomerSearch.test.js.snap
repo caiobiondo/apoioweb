@@ -16,9 +16,9 @@ exports[`CustomerSearch Organism should render input and submit button 1`] = `
     iconName="ico_add_customer"
     value="myCustomers"
   />
-  <p>
+  <CustomerSearchstyles__CustomerSearchDescription>
     Preencha o campo abaixo para buscar seus clientes
-  </p>
+  </CustomerSearchstyles__CustomerSearchDescription>
   <CustomerSearchstyles__FormWrapper>
     <CustomerSearchstyles__FormInput
       label="Nome"
@@ -32,15 +32,23 @@ exports[`CustomerSearch Organism should render input and submit button 1`] = `
       <FormButton
         backgroundColor="#c9c9c9"
         disabled={false}
-        flat={true}
+        height={54}
+        label="Buscar"
         labelColor="#fff"
+        labelStyle={
+          Object {
+            "color": "#fff",
+            "fontFamily": "Roboto-Regular",
+            "textAlign": "center",
+            "textTransform": "uppercase",
+          }
+        }
         link={null}
         onClick={[Function]}
         primary={true}
+        raised={false}
         type="submit"
-      >
-        Buscar
-      </FormButton>
+      />
     </CustomerSearchstyles__FormButtonWrapper>
   </CustomerSearchstyles__FormWrapper>
 </Paper>
