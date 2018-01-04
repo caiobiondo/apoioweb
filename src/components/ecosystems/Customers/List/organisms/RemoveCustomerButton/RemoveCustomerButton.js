@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { FlatButton, Dialog } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
-import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
+import CustomerButton from '../../atoms/CustomerButton/CustomerButton';
 import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
 

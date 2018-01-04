@@ -5,7 +5,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { CustomerDetailsQuery, CustomerDetailsQueryOptions } from './CustomerDetails.data';
 import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import withUserData from 'hocs/withUserData/withUserData';
-import CustomerAvatar from 'components/atoms/CustomerAvatar';
+import CustomerAvatar from '../../atoms/CustomerAvatar';
 import {
   Main,
   CustomerDetailsWrapper,

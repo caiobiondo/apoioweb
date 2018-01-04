@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { List, LoadingWrapper, scrolledContainer, fullContainer } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
-import Order from 'components/molecules/Order/Order';
+import Order from '../../molecules/Order';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';

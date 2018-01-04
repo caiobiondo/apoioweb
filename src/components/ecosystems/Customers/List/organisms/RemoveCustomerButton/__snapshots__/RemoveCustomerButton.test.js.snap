@@ -2,7 +2,7 @@
 
 exports[`RemoveCustomerButton should render the add customers button 1`] = `
 Array [
-  <OrderAddButton
+  <CustomerButton
     action={[Function]}
     remove={false}
 />,
@@ -95,7 +95,7 @@ Array [
 
 exports[`RemoveCustomerButton should render the remove customers button 1`] = `
 Array [
-  <OrderAddButton
+  <CustomerButton
     action={[Function]}
     remove={true}
 />,
