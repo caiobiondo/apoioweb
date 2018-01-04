@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import { FlatButton, Dialog } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
 import CustomerButton from 'components/atoms/CustomerButton/CustomerButton';
 import { withRouter } from 'react-router-dom';

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { Paper } from 'natura-ui';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
+import { Paper, FlatButton, Dialog } from 'natura-ui';
 import { translate } from 'locale';
 
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';

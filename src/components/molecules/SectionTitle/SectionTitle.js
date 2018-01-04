@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'natura-ui';
-import IconButton from 'material-ui/IconButton';
+import { Icon, IconButton } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
 
 import {

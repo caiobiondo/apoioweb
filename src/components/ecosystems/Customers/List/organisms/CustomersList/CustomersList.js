@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
+import { Loading, CircularProgress, Paper, Table, Checkbox } from 'natura-ui';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-import Checkbox from 'components/atoms/Checkbox/Checkbox';
 import CustomerAvatar from 'components/atoms/CustomerAvatar';
 
 import {
