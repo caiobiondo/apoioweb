@@ -17,10 +17,31 @@ import {
   OrderItemProductImageFallback,
   OrderItemImportButtonWrapper,
   orderItemImportButtonStyles,
+  orderItemImportedButtonStyles,
 } from './OrderItem.styles';
 
 export default class OrderItem extends Component {
-  renderOrderItemProductCode = ({ codigoProduto, quantidadePontosUnitario }) => {
+  renderProductImage = ({ codigoProduto }) => {
+    const imageUrl = `http://rede.natura.net/image/sku/145x145/${codigoProduto}_1.jpg`;
+    const fallbackImage = this.renderProductImageFallback();
+    const loader = React.createElement(Loading);
+
+    return (
+      <OrderItemProductImageWrapper>
+        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
+      </OrderItemProductImageWrapper>
+    );
+  };
+
+  renderProductImageFallback = () => {
+    return (
+      <OrderItemProductImageFallback>
+        <Icon file="ico_pictureless" />
+      </OrderItemProductImageFallback>
+    );
+  };
+
+  renderProductCode = ({ codigoProduto, quantidadePontosUnitario }) => {
     const pointsElement = React.createElement(FormattedMessage, { id: 'orderItemPoints' });
 
     return (
@@ -31,50 +52,24 @@ export default class OrderItem extends Component {
     );
   };
 
-  renderOrderItemProductImageFallback = () => {
-    return (
-      <OrderItemProductImageFallback>
-        <Icon file="ico_pictureless" />
-      </OrderItemProductImageFallback>
-    );
-  };
-
-  renderOrderItemProductImage = ({ codigoProduto }) => {
-    const imageUrl = `http://rede.natura.net/image/sku/145x145/${codigoProduto}_1.jpg`;
-    const fallbackImage = this.renderOrderItemProductImageFallback();
-    const loader = React.createElement(Loading);
-
-    return (
-      <OrderItemProductImageWrapper>
-        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
-      </OrderItemProductImageWrapper>
-    );
-  };
-
-  renderOrderItemImportButton = (importing, imported, onImport) => {
-    if (!importing) {
-      return null;
+  renderImportButton = (imported, onImport) => {
+    if (imported) {
+      return (
+        <FormButton
+          {...orderItemImportedButtonStyles}
+          disabled
+          icon={<Icon file="ico_check" />}
+          label={<FormattedMessage id="orderItemImported" />}
+        />
+      );
     }
     return (
-      <OrderItemDatum>
-        <OrderItemImportButtonWrapper>
-          {imported && (
-            <FormButton
-              primary
-              {...orderItemImportButtonStyles}
-              label={<FormattedMessage id="orderItemImported" />}
-            />
-          )}
-          {!imported && (
-            <FormButton
-              primary
-              {...orderItemImportButtonStyles}
-              onClick={onImport}
-              label={<FormattedMessage id="orderItemImport" />}
-            />
-          )}
-        </OrderItemImportButtonWrapper>
-      </OrderItemDatum>
+      <FormButton
+        primary
+        {...orderItemImportButtonStyles}
+        onClick={onImport}
+        label={<FormattedMessage id="orderItemImport" />}
+      />
     );
   };
 
@@ -90,17 +85,23 @@ export default class OrderItem extends Component {
     return (
       <OrderItemWrapper>
         <OrderItemProductDescriptionWrapper>
-          {this.renderOrderItemProductImage(orderItem)}
+          {this.renderProductImage(orderItem)}
           <OrderItemProductDescriptionCode>
             <OrderItemProductDescription>{description}</OrderItemProductDescription>
-            {this.renderOrderItemProductCode(orderItem)}
+            {this.renderProductCode(orderItem)}
           </OrderItemProductDescriptionCode>
         </OrderItemProductDescriptionWrapper>
         <OrderItemProductDataWrapper>
           <OrderItemDatum label="orderItemQuantity" value={quantidadeItem} />
           <OrderItemDatum label="orderItemValue" value={formatCurrency(valorTotal, intl)} />
           <OrderItemDatum label="orderItemPoints" value={quantidadePontosTotal} />
-          {this.renderOrderItemImportButton(importing, imported, onImport)}
+          {importing && (
+            <OrderItemDatum>
+              <OrderItemImportButtonWrapper>
+                {this.renderImportButton(imported, onImport)}
+              </OrderItemImportButtonWrapper>
+            </OrderItemDatum>
+          )}
         </OrderItemProductDataWrapper>
       </OrderItemWrapper>
     );

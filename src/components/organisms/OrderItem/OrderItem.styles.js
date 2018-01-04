@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { gray150, gray200, gray890 } from 'styles/colors';
+import { gray150, gray200, gray890, successGreen, white } from 'styles/colors';
 import { fs12, fs14 } from 'styles/typography';
 
 export const OrderItemWrapper = styled.div`
@@ -83,6 +83,13 @@ export const OrderItemProductImageFallback = styled.div`
 `;
 
 export const OrderItemImportButtonWrapper = styled.div`
+  svg {
+    fill: ${successGreen};
+    width: 10px;
+    height: 10px;
+    align-self: center;
+  }
+
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     margin: 0 auto;
   }
@@ -100,4 +107,25 @@ export const orderItemImportButtonStyles = {
     minWidth: '90px',
   },
   height: '25px',
+};
+
+export const orderItemImportedButtonStyles = {
+  ...orderItemImportButtonStyles,
+  labelStyle: {
+    ...orderItemImportButtonStyles.labelStyle,
+    color: '#80ba41',
+    paddingRight: 0,
+    paddingLeft: 5,
+    width: 'auto',
+  },
+  buttonStyle: {
+    ...orderItemImportButtonStyles.buttonStyle,
+    backgroundColor: white,
+    borderRadius: 4,
+    border: 'solid 0.5px #eeeeee',
+  },
+  overlayStyle: {
+    ...orderItemImportButtonStyles.overlayStyle,
+    justifyContent: 'center',
+  },
 };
