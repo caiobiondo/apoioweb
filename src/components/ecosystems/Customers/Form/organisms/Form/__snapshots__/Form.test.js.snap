@@ -56,7 +56,6 @@ exports[`Form correctly renders the customer form 1`] = `
       <FormButton
         backgroundColor="#c9c9c9"
         disabled={false}
-        flat={true}
         height="50px"
         label={
           <FormattedMessage
@@ -73,11 +72,11 @@ exports[`Form correctly renders the customer form 1`] = `
         link={null}
         onClick={[Function]}
         primary={false}
+        raised={false}
       />
       <FormButton
         backgroundColor="#c9c9c9"
         disabled={false}
-        flat={true}
         height="50px"
         label={
           <FormattedMessage
@@ -94,6 +93,7 @@ exports[`Form correctly renders the customer form 1`] = `
         link={null}
         onClick={[Function]}
         primary={true}
+        raised={false}
         type="submit"
       />
     </Formstyles__FormButtonsWrapper>

@@ -6,7 +6,7 @@ import {
   Wrapper,
   FormWrapper,
   FormButtonWrapper,
-  formButtonStyles,
+  searchButtonStyles,
   FormInput,
   CustomerSearchDescription,
 } from './CustomerSearch.styles';
@@ -54,7 +54,7 @@ export class CustomerSearch extends Component {
           <FormButtonWrapper>
             <FormButton
               primary
-              {...formButtonStyles}
+              {...searchButtonStyles}
               type="submit"
               onClick={this.onSubmit}
               label={translate('search')}

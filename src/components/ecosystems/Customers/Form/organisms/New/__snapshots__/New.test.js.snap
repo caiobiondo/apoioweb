@@ -404,88 +404,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   margin-left: 30px;
 }
 
-.c25:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.c25 > div,
-.c25 > a > div {
-  min-width: 150px !important;
-  border-radius: 4px !important;
-  width: 100%;
-}
-
-.c25 > div > button,
-.c25 > a > div > button {
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  border-radius: 4px !important;
-  height: 44px !important;
-  line-height: initial !important;
-  background: #c9c9c9 !important;
-}
-
-.c25 > div > button > div > div,
-.c25 > a > div > button > div > div {
-  border-radius: 4px !important;
-  height: 44px !important;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c25 > div > button > div > div > span,
-.c25 > a > div > button > div > div > span {
-  width: 100%;
-  color: #fff !important;
-}
-
-.c26:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.c26 > div,
-.c26 > a > div {
-  min-width: 150px !important;
-  border-radius: 4px !important;
-  width: 100%;
-}
-
-.c26 > div > button,
-.c26 > a > div > button {
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  border-radius: 4px !important;
-  height: 44px !important;
-  line-height: initial !important;
-  background: #f3971f !important;
-}
-
-.c26 > div > button > div > div,
-.c26 > a > div > button > div > div {
-  border-radius: 4px !important;
-  height: 44px !important;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c26 > div > button > div > div > span,
-.c26 > a > div > button > div > div > span {
-  width: 100%;
-  color: #fff !important;
-}
-
 @media (max-width:480px) {
   .c0 {
     padding: 20px;
@@ -537,34 +455,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 @media (max-width:480px) {
   .c9 {
     width: 100%;
-  }
-}
-
-@media (min-width:480px) {
-  .c25:not(:last-child) {
-    margin-bottom: 0px;
-    margin-right: 20px;
-  }
-}
-
-@media (min-width:480px) {
-  .c25 > div,
-  .c25 > a > div {
-    width: auto;
-  }
-}
-
-@media (min-width:480px) {
-  .c26:not(:last-child) {
-    margin-bottom: 0px;
-    margin-right: 20px;
-  }
-}
-
-@media (min-width:480px) {
-  .c26 > div,
-  .c26 > a > div {
-    width: auto;
   }
 }
 
@@ -6182,7 +6072,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                           <FormButton
                             backgroundColor="#c9c9c9"
                             disabled={false}
-                            flat={true}
                             height="50px"
                             label={
                               <FormattedMessage
@@ -6199,11 +6088,23 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             link={null}
                             onClick={[Function]}
                             primary={false}
+                            raised={false}
                           >
-                            <styled.div
+                            <RaisedButton
                               backgroundColor="#c9c9c9"
+                              buttonStyle={
+                                Object {
+                                  "borderRadius": "4px",
+                                  "display": "flex",
+                                  "height": "50px",
+                                  "justifyContent": "center",
+                                  "lineHeight": "initial",
+                                  "minWidth": "150px",
+                                  "transition": "all 200ms",
+                                }
+                              }
                               disabled={false}
-                              height="50px"
+                              fullWidth={false}
                               label={
                                 <FormattedMessage
                                   id="formCustomerBack"
@@ -6211,226 +6112,217 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 />
                               }
                               labelColor="#fff"
+                              labelPosition="after"
                               labelStyle={
                                 Object {
+                                  "alignSelf": "center",
                                   "fontFamily": "Roboto-Medium",
+                                  "width": "100%",
                                 }
                               }
+                              link={null}
                               onClick={[Function]}
-                              primary={false}
-                            >
-                              <div
-                                className="c25"
-                                disabled={false}
-                                height="50px"
-                                label={
-                                  <FormattedMessage
-                                    id="formCustomerBack"
-                                    values={Object {}}
-                                  />
+                              overlayStyle={
+                                Object {
+                                  "display": "flex",
+                                  "height": "50px",
+                                  "minWidth": "150px",
                                 }
-                                onClick={[Function]}
-                              >
-                                <RaisedButton
-                                  backgroundColor="#c9c9c9"
-                                  disabled={false}
-                                  fullWidth={false}
-                                  height="50px"
-                                  label={
-                                    <FormattedMessage
-                                      id="formCustomerBack"
-                                      values={Object {}}
-                                    />
+                              }
+                              primary={false}
+                              secondary={false}
+                              style={
+                                Object {
+                                  "borderRadius": "4px",
+                                  "boxShadow": "none",
+                                }
+                              }
+                            >
+                              <Paper
+                                circle={false}
+                                rounded={true}
+                                style={
+                                  Object {
+                                    "borderRadius": "4px",
+                                    "boxShadow": "none",
+                                    "display": "inline-block",
+                                    "minWidth": 88,
+                                    "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
                                   }
-                                  labelColor="#fff"
-                                  labelPosition="after"
-                                  labelStyle={
+                                }
+                                transitionEnabled={true}
+                                zDepth={1}
+                              >
+                                <div
+                                  style={
                                     Object {
-                                      "fontFamily": "Roboto-Medium",
+                                      "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+                                      "backgroundColor": "#ffffff",
+                                      "borderRadius": "4px",
+                                      "boxShadow": "none",
+                                      "boxSizing": "border-box",
+                                      "color": "#4F4F4F",
+                                      "display": "inline-block",
+                                      "fontFamily": "NaturaSans-Regular",
+                                      "minWidth": 88,
+                                      "muiPrepared": true,
+                                      "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
                                     }
                                   }
-                                  onClick={[Function]}
-                                  primary={false}
-                                  secondary={false}
                                 >
-                                  <Paper
-                                    circle={false}
-                                    rounded={true}
+                                  <EnhancedButton
+                                    containerElement="button"
+                                    disabled={false}
+                                    focusRippleColor="#fff"
+                                    focusRippleOpacity={0.1}
+                                    link={null}
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    onKeyUp={[Function]}
+                                    onKeyboardFocus={[Function]}
+                                    onMouseDown={[Function]}
+                                    onMouseEnter={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseUp={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchStart={[Function]}
                                     style={
                                       Object {
-                                        "display": "inline-block",
-                                        "minWidth": 88,
-                                        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                        "backgroundColor": "#c9c9c9",
+                                        "borderRadius": "4px",
+                                        "display": "flex",
+                                        "height": "50px",
+                                        "justifyContent": "center",
+                                        "lineHeight": "initial",
+                                        "minWidth": "150px",
+                                        "padding": 0,
+                                        "textAlign": "center",
+                                        "transition": "all 200ms",
+                                        "width": "100%",
                                       }
                                     }
-                                    transitionEnabled={true}
-                                    zDepth={1}
+                                    tabIndex={0}
+                                    touchRippleColor="#fff"
+                                    touchRippleOpacity={0.1}
+                                    type="button"
                                   >
-                                    <div
+                                    <button
+                                      disabled={false}
+                                      link={null}
+                                      onBlur={[Function]}
+                                      onClick={[Function]}
+                                      onFocus={[Function]}
+                                      onKeyDown={[Function]}
+                                      onKeyUp={[Function]}
+                                      onMouseDown={[Function]}
+                                      onMouseEnter={[Function]}
+                                      onMouseLeave={[Function]}
+                                      onMouseUp={[Function]}
+                                      onTouchEnd={[Function]}
+                                      onTouchStart={[Function]}
                                       style={
                                         Object {
-                                          "WebkitTapHighlightColor": "rgba(0,0,0,0)",
-                                          "backgroundColor": "#ffffff",
-                                          "borderRadius": 2,
-                                          "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
-                                                 0 1px 4px rgba(0, 0, 0, 0.12)",
+                                          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                                          "backgroundColor": "#c9c9c9",
+                                          "border": 10,
+                                          "borderRadius": "4px",
                                           "boxSizing": "border-box",
-                                          "color": "#4F4F4F",
-                                          "display": "inline-block",
+                                          "cursor": "pointer",
+                                          "display": "flex",
                                           "fontFamily": "NaturaSans-Regular",
-                                          "minWidth": 88,
+                                          "fontSize": "inherit",
+                                          "fontWeight": "inherit",
+                                          "height": "50px",
+                                          "justifyContent": "center",
+                                          "lineHeight": "initial",
+                                          "margin": 0,
+                                          "minWidth": "150px",
                                           "muiPrepared": true,
-                                          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                          "outline": "none",
+                                          "padding": 0,
+                                          "position": "relative",
+                                          "textAlign": "center",
+                                          "textDecoration": "none",
+                                          "transition": "all 200ms",
+                                          "verticalAlign": null,
+                                          "width": "100%",
                                         }
                                       }
+                                      tabIndex={0}
+                                      type="button"
                                     >
-                                      <EnhancedButton
-                                        containerElement="button"
-                                        disabled={false}
-                                        focusRippleColor="#fff"
-                                        focusRippleOpacity={0.1}
-                                        height="50px"
-                                        onBlur={[Function]}
-                                        onClick={[Function]}
-                                        onFocus={[Function]}
-                                        onKeyDown={[Function]}
-                                        onKeyUp={[Function]}
-                                        onKeyboardFocus={[Function]}
-                                        onMouseDown={[Function]}
-                                        onMouseEnter={[Function]}
-                                        onMouseLeave={[Function]}
-                                        onMouseUp={[Function]}
-                                        onTouchEnd={[Function]}
-                                        onTouchStart={[Function]}
-                                        style={
-                                          Object {
-                                            "backgroundColor": "#c9c9c9",
-                                            "borderRadius": 2,
-                                            "height": 36,
-                                            "lineHeight": "36px",
-                                            "padding": 0,
-                                            "textAlign": "center",
-                                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                            "width": "100%",
-                                          }
-                                        }
-                                        tabIndex={0}
-                                        touchRippleColor="#fff"
-                                        touchRippleOpacity={0.1}
-                                        type="button"
+                                      <TouchRipple
+                                        abortOnScroll={true}
+                                        color="#fff"
+                                        key="touchRipple"
+                                        opacity={0.1}
                                       >
-                                        <button
-                                          disabled={false}
-                                          height="50px"
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
+                                        <div
                                           onMouseDown={[Function]}
-                                          onMouseEnter={[Function]}
                                           onMouseLeave={[Function]}
                                           onMouseUp={[Function]}
                                           onTouchEnd={[Function]}
                                           onTouchStart={[Function]}
-                                          style={
-                                            Object {
-                                              "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
-                                              "backgroundColor": "#c9c9c9",
-                                              "border": 10,
-                                              "borderRadius": 2,
-                                              "boxSizing": "border-box",
-                                              "cursor": "pointer",
-                                              "display": "inline-block",
-                                              "fontFamily": "NaturaSans-Regular",
-                                              "fontSize": "inherit",
-                                              "fontWeight": "inherit",
-                                              "height": 36,
-                                              "lineHeight": "36px",
-                                              "margin": 0,
-                                              "muiPrepared": true,
-                                              "outline": "none",
-                                              "padding": 0,
-                                              "position": "relative",
-                                              "textAlign": "center",
-                                              "textDecoration": "none",
-                                              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                              "verticalAlign": null,
-                                              "width": "100%",
-                                            }
-                                          }
-                                          tabIndex={0}
-                                          type="button"
                                         >
-                                          <TouchRipple
-                                            abortOnScroll={true}
-                                            color="#fff"
-                                            key="touchRipple"
-                                            opacity={0.1}
+                                          <div
+                                            style={
+                                              Object {
+                                                "backgroundColor": false,
+                                                "borderRadius": 2,
+                                                "display": "flex",
+                                                "height": "50px",
+                                                "minWidth": "150px",
+                                                "muiPrepared": true,
+                                                "top": 0,
+                                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                              }
+                                            }
                                           >
-                                            <div
-                                              onMouseDown={[Function]}
-                                              onMouseLeave={[Function]}
-                                              onMouseUp={[Function]}
-                                              onTouchEnd={[Function]}
-                                              onTouchStart={[Function]}
-                                            >
-                                              <div
-                                                style={
-                                                  Object {
-                                                    "backgroundColor": false,
-                                                    "borderRadius": 2,
-                                                    "height": 36,
-                                                    "muiPrepared": true,
-                                                    "top": 0,
-                                                    "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                                  }
+                                            <span
+                                              key="labelElement"
+                                              style={
+                                                Object {
+                                                  "alignSelf": "center",
+                                                  "color": "#fff",
+                                                  "fontFamily": "Roboto-Medium",
+                                                  "fontSize": 14,
+                                                  "fontWeight": 500,
+                                                  "letterSpacing": 0,
+                                                  "margin": 0,
+                                                  "muiPrepared": true,
+                                                  "opacity": 1,
+                                                  "paddingLeft": 16,
+                                                  "paddingRight": 16,
+                                                  "position": "relative",
+                                                  "textTransform": "uppercase",
+                                                  "userSelect": "none",
+                                                  "width": "100%",
                                                 }
+                                              }
+                                            >
+                                              <FormattedMessage
+                                                id="formCustomerBack"
+                                                values={Object {}}
                                               >
-                                                <span
-                                                  key="labelElement"
-                                                  style={
-                                                    Object {
-                                                      "color": "#fff",
-                                                      "fontFamily": "Roboto-Medium",
-                                                      "fontSize": 14,
-                                                      "fontWeight": 500,
-                                                      "letterSpacing": 0,
-                                                      "margin": 0,
-                                                      "muiPrepared": true,
-                                                      "opacity": 1,
-                                                      "paddingLeft": 16,
-                                                      "paddingRight": 16,
-                                                      "position": "relative",
-                                                      "textTransform": "uppercase",
-                                                      "userSelect": "none",
-                                                    }
-                                                  }
-                                                >
-                                                  <FormattedMessage
-                                                    id="formCustomerBack"
-                                                    values={Object {}}
-                                                  >
-                                                    <span>
-                                                      Voltar
-                                                    </span>
-                                                  </FormattedMessage>
+                                                <span>
+                                                  Voltar
                                                 </span>
-                                              </div>
-                                            </div>
-                                          </TouchRipple>
-                                        </button>
-                                      </EnhancedButton>
-                                    </div>
-                                  </Paper>
-                                </RaisedButton>
-                              </div>
-                            </styled.div>
+                                              </FormattedMessage>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </TouchRipple>
+                                    </button>
+                                  </EnhancedButton>
+                                </div>
+                              </Paper>
+                            </RaisedButton>
                           </FormButton>
                           <FormButton
                             backgroundColor="#c9c9c9"
                             disabled={false}
-                            flat={true}
                             height="50px"
                             label={
                               <FormattedMessage
@@ -6447,12 +6339,24 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             link={null}
                             onClick={[Function]}
                             primary={true}
+                            raised={false}
                             type="submit"
                           >
-                            <styled.div
+                            <RaisedButton
                               backgroundColor="#c9c9c9"
+                              buttonStyle={
+                                Object {
+                                  "borderRadius": "4px",
+                                  "display": "flex",
+                                  "height": "50px",
+                                  "justifyContent": "center",
+                                  "lineHeight": "initial",
+                                  "minWidth": "150px",
+                                  "transition": "all 200ms",
+                                }
+                              }
                               disabled={false}
-                              height="50px"
+                              fullWidth={false}
                               label={
                                 <FormattedMessage
                                   id="formCustomerNext"
@@ -6460,224 +6364,214 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 />
                               }
                               labelColor="#fff"
+                              labelPosition="after"
                               labelStyle={
                                 Object {
+                                  "alignSelf": "center",
                                   "fontFamily": "Roboto-Medium",
+                                  "width": "100%",
                                 }
                               }
+                              link={null}
                               onClick={[Function]}
+                              overlayStyle={
+                                Object {
+                                  "display": "flex",
+                                  "height": "50px",
+                                  "minWidth": "150px",
+                                }
+                              }
                               primary={true}
+                              secondary={false}
+                              style={
+                                Object {
+                                  "borderRadius": "4px",
+                                  "boxShadow": "none",
+                                }
+                              }
                               type="submit"
                             >
-                              <div
-                                className="c26"
-                                disabled={false}
-                                height="50px"
-                                label={
-                                  <FormattedMessage
-                                    id="formCustomerNext"
-                                    values={Object {}}
-                                  />
-                                }
-                                onClick={[Function]}
-                                type="submit"
-                              >
-                                <RaisedButton
-                                  backgroundColor="#c9c9c9"
-                                  disabled={false}
-                                  fullWidth={false}
-                                  height="50px"
-                                  label={
-                                    <FormattedMessage
-                                      id="formCustomerNext"
-                                      values={Object {}}
-                                    />
+                              <Paper
+                                circle={false}
+                                rounded={true}
+                                style={
+                                  Object {
+                                    "borderRadius": "4px",
+                                    "boxShadow": "none",
+                                    "display": "inline-block",
+                                    "minWidth": 88,
+                                    "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
                                   }
-                                  labelColor="#fff"
-                                  labelPosition="after"
-                                  labelStyle={
+                                }
+                                transitionEnabled={true}
+                                zDepth={1}
+                              >
+                                <div
+                                  style={
                                     Object {
-                                      "fontFamily": "Roboto-Medium",
+                                      "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+                                      "backgroundColor": "#ffffff",
+                                      "borderRadius": "4px",
+                                      "boxShadow": "none",
+                                      "boxSizing": "border-box",
+                                      "color": "#4F4F4F",
+                                      "display": "inline-block",
+                                      "fontFamily": "NaturaSans-Regular",
+                                      "minWidth": 88,
+                                      "muiPrepared": true,
+                                      "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
                                     }
                                   }
-                                  onClick={[Function]}
-                                  primary={true}
-                                  secondary={false}
-                                  type="submit"
                                 >
-                                  <Paper
-                                    circle={false}
-                                    rounded={true}
+                                  <EnhancedButton
+                                    containerElement="button"
+                                    disabled={false}
+                                    focusRippleColor="#ffffff"
+                                    focusRippleOpacity={0.16}
+                                    link={null}
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    onKeyUp={[Function]}
+                                    onKeyboardFocus={[Function]}
+                                    onMouseDown={[Function]}
+                                    onMouseEnter={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseUp={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchStart={[Function]}
                                     style={
                                       Object {
-                                        "display": "inline-block",
-                                        "minWidth": 88,
-                                        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                        "backgroundColor": "#f3971f",
+                                        "borderRadius": "4px",
+                                        "display": "flex",
+                                        "height": "50px",
+                                        "justifyContent": "center",
+                                        "lineHeight": "initial",
+                                        "minWidth": "150px",
+                                        "padding": 0,
+                                        "textAlign": "center",
+                                        "transition": "all 200ms",
+                                        "width": "100%",
                                       }
                                     }
-                                    transitionEnabled={true}
-                                    zDepth={1}
+                                    tabIndex={0}
+                                    touchRippleColor="#ffffff"
+                                    touchRippleOpacity={0.16}
+                                    type="submit"
                                   >
-                                    <div
+                                    <button
+                                      disabled={false}
+                                      link={null}
+                                      onBlur={[Function]}
+                                      onClick={[Function]}
+                                      onFocus={[Function]}
+                                      onKeyDown={[Function]}
+                                      onKeyUp={[Function]}
+                                      onMouseDown={[Function]}
+                                      onMouseEnter={[Function]}
+                                      onMouseLeave={[Function]}
+                                      onMouseUp={[Function]}
+                                      onTouchEnd={[Function]}
+                                      onTouchStart={[Function]}
                                       style={
                                         Object {
-                                          "WebkitTapHighlightColor": "rgba(0,0,0,0)",
-                                          "backgroundColor": "#ffffff",
-                                          "borderRadius": 2,
-                                          "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
-                                                 0 1px 4px rgba(0, 0, 0, 0.12)",
+                                          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                                          "backgroundColor": "#f3971f",
+                                          "border": 10,
+                                          "borderRadius": "4px",
                                           "boxSizing": "border-box",
-                                          "color": "#4F4F4F",
-                                          "display": "inline-block",
+                                          "cursor": "pointer",
+                                          "display": "flex",
                                           "fontFamily": "NaturaSans-Regular",
-                                          "minWidth": 88,
+                                          "fontSize": "inherit",
+                                          "fontWeight": "inherit",
+                                          "height": "50px",
+                                          "justifyContent": "center",
+                                          "lineHeight": "initial",
+                                          "margin": 0,
+                                          "minWidth": "150px",
                                           "muiPrepared": true,
-                                          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                          "outline": "none",
+                                          "padding": 0,
+                                          "position": "relative",
+                                          "textAlign": "center",
+                                          "textDecoration": "none",
+                                          "transition": "all 200ms",
+                                          "verticalAlign": null,
+                                          "width": "100%",
                                         }
                                       }
+                                      tabIndex={0}
+                                      type="submit"
                                     >
-                                      <EnhancedButton
-                                        containerElement="button"
-                                        disabled={false}
-                                        focusRippleColor="#ffffff"
-                                        focusRippleOpacity={0.16}
-                                        height="50px"
-                                        onBlur={[Function]}
-                                        onClick={[Function]}
-                                        onFocus={[Function]}
-                                        onKeyDown={[Function]}
-                                        onKeyUp={[Function]}
-                                        onKeyboardFocus={[Function]}
-                                        onMouseDown={[Function]}
-                                        onMouseEnter={[Function]}
-                                        onMouseLeave={[Function]}
-                                        onMouseUp={[Function]}
-                                        onTouchEnd={[Function]}
-                                        onTouchStart={[Function]}
-                                        style={
-                                          Object {
-                                            "backgroundColor": "#f3971f",
-                                            "borderRadius": 2,
-                                            "height": 36,
-                                            "lineHeight": "36px",
-                                            "padding": 0,
-                                            "textAlign": "center",
-                                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                            "width": "100%",
-                                          }
-                                        }
-                                        tabIndex={0}
-                                        touchRippleColor="#ffffff"
-                                        touchRippleOpacity={0.16}
-                                        type="submit"
+                                      <TouchRipple
+                                        abortOnScroll={true}
+                                        color="#ffffff"
+                                        key="touchRipple"
+                                        opacity={0.16}
                                       >
-                                        <button
-                                          disabled={false}
-                                          height="50px"
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
+                                        <div
                                           onMouseDown={[Function]}
-                                          onMouseEnter={[Function]}
                                           onMouseLeave={[Function]}
                                           onMouseUp={[Function]}
                                           onTouchEnd={[Function]}
                                           onTouchStart={[Function]}
-                                          style={
-                                            Object {
-                                              "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
-                                              "backgroundColor": "#f3971f",
-                                              "border": 10,
-                                              "borderRadius": 2,
-                                              "boxSizing": "border-box",
-                                              "cursor": "pointer",
-                                              "display": "inline-block",
-                                              "fontFamily": "NaturaSans-Regular",
-                                              "fontSize": "inherit",
-                                              "fontWeight": "inherit",
-                                              "height": 36,
-                                              "lineHeight": "36px",
-                                              "margin": 0,
-                                              "muiPrepared": true,
-                                              "outline": "none",
-                                              "padding": 0,
-                                              "position": "relative",
-                                              "textAlign": "center",
-                                              "textDecoration": "none",
-                                              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                              "verticalAlign": null,
-                                              "width": "100%",
-                                            }
-                                          }
-                                          tabIndex={0}
-                                          type="submit"
                                         >
-                                          <TouchRipple
-                                            abortOnScroll={true}
-                                            color="#ffffff"
-                                            key="touchRipple"
-                                            opacity={0.16}
+                                          <div
+                                            style={
+                                              Object {
+                                                "backgroundColor": false,
+                                                "borderRadius": 2,
+                                                "display": "flex",
+                                                "height": "50px",
+                                                "minWidth": "150px",
+                                                "muiPrepared": true,
+                                                "top": 0,
+                                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                              }
+                                            }
                                           >
-                                            <div
-                                              onMouseDown={[Function]}
-                                              onMouseLeave={[Function]}
-                                              onMouseUp={[Function]}
-                                              onTouchEnd={[Function]}
-                                              onTouchStart={[Function]}
-                                            >
-                                              <div
-                                                style={
-                                                  Object {
-                                                    "backgroundColor": false,
-                                                    "borderRadius": 2,
-                                                    "height": 36,
-                                                    "muiPrepared": true,
-                                                    "top": 0,
-                                                    "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                                  }
+                                            <span
+                                              key="labelElement"
+                                              style={
+                                                Object {
+                                                  "alignSelf": "center",
+                                                  "color": "#ffffff",
+                                                  "fontFamily": "Roboto-Medium",
+                                                  "fontSize": 14,
+                                                  "fontWeight": 500,
+                                                  "letterSpacing": 0,
+                                                  "margin": 0,
+                                                  "muiPrepared": true,
+                                                  "opacity": 1,
+                                                  "paddingLeft": 16,
+                                                  "paddingRight": 16,
+                                                  "position": "relative",
+                                                  "textTransform": "uppercase",
+                                                  "userSelect": "none",
+                                                  "width": "100%",
                                                 }
+                                              }
+                                            >
+                                              <FormattedMessage
+                                                id="formCustomerNext"
+                                                values={Object {}}
                                               >
-                                                <span
-                                                  key="labelElement"
-                                                  style={
-                                                    Object {
-                                                      "color": "#ffffff",
-                                                      "fontFamily": "Roboto-Medium",
-                                                      "fontSize": 14,
-                                                      "fontWeight": 500,
-                                                      "letterSpacing": 0,
-                                                      "margin": 0,
-                                                      "muiPrepared": true,
-                                                      "opacity": 1,
-                                                      "paddingLeft": 16,
-                                                      "paddingRight": 16,
-                                                      "position": "relative",
-                                                      "textTransform": "uppercase",
-                                                      "userSelect": "none",
-                                                    }
-                                                  }
-                                                >
-                                                  <FormattedMessage
-                                                    id="formCustomerNext"
-                                                    values={Object {}}
-                                                  >
-                                                    <span>
-                                                      Próximo
-                                                    </span>
-                                                  </FormattedMessage>
+                                                <span>
+                                                  Próximo
                                                 </span>
-                                              </div>
-                                            </div>
-                                          </TouchRipple>
-                                        </button>
-                                      </EnhancedButton>
-                                    </div>
-                                  </Paper>
-                                </RaisedButton>
-                              </div>
-                            </styled.div>
+                                              </FormattedMessage>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </TouchRipple>
+                                    </button>
+                                  </EnhancedButton>
+                                </div>
+                              </Paper>
+                            </RaisedButton>
                           </FormButton>
                         </div>
                       </Formstyles__FormButtonsWrapper>

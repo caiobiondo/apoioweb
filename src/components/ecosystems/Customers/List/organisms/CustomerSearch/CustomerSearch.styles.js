@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { RobotoMedium, RobotoRegular } from 'styles/typography';
+import { RobotoRegular } from 'styles/typography';
 import { FormInput as BaseFormInput } from 'natura-ui';
 import { Responsive } from '@entria/components';
+import { white } from 'styles/colors';
 
 export const Wrapper = {
   padding: 30,
@@ -18,21 +19,30 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormButtonWrapper = styled.div`
-  margin-left: 20px;
-  display: flex;
   align-items: flex-end;
+  display: flex;
+  margin-left: 20px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-left: 0;
     margin-top: 20px;
+
+    button,
+    > div,
+    > div > div {
+      width: 100%;
+    }
   }
 `;
 
-export const formButtonStyles = {
-  height: '54px',
+export const searchButtonStyles = {
   labelStyle: {
-    fontFamily: RobotoMedium,
+    color: white,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontFamily: RobotoRegular,
   },
+  height: 54,
 };
 
 export const FormInput = styled(BaseFormInput)`

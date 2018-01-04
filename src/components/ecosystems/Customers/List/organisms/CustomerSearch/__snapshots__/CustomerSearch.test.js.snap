@@ -32,18 +32,13 @@ exports[`CustomerSearch Organism should render input and submit button 1`] = `
       <FormButton
         backgroundColor="#c9c9c9"
         disabled={false}
-        flat={true}
-        height="54px"
+        height="44px"
         label="Buscar"
         labelColor="#fff"
-        labelStyle={
-          Object {
-            "fontFamily": "Roboto-Medium",
-          }
-        }
         link={null}
         onClick={[Function]}
         primary={true}
+        raised={false}
         type="submit"
       />
     </CustomerSearchstyles__FormButtonWrapper>
