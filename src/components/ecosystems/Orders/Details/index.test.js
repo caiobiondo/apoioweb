@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrderDetails from './OrderDetails';
+import OrderDetails from './index';
 import OrderDetailsData from 'components/organisms/OrderDetailsData/OrderDetailsData';
 
 const setup = propOverrides => {
