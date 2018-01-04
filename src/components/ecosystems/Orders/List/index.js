@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OrdersList from 'components/organisms/OrdersList/OrdersList';
-import OrderAddButton from 'components/atoms/OrderAddButton/OrderAddButton';
+import OrdersList from './organisms/OrdersList/OrdersList';
+import OrderAddButton from './atoms/OrderAddButton/OrderAddButton';
 import { Main, OrderAddButtonContainer } from './index.styles';
 
 class Orders extends Component {

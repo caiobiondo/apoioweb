@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OrderDetailsData from 'components/organisms/OrderDetailsData/OrderDetailsData';
+import OrderDetailsData from 'components/ecosystems/Orders/Details/organisms/OrderDetailsData/OrderDetailsData';
 import { StockImportOrderDetailsWrapper } from './Details.styles';
 
 class StockImportOrderDetails extends Component {
