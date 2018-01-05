@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockImportOrdersList should render the stock import orders page 1`] = `
+<indexstyles__Main
+  empty={false}
+  loading={true}
+>
+  <Apollo(WithAuthErrorHandlerComponent)
+    importing={true}
+    onLoadFinished={[Function]}
+  />
+</indexstyles__Main>
+`;
