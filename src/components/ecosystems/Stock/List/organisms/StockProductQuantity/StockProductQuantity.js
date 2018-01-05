@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { CounterInput, Icon } from 'natura-ui';
-import { Wrapper, Button, SubmittedMessage } from './StockProductQuantity.styles';
+import { CounterInput, FormButton, Icon } from 'natura-ui';
+import {
+  Wrapper,
+  submitButtonStyles,
+  SubmittedAddedMessage,
+  SubmittedRemovedMessage,
+} from './StockProductQuantity.styles';
 import { FormattedMessage } from 'react-intl';
 import { UpdateStockProductMutation } from './StockProductQuantity.data';
 import { graphql } from 'react-apollo';
@@ -80,29 +85,37 @@ class StockProductQuantity extends Component {
     const label = this.getSubmitLabel();
 
     return (
-      <Button primary disabled={this.state.submitting} onClick={this.submit}>
-        {label}
-      </Button>
+      <FormButton
+        {...submitButtonStyles}
+        primary
+        disabled={this.state.submitting}
+        onClick={this.submit}
+        label={label}
+      />
     );
   };
 
-  getSubmittedLabel = () => {
-    const quantity = this.state.productOriginalQuantity - this.state.productQuantityBeforeSubmit;
+  renderRemovedMessage = quantity => {
+    return (
+      <SubmittedRemovedMessage>
+        <Icon file="ico_times" />
+        <FormattedMessage id="stockProductRemoved" values={{ quantity: quantity * -1 }} />
+      </SubmittedRemovedMessage>
+    );
+  };
 
-    if (quantity < 0) {
-      return <FormattedMessage id="stockProductRemoved" values={{ quantity: quantity * -1 }} />;
-    }
-
-    return <FormattedMessage id="stockProductAdded" values={{ quantity }} />;
+  renderAddedMessage = quantity => {
+    return (
+      <SubmittedAddedMessage>
+        <Icon file="ico_check" />
+        <FormattedMessage id="stockProductAdded" values={{ quantity }} />
+      </SubmittedAddedMessage>
+    );
   };
 
   renderSubmittedMessage = () => {
-    return (
-      <SubmittedMessage>
-        <Icon file="ico_check" />
-        {this.getSubmittedLabel()}
-      </SubmittedMessage>
-    );
+    const quantity = this.state.productOriginalQuantity - this.state.productQuantityBeforeSubmit;
+    return quantity < 0 ? this.renderRemovedMessage(quantity) : this.renderAddedMessage(quantity);
   };
 
   renderBottom = () => {
