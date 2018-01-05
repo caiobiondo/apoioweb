@@ -21,6 +21,16 @@ export class ListSearch extends Component {
 
   onSubmit = event => {
     event.stopPropagation();
+    this.onSearch();
+  };
+
+  onKeyPress = event => {
+    if (event.key === 'Enter') {
+      this.onSearch();
+    }
+  };
+
+  onSearch = () => {
     const { name } = this.state;
     this.props.onSearch(name);
   };
@@ -34,7 +44,9 @@ export class ListSearch extends Component {
         <FormWrapper>
           <FormInput
             type="text"
+            name="stockSearch"
             onChange={this.handleNameChange}
+            onKeyPress={this.onKeyPress}
             label={translate('stockProductName')}
             value={name}
           />

@@ -23,7 +23,9 @@ exports[`ListSearch Organism should render input and submit button 1`] = `
   <ListSearchstyles__FormWrapper>
     <ListSearchstyles__FormInput
       label="Nome"
+      name="stockSearch"
       onChange={[Function]}
+      onKeyPress={[Function]}
       type="text"
       value=""
     />
