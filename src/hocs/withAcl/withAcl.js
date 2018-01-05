@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Modal, ModalButton } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
-import { withRouter } from 'react-router-dom';
 
 export const ROOT_PATH = '/';
 export const API_AUTH_ERROR_MSG = '#REDIRECT_TO_LOGIN#';
