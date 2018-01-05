@@ -37,31 +37,42 @@ export default class App extends Component {
           <ApolloProvider client={client}>
             <BrowserRouter>
               <div>
-                <Route exact path="/my-orders" component={withDefaultBehaviour(Orders)} />
+                <Route exact path="/my-orders" component={withDefaultBehaviour(Orders, 'orders')} />
                 <Route
                   path="/my-orders/detail/:id"
-                  component={withDefaultBehaviour(OrderDetails)}
+                  component={withDefaultBehaviour(OrderDetails, 'orders')}
                 />
-                <Route path="/my-score" component={withDefaultBehaviour(MyScore)} />
-                <Route exact path="/my-customers" component={withDefaultBehaviour(CustomersList)} />
+                <Route path="/my-score" component={withDefaultBehaviour(MyScore, 'myScore')} />
+                <Route
+                  exact
+                  path="/my-customers"
+                  component={withDefaultBehaviour(CustomersList, 'customers')}
+                />
                 <Route
                   path="/my-customers/detail/:customerId"
-                  component={withDefaultBehaviour(CustomerDetails)}
+                  component={withDefaultBehaviour(CustomerDetails, 'customers')}
                 />
-                <Route path="/my-customers/add" component={withDefaultBehaviour(NewCustomer)} />
+                <Route
+                  path="/my-customers/add"
+                  component={withDefaultBehaviour(NewCustomer, 'customers')}
+                />
                 <Route
                   path="/my-customers/edit/:id"
-                  component={withDefaultBehaviour(EditCustomer)}
+                  component={withDefaultBehaviour(EditCustomer, 'customers')}
                 />
-                <Route exact path="/my-stock" component={withDefaultBehaviour(StockList)} />
+                <Route
+                  exact
+                  path="/my-stock"
+                  component={withDefaultBehaviour(StockList, 'stock')}
+                />
                 <Route
                   exact
                   path="/my-stock/import/orders"
-                  component={withDefaultBehaviour(StockImportOrdersList)}
+                  component={withDefaultBehaviour(StockImportOrdersList, 'stock')}
                 />
                 <Route
                   path="/my-stock/import/orders/detail/:id"
-                  component={withDefaultBehaviour(StockImportOrderDetails)}
+                  component={withDefaultBehaviour(StockImportOrderDetails, 'stock')}
                 />
               </div>
             </BrowserRouter>

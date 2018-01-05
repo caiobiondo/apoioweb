@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withAcl HOC correctly renders the component when the user has access 1`] = `
+<WrappedComponent
+  user={
+    Object {
+      "acl": Object {
+        "orders": true,
+      },
+    }
+  }
+/>
+`;

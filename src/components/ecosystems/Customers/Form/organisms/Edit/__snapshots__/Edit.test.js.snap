@@ -854,6 +854,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         locale="pt-BR"
         messages={
           Object {
+            "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
@@ -2354,6 +2355,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         locale="pt-BR"
         messages={
           Object {
+            "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
@@ -4143,6 +4145,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
         locale="pt-BR"
         messages={
           Object {
+            "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",

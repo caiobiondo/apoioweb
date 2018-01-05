@@ -5,8 +5,9 @@ exports[`Orders should render the orders page 1`] = `
   empty={false}
   loading={true}
 >
-  <Apollo(WithAuthErrorHandlerComponent)
+  <Apollo(OrdersList)
     onLoadFinished={[Function]}
+    user={undefined}
   />
 </indexstyles__Main>
 `;
