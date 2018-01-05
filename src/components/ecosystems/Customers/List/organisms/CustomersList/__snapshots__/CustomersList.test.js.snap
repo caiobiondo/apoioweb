@@ -296,6 +296,17 @@ exports[`CustomersList Organism should render a customers list 1`] = `
     <NaturaTable
       data={
         Object {
+          "body": Array [
+            Object {
+              "avatar": "",
+              "email": "an-email",
+              "id": 123,
+              "name": "a nickname",
+              "operator": "a provider",
+              "phone": "a-phone",
+              "style": null,
+            },
+          ],
           "columns": Array [
             "select",
             "name",
@@ -429,6 +440,17 @@ exports[`CustomersList Organism should render customers list filtered by name  1
     <NaturaTable
       data={
         Object {
+          "body": Array [
+            Object {
+              "avatar": "",
+              "email": "an-another-email",
+              "id": 124,
+              "name": "another name",
+              "operator": "a provider",
+              "phone": "an-another-phone",
+              "style": null,
+            },
+          ],
           "columns": Array [
             "select",
             "name",
