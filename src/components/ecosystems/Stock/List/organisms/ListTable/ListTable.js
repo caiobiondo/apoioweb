@@ -64,6 +64,10 @@ export class ListTable extends Component {
     return !loading && (!stockProducts || stockProducts.length === 0);
   };
 
+  onProductRemove = () => {
+    this.props.refetch();
+  };
+
   renderInfoCell = ({ value, row }) => {
     return (
       <StockProductInfoWrapper>
@@ -77,7 +81,7 @@ export class ListTable extends Component {
   };
 
   renderStockCell = ({ value, row }) => {
-    return <StockProductQuantity product={row} />;
+    return <StockProductQuantity product={row} onRemove={this.onProductRemove} />;
   };
 
   render() {
