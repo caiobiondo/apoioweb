@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockImportOrderDetails renders the stock import order details page 1`] = `
+<Detailsstyles__StockImportOrderDetailsWrapper>
+  <Apollo(WithUserDataComponent)
+    importing={true}
+    orderId={1}
+  />
+</Detailsstyles__StockImportOrderDetailsWrapper>
+`;
