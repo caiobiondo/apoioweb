@@ -11,7 +11,7 @@ class OrderDetails extends Component {
     const { id } = this.props.match.params;
     return (
       <OrderDetailsWrapper>
-        <OrderDetailsData orderId={id} />
+        <OrderDetailsData orderId={id} user={this.props.user} />
       </OrderDetailsWrapper>
     );
   }

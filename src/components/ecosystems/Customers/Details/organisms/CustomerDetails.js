@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { CustomerDetailsQuery, CustomerDetailsQueryOptions } from './CustomerDetails.data';
-import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
-import withUserData from 'hocs/withUserData/withUserData';
 import CustomerAvatar from '../../atoms/CustomerAvatar';
 import {
   Main,
@@ -179,12 +177,6 @@ export class CustomerDetails extends Component {
   }
 }
 
-export const CustomerDetailsWithAuthErrorHandler = withAuthErrorHandler(CustomerDetails);
-
 export const CustomerDetailsWithIntl = injectIntl(CustomerDetails);
 
-export const CustomerDetailsWithData = graphql(CustomerDetailsQuery, CustomerDetailsQueryOptions)(
-  CustomerDetailsWithIntl,
-);
-
-export default withUserData(CustomerDetailsWithData);
+export default graphql(CustomerDetailsQuery, CustomerDetailsQueryOptions)(CustomerDetailsWithIntl);
