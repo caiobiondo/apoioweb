@@ -9,11 +9,23 @@ exports[`Stock Product List Table should render correctly when loading 1`] = `
 `;
 
 exports[`Stock Product List Table should render correctly when the list is empty 1`] = `
-<EmptyList
-  descriptionId="stockEmptyListDescription"
-  icon="ico_forklift"
-  titleId="stockEmptyList"
-/>
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    descriptionId="stockEmptyListDescription"
+    icon="ico_forklift"
+    titleId="stockEmptyList"
+  />
+</Paper>
 `;
 
 exports[`Stock Product List Table should render correctly when the list is not empty 1`] = `

@@ -1,25 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ActionButtonContainer Styles should render the main container with full container mixin applied 1`] = `
-<div
-  className="indexstyles__Main-lhfXmf eJRibE"
-/>
-`;
-
-exports[`ActionButtonContainer Styles should render the main container with full container mixin applied 2`] = `
-<div
-  className="indexstyles__Main-lhfXmf eJRibE"
-/>
-`;
-
-exports[`ActionButtonContainer Styles should render the main container with full container mixin applied 3`] = `
-<div
-  className="indexstyles__Main-lhfXmf eJRibE"
-/>
-`;
-
 exports[`ActionButtonContainer Styles should render the main container without full container mixin applied 1`] = `
 <div
-  className="indexstyles__Main-lhfXmf gPbytn"
+  className="indexstyles__Main-lhfXmf bMnLSq"
 />
 `;

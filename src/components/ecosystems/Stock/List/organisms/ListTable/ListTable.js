@@ -14,6 +14,7 @@ import {
   TableWrapper,
   StockProductInfoWrapper,
   StockInputWrapper,
+  fullContainer,
 } from './ListTable.styles';
 
 export class ListTable extends Component {
@@ -91,11 +92,13 @@ export class ListTable extends Component {
 
     if (!this.props.stockProducts || !this.props.stockProducts.length) {
       return (
-        <EmptyList
-          icon="ico_forklift"
-          titleId="stockEmptyList"
-          descriptionId="stockEmptyListDescription"
-        />
+        <Paper style={fullContainer}>
+          <EmptyList
+            icon="ico_forklift"
+            titleId="stockEmptyList"
+            descriptionId="stockEmptyListDescription"
+          />
+        </Paper>
       );
     }
 
