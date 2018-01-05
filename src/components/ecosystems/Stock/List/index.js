@@ -3,12 +3,14 @@ import StockSearch from './organisms/ListSearch';
 import StockList from './organisms/ListTable';
 import StockAddButton from './organisms/StockAddButton';
 import { Main, StockSearchContainer, StockAddButtonContainer } from './index.styles';
+import StockAddProductModal from './organisms/StockAddProductModal';
 
 class StockListWrapper extends Component {
   state = {
     empty: false,
     loading: true,
     productSearch: '',
+    addStockModalOpen: false,
   };
 
   onLoadFinished = (empty, loading) => {
@@ -17,6 +19,14 @@ class StockListWrapper extends Component {
 
   onSearch = filters => {
     this.setState({ productSearch: filters.name });
+  };
+
+  openAddStockModal = () => {
+    this.setState({ addStockModalOpen: true });
+  };
+
+  handleClose = () => {
+    this.setState({ addStockModalOpen: false });
   };
 
   render() {
@@ -30,9 +40,13 @@ class StockListWrapper extends Component {
         )}
         {!loading && (
           <StockAddButtonContainer empty={empty}>
-            <StockAddButton />
+            <StockAddButton onClick={this.openAddStockModal} />
           </StockAddButtonContainer>
         )}
+        <StockAddProductModal
+          opened={this.state.addStockModalOpen}
+          handleClose={this.handleClose}
+        />
         <StockList onLoadFinished={this.onLoadFinished} productSearch={this.state.productSearch} />
       </Main>
     );

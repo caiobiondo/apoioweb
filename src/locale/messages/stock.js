@@ -9,6 +9,7 @@ export default {
     stockProductAdd: 'Adicionar',
     stockProductAdded:
       '{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }',
+    stockProductSuccessfullyAdded: 'Produto adicionado com sucesso!',
     stockProductCode: 'Código: {code}',
     stockProductHeaderName: 'Produto',
     stockProductHeaderQuantity: 'Quantidade',
