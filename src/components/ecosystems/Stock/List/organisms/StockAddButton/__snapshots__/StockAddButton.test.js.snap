@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StockAddButton should render a floating button with add order icon 1`] = `
-<Route
-  render={[Function]}
-/>
-`;
-
 exports[`StockAddButton should render a floating button with plus icon 1`] = `
 <CustomFloatingActionButton
   iconWrapper={[Function]}
