@@ -2,7 +2,7 @@
 
 exports[`StockImportOrderDetails renders the stock import order details page 1`] = `
 <Detailsstyles__StockImportOrderDetailsWrapper>
-  <Apollo(WithUserDataComponent)
+  <Apollo(OrderDetailsData)
     importing={true}
     orderId={1}
   />

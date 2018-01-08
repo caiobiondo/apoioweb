@@ -25,7 +25,7 @@ describe('StockList Ecosystem', () => {
 
     const result = shallow(<StockList />);
     const instance = result.instance();
-    instance.onSearch(productSearch);
+    instance.onSearch({ name: productSearch });
 
     expect(instance.state).toEqual(expectedState);
   });

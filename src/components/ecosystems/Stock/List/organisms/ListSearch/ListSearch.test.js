@@ -35,7 +35,7 @@ describe('ListSearch Organism', () => {
     instance.setState({ name });
     instance.onSubmit(event);
 
-    expect(onSearch).toBeCalledWith(name);
+    expect(onSearch).toBeCalledWith({ name });
     expect(event.stopPropagation).toBeCalled();
   });
 
@@ -51,7 +51,7 @@ describe('ListSearch Organism', () => {
     instance.setState({ name });
     instance.onKeyPress(event);
 
-    expect(onSearch).toBeCalledWith(name);
+    expect(onSearch).toBeCalledWith({ name });
   });
 
   it('should not call onSearch with name when enter is not pressed', () => {
