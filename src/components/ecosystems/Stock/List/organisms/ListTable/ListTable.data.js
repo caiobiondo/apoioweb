@@ -35,6 +35,7 @@ export const StockProductsQueryOptions = {
         filter: props.productSearch,
       },
       forceFetch: true,
+      fetchPolicy: 'cache-and-network',
     };
   },
   props({ data }) {

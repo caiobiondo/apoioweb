@@ -40,11 +40,7 @@ export class StockAddProduct extends Component {
       <StockItemProductImageWrapper>
         <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
         {product.name}
-        <StockAddProductForm
-          productId={product.productId}
-          enabled={product}
-          onSubmit={this.props.onSubmit}
-        />
+        <StockAddProductForm product={product} enabled={true} onSubmit={this.props.onSubmit} />
       </StockItemProductImageWrapper>
     );
   }

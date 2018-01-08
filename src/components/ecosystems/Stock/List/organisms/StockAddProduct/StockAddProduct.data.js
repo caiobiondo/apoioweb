@@ -5,6 +5,7 @@ export const ProductsListQuery = gql`
     products(cycleId: $cycleId, filter: $filter) {
       productId
       name
+      description
     }
   }
 `;

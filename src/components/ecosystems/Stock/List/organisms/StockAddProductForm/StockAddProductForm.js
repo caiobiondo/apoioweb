@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { FormInput, FormButton } from 'natura-ui';
 import PropTypes from 'prop-types';
+import { AddStockProductMutation } from './StockAddProductForm.data';
+import { StockProductsQuery } from '../ListTable/ListTable.data';
+import { graphql } from 'react-apollo';
 
 export class StockAddProductForm extends Component {
   state = {
@@ -12,8 +15,31 @@ export class StockAddProductForm extends Component {
   };
 
   onSubmit = () => {
-    console.log('adicionando produto');
-    this.props.onSubmit();
+    const { product } = this.props;
+    const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
+    this.props
+      .mutate({
+        variables: {
+          input: {
+            productCode: product.productId,
+            stockQuantity: this.state.productQty,
+            productName: product.name,
+            productDescription: product.description,
+            productImage: imageUrl,
+          },
+        },
+        refetchQueries: [
+          {
+            query: StockProductsQuery,
+            variables: {
+              limit: 10,
+              offset: 0,
+              productName: '',
+            },
+          },
+        ],
+      })
+      .then(this.props.onSubmit);
   };
 
   render() {
@@ -34,8 +60,8 @@ export class StockAddProductForm extends Component {
 
 StockAddProductForm.propTypes = {
   enabled: PropTypes.bool,
-  productId: PropTypes.number,
+  product: PropTypes.object,
   onSubmit: PropTypes.func,
 };
 
-export default StockAddProductForm;
+export default graphql(AddStockProductMutation)(StockAddProductForm);
