@@ -4,12 +4,12 @@ import { ListTable } from './ListTable';
 
 describe('Stock Product List Table', () => {
   it('should render correctly when loading', () => {
-    const result = shallow(<ListTable loading={true} />);
+    const result = shallow(<ListTable fetchMore={jest.fn()} loading={true} />);
     expect(result).toMatchSnapshot();
   });
 
   it('should render correctly when the list is empty', () => {
-    const result = shallow(<ListTable loading={false} stockProducts={[]} />);
+    const result = shallow(<ListTable fetchMore={jest.fn()} loading={false} stockProducts={[]} />);
     expect(result).toMatchSnapshot();
   });
 
@@ -26,7 +26,9 @@ describe('Stock Product List Table', () => {
       },
     ];
 
-    const result = shallow(<ListTable loading={false} stockProducts={mockProducts} />);
+    const result = shallow(
+      <ListTable fetchMore={jest.fn()} loading={false} stockProducts={mockProducts} />,
+    );
     expect(result).toMatchSnapshot();
   });
 
