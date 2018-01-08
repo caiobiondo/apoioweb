@@ -5,10 +5,9 @@ const CustomerAvatar = ({ name, avatar, ...props }) => {
   let nameInitials;
 
   if (name) {
-    nameInitials = name
-      .replace(/[^a-zA-Z- ]/g, '')
-      .match(/\b\w/g)
-      .join('');
+    nameInitials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
+
+    nameInitials = nameInitials ? nameInitials.join('') : '';
   } else {
     nameInitials = '';
   }

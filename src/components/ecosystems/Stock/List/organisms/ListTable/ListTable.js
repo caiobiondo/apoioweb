@@ -92,13 +92,12 @@ export class ListTable extends Component {
     }
 
     if (!this.props.stockProducts || !this.props.stockProducts.length) {
+      const emptyListText = this.props.productSearch
+        ? 'emptySearchResult'
+        : 'stockEmptyListDescription';
       return (
         <Paper style={fullContainer}>
-          <EmptyList
-            icon="ico_forklift"
-            titleId="stockEmptyList"
-            descriptionId="stockEmptyListDescription"
-          />
+          <EmptyList icon="ico_forklift" titleId="stockEmptyList" descriptionId={emptyListText} />
         </Paper>
       );
     }

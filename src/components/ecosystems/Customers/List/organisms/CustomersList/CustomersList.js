@@ -180,12 +180,16 @@ export class CustomersList extends Component {
     }
 
     if (isEmpty(loading, data.body)) {
+      const emptyListText = this.props.isFiltered
+        ? 'emptySearchResult'
+        : 'customersEmptyListDescription';
+
       return (
         <Paper style={fullContainer}>
           <EmptyList
             icon="ico_add_customer"
             titleId="customersEmptyList"
-            descriptionId="customersEmptyListDescription"
+            descriptionId={emptyListText}
           />
         </Paper>
       );
