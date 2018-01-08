@@ -15,8 +15,8 @@ class StockListWrapper extends Component {
     this.setState({ empty: empty, loading: loading });
   };
 
-  onSearch = productSearch => {
-    this.setState({ productSearch });
+  onSearch = filters => {
+    this.setState({ productSearch: filters.name });
   };
 
   render() {
