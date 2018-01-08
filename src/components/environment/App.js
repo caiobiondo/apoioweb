@@ -63,16 +63,16 @@ export default class App extends Component {
                 <Route
                   exact
                   path="/my-stock"
-                  component={withDefaultBehaviour(StockList, 'customers')}
+                  component={withDefaultBehaviour(StockList, 'stock')}
                 />
                 <Route
                   exact
                   path="/my-stock/import/orders"
-                  component={withDefaultBehaviour(StockImportOrdersList, 'customers')}
+                  component={withDefaultBehaviour(StockImportOrdersList, 'stock')}
                 />
                 <Route
                   path="/my-stock/import/orders/detail/:id"
-                  component={withDefaultBehaviour(StockImportOrderDetails, 'customers')}
+                  component={withDefaultBehaviour(StockImportOrderDetails, 'stock')}
                 />
               </div>
             </BrowserRouter>
