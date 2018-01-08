@@ -6,6 +6,7 @@ export const ProductsListQuery = gql`
       productId
       name
       description
+      price
     }
   }
 `;

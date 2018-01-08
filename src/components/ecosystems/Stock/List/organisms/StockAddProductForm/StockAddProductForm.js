@@ -26,6 +26,7 @@ export class StockAddProductForm extends Component {
             productName: product.name,
             productDescription: product.description,
             productImage: imageUrl,
+            productPrice: product.price,
           },
         },
         refetchQueries: [
