@@ -1311,6 +1311,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
         locale="pt-BR"
         messages={
           Object {
+            "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",

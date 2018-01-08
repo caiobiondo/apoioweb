@@ -6,6 +6,15 @@ export const UserDataQuery = gql`
       codigo
       cdCanalCaptacao
       codigoCentro
+      acl {
+        stock
+        customers
+        orders
+        myScore
+        training
+        magazine
+        cnd
+      }
       estrutura {
         gerenciaMercado {
           codigo

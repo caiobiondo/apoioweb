@@ -7,7 +7,6 @@ import {
 } from './ScoreCycles.data';
 import { graphql, compose } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import withUserData from 'hocs/withUserData/withUserData';
 import PeriodHistory from '../PeriodHistory/PeriodHistory';
 
 import { SmallTitle, PeriodTogglerWrapper } from '../MyScore/MyScore.styles';
@@ -74,9 +73,7 @@ export const ScoreCycles = props => {
 
 export const ScoreCyclesWithIntl = injectIntl(ScoreCycles);
 
-export const ScoreCyclesData = compose(
+export default compose(
   graphql(PreviousPeriodQuery, PreviousPeriodQueryOptions),
   graphql(ScoreCyclesQuery, ScoreCyclesQueryOptions),
 )(ScoreCyclesWithIntl);
-
-export default withUserData(ScoreCyclesData);

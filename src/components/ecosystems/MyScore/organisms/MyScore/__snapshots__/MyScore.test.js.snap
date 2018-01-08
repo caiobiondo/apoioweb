@@ -120,7 +120,7 @@ exports[`MyScore renders my score 1`] = `
         color="rgb(undefined, undefined, undefined)"
       />
     </MyScorestyles__Wrapper>
-    <Apollo(WithUserDataComponent)
+    <Apollo(Apollo(ScoreCycles))
       changeSelectedPeriod={[Function]}
       currentLevel={
         Object {
@@ -307,7 +307,7 @@ exports[`MyScore when is not last level renders my score 1`] = `
         color="rgb(undefined, undefined, undefined)"
       />
     </MyScorestyles__Wrapper>
-    <Apollo(WithUserDataComponent)
+    <Apollo(Apollo(ScoreCycles))
       changeSelectedPeriod={[Function]}
       currentLevel={
         Object {

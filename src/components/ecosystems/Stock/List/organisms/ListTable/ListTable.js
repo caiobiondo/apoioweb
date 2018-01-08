@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { Loading, Paper, Table } from 'natura-ui';
 import { StockProductsQuery, StockProductsQueryOptions } from './ListTable.data';
-import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 
@@ -105,8 +104,4 @@ export class ListTable extends Component {
   }
 }
 
-const ListTableWithAuthErrorHandler = withAuthErrorHandler(ListTable);
-
-export default graphql(StockProductsQuery, StockProductsQueryOptions)(
-  ListTableWithAuthErrorHandler,
-);
+export default graphql(StockProductsQuery, StockProductsQueryOptions)(ListTable);

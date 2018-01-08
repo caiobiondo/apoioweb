@@ -15,7 +15,7 @@ import StockList from 'components/ecosystems/Stock/List';
 import StockImportOrdersList from 'components/ecosystems/Stock/Import/organisms/List/List';
 import StockImportOrderDetails from 'components/ecosystems/Stock/Import/organisms/Details/Details';
 
-import withAuthentication from 'hocs/withAuthentication';
+import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 import { locale, flattenMessages, messages } from 'locale/index';
@@ -37,25 +37,42 @@ export default class App extends Component {
           <ApolloProvider client={client}>
             <BrowserRouter>
               <div>
-                <Route exact path="/my-orders" component={withAuthentication(Orders)} />
-                <Route path="/my-orders/detail/:id" component={withAuthentication(OrderDetails)} />
-                <Route path="/my-score" component={withAuthentication(MyScore)} />
-                <Route exact path="/my-customers" component={withAuthentication(CustomersList)} />
+                <Route exact path="/my-orders" component={withDefaultBehaviour(Orders, 'orders')} />
+                <Route
+                  path="/my-orders/detail/:id"
+                  component={withDefaultBehaviour(OrderDetails, 'orders')}
+                />
+                <Route path="/my-score" component={withDefaultBehaviour(MyScore, 'myScore')} />
+                <Route
+                  exact
+                  path="/my-customers"
+                  component={withDefaultBehaviour(CustomersList, 'customers')}
+                />
                 <Route
                   path="/my-customers/detail/:customerId"
-                  component={withAuthentication(CustomerDetails)}
+                  component={withDefaultBehaviour(CustomerDetails, 'customers')}
                 />
-                <Route path="/my-customers/add" component={withAuthentication(NewCustomer)} />
-                <Route path="/my-customers/edit/:id" component={withAuthentication(EditCustomer)} />
-                <Route exact path="/my-stock" component={withAuthentication(StockList)} />
+                <Route
+                  path="/my-customers/add"
+                  component={withDefaultBehaviour(NewCustomer, 'customers')}
+                />
+                <Route
+                  path="/my-customers/edit/:id"
+                  component={withDefaultBehaviour(EditCustomer, 'customers')}
+                />
+                <Route
+                  exact
+                  path="/my-stock"
+                  component={withDefaultBehaviour(StockList, 'stock')}
+                />
                 <Route
                   exact
                   path="/my-stock/import/orders"
-                  component={withAuthentication(StockImportOrdersList)}
+                  component={withDefaultBehaviour(StockImportOrdersList, 'stock')}
                 />
                 <Route
                   path="/my-stock/import/orders/detail/:id"
-                  component={withAuthentication(StockImportOrderDetails)}
+                  component={withDefaultBehaviour(StockImportOrderDetails, 'stock')}
                 />
               </div>
             </BrowserRouter>
