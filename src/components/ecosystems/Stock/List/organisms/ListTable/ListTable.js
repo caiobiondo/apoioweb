@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { Loading, Paper, Table } from 'natura-ui';
+import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
 import { StockProductsQuery, StockProductsQueryOptions } from './ListTable.data';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 
 import StockProductQuantity from '../StockProductQuantity';
 import StockProductInfo from '../../molecules/StockProductInfo';
+import InfiniteScroll from 'react-infinite-scroller';
 
 import {
   WrapperStyle,
   TableWrapper,
   StockProductInfoWrapper,
+  LoadingWrapper,
   StockInputWrapper,
   fullContainer,
 } from './ListTable.styles';
@@ -103,9 +105,19 @@ export class ListTable extends Component {
 
     return (
       <Paper style={WrapperStyle}>
-        <TableWrapper>
-          <Table data={{ ...this.tableSchema, body: this.props.stockProducts }} />
-        </TableWrapper>
+        <InfiniteScroll
+          loadMore={this.props.fetchMore}
+          hasMore={false}
+          loader={
+            <LoadingWrapper>
+              <CircularProgress thickness={2} />
+            </LoadingWrapper>
+          }
+        >
+          <TableWrapper>
+            <Table data={{ ...this.tableSchema, body: this.props.stockProducts }} />
+          </TableWrapper>
+        </InfiniteScroll>
       </Paper>
     );
   }

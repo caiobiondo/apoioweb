@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { gray300, white } from 'styles/colors';
+import { LoadingWrapperStyle } from 'styles/mixins';
+
+export const LoadingWrapper = LoadingWrapperStyle;
 
 export const WrapperStyle = {
   flex: '1 1 0',
   flexDirection: 'column',
   justifyContent: 'center',
-  overflowY: 'scroll',
 };
 
 export const StockInputWrapper = styled.div``;
