@@ -3,9 +3,9 @@ import { FloatingActionButton, Icon } from 'natura-ui';
 import { withRouter } from 'react-router-dom';
 import { IconWrapper } from './StockAddButton.styles';
 
-class StockAddButton extends Component {
+export class StockAddButton extends Component {
   importFromOrders = () => {
-    this.props.history.push(`/my-stock/import/orders`);
+    this.props.history.push('/my-stock/import/orders');
   };
 
   render() {

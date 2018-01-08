@@ -29,4 +29,13 @@ describe('Stock Product List Table', () => {
     const result = shallow(<ListTable loading={false} stockProducts={mockProducts} />);
     expect(result).toMatchSnapshot();
   });
+
+  it('should refetch items on product removal', () => {
+    const refetchMock = jest.fn();
+    const result = shallow(<ListTable loading={false} stockProducts={[]} refetch={refetchMock} />);
+    const instance = result.instance();
+    instance.onProductRemove();
+
+    expect(refetchMock).toBeCalled();
+  });
 });

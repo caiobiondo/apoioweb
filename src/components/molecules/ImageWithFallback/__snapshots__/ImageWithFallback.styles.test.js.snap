@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageWithFallback Styles should render correctly 1`] = `
+<div
+  className="ImageWithFallbackstyles__Wrapper-hhZDyc fDsiIS"
+  height="10px"
+  width="10px"
+/>
+`;

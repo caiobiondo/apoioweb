@@ -40,9 +40,8 @@ describe('CustomersList Organism', () => {
   });
 
   it('should render a customers list', () => {
-    const renderer = new ShallowRenderer();
-    const onSelect = jest.fn();
     const selectedCustomers = [];
+    const filters = {};
     const data = {
       loading: false,
       customers: [
@@ -56,12 +55,14 @@ describe('CustomersList Organism', () => {
       ],
     };
 
-    renderer.render(
-      <CustomersList onSelect={onSelect} selectedCustomers={selectedCustomers} data={data} />,
+    const result = shallow(
+      <CustomersList filters={filters} selectedCustomers={selectedCustomers} data={data} />,
     );
-    const result = renderer.getRenderOutput();
+    const instance = result.instance();
+    instance.componentWillReceiveProps({ data, selectedCustomers, filters });
+    result.update();
 
-    expect(result).toMatchSnapshot();
+    expect(toJson(result)).toMatchSnapshot();
   });
 
   it('should render customers list filtered by name ', () => {
@@ -94,6 +95,7 @@ describe('CustomersList Organism', () => {
     );
     const instance = result.instance();
     instance.componentWillReceiveProps({ data, selectedCustomers, filters });
+    result.update();
 
     expect(toJson(result)).toMatchSnapshot();
   });

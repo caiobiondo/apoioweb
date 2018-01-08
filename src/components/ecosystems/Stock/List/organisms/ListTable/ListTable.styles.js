@@ -62,3 +62,7 @@ export const TableWrapper = styled.div`
     }
   }
 `;
+
+export const fullContainer = {
+  height: '100%',
+};

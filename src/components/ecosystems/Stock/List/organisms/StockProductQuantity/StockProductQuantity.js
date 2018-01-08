@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
-import { CounterInput, Icon } from 'natura-ui';
-import { Wrapper, Button, SubmittedMessage } from './StockProductQuantity.styles';
+import { CounterInput, FormButton, Icon } from 'natura-ui';
+import {
+  Wrapper,
+  submitButtonStyles,
+  SubmittedAddedMessage,
+  SubmittedRemovedMessage,
+} from './StockProductQuantity.styles';
 import { FormattedMessage } from 'react-intl';
-import { UpdateStockProductMutation } from './StockProductQuantity.data';
-import { graphql } from 'react-apollo';
+import {
+  UpdateStockProductMutation,
+  RemoveStockProductMutation,
+} from './StockProductQuantity.data';
+import { graphql, compose } from 'react-apollo';
+
+const FEEDBACK_TIMEOUT = 5000;
 
 class StockProductQuantity extends Component {
   constructor(props) {
@@ -35,33 +45,62 @@ class StockProductQuantity extends Component {
     event.stopPropagation();
 
     this.setState({ submitting: true });
+    if (submittedQuantity > 0) {
+      return this.updateStockProduct(submittedQuantity, productQuantityBeforeSubmit);
+    }
+    return this.removeStockProduct(submittedQuantity, productQuantityBeforeSubmit);
+  };
+
+  updateStockProduct = (submittedQuantity, productQuantityBeforeSubmit) => {
     this.props
-      .mutate({
+      .updateStockProduct({
         variables: {
           input: {
             id: this.props.product.id,
             productCode: this.props.product.productCode,
-            stockQuantity: this.state.quantity,
+            stockQuantity: submittedQuantity,
           },
         },
       })
       .then(() => {
-        this.setState({
-          productOriginalQuantity: submittedQuantity,
-          productQuantityBeforeSubmit: productQuantityBeforeSubmit,
-          showSubmittedMessage: true,
-          submitting: false,
-        });
-
-        clearTimeout(this.state.hideSubmittedMessageTimeout);
-        const hideSubmittedMessageTimeout = setTimeout(() => {
-          this.setState({
-            showSubmittedMessage: false,
-          });
-        }, 5000);
-
-        this.setState({ hideSubmittedMessageTimeout });
+        this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit);
       });
+  };
+
+  removeStockProduct = (submittedQuantity, productQuantityBeforeSubmit) => {
+    this.props
+      .removeStockProduct({
+        variables: {
+          input: {
+            id: this.props.product.id,
+          },
+        },
+      })
+      .then(() => {
+        this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit, () => {
+          this.props.onRemove(this.props.product.id);
+        });
+      });
+  };
+
+  showUpdateFeedback = (submittedQuantity, productQuantityBeforeSubmit, callback) => {
+    this.setState({
+      productOriginalQuantity: submittedQuantity,
+      productQuantityBeforeSubmit: productQuantityBeforeSubmit,
+      showSubmittedMessage: true,
+      submitting: false,
+    });
+
+    clearTimeout(this.state.hideSubmittedMessageTimeout);
+    const hideSubmittedMessageTimeout = setTimeout(() => {
+      this.setState({
+        showSubmittedMessage: false,
+      });
+      if (callback) {
+        callback();
+      }
+    }, FEEDBACK_TIMEOUT);
+    this.setState({ hideSubmittedMessageTimeout });
   };
 
   quantityChanged = quantity => {
@@ -80,29 +119,37 @@ class StockProductQuantity extends Component {
     const label = this.getSubmitLabel();
 
     return (
-      <Button primary disabled={this.state.submitting} onClick={this.submit}>
-        {label}
-      </Button>
+      <FormButton
+        {...submitButtonStyles}
+        primary
+        disabled={this.state.submitting}
+        onClick={this.submit}
+        label={label}
+      />
     );
   };
 
-  getSubmittedLabel = () => {
-    const quantity = this.state.productOriginalQuantity - this.state.productQuantityBeforeSubmit;
+  renderRemovedMessage = quantity => {
+    return (
+      <SubmittedRemovedMessage>
+        <Icon file="ico_times" />
+        <FormattedMessage id="stockProductRemoved" values={{ quantity: quantity * -1 }} />
+      </SubmittedRemovedMessage>
+    );
+  };
 
-    if (quantity < 0) {
-      return <FormattedMessage id="stockProductRemoved" values={{ quantity: quantity * -1 }} />;
-    }
-
-    return <FormattedMessage id="stockProductAdded" values={{ quantity }} />;
+  renderAddedMessage = quantity => {
+    return (
+      <SubmittedAddedMessage>
+        <Icon file="ico_check" />
+        <FormattedMessage id="stockProductAdded" values={{ quantity }} />
+      </SubmittedAddedMessage>
+    );
   };
 
   renderSubmittedMessage = () => {
-    return (
-      <SubmittedMessage>
-        <Icon file="ico_check" />
-        {this.getSubmittedLabel()}
-      </SubmittedMessage>
-    );
+    const quantity = this.state.productOriginalQuantity - this.state.productQuantityBeforeSubmit;
+    return quantity < 0 ? this.renderRemovedMessage(quantity) : this.renderAddedMessage(quantity);
   };
 
   renderBottom = () => {
@@ -129,4 +176,11 @@ class StockProductQuantity extends Component {
 
 export { StockProductQuantity };
 
-export default graphql(UpdateStockProductMutation)(StockProductQuantity);
+export default compose(
+  graphql(UpdateStockProductMutation, {
+    name: 'updateStockProduct',
+  }),
+  graphql(RemoveStockProductMutation, {
+    name: 'removeStockProduct',
+  }),
+)(StockProductQuantity);

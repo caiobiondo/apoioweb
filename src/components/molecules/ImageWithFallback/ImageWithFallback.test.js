@@ -15,4 +15,16 @@ describe('ImageWithFallback', () => {
     );
     expect(result).toMatchSnapshot();
   });
+
+  it('should render correctly (with only width)', () => {
+    const result = shallow(
+      <ImageWithFallback
+        className="test-class"
+        fallbackIcon="ico_fallback"
+        imageUrl="http://www.test.com/image.jpg"
+        width="10px"
+      />,
+    );
+    expect(result).toMatchSnapshot();
+  });
 });

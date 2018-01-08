@@ -1,5 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ImageWithFallback should render correctly (with only width) 1`] = `
+<ImageWithFallbackstyles__Wrapper
+  className="test-class"
+  height="10px"
+  width="10px"
+>
+  <Img
+    decode={true}
+    loader={
+      <Loading
+        background="#FFFFFF"
+        visible={true}
+        zIndex={9999}
+      />
+    }
+    src="http://www.test.com/image.jpg"
+    unloader={
+      <Icon
+        file="ico_fallback"
+      />
+    }
+  />
+</ImageWithFallbackstyles__Wrapper>
+`;
+
 exports[`ImageWithFallback should render correctly 1`] = `
 <ImageWithFallbackstyles__Wrapper
   className="test-class"

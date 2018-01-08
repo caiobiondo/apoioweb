@@ -7,6 +7,7 @@ import { Center } from 'styles/mixins';
 
 export const Container = styled.div`
   ${Center};
+  padding: 50px 0;
 `;
 
 export const IconWrapper = styled.div`

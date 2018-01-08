@@ -13,6 +13,7 @@ import {
   TableWrapper,
   StockProductInfoWrapper,
   StockInputWrapper,
+  fullContainer,
 } from './ListTable.styles';
 
 export class ListTable extends Component {
@@ -63,6 +64,10 @@ export class ListTable extends Component {
     return !loading && (!stockProducts || stockProducts.length === 0);
   };
 
+  onProductRemove = () => {
+    this.props.refetch();
+  };
+
   renderInfoCell = ({ value, row }) => {
     return (
       <StockProductInfoWrapper>
@@ -76,7 +81,7 @@ export class ListTable extends Component {
   };
 
   renderStockCell = ({ value, row }) => {
-    return <StockProductQuantity product={row} />;
+    return <StockProductQuantity product={row} onRemove={this.onProductRemove} />;
   };
 
   render() {
@@ -86,11 +91,13 @@ export class ListTable extends Component {
 
     if (!this.props.stockProducts || !this.props.stockProducts.length) {
       return (
-        <EmptyList
-          icon="ico_forklift"
-          titleId="stockEmptyList"
-          descriptionId="stockEmptyListDescription"
-        />
+        <Paper style={fullContainer}>
+          <EmptyList
+            icon="ico_forklift"
+            titleId="stockEmptyList"
+            descriptionId="stockEmptyListDescription"
+          />
+        </Paper>
       );
     }
 

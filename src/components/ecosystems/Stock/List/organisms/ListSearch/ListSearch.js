@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Paper, FormButton } from 'natura-ui';
+import BaseSearch from 'components/molecules/BaseSearch';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import { translate } from 'locale';
 import {
@@ -10,23 +11,8 @@ import {
   searchButtonStyles,
 } from './ListSearch.styles';
 
-export class ListSearch extends Component {
-  state = {
-    name: '',
-  };
-
-  handleNameChange = (event, name) => {
-    this.setState({ name });
-  };
-
-  onSubmit = event => {
-    event.stopPropagation();
-    const { name } = this.state;
-    this.props.onSearch(name);
-  };
-
+export class ListSearch extends BaseSearch {
   render() {
-    const { name } = this.state;
     return (
       <Paper style={Wrapper}>
         <SectionTitle iconName="ico_forklift" value="myStock" />
@@ -34,9 +20,11 @@ export class ListSearch extends Component {
         <FormWrapper>
           <FormInput
             type="text"
+            name="stockSearch"
             onChange={this.handleNameChange}
+            onKeyPress={this.onKeyPress}
             label={translate('stockProductName')}
-            value={name}
+            value={this.state.name}
           />
           <FormButtonWrapper>
             <FormButton

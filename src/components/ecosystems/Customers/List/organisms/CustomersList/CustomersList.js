@@ -84,7 +84,7 @@ export class CustomersList extends Component {
 
     this.setState({ data: { ...this.state.data, body: parsedCustomers } });
 
-    this.notifyLoadFinish(loading, customers);
+    this.notifyLoadFinish(loading, parsedCustomers);
   }
 
   filterCustomers = (customers, filters) => {
@@ -172,14 +172,14 @@ export class CustomersList extends Component {
 
   render() {
     const { isLoading, isEmpty } = this;
-    const { loading, customers } = this.props.data;
+    const { loading } = this.props.data;
     const { data } = this.state;
 
-    if (isLoading(loading, customers)) {
+    if (isLoading(loading, data.body)) {
       return <Loading background="transparent" />;
     }
 
-    if (isEmpty(loading, customers)) {
+    if (isEmpty(loading, data.body)) {
       return (
         <Paper style={fullContainer}>
           <EmptyList

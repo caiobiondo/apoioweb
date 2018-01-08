@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Paper, FormButton } from 'natura-ui';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
+import BaseSearch from 'components/molecules/BaseSearch';
 import { translate } from 'locale';
 import {
   Wrapper,
@@ -11,33 +12,9 @@ import {
   CustomerSearchDescription,
 } from './CustomerSearch.styles';
 
-export class CustomerSearch extends Component {
-  state = {
-    name: '',
-  };
-
-  handleNameChange = (event, name) => {
-    this.setState({ name });
-  };
-
-  onSubmit = event => {
-    event.stopPropagation();
-    this.onSearch();
-  };
-
-  onKeyPress = event => {
-    if (event.key === 'Enter') {
-      this.onSearch();
-    }
-  };
-
-  onSearch = () => {
-    const { name } = this.state;
-    this.props.onSearch({ name });
-  };
-
+export class CustomerSearch extends BaseSearch {
   render() {
-    const { name } = this.state;
+    // const { name } = this.state;
     return (
       <Paper style={Wrapper}>
         <SectionTitle iconName="ico_add_customer" value="myCustomers" />
@@ -49,7 +26,7 @@ export class CustomerSearch extends Component {
             onKeyPress={this.onKeyPress}
             onChange={this.handleNameChange}
             label={translate('customerName')}
-            value={name}
+            value={this.state.name}
           />
           <FormButtonWrapper>
             <FormButton

@@ -11,3 +11,11 @@ export const UpdateStockProductMutation = gql`
     }
   }
 `;
+
+export const RemoveStockProductMutation = gql`
+  mutation RemoveStockProduct($input: RemoveStockProductInput!) {
+    removeStockProduct(input: $input) {
+      count
+    }
+  }
+`;
