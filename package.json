@@ -6,6 +6,7 @@
   "dependencies": {
     "apollo-cache-inmemory": "^1.0.0",
     "apollo-client": "^2.0.1",
+    "apollo-link-error": "^1.0.3",
     "apollo-link-http": "^1.0.0",
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",

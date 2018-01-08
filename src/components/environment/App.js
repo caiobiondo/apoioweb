@@ -20,14 +20,19 @@ import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 import { locale, flattenMessages, messages } from 'locale/index';
 
+import authLink from 'apolloLinks/authLink';
+
 setupGlobals();
 setupFonts();
+
+const LOGIN_PATH = '/login';
+const API_AUTH_ERROR_MSG = '#REDIRECT_TO_LOGIN#';
 
 const client = new ApolloClientCreator(
   GRAPHQL_URI,
   ACCESS_TOKEN_LOCAL_STORAGE_KEY,
   CNO_TOKEN_LOCAL_STORAGE_KEY,
-).create();
+).create([authLink]);
 
 export default class App extends Component {
   render() {

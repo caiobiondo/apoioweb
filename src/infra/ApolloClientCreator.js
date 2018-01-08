@@ -8,9 +8,10 @@ export default class ApolloClientCreator {
     this.createHttpLink = createHttpLink || require('apollo-link-http').createHttpLink;
   }
 
-  create() {
-    const link = this._createLink();
+  create(links) {
+    const link = this._createLink(links);
     const cache = this._createCache();
+
     return new this.ApolloClient({ cache, link });
   }
 
@@ -18,12 +19,20 @@ export default class ApolloClientCreator {
     return new this.InMemoryCache();
   }
 
-  _createLink() {
+  _createLink(links) {
     const headers = this._createAuthHeaders();
-    return this.createHttpLink({
+    const httpLink = this.createHttpLink({
       headers: headers,
       uri: this.uri,
     });
+
+    if (links && links.length) {
+      return links.reduce((nextLink, link) => {
+        return link.concat(nextLink);
+      }, httpLink);
+    }
+
+    return httpLink;
   }
 
   _createAuthHeaders() {
