@@ -16,7 +16,7 @@ export default class StockImportOrdersList extends Component {
     const { loading, empty } = this.state;
     return (
       <Main loading={loading} empty={empty}>
-        <OrdersList importing={true} onLoadFinished={this.onLoadFinished} />
+        <OrdersList importing={true} onLoadFinished={this.onLoadFinished} user={this.props.user} />
       </Main>
     );
   }

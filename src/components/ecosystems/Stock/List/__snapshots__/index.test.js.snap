@@ -5,7 +5,7 @@ exports[`StockList Ecosystem should render the stock list page 1`] = `
   empty={false}
   loading={true}
 >
-  <Apollo(WithAuthErrorHandlerComponent)
+  <Apollo(ListTable)
     onLoadFinished={[Function]}
     productSearch=""
   />

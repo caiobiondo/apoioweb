@@ -2,7 +2,7 @@
 
 exports[`OrderDetails renders the order details page 1`] = `
 <indexstyles__OrderDetailsWrapper>
-  <Apollo(WithUserDataComponent)
+  <Apollo(OrderDetailsData)
     orderId={1}
   />
 </indexstyles__OrderDetailsWrapper>

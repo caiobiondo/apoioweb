@@ -6,6 +6,7 @@ export default {
     dismiss: 'OK, entendi',
     error: 'Erro',
     errorMessage: 'Desculpe, houve um erro no processamento',
+    aclErrorMessage: 'Desculpe, você não possui permissão para acessar esta página.',
     ok: 'OK',
     remove: 'Excluir',
     search: 'Buscar',

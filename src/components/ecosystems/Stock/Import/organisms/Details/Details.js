@@ -12,7 +12,7 @@ export default class StockImportOrderDetails extends Component {
 
     return (
       <StockImportOrderDetailsWrapper>
-        <OrderDetailsData orderId={id} importing={true} />
+        <OrderDetailsData orderId={id} importing={true} user={this.props.user} />
       </StockImportOrderDetailsWrapper>
     );
   }

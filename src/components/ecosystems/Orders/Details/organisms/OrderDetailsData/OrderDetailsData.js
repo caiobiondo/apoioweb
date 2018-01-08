@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { Loading } from 'natura-ui';
 import { injectIntl } from 'react-intl';
-import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
-import withUserData from 'hocs/withUserData/withUserData';
 
 import { OrderDetailsQuery, OrderDetailsQueryOptions } from './OrderDetailsData.data';
 
@@ -27,12 +25,6 @@ export class OrderDetailsData extends Component {
   }
 }
 
-export const OrderDetailsDataWithAuthErrorHandler = withAuthErrorHandler(OrderDetailsData);
-
 export const OrderDetailsDataWithIntl = injectIntl(OrderDetailsData);
 
-export const OrderDetailsDataWithData = graphql(OrderDetailsQuery, OrderDetailsQueryOptions)(
-  OrderDetailsDataWithIntl,
-);
-
-export default withUserData(OrderDetailsDataWithData);
+export default graphql(OrderDetailsQuery, OrderDetailsQueryOptions)(OrderDetailsDataWithIntl);

@@ -22,7 +22,7 @@ class Orders extends Component {
             <OrderAddButton />
           </OrderAddButtonContainer>
         )}
-        <OrdersList onLoadFinished={this.onLoadFinished} />
+        <OrdersList onLoadFinished={this.onLoadFinished} user={this.props.user} />
       </Main>
     );
   }

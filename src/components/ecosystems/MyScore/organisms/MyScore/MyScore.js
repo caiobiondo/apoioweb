@@ -3,8 +3,6 @@ import { Loading } from 'natura-ui';
 import { MyScoreQuery, MyScoreQueryOptions } from './MyScore.data';
 import { graphql } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
-import withUserData from 'hocs/withUserData/withUserData';
 import LevelList from '../../atoms/LevelList';
 
 import {
@@ -75,6 +73,7 @@ export class MyScore extends Component {
     return (
       <ScoreCycles
         key={this.state.selectedPeriod}
+        user={this.props.user}
         growthStatus={this.props.growthStatus}
         currentLevel={currentLevel}
         selectedCycleNumber={this.state.selectedCycleNumber}
@@ -155,10 +154,6 @@ export class MyScore extends Component {
   }
 }
 
-export const MyScoreWithAuthErrorHandler = withAuthErrorHandler(MyScore);
+export const MyScoreWithIntl = injectIntl(MyScore);
 
-export const MyScoreWithIntl = injectIntl(MyScoreWithAuthErrorHandler);
-
-export const MyScoreWithData = graphql(MyScoreQuery, MyScoreQueryOptions)(MyScoreWithIntl);
-
-export default withUserData(MyScoreWithData);
+export default graphql(MyScoreQuery, MyScoreQueryOptions)(MyScoreWithIntl);
