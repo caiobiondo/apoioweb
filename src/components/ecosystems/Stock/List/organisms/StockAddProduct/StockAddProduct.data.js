@@ -11,14 +11,25 @@ export const ProductsListQuery = gql`
   }
 `;
 
+const getCycleIdFromUser = user => {
+  console.log(user);
+  return (
+    user &&
+    user.estrutura &&
+    user.estrutura.ciclo &&
+    user.estrutura.ciclo[0] &&
+    user.estrutura.ciclo[0].numero &&
+    String(user.estrutura.ciclo[0].numero)
+  );
+};
+
 export const ProductsListQueryOptions = {
   options(props) {
     return {
       variables: {
         filter: props.search,
-        cycleId: '201718',
+        cycleId: getCycleIdFromUser(props.user),
       },
-      forceFetch: true,
     };
   },
 };

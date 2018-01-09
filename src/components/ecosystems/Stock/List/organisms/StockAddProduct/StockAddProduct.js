@@ -8,16 +8,9 @@ import {
 import { Icon, Loading } from 'natura-ui';
 import { ProductsListQuery, ProductsListQueryOptions } from './StockAddProduct.data';
 import { graphql } from 'react-apollo';
-import withAuthErrorHandler from 'hocs/withAuthErrorHandler/withAuthErrorHandler';
 import StockAddProductForm from '../StockAddProductForm/StockAddProductForm';
 
 export class StockAddProduct extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (this.props.search !== nextProps.search) {
-      this.props.data.refetch();
-    }
-  }
-
   renderItemProductImageFallback = () => {
     return (
       <StockItemProductImageFallback>
@@ -60,6 +53,4 @@ StockAddProduct.propTypes = {
   search: PropTypes.string,
 };
 
-const WithAuthErrorHandler = withAuthErrorHandler(StockAddProduct);
-
-export default graphql(ProductsListQuery, ProductsListQueryOptions)(WithAuthErrorHandler);
+export default graphql(ProductsListQuery, ProductsListQueryOptions)(StockAddProduct);

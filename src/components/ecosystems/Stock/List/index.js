@@ -46,6 +46,7 @@ class StockListWrapper extends Component {
         <StockAddProductModal
           opened={this.state.addStockModalOpen}
           handleClose={this.handleClose}
+          user={this.props.user}
         />
         <StockList onLoadFinished={this.onLoadFinished} productSearch={this.state.productSearch} />
       </Main>
