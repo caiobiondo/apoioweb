@@ -57,12 +57,12 @@ export default class StockAddProductModal extends Component {
         open={this.props.opened}
         showCloseButton={true}
         onCloseClick={this.props.handleClose}
-        title="Adicionar novo produto ao estoque"
+        title={translate('stockProductAddModalTitle')}
       >
         <FormInput
           onChange={this.onChangeFilter}
           name="search"
-          label="Código"
+          label={translate('stockProductCodeLabel')}
           value={this.state.search}
         />
         {search && <StockAddProduct search={this.state.search} onSubmit={this.onSubmit} />}

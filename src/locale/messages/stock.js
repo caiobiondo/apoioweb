@@ -7,9 +7,12 @@ export default {
     stockEmptyListDescription: 'Você ainda não possui produtos em seu estoque',
     stockImportFromOrders: 'Importar produtos de pedido',
     stockProductAdd: 'Adicionar',
+    stockProductAddModalTitle: 'Adicionar novo produto ao estoque',
     stockProductAdded:
       '{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }',
     stockProductSuccessfullyAdded: 'Produto adicionado com sucesso!',
+    stockProductCodeLabel: 'Código',
+    stockProductQuantityLabel: 'Quantidade',
     stockProductCode: 'Código: {code}',
     stockProductHeaderName: 'Produto',
     stockProductHeaderQuantity: 'Quantidade',

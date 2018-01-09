@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { AddStockProductMutation } from './StockAddProductForm.data';
 import { StockProductsQuery } from '../ListTable/ListTable.data';
 import { graphql } from 'react-apollo';
+import { translate } from 'locale';
 
 export class StockAddProductForm extends Component {
   state = {
@@ -50,10 +51,15 @@ export class StockAddProductForm extends Component {
         <FormInput
           onChange={this.onChangeProductQty}
           name="qty"
-          label="Quantidade"
+          label={translate('stockProductQuantityLabel')}
           value={this.state.productQty}
         />
-        <FormButton primary disabled={!enabled} label="Adicionar" onClick={this.onSubmit} />
+        <FormButton
+          primary
+          disabled={!enabled}
+          label={translate('stockProductAdd')}
+          onClick={this.onSubmit}
+        />
       </div>
     );
   }
