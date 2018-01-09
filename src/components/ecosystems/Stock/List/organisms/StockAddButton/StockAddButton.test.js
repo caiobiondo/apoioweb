@@ -1,24 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import { StockAddButton } from './StockAddButton';
+import ShallowRenderer from 'react-test-renderer/shallow';
+import StockAddButton from './StockAddButton';
 
 describe('StockAddButton', () => {
   it('should render a custom floating button with actions', () => {
     const result = shallow(<StockAddButton />);
 
-    expect(toJson(result)).toMatchSnapshot();
-  });
+    renderer.render(<StockAddButton />);
+    const result = renderer.getRenderOutput();
 
-  it('should go to import from orders', () => {
-    const history = {
-      push: jest.fn(),
-    };
-    const result = shallow(<StockAddButton history={history} />);
-    const instance = result.instance();
-    instance.importFromOrders();
-
-    expect(history.push).toBeCalledWith('/my-stock/import/orders');
+    expect(result).toMatchSnapshot();
   });
 
   it('should open product stock dialog (pending)', () => {
