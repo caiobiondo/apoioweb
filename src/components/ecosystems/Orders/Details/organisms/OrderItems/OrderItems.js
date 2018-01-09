@@ -49,7 +49,12 @@ export class OrderItems extends Component {
     const title = translate('stockProductImported');
     const actions = [
       <FlatButton
-        label={<FormattedMessage id="ok" />}
+        label={<FormattedMessage id="goToStock" />}
+        onClick={this.goToStock}
+        labelStyle={dialogActions}
+      />,
+      <FlatButton
+        label={<FormattedMessage id="importMoreProducts" />}
         primary={true}
         onClick={this.onFinish}
         labelStyle={dialogActions}
@@ -73,6 +78,10 @@ export class OrderItems extends Component {
 
   onFinish = () => {
     this.setState({ importedModalOpened: false });
+  };
+
+  goToStock = () => {
+    this.props.history.push(`/my-stock`);
   };
 
   renderOrderItems = orderItems => {
