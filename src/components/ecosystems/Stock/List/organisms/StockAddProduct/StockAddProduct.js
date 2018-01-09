@@ -31,6 +31,10 @@ export class StockAddProduct extends Component {
       return 'Loading...';
     }
 
+    if (this.props.data.products.length === 0) {
+      return 'Produto nao encontrado...';
+    }
+
     const product = this.props.data.products[0];
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     const fallbackImage = this.renderItemProductImageFallback();
