@@ -2,8 +2,10 @@ export default {
   'en-US': {},
   'pt-BR': {
     myStock: 'Meu Estoque',
+    stockAddProduct: 'Adicionar novo produto',
     stockEmptyList: 'Estoque vazio',
     stockEmptyListDescription: 'Você ainda não possui produtos em seu estoque',
+    stockImportFromOrders: 'Importar produtos de pedido',
     stockProductAdd: 'Adicionar',
     stockProductAdded:
       '{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }',

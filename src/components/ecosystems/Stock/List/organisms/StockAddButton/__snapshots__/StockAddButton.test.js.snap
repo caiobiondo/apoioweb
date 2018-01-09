@@ -1,12 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StockAddButton should render a floating button with plus icon 1`] = `
-<CustomFloatingActionButton
-  iconWrapper={[Function]}
-  onClick={[Function]}
->
-  <Icon
-    file="ico_plus"
-  />
-</CustomFloatingActionButton>
+exports[`StockAddButton should render a custom floating button with actions 1`] = `
+<ActionsFloatingButton
+  actions={
+    Array [
+      Object {
+        "icon": "ico_box",
+        "label": "Importar produtos de pedido",
+        "onClick": [Function],
+      },
+      Object {
+        "icon": "ico_plus",
+        "label": "Adicionar novo produto",
+        "onClick": [Function],
+      },
+    ]
+  }
+/>
 `;
