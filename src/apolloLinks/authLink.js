@@ -1,4 +1,3 @@
-import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
 
 const LOGIN_PATH = '/login';

@@ -25,9 +25,6 @@ import authLink from 'apolloLinks/authLink';
 setupGlobals();
 setupFonts();
 
-const LOGIN_PATH = '/login';
-const API_AUTH_ERROR_MSG = '#REDIRECT_TO_LOGIN#';
-
 const client = new ApolloClientCreator(
   GRAPHQL_URI,
   ACCESS_TOKEN_LOCAL_STORAGE_KEY,
