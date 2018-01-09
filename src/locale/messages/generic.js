@@ -10,6 +10,7 @@ export default {
     ok: 'OK',
     remove: 'Excluir',
     search: 'Buscar',
+    emptySearchResult: 'Sua busca não retornou resultados.',
   },
 };
 /* eslint-disable sort-keys */

@@ -47,6 +47,8 @@ class CustomersListWrapper extends Component {
 
   render() {
     const { selectedCustomers, loading, empty, filters } = this.state;
+    const isFiltered = filters && filters.name;
+
     return (
       <Main loading={loading} empty={empty}>
         {!loading && (
@@ -68,6 +70,7 @@ class CustomersListWrapper extends Component {
           onLoadFinished={this.onLoadFinished}
           onSelect={this.onSelectCustomer}
           selectedCustomers={selectedCustomers}
+          isFiltered={isFiltered}
         />
       </Main>
     );

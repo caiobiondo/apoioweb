@@ -1339,6 +1339,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
             "dismiss": "OK, entendi",
+            "emptySearchResult": "Sua busca não retornou resultados.",
             "entryOrderDate": "Data {date}",
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
