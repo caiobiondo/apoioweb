@@ -201,6 +201,37 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   margin-right: 10%;
 }
 
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c19 > * {
+  width: 45%;
+  display: inline-block;
+  margin: 0;
+}
+
+.c19 > *:first-child {
+  margin-right: 10%;
+}
+
+.c19 > * {
+  width: 40%;
+  display: inline-block;
+  margin: 0;
+}
+
+.c19 > *:first-child {
+  margin-right: 0;
+}
+
 .c14 {
   margin-bottom: 27px;
 }
@@ -300,37 +331,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 
 .c18 {
   margin-bottom: 8px;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c19 > * {
-  width: 45%;
-  display: inline-block;
-  margin: 0;
-}
-
-.c19 > *:first-child {
-  margin-right: 10%;
-}
-
-.c19 > * {
-  width: 40%;
-  display: inline-block;
-  margin: 0;
-}
-
-.c19 > *:first-child {
-  margin-right: 0;
 }
 
 .c20 {
@@ -1380,6 +1380,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "gender.female": "Feminino",
             "gender.m": "Masculino",
             "gender.male": "Masculino",
+            "goToStock": "Ir para meu estoque",
+            "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",

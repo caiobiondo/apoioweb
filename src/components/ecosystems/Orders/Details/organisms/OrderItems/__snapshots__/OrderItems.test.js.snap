@@ -355,7 +355,30 @@ exports[`OrderItems renders order details items list (in importing mode) 1`] = `
           fullWidth={false}
           label={
               <FormattedMessage
-                  id="ok"
+                  id="goToStock"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={false}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="importMoreProducts"
                   values={Object {}}
               />
           }
@@ -757,7 +780,30 @@ exports[`OrderItems renders order details items list 1`] = `
           fullWidth={false}
           label={
               <FormattedMessage
-                  id="ok"
+                  id="goToStock"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={false}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="importMoreProducts"
                   values={Object {}}
               />
           }

@@ -923,6 +923,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "gender.female": "Feminino",
             "gender.m": "Masculino",
             "gender.male": "Masculino",
+            "goToStock": "Ir para meu estoque",
+            "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
@@ -2427,6 +2429,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "gender.female": "Feminino",
             "gender.m": "Masculino",
             "gender.male": "Masculino",
+            "goToStock": "Ir para meu estoque",
+            "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
@@ -3041,6 +3045,37 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
   margin-right: 10%;
 }
 
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c19 > * {
+  width: 45%;
+  display: inline-block;
+  margin: 0;
+}
+
+.c19 > *:first-child {
+  margin-right: 10%;
+}
+
+.c19 > * {
+  width: 40%;
+  display: inline-block;
+  margin: 0;
+}
+
+.c19 > *:first-child {
+  margin-right: 0;
+}
+
 .c14 {
   margin-bottom: 27px;
 }
@@ -3140,37 +3175,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
 
 .c18 {
   margin-bottom: 8px;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c19 > * {
-  width: 45%;
-  display: inline-block;
-  margin: 0;
-}
-
-.c19 > *:first-child {
-  margin-right: 10%;
-}
-
-.c19 > * {
-  width: 40%;
-  display: inline-block;
-  margin: 0;
-}
-
-.c19 > *:first-child {
-  margin-right: 0;
 }
 
 .c20 {
@@ -4220,6 +4224,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "gender.female": "Feminino",
             "gender.m": "Masculino",
             "gender.male": "Masculino",
+            "goToStock": "Ir para meu estoque",
+            "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
