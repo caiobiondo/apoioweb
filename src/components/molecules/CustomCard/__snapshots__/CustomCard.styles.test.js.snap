@@ -12,19 +12,19 @@ Object {
 
 exports[`Wrapper should render a border 1`] = `
 <div
-  className="CustomCardstyles__Border-cESgju dZgcvl"
+  className="CustomCardstyles__Border-lnnOuQ llkoQZ"
   color="#fff"
 />
 `;
 
 exports[`Wrapper should render a content 1`] = `
 <div
-  className="CustomCardstyles__Content-eIcKuw iubLLO"
+  className="CustomCardstyles__Content-eWFfZg gZZpHA"
 />
 `;
 
 exports[`Wrapper should render a wrapper 1`] = `
 <div
-  className="CustomCardstyles__Wrapper-DxqIp jTWeit"
+  className="CustomCardstyles__Wrapper-cytJhb cUOfUC"
 />
 `;

@@ -1,19 +1,10 @@
+/* eslint-disable import */
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from 'infra/ApolloClientCreator';
 import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY, CNO_TOKEN_LOCAL_STORAGE_KEY } from 'config';
-
-import Orders from 'components/ecosystems/Orders/List';
-import OrderDetails from 'components/ecosystems/Orders/Details';
-import MyScore from 'components/ecosystems/MyScore';
-import CustomerDetails from 'components/ecosystems/Customers/Details';
-import CustomersList from 'components/ecosystems/Customers/List';
-import { EditCustomer, NewCustomer } from 'components/ecosystems/Customers/Form';
-import StockList from 'components/ecosystems/Stock/List';
-import StockImportOrdersList from 'components/ecosystems/Stock/Import/organisms/List/List';
-import StockImportOrderDetails from 'components/ecosystems/Stock/Import/organisms/Details/Details';
 
 import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
 
@@ -39,42 +30,79 @@ export default class App extends Component {
           <ApolloProvider client={client}>
             <BrowserRouter>
               <div>
-                <Route exact path="/my-orders" component={withDefaultBehaviour(Orders, 'orders')} />
+                <Route
+                  exact
+                  path="/my-orders"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Orders/List'),
+                    'orders',
+                  )}
+                />
                 <Route
                   path="/my-orders/detail/:id"
-                  component={withDefaultBehaviour(OrderDetails, 'orders')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Orders/Details'),
+                    'orders',
+                  )}
                 />
-                <Route path="/my-score" component={withDefaultBehaviour(MyScore, 'myScore')} />
+                <Route
+                  path="/my-score"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/MyScore'),
+                    'myScore',
+                  )}
+                />
                 <Route
                   exact
                   path="/my-customers"
-                  component={withDefaultBehaviour(CustomersList, 'customers')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Customers/List'),
+                    'customers',
+                  )}
                 />
                 <Route
                   path="/my-customers/detail/:customerId"
-                  component={withDefaultBehaviour(CustomerDetails, 'customers')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Customers/Details'),
+                    'customers',
+                  )}
                 />
                 <Route
                   path="/my-customers/add"
-                  component={withDefaultBehaviour(NewCustomer, 'customers')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Customers/Form/New'),
+                    'customers',
+                  )}
                 />
                 <Route
                   path="/my-customers/edit/:id"
-                  component={withDefaultBehaviour(EditCustomer, 'customers')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Customers/Form/Edit'),
+                    'customers',
+                  )}
                 />
                 <Route
                   exact
                   path="/my-stock"
-                  component={withDefaultBehaviour(StockList, 'stock')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Stock/List'),
+                    'stock',
+                  )}
                 />
                 <Route
                   exact
                   path="/my-stock/import/orders"
-                  component={withDefaultBehaviour(StockImportOrdersList, 'stock')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Stock/Import/organisms/List/List'),
+                    'stock',
+                  )}
                 />
                 <Route
                   path="/my-stock/import/orders/detail/:id"
-                  component={withDefaultBehaviour(StockImportOrderDetails, 'stock')}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Stock/Import/organisms/Details/Details'),
+                    'stock',
+                  )}
                 />
               </div>
             </BrowserRouter>
