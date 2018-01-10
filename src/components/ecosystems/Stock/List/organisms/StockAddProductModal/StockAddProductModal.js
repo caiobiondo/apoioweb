@@ -1,34 +1,68 @@
 import React, { Component } from 'react';
-import { Modal, FormInput, FlatButton, Dialog } from 'natura-ui';
+import { Loading, Icon, Modal, FormInput, FormButton, FlatButton, Dialog } from 'natura-ui';
 import PropTypes from 'prop-types';
-import StockAddProduct from '../StockAddProduct';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { translate } from 'locale';
-import debounce from 'lodash.debounce';
+import {
+  StockItemProductImageWrapper,
+  StockItemProductImageFallback,
+} from './StockAddProductModal.styles';
+import Img from 'react-image';
+import {
+  ProductsListQuery,
+  ProductsListQueryOptions,
+  AddStockProductMutation,
+} from './StockAddProductModal.data';
+import { graphql, compose } from 'react-apollo';
+import { StockProductsQuery } from '../ListTable/ListTable.data';
 
-export default class StockAddProductModal extends Component {
+export class StockAddProductModal extends Component {
   state = {
-    productCode: '',
-    search: '',
     successOpened: false,
+    productQty: 1,
   };
 
-  updateSearch = debounce(() => {
-    this.setState({ search: this.state.productCode });
-  }, 500);
-
-  onChangeFilter = (event, productCode) => {
-    this.setState({ productCode });
-    this.updateSearch();
-  };
-
-  onSubmit = () => {
-    this.setState({ search: '', successOpened: true });
+  onSubmited = () => {
+    console.log('Submited!!!');
+    this.setState({ successOpened: true });
     this.props.handleClose();
   };
 
   onClose = () => {
     this.setState({ successOpened: false });
+  };
+
+  onChangeProductQty = (event, productQty) => {
+    this.setState({ productQty });
+  };
+
+  onSubmit = () => {
+    const product = this.props.data.products[0];
+    const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
+    this.props
+      .mutate({
+        variables: {
+          input: {
+            productCode: product.productId,
+            stockQuantity: this.state.productQty,
+            productName: product.name,
+            productDescription: product.description,
+            productImage: imageUrl,
+            productPrice: product.price,
+          },
+        },
+        refetchQueries: [
+          {
+            query: StockProductsQuery,
+            variables: {
+              limit: 10,
+              offset: 0,
+              productName: '',
+            },
+          },
+        ],
+      })
+      .then(this.onSubmited);
   };
 
   renderSuccessDialog = () => {
@@ -57,8 +91,69 @@ export default class StockAddProductModal extends Component {
     );
   };
 
+  renderSearch = () => {
+    return (
+      <FormInput
+        onChange={this.props.onChangeProductAddSearch}
+        name="productCode"
+        label={translate('stockProductCodeLabel')}
+        value={this.props.productAddSearch}
+      />
+    );
+  };
+
+  renderItemProductImageFallback = () => {
+    return (
+      <StockItemProductImageFallback>
+        <Icon file="ico_pictureless" />
+      </StockItemProductImageFallback>
+    );
+  };
+
+  renderProduct = () => {
+    const { productAddSearchDebounced } = this.props;
+    const fallbackImage = this.renderItemProductImageFallback();
+
+    if (productAddSearchDebounced === '') {
+      return (
+        <StockItemProductImageWrapper>
+          <Img unloader={fallbackImage} />
+          {'Nenhum produto selecionado...'}
+        </StockItemProductImageWrapper>
+      );
+    }
+    const product = this.props.data.products[0];
+    const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
+    const loader = React.createElement(Loading);
+
+    return (
+      <StockItemProductImageWrapper>
+        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
+        {product.name}
+      </StockItemProductImageWrapper>
+    );
+  };
+
+  renderForm = () => {
+    return (
+      <div>
+        <FormInput
+          onChange={this.onChangeProductQty}
+          name="qty"
+          label={translate('stockProductQuantityLabel')}
+          value={this.state.productQty}
+        />
+        <FormButton
+          primary
+          disabled={false}
+          label={translate('stockProductAdd')}
+          onClick={this.onSubmit}
+        />
+      </div>
+    );
+  };
+
   render() {
-    const { search } = this.state;
     return [
       <Modal
         open={this.props.opened}
@@ -66,19 +161,9 @@ export default class StockAddProductModal extends Component {
         onCloseClick={this.props.handleClose}
         title={translate('stockProductAddModalTitle')}
       >
-        <FormInput
-          onChange={this.onChangeFilter}
-          name="productCode"
-          label={translate('stockProductCodeLabel')}
-          value={this.state.productCode}
-        />
-        {search && (
-          <StockAddProduct
-            user={this.props.user}
-            search={this.state.search}
-            onSubmit={this.onSubmit}
-          />
-        )}
+        {this.renderSearch()}
+        {this.renderProduct()}
+        {this.renderForm()}
       </Modal>,
       this.renderSuccessDialog(),
     ];
@@ -86,7 +171,15 @@ export default class StockAddProductModal extends Component {
 }
 
 StockAddProductModal.propTypes = {
-  opened: PropTypes.bool,
   handleClose: PropTypes.func,
+  onChangeProductAddSearch: PropTypes.func,
+  opened: PropTypes.bool,
+  productAddSearch: PropTypes.string,
+  productAddSearchDebounced: PropTypes.string,
   user: PropTypes.object,
 };
+
+export default compose(
+  graphql(ProductsListQuery, ProductsListQueryOptions),
+  graphql(AddStockProductMutation),
+)(StockAddProductModal);

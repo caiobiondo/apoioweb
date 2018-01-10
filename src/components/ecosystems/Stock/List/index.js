@@ -4,6 +4,7 @@ import StockList from './organisms/ListTable';
 import StockAddButton from './organisms/StockAddButton';
 import { Main, StockSearchContainer, StockAddButtonContainer } from './index.styles';
 import StockAddProductModal from './organisms/StockAddProductModal';
+import debounce from 'lodash.debounce';
 
 class StockListWrapper extends Component {
   state = {
@@ -11,6 +12,8 @@ class StockListWrapper extends Component {
     loading: true,
     productSearch: '',
     addStockModalOpen: false,
+    productAddSearch: '',
+    productAddSearchDebounced: '',
   };
 
   onLoadFinished = (empty, loading) => {
@@ -27,6 +30,15 @@ class StockListWrapper extends Component {
 
   handleClose = () => {
     this.setState({ addStockModalOpen: false });
+  };
+
+  updateSearch = debounce(() => {
+    this.setState({ productAddSearchDebounced: this.state.productAddSearch });
+  }, 500);
+
+  onChangeProductAddSearch = (event, productAddSearch) => {
+    this.setState({ productAddSearch });
+    this.updateSearch();
   };
 
   render() {
@@ -47,6 +59,9 @@ class StockListWrapper extends Component {
           opened={this.state.addStockModalOpen}
           handleClose={this.handleClose}
           user={this.props.user}
+          onChangeProductAddSearch={this.onChangeProductAddSearch}
+          productAddSearch={this.state.productAddSearch}
+          productAddSearchDebounced={this.state.productAddSearchDebounced}
         />
         <StockList onLoadFinished={this.onLoadFinished} productSearch={this.state.productSearch} />
       </Main>

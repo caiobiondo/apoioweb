@@ -11,6 +11,19 @@ export const ProductsListQuery = gql`
   }
 `;
 
+export const AddStockProductMutation = gql`
+  mutation AddStockProduct($input: AddStockProductInput!) {
+    addStockProduct(input: $input) {
+      stockProduct {
+        id
+        productCode
+        productName
+        stockQuantity
+      }
+    }
+  }
+`;
+
 const getCycleIdFromUser = user => {
   return (
     user &&
@@ -26,7 +39,7 @@ export const ProductsListQueryOptions = {
   options(props) {
     return {
       variables: {
-        filter: props.search,
+        filter: props.productAddSearchDebounced,
         cycleId: getCycleIdFromUser(props.user),
       },
     };
