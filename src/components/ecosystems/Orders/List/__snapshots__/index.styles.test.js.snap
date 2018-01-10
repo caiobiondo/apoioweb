@@ -2,36 +2,36 @@
 
 exports[`Orders Styles should render the main container with full container mixin applied 1`] = `
 <div
-  className="indexstyles__Main-hzgdLG iSajlQ"
+  className="indexstyles__Main-lhfXmf eJRibE"
 />
 `;
 
 exports[`Orders Styles should render the main container with full container mixin applied 2`] = `
 <div
-  className="indexstyles__Main-hzgdLG iSajlQ"
+  className="indexstyles__Main-lhfXmf eJRibE"
 />
 `;
 
 exports[`Orders Styles should render the main container with full container mixin applied 3`] = `
 <div
-  className="indexstyles__Main-hzgdLG iSajlQ"
+  className="indexstyles__Main-lhfXmf eJRibE"
 />
 `;
 
 exports[`Orders Styles should render the main container without full container mixin applied 1`] = `
 <div
-  className="indexstyles__Main-hzgdLG hEpzcg"
+  className="indexstyles__Main-lhfXmf gPbytn"
 />
 `;
 
 exports[`Orders Styles should render the order add button container with 10% from bottom 1`] = `
 <div
-  className="indexstyles__OrderAddButtonContainer-hQdlAS bvLmpu"
+  className="indexstyles__OrderAddButtonContainer-jYjuXD OdOFf"
 />
 `;
 
 exports[`Orders Styles should render the order add button container with 20% from bottom 1`] = `
 <div
-  className="indexstyles__OrderAddButtonContainer-hQdlAS cGXUHC"
+  className="indexstyles__OrderAddButtonContainer-jYjuXD cLAHzr"
 />
 `;
