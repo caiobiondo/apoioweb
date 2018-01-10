@@ -16,6 +16,9 @@ export const UserDataQuery = gql`
         cnd
       }
       estrutura {
+        ciclo {
+          numero
+        }
         gerenciaMercado {
           codigo
         }

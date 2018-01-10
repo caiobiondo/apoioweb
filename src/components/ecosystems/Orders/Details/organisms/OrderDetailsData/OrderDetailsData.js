@@ -10,7 +10,7 @@ import OrderItems from '../../organisms/OrderItems/OrderItems';
 
 export class OrderDetailsData extends Component {
   render() {
-    const { importing, intl, data: { order, loading } } = this.props;
+    const { importing, intl, user, data: { order, loading } } = this.props;
 
     if (loading) {
       return <Loading background="transparent" />;
@@ -19,7 +19,7 @@ export class OrderDetailsData extends Component {
     return (
       <div>
         <OrderInfo order={order} intl={intl} importing={importing} />
-        <OrderItems order={order} intl={intl} importing={importing} />
+        <OrderItems order={order} intl={intl} importing={importing} user={user} />
       </div>
     );
   }
