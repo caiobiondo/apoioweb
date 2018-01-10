@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
-import { FloatingActionButton, Icon } from 'natura-ui';
+import { ActionsFloatingButton } from 'natura-ui';
 import { withRouter } from 'react-router-dom';
-import { IconWrapper } from './StockAddButton.styles';
+import { translate } from 'locale';
 
 export class StockAddButton extends Component {
   importFromOrders = () => {
     this.props.history.push('/my-stock/import/orders');
   };
 
+  addProductToStockDialog = () => {
+    console.log('addProductToStockDialog');
+  };
+
+  actions = [
+    {
+      icon: 'ico_box',
+      label: translate('stockImportFromOrders'),
+      onClick: this.importFromOrders,
+    },
+    {
+      icon: 'ico_plus',
+      label: translate('stockAddProduct'),
+      onClick: this.addProductToStockDialog,
+    },
+  ];
+
   render() {
-    return (
-      <FloatingActionButton iconWrapper={IconWrapper} onClick={this.importFromOrders}>
-        <Icon file="ico_plus" />
-      </FloatingActionButton>
-    );
+    return <ActionsFloatingButton actions={this.actions} />;
   }
 }
 

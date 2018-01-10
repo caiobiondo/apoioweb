@@ -2,7 +2,7 @@
 
 exports[`Wrapper should render a wrapper 1`] = `
 <div
-  className="CustomCardTextstyles__Wrapper-hfpqCw hllQdA"
+  className="CustomCardTextstyles__Wrapper-eEWkCd turyE"
   color="#fff"
 />
 `;

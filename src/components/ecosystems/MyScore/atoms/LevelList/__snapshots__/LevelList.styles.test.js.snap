@@ -2,7 +2,7 @@
 
 exports[`LevelList Styles should render the table row with correct font color 1`] = `
 <tr
-  className="LevelListstyles__TableRow-gJaVbf jxjahz"
+  className="LevelListstyles__TableRow-dARwWU hreuko"
   color="#000"
 />
 `;

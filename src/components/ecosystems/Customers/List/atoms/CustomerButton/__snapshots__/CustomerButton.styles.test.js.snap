@@ -2,12 +2,12 @@
 
 exports[`CustomerButton Styles should include transform into Wrapper style 1`] = `
 <div
-  className="CustomerButtonstyles__Wrapper-gRgdPo dmSdaS"
+  className="CustomerButtonstyles__Wrapper-cFohbo gwFGRh"
 />
 `;
 
 exports[`CustomerButton Styles should not include transform into Wrapper style 1`] = `
 <div
-  className="CustomerButtonstyles__Wrapper-gRgdPo dgmkhW"
+  className="CustomerButtonstyles__Wrapper-cFohbo eveeOs"
 />
 `;

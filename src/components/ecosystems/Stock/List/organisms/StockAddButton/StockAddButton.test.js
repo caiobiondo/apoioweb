@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import { StockAddButton } from './StockAddButton';
 
 describe('StockAddButton', () => {
-  it('should render a floating button with plus icon', () => {
+  it('should render a custom floating button with actions', () => {
     const result = shallow(<StockAddButton />);
 
     expect(toJson(result)).toMatchSnapshot();
@@ -19,5 +19,13 @@ describe('StockAddButton', () => {
     instance.importFromOrders();
 
     expect(history.push).toBeCalledWith('/my-stock/import/orders');
+  });
+
+  it('should open product stock dialog (pending)', () => {
+    const result = shallow(<StockAddButton />);
+    const instance = result.instance();
+    instance.addProductToStockDialog();
+
+    expect(true).toEqual(true);
   });
 });

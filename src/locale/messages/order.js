@@ -4,6 +4,8 @@ export default {
     orderNumber: 'Order number',
   },
   'pt-BR': {
+    goToStock: 'Ir para meu estoque',
+    importMoreProducts: 'Importar mais produtos',
     loading: 'Carregando...',
     orderCycle: 'Ciclo',
     orderData: 'Dados do pedido',
