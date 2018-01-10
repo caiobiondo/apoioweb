@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 const ITEMS_PER_PAGE = 10;
 
 export const StockProductsQuery = gql`
-  query StockProductsQuery($offset: Int!, $limit: Int!, $productName: String) {
-    stockProducts(offset: $offset, limit: $limit, productName: $productName) {
+  query StockProductsQuery($offset: Int!, $limit: Int!, $filter: String) {
+    stockProducts(offset: $offset, limit: $limit, filter: $filter) {
       id
       userId
       productCode
@@ -32,7 +32,7 @@ export const StockProductsQueryOptions = {
       variables: {
         limit: ITEMS_PER_PAGE,
         offset: 0,
-        productName: props.productSearch,
+        filter: props.productSearch,
       },
       forceFetch: true,
     };

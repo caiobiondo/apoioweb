@@ -14,7 +14,7 @@ describe('MyStockProductsQuery', () => {
       variables: {
         limit: 10,
         offset: 0,
-        productName: 'search',
+        filter: 'search',
       },
       forceFetch: true,
     });

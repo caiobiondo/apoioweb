@@ -7,6 +7,7 @@ import { translate } from 'locale';
 
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import { AddStockProductMutation } from './OrderItems.data';
+import { StockProductsQuery } from 'components/ecosystems/Stock/List/organisms/ListTable/ListTable.data';
 import OrderItem from '../OrderItem/OrderItem';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 
@@ -36,6 +37,16 @@ export class OrderItems extends Component {
             stockQuantity: orderItem.quantidadeItem,
           },
         },
+        refetchQueries: [
+          {
+            query: StockProductsQuery,
+            variables: {
+              limit: 10,
+              offset: 0,
+              filter: '',
+            },
+          },
+        ],
       })
       .then(() => {
         this.setState({
