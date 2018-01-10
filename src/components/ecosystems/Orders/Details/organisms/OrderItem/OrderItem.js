@@ -52,7 +52,7 @@ export default class OrderItem extends Component {
     );
   };
 
-  renderImportButton = (imported, onImport) => {
+  renderImportButton = (imported, loading, onImport) => {
     if (imported) {
       return (
         <FormButton
@@ -60,6 +60,15 @@ export default class OrderItem extends Component {
           disabled
           icon={<Icon file="ico_check" />}
           label={<FormattedMessage id="orderItemImported" />}
+        />
+      );
+    }
+    if (loading) {
+      return (
+        <FormButton
+          {...orderItemImportButtonStyles}
+          disabled
+          label={<FormattedMessage id="orderItemImporting" />}
         />
       );
     }
@@ -74,7 +83,7 @@ export default class OrderItem extends Component {
   };
 
   render() {
-    const { intl, importing, imported, orderItem, onImport } = this.props;
+    const { intl, importing, imported, loading, orderItem, onImport } = this.props;
     const {
       produto: { description },
       quantidadeItem,
@@ -98,7 +107,7 @@ export default class OrderItem extends Component {
           {importing && (
             <OrderItemDatum>
               <OrderItemImportButtonWrapper>
-                {this.renderImportButton(imported, onImport)}
+                {this.renderImportButton(imported, loading, onImport)}
               </OrderItemImportButtonWrapper>
             </OrderItemDatum>
           )}

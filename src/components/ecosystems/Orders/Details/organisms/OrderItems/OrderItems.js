@@ -31,9 +31,13 @@ export class OrderItems extends Component {
   state = {
     importedOrderItems: [],
     importedModalOpened: false,
+    loadingProductCode: null,
   };
 
   onImport = orderItem => {
+    this.setState({
+      loadingProductCode: orderItem.codigoProduto,
+    });
     this.props
       .mutate({
         variables: {
@@ -58,6 +62,7 @@ export class OrderItems extends Component {
       })
       .then(() => {
         this.setState({
+          loadingProductCode: null,
           importedModalOpened: true,
           importedOrderItems: [...this.state.importedOrderItems, orderItem],
         });
@@ -103,7 +108,7 @@ export class OrderItems extends Component {
     this.props.history.push(`/my-stock`);
   };
 
-  renderOrderItems = orderItems => {
+  renderOrderItems = (orderItems, loadingProductCode) => {
     const { importing } = this.props;
     if (!orderItems) return null;
 
@@ -126,12 +131,12 @@ export class OrderItems extends Component {
             {importing && <OrderItemsHeaderProductValueLabel />}
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
-        {orderItems.map(this.renderOrderItem)}
+        {orderItems.map(orderItem => this.renderOrderItem(orderItem, loadingProductCode))}
       </div>
     );
   };
 
-  renderOrderItem = orderItem => {
+  renderOrderItem = (orderItem, loadingProductCode) => {
     const imported = this.state.importedOrderItems.filter(i => i === orderItem).length > 0;
 
     const onImportOrderItem = event => {
@@ -145,6 +150,7 @@ export class OrderItems extends Component {
         key={orderItem.codigoProduto}
         orderItem={orderItem}
         imported={imported}
+        loading={orderItem.codigoProduto === loadingProductCode}
         onImport={onImportOrderItem}
       />
     );
@@ -152,6 +158,8 @@ export class OrderItems extends Component {
 
   render() {
     const { order } = this.props;
+    const { loadingProductCode } = this.state;
+
     return (
       <Paper style={OrderDetailsWrapper}>
         <SectionTitle iconName="ico_box" value="orderItems" />
@@ -160,7 +168,7 @@ export class OrderItems extends Component {
             <FormattedMessage id="orderItemsBoughtQuantity" />
             <OrderItemsQuantity>({(order.itemEnviadoCaixa || []).length})</OrderItemsQuantity>
           </OrderItemsQuantityWrapper>
-          {this.renderOrderItems(order.itemEnviadoCaixa)}
+          {this.renderOrderItems(order.itemEnviadoCaixa, loadingProductCode)}
         </OrderItemsInfos>
         {this.renderSuccessDialog()}
       </Paper>
