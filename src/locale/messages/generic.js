@@ -11,6 +11,7 @@ export default {
     remove: 'Excluir',
     search: 'Buscar',
     emptySearchResult: 'Sua busca não retornou resultados.',
+    blankSelectOption: 'Selecione...',
   },
 };
 /* eslint-disable sort-keys */

@@ -37,6 +37,7 @@ export default {
     formCustomerNotesText:
       'Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)',
     formCustomerNumber: 'Número',
+    formCustomerPersonalInformation: 'Informações Pessoais',
     formCustomerPhone: 'Telefone',
     formCustomerPhoneCarrier: 'Operadora',
     formCustomerPhoneHelpText: 'Recomendamos o registro do telefone celular',
@@ -62,6 +63,8 @@ export default {
       f: 'Feminino',
       female: 'Feminino',
     },
+    male: 'Masculino',
+    female: 'Feminino',
     myCustomers: 'Meus Clientes',
   },
 };

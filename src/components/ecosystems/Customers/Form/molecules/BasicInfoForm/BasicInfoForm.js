@@ -16,11 +16,11 @@ import { FormattedMessage } from 'react-intl';
 const getCustomerGenderOptions = () => {
   return [
     {
-      label: 'Masculino',
+      label: translate('male'),
       value: 'm',
     },
     {
-      label: 'Feminino',
+      label: translate('female'),
       value: 'f',
     },
   ];
@@ -80,6 +80,7 @@ const BasicInfoForm = ({
           dirty={touched.gender || submitted}
           required={true}
           options={getCustomerGenderOptions()}
+          blankOptionText={translate('blankSelectOption')}
         />
 
         <FormInput
