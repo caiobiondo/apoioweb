@@ -71,6 +71,7 @@ exports[`OrderItems renders order details items list (in importing mode) 1`] = `
           }
         }
         key="29415"
+        loading={false}
         onImport={[Function]}
         order={
           Object {
@@ -214,6 +215,7 @@ exports[`OrderItems renders order details items list (in importing mode) 1`] = `
           }
         }
         key="38889"
+        loading={false}
         onImport={[Function]}
         order={
           Object {
@@ -496,6 +498,7 @@ exports[`OrderItems renders order details items list 1`] = `
           }
         }
         key="29415"
+        loading={false}
         onImport={[Function]}
         order={
           Object {
@@ -639,6 +642,7 @@ exports[`OrderItems renders order details items list 1`] = `
           }
         }
         key="38889"
+        loading={false}
         onImport={[Function]}
         order={
           Object {

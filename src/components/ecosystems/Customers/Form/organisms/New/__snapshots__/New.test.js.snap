@@ -1423,6 +1423,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "orderInstallmentsNumber": "Nº de parcelas",
             "orderItemImport": "Importar",
             "orderItemImported": "Importado",
+            "orderItemImporting": "Importando...",
             "orderItemPoints": "Pontos",
             "orderItemProduct": "Produto",
             "orderItemProductCode": "Código",
