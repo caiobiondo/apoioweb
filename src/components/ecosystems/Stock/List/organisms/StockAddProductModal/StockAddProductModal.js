@@ -164,6 +164,15 @@ export class StockAddProductModal extends Component {
     );
   };
 
+  allowSubmit = () => {
+    return (
+      this.state.loadedProduct &&
+      !this.state.loadingProduct &&
+      this.state.productQty &&
+      this.state.productQty !== '0'
+    );
+  };
+
   renderForm = () => {
     return (
       <div>
@@ -181,7 +190,7 @@ export class StockAddProductModal extends Component {
         />
         <FormButton
           primary
-          disabled={false}
+          disabled={!this.allowSubmit()}
           label={translate('stockProductAdd')}
           onClick={this.onSubmit}
         />
