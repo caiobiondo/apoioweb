@@ -32,6 +32,23 @@ describe('authLink', () => {
     expect(mockLocationAssign.mock.calls.length).toEqual(1);
   });
 
+  test('redirects to login and clears local storage when the response has a #REDIRECT_TO_LOGIN# message', () => {
+    const response = {
+      errors: [
+        null,
+        {},
+        { message: 'invalid{}JSON' },
+        { message: '{ "error": { "status": 500 } }' },
+        { message: '#REDIRECT_TO_LOGIN#' },
+      ],
+    };
+
+    authLink({ response });
+
+    expect(mockLocalStorageClear.mock.calls.length).toEqual(1);
+    expect(mockLocationAssign.mock.calls.length).toEqual(1);
+  });
+
   test('does not redirects when the response is not a 401 error', () => {
     const response = {
       errors: [
