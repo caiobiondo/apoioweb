@@ -16,6 +16,8 @@ export const UserDataQuery = gql`
         cnd
       }
       estrutura {
+        codigo
+        codigoTipo
         ciclo {
           numero
         }

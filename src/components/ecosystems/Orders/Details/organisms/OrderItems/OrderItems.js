@@ -10,7 +10,11 @@ import { AddStockProductMutation } from './OrderItems.data';
 import { StockProductsQuery } from 'components/ecosystems/Stock/List/organisms/ListTable/ListTable.data';
 import OrderItem from '../OrderItem/OrderItem';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
-import getCycleIdFromUser from 'utils/getCycleIdFromUser';
+import {
+  getCycleIdFromUser,
+  getCommercialStructureIdFromUser,
+  getCommercialStructureTypeIdFromUser,
+} from 'utils/getUserParams';
 
 import {
   OrderDetailsWrapper,
@@ -37,6 +41,8 @@ export class OrderItems extends Component {
             productCode: orderItem.codigoProduto,
             stockQuantity: orderItem.quantidadeItem,
             cycleId: getCycleIdFromUser(this.props.user),
+            commercialStructureId: getCommercialStructureIdFromUser(this.props.user),
+            commercialStructureTypeId: getCommercialStructureTypeIdFromUser(this.props.user),
           },
         },
         refetchQueries: [
