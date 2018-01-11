@@ -1312,6 +1312,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
         messages={
           Object {
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
+            "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
@@ -1343,6 +1344,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "entryOrderDate": "Data {date}",
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
+            "female": "Feminino",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -1363,6 +1365,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "formCustomerNotes": "Notas",
             "formCustomerNotesText": "Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)",
             "formCustomerNumber": "Número",
+            "formCustomerPersonalInformation": "Informações Pessoais",
             "formCustomerPhone": "Telefone",
             "formCustomerPhoneCarrier": "Operadora",
             "formCustomerPhoneHelpText": "Recomendamos o registro do telefone celular",
@@ -1386,6 +1389,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
             "loading": "Carregando...",
+            "male": "Masculino",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -3063,6 +3067,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 className="c13"
                               >
                                 <Styles__FormSelect
+                                  blankOptionText="Selecione..."
                                   dirty={false}
                                   label="Gênero"
                                   name="customer.gender"

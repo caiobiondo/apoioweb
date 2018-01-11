@@ -27,9 +27,9 @@ class CustomerForm extends Component {
 
     this.state = {
       steps: [
-        { completed: false, current: true, label: 'Informações Pessoais' },
-        { completed: false, current: false, label: 'Endereço' },
-        { completed: false, current: false, label: 'Notas' },
+        { completed: false, current: true, label: translate('formCustomerPersonalInformation') },
+        { completed: false, current: false, label: translate('formCustomerAddress') },
+        { completed: false, current: false, label: translate('formCustomerNotes') },
       ],
       currentStep: 0,
       submitted: false,

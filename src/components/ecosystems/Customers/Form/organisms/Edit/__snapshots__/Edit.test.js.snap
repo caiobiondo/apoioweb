@@ -855,6 +855,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         messages={
           Object {
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
+            "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
@@ -886,6 +887,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "entryOrderDate": "Data {date}",
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
+            "female": "Feminino",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -906,6 +908,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "formCustomerNotes": "Notas",
             "formCustomerNotesText": "Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)",
             "formCustomerNumber": "Número",
+            "formCustomerPersonalInformation": "Informações Pessoais",
             "formCustomerPhone": "Telefone",
             "formCustomerPhoneCarrier": "Operadora",
             "formCustomerPhoneHelpText": "Recomendamos o registro do telefone celular",
@@ -929,6 +932,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
             "loading": "Carregando...",
+            "male": "Masculino",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -2361,6 +2365,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         messages={
           Object {
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
+            "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
@@ -2392,6 +2397,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "entryOrderDate": "Data {date}",
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
+            "female": "Feminino",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -2412,6 +2418,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "formCustomerNotes": "Notas",
             "formCustomerNotesText": "Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)",
             "formCustomerNumber": "Número",
+            "formCustomerPersonalInformation": "Informações Pessoais",
             "formCustomerPhone": "Telefone",
             "formCustomerPhoneCarrier": "Operadora",
             "formCustomerPhoneHelpText": "Recomendamos o registro do telefone celular",
@@ -2435,6 +2442,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
             "loading": "Carregando...",
+            "male": "Masculino",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -4156,6 +4164,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
         messages={
           Object {
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
+            "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
@@ -4187,6 +4196,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "entryOrderDate": "Data {date}",
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
+            "female": "Feminino",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -4207,6 +4217,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "formCustomerNotes": "Notas",
             "formCustomerNotesText": "Aqui você pode escrever algumas anotações importantes sobre o cliente para se lembrar depois. Só você terá acesso a elas :)",
             "formCustomerNumber": "Número",
+            "formCustomerPersonalInformation": "Informações Pessoais",
             "formCustomerPhone": "Telefone",
             "formCustomerPhoneCarrier": "Operadora",
             "formCustomerPhoneHelpText": "Recomendamos o registro do telefone celular",
@@ -4230,6 +4241,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "lastPeriod": "Período anterior",
             "levelRange": "{start} - {end}",
             "loading": "Carregando...",
+            "male": "Masculino",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -6110,6 +6122,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 className="c13"
                               >
                                 <Styles__FormSelect
+                                  blankOptionText="Selecione..."
                                   dirty={false}
                                   label="Gênero"
                                   name="customer.gender"
