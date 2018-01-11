@@ -1,8 +1,23 @@
 import gql from 'graphql-tag';
+import {
+  getCycleIdFromUser,
+  getCommercialStructureIdFromUser,
+  getCommercialStructureTypeIdFromUser,
+} from 'utils/getUserParams';
 
-export const ProductsListQuery = gql`
-  query ProductsListQuery($cycleId: String!, $filter: String) {
-    products(cycleId: $cycleId, filter: $filter) {
+export const FetchProductQuery = gql`
+  query FetchProductQuery(
+    $cycleId: String!
+    $productId: String!
+    $commercialStructureId: Int!
+    $commercialStructureTypeId: Int!
+  ) {
+    product(
+      cycleId: $cycleId
+      productId: $productId
+      commercialStructureId: $commercialStructureId
+      commercialStructureTypeId: $commercialStructureTypeId
+    ) {
       productId
       name
       description
@@ -24,23 +39,15 @@ export const AddStockProductMutation = gql`
   }
 `;
 
-const getCycleIdFromUser = user => {
-  return (
-    user &&
-    user.estrutura &&
-    user.estrutura.ciclo &&
-    user.estrutura.ciclo[0] &&
-    user.estrutura.ciclo[0].numero &&
-    String(user.estrutura.ciclo[0].numero)
-  );
-};
-
-export const ProductsListQueryOptions = {
+export const FetchProductQueryOptions = {
   options(props) {
+    console.log('FetchProductQueryOptions');
     return {
       variables: {
-        filter: props.productAddSearchDebounced,
+        productId: props.productAddSearchDebounced,
         cycleId: getCycleIdFromUser(props.user),
+        commercialStructureId: getCommercialStructureIdFromUser(props.user),
+        commercialStructureTypeId: getCommercialStructureTypeIdFromUser(props.user),
       },
     };
   },

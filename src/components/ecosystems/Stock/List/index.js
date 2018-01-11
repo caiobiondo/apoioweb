@@ -52,7 +52,7 @@ class StockListWrapper extends Component {
         )}
         {!loading && (
           <StockAddButtonContainer empty={empty}>
-            <StockAddButton onClick={this.openAddStockModal} />
+            <StockAddButton openAddStockModal={this.openAddStockModal} />
           </StockAddButtonContainer>
         )}
         <StockAddProductModal

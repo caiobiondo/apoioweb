@@ -1,13 +1,10 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
 import StockAddButton from './StockAddButton';
+import { shallow } from 'enzyme';
 
 describe('StockAddButton', () => {
   it('should render a custom floating button with actions', () => {
     const result = shallow(<StockAddButton />);
-
-    renderer.render(<StockAddButton />);
-    const result = renderer.getRenderOutput();
 
     expect(result).toMatchSnapshot();
   });
@@ -17,6 +14,6 @@ describe('StockAddButton', () => {
     const instance = result.instance();
     instance.addProductToStockDialog();
 
-    expect(true).toEqual(true);
+    expect(instance).toMatchSnapshot();
   });
 });

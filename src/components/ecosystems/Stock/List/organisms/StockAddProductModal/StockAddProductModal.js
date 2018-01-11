@@ -9,8 +9,8 @@ import {
 } from './StockAddProductModal.styles';
 import Img from 'react-image';
 import {
-  ProductsListQuery,
-  ProductsListQueryOptions,
+  FetchProductQuery,
+  FetchProductQueryOptions,
   AddStockProductMutation,
 } from './StockAddProductModal.data';
 import { graphql, compose } from 'react-apollo';
@@ -22,8 +22,13 @@ export class StockAddProductModal extends Component {
     productQty: 1,
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.productAddSearchDebounced !== this.props.productAddSearchDebounced) {
+      this.props.data.refetch();
+    }
+  }
+
   onSubmited = () => {
-    console.log('Submited!!!');
     this.setState({ successOpened: true });
     this.props.handleClose();
   };
@@ -37,7 +42,7 @@ export class StockAddProductModal extends Component {
   };
 
   onSubmit = () => {
-    const product = this.props.data.products[0];
+    const product = this.props.data.product;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     this.props
       .mutate({
@@ -111,8 +116,15 @@ export class StockAddProductModal extends Component {
   };
 
   renderProduct = () => {
-    const { productAddSearchDebounced } = this.props;
+    console.log('************');
+    // debugger;
+    console.log(this.props.data);
+    const { productAddSearchDebounced, data } = this.props;
     const fallbackImage = this.renderItemProductImageFallback();
+
+    if (data.loading) {
+      return 'Loading...';
+    }
 
     if (productAddSearchDebounced === '') {
       return (
@@ -122,7 +134,7 @@ export class StockAddProductModal extends Component {
         </StockItemProductImageWrapper>
       );
     }
-    const product = this.props.data.products[0];
+    const product = this.props.data.product;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     const loader = React.createElement(Loading);
 
@@ -154,6 +166,8 @@ export class StockAddProductModal extends Component {
   };
 
   render() {
+    console.log('render');
+    console.log('productAddSearchDebounced: ', this.props.productAddSearchDebounced);
     return [
       <Modal
         open={this.props.opened}
@@ -162,8 +176,6 @@ export class StockAddProductModal extends Component {
         title={translate('stockProductAddModalTitle')}
       >
         {this.renderSearch()}
-        {this.renderProduct()}
-        {this.renderForm()}
       </Modal>,
       this.renderSuccessDialog(),
     ];
@@ -180,6 +192,6 @@ StockAddProductModal.propTypes = {
 };
 
 export default compose(
-  graphql(ProductsListQuery, ProductsListQueryOptions),
+  graphql(FetchProductQuery, FetchProductQueryOptions),
   graphql(AddStockProductMutation),
 )(StockAddProductModal);
