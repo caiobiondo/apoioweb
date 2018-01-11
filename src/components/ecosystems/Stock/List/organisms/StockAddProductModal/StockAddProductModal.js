@@ -12,6 +12,11 @@ import { fetchProduct, AddStockProductMutation } from './StockAddProductModal.da
 import { graphql } from 'react-apollo';
 import { StockProductsQuery } from '../ListTable/ListTable.data';
 import debounce from 'lodash.debounce';
+import {
+  getCycleIdFromUser,
+  getCommercialStructureIdFromUser,
+  getCommercialStructureTypeIdFromUser,
+} from 'utils/getUserParams';
 
 export class StockAddProductModal extends Component {
   state = {
@@ -20,36 +25,37 @@ export class StockAddProductModal extends Component {
     productCode: '',
     loadedProduct: null,
     loadingProduct: false,
+    lastProductCode: '',
   };
 
-  loadProduct = debounce(() => {
-    if (!this.state.productCode) {
-      this.setState({
-        loadedProduct: null,
-      });
+  loadProduct = debounce(productCode => {
+    if (!productCode) {
+      this.setState({ loadedProduct: null });
       return;
     }
 
-    this.setState({ loadingProduct: true });
-    fetchProduct(this.state.productCode, this.props.user)
-      .then(product => {
-        this.setState({
-          loadedProduct: product,
-          loadingProduct: false,
-          productCode: product.productId,
-        });
-      })
+    this.setState({
+      loadingProduct: true,
+      lastProductCode: productCode,
+    });
+
+    fetchProduct(productCode, this.props.user)
       .catch(() => {
-        this.setState({
-          loadedProduct: null,
-          loadingProduct: false,
-        });
+        return null;
+      })
+      .then(product => {
+        if (productCode === this.state.lastProductCode) {
+          this.setState({
+            loadingProduct: false,
+            loadedProduct: product,
+          });
+        }
       });
   }, 500);
 
   onChangeProductAddSearch = (event, productCode) => {
     this.setState({ productCode });
-    this.loadProduct();
+    this.loadProduct(productCode);
   };
 
   onSubmited = () => {
@@ -66,7 +72,7 @@ export class StockAddProductModal extends Component {
   };
 
   onSubmit = () => {
-    const product = this.props.data.product;
+    const product = this.state.loadedProduct;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     this.props
       .mutate({
@@ -78,6 +84,9 @@ export class StockAddProductModal extends Component {
             productDescription: product.description,
             productImage: imageUrl,
             productPrice: product.price,
+            cycleId: getCycleIdFromUser(this.props.user),
+            commercialStructureId: getCommercialStructureIdFromUser(this.props.user),
+            commercialStructureTypeId: getCommercialStructureTypeIdFromUser(this.props.user),
           },
         },
         refetchQueries: [
@@ -116,17 +125,6 @@ export class StockAddProductModal extends Component {
         contentStyle={dialogContainer}
         bodyStyle={dialogContent}
         titleStyle={dialogTitle}
-      />
-    );
-  };
-
-  renderSearch = () => {
-    return (
-      <FormInput
-        onChange={this.onChangeProductAddSearch}
-        name="productCode"
-        label={translate('stockProductCodeLabel')}
-        value={this.state.productCode}
       />
     );
   };
@@ -170,6 +168,12 @@ export class StockAddProductModal extends Component {
     return (
       <div>
         <FormInput
+          onChange={this.onChangeProductAddSearch}
+          name="productCode"
+          label={translate('stockProductCodeLabel')}
+          value={this.state.productCode}
+        />
+        <FormInput
           onChange={this.onChangeProductQty}
           name="qty"
           label={translate('stockProductQuantityLabel')}
@@ -194,7 +198,7 @@ export class StockAddProductModal extends Component {
         onCloseClick={this.props.handleClose}
         title={translate('stockProductAddModalTitle')}
       >
-        {this.renderSearch()}
+        {this.renderForm()}
         {this.renderProduct()}
       </Modal>,
       this.renderSuccessDialog(),
