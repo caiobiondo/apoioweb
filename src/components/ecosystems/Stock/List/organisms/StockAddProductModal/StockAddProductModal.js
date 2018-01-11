@@ -8,25 +8,49 @@ import {
   StockItemProductImageFallback,
 } from './StockAddProductModal.styles';
 import Img from 'react-image';
-import {
-  FetchProductQuery,
-  FetchProductQueryOptions,
-  AddStockProductMutation,
-} from './StockAddProductModal.data';
-import { graphql, compose } from 'react-apollo';
+import { fetchProduct, AddStockProductMutation } from './StockAddProductModal.data';
+import { graphql } from 'react-apollo';
 import { StockProductsQuery } from '../ListTable/ListTable.data';
+import debounce from 'lodash.debounce';
 
 export class StockAddProductModal extends Component {
   state = {
     successOpened: false,
     productQty: 1,
+    productCode: '',
+    loadedProduct: null,
+    loadingProduct: false,
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.productAddSearchDebounced !== this.props.productAddSearchDebounced) {
-      this.props.data.refetch();
+  loadProduct = debounce(() => {
+    if (!this.state.productCode) {
+      this.setState({
+        loadedProduct: null,
+      });
+      return;
     }
-  }
+
+    this.setState({ loadingProduct: true });
+    fetchProduct(this.state.productCode, this.props.user)
+      .then(product => {
+        this.setState({
+          loadedProduct: product,
+          loadingProduct: false,
+          productCode: product.productId,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          loadedProduct: null,
+          loadingProduct: false,
+        });
+      });
+  }, 500);
+
+  onChangeProductAddSearch = (event, productCode) => {
+    this.setState({ productCode });
+    this.loadProduct();
+  };
 
   onSubmited = () => {
     this.setState({ successOpened: true });
@@ -99,10 +123,10 @@ export class StockAddProductModal extends Component {
   renderSearch = () => {
     return (
       <FormInput
-        onChange={this.props.onChangeProductAddSearch}
+        onChange={this.onChangeProductAddSearch}
         name="productCode"
         label={translate('stockProductCodeLabel')}
-        value={this.props.productAddSearch}
+        value={this.state.productCode}
       />
     );
   };
@@ -116,17 +140,12 @@ export class StockAddProductModal extends Component {
   };
 
   renderProduct = () => {
-    console.log('************');
-    // debugger;
-    console.log(this.props.data);
-    const { productAddSearchDebounced, data } = this.props;
     const fallbackImage = this.renderItemProductImageFallback();
-
-    if (data.loading) {
+    if (this.state.loadingProduct) {
       return 'Loading...';
     }
 
-    if (productAddSearchDebounced === '') {
+    if (!this.state.loadedProduct) {
       return (
         <StockItemProductImageWrapper>
           <Img unloader={fallbackImage} />
@@ -134,7 +153,8 @@ export class StockAddProductModal extends Component {
         </StockItemProductImageWrapper>
       );
     }
-    const product = this.props.data.product;
+
+    const product = this.state.loadedProduct;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     const loader = React.createElement(Loading);
 
@@ -167,7 +187,6 @@ export class StockAddProductModal extends Component {
 
   render() {
     console.log('render');
-    console.log('productAddSearchDebounced: ', this.props.productAddSearchDebounced);
     return [
       <Modal
         open={this.props.opened}
@@ -176,6 +195,7 @@ export class StockAddProductModal extends Component {
         title={translate('stockProductAddModalTitle')}
       >
         {this.renderSearch()}
+        {this.renderProduct()}
       </Modal>,
       this.renderSuccessDialog(),
     ];
@@ -184,14 +204,8 @@ export class StockAddProductModal extends Component {
 
 StockAddProductModal.propTypes = {
   handleClose: PropTypes.func,
-  onChangeProductAddSearch: PropTypes.func,
   opened: PropTypes.bool,
-  productAddSearch: PropTypes.string,
-  productAddSearchDebounced: PropTypes.string,
   user: PropTypes.object,
 };
 
-export default compose(
-  graphql(FetchProductQuery, FetchProductQueryOptions),
-  graphql(AddStockProductMutation),
-)(StockAddProductModal);
+export default graphql(AddStockProductMutation)(StockAddProductModal);
