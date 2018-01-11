@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { translate } from 'locale';
 import {
+  FormButtonWrapper,
+  FormWrapper,
   StockItemProductImageWrapper,
   StockItemProductImageFallback,
 } from './StockAddProductModal.styles';
@@ -175,7 +177,7 @@ export class StockAddProductModal extends Component {
 
   renderForm = () => {
     return (
-      <div>
+      <FormWrapper>
         <FormInput
           onChange={this.onChangeProductAddSearch}
           name="productCode"
@@ -188,13 +190,15 @@ export class StockAddProductModal extends Component {
           label={translate('stockProductQuantityLabel')}
           value={this.state.productQty}
         />
-        <FormButton
-          primary
-          disabled={!this.allowSubmit()}
-          label={translate('stockProductAdd')}
-          onClick={this.onSubmit}
-        />
-      </div>
+        <FormButtonWrapper>
+          <FormButton
+            primary
+            disabled={!this.allowSubmit()}
+            label={translate('stockProductAdd')}
+            onClick={this.onSubmit}
+          />
+        </FormButtonWrapper>
+      </FormWrapper>
     );
   };
 
@@ -207,8 +211,8 @@ export class StockAddProductModal extends Component {
         onCloseClick={this.props.handleClose}
         title={translate('stockProductAddModalTitle')}
       >
-        {this.renderForm()}
         {this.renderProduct()}
+        {this.renderForm()}
       </Modal>,
       this.renderSuccessDialog(),
     ];
