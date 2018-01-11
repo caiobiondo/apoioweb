@@ -1,6 +1,7 @@
 import { onError } from 'apollo-link-error';
 
 const LOGIN_PATH = '/login';
+const REDIRECT_TO_LOGIN_MESSAGE = '#REDIRECT_TO_LOGIN#';
 
 const redirectToLogin = () => {
   localStorage.clear();
@@ -11,6 +12,11 @@ const checkForAuthError = error => {
   try {
     if (!error || !error.message) {
       return false;
+    }
+
+    if (error.message === REDIRECT_TO_LOGIN_MESSAGE) {
+      redirectToLogin();
+      return true;
     }
 
     const parsedMessage = JSON.parse(error.message);
