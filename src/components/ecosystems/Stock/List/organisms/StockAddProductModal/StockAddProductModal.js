@@ -19,6 +19,7 @@ import {
   getCommercialStructureIdFromUser,
   getCommercialStructureTypeIdFromUser,
 } from 'utils/getUserParams';
+import StockProduct from '../../molecules/StockProduct';
 
 export class StockAddProductModal extends Component {
   state = {
@@ -140,30 +141,7 @@ export class StockAddProductModal extends Component {
   };
 
   renderProduct = () => {
-    const fallbackImage = this.renderItemProductImageFallback();
-    if (this.state.loadingProduct) {
-      return 'Loading...';
-    }
-
-    if (!this.state.loadedProduct) {
-      return (
-        <StockItemProductImageWrapper>
-          <Img unloader={fallbackImage} />
-          {'Nenhum produto selecionado...'}
-        </StockItemProductImageWrapper>
-      );
-    }
-
-    const product = this.state.loadedProduct;
-    const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
-    const loader = React.createElement(Loading);
-
-    return (
-      <StockItemProductImageWrapper>
-        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
-        {product.name}
-      </StockItemProductImageWrapper>
-    );
+    return <StockProduct product={this.state.loadedProduct} />;
   };
 
   allowSubmit = () => {
@@ -203,7 +181,6 @@ export class StockAddProductModal extends Component {
   };
 
   render() {
-    console.log('render');
     return [
       <Modal
         open={this.props.opened}
