@@ -19,6 +19,10 @@ import {
 } from './ListTable.styles';
 
 export class ListTable extends Component {
+  state = {
+    hasMoreItems: true,
+  };
+
   constructor(props) {
     super(props);
 
@@ -45,8 +49,9 @@ export class ListTable extends Component {
     }
   }
 
-  componentWillReceiveProps({ stockProducts, loading }) {
+  componentWillReceiveProps({ loading, stockProducts }) {
     this.notifyLoadFinish(loading, stockProducts);
+    this.checkIfHasMoreItems(loading, stockProducts);
   }
 
   notifyLoadFinish = (loading, stockProducts) => {
@@ -56,6 +61,17 @@ export class ListTable extends Component {
         this.isLoading(loading, stockProducts),
       );
     }
+  };
+
+  checkIfHasMoreItems = (loading, stockProducts) => {
+    if (this.props.loading === loading || !stockProducts) {
+      return;
+    }
+
+    const hasMoreItems =
+      (stockProducts && !this.props.stockProducts) ||
+      stockProducts.length !== this.props.stockProducts.length;
+    this.setState({ hasMoreItems });
   };
 
   isLoading = (loading, stockProducts) => {
@@ -87,7 +103,7 @@ export class ListTable extends Component {
   };
 
   render() {
-    if (this.props.loading) {
+    if (!this.props.stockProducts && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
@@ -106,7 +122,7 @@ export class ListTable extends Component {
       <Paper style={WrapperStyle}>
         <InfiniteScroll
           loadMore={this.props.fetchMore}
-          hasMore={false}
+          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
           loader={
             <LoadingWrapper>
               <CircularProgress thickness={2} />

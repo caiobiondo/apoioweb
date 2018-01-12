@@ -32,7 +32,7 @@ class StockListWrapper extends Component {
   render() {
     const { loading, empty } = this.state;
     return (
-      <Main loading={loading} empty={empty}>
+      <Main>
         {!loading && (
           <StockSearchContainer>
             <StockSearch onSearch={this.onSearch} />

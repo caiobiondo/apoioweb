@@ -97,7 +97,7 @@ export class StockAddProductModal extends Component {
             variables: {
               limit: 10,
               offset: 0,
-              productName: '',
+              filter: '',
             },
           },
         ],

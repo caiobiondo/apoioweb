@@ -21,6 +21,7 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
   if (!fetchMoreResult) {
     return previousResult;
   }
+
   return Object.assign({}, previousResult, {
     stockProducts: [...previousResult.stockProducts, ...fetchMoreResult.stockProducts],
   });
@@ -44,6 +45,7 @@ export const StockProductsQueryOptions = {
       refetch: data.refetch,
       loading: data.loading,
       stockProducts: data.stockProducts,
+      hasMultiplePages: data.stockProducts && data.stockProducts.length >= ITEMS_PER_PAGE,
       fetchMore() {
         const offset = data.stockProducts ? data.stockProducts.length : 0;
         return data.fetchMore({
