@@ -104,6 +104,14 @@ export default class App extends Component {
                     'stock',
                   )}
                 />
+                <Route
+                  exact
+                  path="/magazines"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Magazines'),
+                    'magazines',
+                  )}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>
