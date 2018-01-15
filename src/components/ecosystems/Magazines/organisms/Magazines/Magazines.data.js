@@ -5,9 +5,12 @@ export const MagazinesQuery = gql`
     magazines(type: $type, gv: $gv, region: $region) {
       id
       title
+      description
       pdfFile
       year
       period
+      thumbFile
+      highlightImage
     }
   }
 `;
