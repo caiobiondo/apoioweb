@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { translate } from 'locale';
 import {
+  FormButtonStyles,
   FormButtonWrapper,
   FormWrapper,
   StockItemProductImageWrapper,
@@ -54,7 +55,7 @@ export class StockAddProductModal extends Component {
           });
         }
       });
-  }, 500);
+  }, 1000);
 
   onChangeProductAddSearch = (event, productCode) => {
     this.setState({ productCode });
@@ -174,6 +175,7 @@ export class StockAddProductModal extends Component {
             disabled={!this.allowSubmit()}
             label={translate('stockProductAdd')}
             onClick={this.onSubmit}
+            {...FormButtonStyles}
           />
         </FormButtonWrapper>
       </FormWrapper>

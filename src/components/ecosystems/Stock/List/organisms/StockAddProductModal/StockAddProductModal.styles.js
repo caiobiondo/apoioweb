@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { gray200 } from 'styles/colors';
+import { RobotoMedium } from 'styles/typography';
 
 const BaseWrapper = styled.div``;
 
@@ -34,5 +35,12 @@ export const FormButtonWrapper = styled.div`
 `;
 
 export const FormButtonStyles = {
-  marginTop: 54,
+  buttonStyle: {
+    fontFamily: RobotoMedium,
+    minWidth: '128px',
+  },
+  overlayStyle: {
+    minWidth: '128px',
+  },
+  height: '50px',
 };
