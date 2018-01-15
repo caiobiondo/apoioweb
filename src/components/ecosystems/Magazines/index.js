@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-export default class Magazines extends Component {
+import Magazines from './organisms/Magazines';
+
+export default class MagazinesWrapper extends Component {
   render() {
-    return <span>'öioooiii</span>;
+    return <Magazines type="natura" region="6" gv={6} />;
   }
 }

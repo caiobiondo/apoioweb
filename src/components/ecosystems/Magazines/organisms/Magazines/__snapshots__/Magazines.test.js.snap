@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MagazinesQuery should render a loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`MagazinesQuery should render the current magazine and magazines list 1`] = `
+<div>
+  <Component
+    magazine={
+      Object {
+        "id": 21566,
+        "period": 18,
+        "title": "Espaço Natura c18 - NE- RJ/ES - CO - SUL - MG - SPC - SPIL (v2)  ",
+        "year": 2017,
+      }
+    }
+  />
+  <Component
+    magazines={
+      Array [
+        Object {
+          "id": 21331,
+          "period": 17,
+          "title": "Espaço Natura c17 - RJ/ES - CO - SUL - MG - SPC - SPIL (v2)",
+          "year": 2017,
+        },
+        Object {
+          "id": 20881,
+          "period": 16,
+          "title": "Espaço Natura c16 - CO - SUL - MG - SPC - SPIL (v2)",
+          "year": 2017,
+        },
+      ]
+    }
+  />
+</div>
+`;
