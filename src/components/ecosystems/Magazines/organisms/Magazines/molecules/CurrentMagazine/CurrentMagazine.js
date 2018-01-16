@@ -15,15 +15,11 @@ export default ({ magazine }) => {
       <p dangerouslySetInnerHTML={{ __html: magazine.description }} />
       <p>{translate('taxInfoTitle')}</p>
       <p>{translate('taxInfoDescription')}</p>
-      <FlatButton
-        label={translate('visualizeMagazine')}
-        primary
-        icon={<Icon file="ico_arrow_down" />}
-      />
+      <FlatButton label={translate('visualizeMagazine')} primary icon={<Icon file="ico_view" />} />
       <FlatButton
         label={translate('downloadMagazine')}
         primary
-        icon={<Icon file="ico_arrow_down" />}
+        icon={<Icon file="ico_magazine_download" />}
       />
     </div>
   );
