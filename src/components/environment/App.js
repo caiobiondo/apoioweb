@@ -108,7 +108,15 @@ export default class App extends Component {
                   exact
                   path="/magazines"
                   component={withDefaultBehaviour(
-                    import('components/ecosystems/Magazines'),
+                    import('components/ecosystems/Magazines/List'),
+                    'magazines',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/magazines/view/:id"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Magazines/View'),
                     'magazines',
                   )}
                 />

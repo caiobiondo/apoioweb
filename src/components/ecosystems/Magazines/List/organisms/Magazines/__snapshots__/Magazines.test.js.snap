@@ -10,7 +10,7 @@ exports[`MagazinesQuery should render a loading 1`] = `
 
 exports[`MagazinesQuery should render the current magazine and magazines list 1`] = `
 <div>
-  <Component
+  <withRouter(CurrentMagazine)
     magazine={
       Object {
         "id": 21566,

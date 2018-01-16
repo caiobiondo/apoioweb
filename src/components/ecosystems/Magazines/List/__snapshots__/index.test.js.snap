@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Magazines List should render the magazines organisms with region and gv from user 1`] = `
+<Apollo(Magazines)
+  gv={6}
+  region="6"
+  type="natura"
+/>
+`;
