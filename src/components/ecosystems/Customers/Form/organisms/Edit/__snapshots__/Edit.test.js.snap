@@ -929,6 +929,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "gender.m": "Masculino",
             "gender.male": "Masculino",
             "goToStock": "Ir para meu estoque",
+            "hide": "Esconder",
             "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
@@ -1026,6 +1027,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
             "yourScoreDemonstration": "Demonstrativo da sua pontuação",
           }
@@ -2447,6 +2449,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "gender.m": "Masculino",
             "gender.male": "Masculino",
             "goToStock": "Ir para meu estoque",
+            "hide": "Esconder",
             "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
@@ -2544,6 +2547,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
             "yourScoreDemonstration": "Demonstrativo da sua pontuação",
           }
@@ -4254,6 +4258,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "gender.m": "Masculino",
             "gender.male": "Masculino",
             "goToStock": "Ir para meu estoque",
+            "hide": "Esconder",
             "importMoreProducts": "Importar mais produtos",
             "invalid": "{field} informado é inválido",
             "lastPeriod": "Período anterior",
@@ -4351,6 +4356,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
             "yourScoreDemonstration": "Demonstrativo da sua pontuação",
           }

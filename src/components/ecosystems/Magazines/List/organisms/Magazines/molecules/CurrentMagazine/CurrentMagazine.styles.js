@@ -6,10 +6,6 @@ import { NaturaRegular, RobotoLight, RobotoRegular, RobotoMedium } from 'styles/
 
 export const CurrentMagazineWrapper = styled.div`
   padding: ${spMedium};
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    padding: 0;
-  }
 `;
 
 export const CurrentMagazineHeader = styled.h2`
@@ -23,6 +19,10 @@ export const CurrentMagazineHeader = styled.h2`
 
 export const CurrentMagazineInfoWrapper = styled.div`
   display: flex;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    flex-direction: column;
+  }
 `;
 
 export const CurrentMagazineInfo = styled.div`
@@ -30,6 +30,11 @@ export const CurrentMagazineInfo = styled.div`
   flex-direction: column;
   flex: 1;
   padding-left: 62.5px;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: block;
+    padding: 20px;
+  }
 `;
 
 export const CurrentMagazineCover = styled.img`
@@ -37,6 +42,12 @@ export const CurrentMagazineCover = styled.img`
   height: 444px;
   object-fit: contain;
   box-shadow: 1.6px 1.9px 7.5px 0 rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    width: 50%;
+    height: auto;
+    align-self: center;
+  }
 `;
 
 export const CurrentMagazinePeriod = styled.span`
@@ -57,6 +68,14 @@ export const CurrentMagazineTitle = styled.h3`
   text-align: left;
   color: ${orange100};
   margin: 10.5px 0 0 0;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
 `;
 
 export const CurrentMagazineDescription = styled.p`
@@ -65,9 +84,19 @@ export const CurrentMagazineDescription = styled.p`
   line-height: 1.28;
   text-align: left;
   color: ${gray700};
-  padding: 25px 0 25px 0;
+  padding: 25px 0;
   margin: 0;
   align-self: flex-end;
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    font-size: 13px;
+    padding: 10px 0;
+    text-align: center;
+  }
 `;
 
 export const CurrentMagazineTax = styled.p`
@@ -105,6 +134,7 @@ export const ButtonWrapper = styled.div`
     width: 13px;
     padding-left: 16px;
   }
+
   span {
     font-family: ${RobotoRegular};
     font-size: 16.9px;
@@ -113,6 +143,15 @@ export const ButtonWrapper = styled.div`
     text-align: left;
     color: ${orange100};
   }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    align-items: center;
+    margin-top: 5px;
+
+    button {
+      width: 100%;
+    }
+  }
 `;
 
 export const CurrentMagazineTaxWrapper = styled.div`
@@ -120,4 +159,29 @@ export const CurrentMagazineTaxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: none;
+  }
+`;
+
+export const CurrentMagazineAdditionalInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    ${props => {
+      return props.opened ? 'height: auto; opacity: 1;' : 'height: 0; opacity: 0;';
+    }};
+  }
+`;
+
+export const CurrentMagazineSeeMore = styled.div`
+  display: none;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: block;
+    margin: 10px 0;
+  }
 `;
