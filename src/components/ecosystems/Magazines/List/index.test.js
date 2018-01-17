@@ -9,6 +9,11 @@ describe('Magazines List', () => {
       user: {
         id: 123,
       },
+      match: {
+        params: {
+          type: 'natura',
+        },
+      },
     };
 
     // when
