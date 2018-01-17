@@ -4,6 +4,7 @@ import Magazines from './organisms/Magazines';
 
 export default class MagazinesWrapper extends Component {
   render() {
-    return <Magazines type="natura" region="6" gv={6} />;
+    const { params } = this.props.match;
+    return <Magazines type={params.type} region="6" gv={185} />;
   }
 }

@@ -106,7 +106,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/magazines"
+                  path="/magazines/:type"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Magazines/List'),
                     'magazines',
