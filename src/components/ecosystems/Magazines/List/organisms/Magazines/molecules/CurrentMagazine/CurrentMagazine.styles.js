@@ -86,7 +86,6 @@ export const CurrentMagazineDescription = styled.p`
   color: ${gray700};
   padding: 25px 0;
   margin: 0;
-  align-self: flex-end;
 
   p {
     margin: 0;

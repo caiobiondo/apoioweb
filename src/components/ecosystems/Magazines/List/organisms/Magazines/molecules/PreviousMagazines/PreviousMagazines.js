@@ -9,6 +9,10 @@ import {
   MagazineCover,
   LeftCarouselArrow,
   RightCarouselArrow,
+  MagazineCoverWrapper,
+  MagazineCoverPeriod,
+  MagazineCoverTitle,
+  MagazineInCoverInfo,
 } from './PreviousMagazines.styles';
 
 class PreviousMagazines extends Component {
@@ -41,7 +45,17 @@ class PreviousMagazines extends Component {
           <Header>{translate('previousMagazines')}</Header>
           <Slider {...settings}>
             {this.props.magazines.map(magazine => {
-              return <MagazineCover key={magazine.id} src={magazine.highlightImage} />;
+              return (
+                <MagazineCoverWrapper key={magazine.id} onClick={() => this.openMagazine(magazine)}>
+                  <MagazineInCoverInfo>
+                    <MagazineCoverPeriod>
+                      {translate('magazineCycle')} {magazine.period}
+                    </MagazineCoverPeriod>
+                    <MagazineCoverTitle>{magazine.title}</MagazineCoverTitle>
+                  </MagazineInCoverInfo>
+                  <MagazineCover src={magazine.highlightImage} />
+                </MagazineCoverWrapper>
+              );
             })}
           </Slider>
         </Wrapper>
