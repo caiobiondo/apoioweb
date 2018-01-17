@@ -1457,6 +1457,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "pointsFrom": "a partir de {points}",
             "pointsToNextLevel": "Faltam {points} pontos para {nextLevelName}",
             "presential": "Presencial",
+            "previousMagazines": "Revistas anteriores",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",

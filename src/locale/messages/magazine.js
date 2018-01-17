@@ -4,6 +4,7 @@ export default {
     currentMagazine: 'Revista Atual',
     downloadMagazine: 'Baixar revista',
     magazineCycle: 'Ciclo',
+    previousMagazines: 'Revistas anteriores',
     taxViewMore: 'Confira aqui',
     taxInfoTitle: 'a carga tributária dos produtos Natura.',
     taxInfoDescription:

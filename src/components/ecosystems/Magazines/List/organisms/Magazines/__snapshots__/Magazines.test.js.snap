@@ -20,7 +20,7 @@ exports[`MagazinesQuery should render the current magazine and magazines list 1`
       }
     }
   />
-  <Component
+  <withRouter(PreviousMagazines)
     magazines={
       Array [
         Object {
