@@ -13,13 +13,17 @@ class Orders extends Component {
     this.setState({ empty: empty, loading: loading });
   };
 
+  redirectToOrders = () => {
+    window.open('https://pedidos.natura.net/captaweb/');
+  };
+
   render() {
     const { loading, empty } = this.state;
     return (
       <Main loading={loading} empty={empty}>
         {!loading && (
           <OrderAddButtonContainer empty={empty}>
-            <OrderAddButton />
+            <OrderAddButton onClick={this.redirectToOrders} />
           </OrderAddButtonContainer>
         )}
         <OrdersList onLoadFinished={this.onLoadFinished} user={this.props.user} />

@@ -30,4 +30,14 @@ describe('Orders', () => {
 
     expect(instance.state).toEqual({ empty: true, loading: false });
   });
+
+  it('should redirect to external order page', () => {
+    window.open = jest.fn();
+    const result = shallow(<Orders />);
+    const instance = result.instance();
+
+    instance.redirectToOrders();
+
+    expect(window.open).toBeCalledWith('https://pedidos.natura.net/captaweb/');
+  });
 });
