@@ -10,6 +10,7 @@ import {
 } from './StockProduct.styles';
 import { Icon, CircularProgress, Loading } from 'natura-ui';
 import Img from 'react-image';
+import { FormattedMessage } from 'react-intl';
 
 class StockProduct extends Component {
   state = {};
@@ -42,12 +43,17 @@ class StockProduct extends Component {
         <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
         <StockItemProductDetails>
           <StockItemProductDetailsName>
-            {(this.props.product && this.props.product.name) || 'Nenhum produto selecionado'}
+            {(this.props.product && this.props.product.name) || (
+              <FormattedMessage id="stockNoProductSelected" />
+            )}
           </StockItemProductDetailsName>
           {this.props.product &&
             this.props.product.productId && (
               <StockItemProductDetailsCode>
-                Código: {this.props.product.productId}
+                <FormattedMessage
+                  id="stockProductCode"
+                  values={{ code: this.props.product.productId }}
+                />
               </StockItemProductDetailsCode>
             )}
         </StockItemProductDetails>
