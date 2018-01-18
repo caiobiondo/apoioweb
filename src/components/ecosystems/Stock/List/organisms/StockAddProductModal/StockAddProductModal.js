@@ -4,11 +4,17 @@ import PropTypes from 'prop-types';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { translate } from 'locale';
 import {
+  bodyStyle,
+  contentStyle,
   FormButtonStyles,
   FormButtonWrapper,
   FormWrapper,
-  StockItemProductImageWrapper,
+  FormInputWrapper,
   StockItemProductImageFallback,
+  titleStyle,
+  ModalTitleWrapper,
+  ModalContentWrapper,
+  StockProductWrapper,
 } from './StockAddProductModal.styles';
 import Img from 'react-image';
 import { fetchProduct, AddStockProductMutation } from './StockAddProductModal.data';
@@ -21,6 +27,7 @@ import {
   getCommercialStructureTypeIdFromUser,
 } from 'utils/getUserParams';
 import StockProduct from '../../molecules/StockProduct';
+import SectionTitle from 'components/molecules/SectionTitle';
 
 export class StockAddProductModal extends Component {
   state = {
@@ -142,7 +149,11 @@ export class StockAddProductModal extends Component {
   };
 
   renderProduct = () => {
-    return <StockProduct product={this.state.loadedProduct} />;
+    return (
+      <StockProductWrapper>
+        <StockProduct product={this.state.loadedProduct} />
+      </StockProductWrapper>
+    );
   };
 
   allowSubmit = () => {
@@ -157,18 +168,22 @@ export class StockAddProductModal extends Component {
   renderForm = () => {
     return (
       <FormWrapper>
-        <FormInput
-          onChange={this.onChangeProductAddSearch}
-          name="productCode"
-          label={translate('stockProductCodeLabel')}
-          value={this.state.productCode}
-        />
-        <FormInput
-          onChange={this.onChangeProductQty}
-          name="qty"
-          label={translate('stockProductQuantityLabel')}
-          value={this.state.productQty}
-        />
+        <FormInputWrapper>
+          <FormInput
+            onChange={this.onChangeProductAddSearch}
+            name="productCode"
+            label={translate('stockProductCodeLabel')}
+            value={this.state.productCode}
+          />
+        </FormInputWrapper>
+        <FormInputWrapper>
+          <FormInput
+            onChange={this.onChangeProductQty}
+            name="qty"
+            label={translate('stockProductQuantityLabel')}
+            value={this.state.productQty}
+          />
+        </FormInputWrapper>
         <FormButtonWrapper>
           <FormButton
             primary
@@ -182,16 +197,30 @@ export class StockAddProductModal extends Component {
     );
   };
 
+  renderTitle() {
+    return (
+      <ModalTitleWrapper>
+        <SectionTitle value="stockProductAddModalTitle" iconName="ico_flask" />
+      </ModalTitleWrapper>
+    );
+  }
+
   render() {
     return [
       <Modal
         open={this.props.opened}
         showCloseButton={true}
         onCloseClick={this.props.handleClose}
-        title={translate('stockProductAddModalTitle')}
+        title={this.renderTitle()}
+        titleStyle={titleStyle}
+        contentStyle={contentStyle}
+        bodyStyle={bodyStyle}
+        autoScrollBodyContent={true}
       >
-        {this.renderProduct()}
-        {this.renderForm()}
+        <ModalContentWrapper>
+          {this.renderForm()}
+          {this.renderProduct()}
+        </ModalContentWrapper>
       </Modal>,
       this.renderSuccessDialog(),
     ];

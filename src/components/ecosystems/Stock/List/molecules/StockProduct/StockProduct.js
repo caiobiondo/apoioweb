@@ -4,6 +4,9 @@ import {
   productImageStyles,
   StockItemProductImageWrapper,
   StockItemProductImageFallback,
+  StockItemProductDetails,
+  StockItemProductDetailsName,
+  StockItemProductDetailsCode,
 } from './StockProduct.styles';
 import { Icon } from 'natura-ui';
 import Img from 'react-image';
@@ -21,14 +24,15 @@ class StockProduct extends Component {
   };
 
   render() {
-    let productName;
-    let imageUrl;
+    let productName, imageUrl, productCode;
     if (this.props.product) {
       productName = this.props.product.name;
       imageUrl = `http://rede.natura.net/image/sku/145x145/${this.props.product.productId}_1.jpg`;
+      productCode = this.props.product.productId;
     } else {
       productName = 'Nenhum produto selecionado';
       imageUrl = null;
+      productCode = null;
     }
 
     return (
@@ -38,7 +42,12 @@ class StockProduct extends Component {
           imageUrl={imageUrl}
           styles={productImageStyles}
         />
-        {productName}
+        <StockItemProductDetails>
+          <StockItemProductDetailsName>{productName}</StockItemProductDetailsName>
+          {productCode && (
+            <StockItemProductDetailsCode>Código: {productCode}</StockItemProductDetailsCode>
+          )}
+        </StockItemProductDetails>
       </StockItemProductImageWrapper>
     );
   }
