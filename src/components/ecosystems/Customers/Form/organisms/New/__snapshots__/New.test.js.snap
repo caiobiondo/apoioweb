@@ -1473,6 +1473,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "stockProductAdd": "Adicionar",
             "stockProductAddModalTitle": "Adicionar novo produto ao estoque",
             "stockProductAdded": "{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }",
+            "stockProductAdding": "Adicionando",
             "stockProductCode": "Código: {code}",
             "stockProductCodeLabel": "Código",
             "stockProductHeaderName": "Produto",
