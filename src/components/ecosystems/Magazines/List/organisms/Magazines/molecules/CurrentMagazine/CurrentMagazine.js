@@ -19,7 +19,7 @@ import {
   CurrentMagazineSeeMore,
 } from './CurrentMagazine.styles';
 
-class CurrentMagazine extends Component {
+export class CurrentMagazine extends Component {
   state = {
     additionalInfoOpened: false,
   };
