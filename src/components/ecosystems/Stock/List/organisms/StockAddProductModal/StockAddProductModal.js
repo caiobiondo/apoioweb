@@ -35,6 +35,7 @@ export class StockAddProductModal extends Component {
     loadedProduct: null,
     loadingProduct: false,
     lastProductCode: '',
+    importing: false,
   };
 
   loadProduct = debounce(productCode => {
@@ -68,7 +69,7 @@ export class StockAddProductModal extends Component {
   };
 
   onSubmited = () => {
-    this.setState({ successOpened: true });
+    this.setState({ successOpened: true, importing: false });
     this.props.handleClose();
   };
 
@@ -83,6 +84,7 @@ export class StockAddProductModal extends Component {
   onSubmit = () => {
     const product = this.state.loadedProduct;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
+    this.setState({ importing: true });
     this.props
       .mutate({
         variables: {
@@ -151,7 +153,8 @@ export class StockAddProductModal extends Component {
       this.state.loadedProduct &&
       !this.state.loadingProduct &&
       this.state.productQty &&
-      this.state.productQty !== '0'
+      this.state.productQty !== '0' &&
+      !this.state.importing
     );
   };
 
@@ -178,13 +181,21 @@ export class StockAddProductModal extends Component {
           <FormButton
             primary
             disabled={!this.allowSubmit()}
-            label={translate('stockProductAdd')}
+            label={this.renderAddButtonLabel()}
             onClick={this.onSubmit}
             {...FormButtonStyles}
           />
         </FormButtonWrapper>
       </FormWrapper>
     );
+  };
+
+  renderAddButtonLabel = () => {
+    if (this.state.importing) {
+      return translate('stockProductAdding');
+    }
+
+    return translate('stockProductAdd');
   };
 
   renderTitle() {

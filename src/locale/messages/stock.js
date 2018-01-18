@@ -8,6 +8,7 @@ export default {
     stockImportFromOrders: 'Importar produtos de pedido',
     stockNoProductFound: 'Nenhum produto encontrado',
     stockProductAdd: 'Adicionar',
+    stockProductAdding: 'Adicionando',
     stockProductAddModalTitle: 'Adicionar novo produto ao estoque',
     stockProductAdded:
       '{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }',
