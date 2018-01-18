@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Loading, Icon, Modal, FormInput, FormButton, FlatButton, Dialog } from 'natura-ui';
+import { Modal, FormInput, FormButton, FlatButton, Dialog } from 'natura-ui';
 import PropTypes from 'prop-types';
 import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { translate } from 'locale';
@@ -10,13 +10,11 @@ import {
   FormButtonWrapper,
   FormWrapper,
   FormInputWrapper,
-  StockItemProductImageFallback,
   titleStyle,
   ModalTitleWrapper,
   ModalContentWrapper,
   StockProductWrapper,
 } from './StockAddProductModal.styles';
-import Img from 'react-image';
 import { fetchProduct, AddStockProductMutation } from './StockAddProductModal.data';
 import { graphql } from 'react-apollo';
 import { StockProductsQuery } from '../ListTable/ListTable.data';
@@ -140,18 +138,10 @@ export class StockAddProductModal extends Component {
     );
   };
 
-  renderItemProductImageFallback = () => {
-    return (
-      <StockItemProductImageFallback>
-        <Icon file="ico_pictureless" />
-      </StockItemProductImageFallback>
-    );
-  };
-
   renderProduct = () => {
     return (
       <StockProductWrapper>
-        <StockProduct product={this.state.loadedProduct} />
+        <StockProduct product={this.state.loadedProduct} loading={this.state.loadingProduct} />
       </StockProductWrapper>
     );
   };

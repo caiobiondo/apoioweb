@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  productImageStyles,
   StockItemProductImageWrapper,
   StockItemProductImageFallback,
+  StockItemProductLoadingWrapper,
   StockItemProductDetails,
   StockItemProductDetailsName,
   StockItemProductDetailsCode,
 } from './StockProduct.styles';
-import { Icon } from 'natura-ui';
+import { Icon, CircularProgress, Loading } from 'natura-ui';
 import Img from 'react-image';
-import ImageWithFallback from 'components/molecules/ImageWithFallback';
 
 class StockProduct extends Component {
   state = {};
@@ -24,29 +23,33 @@ class StockProduct extends Component {
   };
 
   render() {
-    let productName, imageUrl, productCode;
-    if (this.props.product) {
-      productName = this.props.product.name;
-      imageUrl = `http://rede.natura.net/image/sku/145x145/${this.props.product.productId}_1.jpg`;
-      productCode = this.props.product.productId;
-    } else {
-      productName = 'Nenhum produto selecionado';
-      imageUrl = null;
-      productCode = null;
+    const loader = React.createElement(Loading);
+    const fallbackImage = this.renderItemProductImageFallback();
+    const imageUrl =
+      this.props.product &&
+      `http://rede.natura.net/image/sku/145x145/${this.props.product.productId}_1.jpg`;
+
+    if (this.props.loading) {
+      return (
+        <StockItemProductLoadingWrapper>
+          <CircularProgress thickness={3} />
+        </StockItemProductLoadingWrapper>
+      );
     }
 
     return (
       <StockItemProductImageWrapper>
-        <ImageWithFallback
-          fallbackImage="ico_pictureless"
-          imageUrl={imageUrl}
-          styles={productImageStyles}
-        />
+        <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
         <StockItemProductDetails>
-          <StockItemProductDetailsName>{productName}</StockItemProductDetailsName>
-          {productCode && (
-            <StockItemProductDetailsCode>Código: {productCode}</StockItemProductDetailsCode>
-          )}
+          <StockItemProductDetailsName>
+            {(this.props.product && this.props.product.name) || 'Nenhum produto selecionado'}
+          </StockItemProductDetailsName>
+          {this.props.product &&
+            this.props.product.productId && (
+              <StockItemProductDetailsCode>
+                Código: {this.props.product.productId}
+              </StockItemProductDetailsCode>
+            )}
         </StockItemProductDetails>
       </StockItemProductImageWrapper>
     );
@@ -55,6 +58,7 @@ class StockProduct extends Component {
 
 StockProduct.propTypes = {
   product: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 export default StockProduct;

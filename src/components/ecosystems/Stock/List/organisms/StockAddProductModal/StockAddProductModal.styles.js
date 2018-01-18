@@ -61,7 +61,7 @@ export const FormInputWrapper = styled.div`
 export const StockItemProductImageFallback = styled.div`
   svg {
     fill: ${gray200};
-    width: 50px;
+    width: 80px;
   }
 `;
 
