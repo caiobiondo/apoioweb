@@ -7,7 +7,10 @@ describe('Magazines List', () => {
     // given
     const props = {
       user: {
-        id: 123,
+        estrutura: {
+          regiaoEstrategica: { codigo: 2 },
+          gerenciaVenda: { codigo: 185 },
+        },
       },
       match: {
         params: {

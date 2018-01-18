@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Magazines from './organisms/Magazines';
 
-export default class MagazinesWrapper extends Component {
-  render() {
-    const { params } = this.props.match;
-    return <Magazines type={params.type} region="6" gv={185} />;
-  }
-}
+import { getCommercialRegionIdFromUser, getSalesManagementIdFromUser } from 'utils/getUserParams';
+
+const MagazinesWrapper = ({ user, match }) => {
+  const region = getCommercialRegionIdFromUser(user);
+  const gv = getSalesManagementIdFromUser(user);
+
+  return <Magazines type={match.params.type} region={region} gv={gv} />;
+};
+
+export default MagazinesWrapper;

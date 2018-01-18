@@ -3,7 +3,7 @@
 exports[`Magazines List should render the magazines organisms with region and gv from user 1`] = `
 <Apollo(Magazines)
   gv={185}
-  region="6"
+  region={2}
   type="natura"
 />
 `;

@@ -2,6 +2,8 @@ import {
   getCycleIdFromUser,
   getCommercialStructureIdFromUser,
   getCommercialStructureTypeIdFromUser,
+  getCommercialRegionIdFromUser,
+  getSalesManagementIdFromUser,
 } from './getUserParams';
 
 const user = {
@@ -13,6 +15,8 @@ const user = {
         numero: 201711,
       },
     ],
+    regiaoEstrategica: { codigo: 2 },
+    gerenciaVenda: { codigo: 185 },
   },
 };
 
@@ -123,5 +127,93 @@ describe('getCommercialStructureTypeIdFromUser', () => {
     });
 
     expect(commercialStructureTypeId).toEqual(null);
+  });
+});
+
+describe('getCommercialRegionIdFromUser', () => {
+  it('should return commercial region id', () => {
+    const commercialRegionId = getCommercialRegionIdFromUser(user);
+
+    expect(commercialRegionId).toEqual(2);
+  });
+
+  it('should return null', () => {
+    const commercialRegionId = getCommercialRegionIdFromUser(null);
+
+    expect(commercialRegionId).toEqual(null);
+  });
+
+  it('should return null', () => {
+    const commercialRegionId = getCommercialRegionIdFromUser({
+      estrutura: null,
+    });
+
+    expect(commercialRegionId).toEqual(null);
+  });
+
+  it('should return null', () => {
+    const commercialRegionId = getCommercialRegionIdFromUser({
+      estrutura: {
+        regiaoEstrategica: null,
+      },
+    });
+
+    expect(commercialRegionId).toEqual(null);
+  });
+
+  it('should return null', () => {
+    const commercialRegionId = getCommercialRegionIdFromUser({
+      estrutura: {
+        regiaoEstrategica: {
+          codigo: null,
+        },
+      },
+    });
+
+    expect(commercialRegionId).toEqual(null);
+  });
+});
+
+describe('getSalesManagementIdFromUser', () => {
+  it('should return sales management id', () => {
+    const salesManagementId = getSalesManagementIdFromUser(user);
+
+    expect(salesManagementId).toEqual(185);
+  });
+
+  it('should return null', () => {
+    const salesManagementId = getSalesManagementIdFromUser(null);
+
+    expect(salesManagementId).toEqual(null);
+  });
+
+  it('should return null', () => {
+    const salesManagementId = getSalesManagementIdFromUser({
+      estrutura: null,
+    });
+
+    expect(salesManagementId).toEqual(null);
+  });
+
+  it('should return null', () => {
+    const salesManagementId = getSalesManagementIdFromUser({
+      estrutura: {
+        gerenciaVenda: null,
+      },
+    });
+
+    expect(salesManagementId).toEqual(null);
+  });
+
+  it('should return null', () => {
+    const salesManagementId = getSalesManagementIdFromUser({
+      estrutura: {
+        gerenciaVenda: {
+          codigo: null,
+        },
+      },
+    });
+
+    expect(salesManagementId).toEqual(null);
   });
 });
