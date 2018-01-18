@@ -3,6 +3,7 @@
 exports[`OrderAddButton should render a floating button with add order icon 1`] = `
 <CustomFloatingActionButton
   iconWrapper={[Function]}
+  onClick={undefined}
 >
   <Icon
     file="ico_add_box"
