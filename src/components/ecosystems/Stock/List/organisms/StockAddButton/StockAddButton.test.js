@@ -8,12 +8,4 @@ describe('StockAddButton', () => {
 
     expect(result).toMatchSnapshot();
   });
-
-  it('should open product stock dialog (pending)', () => {
-    const result = shallow(<StockAddButton />);
-    const instance = result.instance();
-    instance.addProductToStockDialog();
-
-    expect(instance).toMatchSnapshot();
-  });
 });

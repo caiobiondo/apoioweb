@@ -37,6 +37,7 @@ exports[`Stock Product List Table should render correctly when the list is not e
       "flex": "1 1 0",
       "flexDirection": "column",
       "justifyContent": "center",
+      "paddingBottom": "70px",
     }
   }
   transitionEnabled={true}

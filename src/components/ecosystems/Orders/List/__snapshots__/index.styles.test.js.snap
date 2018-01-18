@@ -26,12 +26,12 @@ exports[`Orders Styles should render the main container without full container m
 
 exports[`Orders Styles should render the order add button container with 10% from bottom 1`] = `
 <div
-  className="indexstyles__OrderAddButtonContainer-jYjuXD OdOFf"
+  className="indexstyles__OrderAddButtonContainer-jYjuXD fOwvrw"
 />
 `;
 
 exports[`Orders Styles should render the order add button container with 20% from bottom 1`] = `
 <div
-  className="indexstyles__OrderAddButtonContainer-jYjuXD cLAHzr"
+  className="indexstyles__OrderAddButtonContainer-jYjuXD hVNumR"
 />
 `;

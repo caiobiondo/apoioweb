@@ -6,7 +6,7 @@ export default {
     stockEmptyList: 'Estoque vazio',
     stockEmptyListDescription: 'Você ainda não possui produtos em seu estoque',
     stockImportFromOrders: 'Importar produtos de pedido',
-    stockNoProductSelected: 'Nenhum produto selecionado',
+    stockNoProductFound: 'Nenhum produto encontrado',
     stockProductAdd: 'Adicionar',
     stockProductAddModalTitle: 'Adicionar novo produto ao estoque',
     stockProductAdded:

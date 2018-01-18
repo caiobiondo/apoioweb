@@ -44,7 +44,7 @@ class StockProduct extends Component {
         <StockItemProductDetails>
           <StockItemProductDetailsName>
             {(this.props.product && this.props.product.name) || (
-              <FormattedMessage id="stockNoProductSelected" />
+              <FormattedMessage id="stockNoProductFound" />
             )}
           </StockItemProductDetailsName>
           {this.props.product &&
