@@ -15,7 +15,7 @@ import {
   MagazineInCoverInfo,
 } from './PreviousMagazines.styles';
 
-class PreviousMagazines extends Component {
+export class PreviousMagazines extends Component {
   openMagazine = magazine => {
     this.props.history.push(`/magazines/view/${magazine.id}`, { magazine });
   };
