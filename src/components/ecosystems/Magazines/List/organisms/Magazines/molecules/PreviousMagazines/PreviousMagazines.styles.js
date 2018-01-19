@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Responsive } from '@entria/components';
 import { orange100, gray700 } from 'styles/colors';
 import { RobotoLight, RobotoMedium, NaturaRegular } from 'styles/typography';
 
@@ -15,6 +16,21 @@ export const Wrapper = styled.div`
   padding: 25px;
   position: relative;
   overflow-x: hidden;
+  margin-bottom: 80px;
+`;
+
+export const MagazineCoverList = styled.div`
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export const MagazineCoverWrapper = styled.div`
@@ -29,9 +45,27 @@ export const MagazineCoverWrapper = styled.div`
     span {
       display: block;
     }
+
     img {
       transform: scale(1.1);
       opacity: 0.2;
+    }
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    max-width: 48%;
+    margin: 0 1%;
+
+    &:hover {
+      h2,
+      span {
+        display: none;
+      }
+
+      img {
+        transform: scale(1.1);
+        opacity: 1;
+      }
     }
   }
 `;
@@ -41,7 +75,6 @@ export const MagazineCover = styled.img`
   min-height: 191px;
   max-height: 291px;
   object-fit: contain;
-  padding: 0 7.5px;
 `;
 
 export const MagazineCoverTitle = styled.h2`
@@ -94,4 +127,18 @@ export const MagazineInCoverInfo = styled.div`
 
 export const RightCarouselArrow = LeftCarouselArrow.extend`
   right: 25px;
+`;
+
+export const MagazineCoverMobileInfo = styled.h3`
+  font-family: ${RobotoMedium};
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.25;
+  text-align: center;
+  color: ${gray700};
+  display: none;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: block;
+  }
 `;

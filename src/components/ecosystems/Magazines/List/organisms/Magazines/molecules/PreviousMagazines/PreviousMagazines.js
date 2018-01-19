@@ -13,6 +13,8 @@ import {
   MagazineCoverPeriod,
   MagazineCoverTitle,
   MagazineInCoverInfo,
+  MagazineCoverList,
+  MagazineCoverMobileInfo,
 } from './PreviousMagazines.styles';
 
 export class PreviousMagazines extends Component {
@@ -43,21 +45,29 @@ export class PreviousMagazines extends Component {
       <Paper>
         <Wrapper>
           <Header>{translate('previousMagazines')}</Header>
-          <Slider {...settings}>
-            {this.props.magazines.map(magazine => {
-              return (
-                <MagazineCoverWrapper key={magazine.id} onClick={() => this.openMagazine(magazine)}>
-                  <MagazineInCoverInfo>
-                    <MagazineCoverPeriod>
-                      {translate('magazineCycle')} {magazine.period}
-                    </MagazineCoverPeriod>
-                    <MagazineCoverTitle>{magazine.title}</MagazineCoverTitle>
-                  </MagazineInCoverInfo>
-                  <MagazineCover src={magazine.highlightImage} />
-                </MagazineCoverWrapper>
-              );
-            })}
-          </Slider>
+          <MagazineCoverList>
+            <Slider {...settings}>
+              {this.props.magazines.map(magazine => {
+                return (
+                  <MagazineCoverWrapper
+                    key={magazine.id}
+                    onClick={() => this.openMagazine(magazine)}
+                  >
+                    <MagazineInCoverInfo>
+                      <MagazineCoverPeriod>
+                        {translate('magazineCycle')} {magazine.period}
+                      </MagazineCoverPeriod>
+                      <MagazineCoverTitle>{magazine.title}</MagazineCoverTitle>
+                    </MagazineInCoverInfo>
+                    <MagazineCover src={magazine.thumbFile} />
+                    <MagazineCoverMobileInfo>
+                      {translate('magazineCycle')} {magazine.year} - {magazine.period}
+                    </MagazineCoverMobileInfo>
+                  </MagazineCoverWrapper>
+                );
+              })}
+            </Slider>
+          </MagazineCoverList>
         </Wrapper>
       </Paper>
     );
