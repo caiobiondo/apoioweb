@@ -1,7 +1,14 @@
-import { Component } from 'react';
+import React from 'react';
 
-export default class MagazineWrapper extends Component {
-  render() {
-    return JSON.stringify(this.props.location.state.magazine);
-  }
-}
+import MagazinePages from './organisms/MagazinePages';
+
+import { getCommercialRegionIdFromUser, getSalesManagementIdFromUser } from 'utils/getUserParams';
+
+const MagazinesWrapper = ({ user, match }) => {
+  const region = getCommercialRegionIdFromUser(user);
+  const gv = getSalesManagementIdFromUser(user);
+
+  return <MagazinePages type="natura" region={region} gv={gv} />;
+};
+
+export default MagazinesWrapper;

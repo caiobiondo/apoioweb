@@ -113,6 +113,10 @@ export const LeftCarouselArrow = styled.span`
   cursor: pointer;
 `;
 
+export const RightCarouselArrow = LeftCarouselArrow.extend`
+  right: 25px;
+`;
+
 export const MagazineInCoverInfo = styled.div`
   position: absolute;
   top: 0;
@@ -123,10 +127,6 @@ export const MagazineInCoverInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-export const RightCarouselArrow = LeftCarouselArrow.extend`
-  right: 25px;
 `;
 
 export const MagazineCoverMobileInfo = styled.h3`
