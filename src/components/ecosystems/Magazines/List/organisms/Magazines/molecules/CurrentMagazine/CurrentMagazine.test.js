@@ -36,7 +36,7 @@ describe('CurrentMagazine', () => {
     expect(props.history.push).toBeCalledWith(`/magazines/view/6`, { magazine: props.magazine });
   });
 
-  it('should call additionalInfoOpened when change the screen for mobile show a button for hide options', () => {
+  it('should call additionalInfoOpened when change the screen for mobile show a button for show options', () => {
     const props = {
       magazine: {},
     };
@@ -46,5 +46,20 @@ describe('CurrentMagazine', () => {
     instance.toggleAdditionalInfo();
 
     expect(instance.state.additionalInfoOpened).toBeTruthy();
+  });
+
+  it('should call additionalInfoOpened when change the screen for mobile show a button for hide options', () => {
+    const props = {
+      magazine: {},
+    };
+
+    const result = shallow(<CurrentMagazine {...props} />);
+    const instance = result.instance();
+    instance.toggleAdditionalInfo();
+    instance.toggleAdditionalInfo();
+    result.update();
+
+    expect(instance.state.additionalInfoOpened).toBeFalsy();
+    expect(instance).toMatchSnapshot();
   });
 });
