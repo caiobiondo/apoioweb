@@ -20,7 +20,16 @@ export class MagazinePagesViewer extends Component {
       slidesToShow: 2,
       slidesToScroll: 2,
       draggable: false,
-      responsive: [{ breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }],
+      lazyLoad: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
       prevArrow: <LeftCarouselArrow>{'<'}</LeftCarouselArrow>,
       nextArrow: <RightCarouselArrow>{'>'}</RightCarouselArrow>,
     };
