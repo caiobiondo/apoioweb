@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MagazinePages should render a loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`MagazinePages should render the current magazine in a magazine page viewer 1`] = `
+<MagazinePagesViewer
+  magazine={
+    Object {
+      "id": 21566,
+      "period": 18,
+      "title": "Espaço Natura c18 - NE- RJ/ES - CO - SUL - MG - SPC - SPIL (v2)  ",
+      "year": 2017,
+    }
+  }
+/>
+`;

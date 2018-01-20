@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MagazinePagesViewer should render a title and a slide with the magazines pages 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <MagazinePagesViewerstyles__Wrapper>
+    <SectionTitle
+      color="#f3971f"
+      iconName="ico_magazine"
+      value="a title"
+    />
+    <Slider
+      arrows={true}
+      dots={false}
+      draggable={false}
+      infinite={false}
+      lazyLoad={true}
+      nextArrow={
+        <MagazinePagesViewerstyles__LeftCarouselArrow>
+          &gt;
+        </MagazinePagesViewerstyles__LeftCarouselArrow>
+      }
+      prevArrow={
+        <MagazinePagesViewerstyles__LeftCarouselArrow>
+          &lt;
+        </MagazinePagesViewerstyles__LeftCarouselArrow>
+      }
+      responsive={
+        Array [
+          Object {
+            "breakpoint": 768,
+            "settings": Object {
+              "slidesToScroll": 1,
+              "slidesToShow": 1,
+            },
+          },
+        ]
+      }
+      slidesToScroll={2}
+      slidesToShow={2}
+      speed={500}
+    >
+      <MagazinePagesViewerstyles__MagazinePage
+        src="a-page-pathfile-1"
+      />
+      <MagazinePagesViewerstyles__MagazinePage
+        src="a-page-pathfile-2"
+      />
+      <MagazinePagesViewerstyles__MagazinePage
+        src="a-page-pathfile-3"
+      />
+    </Slider>
+  </MagazinePagesViewerstyles__Wrapper>
+</Paper>
+`;

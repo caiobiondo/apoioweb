@@ -34,7 +34,6 @@ export class MagazinePagesViewer extends Component {
       nextArrow: <RightCarouselArrow>{'>'}</RightCarouselArrow>,
     };
     const { magazine } = this.props;
-    console.log(magazine);
     return (
       <Paper>
         <Wrapper>
