@@ -12,12 +12,15 @@ describe('MagazinePagesViewer', () => {
           pageImagesPath: 'a-page-path',
           pageImages: [
             {
+              pageNumber: 0,
               pageFile: 'file-1',
             },
             {
+              pageNumber: 1,
               pageFile: 'file-2',
             },
             {
+              pageNumber: 2,
               pageFile: 'file-3',
             },
           ],

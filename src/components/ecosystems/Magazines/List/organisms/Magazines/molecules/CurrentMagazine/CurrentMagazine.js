@@ -30,8 +30,8 @@ export class CurrentMagazine extends Component {
   };
 
   openMagazine = () => {
-    const { magazine } = this.props;
-    this.props.history.push(`/magazines/view/${magazine.id}`, { magazine });
+    const { magazine, type } = this.props;
+    this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 
   toggleAdditionalInfo = () => {

@@ -8,7 +8,7 @@ describe('MagazinePages', () => {
     const props = {
       data: {
         loading: true,
-        magazines: [],
+        magazine: null,
       },
     };
 
@@ -24,14 +24,12 @@ describe('MagazinePages', () => {
     const props = {
       data: {
         loading: false,
-        magazines: [
-          {
-            id: 21566,
-            title: 'Espaço Natura c18 - NE- RJ/ES - CO - SUL - MG - SPC - SPIL (v2)  ',
-            year: 2017,
-            period: 18,
-          },
-        ],
+        magazine: {
+          id: 21566,
+          title: 'Espaço Natura c18 - NE- RJ/ES - CO - SUL - MG - SPC - SPIL (v2)  ',
+          year: 2017,
+          period: 18,
+        },
       },
     };
 

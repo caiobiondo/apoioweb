@@ -18,12 +18,13 @@ describe('PreviousMagazines', () => {
           highlightImage: '',
         },
       ],
+      type: 'natura',
     };
 
     const result = shallow(<PreviousMagazines {...props} />);
     const magazineCover = result.find(MagazineCoverWrapper).first();
     magazineCover.simulate('click');
 
-    expect(historyPush).toBeCalledWith(`/magazines/view/1`, { magazine: props.magazines[0] });
+    expect(historyPush).toBeCalledWith(`/magazines/view/natura/1`);
   });
 });

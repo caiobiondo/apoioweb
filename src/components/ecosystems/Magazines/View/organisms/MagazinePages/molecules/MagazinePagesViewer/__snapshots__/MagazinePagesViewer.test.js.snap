@@ -45,12 +45,15 @@ exports[`MagazinePagesViewer should render a title and a slide with the magazine
       speed={500}
     >
       <MagazinePagesViewerstyles__MagazinePage
+        key="0"
         src="a-page-pathfile-1"
       />
       <MagazinePagesViewerstyles__MagazinePage
+        key="1"
         src="a-page-pathfile-2"
       />
       <MagazinePagesViewerstyles__MagazinePage
+        key="2"
         src="a-page-pathfile-3"
       />
     </Slider>

@@ -11,6 +11,7 @@ describe('MagazinePagesQuery', () => {
       type: 'natura',
       region: '6',
       gv: 6,
+      id: 123,
     };
 
     // when
@@ -22,6 +23,7 @@ describe('MagazinePagesQuery', () => {
         type: props.type,
         region: props.region,
         gv: props.gv,
+        id: props.id,
       },
     });
   });

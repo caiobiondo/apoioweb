@@ -10,6 +10,7 @@ describe('Magazines List', () => {
         estrutura: {
           regiaoEstrategica: { codigo: 2 },
           gerenciaVenda: { codigo: 185 },
+          ciclo: [{ numero: 201712 }],
         },
       },
       match: {

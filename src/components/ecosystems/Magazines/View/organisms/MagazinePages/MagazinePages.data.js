@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const MagazinePagesQuery = gql`
-  query FetchMagazinesPagesQuery($type: String!, $gv: Int!, $region: String!) {
-    magazines(type: $type, gv: $gv, region: $region) {
+  query FetchMagazinesPagesQuery($type: String!, $gv: Int!, $region: String!, $id: String!) {
+    magazine(type: $type, gv: $gv, region: $region, id: $id) {
       id
       title
       pageDetails {
@@ -23,6 +23,7 @@ export const MagazinePagesQueryOptions = {
         type: props.type,
         region: props.region,
         gv: props.gv,
+        id: props.id,
       },
     };
   },

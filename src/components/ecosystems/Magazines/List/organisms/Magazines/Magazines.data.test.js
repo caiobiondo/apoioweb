@@ -11,6 +11,7 @@ describe('MagazinesQuery', () => {
       type: 'natura',
       region: '6',
       gv: 6,
+      cycle: '201712',
     };
 
     // when
@@ -22,6 +23,7 @@ describe('MagazinesQuery', () => {
         type: props.type,
         region: props.region,
         gv: props.gv,
+        cycle: props.cycle,
       },
     });
   });

@@ -6,12 +6,10 @@ describe('Magazine View', () => {
   it('should render the magazine pages (initially just the cover)', () => {
     // given
     const props = {
-      location: {
-        state: {
-          magazine: {
-            id: 123,
-            title: 'a title',
-          },
+      match: {
+        params: {
+          id: 123,
+          type: 'natura',
         },
       },
     };

@@ -19,7 +19,8 @@ import {
 
 export class PreviousMagazines extends Component {
   openMagazine = magazine => {
-    this.props.history.push(`/magazines/view/${magazine.id}`, { magazine });
+    const { type } = this.props;
+    this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 
   render() {

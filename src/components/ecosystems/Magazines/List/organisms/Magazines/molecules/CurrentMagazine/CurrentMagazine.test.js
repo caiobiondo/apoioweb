@@ -27,13 +27,14 @@ describe('CurrentMagazine', () => {
       magazine: {
         id: '6',
       },
+      type: 'natura',
     };
 
     const result = shallow(<CurrentMagazine {...props} />);
     const instance = result.instance();
     instance.openMagazine();
 
-    expect(props.history.push).toBeCalledWith(`/magazines/view/6`, { magazine: props.magazine });
+    expect(props.history.push).toBeCalledWith(`/magazines/view/natura/6`);
   });
 
   it('should call additionalInfoOpened when change the screen for mobile show a button for show options', () => {

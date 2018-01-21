@@ -12,7 +12,7 @@ export class MagazinePages extends Component {
       return <Loading background="transparent" />;
     }
 
-    return <MagazinePagesViewer magazine={data.magazines[0]} />;
+    return <MagazinePagesViewer magazine={data.magazine} />;
   }
 }
 

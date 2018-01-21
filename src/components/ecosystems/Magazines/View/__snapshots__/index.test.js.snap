@@ -2,6 +2,7 @@
 
 exports[`Magazine View should render the magazine pages (initially just the cover) 1`] = `
 <Apollo(MagazinePages)
+  id={123}
   type="natura"
 />
 `;

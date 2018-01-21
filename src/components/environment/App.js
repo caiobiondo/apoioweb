@@ -114,7 +114,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/magazines/view/:id"
+                  path="/magazines/view/:type/:id"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Magazines/View'),
                     'magazines',
