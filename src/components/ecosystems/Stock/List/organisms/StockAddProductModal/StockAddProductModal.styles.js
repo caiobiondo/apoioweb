@@ -99,3 +99,7 @@ export const contentStyle = {
 export const bodyStyle = {
   borderWidth: 0,
 };
+
+export const dialogContentStyle = {
+  maxWidth: '450px',
+};

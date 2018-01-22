@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Modal, FormInput, FormButton, FlatButton, Dialog } from 'natura-ui';
 import PropTypes from 'prop-types';
-import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
+import { dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { translate } from 'locale';
 import {
   bodyStyle,
   contentStyle,
+  dialogContentStyle,
   FormButtonStyles,
   FormButtonWrapper,
   FormWrapper,
@@ -89,7 +90,15 @@ export class StockAddProductModal extends Component {
   };
 
   onClose = () => {
-    this.setState({ successOpened: false });
+    this.setState(
+      {
+        successOpened: false,
+        lastProductCode: '',
+        loadedProduct: null,
+        productCode: '',
+      },
+      this.props.handleClose(),
+    );
   };
 
   onChangeProductQty = (event, productQty) => {
@@ -148,7 +157,7 @@ export class StockAddProductModal extends Component {
         modal={false}
         open={this.state.successOpened}
         onRequestClose={this.onClose}
-        contentStyle={dialogContainer}
+        contentStyle={dialogContentStyle}
         bodyStyle={dialogContent}
         titleStyle={dialogTitle}
       />
@@ -226,7 +235,7 @@ export class StockAddProductModal extends Component {
       <Modal
         open={this.props.opened}
         showCloseButton={true}
-        onCloseClick={this.props.handleClose}
+        onCloseClick={this.onClose}
         title={this.renderTitle()}
         titleStyle={titleStyle}
         contentStyle={contentStyle}
