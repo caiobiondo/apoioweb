@@ -106,6 +106,7 @@ export class StockAddProductModal extends Component {
   };
 
   onSubmit = () => {
+    const { user } = this.props;
     const product = this.state.loadedProduct;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     this.setState({ importing: true });
@@ -119,9 +120,9 @@ export class StockAddProductModal extends Component {
             productDescription: product.description,
             productImage: imageUrl,
             productPrice: product.price,
-            cycleId: getCycleIdFromUser(this.props.user),
-            commercialStructureId: getCommercialStructureIdFromUser(this.props.user),
-            commercialStructureTypeId: getCommercialStructureTypeIdFromUser(this.props.user),
+            cycleId: getCycleIdFromUser(user),
+            commercialStructureId: getCommercialStructureIdFromUser(user),
+            commercialStructureTypeId: getCommercialStructureTypeIdFromUser(user),
           },
         },
         refetchQueries: [
