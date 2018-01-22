@@ -15,6 +15,7 @@ import {
   TableWrapper,
   NameLabel,
   CustomerAvatarStyle,
+  SeletedCustomersDescription,
   LinkStyle,
 } from './CustomersList.styles';
 import { CustomersListQuery } from './CustomersList.data';
@@ -174,6 +175,7 @@ export class CustomersList extends Component {
     const { isLoading, isEmpty } = this;
     const { loading } = this.props.data;
     const { data } = this.state;
+    const totalSelectedCustomers = this.props.selectedCustomers.length;
 
     if (isLoading(loading, data.body)) {
       return <Loading background="transparent" />;
@@ -197,6 +199,11 @@ export class CustomersList extends Component {
 
     return (
       <Paper style={Wrapper}>
+        <SeletedCustomersDescription>
+          {totalSelectedCustomers > 1 && (
+            <span>{totalSelectedCustomers} clientes selecionados</span>
+          )}
+        </SeletedCustomersDescription>
         <TableWrapper>
           <Table data={data} />
         </TableWrapper>

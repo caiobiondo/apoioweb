@@ -292,6 +292,7 @@ exports[`CustomersList Organism should render a customers list 1`] = `
   transitionEnabled={true}
   zDepth={1}
 >
+  <CustomersListstyles__SeletedCustomersDescription />
   <CustomersListstyles__TableWrapper>
     <NaturaTable
       data={
@@ -436,6 +437,7 @@ exports[`CustomersList Organism should render customers list filtered by name  1
   transitionEnabled={true}
   zDepth={1}
 >
+  <CustomersListstyles__SeletedCustomersDescription />
   <CustomersListstyles__TableWrapper>
     <NaturaTable
       data={
