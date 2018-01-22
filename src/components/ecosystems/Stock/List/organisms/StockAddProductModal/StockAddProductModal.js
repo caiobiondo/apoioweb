@@ -15,8 +15,8 @@ import {
   ModalContentWrapper,
   StockProductWrapper,
 } from './StockAddProductModal.styles';
-import { fetchProduct, AddStockProductMutation } from './StockAddProductModal.data';
-import { graphql } from 'react-apollo';
+import { FetchProductQuery, AddStockProductMutation } from './StockAddProductModal.data';
+import { graphql, withApollo } from 'react-apollo';
 import { StockProductsQuery } from '../ListTable/ListTable.data';
 import debounce from 'lodash.debounce';
 import {
@@ -28,15 +28,19 @@ import StockProduct from '../../molecules/StockProduct';
 import SectionTitle from 'components/molecules/SectionTitle';
 
 export class StockAddProductModal extends Component {
-  state = {
-    successOpened: false,
-    productQty: 1,
-    productCode: '',
-    loadedProduct: null,
-    loadingProduct: false,
-    lastProductCode: '',
-    importing: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      successOpened: false,
+      productQty: 1,
+      productCode: '',
+      loadedProduct: null,
+      loadingProduct: false,
+      lastProductCode: '',
+      importing: false,
+    };
+  }
 
   loadProduct = debounce(productCode => {
     if (!productCode) {
@@ -49,15 +53,24 @@ export class StockAddProductModal extends Component {
       lastProductCode: productCode,
     });
 
-    fetchProduct(productCode, this.props.user)
+    this.props.client
+      .query({
+        query: FetchProductQuery,
+        variables: {
+          productId: productCode,
+          cycleId: getCycleIdFromUser(this.props.user),
+          commercialStructureId: getCommercialStructureIdFromUser(this.props.user),
+          commercialStructureTypeId: getCommercialStructureTypeIdFromUser(this.props.user),
+        },
+      })
       .catch(() => {
         return null;
       })
-      .then(product => {
+      .then(res => {
         if (productCode === this.state.lastProductCode) {
           this.setState({
             loadingProduct: false,
-            loadedProduct: product,
+            loadedProduct: res.data.product,
           });
         }
       });
@@ -234,4 +247,4 @@ StockAddProductModal.propTypes = {
   user: PropTypes.object,
 };
 
-export default graphql(AddStockProductMutation)(StockAddProductModal);
+export default withApollo(graphql(AddStockProductMutation)(StockAddProductModal));

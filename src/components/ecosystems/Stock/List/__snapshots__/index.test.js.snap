@@ -2,7 +2,7 @@
 
 exports[`StockList Ecosystem should render the stock list page 1`] = `
 <indexstyles__Main>
-  <Apollo(StockAddProductModal)
+  <withApollo(Apollo(StockAddProductModal))
     handleClose={[Function]}
     opened={false}
     user={undefined}

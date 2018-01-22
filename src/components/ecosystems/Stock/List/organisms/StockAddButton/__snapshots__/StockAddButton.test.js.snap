@@ -1,7 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StockAddButton should render a custom floating button with actions 1`] = `
-<Route
-  render={[Function]}
+<ActionsFloatingButton
+  actions={
+    Array [
+      Object {
+        "icon": "ico_box",
+        "label": "Importar produtos de pedido",
+        "onClick": [Function],
+      },
+      Object {
+        "icon": "ico_plus",
+        "label": "Adicionar novo produto",
+        "onClick": [Function],
+      },
+    ]
+  }
 />
 `;
