@@ -7,8 +7,9 @@ import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
 
 import { CustomersListQuery } from '../CustomersList/CustomersList.data';
-import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
+import { dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
+import { customDialogContainer } from './RemoveCustomerButton.styles';
 
 export class RemoveCustomerButton extends Component {
   state = {
@@ -101,7 +102,7 @@ export class RemoveCustomerButton extends Component {
         modal={false}
         open={this.state.open}
         onRequestClose={this.onCloseModal}
-        contentStyle={dialogContainer}
+        contentStyle={customDialogContainer}
         bodyStyle={dialogContent}
         titleStyle={dialogTitle}
       >
@@ -134,7 +135,7 @@ export class RemoveCustomerButton extends Component {
         modal={false}
         open={this.state.open}
         onRequestClose={this.onFinish}
-        contentStyle={dialogContainer}
+        contentStyle={customDialogContainer}
         bodyStyle={dialogContent}
         titleStyle={dialogTitle}
       />
