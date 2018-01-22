@@ -16,25 +16,33 @@ export const Wrapper = styled.div`
 export const MagazinePage = styled.img`
   width: 100%;
   min-height: 191px;
-  max-height: 540px;
   object-fit: contain;
 `;
 
+export const MagazinePageWhite = styled.div`
+  width: 100%;
+  min-height: 191px;
+  object-fit: contain;
+  display: inline-block;
+`;
+
 export const LeftCarouselArrow = styled.span`
-  height: 150px;
+  height: 80%;
   position: absolute;
   bottom: 40px;
   font-size: 100px;
   color: ${orange100};
-  display: flex;
+  display: flex !important;
   align-items: center;
   z-index: 9999;
-  top: 50%;
+  top: 20%;
   cursor: pointer;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     font-size: 50px;
-    left: 1%;
+    left: 0;
+    padding: 0 1%;
+    background: #fff;
   }
 `;
 
@@ -42,7 +50,7 @@ export const RightCarouselArrow = LeftCarouselArrow.extend`
   right: 25px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    right: 1%;
+    right: 0;
     left: auto;
   }
 `;

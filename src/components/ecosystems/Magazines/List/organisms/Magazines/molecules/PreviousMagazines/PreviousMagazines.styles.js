@@ -20,6 +20,8 @@ export const Wrapper = styled.div`
 `;
 
 export const MagazineCoverList = styled.div`
+  overflow-x: hidden;
+
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     div {
       display: flex;
@@ -100,15 +102,13 @@ export const MagazineCoverPeriod = styled.span`
 `;
 
 export const LeftCarouselArrow = styled.span`
-  height: 150px;
   position: absolute;
-  bottom: 40px;
   font-size: 100px;
   color: #fff;
   display: flex;
   align-items: center;
   z-index: 9999;
-  top: 165px;
+  top: 42%;
   text-shadow: 1px 0px 4px black;
   cursor: pointer;
 `;
