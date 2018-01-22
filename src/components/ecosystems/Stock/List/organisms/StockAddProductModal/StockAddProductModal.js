@@ -67,7 +67,7 @@ export class StockAddProductModal extends Component {
         return null;
       })
       .then(res => {
-        if (productCode === this.state.lastProductCode) {
+        if (res.data.product.productId === this.state.lastProductCode) {
           this.setState({
             loadingProduct: false,
             loadedProduct: res.data.product,
