@@ -67,11 +67,13 @@ export class StockAddProductModal extends Component {
         return null;
       })
       .then(res => {
-        if (res.data.product.productId === this.state.lastProductCode) {
-          this.setState({
-            loadingProduct: false,
-            loadedProduct: res.data.product,
-          });
+        if (res && res.data && res.data.product) {
+          if (res.data.product.productId.toString() === this.state.lastProductCode) {
+            this.setState({
+              loadingProduct: false,
+              loadedProduct: res.data.product,
+            });
+          }
         }
       });
   }, 1000);
@@ -140,7 +142,7 @@ export class StockAddProductModal extends Component {
 
     return (
       <Dialog
-        key="successDialog"
+        key={'successDialog'}
         title={title}
         actions={actions}
         modal={false}
@@ -230,6 +232,7 @@ export class StockAddProductModal extends Component {
         contentStyle={contentStyle}
         bodyStyle={bodyStyle}
         autoScrollBodyContent={true}
+        key={'stockAddProductModal'}
       >
         <ModalContentWrapper>
           {this.renderForm()}
