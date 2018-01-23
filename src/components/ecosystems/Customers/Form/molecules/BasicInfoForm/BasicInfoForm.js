@@ -46,6 +46,7 @@ const BasicInfoForm = ({
   values = values.customer || {};
   errors = errors.customer || {};
   touched = touched.customer || {};
+
   return (
     <Wrapper>
       <FormInput
@@ -75,7 +76,7 @@ const BasicInfoForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           label={translate('formCustomerGender')}
-          value={values.gender}
+          value={values.gender || ''}
           error={errors.gender}
           dirty={touched.gender || submitted}
           required={true}
@@ -104,7 +105,7 @@ const BasicInfoForm = ({
         onChange={handleChange}
         onBlur={handleBlur}
         label={translate('formCustomerEmail')}
-        value={values.emails[0].email}
+        value={values.emails[0] && values.emails[0].email}
         error={errors.email}
         dirty={touched.email || submitted}
       />
