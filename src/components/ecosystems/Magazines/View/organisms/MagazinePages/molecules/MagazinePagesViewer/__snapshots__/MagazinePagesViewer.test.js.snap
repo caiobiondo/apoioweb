@@ -20,20 +20,21 @@ exports[`MagazinePagesViewer should render a title and a slide with the magazine
       infinite={false}
       lazyLoad={true}
       nextArrow={
-        <MagazinePagesViewerstyles__LeftCarouselArrow>
-          &gt;
-        </MagazinePagesViewerstyles__LeftCarouselArrow>
+        <RightArrow
+          slidesToScroll={2}
+        />
       }
-      prevArrow={
-        <MagazinePagesViewerstyles__LeftCarouselArrow>
-          &lt;
-        </MagazinePagesViewerstyles__LeftCarouselArrow>
-      }
+      prevArrow={<LeftArrow />}
       responsive={
         Array [
           Object {
             "breakpoint": 768,
             "settings": Object {
+              "initialSlide": 1,
+              "nextArrow": <RightArrow
+                slidesToScroll={1}
+        />,
+              "prevArrow": <LeftArrow />,
               "slidesToScroll": 1,
               "slidesToShow": 1,
             },
@@ -44,6 +45,9 @@ exports[`MagazinePagesViewer should render a title and a slide with the magazine
       slidesToShow={2}
       speed={500}
     >
+      <MagazinePagesViewerstyles__MagazinePageWhite
+        key="0"
+      />
       <MagazinePagesViewerstyles__MagazinePage
         key="0"
         src="a-page-pathfile-1"

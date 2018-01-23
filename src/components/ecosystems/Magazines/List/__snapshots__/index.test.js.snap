@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Magazines List should render the magazines organisms with region and gv from user 1`] = `
-<Apollo(Magazines)
-  cycle="201712"
-  gv={185}
-  region={2}
-  type="natura"
-/>
+<indexstyles__Main>
+  <Apollo(Magazines)
+    cycle="201712"
+    gv={185}
+    region={2}
+    type="natura"
+  />
+</indexstyles__Main>
 `;

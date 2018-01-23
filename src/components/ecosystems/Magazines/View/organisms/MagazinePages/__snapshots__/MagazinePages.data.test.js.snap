@@ -225,7 +225,7 @@ Object {
               "kind": "NamedType",
               "name": Object {
                 "kind": "Name",
-                "value": "String",
+                "value": "Int",
               },
             },
           },
@@ -246,7 +246,7 @@ Object {
               "kind": "NamedType",
               "name": Object {
                 "kind": "Name",
-                "value": "String",
+                "value": "Int",
               },
             },
           },
@@ -263,7 +263,7 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 311,
+    "end": 305,
     "start": 0,
   },
 }
