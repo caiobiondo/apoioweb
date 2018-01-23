@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import CustomerAvatar from '../../../atoms/CustomerAvatar';
+import { translate } from 'locale';
 
 import {
   CustomerName,
@@ -201,7 +202,9 @@ export class CustomersList extends Component {
       <Paper style={Wrapper}>
         <SeletedCustomersDescription>
           {totalSelectedCustomers > 1 && (
-            <span>{totalSelectedCustomers} clientes selecionados</span>
+            <span>
+              {totalSelectedCustomers} {translate('seletedCustomers')}
+            </span>
           )}
         </SeletedCustomersDescription>
         <TableWrapper>
