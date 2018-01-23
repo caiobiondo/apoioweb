@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import CustomersSearch from './organisms/CustomerSearch/CustomerSearch';
 import CustomersList from './organisms/CustomersList/CustomersList';
-import { Main, ActionButtonContainer, CustomersSearchContainer } from './index.styles';
+import {
+  Main,
+  ActionButtonContainer,
+  CustomersSearchContainer,
+  SelectedCustomersDescription,
+} from './index.styles';
 import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustomerButton';
+import { translate } from 'locale';
 
 class CustomersListWrapper extends Component {
   state = {
@@ -48,6 +54,7 @@ class CustomersListWrapper extends Component {
   render() {
     const { selectedCustomers, loading, empty, filters } = this.state;
     const isFiltered = filters && filters.name;
+    const totalSelectedCustomers = selectedCustomers.length;
 
     return (
       <Main loading={loading} empty={empty}>
@@ -65,6 +72,13 @@ class CustomersListWrapper extends Component {
             <CustomersSearch onSearch={this.onSearch} />
           </CustomersSearchContainer>
         )}
+        <SelectedCustomersDescription>
+          {totalSelectedCustomers > 1 && (
+            <span>
+              {totalSelectedCustomers} {translate('selectedCustomers')}
+            </span>
+          )}
+        </SelectedCustomersDescription>
         <CustomersList
           filters={filters}
           onLoadFinished={this.onLoadFinished}

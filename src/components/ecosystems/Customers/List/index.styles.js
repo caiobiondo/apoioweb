@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spMedium, spPage } from 'styles/spacing';
+import { RobotoRegular } from 'styles/typography';
 
 export const Main = styled.div`
   margin: ${spMedium} ${spPage} ${spMedium} ${spMedium};
@@ -25,4 +26,10 @@ export const ActionButtonContainer = styled.div`
 
 export const CustomersSearchContainer = styled.div`
   margin-bottom: ${spMedium};
+`;
+
+export const SelectedCustomersDescription = styled.div`
+  font-family: ${RobotoRegular};
+  margin-left: 20px;
+  min-height: 40px;
 `;
