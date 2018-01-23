@@ -5,6 +5,7 @@ exports[`CustomersList Ecosystem should render the customers list page 1`] = `
   empty={false}
   loading={true}
 >
+  <indexstyles__SelectedCustomersDescription />
   <Apollo(CustomersList)
     filters={null}
     isFiltered={null}

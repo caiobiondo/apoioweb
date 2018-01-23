@@ -66,6 +66,6 @@ export default {
     male: 'Masculino',
     female: 'Feminino',
     myCustomers: 'Meus Clientes',
-    seletedCustomers: 'clientes selecionados',
+    selectedCustomers: 'clientes selecionadas',
   },
 };

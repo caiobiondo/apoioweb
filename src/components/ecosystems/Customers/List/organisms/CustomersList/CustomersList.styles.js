@@ -3,7 +3,6 @@ import { Responsive } from '@entria/components';
 import { spPage } from 'styles/spacing';
 import { gray300, gray400, white, orange100 } from 'styles/colors';
 import { LoadingWrapperStyle } from 'styles/mixins';
-import { RobotoRegular } from 'styles/typography';
 
 export const Wrapper = {
   flex: '1 1 0',
@@ -132,10 +131,3 @@ export const scrolledContainer = {
 export const fullContainer = {
   height: '100%',
 };
-
-export const SeletedCustomersDescription = styled.div`
-  font-family: ${RobotoRegular};
-  margin: 15px 25px 0;
-  padding: 20px 20px 0;
-  min-height: 40px;
-`;

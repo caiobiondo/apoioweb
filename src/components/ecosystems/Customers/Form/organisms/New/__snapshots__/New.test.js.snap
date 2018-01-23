@@ -1464,6 +1464,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
+            "selectedCustomers": "clientes selecionadas",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
