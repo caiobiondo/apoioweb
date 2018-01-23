@@ -28,7 +28,7 @@ export const CurrentMagazineInfoWrapper = styled.div`
 export const CurrentMagazineInfo = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 0%;
   padding-left: 62.5px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
@@ -154,7 +154,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const CurrentMagazineTaxWrapper = styled.div`
-  flex: 1;
+  flex: 1 1 0%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -167,7 +167,7 @@ export const CurrentMagazineTaxWrapper = styled.div`
 export const CurrentMagazineAdditionalInfo = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 0%;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     ${props => {
