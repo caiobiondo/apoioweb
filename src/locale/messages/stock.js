@@ -12,7 +12,8 @@ export default {
     stockProductAddModalTitle: 'Adicionar novo produto ao estoque',
     stockProductAdded:
       '{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }',
-    stockProductSuccessfullyAdded: 'Produto adicionado com sucesso!',
+    stockProductAddSuccessful: 'Produto adicionado com sucesso!',
+    stockProductAddFailure: 'Ocorreu um erro na adição do produto',
     stockProductCodeLabel: 'Código',
     stockProductQuantityLabel: 'Quantidade',
     stockProductCode: 'Código: {code}',

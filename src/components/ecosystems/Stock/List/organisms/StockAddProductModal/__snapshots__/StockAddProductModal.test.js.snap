@@ -14,6 +14,7 @@ Array [
             "maxWidth": "800px",
           }
     }
+    key="stockAddProductModal"
     onCloseClick={[Function]}
     open={true}
     showCloseButton={true}
@@ -64,7 +65,7 @@ Array [
     }
     contentStyle={
         Object {
-            "maxWidth": "none",
+            "maxWidth": "450px",
           }
     }
     key="successDialog"
@@ -72,7 +73,6 @@ Array [
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
-    title="Produto adicionado com sucesso!"
     titleStyle={
         Object {
             "fontWeight": 800,

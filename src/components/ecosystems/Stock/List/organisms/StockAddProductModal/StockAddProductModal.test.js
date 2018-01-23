@@ -88,25 +88,52 @@ describe('StockAddProductModal', () => {
   });
 
   describe('when submitting', () => {
-    it('adds the selected product to stock', () => {
-      // given
-      const product = {
-        description: 'new product',
-        name: 'new product',
-        price: '10',
-        productId: '1',
-      };
-      const newProps = {
-        opened: true,
-      };
+    describe('on success', () => {
+      it('adds the selected product to stock', () => {
+        // given
+        const product = {
+          description: 'new product',
+          name: 'new product',
+          price: '10',
+          productId: '1',
+        };
+        const newProps = {
+          opened: true,
+        };
 
-      // when
-      const { props, result } = setup(newProps);
-      result.instance().setState({ loadedProduct: product });
-      result.instance().onSubmit();
+        // when
+        const { props, result } = setup(newProps);
+        result.instance().setState({ loadedProduct: product });
+        result.instance().onSubmit();
 
-      // then
-      expect(props.mutate).toBeCalled();
+        // then
+        expect(props.mutate).toBeCalled();
+      });
+    });
+
+    describe('on failure', () => {
+      it('opens feedback dialog', async () => {
+        // given
+        const product = {
+          description: 'new product',
+          name: 'new product',
+          price: '10',
+          productId: '1',
+        };
+        const newProps = {
+          opened: true,
+          mutate: jest.fn().mockReturnValue(Promise.reject()),
+        };
+
+        // when
+        const { props, result } = setup(newProps);
+        result.instance().setState({ loadedProduct: product });
+        await result.instance().onSubmit();
+
+        // then
+        expect(props.mutate).toBeCalled();
+        expect(result.instance().state.openFeedbackDialog).toBeTruthy();
+      });
     });
   });
 });

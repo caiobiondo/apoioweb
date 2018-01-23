@@ -33,7 +33,7 @@ export class StockAddProductModal extends Component {
     super(props);
 
     this.state = {
-      successOpened: false,
+      openFeedbackDialog: false,
       productQty: 1,
       productCode: '',
       loadedProduct: null,
@@ -84,15 +84,21 @@ export class StockAddProductModal extends Component {
     this.loadProduct(productCode);
   };
 
-  onSubmited = () => {
-    this.setState({ successOpened: true, importing: false });
-    this.props.handleClose();
+  onFinished = dialogTitle => {
+    this.setState(
+      {
+        openFeedbackDialog: true,
+        feedbackDialogTitle: dialogTitle,
+        importing: false,
+      },
+      this.props.handleClose(),
+    );
   };
 
   onClose = () => {
     this.setState(
       {
-        successOpened: false,
+        openFeedbackDialog: false,
         lastProductCode: '',
         loadedProduct: null,
         productCode: '',
@@ -110,7 +116,7 @@ export class StockAddProductModal extends Component {
     const product = this.state.loadedProduct;
     const imageUrl = `http://rede.natura.net/image/sku/145x145/${product.productId}_1.jpg`;
     this.setState({ importing: true });
-    this.props
+    return this.props
       .mutate({
         variables: {
           input: {
@@ -136,11 +142,17 @@ export class StockAddProductModal extends Component {
           },
         ],
       })
-      .then(this.onSubmited);
+      .then(() => {
+        this.onFinished(translate('stockProductAddSuccessful'));
+      })
+      .catch(err => {
+        console.log('err', err);
+        this.onFinished(translate('stockProductAddFailure'));
+      });
   };
 
-  renderSuccessDialog = () => {
-    const title = translate('stockProductSuccessfullyAdded');
+  renderFeedbackDialog = () => {
+    const title = this.state.feedbackDialogTitle;
     const actions = [
       <FlatButton
         label={translate('ok')}
@@ -156,7 +168,7 @@ export class StockAddProductModal extends Component {
         title={title}
         actions={actions}
         modal={false}
-        open={this.state.successOpened}
+        open={this.state.openFeedbackDialog}
         onRequestClose={this.onClose}
         contentStyle={dialogContentStyle}
         bodyStyle={dialogContent}
@@ -249,7 +261,7 @@ export class StockAddProductModal extends Component {
           {this.renderProduct()}
         </ModalContentWrapper>
       </Modal>,
-      this.renderSuccessDialog(),
+      this.renderFeedbackDialog(),
     ];
   }
 }
