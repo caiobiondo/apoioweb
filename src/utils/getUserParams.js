@@ -16,3 +16,18 @@ export const getCommercialStructureIdFromUser = user => {
 export const getCommercialStructureTypeIdFromUser = user => {
   return user && user.estrutura && user.estrutura.codigoTipo;
 };
+
+export const getCommercialRegionIdFromUser = user => {
+  return (
+    user &&
+    user.estrutura &&
+    user.estrutura.regiaoEstrategica &&
+    user.estrutura.regiaoEstrategica.codigo
+  );
+};
+
+export const getSalesManagementIdFromUser = user => {
+  return (
+    user && user.estrutura && user.estrutura.gerenciaVenda && user.estrutura.gerenciaVenda.codigo
+  );
+};
