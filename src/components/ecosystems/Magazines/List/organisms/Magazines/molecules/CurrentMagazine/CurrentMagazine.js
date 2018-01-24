@@ -18,6 +18,7 @@ import {
   CurrentMagazineAdditionalInfo,
   CurrentMagazineSeeMore,
 } from './CurrentMagazine.styles';
+import ImageWithFallback from 'components/molecules/ImageWithFallback';
 
 export class CurrentMagazine extends Component {
   state = {
@@ -45,7 +46,9 @@ export class CurrentMagazine extends Component {
       <CurrentMagazineWrapper>
         <CurrentMagazineHeader>{translate('currentMagazine')}</CurrentMagazineHeader>
         <CurrentMagazineInfoWrapper>
-          <CurrentMagazineCover src={magazine.highlightImage} alt={translate('currentMagazine')} />
+          <CurrentMagazineCover>
+            <ImageWithFallback imageUrl={magazine.highlightImage} />
+          </CurrentMagazineCover>
           <CurrentMagazineInfo>
             <CurrentMagazinePeriod>
               {translate('magazineCycle')} {magazine.period}

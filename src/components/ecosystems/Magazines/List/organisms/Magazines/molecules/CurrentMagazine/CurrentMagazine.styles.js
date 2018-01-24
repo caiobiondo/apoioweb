@@ -37,16 +37,24 @@ export const CurrentMagazineInfo = styled.div`
   }
 `;
 
-export const CurrentMagazineCover = styled.img`
+export const CurrentMagazineCover = styled.div`
   width: 325.5px;
   height: 444px;
-  object-fit: contain;
-  box-shadow: 1.6px 1.9px 7.5px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    width: 50%;
-    height: auto;
-    align-self: center;
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    box-shadow: 1.6px 1.9px 7.5px 0 rgba(0, 0, 0, 0.1);
+
+    @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+      align-self: center;
+    }
   }
 `;
 

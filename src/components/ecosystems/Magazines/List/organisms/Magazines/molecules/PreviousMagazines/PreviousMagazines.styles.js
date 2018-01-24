@@ -72,7 +72,7 @@ export const MagazineCoverWrapper = styled.div`
   }
 `;
 
-export const MagazineCover = styled.img`
+export const MagazineCover = styled.div`
   width: 100%;
   min-height: 191px;
   max-height: 291px;

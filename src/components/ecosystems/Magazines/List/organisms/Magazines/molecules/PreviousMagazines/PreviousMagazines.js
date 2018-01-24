@@ -17,6 +17,8 @@ import {
   MagazineCoverMobileInfo,
 } from './PreviousMagazines.styles';
 
+import ImageWithFallback from 'components/molecules/ImageWithFallback';
+
 export class PreviousMagazines extends Component {
   openMagazine = magazine => {
     const { type } = this.props;
@@ -60,7 +62,9 @@ export class PreviousMagazines extends Component {
                       </MagazineCoverPeriod>
                       <MagazineCoverTitle>{magazine.title}</MagazineCoverTitle>
                     </MagazineInCoverInfo>
-                    <MagazineCover src={magazine.thumbFile} />
+                    <MagazineCover>
+                      <ImageWithFallback imageUrl={magazine.thumbFile} />
+                    </MagazineCover>
                     <MagazineCoverMobileInfo>
                       {translate('magazineCycle')} {magazine.year} - {magazine.period}
                     </MagazineCoverMobileInfo>
