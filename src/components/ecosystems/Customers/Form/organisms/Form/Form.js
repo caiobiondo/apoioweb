@@ -38,6 +38,21 @@ class CustomerForm extends Component {
 
   componentDidMount() {
     this.scrollTop();
+    console.log('componentDidMount');
+    window.addEventListener('scroll', this.removeFocusFromInput);
+    // document.body.addEventListener('click', () => console.log('clicked'));
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+
+    // window.removeEventListener('scroll', this.removeFocusFromInput);
+  }
+
+  removeFocusFromInput(e) {
+    e.preventDefault();
+    console.log('removeFocusFromInput');
+    document.getElementById('customer-form').blur();
   }
 
   getCustomer = () => {
@@ -167,6 +182,7 @@ class CustomerForm extends Component {
         addNewPhone={this.addPhoneToCustomer}
         removePhone={this.removePhoneFromCustomer}
         submitted={submitted}
+        id="customer-form"
       />
     );
   };
