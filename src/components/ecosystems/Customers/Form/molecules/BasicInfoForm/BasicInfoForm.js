@@ -109,7 +109,11 @@ const BasicInfoForm = ({
         dirty={touched.email || submitted}
       />
 
-      {values.phones.filter(p => !p.delete).map((phone, i) => {
+      {values.phones.map((phone, i) => {
+        if (phone.delete) {
+          return null;
+        }
+
         return (
           <PhoneForm
             key={phone.id || `new${i}`}

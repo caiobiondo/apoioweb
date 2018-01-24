@@ -56,9 +56,8 @@ class CustomerForm extends Component {
   removePhoneFromCustomer = phone => {
     const customer = this.getCustomer();
     const updatedPhones = customer.phones.map(p => {
-      // TODO: The API is only changing the phone when phone number is changed, so to delete it, it requires to add this blank space at the end of the number
       if (phone.id) {
-        return p.id === phone.id ? { ...p, phone: `${p.phone} `, delete: true } : p;
+        return p.id === phone.id ? { ...p, delete: true } : p;
       }
       return p.phone === phone.phone ? null : p;
     });
@@ -101,9 +100,14 @@ class CustomerForm extends Component {
 
     this.setState({ submitting: true });
 
+    // TODO: The API is only changing the phone when phone number is changed, so to delete/change it, it requires to add this blank space at the end of the number
+    const phones = this.getCustomer().phones.map(p => {
+      return { ...p, phone: `${p.phone} ` };
+    });
+
     this.props
       .mutate({
-        variables: { input: removeTypename(this.getCustomer()) },
+        variables: { input: removeTypename({ ...this.getCustomer(), phones }) },
       })
       .then(response => {
         const { data } = response;
