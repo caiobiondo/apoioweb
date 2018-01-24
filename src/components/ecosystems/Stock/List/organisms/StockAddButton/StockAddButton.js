@@ -9,7 +9,7 @@ export class StockAddButton extends Component {
   };
 
   addProductToStockDialog = () => {
-    console.log('addProductToStockDialog');
+    this.props.openAddStockModal();
   };
 
   actions = [

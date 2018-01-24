@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockAddProductModal renders correctly 1`] = `
+Array [
+  <Modal
+    autoScrollBodyContent={true}
+    bodyStyle={
+        Object {
+            "borderWidth": 0,
+          }
+    }
+    contentStyle={
+        Object {
+            "maxWidth": "800px",
+          }
+    }
+    key="stockAddProductModal"
+    onCloseClick={[Function]}
+    open={true}
+    showCloseButton={true}
+    title={
+        <StockAddProductModalstyles__ModalTitleWrapper>
+            <SectionTitle
+                iconName="ico_flask"
+                value="stockProductAddModalTitle"
+            />
+        </StockAddProductModalstyles__ModalTitleWrapper>
+    }
+    titleStyle={
+        Object {
+            "fontFamily": "NaturaSans-Bold",
+          }
+    }
+/>,
+  <Dialog
+    actions={
+        Array [
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label="OK"
+              labelPosition="after"
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={true}
+              secondary={false}
+        />,
+          ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    bodyStyle={
+        Object {
+            "fontFamily": "Roboto",
+            "padding": "12px 25px",
+          }
+    }
+    contentStyle={
+        Object {
+            "maxWidth": "450px",
+          }
+    }
+    key="successDialog"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    titleStyle={
+        Object {
+            "fontWeight": 800,
+          }
+    }
+/>,
+]
+`;

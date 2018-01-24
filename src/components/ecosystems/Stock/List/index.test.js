@@ -7,6 +7,7 @@ const baseState = {
   empty: false,
   loading: true,
   productSearch: '',
+  addStockModalOpen: false,
 };
 
 describe('StockList Ecosystem', () => {

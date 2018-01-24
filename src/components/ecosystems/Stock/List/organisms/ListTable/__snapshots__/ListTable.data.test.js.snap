@@ -242,6 +242,7 @@ Object {
     "stockProducts": Array [],
   },
   "fetchMore": [Function],
+  "hasMultiplePages": false,
   "loading": true,
   "refetch": undefined,
   "stockProducts": Array [],

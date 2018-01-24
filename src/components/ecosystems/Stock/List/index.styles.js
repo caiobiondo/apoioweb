@@ -20,7 +20,7 @@ export const StockAddButtonContainer = styled.div`
   bottom: ${props => {
     return props.empty ? '24%' : '12%';
   }};
-  z-index: 9999;
+  z-index: 1000;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     right: ${spMedium};

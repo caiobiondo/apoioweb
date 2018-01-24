@@ -1,11 +1,11 @@
 import React from 'react';
 import Img from 'react-image';
-import { Loading, Icon } from 'natura-ui';
+import { CircularProgress, Icon } from 'natura-ui';
 import { Wrapper } from './ImageWithFallback.styles';
 
 const ImageWithFallback = props => {
   const fallbackImage = <Icon file={props.fallbackIcon} />;
-  const loader = <Loading />;
+  const loader = <CircularProgress thickness={2} />;
 
   return (
     <Wrapper width={props.width} height={props.height || props.width} className={props.className}>

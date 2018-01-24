@@ -17,6 +17,7 @@ describe('MyStockProductsQuery', () => {
         filter: 'search',
       },
       forceFetch: true,
+      fetchPolicy: 'cache-and-network',
     });
   });
 

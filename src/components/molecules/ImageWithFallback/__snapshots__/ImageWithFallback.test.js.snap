@@ -9,10 +9,13 @@ exports[`ImageWithFallback should render correctly (with only width) 1`] = `
   <Img
     decode={true}
     loader={
-      <Loading
-        background="#FFFFFF"
-        visible={true}
-        zIndex={9999}
+      <CircularProgress
+        max={100}
+        min={0}
+        mode="indeterminate"
+        size={40}
+        thickness={2}
+        value={0}
       />
     }
     src="http://www.test.com/image.jpg"
@@ -34,10 +37,13 @@ exports[`ImageWithFallback should render correctly 1`] = `
   <Img
     decode={true}
     loader={
-      <Loading
-        background="#FFFFFF"
-        visible={true}
-        zIndex={9999}
+      <CircularProgress
+        max={100}
+        min={0}
+        mode="indeterminate"
+        size={40}
+        thickness={2}
+        value={0}
       />
     }
     src="http://www.test.com/image.jpg"

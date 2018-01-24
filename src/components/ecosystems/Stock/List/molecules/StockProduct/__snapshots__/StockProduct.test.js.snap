@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockProduct renders correctly 1`] = `
+<StockProductstyles__StockItemProductImageWrapper>
+  <Img
+    decode={true}
+    loader={
+      <Loading
+        background="#FFFFFF"
+        visible={true}
+        zIndex={9999}
+      />
+    }
+    src="http://rede.natura.net/image/sku/145x145/1_1.jpg"
+    unloader={
+      <StockProductstyles__StockItemProductImageFallback>
+        <Icon
+          file="ico_pictureless"
+        />
+      </StockProductstyles__StockItemProductImageFallback>
+    }
+  />
+  <StockProductstyles__StockItemProductDetails>
+    <StockProductstyles__StockItemProductDetailsName>
+      new product
+    </StockProductstyles__StockItemProductDetailsName>
+    <StockProductstyles__StockItemProductDetailsCode>
+      <FormattedMessage
+        id="stockProductCode"
+        values={
+          Object {
+            "code": "1",
+          }
+        }
+      />
+    </StockProductstyles__StockItemProductDetailsCode>
+  </StockProductstyles__StockItemProductDetails>
+</StockProductstyles__StockItemProductImageWrapper>
+`;

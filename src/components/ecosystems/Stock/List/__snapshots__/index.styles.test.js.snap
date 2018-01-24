@@ -2,13 +2,13 @@
 
 exports[`ActionButtonContainer Styles should render the container with 12% from bottom 1`] = `
 <div
-  className="indexstyles__StockAddButtonContainer-isAmOD inzBFn"
+  className="indexstyles__StockAddButtonContainer-isAmOD fwFlac"
 />
 `;
 
 exports[`ActionButtonContainer Styles should render the container with 24% from bottom 1`] = `
 <div
-  className="indexstyles__StockAddButtonContainer-isAmOD cCbIpc"
+  className="indexstyles__StockAddButtonContainer-isAmOD YloMN"
 />
 `;
 

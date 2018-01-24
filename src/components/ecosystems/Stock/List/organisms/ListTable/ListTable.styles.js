@@ -3,12 +3,15 @@ import { Responsive } from '@entria/components';
 import { gray300, white } from 'styles/colors';
 import { LoadingWrapperStyle } from 'styles/mixins';
 
+import { spPage } from 'styles/spacing';
+
 export const LoadingWrapper = LoadingWrapperStyle;
 
 export const WrapperStyle = {
   flex: '1 1 0',
   flexDirection: 'column',
   justifyContent: 'center',
+  paddingBottom: spPage,
 };
 
 export const StockInputWrapper = styled.div``;
