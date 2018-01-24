@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import disableScroll from 'disable-scroll';
 
 import {
   Wrapper,
@@ -38,22 +39,47 @@ class CustomerForm extends Component {
 
   componentDidMount() {
     this.scrollTop();
-    console.log('componentDidMount');
-    window.addEventListener('scroll', this.removeFocusFromInput);
-    // document.body.addEventListener('click', () => console.log('clicked'));
+    this.addEventListener();
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount');
-
-    // window.removeEventListener('scroll', this.removeFocusFromInput);
+    this.removeEventListeners();
   }
 
-  removeFocusFromInput(e) {
-    e.preventDefault();
-    console.log('removeFocusFromInput');
-    document.getElementById('customer-form').blur();
-  }
+  addEventListener = () => {
+    this.birthdayInput = document.getElementById('customer.birthday');
+    window.addEventListener('scroll', this.validateToDisableScroll);
+    window.addEventListener('click', this.enableScroll);
+    window.addEventListener('keydown', this.validateToDisableTabKey);
+  };
+
+  removeEventListeners = () => {
+    window.removeEventListener('scroll', this.validateToDisableScroll);
+    window.removeEventListener('click', this.enableScroll);
+    window.removeEventListener('keydown', this.validateToDisableTabKey);
+  };
+
+  validateToDisableScroll = () => {
+    if (this.isBirthdayActiveElement()) {
+      disableScroll.on();
+    }
+  };
+
+  isBirthdayActiveElement = () => {
+    return document.activeElement.getAttribute('id') === 'customer.birthday';
+  };
+
+  enableScroll = () => {
+    disableScroll.off();
+  };
+
+  validateToDisableTabKey = e => {
+    const keyTab = 9;
+    if (e.keyCode === keyTab && this.isBirthdayActiveElement()) {
+      e.preventDefault();
+      return false;
+    }
+  };
 
   getCustomer = () => {
     return this.props.values.customer;
@@ -182,7 +208,6 @@ class CustomerForm extends Component {
         addNewPhone={this.addPhoneToCustomer}
         removePhone={this.removePhoneFromCustomer}
         submitted={submitted}
-        id="customer-form"
       />
     );
   };
