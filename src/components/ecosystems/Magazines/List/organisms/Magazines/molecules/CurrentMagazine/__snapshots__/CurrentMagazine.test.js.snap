@@ -30,10 +30,12 @@ CurrentMagazine {
                 Revista Atual
         </CurrentMagazinestyles__CurrentMagazineHeader>
         <CurrentMagazinestyles__CurrentMagazineInfoWrapper>
-                <CurrentMagazinestyles__CurrentMagazineCover
-                        alt="Revista Atual"
-                        src={undefined}
-                />
+                <CurrentMagazinestyles__CurrentMagazineCover>
+                        <ImageWithFallback
+                                fallbackIcon="ico_pictureless"
+                                imageUrl={undefined}
+                        />
+                </CurrentMagazinestyles__CurrentMagazineCover>
                 <CurrentMagazinestyles__CurrentMagazineInfo>
                         <CurrentMagazinestyles__CurrentMagazinePeriod>
                                 Ciclo

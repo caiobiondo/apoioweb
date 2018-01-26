@@ -42,6 +42,10 @@ export const CurrentMagazineCover = styled.div`
   height: 444px;
   position: relative;
 
+  > div {
+    height: 100%;
+  }
+
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     width: auto;
   }

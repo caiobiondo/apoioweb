@@ -38,7 +38,8 @@ export class PreviousMagazines extends Component {
       draggable: false,
       responsive: [
         { breakpoint: 768, settings: 'unslick' },
-        { breakpoint: 1280, settings: { slidesToShow: 6 } },
+        { breakpoint: 1024, settings: { slidesToShow: 4 } },
+        { breakpoint: 1280, settings: { slidesToShow: 5 } },
         { breakpoint: 100000, settings: { slidesToShow: 7 } },
       ],
       prevArrow: <LeftCarouselArrow>{'<'}</LeftCarouselArrow>,

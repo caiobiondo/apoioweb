@@ -48,7 +48,8 @@ export const MagazineCoverWrapper = styled.div`
       display: block;
     }
 
-    img {
+    img,
+    svg {
       transform: scale(1.1);
       opacity: 0.2;
     }
@@ -64,7 +65,8 @@ export const MagazineCoverWrapper = styled.div`
         display: none;
       }
 
-      img {
+      img,
+      svg {
         transform: scale(1.1);
         opacity: 1;
       }
@@ -77,6 +79,7 @@ export const MagazineCover = styled.div`
   min-height: 191px;
   max-height: 291px;
   object-fit: contain;
+  padding: 10% 0;
 `;
 
 export const MagazineCoverTitle = styled.h2`
