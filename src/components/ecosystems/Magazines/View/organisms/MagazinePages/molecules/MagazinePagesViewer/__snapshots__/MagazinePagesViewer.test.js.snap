@@ -13,54 +13,52 @@ exports[`MagazinePagesViewer should render a title and a slide with the magazine
       iconName="ico_magazine"
       value="a title"
     />
-    <Slider
-      arrows={true}
-      dots={false}
-      draggable={false}
-      infinite={false}
-      lazyLoad={true}
-      nextArrow={
-        <RightArrow
-          slidesToScroll={2}
-        />
-      }
-      prevArrow={<LeftArrow />}
-      responsive={
-        Array [
-          Object {
-            "breakpoint": 768,
-            "settings": Object {
-              "initialSlide": 1,
-              "nextArrow": <RightArrow
-                slidesToScroll={1}
-        />,
-              "prevArrow": <LeftArrow />,
-              "slidesToScroll": 1,
-              "slidesToShow": 1,
+    <div>
+      <Slider
+        arrows={true}
+        dots={false}
+        draggable={false}
+        infinite={false}
+        lazyLoad={true}
+        nextArrow={
+          <RightArrow
+            slidesToScroll={2}
+          />
+        }
+        prevArrow={<LeftArrow />}
+        responsive={
+          Array [
+            Object {
+              "breakpoint": 768,
+              "settings": Object {
+                "nextArrow": <RightArrow
+                  slidesToScroll={1}
+          />,
+                "prevArrow": <LeftArrow />,
+                "slidesToScroll": 1,
+                "slidesToShow": 1,
+              },
             },
-          },
-        ]
-      }
-      slidesToScroll={2}
-      slidesToShow={2}
-      speed={500}
-    >
-      <MagazinePagesViewerstyles__MagazinePageWhite
-        key="0"
-      />
-      <MagazinePagesViewerstyles__MagazinePage
-        key="0"
-        src="a-page-pathfile-1"
-      />
-      <MagazinePagesViewerstyles__MagazinePage
-        key="1"
-        src="a-page-pathfile-2"
-      />
-      <MagazinePagesViewerstyles__MagazinePage
-        key="2"
-        src="a-page-pathfile-3"
-      />
-    </Slider>
+          ]
+        }
+        slidesToScroll={2}
+        slidesToShow={2}
+        speed={500}
+      >
+        <MagazinePagesViewerstyles__MagazinePage
+          key="0"
+          src="a-page-pathfile-1"
+        />
+        <MagazinePagesViewerstyles__MagazinePage
+          key="1"
+          src="a-page-pathfile-2"
+        />
+        <MagazinePagesViewerstyles__MagazinePage
+          key="2"
+          src="a-page-pathfile-3"
+        />
+      </Slider>
+    </div>
   </MagazinePagesViewerstyles__Wrapper>
 </Paper>
 `;

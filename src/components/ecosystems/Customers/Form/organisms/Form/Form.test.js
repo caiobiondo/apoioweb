@@ -62,7 +62,7 @@ describe('Form', () => {
     instance.removePhoneFromCustomer(customer.phones[0]);
 
     expect(props.setFieldValue).toBeCalledWith('customer.phones', [
-      { id: 1, delete: true, phone: '(11) 1234-5678 ' },
+      { id: 1, delete: true, phone: '(11) 1234-5678' },
     ]);
   });
 

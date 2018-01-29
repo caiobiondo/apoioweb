@@ -3105,6 +3105,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                     ]
                                   }
                                   required={true}
+                                  value=""
                                 >
                                   <Select
                                     blankOptionText="Selecione..."
@@ -3134,6 +3135,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                     renderBlank={true}
                                     required={true}
                                     showError={true}
+                                    value=""
                                   >
                                     <FormGroup
                                       blankOptionText="Selecione..."
@@ -3166,6 +3168,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       renderBlank={true}
                                       required={true}
                                       showError={true}
+                                      value=""
                                     >
                                       <styled.div
                                         className="c14"
@@ -3205,6 +3208,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                 onFocus={[Function]}
                                                 placeholder=""
                                                 required={true}
+                                                value=""
                                               >
                                                 <select
                                                   className="c16"
@@ -3215,6 +3219,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                   onFocus={[Function]}
                                                   placeholder=""
                                                   required={true}
+                                                  value=""
                                                 >
                                                   <styled.option
                                                     value=""

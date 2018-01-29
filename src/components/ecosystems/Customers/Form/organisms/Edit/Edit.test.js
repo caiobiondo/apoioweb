@@ -174,6 +174,12 @@ describe('EditCustomerForm', () => {
             input: {
               ...fakeCustomerInForm,
               name: 'changed name',
+              phones: [
+                {
+                  ...fakeCustomerInForm.phones[0],
+                  phone: fakeCustomerInForm.phones[0].phone + ' ',
+                },
+              ],
             },
           },
         },

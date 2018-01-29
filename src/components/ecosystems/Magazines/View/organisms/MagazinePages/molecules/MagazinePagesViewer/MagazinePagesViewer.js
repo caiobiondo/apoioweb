@@ -8,7 +8,6 @@ import {
   MagazinePage,
   LeftCarouselArrow,
   RightCarouselArrow,
-  MagazinePageWhite,
 } from './MagazinePagesViewer.styles';
 
 class LeftArrow extends Component {

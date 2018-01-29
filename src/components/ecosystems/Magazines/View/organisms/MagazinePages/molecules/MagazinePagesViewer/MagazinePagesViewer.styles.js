@@ -19,13 +19,6 @@ export const MagazinePage = styled.img`
   object-fit: contain;
 `;
 
-export const MagazinePageWhite = styled.div`
-  width: 100%;
-  min-height: 191px;
-  object-fit: contain;
-  display: inline-block;
-`;
-
 export const LeftCarouselArrow = styled.span`
   height: 80%;
   position: absolute;

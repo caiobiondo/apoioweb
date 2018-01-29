@@ -120,7 +120,15 @@ describe('NewCustomerForm', () => {
     expect(props.mutate.mock.calls[0]).toEqual([
       {
         variables: {
-          input: fakeCustomer,
+          input: {
+            ...fakeCustomer,
+            phones: [
+              {
+                ...fakeCustomer.phones[0],
+                phone: fakeCustomer.phones[0].phone + ' ',
+              },
+            ],
+          },
         },
       },
     ]);
