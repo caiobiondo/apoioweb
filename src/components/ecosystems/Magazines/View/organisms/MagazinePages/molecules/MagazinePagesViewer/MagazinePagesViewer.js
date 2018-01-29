@@ -14,7 +14,7 @@ import {
 class LeftArrow extends Component {
   render() {
     const { onClick, currentSlide } = this.props;
-    if (currentSlide === 0 || currentSlide === 1) {
+    if (currentSlide === 0) {
       return null;
     }
     return <LeftCarouselArrow onClick={onClick}>{'<'}</LeftCarouselArrow>;
@@ -48,7 +48,6 @@ export class MagazinePagesViewer extends Component {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            initialSlide: 1,
             prevArrow: <LeftArrow />,
             nextArrow: <RightArrow slidesToScroll={1} />,
           },
@@ -58,24 +57,23 @@ export class MagazinePagesViewer extends Component {
       nextArrow: <RightArrow slidesToScroll={2} />,
     };
     const { magazine } = this.props;
-    const pageImages = [{ pageNumber: 0 }].concat(magazine.pageDetails.pageImages);
+    const pageImages = magazine.pageDetails.pageImages;
     return (
       <Paper>
         <Wrapper>
           <SectionTitle iconName="ico_magazine" value={magazine.title} color={orange100} />
-          <Slider {...settings}>
-            {pageImages.map((pageImage, index) => {
-              if (index === 0) {
-                return <MagazinePageWhite key={pageImage.pageNumber} />;
-              }
-              return (
-                <MagazinePage
-                  key={pageImage.pageNumber}
-                  src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
-                />
-              );
-            })}
-          </Slider>
+          <div>
+            <Slider {...settings}>
+              {pageImages.map((pageImage, index) => {
+                return (
+                  <MagazinePage
+                    key={pageImage.pageNumber}
+                    src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
+                  />
+                );
+              })}
+            </Slider>
+          </div>
         </Wrapper>
       </Paper>
     );
