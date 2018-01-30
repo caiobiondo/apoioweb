@@ -26,10 +26,7 @@ const getCustomerGenderOptions = () => {
   ];
 };
 
-const getMaxValueToBirthday = () => {
-  const today = new Date();
-  return today.toJSON().split('T')[0];
-};
+const getMaxValueToBirthday = () => new Date();
 
 const BasicInfoForm = ({
   handleChange,
@@ -93,8 +90,8 @@ const BasicInfoForm = ({
           value={values.birthday}
           error={errors.birthday}
           dirty={touched.birthday || submitted}
-          min="1899-01-01"
-          max={getMaxValueToBirthday()}
+          minDate={new Date(1899, 1, 1)}
+          maxDate={getMaxValueToBirthday()}
           required={true}
         />
       </RowWithHalfInputs>

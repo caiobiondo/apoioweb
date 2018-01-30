@@ -39,11 +39,11 @@ class CustomerForm extends Component {
 
   componentDidMount() {
     this.scrollTop();
-    this.addEventListener();
+    // this.addEventListener();
   }
 
   componentWillUnmount() {
-    this.removeEventListeners();
+    // this.removeEventListeners();
   }
 
   addEventListener = () => {
