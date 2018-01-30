@@ -109,7 +109,7 @@ export default class App extends Component {
                   path="/magazines/:type"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Magazines/List'),
-                    'magazines',
+                    'magazine',
                   )}
                 />
                 <Route
@@ -117,7 +117,7 @@ export default class App extends Component {
                   path="/magazines/view/:type/:id"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Magazines/View'),
-                    'magazines',
+                    'magazine',
                   )}
                 />
               </div>
