@@ -42,6 +42,9 @@ export class CurrentMagazine extends Component {
   render() {
     const { magazine } = this.props;
     const { additionalInfoOpened } = this.state;
+
+    if (!magazine) return null;
+
     return (
       <CurrentMagazineWrapper>
         <CurrentMagazineHeader>{translate('currentMagazine')}</CurrentMagazineHeader>

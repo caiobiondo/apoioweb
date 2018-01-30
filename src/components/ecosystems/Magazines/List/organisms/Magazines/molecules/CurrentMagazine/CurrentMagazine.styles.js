@@ -46,12 +46,7 @@ export const CurrentMagazineCover = styled.div`
     height: 100%;
   }
 
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    width: auto;
-  }
-
   img {
-    width: 100%;
     height: 100%;
     object-fit: contain;
     box-shadow: 1.6px 1.9px 7.5px 0 rgba(0, 0, 0, 0.1);
@@ -84,9 +79,6 @@ export const CurrentMagazineTitle = styled.h3`
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     font-size: 18px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
   }
 `;
 

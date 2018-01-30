@@ -10,5 +10,7 @@ export const Main = styled.div`
     margin: ${spMedium} 0;
   }
 
-  ${Full};
+  ${props => {
+    return props.loading || props.empty ? Full : null;
+  }};
 `;

@@ -14,9 +14,25 @@ export const Header = styled.h2`
 
 export const Wrapper = styled.div`
   padding: 25px;
-  position: relative;
+  position: absolute;
   overflow-x: hidden;
-  margin-bottom: 80px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    position: relative;
+  }
+`;
+
+export const PaperWrapper = styled.div`
+  > div {
+    height: 420px;
+    position: relative;
+
+    @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+      height: unset;
+    }
+  }
 `;
 
 export const MagazineCoverList = styled.div`
@@ -30,7 +46,6 @@ export const MagazineCoverList = styled.div`
       justify-content: center;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
     }
   }
 `;
@@ -56,8 +71,7 @@ export const MagazineCoverWrapper = styled.div`
   }
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    max-width: 48%;
-    margin: 0 1%;
+    margin-bottom: 40px;
 
     &:hover {
       h2,
@@ -80,6 +94,10 @@ export const MagazineCover = styled.div`
   max-height: 291px;
   object-fit: contain;
   padding: 10% 0;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    padding: 0;
+  }
 `;
 
 export const MagazineCoverTitle = styled.h2`
