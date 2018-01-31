@@ -33,6 +33,7 @@ const BasicInfoForm = ({
   handleBlur,
   handleSubmit,
   isSubmitting,
+  setFieldValue,
   submitted,
   errors = {},
   values = {},
@@ -84,7 +85,9 @@ const BasicInfoForm = ({
         <FormInput
           type="date"
           name="customer.birthday"
-          onChange={handleChange}
+          onChange={(event, date) => {
+            setFieldValue('customer.birthday', date);
+          }}
           onBlur={handleBlur}
           label={translate('formCustomerBirthDate')}
           value={values.birthday}
