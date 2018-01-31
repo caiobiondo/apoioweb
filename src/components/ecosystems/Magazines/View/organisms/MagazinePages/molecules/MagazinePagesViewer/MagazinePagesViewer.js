@@ -66,7 +66,7 @@ export class MagazinePagesViewer extends Component {
               {pageImages.map((pageImage, index) => {
                 return (
                   <MagazinePage
-                    key={pageImage.pageNumber}
+                    key={index}
                     src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
                   />
                 );
