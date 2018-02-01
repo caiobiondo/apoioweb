@@ -13,10 +13,24 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const MagazinePage = styled.img`
-  width: 100%;
-  min-height: 191px;
-  object-fit: contain;
+export const MagazinePageInnerWrapper = styled.div`
+  width: 290px;
+  display: inline-block;
+  height: auto;
+  position: relative;
+  float: left;
+
+  @media (min-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    width: 500px;
+  }
+`;
+
+export const MagazinePageWrapper = styled.div`
+  height: auto;
+  position: relative;
+  float: left;
+  display: flex;
+  justify-content: center;
 `;
 
 export const LeftCarouselArrow = styled.span`
