@@ -96,9 +96,8 @@ export class MagazinePagesViewer extends Component {
             <Slider {...settings}>
               {pageImages.map((pageImage, index) => {
                 return (
-                  <MagazinePageWrapper>
+                  <MagazinePageWrapper key={index}>
                     <MagazinePage
-                      key={index}
                       src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
                     />
                   </MagazinePageWrapper>
