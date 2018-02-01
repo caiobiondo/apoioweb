@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    margin-bottom: 40px;
     position: relative;
   }
 `;

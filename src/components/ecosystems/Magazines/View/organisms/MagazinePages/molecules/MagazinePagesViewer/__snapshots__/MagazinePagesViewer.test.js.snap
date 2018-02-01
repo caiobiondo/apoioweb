@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MagazinePagesViewer should render a title and a slide with the magazines pages 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  transitionEnabled={true}
-  zDepth={1}
->
-  <MagazinePagesViewerstyles__Wrapper>
-    <SectionTitle
-      color="#f3971f"
-      iconName="ico_magazine"
-      value="a title"
-    />
-    <div>
+<MagazinePagesViewerstyles__PaperWrapper>
+  <Paper
+    circle={false}
+    rounded={true}
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <MagazinePagesViewerstyles__Wrapper>
+      <SectionTitle
+        color="#f3971f"
+        iconName="ico_magazine"
+        value="a title"
+      />
       <Slider
         arrows={true}
         dots={false}
@@ -45,20 +45,29 @@ exports[`MagazinePagesViewer should render a title and a slide with the magazine
         slidesToShow={2}
         speed={500}
       >
-        <MagazinePagesViewerstyles__MagazinePage
+        <MagazinePagesViewerstyles__MagazinePageWrapper
           key="0"
-          src="a-page-pathfile-1"
-        />
-        <MagazinePagesViewerstyles__MagazinePage
+        >
+          <MagazinePage
+            src="a-page-pathfile-1"
+          />
+        </MagazinePagesViewerstyles__MagazinePageWrapper>
+        <MagazinePagesViewerstyles__MagazinePageWrapper
           key="1"
-          src="a-page-pathfile-2"
-        />
-        <MagazinePagesViewerstyles__MagazinePage
+        >
+          <MagazinePage
+            src="a-page-pathfile-2"
+          />
+        </MagazinePagesViewerstyles__MagazinePageWrapper>
+        <MagazinePagesViewerstyles__MagazinePageWrapper
           key="2"
-          src="a-page-pathfile-3"
-        />
+        >
+          <MagazinePage
+            src="a-page-pathfile-3"
+          />
+        </MagazinePagesViewerstyles__MagazinePageWrapper>
       </Slider>
-    </div>
-  </MagazinePagesViewerstyles__Wrapper>
-</Paper>
+    </MagazinePagesViewerstyles__Wrapper>
+  </Paper>
+</MagazinePagesViewerstyles__PaperWrapper>
 `;

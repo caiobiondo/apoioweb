@@ -8,7 +8,10 @@ export const Main = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin: ${spMedium} 0;
+    max-width: 100vw;
   }
 
-  ${Full};
+  ${props => {
+    return props.loading || props.empty ? Full : null;
+  }};
 `;

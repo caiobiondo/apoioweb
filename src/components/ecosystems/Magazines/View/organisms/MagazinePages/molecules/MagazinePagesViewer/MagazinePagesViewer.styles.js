@@ -4,19 +4,47 @@ import { orange100 } from 'styles/colors';
 
 export const Wrapper = styled.div`
   padding: 25px;
-  position: relative;
+  position: absolute;
   margin-bottom: 40px;
   overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    position: relative;
     margin-top: 40px;
   }
 `;
 
-export const MagazinePage = styled.img`
-  width: 100%;
-  min-height: 191px;
-  object-fit: contain;
+export const PaperWrapper = styled.div`
+  > div {
+    height: 750px;
+    position: relative;
+
+    @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+      height: unset;
+    }
+  }
+`;
+
+export const MagazinePageInnerWrapper = styled.div`
+  width: 290px;
+  display: inline-block;
+  height: auto;
+  position: relative;
+  float: left;
+
+  @media (min-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    width: 500px;
+  }
+`;
+
+export const MagazinePageWrapper = styled.div`
+  height: auto;
+  position: relative;
+  float: left;
+  display: flex;
+  justify-content: center;
 `;
 
 export const LeftCarouselArrow = styled.span`

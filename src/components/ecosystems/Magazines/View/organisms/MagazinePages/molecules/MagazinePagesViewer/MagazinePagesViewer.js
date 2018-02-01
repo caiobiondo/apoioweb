@@ -3,11 +3,14 @@ import { Paper } from 'natura-ui';
 import SectionTitle from 'components/molecules/SectionTitle';
 import { orange100 } from 'styles/colors';
 import Slider from 'react-slick';
+import ReactImageMagnify from 'react-image-magnify';
 import {
   Wrapper,
-  MagazinePage,
+  PaperWrapper,
   LeftCarouselArrow,
   RightCarouselArrow,
+  MagazinePageWrapper,
+  MagazinePageInnerWrapper,
 } from './MagazinePagesViewer.styles';
 
 class LeftArrow extends Component {
@@ -29,6 +32,34 @@ class RightArrow extends Component {
     return <RightCarouselArrow onClick={onClick}>{'>'}</RightCarouselArrow>;
   }
 }
+
+const MagazinePage = ({ src }) => {
+  return (
+    <MagazinePageWrapper>
+      <MagazinePageInnerWrapper>
+        <ReactImageMagnify
+          {...{
+            largeImage: {
+              alt: '',
+              src: src,
+              width: 1000,
+              height: 1200,
+            },
+            smallImage: {
+              isFluidWidth: true,
+              alt: 'Wristwatch by Versace',
+              src: src,
+              sizes: '360px',
+            },
+            isHintEnabled: false,
+            enlargedImagePosition: 'over',
+            isActivatedOnTouch: false,
+          }}
+        />
+      </MagazinePageInnerWrapper>
+    </MagazinePageWrapper>
+  );
+};
 
 export class MagazinePagesViewer extends Component {
   render() {
@@ -56,25 +87,26 @@ export class MagazinePagesViewer extends Component {
       nextArrow: <RightArrow slidesToScroll={2} />,
     };
     const { magazine } = this.props;
-    const pageImages = magazine.pageDetails.pageImages;
+    const { pageImages } = magazine.pageDetails;
     return (
-      <Paper>
-        <Wrapper>
-          <SectionTitle iconName="ico_magazine" value={magazine.title} color={orange100} />
-          <div>
+      <PaperWrapper>
+        <Paper>
+          <Wrapper>
+            <SectionTitle iconName="ico_magazine" value={magazine.title} color={orange100} />
             <Slider {...settings}>
               {pageImages.map((pageImage, index) => {
                 return (
-                  <MagazinePage
-                    key={index}
-                    src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
-                  />
+                  <MagazinePageWrapper key={index}>
+                    <MagazinePage
+                      src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
+                    />
+                  </MagazinePageWrapper>
                 );
               })}
             </Slider>
-          </div>
-        </Wrapper>
-      </Paper>
+          </Wrapper>
+        </Paper>
+      </PaperWrapper>
     );
   }
 }
