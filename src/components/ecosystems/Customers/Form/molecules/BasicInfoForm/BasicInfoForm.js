@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PhoneForm from '../PhoneForm';
-import { FormInput, FormSelect, RowWithHalfInputs } from '../../Shared/Styles';
+import { FormInput, FormSelect, RowWithHalfInputs, FormInputDate } from '../../Shared/Styles';
 import { Icon } from 'natura-ui';
 import {
   AddPhoneButton,
@@ -27,6 +27,17 @@ const getCustomerGenderOptions = () => {
 };
 
 const getMaxValueToBirthday = () => new Date();
+
+const formatBirthdayToSave = (setFieldValue, date) => {
+  const value = date.toISOString().split('T')[0];
+  setFieldValue('customer.birthday', value);
+};
+
+const formatBirthdayToEdit = date => {
+  if (!date) return {};
+  const pasedDate = new Date(date);
+  return new Date(pasedDate.getTime() + pasedDate.getTimezoneOffset() * 60000);
+};
 
 const BasicInfoForm = ({
   handleChange,
@@ -82,15 +93,12 @@ const BasicInfoForm = ({
           blankOptionText={translate('blankSelectOption')}
         />
 
-        <FormInput
-          type="date"
+        <FormInputDate
           name="customer.birthday"
-          onChange={(event, date) => {
-            setFieldValue('customer.birthday', date);
-          }}
+          onChange={(event, date) => formatBirthdayToSave(setFieldValue, date)}
           onBlur={handleBlur}
           label={translate('formCustomerBirthDate')}
-          value={values.birthday}
+          value={formatBirthdayToEdit(values.birthday)}
           error={errors.birthday}
           dirty={touched.birthday || submitted}
           minDate={new Date(1899, 1, 1)}

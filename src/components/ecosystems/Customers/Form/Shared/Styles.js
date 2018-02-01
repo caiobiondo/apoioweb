@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { FormInput as BaseFormInput, FormSelect as BaseFormSelect } from 'natura-ui';
+import {
+  FormInput as BaseFormInput,
+  FormSelect as BaseFormSelect,
+  FormInputDate as BaseFormInputDate,
+} from 'natura-ui';
 
 export const INPUT_BOTTOM_SPACING = '27px';
 
@@ -27,5 +31,9 @@ export const FormInput = styled(BaseFormInput)`
 `;
 
 export const FormSelect = styled(BaseFormSelect)`
+  margin-bottom: ${INPUT_BOTTOM_SPACING};
+`;
+
+export const FormInputDate = styled(BaseFormInputDate)`
   margin-bottom: ${INPUT_BOTTOM_SPACING};
 `;
