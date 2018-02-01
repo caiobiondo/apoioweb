@@ -45,5 +45,5 @@ export const searchButtonStyles = {
 };
 
 export const FormInput = styled(BaseFormInput)`
-  flex: 1;
+  flex: 1 1 0%;
 `;

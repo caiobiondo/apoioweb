@@ -25,7 +25,7 @@ export const SectionTitleWrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  flex: 1;
+  flex: 1 1 0%;
 `;
 
 export const ExpandableIconWrapper = styled.div`

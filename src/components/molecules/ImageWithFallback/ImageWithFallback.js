@@ -4,7 +4,7 @@ import { CircularProgress, Icon } from 'natura-ui';
 import { Wrapper } from './ImageWithFallback.styles';
 
 const ImageWithFallback = props => {
-  const fallbackImage = <Icon file={props.fallbackIcon} />;
+  const fallbackImage = props.unloader ? props.unloader : <Icon file={props.fallbackIcon} />;
   const loader = <CircularProgress thickness={2} />;
 
   return (

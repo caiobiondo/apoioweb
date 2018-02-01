@@ -1,14 +1,25 @@
 import React from 'react';
 
 import Magazines from './organisms/Magazines';
+import { Main } from './index.styles';
 
-import { getCommercialRegionIdFromUser, getSalesManagementIdFromUser } from 'utils/getUserParams';
+import {
+  getCommercialRegionIdFromUser,
+  getSalesManagementIdFromUser,
+  getCycleIdFromUser,
+} from 'utils/getUserParams';
 
 const MagazinesWrapper = ({ user, match }) => {
+  const type = match.params.type;
   const region = getCommercialRegionIdFromUser(user);
   const gv = getSalesManagementIdFromUser(user);
+  const cycle = getCycleIdFromUser(user);
 
-  return <Magazines type={match.params.type} region={region} gv={gv} />;
+  return (
+    <Main>
+      <Magazines type={type} region={region} gv={gv} cycle={cycle} />
+    </Main>
+  );
 };
 
 export default MagazinesWrapper;

@@ -22,7 +22,8 @@ export const getCommercialRegionIdFromUser = user => {
     user &&
     user.estrutura &&
     user.estrutura.regiaoEstrategica &&
-    user.estrutura.regiaoEstrategica.codigo
+    user.estrutura.regiaoEstrategica.codigo &&
+    Number(user.estrutura.regiaoEstrategica.codigo)
   );
 };
 

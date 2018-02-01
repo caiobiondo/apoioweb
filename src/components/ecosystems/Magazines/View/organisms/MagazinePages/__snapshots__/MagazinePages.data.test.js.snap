@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MagazinesQuery queries correctly 1`] = `
+exports[`MagazinePagesQuery queries correctly 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -8,7 +8,7 @@ Object {
       "kind": "OperationDefinition",
       "name": Object {
         "kind": "Name",
-        "value": "FetchMagazinesQuery",
+        "value": "FetchMagazinesPagesQuery",
       },
       "operation": "query",
       "selectionSet": Object {
@@ -63,13 +63,13 @@ Object {
                 "kind": "Argument",
                 "name": Object {
                   "kind": "Name",
-                  "value": "cycle",
+                  "value": "id",
                 },
                 "value": Object {
                   "kind": "Variable",
                   "name": Object {
                     "kind": "Name",
-                    "value": "cycle",
+                    "value": "id",
                   },
                 },
               },
@@ -78,7 +78,7 @@ Object {
             "kind": "Field",
             "name": Object {
               "kind": "Name",
-              "value": "magazines",
+              "value": "magazine",
             },
             "selectionSet": Object {
               "kind": "SelectionSet",
@@ -90,90 +90,9 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "currentMagazine",
+                    "value": "id",
                   },
-                  "selectionSet": Object {
-                    "kind": "SelectionSet",
-                    "selections": Array [
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "id",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "title",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "description",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "pdfFile",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "year",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "period",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "highlightImage",
-                        },
-                        "selectionSet": null,
-                      },
-                    ],
-                  },
+                  "selectionSet": null,
                 },
                 Object {
                   "alias": null,
@@ -182,7 +101,18 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "previousMagazines",
+                    "value": "title",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "pageDetails",
                   },
                   "selectionSet": Object {
                     "kind": "SelectionSet",
@@ -194,7 +124,7 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "id",
+                          "value": "pageImagesPath",
                         },
                         "selectionSet": null,
                       },
@@ -205,42 +135,35 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "title",
+                          "value": "pageImages",
                         },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "year",
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "pageNumber",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "pageFile",
+                              },
+                              "selectionSet": null,
+                            },
+                          ],
                         },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "period",
-                        },
-                        "selectionSet": null,
-                      },
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "thumbFile",
-                        },
-                        "selectionSet": null,
                       },
                     ],
                   },
@@ -323,7 +246,7 @@ Object {
               "kind": "NamedType",
               "name": Object {
                 "kind": "Name",
-                "value": "String",
+                "value": "Int",
               },
             },
           },
@@ -331,7 +254,7 @@ Object {
             "kind": "Variable",
             "name": Object {
               "kind": "Name",
-              "value": "cycle",
+              "value": "id",
             },
           },
         },
@@ -340,7 +263,7 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 419,
+    "end": 305,
     "start": 0,
   },
 }

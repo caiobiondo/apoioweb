@@ -18,6 +18,7 @@ import {
   CurrentMagazineAdditionalInfo,
   CurrentMagazineSeeMore,
 } from './CurrentMagazine.styles';
+import ImageWithFallback from 'components/molecules/ImageWithFallback';
 
 export class CurrentMagazine extends Component {
   state = {
@@ -30,8 +31,8 @@ export class CurrentMagazine extends Component {
   };
 
   openMagazine = () => {
-    const { magazine } = this.props;
-    this.props.history.push(`/magazines/view/${magazine.id}`, { magazine });
+    const { magazine, type } = this.props;
+    this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 
   toggleAdditionalInfo = () => {
@@ -41,11 +42,16 @@ export class CurrentMagazine extends Component {
   render() {
     const { magazine } = this.props;
     const { additionalInfoOpened } = this.state;
+
+    if (!magazine) return null;
+
     return (
       <CurrentMagazineWrapper>
         <CurrentMagazineHeader>{translate('currentMagazine')}</CurrentMagazineHeader>
         <CurrentMagazineInfoWrapper>
-          <CurrentMagazineCover src={magazine.highlightImage} alt={translate('currentMagazine')} />
+          <CurrentMagazineCover>
+            <ImageWithFallback imageUrl={magazine.highlightImage} />
+          </CurrentMagazineCover>
           <CurrentMagazineInfo>
             <CurrentMagazinePeriod>
               {translate('magazineCycle')} {magazine.period}

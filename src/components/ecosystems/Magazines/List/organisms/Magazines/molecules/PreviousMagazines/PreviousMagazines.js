@@ -5,6 +5,7 @@ import { Paper } from 'natura-ui';
 import Slider from 'react-slick';
 import {
   Header,
+  PaperWrapper,
   Wrapper,
   MagazineCover,
   LeftCarouselArrow,
@@ -17,9 +18,12 @@ import {
   MagazineCoverMobileInfo,
 } from './PreviousMagazines.styles';
 
+import ImageWithFallback from 'components/molecules/ImageWithFallback';
+
 export class PreviousMagazines extends Component {
   openMagazine = magazine => {
-    this.props.history.push(`/magazines/view/${magazine.id}`, { magazine });
+    const { type } = this.props;
+    this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 
   render() {
@@ -35,41 +39,50 @@ export class PreviousMagazines extends Component {
       draggable: false,
       responsive: [
         { breakpoint: 768, settings: 'unslick' },
-        { breakpoint: 1280, settings: { slidesToShow: 6 } },
+        { breakpoint: 1024, settings: { slidesToShow: 4 } },
+        { breakpoint: 1280, settings: { slidesToShow: 5 } },
         { breakpoint: 100000, settings: { slidesToShow: 7 } },
       ],
       prevArrow: <LeftCarouselArrow>{'<'}</LeftCarouselArrow>,
       nextArrow: <RightCarouselArrow>{'>'}</RightCarouselArrow>,
     };
+    const { magazines } = this.props;
+
+    if (!magazines) return null;
+
     return (
-      <Paper>
-        <Wrapper>
-          <Header>{translate('previousMagazines')}</Header>
-          <MagazineCoverList>
-            <Slider {...settings}>
-              {this.props.magazines.map(magazine => {
-                return (
-                  <MagazineCoverWrapper
-                    key={magazine.id}
-                    onClick={() => this.openMagazine(magazine)}
-                  >
-                    <MagazineInCoverInfo>
-                      <MagazineCoverPeriod>
-                        {translate('magazineCycle')} {magazine.period}
-                      </MagazineCoverPeriod>
-                      <MagazineCoverTitle>{magazine.title}</MagazineCoverTitle>
-                    </MagazineInCoverInfo>
-                    <MagazineCover src={magazine.thumbFile} />
-                    <MagazineCoverMobileInfo>
-                      {translate('magazineCycle')} {magazine.year} - {magazine.period}
-                    </MagazineCoverMobileInfo>
-                  </MagazineCoverWrapper>
-                );
-              })}
-            </Slider>
-          </MagazineCoverList>
-        </Wrapper>
-      </Paper>
+      <PaperWrapper>
+        <Paper>
+          <Wrapper>
+            <Header>{translate('previousMagazines')}</Header>
+            <MagazineCoverList>
+              <Slider {...settings}>
+                {magazines.map(magazine => {
+                  return (
+                    <MagazineCoverWrapper
+                      key={magazine.id}
+                      onClick={() => this.openMagazine(magazine)}
+                    >
+                      <MagazineInCoverInfo>
+                        <MagazineCoverPeriod>
+                          {translate('magazineCycle')} {magazine.period}
+                        </MagazineCoverPeriod>
+                        <MagazineCoverTitle>{magazine.title}</MagazineCoverTitle>
+                      </MagazineInCoverInfo>
+                      <MagazineCover>
+                        <ImageWithFallback imageUrl={magazine.thumbFile} />
+                      </MagazineCover>
+                      <MagazineCoverMobileInfo>
+                        {translate('magazineCycle')} {magazine.year} - {magazine.period}
+                      </MagazineCoverMobileInfo>
+                    </MagazineCoverWrapper>
+                  );
+                })}
+              </Slider>
+            </MagazineCoverList>
+          </Wrapper>
+        </Paper>
+      </PaperWrapper>
     );
   }
 }

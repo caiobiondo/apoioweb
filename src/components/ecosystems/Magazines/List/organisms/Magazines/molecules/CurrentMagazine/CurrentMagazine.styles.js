@@ -28,7 +28,7 @@ export const CurrentMagazineInfoWrapper = styled.div`
 export const CurrentMagazineInfo = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 0%;
   padding-left: 62.5px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
@@ -37,16 +37,23 @@ export const CurrentMagazineInfo = styled.div`
   }
 `;
 
-export const CurrentMagazineCover = styled.img`
+export const CurrentMagazineCover = styled.div`
   width: 325.5px;
   height: 444px;
-  object-fit: contain;
-  box-shadow: 1.6px 1.9px 7.5px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
 
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    width: 50%;
-    height: auto;
-    align-self: center;
+  > div {
+    height: 100%;
+  }
+
+  img {
+    height: 100%;
+    object-fit: contain;
+    box-shadow: 1.6px 1.9px 7.5px 0 rgba(0, 0, 0, 0.1);
+
+    @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+      align-self: center;
+    }
   }
 `;
 
@@ -72,9 +79,6 @@ export const CurrentMagazineTitle = styled.h3`
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     font-size: 18px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
   }
 `;
 
@@ -154,7 +158,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const CurrentMagazineTaxWrapper = styled.div`
-  flex: 1;
+  flex: 1 1 0%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -167,7 +171,7 @@ export const CurrentMagazineTaxWrapper = styled.div`
 export const CurrentMagazineAdditionalInfo = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 0%;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     ${props => {

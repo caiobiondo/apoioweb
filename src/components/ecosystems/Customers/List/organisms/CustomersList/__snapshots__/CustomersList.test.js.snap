@@ -286,7 +286,6 @@ exports[`CustomersList Organism should render a customers list 1`] = `
       "flex": "1 1 0",
       "flexDirection": "column",
       "justifyContent": "center",
-      "overflowY": "scroll",
     }
   }
   transitionEnabled={true}
@@ -430,7 +429,6 @@ exports[`CustomersList Organism should render customers list filtered by name  1
       "flex": "1 1 0",
       "flexDirection": "column",
       "justifyContent": "center",
-      "overflowY": "scroll",
     }
   }
   transitionEnabled={true}

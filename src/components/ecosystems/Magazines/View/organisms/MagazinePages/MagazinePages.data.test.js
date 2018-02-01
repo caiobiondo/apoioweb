@@ -1,8 +1,8 @@
-import { MagazinesQuery, MagazinesQueryOptions } from './Magazines.data';
+import { MagazinePagesQuery, MagazinePagesQueryOptions } from './MagazinePages.data';
 
-describe('MagazinesQuery', () => {
+describe('MagazinePagesQuery', () => {
   it('queries correctly', () => {
-    expect(MagazinesQuery).toMatchSnapshot();
+    expect(MagazinePagesQuery).toMatchSnapshot();
   });
 
   it('queries with defined options correctly', () => {
@@ -11,11 +11,11 @@ describe('MagazinesQuery', () => {
       type: 'natura',
       region: '6',
       gv: 6,
-      cycle: '201712',
+      id: 123,
     };
 
     // when
-    const options = MagazinesQueryOptions.options(props);
+    const options = MagazinePagesQueryOptions.options(props);
 
     // then
     expect(options).toEqual({
@@ -23,7 +23,7 @@ describe('MagazinesQuery', () => {
         type: props.type,
         region: props.region,
         gv: props.gv,
-        cycle: props.cycle,
+        id: props.id,
       },
     });
   });

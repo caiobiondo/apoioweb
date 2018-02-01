@@ -14,12 +14,30 @@ export const Header = styled.h2`
 
 export const Wrapper = styled.div`
   padding: 25px;
-  position: relative;
+  position: absolute;
   overflow-x: hidden;
-  margin-bottom: 80px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    position: relative;
+  }
+`;
+
+export const PaperWrapper = styled.div`
+  > div {
+    height: 420px;
+    position: relative;
+
+    @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+      height: unset;
+    }
+  }
 `;
 
 export const MagazineCoverList = styled.div`
+  overflow-x: hidden;
+
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     div {
       display: flex;
@@ -28,7 +46,6 @@ export const MagazineCoverList = styled.div`
       justify-content: center;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
     }
   }
 `;
@@ -46,15 +63,15 @@ export const MagazineCoverWrapper = styled.div`
       display: block;
     }
 
-    img {
+    img,
+    svg {
       transform: scale(1.1);
       opacity: 0.2;
     }
   }
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    max-width: 48%;
-    margin: 0 1%;
+    margin-bottom: 40px;
 
     &:hover {
       h2,
@@ -62,7 +79,8 @@ export const MagazineCoverWrapper = styled.div`
         display: none;
       }
 
-      img {
+      img,
+      svg {
         transform: scale(1.1);
         opacity: 1;
       }
@@ -70,11 +88,16 @@ export const MagazineCoverWrapper = styled.div`
   }
 `;
 
-export const MagazineCover = styled.img`
+export const MagazineCover = styled.div`
   width: 100%;
   min-height: 191px;
   max-height: 291px;
   object-fit: contain;
+  padding: 10% 0;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    padding: 0;
+  }
 `;
 
 export const MagazineCoverTitle = styled.h2`
@@ -100,17 +123,19 @@ export const MagazineCoverPeriod = styled.span`
 `;
 
 export const LeftCarouselArrow = styled.span`
-  height: 150px;
   position: absolute;
-  bottom: 40px;
   font-size: 100px;
   color: #fff;
   display: flex;
   align-items: center;
   z-index: 9999;
-  top: 165px;
+  top: 42%;
   text-shadow: 1px 0px 4px black;
   cursor: pointer;
+`;
+
+export const RightCarouselArrow = LeftCarouselArrow.extend`
+  right: 25px;
 `;
 
 export const MagazineInCoverInfo = styled.div`
@@ -123,10 +148,6 @@ export const MagazineInCoverInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-export const RightCarouselArrow = LeftCarouselArrow.extend`
-  right: 25px;
 `;
 
 export const MagazineCoverMobileInfo = styled.h3`
