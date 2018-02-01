@@ -4,12 +4,26 @@ import { orange100 } from 'styles/colors';
 
 export const Wrapper = styled.div`
   padding: 25px;
-  position: relative;
+  position: absolute;
   margin-bottom: 40px;
   overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    position: relative;
     margin-top: 40px;
+  }
+`;
+
+export const PaperWrapper = styled.div`
+  > div {
+    height: 750px;
+    position: relative;
+
+    @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+      height: unset;
+    }
   }
 `;
 

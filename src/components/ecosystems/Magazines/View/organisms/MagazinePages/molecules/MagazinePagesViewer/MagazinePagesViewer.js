@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import ReactImageMagnify from 'react-image-magnify';
 import {
   Wrapper,
+  PaperWrapper,
   LeftCarouselArrow,
   RightCarouselArrow,
   MagazinePageWrapper,
@@ -88,23 +89,25 @@ export class MagazinePagesViewer extends Component {
     const { magazine } = this.props;
     const { pageImages } = magazine.pageDetails;
     return (
-      <Paper>
-        <Wrapper>
-          <SectionTitle iconName="ico_magazine" value={magazine.title} color={orange100} />
-          <Slider {...settings}>
-            {pageImages.map((pageImage, index) => {
-              return (
-                <MagazinePageWrapper>
-                  <MagazinePage
-                    key={index}
-                    src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
-                  />
-                </MagazinePageWrapper>
-              );
-            })}
-          </Slider>
-        </Wrapper>
-      </Paper>
+      <PaperWrapper>
+        <Paper>
+          <Wrapper>
+            <SectionTitle iconName="ico_magazine" value={magazine.title} color={orange100} />
+            <Slider {...settings}>
+              {pageImages.map((pageImage, index) => {
+                return (
+                  <MagazinePageWrapper>
+                    <MagazinePage
+                      key={index}
+                      src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
+                    />
+                  </MagazinePageWrapper>
+                );
+              })}
+            </Slider>
+          </Wrapper>
+        </Paper>
+      </PaperWrapper>
     );
   }
 }
