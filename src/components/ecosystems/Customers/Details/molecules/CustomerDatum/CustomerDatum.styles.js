@@ -17,7 +17,8 @@ export const CustomerDatumLabel = styled.div`
   margin-bottom: 13.5px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    padding-left: 12px;
+    display: flex;
+    justify-content: center;
   }
 `;
 
