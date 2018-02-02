@@ -29,7 +29,8 @@ const getCustomerGenderOptions = () => {
 const getMaxValueToBirthday = () => new Date();
 
 const formatBirthdayToSave = (setFieldValue, date) => {
-  const value = date.toISOString().split('T')[0];
+  let value = '';
+  if (date) value = date.toISOString().split('T')[0];
   setFieldValue('customer.birthday', value);
 };
 
