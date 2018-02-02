@@ -13,7 +13,6 @@ const renderOrder = (order, importing, intl) => {
   const orderDate = formatDate(order.dataPedido, intl, '-');
   const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl, '-');
   const orderValue = formatCurrency(order.valor, intl, '-');
-  const orderProfitsValue = formatCurrency(order.valorLucro, intl, '-');
 
   let url = `/my-orders/detail/${order.codigoPedido}`;
   if (importing) {
@@ -28,7 +27,6 @@ const renderOrder = (order, importing, intl) => {
       left={{
         body: {
           orderDate: orderDate,
-          orderCycle: order.ciclo,
           orderEstimatedDeliveryDate: orderEstimatedDeliveryDate,
         },
         header: {
@@ -38,7 +36,7 @@ const renderOrder = (order, importing, intl) => {
       middle={{
         body: {
           orderTotalScore: order.pontos,
-          orderProfitsValue: orderProfitsValue,
+          orderCycle: order.ciclo,
         },
         header: {
           orderValue: orderValue,

@@ -73,7 +73,6 @@ exports[`OrdersList should render an order list 1`] = `
         left={
           Object {
             "body": Object {
-              "orderCycle": "13/2017",
               "orderDate": "formatedDate",
               "orderEstimatedDeliveryDate": "formatedDate",
             },
@@ -85,7 +84,7 @@ exports[`OrdersList should render an order list 1`] = `
         middle={
           Object {
             "body": Object {
-              "orderProfitsValue": "formatedNumber 30.99",
+              "orderCycle": "13/2017",
               "orderTotalScore": 27,
             },
             "header": Object {
@@ -106,7 +105,6 @@ exports[`OrdersList should render an order list 1`] = `
         left={
           Object {
             "body": Object {
-              "orderCycle": "13/2017",
               "orderDate": "formatedDate",
               "orderEstimatedDeliveryDate": "formatedDate",
             },
@@ -118,7 +116,7 @@ exports[`OrdersList should render an order list 1`] = `
         middle={
           Object {
             "body": Object {
-              "orderProfitsValue": "formatedNumber 30.99",
+              "orderCycle": "13/2017",
               "orderTotalScore": 27,
             },
             "header": Object {
