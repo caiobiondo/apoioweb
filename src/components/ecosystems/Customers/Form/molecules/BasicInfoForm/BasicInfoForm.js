@@ -35,8 +35,8 @@ const formatBirthdayToSave = (setFieldValue, date) => {
 
 const formatBirthdayToEdit = date => {
   if (!date) return {};
-  const pasedDate = new Date(date);
-  return new Date(pasedDate.getTime() + pasedDate.getTimezoneOffset() * 60000);
+  const parsedDate = new Date(date);
+  return new Date(parsedDate.getTime() + parsedDate.getTimezoneOffset() * 60000);
 };
 
 const BasicInfoForm = ({
