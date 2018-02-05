@@ -9,7 +9,7 @@ import {
   AddPhoneIconWrapper,
   Wrapper,
 } from './BasicInfoForm.styles';
-import { translate } from 'locale';
+import { translate, locale } from 'locale';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -106,7 +106,7 @@ const BasicInfoForm = ({
           maxDate={getMaxValueToBirthday()}
           required={true}
           cancelLabel={translate('cancelLabel')}
-          locale="pt-BR"
+          locale={locale}
         />
       </RowWithHalfInputs>
 
