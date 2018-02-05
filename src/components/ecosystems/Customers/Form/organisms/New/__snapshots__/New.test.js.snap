@@ -299,10 +299,14 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
 }
 
 .c18 {
-  margin-bottom: 8px;
+  margin-bottom: 27px;
 }
 
 .c19 {
+  margin-bottom: 8px;
+}
+
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,27 +317,27 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   justify-content: space-between;
 }
 
-.c19 > * {
+.c20 > * {
   width: 45%;
   display: inline-block;
   margin: 0;
 }
 
-.c19 > *:first-child {
+.c20 > *:first-child {
   margin-right: 10%;
 }
 
-.c19 > * {
+.c20 > * {
   width: 40%;
   display: inline-block;
   margin: 0;
 }
 
-.c19 > *:first-child {
+.c20 > *:first-child {
   margin-right: 0;
 }
 
-.c20 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -348,19 +352,19 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   align-items: center;
 }
 
-.c20 svg {
+.c21 svg {
   fill: #fff;
   width: 15px;
   height: 15px;
 }
 
-.c21 {
+.c22 {
   font-size: 14px;
   font-family: Roboto-Regular;
   color: #a9a9a9;
 }
 
-.c22 {
+.c23 {
   border-bottom-style: solid;
   border-color: #ddd;
   border-top-style: solid;
@@ -375,12 +379,12 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   text-transform: uppercase;
 }
 
-.c23 {
+.c24 {
   display: inline-block;
   margin-right: 25px;
 }
 
-.c23 svg {
+.c24 svg {
   height: 12px;
   width: 12px;
   fill: #bbbbbb;
@@ -389,7 +393,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   transform: rotate(45deg);
 }
 
-.c24 {
+.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -400,7 +404,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
   justify-content: center;
 }
 
-.c24 > div + div {
+.c25 > div + div {
   margin-left: 30px;
 }
 
@@ -563,8 +567,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
         "calendarTextColor": "#4F4F4F",
         "calendarYearBackgroundColor": "#ffffff",
         "color": "#f3971f",
-        "headerColor": "#00bcd4",
-        "selectColor": "#f04f23",
+        "headerColor": "#f3971f",
+        "selectColor": "#f3971f",
         "selectTextColor": "#ffffff",
         "textColor": "#ffffff",
       },
@@ -987,8 +991,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
           "calendarTextColor": "#4F4F4F",
           "calendarYearBackgroundColor": "#ffffff",
           "color": "#f3971f",
-          "headerColor": "#00bcd4",
-          "selectColor": "#f04f23",
+          "headerColor": "#f3971f",
+          "selectColor": "#f3971f",
           "selectTextColor": "#ffffff",
           "textColor": "#ffffff",
         },
@@ -1314,6 +1318,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
+            "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
             "currentMagazine": "Revista Atual",
@@ -2082,8 +2087,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "calendarTextColor": "#4F4F4F",
                                                       "calendarYearBackgroundColor": "#ffffff",
                                                       "color": "#f3971f",
-                                                      "headerColor": "#00bcd4",
-                                                      "selectColor": "#f04f23",
+                                                      "headerColor": "#f3971f",
+                                                      "selectColor": "#f3971f",
                                                       "selectTextColor": "#ffffff",
                                                       "textColor": "#ffffff",
                                                     },
@@ -2709,8 +2714,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "calendarTextColor": "#4F4F4F",
                                                       "calendarYearBackgroundColor": "#ffffff",
                                                       "color": "#f3971f",
-                                                      "headerColor": "#00bcd4",
-                                                      "selectColor": "#f04f23",
+                                                      "headerColor": "#f3971f",
+                                                      "selectColor": "#f3971f",
                                                       "selectTextColor": "#ffffff",
                                                       "textColor": "#ffffff",
                                                     },
@@ -3273,65 +3278,64 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                     </FormGroup>
                                   </Select>
                                 </Styles__FormSelect>
-                                <Styles__FormInput
+                                <Styles__FormInputDate
+                                  cancelLabel="cancelar"
                                   dirty={false}
                                   label="Nascimento"
-                                  max="2017-12-15"
-                                  min="1899-01-01"
+                                  locale="pt-BR"
+                                  maxDate={2017-12-15T04:41:20.000Z}
+                                  minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   required={true}
-                                  type="date"
+                                  value={Object {}}
                                 >
-                                  <Input
+                                  <InputDate
                                     bordered={true}
-                                    className="c10"
+                                    cancelLabel="cancelar"
+                                    className="c18"
                                     dirty={false}
                                     disabled={false}
-                                    help=""
-                                    initialFocus={false}
                                     label="Nascimento"
-                                    maskChar=""
-                                    max="2017-12-15"
-                                    maxlenght={null}
-                                    min="1899-01-01"
+                                    locale="pt-BR"
+                                    maxDate={2017-12-15T04:41:20.000Z}
+                                    minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
                                     onBlur={[Function]}
                                     onChange={[Function]}
-                                    placeholder=""
                                     required={true}
                                     showError={true}
-                                    type="date"
+                                    value={Object {}}
+                                    width="100%"
                                   >
                                     <FormGroup
                                       bordered={true}
-                                      className="c10"
+                                      cancelLabel="cancelar"
+                                      className="c18"
                                       dirty={false}
                                       disabled={false}
                                       error={null}
                                       focused={false}
                                       hasError={false}
-                                      help=""
-                                      initialFocus={false}
+                                      help={null}
                                       label="Nascimento"
-                                      maskChar=""
-                                      max="2017-12-15"
-                                      maxlenght={null}
-                                      min="1899-01-01"
+                                      locale="pt-BR"
+                                      maxDate={2017-12-15T04:41:20.000Z}
+                                      minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"
                                       onBlur={[Function]}
                                       onChange={[Function]}
-                                      placeholder=""
                                       required={true}
                                       showError={true}
-                                      type="date"
+                                      value={Object {}}
+                                      width="100%"
                                     >
                                       <styled.div
-                                        className="c10"
+                                        className="c18"
                                       >
                                         <div
-                                          className="c10 "
+                                          className="c18 "
                                         >
                                           <styled.div
                                             error={false}
@@ -3350,566 +3354,647 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                           </styled.div>
                                           <styled.div
                                             bordered={true}
-                                            error={false}
                                             focused={false}
                                           >
                                             <div
                                               className="c12"
                                             >
-                                              <TextField
+                                              <DatePicker
+                                                DateTimeFormat={[Function]}
+                                                autoOk={true}
+                                                cancelLabel="cancelar"
+                                                container="dialog"
+                                                disableYearSelection={false}
                                                 disabled={false}
-                                                floatingLabelFixed={false}
-                                                fullWidth={false}
+                                                firstDayOfWeek={1}
+                                                hideCalendarDate={false}
                                                 id="customer.birthday"
-                                                max="2017-12-15"
-                                                min="1899-01-01"
-                                                multiLine={false}
-                                                onBlur={[Function]}
+                                                locale="pt-BR"
+                                                maxDate={2017-12-15T04:41:20.000Z}
+                                                minDate={2017-12-15T04:41:20.000Z}
+                                                name="customer.birthday"
                                                 onChange={[Function]}
                                                 onFocus={[Function]}
-                                                placeholder=""
-                                                required={true}
-                                                rows={1}
-                                                style={
+                                                openToYearSelection={false}
+                                                style={Object {}}
+                                                textFieldStyle={
                                                   Object {
                                                     "width": "100%",
                                                   }
                                                 }
-                                                type="date"
-                                                underlineShow={true}
-                                                value=""
+                                                value={Object {}}
                                               >
                                                 <div
                                                   style={
                                                     Object {
-                                                      "backgroundColor": "transparent",
-                                                      "cursor": "auto",
-                                                      "display": "inline-block",
-                                                      "fontFamily": "NaturaSans-Regular",
-                                                      "fontSize": 16,
-                                                      "height": 48,
-                                                      "lineHeight": "24px",
                                                       "muiPrepared": true,
-                                                      "position": "relative",
-                                                      "transition": "height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                                      "width": "100%",
                                                     }
                                                   }
                                                 >
-                                                  <input
+                                                  <TextField
                                                     disabled={false}
+                                                    floatingLabelFixed={false}
+                                                    fullWidth={false}
                                                     id="customer.birthday"
-                                                    max="2017-12-15"
-                                                    min="1899-01-01"
-                                                    onBlur={[Function]}
+                                                    multiLine={false}
+                                                    name="customer.birthday"
                                                     onChange={[Function]}
+                                                    onClick={[Function]}
                                                     onFocus={[Function]}
-                                                    placeholder=""
-                                                    required={true}
+                                                    rows={1}
                                                     style={
                                                       Object {
-                                                        "WebkitOpacity": 1,
-                                                        "WebkitTapHighlightColor": "rgba(0,0,0,0)",
-                                                        "appearance": "textfield",
-                                                        "backgroundColor": "rgba(0,0,0,0)",
-                                                        "border": "none",
-                                                        "color": "#4F4F4F",
-                                                        "cursor": "inherit",
-                                                        "font": "inherit",
-                                                        "height": "100%",
-                                                        "muiPrepared": true,
-                                                        "outline": "none",
-                                                        "padding": 0,
-                                                        "position": "relative",
                                                         "width": "100%",
                                                       }
                                                     }
-                                                    type="date"
+                                                    type="text"
+                                                    underlineShow={true}
                                                     value=""
-                                                  />
-                                                  <TextFieldUnderline
-                                                    disabled={false}
-                                                    disabledStyle={Object {}}
-                                                    error={false}
-                                                    errorStyle={Object {}}
-                                                    focus={false}
-                                                    focusStyle={Object {}}
-                                                    muiTheme={
-                                                      Object {
-                                                        "appBar": Object {
-                                                          "color": "#ffffff",
-                                                          "height": 100,
-                                                          "padding": 0,
-                                                          "textColor": "#000",
-                                                          "titleFontWeight": 400,
-                                                        },
-                                                        "avatar": Object {
-                                                          "backgroundColor": "rgb(188, 188, 188)",
-                                                          "color": "#ffffff",
-                                                        },
-                                                        "badge": Object {
-                                                          "color": "#ffffff",
-                                                          "fontWeight": 500,
-                                                          "primaryColor": "#f3971f",
-                                                          "primaryTextColor": "#ffffff",
-                                                          "secondaryColor": "#fd6b0d",
-                                                          "secondaryTextColor": "#ffffff",
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "baseTheme": Object {
+                                                  >
+                                                    <div
+                                                      style={
+                                                        Object {
+                                                          "backgroundColor": "transparent",
+                                                          "cursor": "auto",
+                                                          "display": "inline-block",
                                                           "fontFamily": "NaturaSans-Regular",
-                                                          "palette": Object {
-                                                            "accent1Color": "#fd6b0d",
-                                                            "accent2Color": "#f04f23",
-                                                            "accent3Color": "#999999",
-                                                            "alternateTextColor": "#ffffff",
-                                                            "borderColor": "#e0e0e0",
-                                                            "canvasColor": "#ffffff",
-                                                            "clockCircleColor": "rgba(0, 0, 0, 0.07)",
-                                                            "disabledColor": "rgba(0, 0, 0, 0.3)",
-                                                            "pickerHeaderColor": "#00bcd4",
-                                                            "primary1Color": "#f3971f",
-                                                            "primary2Color": "#f04f23",
-                                                            "primary3Color": "#6e5aa7",
-                                                            "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
-                                                            "shadowColor": "rgba(0, 0, 0, 1)",
-                                                            "textColor": "#4F4F4F",
-                                                          },
-                                                          "spacing": Object {
-                                                            "desktopDrawerMenuItemHeight": 48,
-                                                            "desktopDropDownMenuFontSize": 15,
-                                                            "desktopDropDownMenuItemHeight": 32,
-                                                            "desktopGutter": 24,
-                                                            "desktopGutterLess": 16,
-                                                            "desktopGutterMini": 8,
-                                                            "desktopGutterMore": 32,
-                                                            "desktopKeylineIncrement": 64,
-                                                            "desktopSubheaderHeight": 48,
-                                                            "desktopToolbarHeight": 56,
-                                                            "iconSize": 24,
-                                                          },
-                                                        },
-                                                        "borderRadius": 2,
-                                                        "bottomNavigation": Object {
-                                                          "backgroundColor": "#ffffff",
-                                                          "height": 56,
-                                                          "selectedColor": "#f3971f",
-                                                          "selectedFontSize": 14,
-                                                          "unselectedColor": "rgba(79, 79, 79, 0.54)",
-                                                          "unselectedFontSize": 12,
-                                                        },
-                                                        "button": Object {
-                                                          "height": 36,
-                                                          "iconButtonSize": 48,
-                                                          "minWidth": 88,
-                                                        },
-                                                        "card": Object {
-                                                          "fontWeight": 500,
-                                                          "subtitleColor": "rgba(79, 79, 79, 0.54)",
-                                                          "titleColor": "rgba(79, 79, 79, 0.87)",
-                                                        },
-                                                        "cardMedia": Object {
-                                                          "color": "rgba(255, 255, 255, 0.87)",
-                                                          "overlayContentBackground": "rgba(0, 0, 0, 0.54)",
-                                                          "subtitleColor": "rgba(255, 255, 255, 0.54)",
-                                                          "titleColor": "rgba(255, 255, 255, 0.87)",
-                                                        },
-                                                        "cardText": Object {
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "checkbox": Object {
-                                                          "boxColor": "#4F4F4F",
-                                                          "checkedColor": "#f3971f",
-                                                          "disabledColor": "rgba(0, 0, 0, 0.3)",
-                                                          "labelColor": "#4F4F4F",
-                                                          "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
-                                                          "requiredColor": "#f3971f",
-                                                        },
-                                                        "chip": Object {
-                                                          "backgroundColor": "rgb(224, 224, 224)",
-                                                          "deleteIconColor": "rgba(79, 79, 79, 0.26)",
-                                                          "fontSize": 14,
-                                                          "fontWeight": 400,
-                                                          "shadow": "0 1px 6px rgba(0, 0, 0, 0.12),
-                                                              0 1px 4px rgba(0, 0, 0, 0.12)",
-                                                          "textColor": "rgba(79, 79, 79, 0.87)",
-                                                        },
-                                                        "datePicker": Object {
-                                                          "calendarTextColor": "#4F4F4F",
-                                                          "calendarYearBackgroundColor": "#ffffff",
-                                                          "color": "#f3971f",
-                                                          "headerColor": "#00bcd4",
-                                                          "selectColor": "#f04f23",
-                                                          "selectTextColor": "#ffffff",
-                                                          "textColor": "#ffffff",
-                                                        },
-                                                        "dialog": Object {
-                                                          "bodyColor": "rgba(79, 79, 79, 0.6)",
-                                                          "bodyFontSize": 16,
-                                                          "titleFontSize": 22,
-                                                        },
-                                                        "drawer": Object {
-                                                          "color": "#ffffff",
-                                                          "width": 300,
-                                                        },
-                                                        "dropDownMenu": Object {
-                                                          "accentColor": "#e0e0e0",
-                                                        },
-                                                        "enhancedButton": Object {
-                                                          "tapHighlightColor": "rgba(0, 0, 0, 0)",
-                                                        },
-                                                        "flatButton": Object {
-                                                          "buttonFilterColor": "#999999",
-                                                          "color": "rgba(0, 0, 0, 0)",
-                                                          "disabledTextColor": "rgba(79, 79, 79, 0.3)",
-                                                          "fontSize": 14,
-                                                          "fontWeight": 500,
-                                                          "primaryTextColor": "#f3971f",
-                                                          "secondaryTextColor": "#fd6b0d",
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "floatingActionButton": Object {
-                                                          "buttonSize": 56,
-                                                          "color": "#f3971f",
-                                                          "disabledColor": "rgb(224, 224, 224)",
-                                                          "disabledTextColor": "rgba(0, 0, 0, 0.3)",
-                                                          "iconColor": "#ffffff",
-                                                          "miniSize": 40,
-                                                          "secondaryColor": "#fd6b0d",
-                                                          "secondaryIconColor": "#ffffff",
-                                                        },
-                                                        "fontFamily": "NaturaSans-Regular",
-                                                        "gridTile": Object {
-                                                          "textColor": "#ffffff",
-                                                        },
-                                                        "icon": Object {
-                                                          "backgroundColor": "#f3971f",
-                                                          "color": "#ffffff",
-                                                        },
-                                                        "inkBar": Object {
-                                                          "backgroundColor": "#f3971f",
-                                                        },
-                                                        "isRtl": false,
-                                                        "listItem": Object {
-                                                          "leftIconColor": "#757575",
-                                                          "nestedLevelDepth": 18,
-                                                          "rightIconColor": "#757575",
-                                                          "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
-                                                        },
-                                                        "menu": Object {
-                                                          "backgroundColor": "#ffffff",
-                                                          "containerBackgroundColor": "#ffffff",
-                                                        },
-                                                        "menuItem": Object {
-                                                          "dataHeight": 32,
+                                                          "fontSize": 16,
                                                           "height": 48,
-                                                          "hoverColor": "rgba(79, 79, 79, 0.1)",
-                                                          "padding": 24,
-                                                          "rightIconDesktopFill": "#757575",
-                                                          "selectedTextColor": "#fd6b0d",
-                                                        },
-                                                        "menuSubheader": Object {
-                                                          "borderColor": "#e0e0e0",
-                                                          "padding": 24,
-                                                          "textColor": "#f3971f",
-                                                        },
-                                                        "overlay": Object {
-                                                          "backgroundColor": "rgba(0, 0, 0, 0.54)",
-                                                        },
-                                                        "palette": Object {
-                                                          "accent1Color": "#fd6b0d",
-                                                          "accent2Color": "#f04f23",
-                                                          "accent3Color": "#999999",
-                                                          "alternateTextColor": "#ffffff",
-                                                          "borderColor": "#e0e0e0",
-                                                          "canvasColor": "#ffffff",
-                                                          "clockCircleColor": "rgba(0, 0, 0, 0.07)",
-                                                          "disabledColor": "rgba(0, 0, 0, 0.3)",
-                                                          "pickerHeaderColor": "#00bcd4",
-                                                          "primary1Color": "#f3971f",
-                                                          "primary2Color": "#f04f23",
-                                                          "primary3Color": "#6e5aa7",
-                                                          "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
-                                                          "shadowColor": "rgba(0, 0, 0, 1)",
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "paper": Object {
-                                                          "backgroundColor": "#ffffff",
-                                                          "color": "#4F4F4F",
-                                                          "zDepthShadows": Array [
-                                                            "0 1px 6px rgba(0, 0, 0, 0.12),
-                                                               0 1px 4px rgba(0, 0, 0, 0.12)",
-                                                            "0 3px 10px rgba(0, 0, 0, 0.16),
-                                                               0 3px 10px rgba(0, 0, 0, 0.23)",
-                                                            "0 10px 30px rgba(0, 0, 0, 0.19),
-                                                               0 6px 10px rgba(0, 0, 0, 0.23)",
-                                                            "0 14px 45px rgba(0, 0, 0, 0.25),
-                                                               0 10px 18px rgba(0, 0, 0, 0.22)",
-                                                            "0 19px 60px rgba(0, 0, 0, 0.3),
-                                                               0 15px 20px rgba(0, 0, 0, 0.22)",
-                                                          ],
-                                                        },
-                                                        "prepareStyles": [Function],
-                                                        "radioButton": Object {
-                                                          "backgroundColor": "#ffffff",
-                                                          "borderColor": "#4F4F4F",
-                                                          "checkedColor": "#f3971f",
-                                                          "disabledColor": "rgba(0, 0, 0, 0.3)",
-                                                          "labelColor": "#4F4F4F",
-                                                          "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
-                                                          "requiredColor": "#f3971f",
-                                                          "size": 24,
-                                                        },
-                                                        "raisedButton": Object {
-                                                          "color": "#ffffff",
-                                                          "disabledColor": "rgb(229, 229, 229)",
-                                                          "disabledTextColor": "rgba(79, 79, 79, 0.3)",
-                                                          "fontSize": 14,
-                                                          "fontWeight": 500,
-                                                          "primaryColor": "#f3971f",
-                                                          "primaryTextColor": "#ffffff",
-                                                          "secondaryColor": "#fd6b0d",
-                                                          "secondaryTextColor": "#ffffff",
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "rawTheme": Object {
-                                                          "fontFamily": "NaturaSans-Regular",
-                                                          "palette": Object {
-                                                            "accent1Color": "#fd6b0d",
-                                                            "accent2Color": "#f04f23",
-                                                            "accent3Color": "#999999",
-                                                            "alternateTextColor": "#ffffff",
-                                                            "borderColor": "#e0e0e0",
-                                                            "canvasColor": "#ffffff",
-                                                            "clockCircleColor": "rgba(0, 0, 0, 0.07)",
-                                                            "disabledColor": "rgba(0, 0, 0, 0.3)",
-                                                            "pickerHeaderColor": "#00bcd4",
-                                                            "primary1Color": "#f3971f",
-                                                            "primary2Color": "#f04f23",
-                                                            "primary3Color": "#6e5aa7",
-                                                            "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
-                                                            "shadowColor": "rgba(0, 0, 0, 1)",
-                                                            "textColor": "#4F4F4F",
-                                                          },
-                                                          "spacing": Object {
-                                                            "desktopDrawerMenuItemHeight": 48,
-                                                            "desktopDropDownMenuFontSize": 15,
-                                                            "desktopDropDownMenuItemHeight": 32,
-                                                            "desktopGutter": 24,
-                                                            "desktopGutterLess": 16,
-                                                            "desktopGutterMini": 8,
-                                                            "desktopGutterMore": 32,
-                                                            "desktopKeylineIncrement": 64,
-                                                            "desktopSubheaderHeight": 48,
-                                                            "desktopToolbarHeight": 56,
-                                                            "iconSize": 24,
-                                                          },
-                                                        },
-                                                        "refreshIndicator": Object {
-                                                          "loadingStrokeColor": "#f3971f",
-                                                          "strokeColor": "#e0e0e0",
-                                                        },
-                                                        "responsive": Object {
-                                                          "medium": 768,
-                                                          "small": 480,
-                                                        },
-                                                        "ripple": Object {
-                                                          "color": "rgba(79, 79, 79, 0.87)",
-                                                        },
-                                                        "slider": Object {
-                                                          "handleColorZero": "#6e5aa7",
-                                                          "handleFillColor": "#ffffff",
-                                                          "handleSize": 12,
-                                                          "handleSizeActive": 18,
-                                                          "handleSizeDisabled": 8,
-                                                          "rippleColor": "#f3971f",
-                                                          "selectionColor": "#f3971f",
-                                                          "trackColor": "#6e5aa7",
-                                                          "trackColorSelected": "#999999",
-                                                          "trackSize": 2,
-                                                        },
-                                                        "snackbar": Object {
-                                                          "actionColor": "#fd6b0d",
-                                                          "backgroundColor": "#4F4F4F",
-                                                          "textColor": "#ffffff",
-                                                        },
-                                                        "spacing": Object {
-                                                          "desktopDrawerMenuItemHeight": 48,
-                                                          "desktopDropDownMenuFontSize": 15,
-                                                          "desktopDropDownMenuItemHeight": 32,
-                                                          "desktopGutter": 24,
-                                                          "desktopGutterLess": 16,
-                                                          "desktopGutterMini": 8,
-                                                          "desktopGutterMore": 32,
-                                                          "desktopKeylineIncrement": 64,
-                                                          "desktopSubheaderHeight": 48,
-                                                          "desktopToolbarHeight": 56,
-                                                          "iconSize": 24,
-                                                        },
-                                                        "stepper": Object {
-                                                          "backgroundColor": "transparent",
-                                                          "connectorLineColor": "#bdbdbd",
-                                                          "disabledTextColor": "rgba(0, 0, 0, 0.26)",
-                                                          "hoverBackgroundColor": "rgba(0, 0, 0, 0.06)",
-                                                          "hoveredIconColor": "#616161",
-                                                          "iconColor": "#f3971f",
-                                                          "inactiveIconColor": "#9e9e9e",
-                                                          "textColor": "rgba(0, 0, 0, 0.87)",
-                                                        },
-                                                        "subheader": Object {
-                                                          "color": "rgba(79, 79, 79, 0.54)",
-                                                          "fontWeight": 500,
-                                                        },
-                                                        "svgIcon": Object {
-                                                          "color": "#4F4F4F",
-                                                        },
-                                                        "table": Object {
-                                                          "backgroundColor": "#ffffff",
-                                                        },
-                                                        "tableFooter": Object {
-                                                          "borderColor": "#e0e0e0",
-                                                          "textColor": "#999999",
-                                                        },
-                                                        "tableHeader": Object {
-                                                          "borderColor": "#e0e0e0",
-                                                        },
-                                                        "tableHeaderColumn": Object {
-                                                          "height": 56,
-                                                          "spacing": 24,
-                                                          "textColor": "#999999",
-                                                        },
-                                                        "tableRow": Object {
-                                                          "borderColor": "#e0e0e0",
-                                                          "height": 48,
-                                                          "hoverColor": "#f04f23",
-                                                          "selectedColor": "#e0e0e0",
-                                                          "stripeColor": "rgba(249, 203, 143, 0.4)",
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "tableRowColumn": Object {
-                                                          "height": 48,
-                                                          "spacing": 24,
-                                                        },
-                                                        "tabs": Object {
-                                                          "backgroundColor": "transparent",
-                                                          "selectedTextColor": "#5a5a5a",
-                                                          "textColor": "#5a5a5a",
-                                                        },
-                                                        "textField": Object {
-                                                          "backgroundColor": "transparent",
-                                                          "borderColor": "#e0e0e0",
-                                                          "disabledTextColor": "rgba(0, 0, 0, 0.3)",
-                                                          "errorColor": "#f44336",
-                                                          "floatingLabelColor": "rgba(0, 0, 0, 0.3)",
-                                                          "focusColor": "#f3971f",
-                                                          "hintColor": "rgba(0, 0, 0, 0.3)",
-                                                          "textColor": "#4F4F4F",
-                                                        },
-                                                        "timePicker": Object {
-                                                          "accentColor": "#f3971f",
-                                                          "clockCircleColor": "rgba(0, 0, 0, 0.07)",
-                                                          "clockColor": "#4F4F4F",
-                                                          "color": "#ffffff",
-                                                          "headerColor": "#00bcd4",
-                                                          "selectColor": "#f04f23",
-                                                          "selectTextColor": "#ffffff",
-                                                          "textColor": "#ffffff",
-                                                        },
-                                                        "toggle": Object {
-                                                          "labelColor": "#4F4F4F",
-                                                          "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
-                                                          "thumbDisabledColor": "#e0e0e0",
-                                                          "thumbOffColor": "#f04f23",
-                                                          "thumbOnColor": "#f3971f",
-                                                          "thumbRequiredColor": "#f3971f",
-                                                          "trackDisabledColor": "#eee",
-                                                          "trackOffColor": "#6e5aa7",
-                                                          "trackOnColor": "rgba(243, 151, 31, 0.5)",
-                                                          "trackRequiredColor": "rgba(243, 151, 31, 0.5)",
-                                                        },
-                                                        "toolbar": Object {
-                                                          "backgroundColor": "rgb(228, 75, 33)",
-                                                          "color": "rgba(79, 79, 79, 0.54)",
-                                                          "height": 56,
-                                                          "hoverColor": "rgba(79, 79, 79, 0.87)",
-                                                          "iconColor": "rgba(79, 79, 79, 0.4)",
-                                                          "menuHoverColor": "rgba(79, 79, 79, 0.1)",
-                                                          "separatorColor": "rgba(79, 79, 79, 0.175)",
-                                                          "titleFontSize": 20,
-                                                        },
-                                                        "tooltip": Object {
-                                                          "color": "#ffffff",
-                                                          "opacity": 0.9,
-                                                          "rippleBackgroundColor": "#616161",
-                                                        },
-                                                        "zIndex": Object {
-                                                          "appBar": 1100,
-                                                          "dialog": 1500,
-                                                          "dialogOverlay": 1400,
-                                                          "drawer": 1300,
-                                                          "drawerOverlay": 1200,
-                                                          "layer": 2000,
-                                                          "menu": 1000,
-                                                          "popover": 2100,
-                                                          "snackbar": 2900,
-                                                          "tooltip": 3000,
-                                                        },
+                                                          "lineHeight": "24px",
+                                                          "muiPrepared": true,
+                                                          "position": "relative",
+                                                          "transition": "height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                          "width": "100%",
+                                                        }
                                                       }
-                                                    }
-                                                    style={Object {}}
+                                                    >
+                                                      <input
+                                                        disabled={false}
+                                                        id="customer.birthday"
+                                                        name="customer.birthday"
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onClick={[Function]}
+                                                        onFocus={[Function]}
+                                                        style={
+                                                          Object {
+                                                            "WebkitOpacity": 1,
+                                                            "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+                                                            "appearance": "textfield",
+                                                            "backgroundColor": "rgba(0,0,0,0)",
+                                                            "border": "none",
+                                                            "color": "#4F4F4F",
+                                                            "cursor": "inherit",
+                                                            "font": "inherit",
+                                                            "height": "100%",
+                                                            "muiPrepared": true,
+                                                            "outline": "none",
+                                                            "padding": 0,
+                                                            "position": "relative",
+                                                            "width": "100%",
+                                                          }
+                                                        }
+                                                        type="text"
+                                                        value=""
+                                                      />
+                                                      <TextFieldUnderline
+                                                        disabled={false}
+                                                        disabledStyle={Object {}}
+                                                        error={false}
+                                                        errorStyle={Object {}}
+                                                        focus={false}
+                                                        focusStyle={Object {}}
+                                                        muiTheme={
+                                                          Object {
+                                                            "appBar": Object {
+                                                              "color": "#ffffff",
+                                                              "height": 100,
+                                                              "padding": 0,
+                                                              "textColor": "#000",
+                                                              "titleFontWeight": 400,
+                                                            },
+                                                            "avatar": Object {
+                                                              "backgroundColor": "rgb(188, 188, 188)",
+                                                              "color": "#ffffff",
+                                                            },
+                                                            "badge": Object {
+                                                              "color": "#ffffff",
+                                                              "fontWeight": 500,
+                                                              "primaryColor": "#f3971f",
+                                                              "primaryTextColor": "#ffffff",
+                                                              "secondaryColor": "#fd6b0d",
+                                                              "secondaryTextColor": "#ffffff",
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "baseTheme": Object {
+                                                              "fontFamily": "NaturaSans-Regular",
+                                                              "palette": Object {
+                                                                "accent1Color": "#fd6b0d",
+                                                                "accent2Color": "#f04f23",
+                                                                "accent3Color": "#999999",
+                                                                "alternateTextColor": "#ffffff",
+                                                                "borderColor": "#e0e0e0",
+                                                                "canvasColor": "#ffffff",
+                                                                "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+                                                                "disabledColor": "rgba(0, 0, 0, 0.3)",
+                                                                "pickerHeaderColor": "#00bcd4",
+                                                                "primary1Color": "#f3971f",
+                                                                "primary2Color": "#f04f23",
+                                                                "primary3Color": "#6e5aa7",
+                                                                "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+                                                                "shadowColor": "rgba(0, 0, 0, 1)",
+                                                                "textColor": "#4F4F4F",
+                                                              },
+                                                              "spacing": Object {
+                                                                "desktopDrawerMenuItemHeight": 48,
+                                                                "desktopDropDownMenuFontSize": 15,
+                                                                "desktopDropDownMenuItemHeight": 32,
+                                                                "desktopGutter": 24,
+                                                                "desktopGutterLess": 16,
+                                                                "desktopGutterMini": 8,
+                                                                "desktopGutterMore": 32,
+                                                                "desktopKeylineIncrement": 64,
+                                                                "desktopSubheaderHeight": 48,
+                                                                "desktopToolbarHeight": 56,
+                                                                "iconSize": 24,
+                                                              },
+                                                            },
+                                                            "borderRadius": 2,
+                                                            "bottomNavigation": Object {
+                                                              "backgroundColor": "#ffffff",
+                                                              "height": 56,
+                                                              "selectedColor": "#f3971f",
+                                                              "selectedFontSize": 14,
+                                                              "unselectedColor": "rgba(79, 79, 79, 0.54)",
+                                                              "unselectedFontSize": 12,
+                                                            },
+                                                            "button": Object {
+                                                              "height": 36,
+                                                              "iconButtonSize": 48,
+                                                              "minWidth": 88,
+                                                            },
+                                                            "card": Object {
+                                                              "fontWeight": 500,
+                                                              "subtitleColor": "rgba(79, 79, 79, 0.54)",
+                                                              "titleColor": "rgba(79, 79, 79, 0.87)",
+                                                            },
+                                                            "cardMedia": Object {
+                                                              "color": "rgba(255, 255, 255, 0.87)",
+                                                              "overlayContentBackground": "rgba(0, 0, 0, 0.54)",
+                                                              "subtitleColor": "rgba(255, 255, 255, 0.54)",
+                                                              "titleColor": "rgba(255, 255, 255, 0.87)",
+                                                            },
+                                                            "cardText": Object {
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "checkbox": Object {
+                                                              "boxColor": "#4F4F4F",
+                                                              "checkedColor": "#f3971f",
+                                                              "disabledColor": "rgba(0, 0, 0, 0.3)",
+                                                              "labelColor": "#4F4F4F",
+                                                              "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
+                                                              "requiredColor": "#f3971f",
+                                                            },
+                                                            "chip": Object {
+                                                              "backgroundColor": "rgb(224, 224, 224)",
+                                                              "deleteIconColor": "rgba(79, 79, 79, 0.26)",
+                                                              "fontSize": 14,
+                                                              "fontWeight": 400,
+                                                              "shadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+                                                                  0 1px 4px rgba(0, 0, 0, 0.12)",
+                                                              "textColor": "rgba(79, 79, 79, 0.87)",
+                                                            },
+                                                            "datePicker": Object {
+                                                              "calendarTextColor": "#4F4F4F",
+                                                              "calendarYearBackgroundColor": "#ffffff",
+                                                              "color": "#f3971f",
+                                                              "headerColor": "#f3971f",
+                                                              "selectColor": "#f3971f",
+                                                              "selectTextColor": "#ffffff",
+                                                              "textColor": "#ffffff",
+                                                            },
+                                                            "dialog": Object {
+                                                              "bodyColor": "rgba(79, 79, 79, 0.6)",
+                                                              "bodyFontSize": 16,
+                                                              "titleFontSize": 22,
+                                                            },
+                                                            "drawer": Object {
+                                                              "color": "#ffffff",
+                                                              "width": 300,
+                                                            },
+                                                            "dropDownMenu": Object {
+                                                              "accentColor": "#e0e0e0",
+                                                            },
+                                                            "enhancedButton": Object {
+                                                              "tapHighlightColor": "rgba(0, 0, 0, 0)",
+                                                            },
+                                                            "flatButton": Object {
+                                                              "buttonFilterColor": "#999999",
+                                                              "color": "rgba(0, 0, 0, 0)",
+                                                              "disabledTextColor": "rgba(79, 79, 79, 0.3)",
+                                                              "fontSize": 14,
+                                                              "fontWeight": 500,
+                                                              "primaryTextColor": "#f3971f",
+                                                              "secondaryTextColor": "#fd6b0d",
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "floatingActionButton": Object {
+                                                              "buttonSize": 56,
+                                                              "color": "#f3971f",
+                                                              "disabledColor": "rgb(224, 224, 224)",
+                                                              "disabledTextColor": "rgba(0, 0, 0, 0.3)",
+                                                              "iconColor": "#ffffff",
+                                                              "miniSize": 40,
+                                                              "secondaryColor": "#fd6b0d",
+                                                              "secondaryIconColor": "#ffffff",
+                                                            },
+                                                            "fontFamily": "NaturaSans-Regular",
+                                                            "gridTile": Object {
+                                                              "textColor": "#ffffff",
+                                                            },
+                                                            "icon": Object {
+                                                              "backgroundColor": "#f3971f",
+                                                              "color": "#ffffff",
+                                                            },
+                                                            "inkBar": Object {
+                                                              "backgroundColor": "#f3971f",
+                                                            },
+                                                            "isRtl": false,
+                                                            "listItem": Object {
+                                                              "leftIconColor": "#757575",
+                                                              "nestedLevelDepth": 18,
+                                                              "rightIconColor": "#757575",
+                                                              "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+                                                            },
+                                                            "menu": Object {
+                                                              "backgroundColor": "#ffffff",
+                                                              "containerBackgroundColor": "#ffffff",
+                                                            },
+                                                            "menuItem": Object {
+                                                              "dataHeight": 32,
+                                                              "height": 48,
+                                                              "hoverColor": "rgba(79, 79, 79, 0.1)",
+                                                              "padding": 24,
+                                                              "rightIconDesktopFill": "#757575",
+                                                              "selectedTextColor": "#fd6b0d",
+                                                            },
+                                                            "menuSubheader": Object {
+                                                              "borderColor": "#e0e0e0",
+                                                              "padding": 24,
+                                                              "textColor": "#f3971f",
+                                                            },
+                                                            "overlay": Object {
+                                                              "backgroundColor": "rgba(0, 0, 0, 0.54)",
+                                                            },
+                                                            "palette": Object {
+                                                              "accent1Color": "#fd6b0d",
+                                                              "accent2Color": "#f04f23",
+                                                              "accent3Color": "#999999",
+                                                              "alternateTextColor": "#ffffff",
+                                                              "borderColor": "#e0e0e0",
+                                                              "canvasColor": "#ffffff",
+                                                              "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+                                                              "disabledColor": "rgba(0, 0, 0, 0.3)",
+                                                              "pickerHeaderColor": "#00bcd4",
+                                                              "primary1Color": "#f3971f",
+                                                              "primary2Color": "#f04f23",
+                                                              "primary3Color": "#6e5aa7",
+                                                              "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+                                                              "shadowColor": "rgba(0, 0, 0, 1)",
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "paper": Object {
+                                                              "backgroundColor": "#ffffff",
+                                                              "color": "#4F4F4F",
+                                                              "zDepthShadows": Array [
+                                                                "0 1px 6px rgba(0, 0, 0, 0.12),
+                                                                   0 1px 4px rgba(0, 0, 0, 0.12)",
+                                                                "0 3px 10px rgba(0, 0, 0, 0.16),
+                                                                   0 3px 10px rgba(0, 0, 0, 0.23)",
+                                                                "0 10px 30px rgba(0, 0, 0, 0.19),
+                                                                   0 6px 10px rgba(0, 0, 0, 0.23)",
+                                                                "0 14px 45px rgba(0, 0, 0, 0.25),
+                                                                   0 10px 18px rgba(0, 0, 0, 0.22)",
+                                                                "0 19px 60px rgba(0, 0, 0, 0.3),
+                                                                   0 15px 20px rgba(0, 0, 0, 0.22)",
+                                                              ],
+                                                            },
+                                                            "prepareStyles": [Function],
+                                                            "radioButton": Object {
+                                                              "backgroundColor": "#ffffff",
+                                                              "borderColor": "#4F4F4F",
+                                                              "checkedColor": "#f3971f",
+                                                              "disabledColor": "rgba(0, 0, 0, 0.3)",
+                                                              "labelColor": "#4F4F4F",
+                                                              "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
+                                                              "requiredColor": "#f3971f",
+                                                              "size": 24,
+                                                            },
+                                                            "raisedButton": Object {
+                                                              "color": "#ffffff",
+                                                              "disabledColor": "rgb(229, 229, 229)",
+                                                              "disabledTextColor": "rgba(79, 79, 79, 0.3)",
+                                                              "fontSize": 14,
+                                                              "fontWeight": 500,
+                                                              "primaryColor": "#f3971f",
+                                                              "primaryTextColor": "#ffffff",
+                                                              "secondaryColor": "#fd6b0d",
+                                                              "secondaryTextColor": "#ffffff",
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "rawTheme": Object {
+                                                              "fontFamily": "NaturaSans-Regular",
+                                                              "palette": Object {
+                                                                "accent1Color": "#fd6b0d",
+                                                                "accent2Color": "#f04f23",
+                                                                "accent3Color": "#999999",
+                                                                "alternateTextColor": "#ffffff",
+                                                                "borderColor": "#e0e0e0",
+                                                                "canvasColor": "#ffffff",
+                                                                "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+                                                                "disabledColor": "rgba(0, 0, 0, 0.3)",
+                                                                "pickerHeaderColor": "#00bcd4",
+                                                                "primary1Color": "#f3971f",
+                                                                "primary2Color": "#f04f23",
+                                                                "primary3Color": "#6e5aa7",
+                                                                "secondaryTextColor": "rgba(0, 0, 0, 0.54)",
+                                                                "shadowColor": "rgba(0, 0, 0, 1)",
+                                                                "textColor": "#4F4F4F",
+                                                              },
+                                                              "spacing": Object {
+                                                                "desktopDrawerMenuItemHeight": 48,
+                                                                "desktopDropDownMenuFontSize": 15,
+                                                                "desktopDropDownMenuItemHeight": 32,
+                                                                "desktopGutter": 24,
+                                                                "desktopGutterLess": 16,
+                                                                "desktopGutterMini": 8,
+                                                                "desktopGutterMore": 32,
+                                                                "desktopKeylineIncrement": 64,
+                                                                "desktopSubheaderHeight": 48,
+                                                                "desktopToolbarHeight": 56,
+                                                                "iconSize": 24,
+                                                              },
+                                                            },
+                                                            "refreshIndicator": Object {
+                                                              "loadingStrokeColor": "#f3971f",
+                                                              "strokeColor": "#e0e0e0",
+                                                            },
+                                                            "responsive": Object {
+                                                              "medium": 768,
+                                                              "small": 480,
+                                                            },
+                                                            "ripple": Object {
+                                                              "color": "rgba(79, 79, 79, 0.87)",
+                                                            },
+                                                            "slider": Object {
+                                                              "handleColorZero": "#6e5aa7",
+                                                              "handleFillColor": "#ffffff",
+                                                              "handleSize": 12,
+                                                              "handleSizeActive": 18,
+                                                              "handleSizeDisabled": 8,
+                                                              "rippleColor": "#f3971f",
+                                                              "selectionColor": "#f3971f",
+                                                              "trackColor": "#6e5aa7",
+                                                              "trackColorSelected": "#999999",
+                                                              "trackSize": 2,
+                                                            },
+                                                            "snackbar": Object {
+                                                              "actionColor": "#fd6b0d",
+                                                              "backgroundColor": "#4F4F4F",
+                                                              "textColor": "#ffffff",
+                                                            },
+                                                            "spacing": Object {
+                                                              "desktopDrawerMenuItemHeight": 48,
+                                                              "desktopDropDownMenuFontSize": 15,
+                                                              "desktopDropDownMenuItemHeight": 32,
+                                                              "desktopGutter": 24,
+                                                              "desktopGutterLess": 16,
+                                                              "desktopGutterMini": 8,
+                                                              "desktopGutterMore": 32,
+                                                              "desktopKeylineIncrement": 64,
+                                                              "desktopSubheaderHeight": 48,
+                                                              "desktopToolbarHeight": 56,
+                                                              "iconSize": 24,
+                                                            },
+                                                            "stepper": Object {
+                                                              "backgroundColor": "transparent",
+                                                              "connectorLineColor": "#bdbdbd",
+                                                              "disabledTextColor": "rgba(0, 0, 0, 0.26)",
+                                                              "hoverBackgroundColor": "rgba(0, 0, 0, 0.06)",
+                                                              "hoveredIconColor": "#616161",
+                                                              "iconColor": "#f3971f",
+                                                              "inactiveIconColor": "#9e9e9e",
+                                                              "textColor": "rgba(0, 0, 0, 0.87)",
+                                                            },
+                                                            "subheader": Object {
+                                                              "color": "rgba(79, 79, 79, 0.54)",
+                                                              "fontWeight": 500,
+                                                            },
+                                                            "svgIcon": Object {
+                                                              "color": "#4F4F4F",
+                                                            },
+                                                            "table": Object {
+                                                              "backgroundColor": "#ffffff",
+                                                            },
+                                                            "tableFooter": Object {
+                                                              "borderColor": "#e0e0e0",
+                                                              "textColor": "#999999",
+                                                            },
+                                                            "tableHeader": Object {
+                                                              "borderColor": "#e0e0e0",
+                                                            },
+                                                            "tableHeaderColumn": Object {
+                                                              "height": 56,
+                                                              "spacing": 24,
+                                                              "textColor": "#999999",
+                                                            },
+                                                            "tableRow": Object {
+                                                              "borderColor": "#e0e0e0",
+                                                              "height": 48,
+                                                              "hoverColor": "#f04f23",
+                                                              "selectedColor": "#e0e0e0",
+                                                              "stripeColor": "rgba(249, 203, 143, 0.4)",
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "tableRowColumn": Object {
+                                                              "height": 48,
+                                                              "spacing": 24,
+                                                            },
+                                                            "tabs": Object {
+                                                              "backgroundColor": "transparent",
+                                                              "selectedTextColor": "#5a5a5a",
+                                                              "textColor": "#5a5a5a",
+                                                            },
+                                                            "textField": Object {
+                                                              "backgroundColor": "transparent",
+                                                              "borderColor": "#e0e0e0",
+                                                              "disabledTextColor": "rgba(0, 0, 0, 0.3)",
+                                                              "errorColor": "#f44336",
+                                                              "floatingLabelColor": "rgba(0, 0, 0, 0.3)",
+                                                              "focusColor": "#f3971f",
+                                                              "hintColor": "rgba(0, 0, 0, 0.3)",
+                                                              "textColor": "#4F4F4F",
+                                                            },
+                                                            "timePicker": Object {
+                                                              "accentColor": "#f3971f",
+                                                              "clockCircleColor": "rgba(0, 0, 0, 0.07)",
+                                                              "clockColor": "#4F4F4F",
+                                                              "color": "#ffffff",
+                                                              "headerColor": "#00bcd4",
+                                                              "selectColor": "#f04f23",
+                                                              "selectTextColor": "#ffffff",
+                                                              "textColor": "#ffffff",
+                                                            },
+                                                            "toggle": Object {
+                                                              "labelColor": "#4F4F4F",
+                                                              "labelDisabledColor": "rgba(0, 0, 0, 0.3)",
+                                                              "thumbDisabledColor": "#e0e0e0",
+                                                              "thumbOffColor": "#f04f23",
+                                                              "thumbOnColor": "#f3971f",
+                                                              "thumbRequiredColor": "#f3971f",
+                                                              "trackDisabledColor": "#eee",
+                                                              "trackOffColor": "#6e5aa7",
+                                                              "trackOnColor": "rgba(243, 151, 31, 0.5)",
+                                                              "trackRequiredColor": "rgba(243, 151, 31, 0.5)",
+                                                            },
+                                                            "toolbar": Object {
+                                                              "backgroundColor": "rgb(228, 75, 33)",
+                                                              "color": "rgba(79, 79, 79, 0.54)",
+                                                              "height": 56,
+                                                              "hoverColor": "rgba(79, 79, 79, 0.87)",
+                                                              "iconColor": "rgba(79, 79, 79, 0.4)",
+                                                              "menuHoverColor": "rgba(79, 79, 79, 0.1)",
+                                                              "separatorColor": "rgba(79, 79, 79, 0.175)",
+                                                              "titleFontSize": 20,
+                                                            },
+                                                            "tooltip": Object {
+                                                              "color": "#ffffff",
+                                                              "opacity": 0.9,
+                                                              "rippleBackgroundColor": "#616161",
+                                                            },
+                                                            "zIndex": Object {
+                                                              "appBar": 1100,
+                                                              "dialog": 1500,
+                                                              "dialogOverlay": 1400,
+                                                              "drawer": 1300,
+                                                              "drawerOverlay": 1200,
+                                                              "layer": 2000,
+                                                              "menu": 1000,
+                                                              "popover": 2100,
+                                                              "snackbar": 2900,
+                                                              "tooltip": 3000,
+                                                            },
+                                                          }
+                                                        }
+                                                        style={Object {}}
+                                                      >
+                                                        <div>
+                                                          <hr
+                                                            aria-hidden="true"
+                                                            style={
+                                                              Object {
+                                                                "borderBottomStyle": "solid",
+                                                                "borderBottomWidth": 1,
+                                                                "borderColor": "#e0e0e0",
+                                                                "borderLeft": "none",
+                                                                "borderRight": "none",
+                                                                "borderTop": "none",
+                                                                "bottom": 8,
+                                                                "boxSizing": "content-box",
+                                                                "margin": 0,
+                                                                "muiPrepared": true,
+                                                                "position": "absolute",
+                                                                "width": "100%",
+                                                              }
+                                                            }
+                                                          />
+                                                          <hr
+                                                            aria-hidden="true"
+                                                            style={
+                                                              Object {
+                                                                "borderBottomStyle": "solid",
+                                                                "borderBottomWidth": 2,
+                                                                "borderColor": "#f3971f",
+                                                                "borderLeft": "none",
+                                                                "borderRight": "none",
+                                                                "borderTop": "none",
+                                                                "bottom": 8,
+                                                                "boxSizing": "content-box",
+                                                                "margin": 0,
+                                                                "muiPrepared": true,
+                                                                "position": "absolute",
+                                                                "transform": "scaleX(0)",
+                                                                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                                                                "width": "100%",
+                                                              }
+                                                            }
+                                                          />
+                                                        </div>
+                                                      </TextFieldUnderline>
+                                                    </div>
+                                                  </TextField>
+                                                  <DatePickerDialog
+                                                    DateTimeFormat={[Function]}
+                                                    autoOk={true}
+                                                    cancelLabel="cancelar"
+                                                    container="dialog"
+                                                    disableYearSelection={false}
+                                                    firstDayOfWeek={1}
+                                                    hideCalendarDate={false}
+                                                    locale="pt-BR"
+                                                    maxDate={2017-12-15T04:41:20.000Z}
+                                                    minDate={2017-12-15T04:41:20.000Z}
+                                                    okLabel="OK"
+                                                    onAccept={[Function]}
+                                                    openToYearSelection={false}
                                                   >
                                                     <div>
-                                                      <hr
-                                                        aria-hidden="true"
-                                                        style={
+                                                      <Dialog
+                                                        anchorEl={<div />}
+                                                        animation={[Function]}
+                                                        autoDetectWindowHeight={true}
+                                                        autoScrollBodyContent={false}
+                                                        bodyStyle={
                                                           Object {
-                                                            "borderBottomStyle": "solid",
-                                                            "borderBottomWidth": 1,
-                                                            "borderColor": "#e0e0e0",
-                                                            "borderLeft": "none",
-                                                            "borderRight": "none",
-                                                            "borderTop": "none",
-                                                            "bottom": 8,
-                                                            "boxSizing": "content-box",
-                                                            "margin": 0,
-                                                            "muiPrepared": true,
-                                                            "position": "absolute",
-                                                            "width": "100%",
+                                                            "minHeight": 434,
+                                                            "minWidth": 310,
+                                                            "padding": 0,
                                                           }
                                                         }
-                                                      />
-                                                      <hr
-                                                        aria-hidden="true"
-                                                        style={
+                                                        contentStyle={
                                                           Object {
-                                                            "borderBottomStyle": "solid",
-                                                            "borderBottomWidth": 2,
-                                                            "borderColor": "#f3971f",
-                                                            "borderLeft": "none",
-                                                            "borderRight": "none",
-                                                            "borderTop": "none",
-                                                            "bottom": 8,
-                                                            "boxSizing": "content-box",
-                                                            "margin": 0,
-                                                            "muiPrepared": true,
-                                                            "position": "absolute",
-                                                            "transform": "scaleX(0)",
-                                                            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
-                                                            "width": "100%",
+                                                            "width": 310,
                                                           }
                                                         }
-                                                      />
+                                                        modal={false}
+                                                        onRequestClose={[Function]}
+                                                        open={false}
+                                                        repositionOnUpdate={true}
+                                                        style={
+                                                          Object {
+                                                            "minHeight": 434,
+                                                            "minWidth": 310,
+                                                            "padding": 0,
+                                                          }
+                                                        }
+                                                      >
+                                                        <RenderToLayer
+                                                          open={true}
+                                                          render={[Function]}
+                                                          useLayerForClickAway={false}
+                                                        />
+                                                      </Dialog>
                                                     </div>
-                                                  </TextFieldUnderline>
+                                                  </DatePickerDialog>
                                                 </div>
-                                              </TextField>
+                                              </DatePicker>
                                             </div>
                                           </styled.div>
                                         </div>
                                       </styled.div>
                                     </FormGroup>
-                                  </Input>
-                                </Styles__FormInput>
+                                  </InputDate>
+                                </Styles__FormInputDate>
                               </div>
                             </Styles__RowWithHalfInputs>
                             <Styles__FormInput
@@ -4165,8 +4250,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "calendarTextColor": "#4F4F4F",
                                                       "calendarYearBackgroundColor": "#ffffff",
                                                       "color": "#f3971f",
-                                                      "headerColor": "#00bcd4",
-                                                      "selectColor": "#f04f23",
+                                                      "headerColor": "#f3971f",
+                                                      "selectColor": "#f3971f",
                                                       "selectTextColor": "#ffffff",
                                                       "textColor": "#ffffff",
                                                     },
@@ -4563,11 +4648,11 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             >
                               <PhoneFormstyles__PhoneWrapper>
                                 <div
-                                  className="c18"
+                                  className="c19"
                                 >
                                   <Styles__RowWithHalfInputs>
                                     <div
-                                      className="c19"
+                                      className="c20"
                                     >
                                       <Styles__FormInput
                                         dirty={false}
@@ -4855,8 +4940,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                                 "calendarTextColor": "#4F4F4F",
                                                                 "calendarYearBackgroundColor": "#ffffff",
                                                                 "color": "#f3971f",
-                                                                "headerColor": "#00bcd4",
-                                                                "selectColor": "#f04f23",
+                                                                "headerColor": "#f3971f",
+                                                                "selectColor": "#f3971f",
                                                                 "selectTextColor": "#ffffff",
                                                                 "textColor": "#ffffff",
                                                               },
@@ -5480,8 +5565,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                                 "calendarTextColor": "#4F4F4F",
                                                                 "calendarYearBackgroundColor": "#ffffff",
                                                                 "color": "#f3971f",
-                                                                "headerColor": "#00bcd4",
-                                                                "selectColor": "#f04f23",
+                                                                "headerColor": "#f3971f",
+                                                                "selectColor": "#f3971f",
                                                                 "selectTextColor": "#ffffff",
                                                                 "textColor": "#ffffff",
                                                               },
@@ -6024,7 +6109,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                           }
                                                         >
                                                           <div
-                                                            className="c20"
+                                                            className="c21"
                                                             style={
                                                               Object {
                                                                 "color": "#ffffff",
@@ -6057,7 +6142,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                             </PhoneForm>
                             <BasicInfoFormstyles__CustomerPhoneHelpTextWrapper>
                               <span
-                                className="c21"
+                                className="c22"
                               >
                                 <FormattedMessage
                                   id="formCustomerPhoneHelpText"
@@ -6073,12 +6158,12 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                               onClick={[Function]}
                             >
                               <a
-                                className="c22"
+                                className="c23"
                                 onClick={[Function]}
                               >
                                 <BasicInfoFormstyles__AddPhoneIconWrapper>
                                   <div
-                                    className="c23"
+                                    className="c24"
                                   >
                                     <Icon
                                       file="ico_times"
@@ -6102,7 +6187,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                       </BasicInfoForm>
                       <Formstyles__FormButtonsWrapper>
                         <div
-                          className="c24"
+                          className="c25"
                         >
                           <FormButton
                             backgroundColor="#c9c9c9"

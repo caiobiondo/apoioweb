@@ -24,7 +24,7 @@ describe('NewCustomerForm', () => {
       phones: [{ phone: '(11) 1234-5678' }],
       name: 'Test Name',
       gender: 'm',
-      birthday: '1943-12-30',
+      birthday: new Date(1943, 12, 30),
     };
   };
 
@@ -78,10 +78,17 @@ describe('NewCustomerForm', () => {
 
   it('correctly calls the mutate function with the customer', () => {
     const fakeCustomer = fakeCustomerData();
+
     const { result: form, props } = setup();
     changeInputValue(form, 'customer.name', fakeCustomer.name);
     changeInputValue(form, 'customer.gender', fakeCustomer.gender);
     changeInputValue(form, 'customer.birthday', fakeCustomer.birthday);
+
+    // Custom form input change due to material-ui's
+    // datepicker onChange method working differenty
+    const inputBirthday = form.find(`[name='customer.birthday']`).get(0);
+    inputBirthday.props.onChange(null, fakeCustomer.birthday);
+
     changeInputValue(form, 'customer.phones.0.phone', fakeCustomer.phones[0].phone);
     changeInputValue(form, 'customer.emails.0.email', fakeCustomer.emails[0].email);
 
@@ -122,6 +129,7 @@ describe('NewCustomerForm', () => {
         variables: {
           input: {
             ...fakeCustomer,
+            birthday: fakeCustomer.birthday.toISOString().split('T')[0],
             phones: [
               {
                 ...fakeCustomer.phones[0],

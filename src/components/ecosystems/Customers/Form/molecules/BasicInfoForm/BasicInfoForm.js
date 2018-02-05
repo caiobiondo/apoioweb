@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PhoneForm from '../PhoneForm';
-import { FormInput, FormSelect, RowWithHalfInputs } from '../../Shared/Styles';
+import { FormInput, FormSelect, RowWithHalfInputs, FormInputDate } from '../../Shared/Styles';
 import { Icon } from 'natura-ui';
 import {
   AddPhoneButton,
@@ -9,7 +9,7 @@ import {
   AddPhoneIconWrapper,
   Wrapper,
 } from './BasicInfoForm.styles';
-import { translate } from 'locale';
+import { translate, locale } from 'locale';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -26,9 +26,18 @@ const getCustomerGenderOptions = () => {
   ];
 };
 
-const getMaxValueToBirthday = () => {
-  const today = new Date();
-  return today.toJSON().split('T')[0];
+const getMaxValueToBirthday = () => new Date();
+
+const formatBirthdayToSave = (setFieldValue, date) => {
+  let value = '';
+  if (date) value = date.toISOString().split('T')[0];
+  setFieldValue('customer.birthday', value);
+};
+
+const formatBirthdayToEdit = date => {
+  if (!date) return {};
+  const parsedDate = new Date(date);
+  return new Date(parsedDate.getTime() + parsedDate.getTimezoneOffset() * 60000);
 };
 
 const BasicInfoForm = ({
@@ -36,6 +45,7 @@ const BasicInfoForm = ({
   handleBlur,
   handleSubmit,
   isSubmitting,
+  setFieldValue,
   submitted,
   errors = {},
   values = {},
@@ -84,18 +94,19 @@ const BasicInfoForm = ({
           blankOptionText={translate('blankSelectOption')}
         />
 
-        <FormInput
-          type="date"
+        <FormInputDate
           name="customer.birthday"
-          onChange={handleChange}
+          onChange={(event, date) => formatBirthdayToSave(setFieldValue, date)}
           onBlur={handleBlur}
           label={translate('formCustomerBirthDate')}
-          value={values.birthday}
+          value={formatBirthdayToEdit(values.birthday)}
           error={errors.birthday}
           dirty={touched.birthday || submitted}
-          min="1899-01-01"
-          max={getMaxValueToBirthday()}
+          minDate={new Date(1899, 1, 1)}
+          maxDate={getMaxValueToBirthday()}
           required={true}
+          cancelLabel={translate('cancelLabel')}
+          locale={locale}
         />
       </RowWithHalfInputs>
 
