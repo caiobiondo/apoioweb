@@ -1318,6 +1318,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
+            "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
             "currentMagazine": "Revista Atual",
@@ -3278,8 +3279,10 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                   </Select>
                                 </Styles__FormSelect>
                                 <Styles__FormInputDate
+                                  cancelLabel="cancelar"
                                   dirty={false}
                                   label="Nascimento"
+                                  locale="pt-BR"
                                   maxDate={2017-12-15T04:41:20.000Z}
                                   minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
@@ -3290,10 +3293,12 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                 >
                                   <InputDate
                                     bordered={true}
+                                    cancelLabel="cancelar"
                                     className="c18"
                                     dirty={false}
                                     disabled={false}
                                     label="Nascimento"
+                                    locale="pt-BR"
                                     maxDate={2017-12-15T04:41:20.000Z}
                                     minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
@@ -3306,6 +3311,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                   >
                                     <FormGroup
                                       bordered={true}
+                                      cancelLabel="cancelar"
                                       className="c18"
                                       dirty={false}
                                       disabled={false}
@@ -3314,6 +3320,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       hasError={false}
                                       help={null}
                                       label="Nascimento"
+                                      locale="pt-BR"
                                       maxDate={2017-12-15T04:41:20.000Z}
                                       minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"

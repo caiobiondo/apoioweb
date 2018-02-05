@@ -857,6 +857,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
+            "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
             "currentMagazine": "Revista Atual",
@@ -2386,6 +2387,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
+            "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
             "currentMagazine": "Revista Atual",
@@ -4208,6 +4210,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
+            "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
             "current": "atual",
             "currentMagazine": "Revista Atual",
@@ -6371,8 +6374,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   </Select>
                                 </Styles__FormSelect>
                                 <Styles__FormInputDate
+                                  cancelLabel="cancelar"
                                   dirty={false}
                                   label="Nascimento"
+                                  locale="pt-BR"
                                   maxDate={2017-12-15T04:41:20.000Z}
                                   minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
@@ -6383,10 +6388,12 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 >
                                   <InputDate
                                     bordered={true}
+                                    cancelLabel="cancelar"
                                     className="c18"
                                     dirty={false}
                                     disabled={false}
                                     label="Nascimento"
+                                    locale="pt-BR"
                                     maxDate={2017-12-15T04:41:20.000Z}
                                     minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
@@ -6399,6 +6406,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   >
                                     <FormGroup
                                       bordered={true}
+                                      cancelLabel="cancelar"
                                       className="c18"
                                       dirty={false}
                                       disabled={false}
@@ -6407,6 +6415,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       hasError={false}
                                       help={null}
                                       label="Nascimento"
+                                      locale="pt-BR"
                                       maxDate={2017-12-15T04:41:20.000Z}
                                       minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"

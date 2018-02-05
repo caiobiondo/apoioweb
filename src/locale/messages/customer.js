@@ -67,5 +67,6 @@ export default {
     female: 'Feminino',
     myCustomers: 'Meus Clientes',
     selectedCustomers: 'clientes selecionadas',
+    cancelLabel: 'cancelar',
   },
 };
