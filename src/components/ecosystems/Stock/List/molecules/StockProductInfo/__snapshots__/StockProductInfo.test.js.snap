@@ -8,7 +8,7 @@ exports[`StockProductInfo should render the stock product info 1`] = `
   />
   <StockProductInfostyles__ValuesWrapper>
     <StockProductInfostyles__ProductName>
-      name
+      Name 
     </StockProductInfostyles__ProductName>
     <StockProductInfostyles__ProductCode>
       <FormattedMessage
