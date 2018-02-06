@@ -7,9 +7,6 @@ export const StockItemProductImageWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
 
   svg {
     margin: 0 35px 0 30px;
