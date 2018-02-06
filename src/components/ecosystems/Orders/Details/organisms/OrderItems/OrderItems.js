@@ -9,7 +9,7 @@ import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import { AddStockProductMutation } from './OrderItems.data';
 import { StockProductsQuery } from 'components/ecosystems/Stock/List/organisms/ListTable/ListTable.data';
 import OrderItem from '../OrderItem/OrderItem';
-import { dialogContainer, dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
+import { dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import {
   getCycleIdFromUser,
   getCommercialStructureIdFromUser,
@@ -25,6 +25,7 @@ import {
   OrderItemsHeaderProductDescription,
   OrderItemsHeaderProductValuesWrapper,
   OrderItemsHeaderProductValueLabel,
+  dialogContentStyle,
 } from './OrderItems.styles';
 
 export class OrderItems extends Component {
@@ -93,7 +94,7 @@ export class OrderItems extends Component {
         modal={false}
         open={this.state.importedModalOpened}
         onRequestClose={this.onFinish}
-        contentStyle={dialogContainer}
+        contentStyle={dialogContentStyle}
         bodyStyle={dialogContent}
         titleStyle={dialogTitle}
       />
