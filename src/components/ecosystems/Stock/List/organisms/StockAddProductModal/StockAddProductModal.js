@@ -214,16 +214,21 @@ export class StockAddProductModal extends Component {
             value={this.state.productQty}
           />
         </FormInputWrapper>
-        <FormButtonWrapper>
-          <FormButton
-            primary
-            disabled={!this.allowSubmit()}
-            label={this.renderAddButtonLabel()}
-            onClick={this.onSubmit}
-            {...FormButtonStyles}
-          />
-        </FormButtonWrapper>
       </FormWrapper>
+    );
+  };
+
+  renderFormButtom = () => {
+    return (
+      <FormButtonWrapper>
+        <FormButton
+          primary
+          disabled={!this.allowSubmit()}
+          label={this.renderAddButtonLabel()}
+          onClick={this.onSubmit}
+          {...FormButtonStyles}
+        />
+      </FormButtonWrapper>
     );
   };
 
@@ -260,6 +265,7 @@ export class StockAddProductModal extends Component {
           {this.renderForm()}
           {this.renderProduct()}
         </ModalContentWrapper>
+        {this.renderFormButtom()}
       </Modal>,
       this.renderFeedbackDialog(),
     ];
