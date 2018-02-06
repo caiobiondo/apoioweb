@@ -1486,7 +1486,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "stockProductHeaderName": "Produto",
             "stockProductHeaderQuantity": "Quantidade",
             "stockProductImported": "Produto importado para o estoque com sucesso!",
-            "stockProductName": "Nome",
+            "stockProductNameOrCode": "Produto/Código",
             "stockProductQuantityLabel": "Quantidade",
             "stockProductRemove": "Remover",
             "stockProductRemoved": "{quantity, number} {quantity, plural, one {Removido} other {Removidos} }",

@@ -23,7 +23,7 @@ export class ListSearch extends BaseSearch {
             name="stockSearch"
             onChange={this.handleNameChange}
             onKeyPress={this.onKeyPress}
-            label={translate('stockProductName')}
+            label={translate('stockProductNameOrCode')}
             value={this.state.name}
           />
           <FormButtonWrapper>

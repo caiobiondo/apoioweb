@@ -22,7 +22,7 @@ exports[`ListSearch Organism should render input and submit button 1`] = `
   </p>
   <ListSearchstyles__FormWrapper>
     <ListSearchstyles__FormInput
-      label="Nome"
+      label="Produto/Código"
       name="stockSearch"
       onChange={[Function]}
       onKeyPress={[Function]}
