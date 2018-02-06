@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
-import { orange100 } from 'styles/colors';
+import { orange100, gray900 } from 'styles/colors';
 
 export const Wrapper = styled.div`
   padding: 25px;
@@ -73,5 +73,22 @@ export const RightCarouselArrow = LeftCarouselArrow.extend`
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     right: 0;
     left: auto;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+  svg {
+    fill: ${gray900};
+    width: 15px;
+    height: 15px;
+    opacity: 0.5;
+  }
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    display: none;
   }
 `;
