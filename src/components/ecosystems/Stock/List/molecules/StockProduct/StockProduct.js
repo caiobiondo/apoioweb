@@ -43,9 +43,8 @@ class StockProduct extends Component {
         <Img src={imageUrl} loader={loader} unloader={fallbackImage} />
         <StockItemProductDetails>
           <StockItemProductDetailsName>
-            {(this.props.product && this.props.product.name) || (
-              <FormattedMessage id="stockNoProductFound" />
-            )}
+            {(this.props.product && this.props.product.name) ||
+              (this.props.productCode && <FormattedMessage id="stockNoProductFound" />)}
           </StockItemProductDetailsName>
           {this.props.product &&
             this.props.product.productId && (
@@ -64,6 +63,7 @@ class StockProduct extends Component {
 
 StockProduct.propTypes = {
   product: PropTypes.object,
+  productCode: PropTypes.string,
   loading: PropTypes.bool,
 };
 

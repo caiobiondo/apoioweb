@@ -68,14 +68,17 @@ export class StockAddProductModal extends Component {
         return null;
       })
       .then(res => {
+        this.setState({ loadedProduct: null });
+
         if (res && res.data && res.data.product) {
           if (res.data.product.productId.toString() === this.state.lastProductCode) {
             this.setState({
-              loadingProduct: false,
               loadedProduct: res.data.product,
             });
           }
         }
+
+        this.setState({ loadingProduct: false });
       });
   }, 1000);
 
@@ -180,7 +183,11 @@ export class StockAddProductModal extends Component {
   renderProduct = () => {
     return (
       <StockProductWrapper>
-        <StockProduct product={this.state.loadedProduct} loading={this.state.loadingProduct} />
+        <StockProduct
+          product={this.state.loadedProduct}
+          loading={this.state.loadingProduct}
+          productCode={this.state.productCode}
+        />
       </StockProductWrapper>
     );
   };
