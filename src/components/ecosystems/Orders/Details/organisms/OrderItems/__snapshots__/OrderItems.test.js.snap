@@ -410,7 +410,7 @@ exports[`OrderItems renders order details items list (in importing mode) 1`] = `
     }
     contentStyle={
       Object {
-        "maxWidth": "none",
+        "maxWidth": "450px",
       }
     }
     key="successDialog"
@@ -837,7 +837,7 @@ exports[`OrderItems renders order details items list 1`] = `
     }
     contentStyle={
       Object {
-        "maxWidth": "none",
+        "maxWidth": "450px",
       }
     }
     key="successDialog"

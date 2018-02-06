@@ -50,3 +50,7 @@ export const OrderItemsHeaderProductValuesWrapper = styled.div`
 export const OrderItemsHeaderProductValueLabel = styled.div`
   flex: 1 1 33%;
 `;
+
+export const dialogContentStyle = {
+  maxWidth: '450px',
+};
