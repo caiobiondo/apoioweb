@@ -5,11 +5,18 @@ import { Responsive } from '@entria/components';
 
 export const FormWrapper = styled.div`
   flex: 1 1 55%;
+  margin-bottom: 54px;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    margin-bottom: 5px;
+  }
 `;
 
 export const StockProductWrapper = styled.div`
   flex: 1 1 45%;
   justify-content: center;
+  display: flex;
+  align-self: center;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-bottom: 5px;
@@ -66,8 +73,6 @@ export const StockItemProductImageFallback = styled.div`
 `;
 
 export const FormButtonWrapper = styled.div`
-  margin-top: 54px;
-
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-top: 24px;
 
