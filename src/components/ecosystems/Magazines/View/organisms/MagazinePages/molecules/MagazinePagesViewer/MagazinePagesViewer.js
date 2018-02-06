@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper } from 'natura-ui';
+import { Paper, Icon } from 'natura-ui';
 import SectionTitle from 'components/molecules/SectionTitle';
 import { orange100 } from 'styles/colors';
 import Slider from 'react-slick';
@@ -11,7 +11,10 @@ import {
   RightCarouselArrow,
   MagazinePageWrapper,
   MagazinePageInnerWrapper,
+  ButtonWrapper,
 } from './MagazinePagesViewer.styles';
+
+import Fullscreen from 'react-full-screen';
 
 class LeftArrow extends Component {
   render() {
@@ -62,6 +65,19 @@ const MagazinePage = ({ src }) => {
 };
 
 export class MagazinePagesViewer extends Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      isFull: false,
+      isWindow: false,
+    };
+  }
+
+  changeMode = () => {
+    this.setState({ isFull: !this.state.isFull });
+  };
+
   render() {
     const settings = {
       dots: false,
@@ -88,23 +104,31 @@ export class MagazinePagesViewer extends Component {
     };
     const { magazine } = this.props;
     const { pageImages } = magazine.pageDetails;
+    const iconName = this.state.isFull ? 'ico_shrink' : 'ico_expand';
     return (
       <PaperWrapper>
         <Paper>
-          <Wrapper>
-            <SectionTitle iconName="ico_magazine" value={magazine.title} color={orange100} />
-            <Slider {...settings}>
-              {pageImages.map((pageImage, index) => {
-                return (
-                  <MagazinePageWrapper key={index}>
-                    <MagazinePage
-                      src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
-                    />
-                  </MagazinePageWrapper>
-                );
-              })}
-            </Slider>
-          </Wrapper>
+          <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({ isFull })}>
+            <Wrapper>
+              <ButtonWrapper onClick={this.changeMode}>
+                <Icon file={iconName} />
+              </ButtonWrapper>
+              <SectionTitle iconName="ico_magazine" color={orange100}>
+                {magazine.title}
+              </SectionTitle>
+              <Slider {...settings}>
+                {pageImages.map((pageImage, index) => {
+                  return (
+                    <MagazinePageWrapper key={index}>
+                      <MagazinePage
+                        src={`${magazine.pageDetails.pageImagesPath}${pageImage.pageFile}`}
+                      />
+                    </MagazinePageWrapper>
+                  );
+                })}
+              </Slider>
+            </Wrapper>
+          </Fullscreen>
         </Paper>
       </PaperWrapper>
     );
