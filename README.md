@@ -1,6 +1,6 @@
 # Natura - WebFV - App CN
 
-[![CodeFactor](https://www.codefactor.io/repository/bitbucket/myvizir/natura-orders/badge)](https://www.codefactor.io/repository/bitbucket/myvizir/natura-orders) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![react:version](https://img.shields.io/badge/react-16.0.0-blue.svg)](https://github.com/facebook/react) [![apollo:version](https://img.shields.io/badge/apollo-2.0.0-yellow.svg)](https://github.com/apollographql/apollo-client)
+[![CodeFactor](https://www.codefactor.io/repository/bitbucket/myvizir/webfv-appcn/badge)](https://www.codefactor.io/repository/bitbucket/myvizir/webfv-appcn) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![react:version](https://img.shields.io/badge/react-16.0.0-blue.svg)](https://github.com/facebook/react) [![apollo:version](https://img.shields.io/badge/apollo-2.0.0-yellow.svg)](https://github.com/apollographql/apollo-client)
 
 > A web react application based on **Natura Consultora Mobile App** features
 
