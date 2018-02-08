@@ -3,7 +3,7 @@ import { Responsive } from '@entria/components';
 import { orange100, gray900 } from 'styles/colors';
 
 export const Wrapper = styled.div`
-  padding: 25px;
+  padding: 15px;
   position: absolute;
   margin-bottom: 40px;
   overflow-x: hidden;
@@ -47,7 +47,7 @@ export const MagazinePageWrapper = styled.div`
   justify-content: center;
 `;
 
-export const LeftCarouselArrow = styled.span`
+const CarouselArrow = styled.span`
   height: 80%;
   position: absolute;
   bottom: 40px;
@@ -67,7 +67,11 @@ export const LeftCarouselArrow = styled.span`
   }
 `;
 
-export const RightCarouselArrow = LeftCarouselArrow.extend`
+export const LeftCarouselArrow = CarouselArrow.extend`
+  left: 15px;
+`;
+
+export const RightCarouselArrow = CarouselArrow.extend`
   right: 25px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {

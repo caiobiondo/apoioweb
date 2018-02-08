@@ -88,6 +88,8 @@ export class MagazinePagesViewer extends Component {
       slidesToScroll: 2,
       draggable: false,
       lazyLoad: true,
+      centerMode: true,
+      centerPadding: '0px',
       responsive: [
         {
           breakpoint: 768,
