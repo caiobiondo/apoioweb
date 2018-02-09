@@ -38,7 +38,7 @@ export const PaperWrapper = styled.div`
 
 export const MagazineCoverList = styled.div`
   overflow-x: hidden;
-
+  min-height: 300px;
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     div {
       display: flex;
@@ -56,7 +56,6 @@ export const MagazineCoverWrapper = styled.div`
   cursor: pointer;
   position: relative;
   text-align: center;
-  margin: 0 10px;
 
   &:hover {
     h2,
@@ -66,7 +65,7 @@ export const MagazineCoverWrapper = styled.div`
 
     img,
     svg {
-      transform: scale(1.1);
+      transform: scale(1.2);
       opacity: 0.2;
     }
   }
@@ -103,7 +102,7 @@ export const MagazineCover = styled.div`
 
 export const MagazineCoverTitle = styled.h2`
   font-family: ${NaturaRegular};
-  font-size: 15px;
+  font-size: 11.4px;
   font-weight: bold;
   line-height: 1.25;
   text-align: center;
@@ -114,7 +113,7 @@ export const MagazineCoverTitle = styled.h2`
 
 export const MagazineCoverPeriod = styled.span`
   font-family: ${RobotoMedium};
-  font-size: 11px;
+  font-size: 8.7px;
   font-weight: bold;
   line-height: 0.71;
   text-align: center;
