@@ -45,12 +45,11 @@ export class StockAddProductModal extends Component {
 
   loadProduct = debounce(productCode => {
     if (!productCode) {
-      this.setState({ loadedProduct: null });
+      this.setState({ loadedProduct: null, loadingProduct: false });
       return;
     }
 
     this.setState({
-      loadingProduct: true,
       lastProductCode: productCode,
     });
 
@@ -83,7 +82,7 @@ export class StockAddProductModal extends Component {
   }, 1000);
 
   onChangeProductAddSearch = (event, productCode) => {
-    this.setState({ productCode });
+    this.setState({ productCode, loadingProduct: true });
     this.loadProduct(productCode);
   };
 
