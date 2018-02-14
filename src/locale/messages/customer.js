@@ -68,5 +68,6 @@ export default {
     myCustomers: 'Meus Clientes',
     selectedCustomers: 'clientes selecionadas',
     cancelLabel: 'cancelar',
+    okLabel: 'confirmar',
   },
 };

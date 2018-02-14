@@ -106,6 +106,7 @@ const BasicInfoForm = ({
           maxDate={getMaxValueToBirthday()}
           required={true}
           cancelLabel={translate('cancelLabel')}
+          okLabel={translate('okLabel')}
           locale={locale}
         />
       </RowWithHalfInputs>
