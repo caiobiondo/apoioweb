@@ -32,13 +32,14 @@ export class OrderItems extends Component {
   state = {
     importedOrderItems: [],
     importedModalOpened: false,
-    loadingProductCode: null,
+    productsImporting: [],
   };
 
-  onImport = orderItem => {
+  onImport = (orderItem, indexItem) => {
     this.setState({
-      loadingProductCode: orderItem.codigoProduto,
+      productsImporting: [...this.state.productsImporting, orderItem.codigoProduto],
     });
+
     this.props
       .mutate({
         variables: {
@@ -63,7 +64,7 @@ export class OrderItems extends Component {
       })
       .then(() => {
         this.setState({
-          loadingProductCode: null,
+          productsImporting: [...this.state.productsImporting.slice(indexItem)],
           importedModalOpened: true,
           importedOrderItems: [...this.state.importedOrderItems, orderItem],
         });
@@ -109,7 +110,7 @@ export class OrderItems extends Component {
     this.props.history.push(`/my-stock`);
   };
 
-  renderOrderItems = (orderItems, loadingProductCode) => {
+  renderOrderItems = orderItems => {
     const { importing } = this.props;
     if (!orderItems) return null;
 
@@ -132,17 +133,17 @@ export class OrderItems extends Component {
             {importing && <OrderItemsHeaderProductValueLabel />}
           </OrderItemsHeaderProductValuesWrapper>
         </OrderItemsHeader>
-        {orderItems.map(orderItem => this.renderOrderItem(orderItem, loadingProductCode))}
+        {orderItems.map((orderItem, indexItem) => this.renderOrderItem(orderItem, indexItem))}
       </div>
     );
   };
 
-  renderOrderItem = (orderItem, loadingProductCode) => {
+  renderOrderItem = (orderItem, indexItem) => {
     const imported = this.state.importedOrderItems.filter(i => i === orderItem).length > 0;
-
+    const { productsImporting } = this.state;
     const onImportOrderItem = event => {
       event.stopPropagation();
-      this.onImport(orderItem);
+      this.onImport(orderItem, indexItem);
     };
 
     return (
@@ -151,7 +152,7 @@ export class OrderItems extends Component {
         key={orderItem.codigoProduto}
         orderItem={orderItem}
         imported={imported}
-        loading={orderItem.codigoProduto === loadingProductCode}
+        loading={productsImporting.includes(orderItem.codigoProduto)}
         onImport={onImportOrderItem}
       />
     );
@@ -159,7 +160,6 @@ export class OrderItems extends Component {
 
   render() {
     const { order } = this.props;
-    const { loadingProductCode } = this.state;
 
     return (
       <Paper style={OrderDetailsWrapper}>
@@ -169,7 +169,7 @@ export class OrderItems extends Component {
             <FormattedMessage id="orderItemsBoughtQuantity" />
             <OrderItemsQuantity>({(order.itemEnviadoCaixa || []).length})</OrderItemsQuantity>
           </OrderItemsQuantityWrapper>
-          {this.renderOrderItems(order.itemEnviadoCaixa, loadingProductCode)}
+          {this.renderOrderItems(order.itemEnviadoCaixa)}
         </OrderItemsInfos>
         {this.renderSuccessDialog()}
       </Paper>
