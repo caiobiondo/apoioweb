@@ -14,6 +14,7 @@ import {
 import { graphql, compose } from 'react-apollo';
 
 const FEEDBACK_TIMEOUT = 5000;
+const MAX_PRODUCT_QTY = 100000;
 
 class StockProductQuantity extends Component {
   constructor(props) {
@@ -167,7 +168,12 @@ class StockProductQuantity extends Component {
   render() {
     return (
       <Wrapper>
-        <CounterInput min={0} onChange={this.quantityChanged} value={this.state.quantity} />
+        <CounterInput
+          min={0}
+          max={MAX_PRODUCT_QTY}
+          onChange={this.quantityChanged}
+          value={this.state.quantity}
+        />
         {this.renderBottom()}
       </Wrapper>
     );

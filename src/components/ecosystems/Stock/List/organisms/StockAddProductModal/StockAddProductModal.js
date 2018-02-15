@@ -28,6 +28,8 @@ import {
 import StockProduct from '../../molecules/StockProduct';
 import SectionTitle from 'components/molecules/SectionTitle';
 
+const MAX_PRODUCT_QTY = 100000;
+
 export class StockAddProductModal extends Component {
   constructor(props) {
     super(props);
@@ -110,6 +112,7 @@ export class StockAddProductModal extends Component {
   };
 
   onChangeProductQty = (event, productQty) => {
+    if (parseInt(productQty, 10) > MAX_PRODUCT_QTY) return;
     this.setState({ productQty });
   };
 
