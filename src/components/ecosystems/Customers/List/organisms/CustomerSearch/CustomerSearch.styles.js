@@ -32,6 +32,10 @@ export const FormButtonWrapper = styled.div`
     > div > div {
       width: 100%;
     }
+
+    > div > button > div {
+      flex: 1 1 auto;
+    }
   }
 `;
 
