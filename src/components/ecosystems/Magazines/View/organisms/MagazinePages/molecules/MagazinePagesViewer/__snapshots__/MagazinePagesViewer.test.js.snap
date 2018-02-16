@@ -8,66 +8,81 @@ exports[`MagazinePagesViewer should render a title and a slide with the magazine
     transitionEnabled={true}
     zDepth={1}
   >
-    <MagazinePagesViewerstyles__Wrapper>
-      <SectionTitle
-        color="#f3971f"
-        iconName="ico_magazine"
-        value="a title"
-      />
-      <Slider
-        arrows={true}
-        dots={false}
-        draggable={false}
-        infinite={false}
-        lazyLoad={true}
-        nextArrow={
-          <RightArrow
-            slidesToScroll={2}
+    <FullScreen
+      enabled={false}
+      onChange={[Function]}
+    >
+      <MagazinePagesViewerstyles__Wrapper>
+        <MagazinePagesViewerstyles__ButtonWrapper
+          onClick={[Function]}
+        >
+          <Icon
+            file="ico_expand"
           />
-        }
-        prevArrow={<LeftArrow />}
-        responsive={
-          Array [
-            Object {
-              "breakpoint": 768,
-              "settings": Object {
-                "nextArrow": <RightArrow
-                  slidesToScroll={1}
-          />,
-                "prevArrow": <LeftArrow />,
-                "slidesToScroll": 1,
-                "slidesToShow": 1,
+        </MagazinePagesViewerstyles__ButtonWrapper>
+        <SectionTitle
+          color="#f3971f"
+          iconName="ico_magazine"
+        >
+          a title
+        </SectionTitle>
+        <Slider
+          arrows={true}
+          centerMode={true}
+          centerPadding="0px"
+          dots={false}
+          draggable={false}
+          infinite={false}
+          lazyLoad={true}
+          nextArrow={
+            <RightArrow
+              slidesToScroll={2}
+            />
+          }
+          prevArrow={<LeftArrow />}
+          responsive={
+            Array [
+              Object {
+                "breakpoint": 768,
+                "settings": Object {
+                  "nextArrow": <RightArrow
+                    slidesToScroll={1}
+            />,
+                  "prevArrow": <LeftArrow />,
+                  "slidesToScroll": 1,
+                  "slidesToShow": 1,
+                },
               },
-            },
-          ]
-        }
-        slidesToScroll={2}
-        slidesToShow={2}
-        speed={500}
-      >
-        <MagazinePagesViewerstyles__MagazinePageWrapper
-          key="0"
+            ]
+          }
+          slidesToScroll={2}
+          slidesToShow={2}
+          speed={500}
         >
-          <MagazinePage
-            src="a-page-pathfile-1"
-          />
-        </MagazinePagesViewerstyles__MagazinePageWrapper>
-        <MagazinePagesViewerstyles__MagazinePageWrapper
-          key="1"
-        >
-          <MagazinePage
-            src="a-page-pathfile-2"
-          />
-        </MagazinePagesViewerstyles__MagazinePageWrapper>
-        <MagazinePagesViewerstyles__MagazinePageWrapper
-          key="2"
-        >
-          <MagazinePage
-            src="a-page-pathfile-3"
-          />
-        </MagazinePagesViewerstyles__MagazinePageWrapper>
-      </Slider>
-    </MagazinePagesViewerstyles__Wrapper>
+          <MagazinePagesViewerstyles__MagazinePageWrapper
+            key="0"
+          >
+            <MagazinePage
+              src="a-page-pathfile-1"
+            />
+          </MagazinePagesViewerstyles__MagazinePageWrapper>
+          <MagazinePagesViewerstyles__MagazinePageWrapper
+            key="1"
+          >
+            <MagazinePage
+              src="a-page-pathfile-2"
+            />
+          </MagazinePagesViewerstyles__MagazinePageWrapper>
+          <MagazinePagesViewerstyles__MagazinePageWrapper
+            key="2"
+          >
+            <MagazinePage
+              src="a-page-pathfile-3"
+            />
+          </MagazinePagesViewerstyles__MagazinePageWrapper>
+        </Slider>
+      </MagazinePagesViewerstyles__Wrapper>
+    </FullScreen>
   </Paper>
 </MagazinePagesViewerstyles__PaperWrapper>
 `;
