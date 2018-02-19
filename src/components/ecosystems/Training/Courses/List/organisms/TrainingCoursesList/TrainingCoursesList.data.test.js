@@ -4,21 +4,23 @@ import {
   updateQuery,
 } from './TrainingCoursesList.data';
 
-xdescribe('TrainingCoursesQuery', () => {
+describe('TrainingCoursesQuery', () => {
   it('should be the correct query', () => {
     expect(TrainingCoursesQuery).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
-    const props = { user: { codigo: 1 }, productSearch: 'search' };
+    const props = { user: { codigo: 1 }, status: null, favorite: null };
 
     const options = TrainingCoursesQueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
+        sellerId: 1,
         limit: 10,
         offset: 0,
-        filter: 'search',
+        status: null,
+        favorite: null,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Courses List renders correctly when loading 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Courses List renders correctly when the list is empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Courses List renders correctly when the list is not empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "flex": "1 1 0",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "paddingBottom": "70px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <InfiniteScroll
+    element="div"
+    hasMore={false}
+    initialLoad={true}
+    isReverse={false}
+    loadMore={[Function]}
+    loader={
+      <mixins__LoadingWrapperStyle>
+        <CircularProgress
+          max={100}
+          min={0}
+          mode="indeterminate"
+          size={40}
+          thickness={2}
+          value={0}
+        />
+      </mixins__LoadingWrapperStyle>
+    }
+    pageStart={0}
+    ref={null}
+    threshold={250}
+    useCapture={false}
+    useWindow={true}
+  >
+    <div />
+  </InfiniteScroll>
+</Paper>
+`;

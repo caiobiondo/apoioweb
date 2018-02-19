@@ -68,7 +68,9 @@ export class TrainingCoursesList extends Component {
               <CircularProgress thickness={2} />
             </LoadingWrapper>
           }
-        />
+        >
+          <div />
+        </InfiniteScroll>
       </Paper>
     );
   }

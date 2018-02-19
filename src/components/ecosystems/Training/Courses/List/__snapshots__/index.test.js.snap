@@ -4,7 +4,6 @@ exports[`TrainingCoursesList Ecosystem should render the training courses list p
 <indexstyles__Main>
   <Apollo(TrainingCoursesList)
     onLoadFinished={[Function]}
-    productSearch={undefined}
     user={undefined}
   />
 </indexstyles__Main>

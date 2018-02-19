@@ -15,11 +15,7 @@ class TrainingWrapper extends Component {
   render() {
     return (
       <Main>
-        <TrainingCoursesList
-          user={this.props.user}
-          onLoadFinished={this.onLoadFinished}
-          productSearch={this.state.productSearch}
-        />
+        <TrainingCoursesList user={this.props.user} onLoadFinished={this.onLoadFinished} />
       </Main>
     );
   }
