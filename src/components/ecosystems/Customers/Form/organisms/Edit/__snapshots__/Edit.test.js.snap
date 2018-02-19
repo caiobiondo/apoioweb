@@ -859,6 +859,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "cancel": "Cancelar",
             "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
+            "coursesEmptyList": "Lista vazia",
+            "coursesEmptyListDescription": "Não existem cursos disponíveis.",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -938,6 +940,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCoursesEmptyList": "Lista de cursos vazia",
+            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -2390,6 +2394,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "cancel": "Cancelar",
             "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
+            "coursesEmptyList": "Lista vazia",
+            "coursesEmptyListDescription": "Não existem cursos disponíveis.",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -2469,6 +2475,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCoursesEmptyList": "Lista de cursos vazia",
+            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -4214,6 +4222,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "cancel": "Cancelar",
             "cancelLabel": "cancelar",
             "checkYourScore": "Confira sua Pontuação",
+            "coursesEmptyList": "Lista vazia",
+            "coursesEmptyListDescription": "Não existem cursos disponíveis.",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -4293,6 +4303,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCoursesEmptyList": "Lista de cursos vazia",
+            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
@@ -6381,16 +6393,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T04:41:20.000Z}
-                                  minDate={2017-12-15T04:41:20.000Z}
+                                  maxDate={2017-12-15T06:41:20.000Z}
+                                  minDate={2017-12-15T06:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   required={true}
-                                  value={2017-12-15T04:41:20.000Z}
+                                  value={2017-12-15T06:41:20.000Z}
                                 >
                                   <InputDate
+                                    autoOk={false}
                                     bordered={true}
                                     cancelLabel="cancelar"
                                     className="c18"
@@ -6398,18 +6411,19 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T04:41:20.000Z}
-                                    minDate={2017-12-15T04:41:20.000Z}
+                                    maxDate={2017-12-15T06:41:20.000Z}
+                                    minDate={2017-12-15T06:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     required={true}
                                     showError={true}
-                                    value={2017-12-15T04:41:20.000Z}
+                                    value={2017-12-15T06:41:20.000Z}
                                     width="100%"
                                   >
                                     <FormGroup
+                                      autoOk={false}
                                       bordered={true}
                                       cancelLabel="cancelar"
                                       className="c18"
@@ -6421,15 +6435,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T04:41:20.000Z}
-                                      minDate={2017-12-15T04:41:20.000Z}
+                                      maxDate={2017-12-15T06:41:20.000Z}
+                                      minDate={2017-12-15T06:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
                                       onChange={[Function]}
                                       required={true}
                                       showError={true}
-                                      value={2017-12-15T04:41:20.000Z}
+                                      value={2017-12-15T06:41:20.000Z}
                                       width="100%"
                                     >
                                       <styled.div
@@ -6462,7 +6476,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             >
                                               <DatePicker
                                                 DateTimeFormat={[Function]}
-                                                autoOk={true}
+                                                autoOk={false}
                                                 cancelLabel="cancelar"
                                                 container="dialog"
                                                 disableYearSelection={false}
@@ -6471,9 +6485,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T04:41:20.000Z}
-                                                minDate={2017-12-15T04:41:20.000Z}
+                                                maxDate={2017-12-15T06:41:20.000Z}
+                                                minDate={2017-12-15T06:41:20.000Z}
                                                 name="customer.birthday"
+                                                okLabel="confirmar"
                                                 onChange={[Function]}
                                                 onFocus={[Function]}
                                                 openToYearSelection={false}
@@ -6483,7 +6498,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                     "width": "100%",
                                                   }
                                                 }
-                                                value={2017-12-15T04:41:20.000Z}
+                                                value={2017-12-15T06:41:20.000Z}
                                               >
                                                 <div
                                                   style={
@@ -7036,16 +7051,16 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                   </TextField>
                                                   <DatePickerDialog
                                                     DateTimeFormat={[Function]}
-                                                    autoOk={true}
+                                                    autoOk={false}
                                                     cancelLabel="cancelar"
                                                     container="dialog"
                                                     disableYearSelection={false}
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T04:41:20.000Z}
-                                                    minDate={2017-12-15T04:41:20.000Z}
-                                                    okLabel="OK"
+                                                    maxDate={2017-12-15T06:41:20.000Z}
+                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}
                                                   >

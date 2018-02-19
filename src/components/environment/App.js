@@ -120,6 +120,14 @@ export default class App extends Component {
                     'magazine',
                   )}
                 />
+                <Route
+                  exact
+                  path="/training/courses"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Courses/List'),
+                    'training',
+                  )}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>
