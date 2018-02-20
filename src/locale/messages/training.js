@@ -6,6 +6,10 @@ export default {
     coursesEmptyListDescription: 'Não existem cursos disponíveis.',
     myCoursesEmptyList: 'Lista de cursos vazia',
     myCoursesEmptyListDescription: 'Você ainda não possui clientes cadastrados',
+    courses: 'Cursos',
+    categories: 'Categorias',
+    myList: 'Minha Lista',
+    certificate: 'Certificado',
   },
 };
 /* eslint-disable sort-keys */

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingCoursesList.data';
+import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql } from 'react-apollo';
 
 import InfiniteScroll from 'react-infinite-scroller';
@@ -49,6 +50,7 @@ export class TrainingCoursesList extends Component {
     if (!this.props.courses || !this.props.courses.length) {
       return (
         <Paper style={fullContainer}>
+          <PageMenu />
           <EmptyList
             icon="ico_list_add"
             titleId="coursesEmptyList"
@@ -60,6 +62,7 @@ export class TrainingCoursesList extends Component {
 
     return (
       <Paper style={WrapperStyle}>
+        <PageMenu />
         <InfiniteScroll
           loadMore={this.props.fetchMore}
           hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
