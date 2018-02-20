@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TrainingCoursesList from './organisms/TrainingCoursesList';
+import { Main } from './index.styles';
 
 class TrainingWrapper extends Component {
   state = {
@@ -13,11 +14,13 @@ class TrainingWrapper extends Component {
 
   render() {
     return (
-      <TrainingCoursesList
-        user={this.props.user}
-        onLoadFinished={this.onLoadFinished}
-        productSearch={this.state.productSearch}
-      />
+      <Main>
+        <TrainingCoursesList
+          user={this.props.user}
+          onLoadFinished={this.onLoadFinished}
+          productSearch={this.state.productSearch}
+        />
+      </Main>
     );
   }
 }

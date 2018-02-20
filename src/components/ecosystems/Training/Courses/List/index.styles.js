@@ -9,7 +9,3 @@ export const Main = styled.div`
     margin: ${spMedium} 0;
   }
 `;
-
-export const Container = styled.div`
-  margin-bottom: ${spMedium};
-`;
