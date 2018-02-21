@@ -11,13 +11,13 @@ import Category from 'components/ecosystems/Training/Categories/List/molecules/C
 
 import InfiniteScroll from 'react-infinite-scroller';
 
-import { fullContainer, List, LoadingWrapper } from './TrainingCategoriesList.styles';
+import { fullContainer, List, LoadingWrapper, ListItem } from './TrainingCategoriesList.styles';
 
 const renderTrainingCategory = trainingCategory => {
   return (
-    <li key={trainingCategory.id}>
+    <ListItem key={trainingCategory.id}>
       <Category category={trainingCategory} />
-    </li>
+    </ListItem>
   );
 };
 

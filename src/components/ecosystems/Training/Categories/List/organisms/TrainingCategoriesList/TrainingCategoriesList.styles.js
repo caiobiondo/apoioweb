@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { Responsive } from '@entria/components';
 import { LoadingWrapperStyle } from 'styles/mixins';
 
-import { spSmall, spMedium, spPage } from 'styles/spacing';
+import { spMedium, spPage } from 'styles/spacing';
 
 export const LoadingWrapper = LoadingWrapperStyle;
 
@@ -10,10 +9,12 @@ export const List = styled.ul`
   padding-left: 0;
   padding-top: ${spMedium};
   margin: ${spMedium};
+  list-style-type: none;
+`;
 
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    margin: ${spSmall};
-  }
+export const ListItem = styled.li`
+  list-style-type: none;
+  margin-bottom: 70px;
 `;
 
 export const WrapperStyle = {

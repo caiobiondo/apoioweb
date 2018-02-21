@@ -8,10 +8,17 @@ export const TrainingCategoriesQuery = gql`
       id
       name
       tt
+      thumbnail
+      categories {
+        id
+        name
+        thumbnail
+      }
       courses {
         id
         title
         thumbnail
+        durationInSeconds
       }
     }
   }

@@ -1,29 +1,70 @@
 import React from 'react';
 
-import CategoryCourse from '../CategoryCourse/CategoryCourse';
+import { FormattedMessage } from 'react-intl';
 
-const renderCategoryCourse = course => {
-  return (
-    <li key={course.id}>
-      <CategoryCourse course={course} />
-    </li>
-  );
+import CategoryCourse from '../CategoryCourse/CategoryCourse';
+import SubCategory from '../SubCategory/SubCategory';
+
+import {
+  CategoryTitleHolder,
+  CategoryIcon,
+  CategoryTitle,
+  ViewAllLink,
+  ViewAll,
+  List,
+} from './Category.styles';
+
+const renderSubCategories = categories => {
+  return <List>{categories.map(category => renderSubCategory(category))}</List>;
 };
 
-const Category = ({ category }) => (
-  <div>
+const renderSubCategory = category => {
+  return <SubCategory category={category} />;
+};
+
+const renderCourses = courses => {
+  return <List>{courses.map(course => renderCategoryCourse(course))}</List>;
+};
+
+const renderCategoryCourse = course => {
+  return <CategoryCourse course={course} />;
+};
+
+const Category = ({ category }) => {
+  const hasCourses = () => {
+    return category.courses && category.courses.length;
+  };
+
+  const hasSubCategories = () => {
+    return category.categories && category.categories.length;
+  };
+
+  if (!category || (!hasCourses() && !hasSubCategories())) {
+    return null;
+  }
+
+  const childList = hasSubCategories()
+    ? renderSubCategories(category.categories)
+    : renderCourses(category.courses);
+
+  return (
     <div>
       <div>
-        <img src={category.thumbnail} alt={category.title} />
-        <h3>{category.name}</h3>
-      </div>
-      <span>
-        <a href="#">Ver todos</a>
-      </span>
-    </div>
+        <CategoryTitleHolder>
+          <CategoryIcon src={category.thumbnail} alt={category.title} />
+          <CategoryTitle>{category.name}</CategoryTitle>
 
-    <ul>{category.courses.map(course => renderCategoryCourse(course))}</ul>
-  </div>
-);
+          <ViewAll>
+            <ViewAllLink href={`/training/categories/${category.id}`} title={category.name}>
+              <FormattedMessage id="viewAllCourses" />
+            </ViewAllLink>
+          </ViewAll>
+        </CategoryTitleHolder>
+
+        {childList}
+      </div>
+    </div>
+  );
+};
 
 export default Category;
