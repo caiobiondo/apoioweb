@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
+import TrainingCourse from 'components/ecosystems/Training/Courses/List/molecules/TrainingCourse';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingCoursesList.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
@@ -7,7 +8,12 @@ import { graphql } from 'react-apollo';
 
 import InfiniteScroll from 'react-infinite-scroller';
 
-import { WrapperStyle, LoadingWrapper, fullContainer } from './TrainingCoursesList.styles';
+import {
+  TrainingCoursesListWrapper,
+  List,
+  LoadingWrapper,
+  fullContainer,
+} from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
   state = {
@@ -19,27 +25,28 @@ export class TrainingCoursesList extends Component {
     this.checkIfHasMoreItems(loading, courses);
   }
 
-  notifyLoadFinish = (loading, items) => {
+  notifyLoadFinish = (loading, courses) => {
     if (!loading && this.props.onLoadFinished) {
-      this.props.onLoadFinished(this.isEmpty(loading, items), this.isLoading(loading, items));
+      this.props.onLoadFinished(this.isEmpty(loading, courses), this.isLoading(loading, courses));
     }
   };
 
-  checkIfHasMoreItems = (loading, items) => {
-    if (this.props.loading === loading || !items) {
+  checkIfHasMoreItems = (loading, courses) => {
+    if (this.props.loading === loading || !courses) {
       return;
     }
 
-    const hasMoreItems = (items && !this.props.items) || items.length !== this.props.items.length;
+    const hasMoreItems =
+      (courses && !this.props.courses) || courses.length !== this.props.courses.length;
     this.setState({ hasMoreItems });
   };
 
-  isLoading = (loading, items) => {
-    return loading && !items;
+  isLoading = (loading, courses) => {
+    return loading && !courses;
   };
 
-  isEmpty = (loading, items) => {
-    return !loading && (!items || items.length === 0);
+  isEmpty = (loading, courses) => {
+    return !loading && (!courses || courses.length === 0);
   };
 
   render() {
@@ -61,7 +68,7 @@ export class TrainingCoursesList extends Component {
     }
 
     return (
-      <Paper style={WrapperStyle}>
+      <TrainingCoursesListWrapper>
         <PageMenu />
         <InfiniteScroll
           loadMore={this.props.fetchMore}
@@ -72,9 +79,13 @@ export class TrainingCoursesList extends Component {
             </LoadingWrapper>
           }
         >
-          <div />
+          <List>
+            {this.props.courses.map((course, index) => (
+              <TrainingCourse key={index} course={course} />
+            ))}
+          </List>
         </InfiniteScroll>
-      </Paper>
+      </TrainingCoursesListWrapper>
     );
   }
 }
