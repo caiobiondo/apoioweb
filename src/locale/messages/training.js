@@ -27,6 +27,7 @@ export default {
     'courseViews.many': 'visualizações',
     trainingCourseCompleted: 'Concluído',
     downloadCertificate: 'Baixar Certificado',
+    trainingAddCourseToMyList: 'Adicionar à minha lista',
   },
 };
 /* eslint-disable sort-keys */
