@@ -66,6 +66,16 @@ export const CategoryCourseTitleWrapper = styled.div`
     top: 0;
     z-index: -1;
   }
+
+  &:after {
+    background: ${orange100};
+    bottom: 0;
+    content: '';
+    height: 3px;
+    left: 0;
+    position: absolute;
+    right: ${props => 100 - props.viewedPercentage}%;
+  }
 `;
 
 export const CategoryCourseTitle = styled.div`

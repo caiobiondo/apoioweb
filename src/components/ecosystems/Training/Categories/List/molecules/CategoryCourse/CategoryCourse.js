@@ -49,12 +49,20 @@ const CategoryCourse = ({ course }) => {
     return <CategoryCourseDuration>{getDurationInMinutes()}min</CategoryCourseDuration>;
   };
 
+  const getViewedPercentage = () => {
+    if (!course.durationInSeconds || !course.stoppedAt) {
+      return 33.33;
+    }
+
+    return course.stoppedAt / 100 * course.durationInSeconds;
+  };
+
   return (
     <CategoryCourseWrapper>
       <CategoryCourseLink href={`/training/courses/${course.id}`} title={course.title}>
         <CategoryCourseCover thumbnail={course.thumbnail} />
 
-        <CategoryCourseTitleWrapper>
+        <CategoryCourseTitleWrapper viewedPercentage={getViewedPercentage()}>
           <CategoryCourseIcon>
             <Icon file={getCourseIconFileName()} color={orange100} />
           </CategoryCourseIcon>

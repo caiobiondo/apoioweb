@@ -7,7 +7,9 @@ exports[`Category course render correct then the course type is video and there 
     title="Test"
   >
     <CategoryCoursestyles__CategoryCourseCover />
-    <CategoryCoursestyles__CategoryCourseTitleWrapper>
+    <CategoryCoursestyles__CategoryCourseTitleWrapper
+      viewedPercentage={33.33}
+    >
       <CategoryCoursestyles__CategoryCourseIcon>
         <Icon
           color="#f3971f"
