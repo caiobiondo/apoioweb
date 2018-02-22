@@ -24,6 +24,7 @@ export default {
     'courseViews.one': 'visualização',
     'courseViews.many': 'visualizações',
     trainingCourseCompleted: 'Concluído',
+    downloadCertificate: 'Baixar Certificado',
   },
 };
 /* eslint-disable sort-keys */

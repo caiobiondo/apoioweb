@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Certificate List renders correctly when loading 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="certificatesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="myCertificatesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Certificate List renders correctly when the list is empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="certificatesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="myCertificatesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Certificate List renders correctly when the list is not empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <CertificateListstyles__List>
+    <Certificate
+      certificate={
+        Object {
+          "id": 1,
+          "name": "Certiticate 1",
+        }
+      }
+      index={0}
+      key="1"
+    />
+    <Certificate
+      certificate={
+        Object {
+          "id": 2,
+          "name": "Certiticate 2",
+        }
+      }
+      index={1}
+      key="2"
+    />
+    <Certificate
+      certificate={
+        Object {
+          "id": 3,
+          "name": "Certiticate 3",
+        }
+      }
+      index={2}
+      key="3"
+    />
+  </CertificateListstyles__List>
+</Paper>
+`;

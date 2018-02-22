@@ -130,9 +130,9 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training"
+                  path="/training/certificates"
                   component={withDefaultBehaviour(
-                    import('components/ecosystems/Training'),
+                    import('components/ecosystems/Training/Certificates/List'),
                     'training',
                   )}
                 />
