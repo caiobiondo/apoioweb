@@ -20,6 +20,7 @@ export const TrainingCategoriesQuery = gql`
         thumbnail
         durationInSeconds
         type
+        stoppedAt
       }
     }
   }
