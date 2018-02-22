@@ -9,10 +9,17 @@ import {
   TrainingCourseDescription,
   TrainingCourseDescriptionTitle,
   TrainingCourseDescriptionViews,
+  TrainingCourseMenu,
+  TrainingCourseMenuItem,
 } from './TrainingCourse.styles';
 import { Icon, CircularProgress, Loading } from 'natura-ui';
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
 import Img from 'react-image';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { translate } from 'locale';
 
 class TrainingCourse extends Component {
   renderCourseIcon = course => {
@@ -45,6 +52,22 @@ class TrainingCourse extends Component {
                 {course.views} visualizações - {course.dateUpload}
               </TrainingCourseDescriptionViews>
             </TrainingCourseDescription>
+            <TrainingCourseMenu>
+              <IconMenu
+                iconButtonElement={
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+                targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+              >
+                <MenuItem
+                  style={{ fontFamily: 'Roboto-Regular' }}
+                  primaryText={translate('trainingAddCourseToMyList')}
+                />
+              </IconMenu>
+            </TrainingCourseMenu>
           </TrainingCourseDescriptionWrapper>
           <TrainingCourseThumbnail>
             <ImageWithFallback imageUrl={course.thumbnail} />

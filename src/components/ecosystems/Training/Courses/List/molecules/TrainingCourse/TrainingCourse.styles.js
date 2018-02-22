@@ -4,12 +4,20 @@ import { Responsive } from '@entria/components';
 import { RobotoRegular, fs18 } from 'styles/typography';
 
 export const TrainingCourseWrapper = styled.div`
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   width: 490px;
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     flex-basis: 100%;
     width: auto;
+  }
+
+  @media (min-width: 1000px) and (max-width: 1500px) {
+    flex-basis: 50%;
+  }
+
+  @media (min-width: 1500px) {
+    flex-basis: 33%;
   }
 `;
 
@@ -28,10 +36,12 @@ export const TrainingCoursePaper = styled.div`
 export const TrainingCourseDescriptionWrapper = styled.div`
   padding: 25px;
   display: flex;
+  position: relative;
 `;
 
 export const TrainingCourseDescription = styled.div`
   display: inline-block;
+  padding-right: 35px;
 `;
 
 export const TrainingCourseDescriptionTitle = styled.div`
@@ -67,4 +77,15 @@ export const TrainingCourseIconWrapper = styled.div`
     height: 20px;
     fill: ${orange100};
   }
+`;
+
+export const TrainingCourseMenu = styled.div`
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+`;
+
+export const TrainingCourseMenuItem = styled.div`
+  font-family: ${RobotoRegular};
 `;
