@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Icon } from 'natura-ui';
 
 import { orange100 } from 'styles/colors';
@@ -15,7 +15,7 @@ import {
 } from './CategoryCourse.styles.js';
 
 const CategoryCourse = ({ course }) => {
-  const getCourseIconFileName = course => {
+  const getCourseIconFileName = () => {
     if (course && course.type === 'VIDEO') {
       return 'ico_film_stock';
     }
@@ -36,13 +36,13 @@ const CategoryCourse = ({ course }) => {
   };
 
   const getDurationInMinutes = () => {
-    return `${Math.floor(course.durationInSeconds / 60)}:${Math.floor(
-      course.durationInSeconds % 60,
-    )}`;
+    return `${Math.floor(course.durationInSeconds / 60)}:${(
+      '0' + Math.floor(course.durationInSeconds % 60)
+    ).slice(-2)}`;
   };
 
   const getDurationNode = () => {
-    if (course.durationInSeconds) {
+    if (!course.durationInSeconds) {
       return null;
     }
 
@@ -65,6 +65,10 @@ const CategoryCourse = ({ course }) => {
       </CategoryCourseLink>
     </CategoryCourseWrapper>
   );
+};
+
+CategoryCourse.propTypes = {
+  course: PropTypes.object.isRequired,
 };
 
 export default CategoryCourse;

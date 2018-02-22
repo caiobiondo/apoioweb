@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import CategoryCourse from '../CategoryCourse/CategoryCourse';
@@ -19,7 +19,7 @@ const renderSubCategories = categories => {
 };
 
 const renderSubCategory = category => {
-  return <SubCategory category={category} />;
+  return <SubCategory key={category.id} category={category} />;
 };
 
 const renderCourses = courses => {
@@ -27,7 +27,7 @@ const renderCourses = courses => {
 };
 
 const renderCategoryCourse = course => {
-  return <CategoryCourse course={course} />;
+  return <CategoryCourse key={course.id} course={course} />;
 };
 
 const Category = ({ category }) => {
@@ -65,6 +65,10 @@ const Category = ({ category }) => {
       </div>
     </div>
   );
+};
+
+Category.propTypes = {
+  category: PropTypes.object.isRequired,
 };
 
 export default Category;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category course render correct then the course type is video and there is duration information 1`] = `
+<CategoryCoursestyles__CategoryCourseWrapper>
+  <CategoryCoursestyles__CategoryCourseLink
+    href="/training/courses/1"
+    title="Test"
+  >
+    <CategoryCoursestyles__CategoryCourseCover />
+    <CategoryCoursestyles__CategoryCourseTitleWrapper>
+      <CategoryCoursestyles__CategoryCourseIcon>
+        <Icon
+          color="#f3971f"
+          file="ico_film_stock"
+        />
+      </CategoryCoursestyles__CategoryCourseIcon>
+      <CategoryCoursestyles__CategoryCourseTitle>
+        Test
+      </CategoryCoursestyles__CategoryCourseTitle>
+    </CategoryCoursestyles__CategoryCourseTitleWrapper>
+  </CategoryCoursestyles__CategoryCourseLink>
+</CategoryCoursestyles__CategoryCourseWrapper>
+`;
