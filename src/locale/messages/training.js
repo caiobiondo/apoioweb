@@ -10,7 +10,8 @@ export default {
     categories: 'Categorias',
     myList: 'Minha Lista',
     certificate: 'Certificado',
-    trainingAddCourseToMyList: 'Adicionar à minha lista',
+    trainingAddCourseMyList: 'Adicionar à minha lista',
+    trainingRemoveCourseMyList: 'Remover da minha lista',
   },
 };
 /* eslint-disable sort-keys */

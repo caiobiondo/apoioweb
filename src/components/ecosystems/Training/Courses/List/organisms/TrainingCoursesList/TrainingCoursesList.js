@@ -5,6 +5,7 @@ import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingCoursesList.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql } from 'react-apollo';
+import TrainingCourseMenuItems from 'components/ecosystems/Training/organisms/TrainingCourseMenuItems';
 
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -81,7 +82,9 @@ export class TrainingCoursesList extends Component {
         >
           <List>
             {this.props.courses.map((course, index) => (
-              <TrainingCourse key={index} course={course} />
+              <TrainingCourse key={index} course={course}>
+                <TrainingCourseMenuItems course={course} user={this.props.user} />
+              </TrainingCourse>
             ))}
           </List>
         </InfiniteScroll>
