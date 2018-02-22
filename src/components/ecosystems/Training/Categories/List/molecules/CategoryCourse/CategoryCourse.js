@@ -15,6 +15,14 @@ import {
 } from './CategoryCourse.styles.js';
 
 const CategoryCourse = ({ course }) => {
+  const getCourseIconFileName = course => {
+    if (course && course.type === 'VIDEO') {
+      return 'ico_film_stock';
+    }
+
+    return 'ico_file';
+  };
+
   const getTruncatedTitle = () => {
     if (!course.title) {
       return;
@@ -33,6 +41,14 @@ const CategoryCourse = ({ course }) => {
     )}`;
   };
 
+  const getDurationNode = () => {
+    if (course.durationInSeconds) {
+      return null;
+    }
+
+    return <CategoryCourseDuration>{getDurationInMinutes()}min</CategoryCourseDuration>;
+  };
+
   return (
     <CategoryCourseWrapper>
       <CategoryCourseLink href={`/training/courses/${course.id}`} title={course.title}>
@@ -40,11 +56,11 @@ const CategoryCourse = ({ course }) => {
 
         <CategoryCourseTitleWrapper>
           <CategoryCourseIcon>
-            <Icon file="ico_film_stock" color={orange100} />
+            <Icon file={getCourseIconFileName()} color={orange100} />
           </CategoryCourseIcon>
           <CategoryCourseTitle>{getTruncatedTitle()}</CategoryCourseTitle>
 
-          <CategoryCourseDuration>{getDurationInMinutes()}min</CategoryCourseDuration>
+          {getDurationNode()}
         </CategoryCourseTitleWrapper>
       </CategoryCourseLink>
     </CategoryCourseWrapper>

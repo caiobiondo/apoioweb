@@ -19,6 +19,7 @@ export const TrainingCategoriesQuery = gql`
         title
         thumbnail
         durationInSeconds
+        type
       }
     }
   }
