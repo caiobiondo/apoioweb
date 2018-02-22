@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Certificate from 'components/ecosystems/Training/Certificates/List/molecules/Certificate';
+import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
+
 import { List } from './CertificateList.styles';
 import { Paper } from 'natura-ui';
 
@@ -35,6 +37,7 @@ class CertificateList extends Component {
   render() {
     return (
       <Paper>
+        <PageMenu />
         <List>
           {certificates.map((certificate, index) => (
             <Certificate key={index} index={index} certificate={certificate} />
