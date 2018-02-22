@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Certificate from 'components/ecosystems/Training/Certificates/List/molecules/Certificate';
+<<<<<<< 6ba9ee1c212530ef1e00e1d2eb8d35ee36550bfd
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 
+=======
+>>>>>>> (feacture/training-courses-list): Defined training's certificate list component with mock
 import { List } from './CertificateList.styles';
 import { Paper } from 'natura-ui';
 
@@ -37,7 +40,10 @@ class CertificateList extends Component {
   render() {
     return (
       <Paper>
+<<<<<<< 6ba9ee1c212530ef1e00e1d2eb8d35ee36550bfd
         <PageMenu />
+=======
+>>>>>>> (feacture/training-courses-list): Defined training's certificate list component with mock
         <List>
           {certificates.map((certificate, index) => (
             <Certificate key={index} index={index} certificate={certificate} />

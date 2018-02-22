@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Responsive } from '@entria/components';
+// import { Responsive } from '@entria/components';
 import { LoadingWrapperStyle } from 'styles/mixins';
 import { white } from 'styles/colors';
 import { RobotoRegular, NaturaBold, fs25 } from 'styles/typography';
