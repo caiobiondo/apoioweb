@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     a {
-      font-size: 15px !important;
+      font-size: 10px !important;
     }
   }
 `;
@@ -29,6 +29,16 @@ export const LinkWrapper = styled.div`
     padding-bottom: 5px;
     outline: none;
     text-transform: uppercase;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    margin-left: 0;
+    padding: 5px 5px 0 5px;
+
+    > a {
+      min-width: 60px !important;
+      margin: 0 2px;
+    }
   }
 `;
 
