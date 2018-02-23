@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TrainingCategoriesDetails from './organisms/TrainingCategoriesDetails/TrainingCategoriesDetails';
+import { Main } from './index.styles.js';
 
 class TrainingCategoriesDetailsWrapper extends Component {
   state = {
@@ -16,11 +17,13 @@ class TrainingCategoriesDetailsWrapper extends Component {
     const { id } = this.props.match.params;
 
     return (
-      <TrainingCategoriesDetails
-        user={this.props.user}
-        categoryId={id}
-        onLoadFinished={this.onLoadFinished}
-      />
+      <Main>
+        <TrainingCategoriesDetails
+          user={this.props.user}
+          categoryId={id}
+          onLoadFinished={this.onLoadFinished}
+        />
+      </Main>
     );
   }
 }

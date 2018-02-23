@@ -18,6 +18,10 @@ export const ListItem = styled.li`
 `;
 
 export const TrainingCategoriesDetailsWrapper = styled.div`
+  position: relative;
+`;
+
+export const TrainingCategoriesDetailsContentWrapper = styled.div`
   flex: 1 1 0;
   flex-direction: column;
   justify-content: center;
@@ -29,21 +33,3 @@ export const TrainingCategoriesDetailsWrapper = styled.div`
 export const fullContainer = {
   height: '100%',
 };
-
-export const Header = styled.div``;
-
-export const BackButtonWrapper = styled.div``;
-
-export const BackButton = styled.a``;
-
-export const BackButtonIcon = styled.div``;
-
-export const CategoryPercentageWrapper = styled.div``;
-
-export const CategoryPercentageLabel = styled.div``;
-
-export const CategoryPercentageBar = styled.div``;
-
-export const Banner = styled.div``;
-
-export const BannerContent = styled.div``;

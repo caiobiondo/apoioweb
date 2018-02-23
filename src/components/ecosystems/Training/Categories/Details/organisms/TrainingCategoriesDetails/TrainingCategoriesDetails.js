@@ -6,24 +6,18 @@ import {
 } from './TrainingCategoriesDetails.data';
 import { graphql } from 'react-apollo';
 
+import TrainingCategoriesDetailsHeader from '../../molecules/Header/TrainingCategoriesDetailsHeader';
+
 import {
   fullContainer,
-  Header,
-  BackButtonWrapper,
-  BackButton,
-  BackButtonIcon,
-  CategoryPercentageWrapper,
-  CategoryPercentageLabel,
-  CategoryPercentageBar,
-  Banner,
-  BannerContent,
+  TrainingCategoriesDetailsWrapper,
+  TrainingCategoriesDetailsContentWrapper,
 } from './TrainingCategoriesDetails.styles';
 
 export class TrainingCategoriesDetails extends Component {
   state = {};
 
   componentWillReceiveProps({ loading, trainingCourses }) {
-    console.log(loading, trainingCourses);
     this.notifyLoadFinish(loading, trainingCourses);
   }
 
@@ -49,9 +43,12 @@ export class TrainingCategoriesDetails extends Component {
     }
 
     return (
-      <Paper style={fullContainer}>
-        <span>teste</span>
-      </Paper>
+      <TrainingCategoriesDetailsWrapper>
+        <TrainingCategoriesDetailsHeader category={trainingCategory} />
+        <TrainingCategoriesDetailsContentWrapper>
+          <Paper style={fullContainer} />
+        </TrainingCategoriesDetailsContentWrapper>
+      </TrainingCategoriesDetailsWrapper>
     );
   }
 }
