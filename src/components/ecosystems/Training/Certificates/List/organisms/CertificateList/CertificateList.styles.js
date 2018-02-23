@@ -6,3 +6,7 @@ export const List = styled.div`
   flex-wrap: wrap;
   padding: 30px 0;
 `;
+
+export const fullContainer = {
+  height: '100%',
+};

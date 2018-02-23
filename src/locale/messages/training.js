@@ -5,6 +5,8 @@ export default {
     coursesEmptyList: 'Lista vazia',
     coursesEmptyListDescription: 'Não existem cursos disponíveis.',
     myCoursesEmptyList: 'Lista de cursos vazia',
+    myCertificatesEmptyList: 'Lista de certificados vazia',
+    certificatesEmptyListDescription: 'Não existem certificados disponíveis.',
     myCoursesEmptyListDescription: 'Você ainda não possui clientes cadastrados',
     courses: 'Cursos',
     categories: 'Categorias',

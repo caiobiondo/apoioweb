@@ -1,52 +1,56 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import Certificate from 'components/ecosystems/Training/Certificates/List/molecules/Certificate';
-<<<<<<< 6ba9ee1c212530ef1e00e1d2eb8d35ee36550bfd
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
-
-=======
->>>>>>> (feacture/training-courses-list): Defined training's certificate list component with mock
-import { List } from './CertificateList.styles';
-import { Paper } from 'natura-ui';
-
-const certificates = [
-  {
-    id: 51,
-    name: 'Arrase nas vendas',
-    tt: 'Arrase nas vendas',
-    totalOfCourses: '6',
-    totalOfCoursesCompleted: '1',
-    thumbnail: 'http://treinamento-api-dev.natura.com.br:7000/category/imagethumbnail/51',
-    percentageOfCompletedCourse: 16,
-  },
-  {
-    id: 67,
-    name: 'TESTE',
-    thumbnail: 'http://treinamento-api-dev.natura.com.br:7000/category/imagethumbnail/67',
-    totalOfCourses: '1',
-    totalOfCoursesCompleted: '0',
-    percentageOfCompletedCourse: 0,
-  },
-  {
-    id: 68,
-    name: 'Icone teste',
-    thumbnail: 'http://treinamento-api-dev.natura.com.br:7000/category/imagethumbnail/68',
-    totalOfCourses: '1',
-    totalOfCoursesCompleted: '0',
-    percentageOfCompletedCourse: 0,
-  },
-];
+import { CertificateListQuery, CertificateListQueryOptions } from './CertificateList.data';
+import { List, fullContainer } from './CertificateList.styles';
+import { Loading, Paper } from 'natura-ui';
 
 class CertificateList extends Component {
+  componentWillReceiveProps({ loading, certificates }) {
+    this.notifyLoadFinish(loading, certificates);
+  }
+
+  notifyLoadFinish = (loading, certificates) => {
+    if (!loading && this.props.onLoadFinished) {
+      this.props.onLoadFinished(
+        this.isEmpty(loading, certificates),
+        this.isLoading(loading, certificates),
+      );
+    }
+  };
+
+  isLoading = (loading, certificates) => loading && !certificates;
+
+  isEmpty = (loading, certificates) => !loading && (!certificates || certificates.length === 0);
+
   render() {
+    const { certificates } = this.props;
+
+    if (!this.props.certificates && this.props.loading) {
+      return <Loading background="transparent" />;
+    }
+
+    if (!this.props.certificates || !this.props.certificates.length) {
+      return (
+        <Paper style={fullContainer}>
+          <PageMenu />
+          <EmptyList
+            icon="ico_list_add"
+            titleId="myCertificatesEmptyList"
+            descriptionId="certificatesEmptyListDescription"
+          />
+        </Paper>
+      );
+    }
+
     return (
       <Paper>
-<<<<<<< 6ba9ee1c212530ef1e00e1d2eb8d35ee36550bfd
         <PageMenu />
-=======
->>>>>>> (feacture/training-courses-list): Defined training's certificate list component with mock
         <List>
           {certificates.map((certificate, index) => (
-            <Certificate key={index} index={index} certificate={certificate} />
+            <Certificate key={certificate.id} index={index} certificate={certificate} />
           ))}
         </List>
       </Paper>
@@ -54,4 +58,4 @@ class CertificateList extends Component {
   }
 }
 
-export default CertificateList;
+export default graphql(CertificateListQuery, CertificateListQueryOptions)(CertificateList);
