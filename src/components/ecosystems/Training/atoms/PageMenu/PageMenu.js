@@ -5,9 +5,9 @@ import { translate } from 'locale';
 
 const menu = [
   { link: '/training/courses', label: translate('courses') },
-  { link: '/training/a', label: translate('categories') },
-  { link: '/training/c', label: translate('myList') },
-  { link: '/training/b', label: translate('certificate') },
+  { link: '/training/categories', label: translate('categories') },
+  { link: '/training/my-list', label: translate('myList') },
+  { link: '/training/certificates', label: translate('certificate') },
 ];
 
 class PageMenu extends Component {

@@ -6,6 +6,7 @@ import {
   TrainingCategoriesQueryOptions,
 } from './TrainingCategoriesList.data';
 import { graphql } from 'react-apollo';
+import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 
 import Category from 'components/ecosystems/Training/Categories/List/molecules/Category';
 
@@ -23,6 +24,7 @@ const renderTrainingCategory = trainingCategory => {
 
 const renderEmptyList = (
   <Paper style={fullContainer}>
+    <PageMenu />
     <EmptyList
       icon="ico_list_add"
       titleId="trainingCategoriesEmptyList"
@@ -79,6 +81,7 @@ export class TrainingCategoriesList extends Component {
 
     return (
       <Paper style={fullContainer}>
+        <PageMenu />
         <InfiniteScroll
           loadMore={fetchMore}
           hasMore={false}
