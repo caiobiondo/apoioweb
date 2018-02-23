@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Categories List renders correctly when loading 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    descriptionId="trainingCategoriesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="trainingCategoriesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Categories List renders correctly when the list is empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    descriptionId="trainingCategoriesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="trainingCategoriesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Categories List renders correctly when the list is not empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <InfiniteScroll
+    element="div"
+    hasMore={false}
+    initialLoad={true}
+    isReverse={false}
+    loadMore={[Function]}
+    loader={
+      <mixins__LoadingWrapperStyle>
+        <CircularProgress
+          max={100}
+          min={0}
+          mode="indeterminate"
+          size={40}
+          thickness={2}
+          value={0}
+        />
+      </mixins__LoadingWrapperStyle>
+    }
+    pageStart={0}
+    ref={null}
+    threshold={250}
+    useCapture={false}
+    useWindow={true}
+  >
+    <TrainingCategoriesListstyles__List>
+      <TrainingCategoriesListstyles__ListItem
+        key="1"
+      >
+        <Category
+          category={
+            Object {
+              "id": 1,
+              "name": "Category 1",
+            }
+          }
+        />
+      </TrainingCategoriesListstyles__ListItem>
+      <TrainingCategoriesListstyles__ListItem
+        key="2"
+      >
+        <Category
+          category={
+            Object {
+              "id": 2,
+              "name": "Category 2",
+            }
+          }
+        />
+      </TrainingCategoriesListstyles__ListItem>
+      <TrainingCategoriesListstyles__ListItem
+        key="3"
+      >
+        <Category
+          category={
+            Object {
+              "id": 3,
+              "name": "Category 3",
+            }
+          }
+        />
+      </TrainingCategoriesListstyles__ListItem>
+    </TrainingCategoriesListstyles__List>
+  </InfiniteScroll>
+</Paper>
+`;

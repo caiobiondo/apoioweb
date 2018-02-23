@@ -12,6 +12,9 @@ export default {
     certificate: 'Certificado',
     trainingAddCourseMyList: 'Adicionar à minha lista',
     trainingRemoveCourseMyList: 'Remover da minha lista',
+    viewAllCourses: 'Ver todos',
+    trainingCategoriesEmptyList: 'Lista de categorias vazia',
+    trainingCategoriesEmptyListDescription: 'Não existem categorias disponíveis.',
   },
 };
 /* eslint-disable sort-keys */

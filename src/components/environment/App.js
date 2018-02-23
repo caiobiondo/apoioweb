@@ -128,6 +128,22 @@ export default class App extends Component {
                     'training',
                   )}
                 />
+                <Route
+                  exact
+                  path="/training"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/training/categories"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Categories/List'),
+                    'training',
+                  )}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>

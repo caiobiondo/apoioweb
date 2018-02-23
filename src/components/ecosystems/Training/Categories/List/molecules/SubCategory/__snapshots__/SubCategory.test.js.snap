@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubCategory render correct then the sub category card 1`] = `
+<SubCategorystyles__SubCategoryWrapper>
+  <SubCategorystyles__SubCategoryLink
+    href="/training/categories/1"
+    title="Test"
+  >
+    <SubCategorystyles__SubCategoryTitleWrapper>
+      <SubCategorystyles__SubCategoryIcon
+        src="thumbnail.jpg"
+      />
+      <SubCategorystyles__SubCategoryTitle>
+        Test
+      </SubCategorystyles__SubCategoryTitle>
+    </SubCategorystyles__SubCategoryTitleWrapper>
+  </SubCategorystyles__SubCategoryLink>
+</SubCategorystyles__SubCategoryWrapper>
+`;
