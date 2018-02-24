@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { LoadingWrapperStyle } from 'styles/mixins';
 import { white } from 'styles/colors';
+import { RobotoRegular, NaturaBold, fs25 } from 'styles/typography';
 
 import { spPage } from 'styles/spacing';
 
@@ -30,4 +31,13 @@ export const List = styled.div`
 
 export const fullContainer = {
   height: '100%',
+};
+
+export const TrainingCourseFeedbackModalTitle = {
+  fontFamily: NaturaBold,
+  fontSize: fs25,
+};
+
+export const TrainingCourseFeedbackModalAction = {
+  fontFamily: RobotoRegular,
 };

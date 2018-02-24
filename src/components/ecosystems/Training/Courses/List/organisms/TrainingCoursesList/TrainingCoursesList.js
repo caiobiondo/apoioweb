@@ -12,15 +12,21 @@ import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
 
 import InfiniteScroll from 'react-infinite-scroller';
+
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   TrainingCoursesListWrapper,
   List,
   LoadingWrapper,
   fullContainer,
+  TrainingCourseFeedbackModalTitle,
+  TrainingCourseFeedbackModalAction,
 } from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
@@ -30,6 +36,8 @@ export class TrainingCoursesList extends Component {
     this.state = {
       hasMoreItems: true,
       courses: [],
+      feedbackModalOpened: false,
+      feedbackModalTitle: '',
     };
   }
 
@@ -65,6 +73,8 @@ export class TrainingCoursesList extends Component {
   };
 
   handleMenuItemClick = (event, child) => {
+    const { formatMessage } = this.props.intl;
+
     this.props
       .mutate({
         variables: {
@@ -75,11 +85,28 @@ export class TrainingCoursesList extends Component {
       })
       .then(response => {
         if (response.error) {
+          const message =
+            child.props.value === 'favorite'
+              ? formatMessage({ id: 'trainingAddCourseError' })
+              : formatMessage({ id: 'trainingRemoveCourseError' });
+          this.setState({
+            feedbackModalOpened: true,
+            feedbackModalTitle: message,
+          });
+
           // Handle error
           return;
         }
 
         if (!response.data.updateCourse.status) {
+          const message =
+            child.props.value === 'favorite'
+              ? formatMessage({ id: 'trainingAddCourseFailure' })
+              : formatMessage({ id: 'trainingRemoveCourseFailure' });
+          this.setState({
+            feedbackModalOpened: true,
+            feedbackModalTitle: message,
+          });
           // Handle not updated
           return;
         }
@@ -98,14 +125,30 @@ export class TrainingCoursesList extends Component {
 
           return course;
         });
+        const message =
+          child.props.value === 'favorite'
+            ? formatMessage({ id: 'trainingAddCourseSuccess' })
+            : formatMessage({ id: 'trainingRemoveCourseSuccess' });
 
-        this.setState({ courses });
+        this.setState({
+          courses,
+          feedbackModalOpened: true,
+          feedbackModalTitle: message,
+        });
 
         return;
       })
       .catch(err => {
         console.log('err', err);
         // Handle error
+        const message =
+          child.props.value === 'favorite'
+            ? formatMessage({ id: 'trainingAddCourseError' })
+            : formatMessage({ id: 'trainingRemoveCourseError' });
+        this.setState({
+          feedbackModalOpened: true,
+          feedbackModalTitle: message,
+        });
       });
   };
 
@@ -155,6 +198,34 @@ export class TrainingCoursesList extends Component {
     );
   };
 
+  handleClose = () => {
+    this.setState({ feedbackModalOpened: false });
+  };
+
+  renderFeedbackModal = () => {
+    const { feedbackModalTitle } = this.state;
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        labelStyle={TrainingCourseFeedbackModalAction}
+        onClick={this.handleClose}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="feedbackModal"
+        title={feedbackModalTitle}
+        actions={actions}
+        modal={false}
+        open={this.state.feedbackModalOpened}
+        titleStyle={TrainingCourseFeedbackModalTitle}
+        onRequestClose={this.handleClose}
+      />
+    );
+  };
+
   render() {
     if (!this.state.courses && this.props.loading) {
       return <Loading background="transparent" />;
@@ -193,12 +264,15 @@ export class TrainingCoursesList extends Component {
             ))}
           </List>
         </InfiniteScroll>
+        {this.renderFeedbackModal()}
       </TrainingCoursesListWrapper>
     );
   }
 }
 
+export const TrainingCoursesListWithIntl = injectIntl(TrainingCoursesList);
+
 export default compose(
   graphql(TrainingCoursesQuery, TrainingCoursesQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(TrainingCoursesList);
+)(TrainingCoursesListWithIntl);
