@@ -10,15 +10,12 @@ import {
   TrainingCourseDescriptionTitle,
   TrainingCourseDescriptionViews,
   TrainingCourseMenu,
-  TrainingCourseMenuItem,
 } from './TrainingCourse.styles';
-import { Icon, CircularProgress, Loading } from 'natura-ui';
+import { Icon } from 'natura-ui';
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
-import Img from 'react-image';
-import { translate } from 'locale';
-import { RobotoRegular } from 'styles/typography';
+import { injectIntl, FormattedRelative, FormattedPlural } from 'react-intl';
 
-class TrainingCourse extends Component {
+export class TrainingCourse extends Component {
   renderCourseIcon = course => {
     if (course.type === 'VIDEO') {
       return (
@@ -37,6 +34,7 @@ class TrainingCourse extends Component {
 
   render() {
     const { course } = this.props;
+    const { formatMessage } = this.props.intl;
 
     return (
       <TrainingCourseWrapper>
@@ -46,7 +44,14 @@ class TrainingCourse extends Component {
             <TrainingCourseDescription>
               <TrainingCourseDescriptionTitle>{course.title}</TrainingCourseDescriptionTitle>
               <TrainingCourseDescriptionViews>
-                {course.views} visualizações - {course.dateUpload}
+                {course.views}&nbsp;
+                <FormattedPlural
+                  value={course.views}
+                  one={formatMessage({ id: 'courseViews.one' })}
+                  other={formatMessage({ id: 'courseViews.many' })}
+                />
+                &nbsp;-&nbsp;
+                <FormattedRelative value={course.dateUpload} />
               </TrainingCourseDescriptionViews>
             </TrainingCourseDescription>
             <TrainingCourseMenu>{this.props.children}</TrainingCourseMenu>
@@ -64,4 +69,4 @@ TrainingCourse.propTypes = {
   course: PropTypes.object,
 };
 
-export default TrainingCourse;
+export default injectIntl(TrainingCourse);

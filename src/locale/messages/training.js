@@ -15,6 +15,8 @@ export default {
     viewAllCourses: 'Ver todos',
     trainingCategoriesEmptyList: 'Lista de categorias vazia',
     trainingCategoriesEmptyListDescription: 'Não existem categorias disponíveis.',
+    'courseViews.one': 'visualização',
+    'courseViews.many': 'visualizações',
   },
 };
 /* eslint-disable sort-keys */

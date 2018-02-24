@@ -47,6 +47,7 @@ export const TrainingCourseDescription = styled.div`
 export const TrainingCourseDescriptionTitle = styled.div`
   display: block;
   font-size: ${fs18};
+  margin-bottom: 5px;
 `;
 
 export const TrainingCourseDescriptionViews = styled.div`
@@ -84,8 +85,4 @@ export const TrainingCourseMenu = styled.div`
   position: absolute;
   top: 12px;
   right: 12px;
-`;
-
-export const TrainingCourseMenuItem = styled.div`
-  font-family: ${RobotoRegular};
 `;
