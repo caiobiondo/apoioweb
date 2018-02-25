@@ -58,6 +58,8 @@ export const TrainingCourseDescriptionViews = styled.div`
 `;
 
 export const TrainingCourseThumbnail = styled.div`
+  position: relative;
+
   > div {
     display: flex;
     justify-content: center;
@@ -69,6 +71,82 @@ export const TrainingCourseThumbnail = styled.div`
       width: 100%;
     }
   }
+`;
+
+export const TrainingCourseThumbnailPlayWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const TrainingCourseThumbnailPlay = styled.div`
+  border-radius: 50%;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 65px;
+  height: 65px;
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 15px solid white;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    top: 29%;
+    right: 35%;
+  }
+`;
+
+export const TrainingCourseThumbnailPlayBackground = styled.div`
+  border-radius: 50%;
+  border: 1px solid rgba(black, 0.6);
+`;
+
+export const TrainingCourseThumbnailDurationWrapper = styled.div`
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 21px;
+  font-family: Roboto-Regular;
+  border-radius: 2.5px;
+  padding: 8px;
+`;
+
+export const TrainingCourseThumbnailStoppedAt = styled.div`
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background-color: ${orange100};
+  height: 5px;
+  width: ${props => {
+    return props.width ? props.width : '0%';
+  }};
+`;
+
+export const TrainingCourseThumbnailCompletedWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+`;
+
+export const TrainingCourseThumbnailCompleted = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 21px;
+  font-family: Roboto-Regular;
+  border-radius: 2.5px;
+  padding: 8px;
 `;
 
 export const TrainingCourseIconWrapper = styled.div`

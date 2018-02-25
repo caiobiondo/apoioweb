@@ -4,6 +4,12 @@ import {
   TrainingCourseWrapper,
   TrainingCoursePaper,
   TrainingCourseThumbnail,
+  TrainingCourseThumbnailPlay,
+  TrainingCourseThumbnailPlayWrapper,
+  TrainingCourseThumbnailDurationWrapper,
+  TrainingCourseThumbnailStoppedAt,
+  TrainingCourseThumbnailCompletedWrapper,
+  TrainingCourseThumbnailCompleted,
   TrainingCourseDescriptionWrapper,
   TrainingCourseIconWrapper,
   TrainingCourseDescription,
@@ -14,6 +20,8 @@ import {
 import { Icon } from 'natura-ui';
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
 import { injectIntl, FormattedRelative, FormattedPlural } from 'react-intl';
+import { translate } from 'locale';
+import moment from 'moment';
 
 export class TrainingCourse extends Component {
   renderCourseIcon = course => {
@@ -32,12 +40,26 @@ export class TrainingCourse extends Component {
     );
   };
 
+  renderCourseDuration = course => {
+    return moment.utc(course.durationInSeconds * 1000).format('mm:ss');
+  };
+
+  renderCourseStoppedAt = course => {
+    const { stoppedAt, durationInSeconds, status } = course;
+
+    if (!stoppedAt || status === 'completed') return null;
+
+    const percentage = parseInt(stoppedAt * 100.0 / durationInSeconds, 10);
+
+    return <TrainingCourseThumbnailStoppedAt width={`${percentage}%`} />;
+  };
+
   render() {
     const { course } = this.props;
     const { formatMessage } = this.props.intl;
 
     return (
-      <TrainingCourseWrapper>
+      <TrainingCourseWrapper key={course.id}>
         <TrainingCoursePaper>
           <TrainingCourseDescriptionWrapper>
             {this.renderCourseIcon(course)}
@@ -58,6 +80,22 @@ export class TrainingCourse extends Component {
           </TrainingCourseDescriptionWrapper>
           <TrainingCourseThumbnail>
             <ImageWithFallback imageUrl={course.thumbnail} />
+            {course.type === 'VIDEO' && [
+              <TrainingCourseThumbnailPlayWrapper>
+                <TrainingCourseThumbnailPlay />
+              </TrainingCourseThumbnailPlayWrapper>,
+              <TrainingCourseThumbnailDurationWrapper>
+                {this.renderCourseDuration(course)}
+              </TrainingCourseThumbnailDurationWrapper>,
+              this.renderCourseStoppedAt(course),
+            ]}
+            {course.status === 'completed' && [
+              <TrainingCourseThumbnailCompletedWrapper>
+                <TrainingCourseThumbnailCompleted>
+                  {translate('trainingCourseCompleted')}
+                </TrainingCourseThumbnailCompleted>
+              </TrainingCourseThumbnailCompletedWrapper>,
+            ]}
           </TrainingCourseThumbnail>
         </TrainingCoursePaper>
       </TrainingCourseWrapper>

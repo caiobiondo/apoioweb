@@ -23,6 +23,7 @@ export default {
     trainingCategoriesEmptyListDescription: 'Não existem categorias disponíveis.',
     'courseViews.one': 'visualização',
     'courseViews.many': 'visualizações',
+    trainingCourseCompleted: 'Concluído',
   },
 };
 /* eslint-disable sort-keys */
