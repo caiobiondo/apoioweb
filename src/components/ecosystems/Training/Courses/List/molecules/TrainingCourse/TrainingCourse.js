@@ -51,7 +51,7 @@ export class TrainingCourse extends Component {
 
     const percentage = parseInt(stoppedAt * 100.0 / durationInSeconds, 10);
 
-    return <TrainingCourseThumbnailStoppedAt width={`${percentage}%`} />;
+    return <TrainingCourseThumbnailStoppedAt key={3} width={`${percentage}%`} />;
   };
 
   render() {
@@ -81,16 +81,16 @@ export class TrainingCourse extends Component {
           <TrainingCourseThumbnail>
             <ImageWithFallback imageUrl={course.thumbnail} />
             {course.type === 'VIDEO' && [
-              <TrainingCourseThumbnailPlayWrapper>
+              <TrainingCourseThumbnailPlayWrapper key={1}>
                 <TrainingCourseThumbnailPlay />
               </TrainingCourseThumbnailPlayWrapper>,
-              <TrainingCourseThumbnailDurationWrapper>
+              <TrainingCourseThumbnailDurationWrapper key={2}>
                 {this.renderCourseDuration(course)}
               </TrainingCourseThumbnailDurationWrapper>,
               this.renderCourseStoppedAt(course),
             ]}
             {course.status === 'completed' && [
-              <TrainingCourseThumbnailCompletedWrapper>
+              <TrainingCourseThumbnailCompletedWrapper key={4}>
                 <TrainingCourseThumbnailCompleted>
                   {translate('trainingCourseCompleted')}
                 </TrainingCourseThumbnailCompleted>

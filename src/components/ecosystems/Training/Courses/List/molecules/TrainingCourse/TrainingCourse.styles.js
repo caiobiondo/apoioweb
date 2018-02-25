@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { white, orange100, gray200 } from 'styles/colors';
 import { Responsive } from '@entria/components';
-import { RobotoRegular, fs18 } from 'styles/typography';
+import { RobotoRegular, fs18, fs19 } from 'styles/typography';
 
 export const TrainingCourseWrapper = styled.div`
   flex: 1 1 auto;
@@ -46,7 +46,7 @@ export const TrainingCourseDescription = styled.div`
 
 export const TrainingCourseDescriptionTitle = styled.div`
   display: block;
-  font-size: ${fs18};
+  font-size: ${fs19};
   margin-bottom: 5px;
 `;
 
