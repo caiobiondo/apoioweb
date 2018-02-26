@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { gray890, gray100, orange100 } from 'styles/colors';
 import { fs16, fs20, RobotoRegular, RobotoLight } from 'styles/typography';
-import { Responsive } from '@entria/components';
+import { screenMd } from 'styles/spacing';
 
 export const Header = styled.div`
   margin: 40px 0 25px;
 
-  @media screen and (max-width: 767px) {
-    margin: 40px 10px 25px;
+  @media screen and (max-width: ${screenMd}) {
+    margin: 40px 0 25px;
   }
 `;
 
@@ -47,8 +47,8 @@ export const CategoryPercentageLabel = styled.div`
   font-size: 16px;
   margin-right: 25px;
 
-  @media screen and (max-width: 767px) {
-    margin-top: 25px;
+  @media screen and (max-width: ${screenMd}) {
+    margin-top: 40px;
   }
 `;
 
@@ -59,7 +59,7 @@ export const CategoryPercentageBar = styled.div`
   height: 9px;
   overflow: hidden;
   position: relative;
-  width: 400px;
+  width: 350px;
 
   &:after {
     background: ${orange100};
@@ -72,13 +72,17 @@ export const CategoryPercentageBar = styled.div`
     top: 0;
   }
 
-  @media screen and (max-width: 767px) {
-    width: 345px;
+  @media screen and (max-width: ${screenMd}) {
+    width: 320px;
   }
 `;
 
 export const BannerWrapper = styled.div`
   margin-top: 40px;
+
+  @media screen and (max-width: ${screenMd}) {
+    margin-top: 20px;
+  }
 `;
 
 export const Banner = styled.div`

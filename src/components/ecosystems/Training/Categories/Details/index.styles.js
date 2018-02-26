@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Responsive } from '@entria/components';
-import { spMedium, spPage } from 'styles/spacing';
+import { spMedium, spPage, screenMd } from 'styles/spacing';
 
 export const Main = styled.div`
   margin: ${spMedium} ${spPage} ${spMedium} ${spMedium};
 
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+  @media (max-width: ${screenMd}) {
     margin: ${spMedium} 0;
+    padding: 0 10px;
   }
 `;

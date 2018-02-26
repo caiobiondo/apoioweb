@@ -9,7 +9,6 @@ class TrainingCategoriesDetailsWrapper extends Component {
   };
 
   onLoadFinished = (empty, loading) => {
-    console.log(empty, loading);
     this.setState({ empty: empty, loading: loading });
   };
 

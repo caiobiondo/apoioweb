@@ -15,6 +15,7 @@ export const TrainingCategoriesDetailsQuery = gql`
     trainingCategory(sellerId: $sellerId, categoryId: $categoryId) {
       id
       name
+      thumbnail
       banners {
         id
         thumbnail

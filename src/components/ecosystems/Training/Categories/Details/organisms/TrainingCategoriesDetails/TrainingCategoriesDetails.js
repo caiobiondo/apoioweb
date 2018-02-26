@@ -12,6 +12,9 @@ import {
   fullContainer,
   TrainingCategoriesDetailsWrapper,
   TrainingCategoriesDetailsContentWrapper,
+  TitleWrapper,
+  CategoryIcon,
+  Title,
 } from './TrainingCategoriesDetails.styles';
 
 export class TrainingCategoriesDetails extends Component {
@@ -46,6 +49,10 @@ export class TrainingCategoriesDetails extends Component {
       <TrainingCategoriesDetailsWrapper>
         <TrainingCategoriesDetailsHeader category={trainingCategory} />
         <TrainingCategoriesDetailsContentWrapper>
+          <TitleWrapper>
+            <CategoryIcon src={trainingCategory.thumbnail} alt={trainingCategory.name} />
+            <Title>{trainingCategory.name}</Title>
+          </TitleWrapper>
           <Paper style={fullContainer} />
         </TrainingCategoriesDetailsContentWrapper>
       </TrainingCategoriesDetailsWrapper>
