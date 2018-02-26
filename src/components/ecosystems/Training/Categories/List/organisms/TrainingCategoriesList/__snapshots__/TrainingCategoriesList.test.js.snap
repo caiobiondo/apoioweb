@@ -12,6 +12,7 @@ exports[`Training Categories List renders correctly when loading 1`] = `
   transitionEnabled={true}
   zDepth={1}
 >
+  <PageMenu />
   <EmptyList
     descriptionId="trainingCategoriesEmptyListDescription"
     icon="ico_list_add"
@@ -32,6 +33,7 @@ exports[`Training Categories List renders correctly when the list is empty 1`] =
   transitionEnabled={true}
   zDepth={1}
 >
+  <PageMenu />
   <EmptyList
     descriptionId="trainingCategoriesEmptyListDescription"
     icon="ico_list_add"
@@ -52,6 +54,7 @@ exports[`Training Categories List renders correctly when the list is not empty 1
   transitionEnabled={true}
   zDepth={1}
 >
+  <PageMenu />
   <InfiniteScroll
     element="div"
     hasMore={false}

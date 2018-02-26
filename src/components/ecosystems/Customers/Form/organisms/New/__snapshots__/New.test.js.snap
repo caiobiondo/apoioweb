@@ -871,6 +871,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
+      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -1295,6 +1296,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
+        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -1322,6 +1324,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "categories": "Categorias",
             "certificate": "Certificado",
             "checkYourScore": "Confira sua Pontuação",
+            "courseViews.many": "visualizações",
+            "courseViews.one": "visualização",
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
@@ -1507,10 +1511,17 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "trainingAddCourseError": "Ocorreu um erro ao adicionar o treinamento",
+            "trainingAddCourseFailure": "Treinamento já foi adicionado à sua lista",
             "trainingAddCourseMyList": "Adicionar à minha lista",
+            "trainingAddCourseSuccess": "Treinamento adicionado à sua lista com sucesso!",
             "trainingCategoriesEmptyList": "Lista de categorias vazia",
             "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
+            "trainingCourseCompleted": "Concluído",
+            "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
+            "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
+            "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
@@ -2405,6 +2416,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
+                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -3032,6 +3044,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
+                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -3892,6 +3905,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                               "opacity": 0.9,
                                                               "rippleBackgroundColor": "#616161",
                                                             },
+                                                            "userAgent": undefined,
                                                             "zIndex": Object {
                                                               "appBar": 1100,
                                                               "dialog": 1500,
@@ -4574,6 +4588,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
+                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -5264,6 +5279,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
+                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,
@@ -5889,6 +5905,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
+                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,
