@@ -2,7 +2,7 @@ import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
   updateQuery,
-} from './TrainingCoursesList.data';
+} from './TrainingCourses.data';
 
 describe('TrainingCoursesQuery', () => {
   it('should be the correct query', () => {
