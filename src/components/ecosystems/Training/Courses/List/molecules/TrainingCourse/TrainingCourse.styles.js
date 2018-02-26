@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white, orange100, gray200 } from 'styles/colors';
+import { white, orange100, gray100, gray200 } from 'styles/colors';
 import { Responsive } from '@entria/components';
 import { RobotoRegular, fs18, fs19 } from 'styles/typography';
 
@@ -59,16 +59,23 @@ export const TrainingCourseDescriptionViews = styled.div`
 
 export const TrainingCourseThumbnail = styled.div`
   position: relative;
+  height: 200px;
+  background-color: ${gray100};
 
-  > div {
+  > div:first-child {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    height: 100%;
 
     img {
       object-fit: cover;
       max-height: 200px;
       width: 100%;
+    }
+
+    svg {
+      height: 40px;
     }
   }
 `;

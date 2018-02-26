@@ -79,7 +79,7 @@ export class TrainingCourse extends Component {
             <TrainingCourseMenu>{this.props.children}</TrainingCourseMenu>
           </TrainingCourseDescriptionWrapper>
           <TrainingCourseThumbnail>
-            <ImageWithFallback imageUrl={course.thumbnail} />
+            <ImageWithFallback imageUrl={course.thumbnail} fallbackIcon="ico_photo" />
             {course.type === 'VIDEO' && [
               <TrainingCourseThumbnailPlayWrapper key={1}>
                 <TrainingCourseThumbnailPlay />
