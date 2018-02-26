@@ -43,22 +43,61 @@ exports[`Training Courses List renders correctly when the list is empty 1`] = `
 `;
 
 exports[`Training Courses List renders correctly when the list is not empty 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
->
+<TrainingCoursesListstyles__TrainingCoursesListWrapper>
   <PageMenu />
-  <EmptyList
-    descriptionId="coursesEmptyListDescription"
-    icon="ico_list_add"
-    titleId="coursesEmptyList"
-  />
-</Paper>
+  <InfiniteScroll
+    element="div"
+    hasMore={false}
+    initialLoad={true}
+    isReverse={false}
+    loadMore={[Function]}
+    loader={
+      <mixins__LoadingWrapperStyle>
+        <CircularProgress
+          max={100}
+          min={0}
+          mode="indeterminate"
+          size={40}
+          thickness={2}
+          value={0}
+        />
+      </mixins__LoadingWrapperStyle>
+    }
+    pageStart={0}
+    ref={null}
+    threshold={250}
+    useCapture={false}
+    useWindow={true}
+  >
+    <TrainingCoursesListstyles__List>
+      <TrainingCourse
+        course={
+          Object {
+            "id": 1,
+            "title": "Course 1",
+          }
+        }
+        key="0"
+      />
+      <TrainingCourse
+        course={
+          Object {
+            "id": 2,
+            "title": "Course 2",
+          }
+        }
+        key="1"
+      />
+      <TrainingCourse
+        course={
+          Object {
+            "id": 3,
+            "title": "Course 3",
+          }
+        }
+        key="2"
+      />
+    </TrainingCoursesListstyles__List>
+  </InfiniteScroll>
+</TrainingCoursesListstyles__TrainingCoursesListWrapper>
 `;
