@@ -19,7 +19,6 @@ export const CertificateListQueryOptions = {
       variables: {
         sellerId: props.user.codigo,
         userName: props.user.nomeCompleto,
-        offset: 0,
       },
       forceFetch: true,
     };
