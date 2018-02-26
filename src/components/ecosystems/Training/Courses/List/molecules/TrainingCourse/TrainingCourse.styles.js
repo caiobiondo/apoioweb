@@ -59,11 +59,6 @@ export const TrainingCourseDescriptionViews = styled.div`
 
 export const TrainingCourseThumbnail = styled.div`
   position: relative;
-  height: 200px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   > div {
     display: flex;
