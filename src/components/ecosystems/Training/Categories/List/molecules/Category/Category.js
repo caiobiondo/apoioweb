@@ -6,6 +6,7 @@ import CategoryCourse from '../CategoryCourse/CategoryCourse';
 import SubCategory from '../SubCategory/SubCategory';
 
 import {
+  CategoryWrapper,
   CategoryTitleHolder,
   CategoryIcon,
   CategoryTitle,
@@ -48,22 +49,20 @@ const Category = ({ category }) => {
     : renderCourses(category.courses);
 
   return (
-    <div>
-      <div>
-        <CategoryTitleHolder>
-          <CategoryIcon src={category.thumbnail} alt={category.title} />
-          <CategoryTitle>{category.name}</CategoryTitle>
+    <CategoryWrapper>
+      <CategoryTitleHolder>
+        <CategoryIcon src={category.thumbnail} alt={category.title} />
+        <CategoryTitle>{category.name}</CategoryTitle>
 
-          <ViewAll>
-            <ViewAllLink href={`/training/categories/${category.id}`} title={category.name}>
-              <FormattedMessage id="viewAllCourses" />
-            </ViewAllLink>
-          </ViewAll>
-        </CategoryTitleHolder>
+        <ViewAll>
+          <ViewAllLink href={`/training/categories/${category.id}`} title={category.name}>
+            <FormattedMessage id="viewAllCourses" />
+          </ViewAllLink>
+        </ViewAll>
+      </CategoryTitleHolder>
 
-        {childList}
-      </div>
-    </div>
+      {childList}
+    </CategoryWrapper>
   );
 };
 

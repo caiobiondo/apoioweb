@@ -14,7 +14,6 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   list-style-type: none;
-  margin-bottom: 70px;
 `;
 
 export const WrapperStyle = {
