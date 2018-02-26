@@ -9,7 +9,7 @@ const ImageWithFallback = props => {
 
   return (
     <Wrapper width={props.width} height={props.height || props.width} className={props.className}>
-      <Img src={props.imageUrl} loader={loader} unloader={fallbackImage} />
+      <Img src={props.imageUrl} unloader={loader} loader={fallbackImage} />
     </Wrapper>
   );
 };
