@@ -11,10 +11,12 @@ export const Header = styled.div`
   }
 `;
 
-export const BackButtonWrapper = styled.a`
-  cursor: pointer;
-  position: relative;
-  text-decoration: none;
+export const BackButtonWrapper = styled.div`
+  > a {
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+  }
 `;
 
 export const BackButtonText = styled.span`
@@ -28,7 +30,7 @@ export const BackButtonText = styled.span`
 export const BackButtonIcon = styled.span`
   left: 0;
   position: absolute;
-  top: -10px;
+  top: -5px;
   width: 20px;
 
   svg {
@@ -45,7 +47,7 @@ export const CategoryPercentageLabel = styled.div`
   display: inline-block;
   font-family: ${RobotoRegular};
   font-size: 16px;
-  margin-right: 25px;
+  margin: 5px 25px 0 0;
 
   @media screen and (max-width: ${screenMd}) {
     margin-top: 40px;

@@ -28,6 +28,7 @@ export default {
     trainingCourseCompleted: 'Concluído',
     downloadCertificate: 'Baixar Certificado',
     trainingAddCourseToMyList: 'Adicionar à minha lista',
+    trainingCategoryCompleted: 'Completa',
   },
 };
 /* eslint-disable sort-keys */

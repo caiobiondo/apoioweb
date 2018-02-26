@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, getRowProps } from 'react-flexbox-grid';
 import { Icon } from 'natura-ui';
+import { Link } from 'react-router-dom';
 
 import {
   Header,
@@ -44,12 +45,14 @@ const Category = ({ category }) => {
     <Header>
       <Row>
         <Col md={4} sm={12}>
-          <BackButtonWrapper href="/training/categories">
-            <BackButtonIcon>
-              <Icon file="ico_pencil" />
-            </BackButtonIcon>
+          <BackButtonWrapper>
+            <Link to="/training/categories">
+              <BackButtonIcon>
+                <Icon file="ico_back" />
+              </BackButtonIcon>
 
-            <BackButtonText>{category.name}</BackButtonText>
+              <BackButtonText>{category.name}</BackButtonText>
+            </Link>
           </BackButtonWrapper>
         </Col>
 
@@ -57,7 +60,8 @@ const Category = ({ category }) => {
           <Row start="sm" end="md">
             <Col xs={12}>
               <CategoryPercentageLabel>
-                <strong>{completedPercentage}%</strong> Completa
+                <strong>{completedPercentage}%</strong>&nbsp;
+                <FormattedMessage id="trainingCategoryCompleted" />
               </CategoryPercentageLabel>
               <CategoryPercentageBar completedPercentage={completedPercentage} />
             </Col>
