@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrainingCategoriesDetails Ecosystem should render the training courses list page 1`] = `
+<indexstyles__Main>
+  <Apollo(TrainingCategoriesDetails)
+    categoryId={1}
+    onLoadFinished={[Function]}
+    user={undefined}
+  />
+</indexstyles__Main>
+`;
