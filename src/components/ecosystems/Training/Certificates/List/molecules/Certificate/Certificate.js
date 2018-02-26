@@ -17,13 +17,24 @@ import { Icon, FormButton } from 'natura-ui';
 import { translate } from 'locale';
 
 class Certificate extends Component {
+  state = {
+    courseCompleted: false,
+  };
+
   downloadCertificate = () => {
-    console.log('download certificate');
+    const { downloadUrl } = this.props.certificate;
+    window.open(downloadUrl, '_blank');
+  };
+
+  componentDidMount = () => {
+    const { isCompleted } = this.props.certificate;
+    this.setState({ courseCompleted: isCompleted });
   };
 
   render() {
     const { certificate, index } = this.props;
     const percentage = certificate.percentageOfCompletedCourse;
+
     return (
       <CertificateWrapper index={index}>
         <CertificateImageWrapper>
@@ -35,18 +46,19 @@ class Certificate extends Component {
           <SliderWrapper>
             <Slider percentage={percentage} />
           </SliderWrapper>
-          <CompletedIconWrapper>
+          <CompletedIconWrapper completed={this.state.courseCompleted}>
             <Icon file="ico_trophy" />
           </CompletedIconWrapper>
         </CertificateSliderWrapper>
         <DownloadCertificateButtonWrapper>
-          <FormButton
-            {...DownloadCertificateButton}
-            type="submit"
-            onClick={this.downloadCertificate}
-            label={translate('downloadCertificate')}
-            backgroundColor="transparent"
-          />
+          {this.state.courseCompleted && (
+            <FormButton
+              {...DownloadCertificateButton}
+              type="submit"
+              onClick={this.downloadCertificate}
+              label={translate('downloadCertificate')}
+            />
+          )}
         </DownloadCertificateButtonWrapper>
       </CertificateWrapper>
     );

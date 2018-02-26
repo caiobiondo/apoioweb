@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
 import { RobotoRegular } from 'styles/typography';
-import { gray125, gray500 } from 'styles/colors';
+import { gray50, gray125, gray150, gray500 } from 'styles/colors';
 
 export const CertificateWrapper = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ export const CertificateWrapper = styled.div`
   padding-right: 25px;
 
   background: ${props => {
-    return props.index % 2 ? '#fafafa' : 'white';
+    return props.index % 2 ? `${gray50}` : 'white';
   }};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
@@ -87,7 +87,9 @@ export const Slider = styled.div`
 
 export const CompletedIconWrapper = styled.div`
   svg {
-    fill: ${getTheme().palette.primary1Color};
+    fill: ${({ completed }) => {
+      return completed ? `${getTheme().palette.primary1Color}` : `${gray150}`;
+    }};
     width: 13px;
   }
 `;
@@ -96,8 +98,6 @@ export const DownloadCertificateButtonWrapper = styled.div`
   align-items: flex-end;
   display: flex;
   margin-left: 10px;
-  border: 1px solid ${gray125};
-  border-radius: 2px;
   min-width: 190px;
 
   div {
@@ -129,4 +129,6 @@ export const DownloadCertificateButton = {
     fontFamily: RobotoRegular,
   },
   height: 54,
+  backgroundColor: 'transparent',
+  buttonStyle: { border: `1px solid ${gray125}` },
 };

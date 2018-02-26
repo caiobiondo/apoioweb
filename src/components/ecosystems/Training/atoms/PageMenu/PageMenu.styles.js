@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
 import { spMedium } from 'styles/spacing';
+import { gray50 } from 'styles/colors';
 
 export const Container = styled.div`
   margin-bottom: ${spMedium};
@@ -12,7 +13,7 @@ export const Wrapper = styled.div`
   height: 50px;
   justify-content: center;
   align-items: flex-end;
-  background-color: #ffffff;
+  background-color: ${gray50};
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     a {

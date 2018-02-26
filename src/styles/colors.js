@@ -4,6 +4,7 @@
 export const black = '#000';
 export const white = '#fff';
 
+export const gray50 = '#fafafa';
 export const gray100 = '#eeeeee';
 export const gray125 = '#ccc';
 export const gray150 = '#dddddd';
