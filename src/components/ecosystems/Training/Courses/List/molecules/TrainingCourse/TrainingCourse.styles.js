@@ -5,7 +5,7 @@ import { RobotoRegular, fs18, fs19 } from 'styles/typography';
 
 export const TrainingCourseWrapper = styled.div`
   flex: 1 1 auto;
-  width: 490px;
+  max-width: 510px;
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     flex-basis: 100%;
