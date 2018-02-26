@@ -410,7 +410,6 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
-      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -835,7 +834,6 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
-        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -862,14 +860,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "cancelLabel": "cancelar",
             "categories": "Categorias",
             "certificate": "Certificado",
-<<<<<<< cb5a09a752060c27831841ad2bc3c02febb43467
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
-=======
-            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
-            "checkYourScore": "Confira sua Pontuação",
->>>>>>> (feature/training-certificate-list): Updated user data tests
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
@@ -1972,7 +1966,6 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
-      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -2397,7 +2390,6 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
-        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -2424,14 +2416,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "cancelLabel": "cancelar",
             "categories": "Categorias",
             "certificate": "Certificado",
-<<<<<<< cb5a09a752060c27831841ad2bc3c02febb43467
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
-=======
-            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
-            "checkYourScore": "Confira sua Pontuação",
->>>>>>> (feature/training-certificate-list): Updated user data tests
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
@@ -3827,7 +3815,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
-      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -4252,7 +4239,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
-        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -4279,14 +4265,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "cancelLabel": "cancelar",
             "categories": "Categorias",
             "certificate": "Certificado",
-<<<<<<< cb5a09a752060c27831841ad2bc3c02febb43467
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
-=======
-            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
-            "checkYourScore": "Confira sua Pontuação",
->>>>>>> (feature/training-certificate-list): Updated user data tests
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
@@ -5579,7 +5561,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
-                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -6210,7 +6191,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
-                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -7071,7 +7051,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                               "opacity": 0.9,
                                                               "rippleBackgroundColor": "#616161",
                                                             },
-                                                            "userAgent": undefined,
                                                             "zIndex": Object {
                                                               "appBar": 1100,
                                                               "dialog": 1500,
@@ -7757,7 +7736,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
-                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -8467,7 +8445,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
-                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,
@@ -9093,7 +9070,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
-                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,

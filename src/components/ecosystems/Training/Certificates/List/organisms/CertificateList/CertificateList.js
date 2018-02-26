@@ -7,7 +7,7 @@ import { CertificateListQuery, CertificateListQueryOptions } from './Certificate
 import { List, fullContainer } from './CertificateList.styles';
 import { Loading, Paper } from 'natura-ui';
 
-class CertificateList extends Component {
+export class CertificateList extends Component {
   componentWillReceiveProps({ loading, certificates }) {
     this.notifyLoadFinish(loading, certificates);
   }

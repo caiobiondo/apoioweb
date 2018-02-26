@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
 import { RobotoRegular } from 'styles/typography';
-import { gray50, gray125, gray150, gray500 } from 'styles/colors';
+import { gray50, gray125, gray150, gray500, gray890 } from 'styles/colors';
 
 export const CertificateWrapper = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ export const CertificateWrapper = styled.div`
 `;
 
 export const CertificateName = styled.div`
-  color: #333333;
+  color: ${gray890};
   font-weight: bold;
   font-size: 18px;
   width: 300px;

@@ -57,7 +57,7 @@ exports[`PageMenu atom should render a menu to training page 1`] = `
           "transition": "all 200ms",
         }
       }
-      to="/training/a"
+      to="/training/categories"
     >
       Categorias
     </NavLink>
@@ -87,7 +87,7 @@ exports[`PageMenu atom should render a menu to training page 1`] = `
           "transition": "all 200ms",
         }
       }
-      to="/training/c"
+      to="/training/my-list"
     >
       Minha Lista
     </NavLink>
