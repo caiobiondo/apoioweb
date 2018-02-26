@@ -25,7 +25,7 @@ export const SubCategoryWrapper = styled.li`
   }
 
   @media (max-width: 900px) {
-    width: calc(50% - 7px);
+    width: calc(50% - 14px);
   }
 `;
 

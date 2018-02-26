@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { gray200, orange100 } from 'styles/colors';
 import { fw600, fs10, fs20 } from 'styles/typography';
 
+export const CategoryWrapper = styled.div`
+  margin-bottom: 70px;
+`;
+
 export const CategoryTitleHolder = styled.div`
   margin-bottom: 15px;
   position: relative;
