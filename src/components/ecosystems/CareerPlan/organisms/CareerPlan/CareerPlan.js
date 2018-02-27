@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
+import IndicatorList from '../IndicatorList';
+
 import {
   CareerPlanSection,
   CareerPlanTitleWrapper,
@@ -10,6 +12,8 @@ import {
 
 export class CareerPlan extends Component {
   render() {
+    const indicators = [{ id: 1 }];
+
     return (
       <CareerPlanSection>
         <CareerPlanTitleWrapper>
@@ -21,11 +25,13 @@ export class CareerPlan extends Component {
             <FormattedMessage id="careerPlanDescription" />
           </CareerPlanDescription>
         </CareerPlanTitleWrapper>
+
+        <IndicatorList indicators={indicators} />
       </CareerPlanSection>
     );
   }
 }
 
-export const CareerPlanWIthIntl = injectIntl(CareerPlan);
+export const CareerPlanWithIntl = injectIntl(CareerPlan);
 
-export default CareerPlanWIthIntl;
+export default CareerPlanWithIntl;
