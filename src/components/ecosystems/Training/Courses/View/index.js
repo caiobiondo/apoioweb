@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Main } from './index.styles';
-import CourseView from './CourseView/CourseView';
+import CourseView from './organisms/CourseView/CourseView';
 
 class TrainingWrapper extends Component {
   state = {

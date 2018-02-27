@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { CourseViewQuery, CourseViewQueryOptions } from './CourseView.data';
+import CourseContent from '../../molecules/CourseContent';
+import CourseDescription from '../../molecules/CourseDescription';
+import RelatedCourses from '../../molecules/RelatedCourses';
+
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { Main } from './CourseView.styles';
 import { Loading } from 'natura-ui';
@@ -41,7 +45,9 @@ export class CourseView extends Component {
 
     return (
       <Main>
-        <h1>CourseView</h1>
+        <CourseContent />
+        <CourseDescription />
+        <RelatedCourses />
       </Main>
     );
   }
