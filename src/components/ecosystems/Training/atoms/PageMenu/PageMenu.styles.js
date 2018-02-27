@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
 import { spMedium } from 'styles/spacing';
+import { gray50 } from 'styles/colors';
 
 export const Container = styled.div`
   margin-bottom: ${spMedium};
@@ -12,11 +13,11 @@ export const Wrapper = styled.div`
   height: 50px;
   justify-content: center;
   align-items: flex-end;
-  background-color: #ffffff;
+  background-color: ${gray50};
 
   @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
     a {
-      font-size: 15px !important;
+      font-size: 10px !important;
     }
   }
 `;
@@ -29,6 +30,16 @@ export const LinkWrapper = styled.div`
     padding-bottom: 5px;
     outline: none;
     text-transform: uppercase;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    margin-left: 0;
+    padding: 5px 5px 0 5px;
+
+    > a {
+      min-width: 60px !important;
+      margin: 0 2px;
+    }
   }
 `;
 

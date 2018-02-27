@@ -871,7 +871,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
-      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -1296,7 +1295,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
-        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -1323,6 +1321,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "cancelLabel": "cancelar",
             "categories": "Categorias",
             "certificate": "Certificado",
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
@@ -1355,6 +1354,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
             "dismiss": "OK, entendi",
+            "downloadCertificate": "Baixar Certificado",
             "downloadMagazine": "Baixar revista",
             "emptySearchResult": "Sua busca não retornou resultados.",
             "entryOrderDate": "Data {date}",
@@ -1408,6 +1408,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCertificatesEmptyList": "Lista de certificados vazia",
             "myCoursesEmptyList": "Lista de cursos vazia",
             "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
@@ -2416,7 +2417,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
-                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -3044,7 +3044,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
-                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -3310,8 +3309,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T06:41:20.000Z}
-                                  minDate={2017-12-15T06:41:20.000Z}
+                                  maxDate={2017-12-15T04:41:20.000Z}
+                                  minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
@@ -3328,8 +3327,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T06:41:20.000Z}
-                                    minDate={2017-12-15T06:41:20.000Z}
+                                    maxDate={2017-12-15T04:41:20.000Z}
+                                    minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
@@ -3352,8 +3351,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T06:41:20.000Z}
-                                      minDate={2017-12-15T06:41:20.000Z}
+                                      maxDate={2017-12-15T04:41:20.000Z}
+                                      minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
@@ -3402,8 +3401,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T06:41:20.000Z}
-                                                minDate={2017-12-15T06:41:20.000Z}
+                                                maxDate={2017-12-15T04:41:20.000Z}
+                                                minDate={2017-12-15T04:41:20.000Z}
                                                 name="customer.birthday"
                                                 okLabel="confirmar"
                                                 onChange={[Function]}
@@ -3905,7 +3904,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                               "opacity": 0.9,
                                                               "rippleBackgroundColor": "#616161",
                                                             },
-                                                            "userAgent": undefined,
                                                             "zIndex": Object {
                                                               "appBar": 1100,
                                                               "dialog": 1500,
@@ -3976,8 +3974,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T06:41:20.000Z}
-                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    maxDate={2017-12-15T04:41:20.000Z}
+                                                    minDate={2017-12-15T04:41:20.000Z}
                                                     okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}
@@ -4588,7 +4586,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
-                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -5279,7 +5276,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
-                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,
@@ -5905,7 +5901,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
-                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,
