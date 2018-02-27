@@ -7,7 +7,7 @@ export const CareerPlanSection = styled.section`
 `;
 
 export const CareerPlanTitleWrapper = styled.section`
-  margin-top: 48px;
+  margin: 65px 0 48px;
 `;
 
 export const CareerPlanTitle = styled.h3`
