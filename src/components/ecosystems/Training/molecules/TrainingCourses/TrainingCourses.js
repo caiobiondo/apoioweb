@@ -47,7 +47,7 @@ export default class TrainingCourses extends Component {
   };
 
   render() {
-    if (!this.props.courses) {
+    if (!this.props.courses || !this.props.courses.lenght) {
       return null;
     }
 
