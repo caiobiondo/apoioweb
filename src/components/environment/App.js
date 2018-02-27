@@ -13,6 +13,8 @@ import {
 } from 'config';
 
 import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
+import withErrorHandler from 'hocs/withErrorHandler';
+import withLoadable from 'hocs/withLoadable';
 
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 import { locale, flattenMessages, messages } from 'locale/index';
@@ -173,6 +175,17 @@ export default class App extends Component {
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/MyList/List'),
                     'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/person/:id/careerPlan"
+                  // component={withDefaultBehaviour(
+                  //   import('components/ecosystems/Carer/View'),
+                  //   'magazine',
+                  // )}
+                  component={withErrorHandler(
+                    withLoadable(import('components/ecosystems/CareerPlan')),
                   )}
                 />
               </div>
