@@ -7,6 +7,7 @@ import formValidationMessages from './messages/form_validation';
 import stockMessages from './messages/stock';
 import magazineMessages from './messages/magazine';
 import trainingMessages from './messages/training';
+import personMessages from './messages/person';
 
 export default {
   'en-US': {
@@ -18,6 +19,7 @@ export default {
     ...stockMessages['en-US'],
     ...magazineMessages['en-US'],
     ...trainingMessages['en-US'],
+    ...personMessages['en-US'],
   },
   'pt-BR': {
     ...customerMessages['pt-BR'],
@@ -28,6 +30,7 @@ export default {
     ...stockMessages['pt-BR'],
     ...magazineMessages['pt-BR'],
     ...trainingMessages['pt-BR'],
+    ...personMessages['pt-BR'],
   },
 };
 /* eslint-disable sort-keys */

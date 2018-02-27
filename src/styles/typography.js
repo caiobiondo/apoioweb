@@ -28,6 +28,7 @@ export const fs30 = '30px';
 export const fs32 = '32px';
 export const fs38 = '38px';
 export const fs60 = '60px';
+export const fs62 = '62px';
 export const fs100 = '100px';
 
 //
