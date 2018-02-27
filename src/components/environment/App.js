@@ -148,7 +148,7 @@ export default class App extends Component {
                   exact
                   path="/training/my-list"
                   component={withDefaultBehaviour(
-                    import('components/ecosystems/Training/Mylist/List'),
+                    import('components/ecosystems/Training/MyList/List'),
                     'training',
                   )}
                 />

@@ -12,15 +12,21 @@ import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
 
 import InfiniteScroll from 'react-infinite-scroller';
+
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   TrainingMyListWrapper,
   List,
   LoadingWrapper,
   fullContainer,
+  TrainingCourseFeedbackModalTitle,
+  TrainingCourseFeedbackModalAction,
 } from './TrainingMyList.styles';
 
 export class TrainingMyList extends Component {
@@ -30,6 +36,8 @@ export class TrainingMyList extends Component {
     this.state = {
       hasMoreItems: true,
       courses: [],
+      feedbackModalOpened: false,
+      feedbackModalTitle: '',
     };
   }
 
@@ -65,6 +73,8 @@ export class TrainingMyList extends Component {
   };
 
   handleMenuItemClick = (event, child) => {
+    const { formatMessage } = this.props.intl;
+
     this.props
       .mutate({
         variables: {
@@ -75,38 +85,54 @@ export class TrainingMyList extends Component {
       })
       .then(response => {
         if (response.error) {
+          const message =
+            child.props.value === 'favorite'
+              ? formatMessage({ id: 'trainingAddCourseError' })
+              : formatMessage({ id: 'trainingRemoveCourseError' });
+          this.setState({
+            feedbackModalOpened: true,
+            feedbackModalTitle: message,
+          });
           // Handle error
           return;
         }
 
         if (!response.data.updateCourse.status) {
+          const message =
+            child.props.value === 'favorite'
+              ? formatMessage({ id: 'trainingAddCourseFailure' })
+              : formatMessage({ id: 'trainingRemoveCourseFailure' });
+          this.setState({
+            feedbackModalOpened: true,
+            feedbackModalTitle: message,
+          });
           // Handle not updated
           return;
         }
-
-        // Handle update success
-        // const courses = this.state.courses.map(c => {
-        //   const course = { ...c };
-        //
-        //   if (course.id === child.props.course.id) {
-        //     if (course.isfavorite === 'true') {
-        //       course.isfavorite = 'false';
-        //     } else {
-        //       course.isfavorite = 'true';
-        //     }
-        //   }
-        //
-        //   return course;
-        // });
-        //
-        // this.setState({ courses });
         this.props.refetch();
+        const message =
+          child.props.value === 'favorite'
+            ? formatMessage({ id: 'trainingAddCourseSuccess' })
+            : formatMessage({ id: 'trainingRemoveCourseSuccess' });
+
+        this.setState({
+          feedbackModalOpened: true,
+          feedbackModalTitle: message,
+        });
 
         return;
       })
       .catch(err => {
         console.log('err', err);
         // Handle error
+        const message =
+          child.props.value === 'favorite'
+            ? formatMessage({ id: 'trainingAddCourseError' })
+            : formatMessage({ id: 'trainingRemoveCourseError' });
+        this.setState({
+          feedbackModalOpened: true,
+          feedbackModalTitle: message,
+        });
       });
   };
 
@@ -156,6 +182,34 @@ export class TrainingMyList extends Component {
     );
   };
 
+  handleClose = () => {
+    this.setState({ feedbackModalOpened: false });
+  };
+
+  renderFeedbackModal = () => {
+    const { feedbackModalTitle } = this.state;
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        labelStyle={TrainingCourseFeedbackModalAction}
+        onClick={this.handleClose}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="feedbackModal"
+        title={feedbackModalTitle}
+        actions={actions}
+        modal={false}
+        open={this.state.feedbackModalOpened}
+        titleStyle={TrainingCourseFeedbackModalTitle}
+        onRequestClose={this.handleClose}
+      />
+    );
+  };
+
   render() {
     if (!this.state.courses && this.props.loading) {
       return <Loading background="transparent" />;
@@ -199,7 +253,9 @@ export class TrainingMyList extends Component {
   }
 }
 
+export const TrainingMyListWithIntl = injectIntl(TrainingMyList);
+
 export default compose(
   graphql(TrainingCoursesQuery, TrainingCoursesQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(TrainingMyList);
+)(TrainingMyListWithIntl);
