@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-export class MyScore extends Component {
+import {
+  CareerPlanSection,
+  CareerPlanTitleWrapper,
+  CareerPlanTitle,
+  CareerPlanDescription,
+} from './CareerPlan.styles';
+
+export class CareerPlan extends Component {
   render() {
-    return <div>teste</div>;
+    return (
+      <CareerPlanSection>
+        <CareerPlanTitleWrapper>
+          <CareerPlanTitle>
+            <FormattedMessage id="careerPlanTitle" />
+          </CareerPlanTitle>
+
+          <CareerPlanDescription>
+            <FormattedMessage id="careerPlanDescription" />
+          </CareerPlanDescription>
+        </CareerPlanTitleWrapper>
+      </CareerPlanSection>
+    );
   }
 }
 
-export const MyScoreWithIntl = injectIntl(MyScore);
+export const CareerPlanWIthIntl = injectIntl(CareerPlan);
 
-export default MyScoreWithIntl;
+export default CareerPlanWIthIntl;
