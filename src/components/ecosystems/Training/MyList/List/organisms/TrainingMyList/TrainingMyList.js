@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import TrainingCourse from 'components/ecosystems/Training/MyList/List/molecules/TrainingCourse';
+import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
-import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingMyList.data';
+import {
+  TrainingCoursesQuery,
+  TrainingCoursesQueryOptions,
+} from 'components/ecosystems/Training/data/TrainingCourses.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose } from 'react-apollo';
@@ -22,7 +25,6 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   TrainingMyListWrapper,
-  List,
   LoadingWrapper,
   fullContainer,
   TrainingCourseFeedbackModalTitle,
@@ -240,14 +242,9 @@ export class TrainingMyList extends Component {
             </LoadingWrapper>
           }
         >
-          <List>
-            {this.state.courses.map((course, index) => (
-              <TrainingCourse key={index} course={course}>
-                {this.renderMenuItems(course)}
-              </TrainingCourse>
-            ))}
-          </List>
+          <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
         </InfiniteScroll>
+        {this.renderFeedbackModal()}
       </TrainingMyListWrapper>
     );
   }
