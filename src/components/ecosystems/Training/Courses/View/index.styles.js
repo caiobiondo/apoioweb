@@ -4,6 +4,7 @@ import { spMedium, spPage } from 'styles/spacing';
 
 export const Main = styled.div`
   margin: ${spMedium} ${spPage} ${spMedium} ${spMedium};
+  padding: 5px;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin: ${spMedium} 0;

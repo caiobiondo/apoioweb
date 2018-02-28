@@ -4,6 +4,7 @@ import { CourseViewQuery, CourseViewQueryOptions } from './CourseView.data';
 import CourseContent from '../../molecules/CourseContent';
 import CourseDescription from '../../molecules/CourseDescription';
 import RelatedCourses from '../../molecules/RelatedCourses';
+import CourseViewHeader from '../../molecules/CourseViewHeader';
 
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { Main } from './CourseView.styles';
@@ -45,6 +46,7 @@ export class CourseView extends Component {
 
     return (
       <Main>
+        <CourseViewHeader course={course} />
         <CourseContent />
         <CourseDescription />
         <RelatedCourses />
