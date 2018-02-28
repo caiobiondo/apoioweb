@@ -23,7 +23,7 @@ exports[`TrainingCourses renders correctly 1`] = `
         "dateUpload": "2017-04-20T00:00:00.000Z",
         "description": "new course description",
         "durationInSeconds": 1234,
-        "status": "completed",
+        "status": "finished",
         "stoppedAt": 12,
         "title": "new course",
         "type": "HTML5",

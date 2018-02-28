@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TrainingCoursesList Ecosystem should render the training courses list page 1`] = `
+exports[`TrainingMyList Ecosystem should render the training courses list page 1`] = `
 <indexstyles__Main>
-  <Apollo(TrainingCoursesList)
+  <Apollo(Apollo(TrainingMyList))
+    favorite={true}
     onLoadFinished={[Function]}
     user={undefined}
   />

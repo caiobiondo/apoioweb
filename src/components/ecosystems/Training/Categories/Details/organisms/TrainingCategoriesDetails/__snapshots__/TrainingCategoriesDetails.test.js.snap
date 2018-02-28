@@ -21,14 +21,10 @@ exports[`Training Categories Details renders correctly 1`] = `
         Test
       </TrainingCategoriesDetailsstyles__Title>
     </TrainingCategoriesDetailsstyles__TitleWrapper>
-    <Paper
-      circle={false}
-      rounded={true}
-      style="
-      height: '100%',
-    "
-      transitionEnabled={true}
-      zDepth={1}
+    <EmptyList
+      descriptionId="coursesEmptyListDescription"
+      icon="ico_list_add"
+      titleId="coursesEmptyList"
     />
   </TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsContentWrapper>
 </TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsWrapper>

@@ -46,6 +46,7 @@ const setup = propOverrides => {
           },
         }),
       ),
+      refetch: jest.fn(),
       intl,
     },
     propOverrides,

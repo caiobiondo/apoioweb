@@ -2,7 +2,7 @@
 
 exports[`TrainingCategoriesDetails Ecosystem should render the training courses list page 1`] = `
 <indexstyles__Main>
-  <Apollo(TrainingCategoriesDetails)
+  <Apollo(Apollo(TrainingCategoriesDetails))
     categoryId={1}
     onLoadFinished={[Function]}
     user={undefined}

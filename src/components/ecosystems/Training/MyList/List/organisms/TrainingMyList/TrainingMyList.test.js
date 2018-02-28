@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TrainingCoursesList } from './TrainingCoursesList';
+import { TrainingMyList } from './TrainingMyList';
 
 const setup = propOverrides => {
   const props = Object.assign(
@@ -13,7 +13,7 @@ const setup = propOverrides => {
     propOverrides,
   );
 
-  const result = shallow(<TrainingCoursesList {...props} />);
+  const result = shallow(<TrainingMyList {...props} />);
 
   return {
     props,

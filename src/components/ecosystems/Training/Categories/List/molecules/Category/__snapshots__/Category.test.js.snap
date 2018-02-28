@@ -8,14 +8,16 @@ exports[`Category renders correctly when there are courses 1`] = `
       Test
     </Categorystyles__CategoryTitle>
     <Categorystyles__ViewAll>
-      <Categorystyles__ViewAllLink
-        href="/training/categories/1"
-        title="Test"
-      >
-        <FormattedMessage
-          id="viewAllCourses"
-          values={Object {}}
-        />
+      <Categorystyles__ViewAllLink>
+        <Link
+          replace={false}
+          to="/training/categories/1"
+        >
+          <FormattedMessage
+            id="viewAllCourses"
+            values={Object {}}
+          />
+        </Link>
       </Categorystyles__ViewAllLink>
     </Categorystyles__ViewAll>
   </Categorystyles__CategoryTitleHolder>
@@ -40,14 +42,16 @@ exports[`Category renders correctly when there are sub categories 1`] = `
       Test
     </Categorystyles__CategoryTitle>
     <Categorystyles__ViewAll>
-      <Categorystyles__ViewAllLink
-        href="/training/categories/1"
-        title="Test"
-      >
-        <FormattedMessage
-          id="viewAllCourses"
-          values={Object {}}
-        />
+      <Categorystyles__ViewAllLink>
+        <Link
+          replace={false}
+          to="/training/categories/1"
+        >
+          <FormattedMessage
+            id="viewAllCourses"
+            values={Object {}}
+          />
+        </Link>
       </Categorystyles__ViewAllLink>
     </Categorystyles__ViewAll>
   </Categorystyles__CategoryTitleHolder>
