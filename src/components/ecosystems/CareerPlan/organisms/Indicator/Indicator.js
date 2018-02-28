@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { Icon } from 'natura-ui';
 
 import {
   IndicatorWrapper,
@@ -9,16 +10,56 @@ import {
   IndicatorTitle,
   IndicatorContentWrapper,
   IndicatorTableHeader,
+  IndicatorTableHeaderItem,
+  IndicatorTableHeaderItemAccOrObj,
   IndicatorTableContent,
   IndicatorTableItem,
   IndicatorTableItemSort,
   IndicatorTableItemContent,
   IndicatorTableItemTrashIcon,
   IndicatorTableItemNumber,
+  IndicatorTableContentWapper,
+  IndicatorTableItemNumberAcc,
+  IndicatorTableItemNumberObj,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
+  renderIndicatorTableItem = (indicatorTableItem, index) => {
+    return (
+      <IndicatorTableItem key={indicatorTableItem.id}>
+        <IndicatorTableItemSort>{index + 1}</IndicatorTableItemSort>
+        <IndicatorTableItemContent>
+          <IndicatorTableItemNumber>
+            <IndicatorTableItemTrashIcon title="Deletar">
+              <Icon file="ico_trash" />
+            </IndicatorTableItemTrashIcon>
+          </IndicatorTableItemNumber>
+          <IndicatorTableItemNumberObj>165.165</IndicatorTableItemNumberObj>
+          <IndicatorTableItemNumber>166.576</IndicatorTableItemNumber>
+          <IndicatorTableItemNumber>2.157</IndicatorTableItemNumber>
+          <IndicatorTableItemNumberAcc>102,16%</IndicatorTableItemNumberAcc>
+          <span IndicatorTableItemStatus />
+        </IndicatorTableItemContent>
+      </IndicatorTableItem>
+    );
+  };
+
   render() {
+    const indicatorItems = [
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
+      { id: 8 },
+      { id: 9 },
+      { id: 10 },
+      { id: 11 },
+      { id: 12 },
+    ];
+
     return (
       <IndicatorWrapper>
         <IndicatorWeightWrapper>
@@ -30,24 +71,18 @@ export class Indicator extends Component {
         <IndicatorContentWrapper>
           <div IndicatorTable>
             <IndicatorTableHeader>
-              <li IndicatorTableHeaderItem>Obj</li>
-              <li IndicatorTableHeaderItem>Real.</li>
-              <li IndicatorTableHeaderItem>Real rede</li>
-              <li IndicatorTableHeaderItem>Superação acumulada</li>
+              <IndicatorTableHeaderItemAccOrObj>Obj</IndicatorTableHeaderItemAccOrObj>
+              <IndicatorTableHeaderItem>Real.</IndicatorTableHeaderItem>
+              <IndicatorTableHeaderItem>Real rede</IndicatorTableHeaderItem>
+              <IndicatorTableHeaderItemAccOrObj>
+                Superação acumulada
+              </IndicatorTableHeaderItemAccOrObj>
             </IndicatorTableHeader>
-            <IndicatorTableContent>
-              <IndicatorTableItem>
-                <IndicatorTableItemSort>1</IndicatorTableItemSort>
-                <IndicatorTableItemContent>
-                  <IndicatorTableItemTrashIcon />
-                  <IndicatorTableItemNumber>165.165</IndicatorTableItemNumber>
-                  <IndicatorTableItemNumber>166.576</IndicatorTableItemNumber>
-                  <IndicatorTableItemNumber>2.157</IndicatorTableItemNumber>
-                  <IndicatorTableItemNumber>102,16%</IndicatorTableItemNumber>
-                  <span IndicatorTableItemStatus />
-                </IndicatorTableItemContent>
-              </IndicatorTableItem>
-            </IndicatorTableContent>
+            <IndicatorTableContentWapper>
+              <IndicatorTableContent>
+                {indicatorItems.map(this.renderIndicatorTableItem)}
+              </IndicatorTableContent>
+            </IndicatorTableContentWapper>
           </div>
         </IndicatorContentWrapper>
       </IndicatorWrapper>
