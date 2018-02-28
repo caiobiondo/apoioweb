@@ -5,6 +5,8 @@ import { FormattedMessage } from 'react-intl';
 import CategoryCourse from '../CategoryCourse/CategoryCourse';
 import SubCategory from '../SubCategory/SubCategory';
 
+import { Link } from 'react-router-dom';
+
 import {
   CategoryWrapper,
   CategoryTitleHolder,
@@ -55,8 +57,10 @@ const Category = ({ category }) => {
         <CategoryTitle>{category.name}</CategoryTitle>
 
         <ViewAll>
-          <ViewAllLink href={`/training/categories/${category.id}`} title={category.name}>
-            <FormattedMessage id="viewAllCourses" />
+          <ViewAllLink>
+            <Link to={`/training/categories/${category.id}`}>
+              <FormattedMessage id="viewAllCourses" />
+            </Link>
           </ViewAllLink>
         </ViewAll>
       </CategoryTitleHolder>

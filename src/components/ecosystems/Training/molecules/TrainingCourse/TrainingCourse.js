@@ -47,7 +47,7 @@ export class TrainingCourse extends Component {
   renderCourseStoppedAt = course => {
     const { stoppedAt, durationInSeconds, status } = course;
 
-    if (!stoppedAt || !durationInSeconds || status === 'completed') return null;
+    if (!stoppedAt || !durationInSeconds || status === 'finished') return null;
 
     const percentage = parseInt(stoppedAt * 100.0 / durationInSeconds, 10);
 
@@ -89,7 +89,7 @@ export class TrainingCourse extends Component {
               </TrainingCourseThumbnailDurationWrapper>,
               this.renderCourseStoppedAt(course),
             ]}
-            {course.status === 'completed' && [
+            {course.status === 'finished' && [
               <TrainingCourseThumbnailCompletedWrapper key={4}>
                 <TrainingCourseThumbnailCompleted>
                   {translate('trainingCourseCompleted')}

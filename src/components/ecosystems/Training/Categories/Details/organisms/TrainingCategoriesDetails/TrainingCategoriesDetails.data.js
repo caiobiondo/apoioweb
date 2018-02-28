@@ -8,9 +8,13 @@ export const TrainingCategoriesDetailsQuery = gql`
       id
       title
       thumbnail
+      dateUpload
       durationInSeconds
       type
+      views
       stoppedAt
+      status
+      isfavorite
     }
     trainingCategory(sellerId: $sellerId, categoryId: $categoryId) {
       id

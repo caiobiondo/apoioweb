@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { LoadingWrapperStyle } from 'styles/mixins';
-import { fs18, fw300 } from 'styles/typography';
+import { fs18, fw300, RobotoRegular, NaturaBold, fs25 } from 'styles/typography';
+import { List as TrainingCoursesList } from 'components/ecosystems/Training/molecules/TrainingCourses/TrainingCourses.styles';
 
 import { spMedium, spPage } from 'styles/spacing';
 
 export const LoadingWrapper = LoadingWrapperStyle;
 
-export const fullContainer = `
+export const fullContainer = {
   height: '100%',
-`;
+};
 
 export const TrainingCategoriesDetailsWrapper = styled.div`
   position: relative;
@@ -21,6 +22,10 @@ export const TrainingCategoriesDetailsContentWrapper = styled.div`
   padding-bottom: ${spPage};
   box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
+
+  ${TrainingCoursesList} {
+    padding-top: 0;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -55,3 +60,12 @@ export const ListItem = styled.li`
   list-style-type: none;
   margin-bottom: 70px;
 `;
+
+export const TrainingCourseFeedbackModalTitle = {
+  fontFamily: NaturaBold,
+  fontSize: fs25,
+};
+
+export const TrainingCourseFeedbackModalAction = {
+  fontFamily: RobotoRegular,
+};

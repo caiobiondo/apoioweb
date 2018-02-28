@@ -32,12 +32,15 @@ export const ViewAll = styled.span`
   vertical-align: middle;
 `;
 
-export const ViewAllLink = styled.a`
-  color: ${orange100};
+export const ViewAllLink = styled.div`
   display: inline-block;
-  font-size: ${fs10};
-  font-weight: ${fw600};
-  text-transform: uppercase;
+
+  > a {
+    color: ${orange100};
+    font-size: ${fs10};
+    font-weight: ${fw600};
+    text-transform: uppercase;
+  }
 `;
 
 export const List = styled.ul`

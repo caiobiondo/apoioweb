@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import TrainingCourse from 'components/ecosystems/Training/Courses/List/molecules/TrainingCourse';
+import TrainingCourse from 'components/ecosystems/Training/MyList/List/molecules/TrainingCourse';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingMyList.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
