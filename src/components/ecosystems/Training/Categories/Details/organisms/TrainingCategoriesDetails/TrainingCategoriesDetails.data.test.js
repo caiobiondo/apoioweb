@@ -1,26 +1,23 @@
 import {
-  TrainingCoursesQuery,
-  TrainingCoursesQueryOptions,
+  TrainingCategoriesDetailsQuery,
+  TrainingCategoriesDetailsOptions,
   updateQuery,
-} from './TrainingMyList.data';
+} from './TrainingCategoriesDetails.data';
 
-describe('TrainingCoursesQuery', () => {
+describe('TrainingCategoriesDetailsQuery', () => {
   it('should be the correct query', () => {
-    expect(TrainingCoursesQuery).toMatchSnapshot();
+    expect(TrainingCategoriesDetailsQuery).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
-    const props = { user: { codigo: 1 }, status: null, favorite: null };
+    const props = { user: { codigo: 1 }, categoryId: 1 };
 
-    const options = TrainingCoursesQueryOptions.options(props);
+    const options = TrainingCategoriesDetailsOptions.options(props);
 
     expect(options).toEqual({
       variables: {
         sellerId: 1,
-        limit: 10,
-        offset: 0,
-        status: null,
-        favorite: null,
+        categoryId: 1,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',
@@ -32,12 +29,12 @@ describe('TrainingCoursesQuery', () => {
     const data = {
       data: {
         loading: true,
-        courses: [],
+        trainingCoursesByCategory: [],
         fetchMore: fetchMore,
       },
     };
 
-    const props = TrainingCoursesQueryOptions.props(data);
+    const props = TrainingCategoriesDetailsOptions.props(data);
     const fetchMoreResult = props.fetchMore();
 
     expect(props).toMatchSnapshot();
@@ -48,7 +45,7 @@ describe('TrainingCoursesQuery', () => {
   describe('updateQuery', () => {
     it('should return the previous result', () => {
       const previousResult = {
-        courses: [1, 2],
+        trainingCoursesByCategory: [1, 2],
       };
 
       const result = updateQuery(previousResult, { fetchMoreResult: null });
@@ -58,14 +55,16 @@ describe('TrainingCoursesQuery', () => {
 
     it('should return the merge from previous and fetchMore result', () => {
       const previousResult = {
-        courses: [1, 2],
+        trainingCoursesByCategory: [1, 2],
       };
-      const courses = [3, 4];
+      const trainingCoursesByCategory = [3, 4];
 
-      const result = updateQuery(previousResult, { fetchMoreResult: { courses } });
+      const result = updateQuery(previousResult, {
+        fetchMoreResult: { trainingCoursesByCategory },
+      });
 
       expect(result).toEqual({
-        courses: [1, 2, 3, 4],
+        trainingCoursesByCategory: [1, 2, 3, 4],
       });
     });
   });

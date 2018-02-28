@@ -24,7 +24,7 @@ const setup = propOverrides => {
           views: 12,
           dateUpload: '2017-04-20T00:00:00.000Z',
           type: 'HTML5',
-          status: 'completed',
+          status: 'finished',
         },
       ],
       renderMenuItems: jest.fn(),

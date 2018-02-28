@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Courses List renders correctly when loading 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Courses List renders correctly when the list is empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Courses List renders correctly when the list is not empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;

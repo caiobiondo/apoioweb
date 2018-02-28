@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import TrainingCourse from 'components/ecosystems/Training/MyList/List/molecules/TrainingCourse';
-import { Loading, CircularProgress, Paper } from 'natura-ui';
-import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingMyList.data';
+import { Loading, Paper, CircularProgress } from 'natura-ui';
+import {
+  TrainingCategoriesDetailsQuery,
+  TrainingCategoriesDetailsOptions,
+} from './TrainingCategoriesDetails.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose } from 'react-apollo';
+
+import TrainingCategoriesDetailsHeader from '../../molecules/Header/TrainingCategoriesDetailsHeader';
+import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
+import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
+
+import InfiniteScroll from 'react-infinite-scroller';
 
 import { translate } from 'locale';
 import MenuItem from 'material-ui/MenuItem';
@@ -16,60 +23,59 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
 
-import InfiniteScroll from 'react-infinite-scroller';
-
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
-  TrainingMyListWrapper,
-  List,
-  LoadingWrapper,
   fullContainer,
+  TrainingCategoriesDetailsWrapper,
+  TrainingCategoriesDetailsContentWrapper,
+  TitleWrapper,
+  CategoryIcon,
+  Title,
+  LoadingWrapper,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
-} from './TrainingMyList.styles';
+} from './TrainingCategoriesDetails.styles';
 
-export class TrainingMyList extends Component {
+export class TrainingCategoriesDetails extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       hasMoreItems: true,
-      courses: [],
       feedbackModalOpened: false,
       feedbackModalTitle: '',
     };
   }
 
-  componentWillReceiveProps({ loading, courses }) {
-    this.notifyLoadFinish(loading, courses);
-    this.checkIfHasMoreItems(loading, courses);
-
-    this.setState({ courses });
+  componentWillReceiveProps({ loading, trainingCourses }) {
+    this.notifyLoadFinish(loading, trainingCourses);
+    this.checkIfHasMoreItems(loading, trainingCourses);
   }
 
-  notifyLoadFinish = (loading, courses) => {
+  notifyLoadFinish = (loading, items) => {
     if (!loading && this.props.onLoadFinished) {
-      this.props.onLoadFinished(this.isEmpty(loading, courses), this.isLoading(loading, courses));
+      this.props.onLoadFinished(this.isEmpty(loading, items), this.isLoading(loading, items));
     }
   };
 
-  checkIfHasMoreItems = (loading, courses) => {
-    if (this.props.loading === loading || !courses) {
+  checkIfHasMoreItems = (loading, traininigCourses) => {
+    if (this.props.loading === loading || !traininigCourses) {
       return;
     }
 
     const hasMoreItems =
-      (courses && !this.state.courses) || courses.length !== this.state.courses.length;
+      (traininigCourses && !this.props.traininigCourses) ||
+      traininigCourses.length !== this.props.traininigCourses.length;
     this.setState({ hasMoreItems });
   };
 
-  isLoading = (loading, courses) => {
-    return loading && !courses;
+  isLoading = (loading, items) => {
+    return loading && !items;
   };
 
-  isEmpty = (loading, courses) => {
-    return !loading && (!courses || courses.length === 0);
+  isEmpty = (loading, items) => {
+    return !loading && (!items || items.length === 0);
   };
 
   handleMenuItemClick = (event, child) => {
@@ -93,6 +99,7 @@ export class TrainingMyList extends Component {
             feedbackModalOpened: true,
             feedbackModalTitle: message,
           });
+
           // Handle error
           return;
         }
@@ -109,6 +116,8 @@ export class TrainingMyList extends Component {
           // Handle not updated
           return;
         }
+
+        // Handle update success
         this.props.refetch();
         const message =
           child.props.value === 'favorite'
@@ -211,51 +220,60 @@ export class TrainingMyList extends Component {
   };
 
   render() {
-    if (!this.state.courses && this.props.loading) {
+    const { loading, trainingCourses, trainingCategory, fetchMore } = this.props;
+
+    if (this.isLoading(loading, trainingCourses)) {
       return <Loading background="transparent" />;
     }
 
-    if (!this.state.courses || !this.state.courses.length) {
+    if (!this.props.trainingCourses || !this.props.trainingCourses.length) {
       return (
-        <Paper style={fullContainer}>
-          <PageMenu />
-          <EmptyList
-            icon="ico_list_add"
-            titleId="coursesEmptyList"
-            descriptionId="coursesEmptyListDescription"
-          />
-        </Paper>
+        <TrainingCategoriesDetailsWrapper>
+          <TrainingCategoriesDetailsHeader category={trainingCategory} />
+          <TrainingCategoriesDetailsContentWrapper>
+            <TitleWrapper>
+              <CategoryIcon src={trainingCategory.thumbnail} alt={trainingCategory.name} />
+              <Title>{trainingCategory.name}</Title>
+            </TitleWrapper>
+            <EmptyList
+              icon="ico_list_add"
+              titleId="coursesEmptyList"
+              descriptionId="coursesEmptyListDescription"
+            />
+          </TrainingCategoriesDetailsContentWrapper>
+        </TrainingCategoriesDetailsWrapper>
       );
     }
 
     return (
-      <TrainingMyListWrapper>
-        <PageMenu />
-        <InfiniteScroll
-          loadMore={this.props.fetchMore}
-          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
-          loader={
-            <LoadingWrapper>
-              <CircularProgress thickness={2} />
-            </LoadingWrapper>
-          }
-        >
-          <List>
-            {this.state.courses.map((course, index) => (
-              <TrainingCourse key={index} course={course}>
-                {this.renderMenuItems(course)}
-              </TrainingCourse>
-            ))}
-          </List>
-        </InfiniteScroll>
-      </TrainingMyListWrapper>
+      <TrainingCategoriesDetailsWrapper>
+        <TrainingCategoriesDetailsHeader category={trainingCategory} />
+        <TrainingCategoriesDetailsContentWrapper>
+          <TitleWrapper>
+            <CategoryIcon src={trainingCategory.thumbnail} alt={trainingCategory.name} />
+            <Title>{trainingCategory.name}</Title>
+          </TitleWrapper>
+          <InfiniteScroll
+            loadMore={fetchMore}
+            hasMore={false}
+            loader={
+              <LoadingWrapper>
+                <CircularProgress thickness={2} />
+              </LoadingWrapper>
+            }
+          >
+            <TrainingCourses courses={trainingCourses} renderMenuItems={this.renderMenuItems} />
+          </InfiniteScroll>
+          {this.renderFeedbackModal()}
+        </TrainingCategoriesDetailsContentWrapper>
+      </TrainingCategoriesDetailsWrapper>
     );
   }
 }
 
-export const TrainingMyListWithIntl = injectIntl(TrainingMyList);
+export const TrainingCategoriesDetailsWithIntl = injectIntl(TrainingCategoriesDetails);
 
 export default compose(
-  graphql(TrainingCoursesQuery, TrainingCoursesQueryOptions),
+  graphql(TrainingCategoriesDetailsQuery, TrainingCategoriesDetailsOptions),
   graphql(TrainingCourseUpdateMutation),
-)(TrainingMyListWithIntl);
+)(TrainingCategoriesDetailsWithIntl);

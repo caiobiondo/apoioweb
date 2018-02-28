@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Categories Details renders correctly 1`] = `
+<TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsWrapper>
+  <CategoryDetailsHeader
+    category={
+      Object {
+        "id": 1,
+        "name": "Test",
+        "thumbnail": "test.jpg",
+      }
+    }
+  />
+  <TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsContentWrapper>
+    <TrainingCategoriesDetailsstyles__TitleWrapper>
+      <TrainingCategoriesDetailsstyles__CategoryIcon
+        alt="Test"
+        src="test.jpg"
+      />
+      <TrainingCategoriesDetailsstyles__Title>
+        Test
+      </TrainingCategoriesDetailsstyles__Title>
+    </TrainingCategoriesDetailsstyles__TitleWrapper>
+    <EmptyList
+      descriptionId="coursesEmptyListDescription"
+      icon="ico_list_add"
+      titleId="coursesEmptyList"
+    />
+  </TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsContentWrapper>
+</TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsWrapper>
+`;
