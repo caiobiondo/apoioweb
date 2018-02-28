@@ -5,7 +5,6 @@ export const CourseViewQuery = gql`
     course(sellerId: $sellerId, courseId: $courseId) {
       id
       accessToken
-      categoryTitle
       clientIdentifier
       clientSecrets
       courseContent {

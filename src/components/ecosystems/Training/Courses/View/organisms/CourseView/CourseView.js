@@ -28,11 +28,11 @@ export class CourseView extends Component {
   render() {
     const { course } = this.props;
 
-    if (!this.props.course && this.props.loading) {
+    if (!course && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
-    if (!this.props.course.id) {
+    if (!course.id) {
       return (
         <Main>
           <EmptyList
@@ -48,7 +48,7 @@ export class CourseView extends Component {
       <Main>
         <CourseViewHeader course={course} />
         <CourseContent />
-        <CourseDescription />
+        <CourseDescription course={course} />
         <RelatedCourses />
       </Main>
     );
