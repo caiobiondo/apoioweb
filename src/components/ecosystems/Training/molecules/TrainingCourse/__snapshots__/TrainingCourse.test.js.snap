@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrainingCourse renders correctly 1`] = `
+<TrainingCoursestyles__TrainingCourseWrapper>
+  <TrainingCoursestyles__TrainingCoursePaper>
+    <TrainingCoursestyles__TrainingCourseDescriptionWrapper>
+      <TrainingCoursestyles__TrainingCourseIconWrapper>
+        <Icon
+          file="ico_film_stock"
+        />
+      </TrainingCoursestyles__TrainingCourseIconWrapper>
+      <TrainingCoursestyles__TrainingCourseDescription>
+        <TrainingCoursestyles__TrainingCourseDescriptionTitle>
+          new course
+        </TrainingCoursestyles__TrainingCourseDescriptionTitle>
+        <TrainingCoursestyles__TrainingCourseDescriptionViews>
+          12
+           
+          <FormattedPlural
+            one="formatedMessage [object Object]"
+            other="formatedMessage [object Object]"
+            style="cardinal"
+            value={12}
+          />
+           - 
+          <FormattedRelative
+            updateInterval={10000}
+            value="2017-04-20T00:00:00.000Z"
+          />
+        </TrainingCoursestyles__TrainingCourseDescriptionViews>
+      </TrainingCoursestyles__TrainingCourseDescription>
+      <TrainingCoursestyles__TrainingCourseMenu />
+    </TrainingCoursestyles__TrainingCourseDescriptionWrapper>
+    <TrainingCoursestyles__TrainingCourseThumbnail>
+      <ImageWithFallback
+        fallbackIcon="ico_photo"
+      />
+      <TrainingCoursestyles__TrainingCourseThumbnailPlayWrapper
+        key="1"
+      >
+        <TrainingCoursestyles__TrainingCourseThumbnailPlay />
+      </TrainingCoursestyles__TrainingCourseThumbnailPlayWrapper>
+      <TrainingCoursestyles__TrainingCourseThumbnailDurationWrapper
+        key="2"
+      >
+        20:34
+      </TrainingCoursestyles__TrainingCourseThumbnailDurationWrapper>
+      <TrainingCoursestyles__TrainingCourseThumbnailCompletedWrapper
+        key="4"
+      >
+        <TrainingCoursestyles__TrainingCourseThumbnailCompleted>
+          Concluído
+        </TrainingCoursestyles__TrainingCourseThumbnailCompleted>
+      </TrainingCoursestyles__TrainingCourseThumbnailCompletedWrapper>
+    </TrainingCoursestyles__TrainingCourseThumbnail>
+  </TrainingCoursestyles__TrainingCoursePaper>
+</TrainingCoursestyles__TrainingCourseWrapper>
+`;
+
+exports[`TrainingCourse when status started renders correctly 1`] = `
+<TrainingCoursestyles__TrainingCourseWrapper>
+  <TrainingCoursestyles__TrainingCoursePaper>
+    <TrainingCoursestyles__TrainingCourseDescriptionWrapper>
+      <TrainingCoursestyles__TrainingCourseIconWrapper>
+        <Icon
+          file="ico_film_stock"
+        />
+      </TrainingCoursestyles__TrainingCourseIconWrapper>
+      <TrainingCoursestyles__TrainingCourseDescription>
+        <TrainingCoursestyles__TrainingCourseDescriptionTitle>
+          new course
+        </TrainingCoursestyles__TrainingCourseDescriptionTitle>
+        <TrainingCoursestyles__TrainingCourseDescriptionViews>
+          12
+           
+          <FormattedPlural
+            one="formatedMessage [object Object]"
+            other="formatedMessage [object Object]"
+            style="cardinal"
+            value={12}
+          />
+           - 
+          <FormattedRelative
+            updateInterval={10000}
+            value="2017-04-20T00:00:00.000Z"
+          />
+        </TrainingCoursestyles__TrainingCourseDescriptionViews>
+      </TrainingCoursestyles__TrainingCourseDescription>
+      <TrainingCoursestyles__TrainingCourseMenu />
+    </TrainingCoursestyles__TrainingCourseDescriptionWrapper>
+    <TrainingCoursestyles__TrainingCourseThumbnail>
+      <ImageWithFallback
+        fallbackIcon="ico_photo"
+      />
+      <TrainingCoursestyles__TrainingCourseThumbnailPlayWrapper
+        key="1"
+      >
+        <TrainingCoursestyles__TrainingCourseThumbnailPlay />
+      </TrainingCoursestyles__TrainingCourseThumbnailPlayWrapper>
+      <TrainingCoursestyles__TrainingCourseThumbnailDurationWrapper
+        key="2"
+      >
+        20:34
+      </TrainingCoursestyles__TrainingCourseThumbnailDurationWrapper>
+      <TrainingCoursestyles__TrainingCourseThumbnailStoppedAt
+        key="3"
+        width="0%"
+      />
+    </TrainingCoursestyles__TrainingCourseThumbnail>
+  </TrainingCoursestyles__TrainingCoursePaper>
+</TrainingCoursestyles__TrainingCourseWrapper>
+`;
+
+exports[`TrainingCourse when type HTML5 renders correctly 1`] = `
+<TrainingCoursestyles__TrainingCourseWrapper>
+  <TrainingCoursestyles__TrainingCoursePaper>
+    <TrainingCoursestyles__TrainingCourseDescriptionWrapper>
+      <TrainingCoursestyles__TrainingCourseIconWrapper>
+        <Icon
+          file="ico_file"
+        />
+      </TrainingCoursestyles__TrainingCourseIconWrapper>
+      <TrainingCoursestyles__TrainingCourseDescription>
+        <TrainingCoursestyles__TrainingCourseDescriptionTitle>
+          new course
+        </TrainingCoursestyles__TrainingCourseDescriptionTitle>
+        <TrainingCoursestyles__TrainingCourseDescriptionViews>
+          12
+           
+          <FormattedPlural
+            one="formatedMessage [object Object]"
+            other="formatedMessage [object Object]"
+            style="cardinal"
+            value={12}
+          />
+           - 
+          <FormattedRelative
+            updateInterval={10000}
+            value="2017-04-20T00:00:00.000Z"
+          />
+        </TrainingCoursestyles__TrainingCourseDescriptionViews>
+      </TrainingCoursestyles__TrainingCourseDescription>
+      <TrainingCoursestyles__TrainingCourseMenu />
+    </TrainingCoursestyles__TrainingCourseDescriptionWrapper>
+    <TrainingCoursestyles__TrainingCourseThumbnail>
+      <ImageWithFallback
+        fallbackIcon="ico_photo"
+      />
+      <TrainingCoursestyles__TrainingCourseThumbnailCompletedWrapper
+        key="4"
+      >
+        <TrainingCoursestyles__TrainingCourseThumbnailCompleted>
+          Concluído
+        </TrainingCoursestyles__TrainingCourseThumbnailCompleted>
+      </TrainingCoursestyles__TrainingCourseThumbnailCompletedWrapper>
+    </TrainingCoursestyles__TrainingCourseThumbnail>
+  </TrainingCoursestyles__TrainingCoursePaper>
+</TrainingCoursestyles__TrainingCourseWrapper>
+`;

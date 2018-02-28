@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import TrainingCourse from 'components/ecosystems/Training/Courses/List/molecules/TrainingCourse';
-import { Loading, CircularProgress, Paper } from 'natura-ui';
-import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingCoursesList.data';
+import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
+import { Loading, Paper, CircularProgress } from 'natura-ui';
+import {
+  TrainingCoursesQuery,
+  TrainingCoursesQueryOptions,
+} from 'components/ecosystems/Training/data/TrainingCourses.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose } from 'react-apollo';
@@ -22,11 +25,10 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   TrainingCoursesListWrapper,
-  List,
-  LoadingWrapper,
   fullContainer,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
+  LoadingWrapper,
 } from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
@@ -35,7 +37,6 @@ export class TrainingCoursesList extends Component {
 
     this.state = {
       hasMoreItems: true,
-      courses: [],
       feedbackModalOpened: false,
       feedbackModalTitle: '',
     };
@@ -44,8 +45,6 @@ export class TrainingCoursesList extends Component {
   componentWillReceiveProps({ loading, courses }) {
     this.notifyLoadFinish(loading, courses);
     this.checkIfHasMoreItems(loading, courses);
-
-    this.setState({ courses });
   }
 
   notifyLoadFinish = (loading, courses) => {
@@ -60,7 +59,7 @@ export class TrainingCoursesList extends Component {
     }
 
     const hasMoreItems =
-      (courses && !this.state.courses) || courses.length !== this.state.courses.length;
+      (courses && !this.props.courses) || courses.length !== this.props.courses.length;
     this.setState({ hasMoreItems });
   };
 
@@ -112,26 +111,13 @@ export class TrainingCoursesList extends Component {
         }
 
         // Handle update success
-        const courses = this.state.courses.map(c => {
-          const course = { ...c };
-
-          if (course.id === child.props.course.id) {
-            if (course.isfavorite === 'true') {
-              course.isfavorite = 'false';
-            } else {
-              course.isfavorite = 'true';
-            }
-          }
-
-          return course;
-        });
+        this.props.refetch();
         const message =
           child.props.value === 'favorite'
             ? formatMessage({ id: 'trainingAddCourseSuccess' })
             : formatMessage({ id: 'trainingRemoveCourseSuccess' });
 
         this.setState({
-          courses,
           feedbackModalOpened: true,
           feedbackModalTitle: message,
         });
@@ -227,11 +213,11 @@ export class TrainingCoursesList extends Component {
   };
 
   render() {
-    if (!this.state.courses && this.props.loading) {
+    if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
-    if (!this.state.courses || !this.state.courses.length) {
+    if (!this.props.courses || !this.props.courses.length) {
       return (
         <Paper style={fullContainer}>
           <PageMenu />
@@ -256,13 +242,7 @@ export class TrainingCoursesList extends Component {
             </LoadingWrapper>
           }
         >
-          <List>
-            {this.state.courses.map((course, index) => (
-              <TrainingCourse key={index} course={course}>
-                {this.renderMenuItems(course)}
-              </TrainingCourse>
-            ))}
-          </List>
+          <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
         </InfiniteScroll>
         {this.renderFeedbackModal()}
       </TrainingCoursesListWrapper>
