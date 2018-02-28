@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
-import { Loading, Paper } from 'natura-ui';
+import { Loading, Paper, CircularProgress } from 'natura-ui';
 import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
@@ -19,6 +19,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
 
+import InfiniteScroll from 'react-infinite-scroller';
+
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
@@ -26,6 +28,7 @@ import {
   fullContainer,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
+  LoadingWrapper,
 } from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
@@ -230,7 +233,17 @@ export class TrainingCoursesList extends Component {
     return (
       <TrainingCoursesListWrapper>
         <PageMenu />
-        <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
+        <InfiniteScroll
+          loadMore={this.props.fetchMore}
+          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
+          loader={
+            <LoadingWrapper>
+              <CircularProgress thickness={2} />
+            </LoadingWrapper>
+          }
+        >
+          <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
+        </InfiniteScroll>
         {this.renderFeedbackModal()}
       </TrainingCoursesListWrapper>
     );

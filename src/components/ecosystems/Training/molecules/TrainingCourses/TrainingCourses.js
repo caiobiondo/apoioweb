@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import TrainingCourse from 'components/ecosystems/Training/molecules/TrainingCourse';
-import { Loading, CircularProgress } from 'natura-ui';
 
-import InfiniteScroll from 'react-infinite-scroller';
-
-import { TrainingCoursesWrapper, List, LoadingWrapper } from './TrainingCourses.styles';
+import { List } from './TrainingCourses.styles';
 
 export default class TrainingCourses extends Component {
   constructor(props) {
@@ -52,25 +48,13 @@ export default class TrainingCourses extends Component {
     }
 
     return (
-      <TrainingCoursesWrapper>
-        <InfiniteScroll
-          loadMore={this.props.fetchMore}
-          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
-          loader={
-            <LoadingWrapper>
-              <CircularProgress thickness={2} />
-            </LoadingWrapper>
-          }
-        >
-          <List>
-            {this.props.courses.map((course, index) => (
-              <TrainingCourse key={index} course={course}>
-                {this.props.renderMenuItems(course)}
-              </TrainingCourse>
-            ))}
-          </List>
-        </InfiniteScroll>
-      </TrainingCoursesWrapper>
+      <List>
+        {this.props.courses.map((course, index) => (
+          <TrainingCourse key={index} course={course}>
+            {this.props.renderMenuItems(course)}
+          </TrainingCourse>
+        ))}
+      </List>
     );
   }
 }
