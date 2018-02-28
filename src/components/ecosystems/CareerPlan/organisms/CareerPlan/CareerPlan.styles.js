@@ -4,6 +4,10 @@ import { fs32, fs16, RobotoRegular } from 'styles/typography';
 
 export const CareerPlanSection = styled.section`
   position: relative;
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export const CareerPlanTitleWrapper = styled.section`
