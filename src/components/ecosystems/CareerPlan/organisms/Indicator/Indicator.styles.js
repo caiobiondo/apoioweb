@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray150, gray300, gray700, gray890, blue100 } from 'styles/colors';
+import { gray890, blue100 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
 export const IndicatorWrapper = styled.li`
@@ -8,24 +8,24 @@ export const IndicatorWrapper = styled.li`
 `;
 
 export const IndicatorWeightWrapper = styled.div`
-  background: #333;
+  background: ${blue100};
   border-radius: 5px;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
   color: #fff;
   font-family: ${RobotoRegular};
-  height: 118px;
+  height: 125px;
   left: 5px;
   position: absolute;
   text-align: center;
   top: 0;
-  width: 118px;
+  width: 125px;
   z-index: 1;
 `;
 
 export const IndicatorWeightLabel = styled.span`
   display: inline-block;
   font-size: 13px;
-  margin: 25px 0 10px;
+  margin: 30px 0 10px;
   text-transform: uppercase;
   width: 100%;
 `;
@@ -40,17 +40,17 @@ export const IndicatorTitle = styled.h4`
   color: ${blue100};
   font-size: 21px;
   margin: 0;
-  padding-left: 145px;
+  padding-left: 155px;
 `;
 
 export const IndicatorContentWrapper = styled.div`
   font-family: ${RobotoRegular};
-  margin-top: 25px;
+  margin-top: 10px;
 `;
 
 export const IndicatorTableHeader = styled.ul`
   display: inline-block;
-  margin-top: 90px;
+  margin-top: 125px;
   padding: 0 20px 0 0;
   text-align: right;
   vertical-align: top;
@@ -75,6 +75,7 @@ export const IndicatorTableContentWapper = styled.div`
   display: inline-block;
   position: relative;
   width: calc(100% - 110px);
+  height: 270px;
 
   &:before {
     background-color: white;
@@ -85,13 +86,13 @@ export const IndicatorTableContentWapper = styled.div`
     left: 0;
     position: absolute;
     right: 0;
-    top: 60px;
+    top: 80px;
   }
 `;
 
 export const IndicatorTableContent = styled.ul`
   overflow-x: auto;
-  padding: 10px 0;
+  padding: 30px 0 10px;
   position: relative;
   vertical-align: top;
   white-space: nowrap;
@@ -111,77 +112,4 @@ export const IndicatorTableContent = styled.ul`
     background-color: ${blue100};
     border-radius: 10px;
   }
-`;
-
-export const IndicatorTableItem = styled.li`
-  display: inline-block;
-  list-style-type: none;
-  position: relative;
-  text-align: center;
-  white-space: initial;
-  width: 95px;
-`;
-
-export const IndicatorTableItemSort = styled.div`
-  color: ${gray150};
-  font-size: 21px;
-  margin-bottom: 15px;
-  padding: 12px 0;
-  position: relative;
-
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 1px;
-    background-color: ${gray150};
-  }
-
-  &:after {
-    background-color: white;
-    bottom: 0;
-    content: '';
-    display: block;
-    position: absolute;
-    right: 1px;
-    top: 0;
-    width: 1px;
-  }
-`;
-
-export const IndicatorTableItemContent = styled.div`
-  display: inline-block;
-  font-size: 13px;
-`;
-
-export const IndicatorTableItemTrashIcon = styled.a`
-  cursor: pointer;
-  display: inline-block;
-  height: 12px;
-  width: 12px;
-
-  svg {
-    fill: ${gray300};
-  }
-`;
-
-export const IndicatorTableItemNumber = styled.span`
-  display: inline-block;
-  margin: 10px 0;
-  width: 100%;
-  color: ${gray700};
-`;
-
-export const IndicatorTableItemNumberAcc = IndicatorTableItemNumber.extend`
-  color: ${gray890};
-  font-weight: ${fw600};
-  font-size: 16px;
-`;
-
-export const IndicatorTableItemNumberObj = IndicatorTableItemNumber.extend`
-  color: ${gray890};
-  font-weight: ${fw600};
 `;

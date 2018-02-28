@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Icon } from 'natura-ui';
+
+import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
 
 import {
   IndicatorWrapper,
@@ -13,35 +14,12 @@ import {
   IndicatorTableHeaderItem,
   IndicatorTableHeaderItemAccOrObj,
   IndicatorTableContent,
-  IndicatorTableItem,
-  IndicatorTableItemSort,
-  IndicatorTableItemContent,
-  IndicatorTableItemTrashIcon,
-  IndicatorTableItemNumber,
   IndicatorTableContentWapper,
-  IndicatorTableItemNumberAcc,
-  IndicatorTableItemNumberObj,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
-  renderIndicatorTableItem = (indicatorTableItem, index) => {
-    return (
-      <IndicatorTableItem key={indicatorTableItem.id}>
-        <IndicatorTableItemSort>{index + 1}</IndicatorTableItemSort>
-        <IndicatorTableItemContent>
-          <IndicatorTableItemNumber>
-            <IndicatorTableItemTrashIcon title="Deletar">
-              <Icon file="ico_trash" />
-            </IndicatorTableItemTrashIcon>
-          </IndicatorTableItemNumber>
-          <IndicatorTableItemNumberObj>165.165</IndicatorTableItemNumberObj>
-          <IndicatorTableItemNumber>166.576</IndicatorTableItemNumber>
-          <IndicatorTableItemNumber>2.157</IndicatorTableItemNumber>
-          <IndicatorTableItemNumberAcc>102,16%</IndicatorTableItemNumberAcc>
-          <span IndicatorTableItemStatus />
-        </IndicatorTableItemContent>
-      </IndicatorTableItem>
-    );
+  renderIndicatorData = (indicatorData, index) => {
+    return <IndicatorData indicatorData={indicatorData} index={index} key={indicatorData.id} />;
   };
 
   render() {
@@ -49,9 +27,9 @@ export class Indicator extends Component {
       { id: 1 },
       { id: 2 },
       { id: 3 },
-      { id: 4 },
+      { id: 4, current: true },
       { id: 5 },
-      { id: 6 },
+      { id: 6, active: true },
       { id: 7 },
       { id: 8 },
       { id: 9 },
@@ -69,21 +47,18 @@ export class Indicator extends Component {
 
         <IndicatorTitle>Volume de Pontos</IndicatorTitle>
         <IndicatorContentWrapper>
-          <div IndicatorTable>
-            <IndicatorTableHeader>
-              <IndicatorTableHeaderItemAccOrObj>Obj</IndicatorTableHeaderItemAccOrObj>
-              <IndicatorTableHeaderItem>Real.</IndicatorTableHeaderItem>
-              <IndicatorTableHeaderItem>Real rede</IndicatorTableHeaderItem>
-              <IndicatorTableHeaderItemAccOrObj>
-                Superação acumulada
-              </IndicatorTableHeaderItemAccOrObj>
-            </IndicatorTableHeader>
-            <IndicatorTableContentWapper>
-              <IndicatorTableContent>
-                {indicatorItems.map(this.renderIndicatorTableItem)}
-              </IndicatorTableContent>
-            </IndicatorTableContentWapper>
-          </div>
+          <IndicatorTableHeader>
+            <IndicatorTableHeaderItemAccOrObj>Obj</IndicatorTableHeaderItemAccOrObj>
+            <IndicatorTableHeaderItem>Real.</IndicatorTableHeaderItem>
+            <IndicatorTableHeaderItem>Real rede</IndicatorTableHeaderItem>
+            <IndicatorTableHeaderItemAccOrObj>Superação acumulada</IndicatorTableHeaderItemAccOrObj>
+          </IndicatorTableHeader>
+
+          <IndicatorTableContentWapper>
+            <IndicatorTableContent>
+              {indicatorItems.map(this.renderIndicatorData)}
+            </IndicatorTableContent>
+          </IndicatorTableContentWapper>
         </IndicatorContentWrapper>
       </IndicatorWrapper>
     );

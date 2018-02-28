@@ -10,7 +10,9 @@ export class IndicatorList extends Component {
     const { indicators } = this.props;
 
     return (
-      <IndicatorListWrapper>{indicators.map(indicator => <Indicator />)}</IndicatorListWrapper>
+      <IndicatorListWrapper>
+        {indicators.map(indicator => <Indicator key={indicator.id} />)}
+      </IndicatorListWrapper>
     );
   }
 }
