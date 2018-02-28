@@ -47,7 +47,7 @@ export class TrainingCourse extends Component {
   renderCourseStoppedAt = course => {
     const { stoppedAt, durationInSeconds, status } = course;
 
-    if (!stoppedAt || status === 'completed') return null;
+    if (!stoppedAt || !durationInSeconds || status === 'completed') return null;
 
     const percentage = parseInt(stoppedAt * 100.0 / durationInSeconds, 10);
 
@@ -104,7 +104,7 @@ export class TrainingCourse extends Component {
 }
 
 TrainingCourse.propTypes = {
-  course: PropTypes.object,
+  course: PropTypes.object.isRequired,
 };
 
 export default injectIntl(TrainingCourse);
