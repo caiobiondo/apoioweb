@@ -37,7 +37,6 @@ export class TrainingMyList extends Component {
 
     this.state = {
       hasMoreItems: true,
-      courses: [],
       feedbackModalOpened: false,
       feedbackModalTitle: '',
     };
@@ -46,8 +45,6 @@ export class TrainingMyList extends Component {
   componentWillReceiveProps({ loading, courses }) {
     this.notifyLoadFinish(loading, courses);
     this.checkIfHasMoreItems(loading, courses);
-
-    this.setState({ courses });
   }
 
   notifyLoadFinish = (loading, courses) => {
@@ -62,7 +59,7 @@ export class TrainingMyList extends Component {
     }
 
     const hasMoreItems =
-      (courses && !this.state.courses) || courses.length !== this.state.courses.length;
+      (courses && !this.props.courses) || courses.length !== this.props.courses.length;
     this.setState({ hasMoreItems });
   };
 
@@ -213,11 +210,11 @@ export class TrainingMyList extends Component {
   };
 
   render() {
-    if (!this.state.courses && this.props.loading) {
+    if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
-    if (!this.state.courses || !this.state.courses.length) {
+    if (!this.props.courses || !this.props.courses.length) {
       return (
         <Paper style={fullContainer}>
           <PageMenu />

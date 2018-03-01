@@ -47,6 +47,7 @@ const setup = propOverrides => {
         }),
       ),
       refetch: jest.fn(),
+      onLoadFinished: jest.fn(),
       intl,
     },
     propOverrides,
@@ -86,6 +87,19 @@ describe('Training Courses List', () => {
 
     // then
     expect(result).toMatchSnapshot();
+  });
+
+  it('should notify onLoadFinished callback when not loading', () => {
+    // given
+    // when
+    const { result, props } = setup({
+      fetchMore: jest.fn(),
+      loading: false,
+    });
+    result.instance().componentWillReceiveProps({ loading: false, courses: props.courses });
+
+    // then
+    expect(props.onLoadFinished).toBeCalledWith(false, false);
   });
 
   describe('when handlingMenuItemClick', () => {

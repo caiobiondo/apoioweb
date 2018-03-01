@@ -104,6 +104,7 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
       }
       loading={false}
       mutate={[Function]}
+      onLoadFinished={[Function]}
       refetch={[Function]}
       renderMenuItems={[Function]}
       user={
