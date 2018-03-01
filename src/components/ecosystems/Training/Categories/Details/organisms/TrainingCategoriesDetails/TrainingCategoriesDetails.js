@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { Loading, Paper, CircularProgress } from 'natura-ui';
+import { Loading, CircularProgress } from 'natura-ui';
 import {
   TrainingCategoriesDetailsQuery,
   TrainingCategoriesDetailsOptions,
@@ -9,7 +9,6 @@ import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/dat
 import { graphql, compose } from 'react-apollo';
 
 import TrainingCategoriesDetailsHeader from '../../molecules/Header/TrainingCategoriesDetailsHeader';
-import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
 
 import InfiniteScroll from 'react-infinite-scroller';
@@ -26,7 +25,6 @@ import { RobotoRegular } from 'styles/typography';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
-  fullContainer,
   TrainingCategoriesDetailsWrapper,
   TrainingCategoriesDetailsContentWrapper,
   TitleWrapper,
