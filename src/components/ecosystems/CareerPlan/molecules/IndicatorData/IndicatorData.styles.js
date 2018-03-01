@@ -2,27 +2,30 @@ import styled from 'styled-components';
 import { gray150, gray300, gray700, gray890, blue100 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
 
-export const IndicatorDataWrapper = styled.li`
+export const IndicatorDataWrapper = styled.li.attrs({ tabIndex: 1 })`
+  cursor: pointer;
   display: inline-block;
   list-style-type: none;
   position: relative;
   text-align: center;
+  transition: all 0.2s ease-in;
   white-space: initial;
   width: 95px;
-`;
 
-export const IndicatorDataWrapperActive = IndicatorDataWrapper.extend`
-  background: #fff;
-  box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 15px 15px 0 0;
+  &:focus {
+    background: #fff;
+    box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 15px 15px 0 0;
+    outline: none;
 
-  &:before {
-    background-color: #f4f3f3;
-    content: '';
-    height: 50px;
-    left: -2px;
-    position: absolute;
-    width: 2px;
+    &:before {
+      background-color: #f4f3f3;
+      content: '';
+      height: 50px;
+      left: -2px;
+      position: absolute;
+      width: 2px;
+    }
   }
 `;
 

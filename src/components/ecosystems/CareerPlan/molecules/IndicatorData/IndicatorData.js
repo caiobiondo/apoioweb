@@ -4,7 +4,6 @@ import { Icon } from 'natura-ui';
 
 import {
   IndicatorDataWrapper,
-  IndicatorDataWrapperActive,
   IndicatorDataSort,
   IndicatorDataSortCurrent,
   IndicatorDataContent,
@@ -15,19 +14,42 @@ import {
 } from './IndicatorData.styles';
 
 export class IndicatorData extends Component {
+  onBlur = () => {
+    const { onBlur, indicatorData } = this.props;
+    return onBlur(indicatorData);
+  };
+
+  onFocus = () => {
+    const { onFocus, indicatorData } = this.props;
+    return onFocus(indicatorData, this.focusElement);
+  };
+
+  focusElement = () => {
+    this.indicatorDataNode.focus();
+  };
+
+  setNode = node => {
+    this.indicatorDataNode = node;
+  };
+
   render() {
     const { indicatorData, index } = this.props;
 
-    const IndicatorDataWrapperComponent = indicatorData.active
-      ? IndicatorDataWrapperActive
-      : IndicatorDataWrapper;
+    const currentNode = indicatorData.current ? (
+      <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>
+    ) : null;
 
     return (
-      <IndicatorDataWrapperComponent key={indicatorData.id}>
+      <IndicatorDataWrapper
+        tabindex="1"
+        key={indicatorData.id}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        innerRef={this.setNode}
+      >
         <IndicatorDataSort active={indicatorData.active} index={index}>
           {index + 1}
-
-          {indicatorData.current && <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>}
+          {currentNode}
         </IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataNumber>
@@ -41,7 +63,7 @@ export class IndicatorData extends Component {
           <IndicatorDataNumberAcc>102,16%</IndicatorDataNumberAcc>
           <span IndicatorTableItemStatus />
         </IndicatorDataContent>
-      </IndicatorDataWrapperComponent>
+      </IndicatorDataWrapper>
     );
   }
 }

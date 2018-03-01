@@ -18,25 +18,64 @@ import {
 } from './Indicator.styles';
 
 export class Indicator extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      indicatorDataItems: [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4, current: true },
+        { id: 5 },
+        { id: 6 },
+        { id: 7 },
+        { id: 8 },
+        { id: 9 },
+        { id: 10 },
+        { id: 11 },
+        { id: 12 },
+      ],
+    };
+  }
+
+  setActiveData = ({ indicatorData, active }, cb) => {
+    let { indicatorDataItems } = this.state;
+    const newIndicatorData = {
+      ...indicatorData,
+      active,
+    };
+
+    indicatorDataItems = indicatorDataItems.map(item => {
+      if (item.id !== indicatorData.id) {
+        return item;
+      }
+
+      return newIndicatorData;
+    });
+
+    const newState = {
+      ...this.state,
+      indicatorDataItems,
+    };
+
+    return this.setState(newState, cb);
+  };
+
   renderIndicatorData = (indicatorData, index) => {
-    return <IndicatorData indicatorData={indicatorData} index={index} key={indicatorData.id} />;
+    return (
+      <IndicatorData
+        indicatorData={indicatorData}
+        index={index}
+        key={indicatorData.id}
+        onFocus={(indicatorData, cb) => this.setActiveData({ indicatorData, active: true }, cb)}
+        onBlur={(indicatorData, cb) => this.setActiveData({ indicatorData, active: false })}
+      />
+    );
   };
 
   render() {
-    const indicatorItems = [
-      { id: 1 },
-      { id: 2 },
-      { id: 3 },
-      { id: 4, current: true },
-      { id: 5 },
-      { id: 6, active: true },
-      { id: 7 },
-      { id: 8 },
-      { id: 9 },
-      { id: 10 },
-      { id: 11 },
-      { id: 12 },
-    ];
+    const { indicatorDataItems } = this.state;
 
     return (
       <IndicatorWrapper>
@@ -56,7 +95,7 @@ export class Indicator extends Component {
 
           <IndicatorTableContentWapper>
             <IndicatorTableContent>
-              {indicatorItems.map(this.renderIndicatorData)}
+              {indicatorDataItems.map(this.renderIndicatorData)}
             </IndicatorTableContent>
           </IndicatorTableContentWapper>
         </IndicatorContentWrapper>
