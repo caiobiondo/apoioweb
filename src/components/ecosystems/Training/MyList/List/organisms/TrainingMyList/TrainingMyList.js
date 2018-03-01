@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import TrainingCourse from 'components/ecosystems/Training/MyList/List/molecules/TrainingCourse';
+import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
-import { TrainingCoursesQuery, TrainingCoursesQueryOptions } from './TrainingMyList.data';
+import {
+  TrainingCoursesQuery,
+  TrainingCoursesQueryOptions,
+} from 'components/ecosystems/Training/data/TrainingCourses.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose } from 'react-apollo';
@@ -22,7 +25,6 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   TrainingMyListWrapper,
-  List,
   LoadingWrapper,
   fullContainer,
   TrainingCourseFeedbackModalTitle,
@@ -35,7 +37,6 @@ export class TrainingMyList extends Component {
 
     this.state = {
       hasMoreItems: true,
-      courses: [],
       feedbackModalOpened: false,
       feedbackModalTitle: '',
     };
@@ -44,8 +45,6 @@ export class TrainingMyList extends Component {
   componentWillReceiveProps({ loading, courses }) {
     this.notifyLoadFinish(loading, courses);
     this.checkIfHasMoreItems(loading, courses);
-
-    this.setState({ courses });
   }
 
   notifyLoadFinish = (loading, courses) => {
@@ -60,7 +59,7 @@ export class TrainingMyList extends Component {
     }
 
     const hasMoreItems =
-      (courses && !this.state.courses) || courses.length !== this.state.courses.length;
+      (courses && !this.props.courses) || courses.length !== this.props.courses.length;
     this.setState({ hasMoreItems });
   };
 
@@ -211,11 +210,11 @@ export class TrainingMyList extends Component {
   };
 
   render() {
-    if (!this.state.courses && this.props.loading) {
+    if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
-    if (!this.state.courses || !this.state.courses.length) {
+    if (!this.props.courses || !this.props.courses.length) {
       return (
         <Paper style={fullContainer}>
           <PageMenu />
@@ -240,14 +239,9 @@ export class TrainingMyList extends Component {
             </LoadingWrapper>
           }
         >
-          <List>
-            {this.state.courses.map((course, index) => (
-              <TrainingCourse key={index} course={course}>
-                {this.renderMenuItems(course)}
-              </TrainingCourse>
-            ))}
-          </List>
+          <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
         </InfiniteScroll>
+        {this.renderFeedbackModal()}
       </TrainingMyListWrapper>
     );
   }

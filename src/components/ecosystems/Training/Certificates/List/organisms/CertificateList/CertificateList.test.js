@@ -10,6 +10,7 @@ const setup = propOverrides => {
         nomeCompleto: 'Teste User',
       },
       certificates: [],
+      onLoadFinished: jest.fn(),
     },
     propOverrides,
   );
@@ -66,5 +67,33 @@ describe('Training Certificate List', () => {
 
     // then
     expect(result).toMatchSnapshot();
+  });
+
+  it('should notify onLoadFinished callback when not loading', () => {
+    // given
+    const mockCertificates = [
+      {
+        id: 1,
+        name: 'Certiticate 1',
+      },
+      {
+        id: 2,
+        name: 'Certiticate 2',
+      },
+      {
+        id: 3,
+        name: 'Certiticate 3',
+      },
+    ];
+
+    // when
+    const { result, props } = setup({
+      fetchMore: jest.fn(),
+      loading: false,
+    });
+    result.instance().componentWillReceiveProps({ loading: false, certificates: mockCertificates });
+
+    // then
+    expect(props.onLoadFinished).toBeCalledWith(false, false);
   });
 });
