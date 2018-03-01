@@ -54,6 +54,19 @@ export const CategoryCourseTitleWrapper = styled.div`
     opacity: 1;
   }
 
+  &:before {
+    background: black;
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    opacity: 0.4;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+
   &:after {
     background: ${orange100};
     bottom: 0;
