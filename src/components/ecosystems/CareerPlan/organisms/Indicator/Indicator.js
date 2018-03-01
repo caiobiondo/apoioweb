@@ -3,6 +3,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
 
+import mock from './IndicatorDataMock';
+
 import {
   IndicatorWrapper,
   IndicatorWeightWrapper,
@@ -22,44 +24,32 @@ export class Indicator extends Component {
     super();
 
     this.state = {
-      indicatorDataItems: [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4, current: true },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 },
-        { id: 10 },
-        { id: 11 },
-        { id: 12 },
-      ],
+      indicatorDataItems: mock,
     };
   }
 
-  setActiveData = ({ indicatorData, active }, cb) => {
+  setActiveData = indicatorData => {
     let { indicatorDataItems } = this.state;
     const newIndicatorData = {
       ...indicatorData,
-      active,
+      active: true,
     };
 
     indicatorDataItems = indicatorDataItems.map(item => {
       if (item.id !== indicatorData.id) {
-        return item;
+        return {
+          ...item,
+          active: false,
+        };
       }
 
       return newIndicatorData;
     });
 
-    const newState = {
+    return this.setState({
       ...this.state,
       indicatorDataItems,
-    };
-
-    return this.setState(newState, cb);
+    });
   };
 
   renderIndicatorData = (indicatorData, index) => {
@@ -68,8 +58,7 @@ export class Indicator extends Component {
         indicatorData={indicatorData}
         index={index}
         key={indicatorData.id}
-        onFocus={(indicatorData, cb) => this.setActiveData({ indicatorData, active: true }, cb)}
-        onBlur={(indicatorData, cb) => this.setActiveData({ indicatorData, active: false })}
+        onClick={indicatorData => this.setActiveData(indicatorData)}
       />
     );
   };
