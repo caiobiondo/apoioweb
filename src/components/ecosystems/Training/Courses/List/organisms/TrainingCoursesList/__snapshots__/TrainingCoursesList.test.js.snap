@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Courses List renders correctly when loading 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Courses List renders correctly when the list is empty 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <PageMenu />
+  <EmptyList
+    descriptionId="coursesEmptyListDescription"
+    icon="ico_list_add"
+    titleId="coursesEmptyList"
+  />
+</Paper>
+`;
+
+exports[`Training Courses List renders correctly when the list is not empty 1`] = `
+<TrainingCoursesListstyles__TrainingCoursesListWrapper>
+  <PageMenu />
+  <InfiniteScroll
+    element="div"
+    hasMore={false}
+    initialLoad={true}
+    isReverse={false}
+    loadMore={[Function]}
+    loader={
+      <mixins__LoadingWrapperStyle>
+        <CircularProgress
+          max={100}
+          min={0}
+          mode="indeterminate"
+          size={40}
+          thickness={2}
+          value={0}
+        />
+      </mixins__LoadingWrapperStyle>
+    }
+    pageStart={0}
+    ref={null}
+    threshold={250}
+    useCapture={false}
+    useWindow={true}
+  >
+    <TrainingCourses
+      courses={
+        Array [
+          Object {
+            "dateUpload": "2017-04-20T00:00:00.000Z",
+            "description": "new course description",
+            "durationInSeconds": 1234,
+            "isfavorite": true,
+            "status": "started",
+            "stoppedAt": 12,
+            "title": "new course",
+            "type": "VIDEO",
+            "views": 12,
+          },
+          Object {
+            "dateUpload": "2017-04-20T00:00:00.000Z",
+            "description": "new course description",
+            "durationInSeconds": 1234,
+            "isfavorite": false,
+            "status": "completed",
+            "stoppedAt": 12,
+            "title": "new course",
+            "type": "HTML5",
+            "views": 12,
+          },
+        ]
+      }
+      fetchMore={[Function]}
+      intl={
+        Object {
+          "formatMessage": [Function],
+        }
+      }
+      loading={false}
+      mutate={[Function]}
+      onLoadFinished={[Function]}
+      refetch={[Function]}
+      renderMenuItems={[Function]}
+      user={
+        Object {
+          "codigo": 1234,
+        }
+      }
+    />
+  </InfiniteScroll>
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="ok"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto-Regular",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    key="feedbackModal"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title=""
+    titleStyle={
+      Object {
+        "fontFamily": "NaturaSans-Bold",
+        "fontSize": "25px",
+      }
+    }
+  />
+</TrainingCoursesListstyles__TrainingCoursesListWrapper>
+`;

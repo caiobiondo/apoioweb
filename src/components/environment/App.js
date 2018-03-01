@@ -120,6 +120,46 @@ export default class App extends Component {
                     'magazine',
                   )}
                 />
+                <Route
+                  exact
+                  path="/training/courses"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Courses/List'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/training/certificates"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Certificates/List'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/training/categories"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Categories/List'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/training/categories/:id"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Categories/Details'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path="/training/my-list"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/MyList/List'),
+                    'training',
+                  )}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>

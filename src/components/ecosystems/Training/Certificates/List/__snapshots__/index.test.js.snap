@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CertificateList Ecosystem should render the training certificate list page 1`] = `
+<indexstyles__Main>
+  <Apollo(CertificateList)
+    onLoadFinished={[Function]}
+    user={undefined}
+  />
+</indexstyles__Main>
+`;

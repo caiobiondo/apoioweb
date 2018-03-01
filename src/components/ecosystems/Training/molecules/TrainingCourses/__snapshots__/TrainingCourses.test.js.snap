@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrainingCourses renders correctly 1`] = `
+<TrainingCoursesstyles__List>
+  <TrainingCourse
+    course={
+      Object {
+        "dateUpload": "2017-04-20T00:00:00.000Z",
+        "description": "new course description",
+        "durationInSeconds": 1234,
+        "status": "started",
+        "stoppedAt": 12,
+        "title": "new course",
+        "type": "VIDEO",
+        "views": 12,
+      }
+    }
+    key="0"
+  />
+  <TrainingCourse
+    course={
+      Object {
+        "dateUpload": "2017-04-20T00:00:00.000Z",
+        "description": "new course description",
+        "durationInSeconds": 1234,
+        "status": "finished",
+        "stoppedAt": 12,
+        "title": "new course",
+        "type": "HTML5",
+        "views": 12,
+      }
+    }
+    key="1"
+  />
+</TrainingCoursesstyles__List>
+`;

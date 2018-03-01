@@ -410,6 +410,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
+      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -834,6 +835,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
+        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -858,7 +860,15 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "cancelLabel": "cancelar",
+            "categories": "Categorias",
+            "certificate": "Certificado",
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseViews.many": "visualizações",
+            "courseViews.one": "visualização",
+            "courses": "Cursos",
+            "coursesEmptyList": "Lista vazia",
+            "coursesEmptyListDescription": "Não existem cursos disponíveis.",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -885,6 +895,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
             "dismiss": "OK, entendi",
+            "downloadCertificate": "Baixar Certificado",
             "downloadMagazine": "Baixar revista",
             "emptySearchResult": "Sua busca não retornou resultados.",
             "entryOrderDate": "Data {date}",
@@ -938,7 +949,11 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCoursesEmptyList": "Lista de cursos vazia",
+            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
+            "myList": "Minha Lista",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
@@ -1038,6 +1053,20 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "trainingAddCourseError": "Ocorreu um erro ao adicionar o treinamento",
+            "trainingAddCourseFailure": "Treinamento já foi adicionado à sua lista",
+            "trainingAddCourseMyList": "Adicionar à minha lista",
+            "trainingAddCourseSuccess": "Treinamento adicionado à sua lista com sucesso!",
+            "trainingAddCourseToMyList": "Adicionar à minha lista",
+            "trainingCategoriesEmptyList": "Lista de categorias vazia",
+            "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
+            "trainingCategoryCompleted": "Completa",
+            "trainingCourseCompleted": "Concluído",
+            "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
+            "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
+            "trainingRemoveCourseMyList": "Remover da minha lista",
+            "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
             "yourScoreDemonstration": "Demonstrativo da sua pontuação",
@@ -1941,6 +1970,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
+      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -2365,6 +2395,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
+        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -2389,7 +2420,15 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "cancelLabel": "cancelar",
+            "categories": "Categorias",
+            "certificate": "Certificado",
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseViews.many": "visualizações",
+            "courseViews.one": "visualização",
+            "courses": "Cursos",
+            "coursesEmptyList": "Lista vazia",
+            "coursesEmptyListDescription": "Não existem cursos disponíveis.",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -2416,6 +2455,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
             "dismiss": "OK, entendi",
+            "downloadCertificate": "Baixar Certificado",
             "downloadMagazine": "Baixar revista",
             "emptySearchResult": "Sua busca não retornou resultados.",
             "entryOrderDate": "Data {date}",
@@ -2469,7 +2509,11 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCoursesEmptyList": "Lista de cursos vazia",
+            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
+            "myList": "Minha Lista",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
@@ -2569,6 +2613,20 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "trainingAddCourseError": "Ocorreu um erro ao adicionar o treinamento",
+            "trainingAddCourseFailure": "Treinamento já foi adicionado à sua lista",
+            "trainingAddCourseMyList": "Adicionar à minha lista",
+            "trainingAddCourseSuccess": "Treinamento adicionado à sua lista com sucesso!",
+            "trainingAddCourseToMyList": "Adicionar à minha lista",
+            "trainingCategoriesEmptyList": "Lista de categorias vazia",
+            "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
+            "trainingCategoryCompleted": "Completa",
+            "trainingCourseCompleted": "Concluído",
+            "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
+            "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
+            "trainingRemoveCourseMyList": "Remover da minha lista",
+            "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
             "yourScoreDemonstration": "Demonstrativo da sua pontuação",
@@ -3765,6 +3823,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
         "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
+      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
@@ -4189,6 +4248,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
           "opacity": 0.9,
           "rippleBackgroundColor": "#616161",
         },
+        "userAgent": undefined,
         "zIndex": Object {
           "appBar": 1100,
           "dialog": 1500,
@@ -4213,7 +4273,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "blankSelectOption": "Selecione...",
             "cancel": "Cancelar",
             "cancelLabel": "cancelar",
+            "categories": "Categorias",
+            "certificate": "Certificado",
+            "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseViews.many": "visualizações",
+            "courseViews.one": "visualização",
+            "courses": "Cursos",
+            "coursesEmptyList": "Lista vazia",
+            "coursesEmptyListDescription": "Não existem cursos disponíveis.",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -4240,6 +4308,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "digital": "Digital",
             "directSalesPointsTitle": "Presencial",
             "dismiss": "OK, entendi",
+            "downloadCertificate": "Baixar Certificado",
             "downloadMagazine": "Baixar revista",
             "emptySearchResult": "Sua busca não retornou resultados.",
             "entryOrderDate": "Data {date}",
@@ -4293,7 +4362,11 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "loading": "Carregando...",
             "magazineCycle": "Ciclo",
             "male": "Masculino",
+            "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCoursesEmptyList": "Lista de cursos vazia",
+            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
             "myCustomers": "Meus Clientes",
+            "myList": "Minha Lista",
             "myStock": "Meu Estoque",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
@@ -4393,6 +4466,20 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "totalOrderPoints": "{points}pts",
             "totalPointsTitle": "Total",
             "totalScoreInPeriod": "Pontuação Total no Período",
+            "trainingAddCourseError": "Ocorreu um erro ao adicionar o treinamento",
+            "trainingAddCourseFailure": "Treinamento já foi adicionado à sua lista",
+            "trainingAddCourseMyList": "Adicionar à minha lista",
+            "trainingAddCourseSuccess": "Treinamento adicionado à sua lista com sucesso!",
+            "trainingAddCourseToMyList": "Adicionar à minha lista",
+            "trainingCategoriesEmptyList": "Lista de categorias vazia",
+            "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
+            "trainingCategoryCompleted": "Completa",
+            "trainingCourseCompleted": "Concluído",
+            "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
+            "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
+            "trainingRemoveCourseMyList": "Remover da minha lista",
+            "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
             "yourScoreDemonstration": "Demonstrativo da sua pontuação",
@@ -5486,6 +5573,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
+                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -6116,6 +6204,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
+                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -6381,16 +6470,17 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T04:41:20.000Z}
-                                  minDate={2017-12-15T04:41:20.000Z}
+                                  maxDate={2017-12-15T06:41:20.000Z}
+                                  minDate={2017-12-15T06:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   required={true}
-                                  value={2017-12-15T04:41:20.000Z}
+                                  value={2017-12-15T06:41:20.000Z}
                                 >
                                   <InputDate
+                                    autoOk={false}
                                     bordered={true}
                                     cancelLabel="cancelar"
                                     className="c18"
@@ -6398,18 +6488,19 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T04:41:20.000Z}
-                                    minDate={2017-12-15T04:41:20.000Z}
+                                    maxDate={2017-12-15T06:41:20.000Z}
+                                    minDate={2017-12-15T06:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     required={true}
                                     showError={true}
-                                    value={2017-12-15T04:41:20.000Z}
+                                    value={2017-12-15T06:41:20.000Z}
                                     width="100%"
                                   >
                                     <FormGroup
+                                      autoOk={false}
                                       bordered={true}
                                       cancelLabel="cancelar"
                                       className="c18"
@@ -6421,15 +6512,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T04:41:20.000Z}
-                                      minDate={2017-12-15T04:41:20.000Z}
+                                      maxDate={2017-12-15T06:41:20.000Z}
+                                      minDate={2017-12-15T06:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
                                       onChange={[Function]}
                                       required={true}
                                       showError={true}
-                                      value={2017-12-15T04:41:20.000Z}
+                                      value={2017-12-15T06:41:20.000Z}
                                       width="100%"
                                     >
                                       <styled.div
@@ -6462,7 +6553,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             >
                                               <DatePicker
                                                 DateTimeFormat={[Function]}
-                                                autoOk={true}
+                                                autoOk={false}
                                                 cancelLabel="cancelar"
                                                 container="dialog"
                                                 disableYearSelection={false}
@@ -6471,9 +6562,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T04:41:20.000Z}
-                                                minDate={2017-12-15T04:41:20.000Z}
+                                                maxDate={2017-12-15T06:41:20.000Z}
+                                                minDate={2017-12-15T06:41:20.000Z}
                                                 name="customer.birthday"
+                                                okLabel="confirmar"
                                                 onChange={[Function]}
                                                 onFocus={[Function]}
                                                 openToYearSelection={false}
@@ -6483,7 +6575,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                     "width": "100%",
                                                   }
                                                 }
-                                                value={2017-12-15T04:41:20.000Z}
+                                                value={2017-12-15T06:41:20.000Z}
                                               >
                                                 <div
                                                   style={
@@ -6973,6 +7065,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                               "opacity": 0.9,
                                                               "rippleBackgroundColor": "#616161",
                                                             },
+                                                            "userAgent": undefined,
                                                             "zIndex": Object {
                                                               "appBar": 1100,
                                                               "dialog": 1500,
@@ -7036,16 +7129,16 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                   </TextField>
                                                   <DatePickerDialog
                                                     DateTimeFormat={[Function]}
-                                                    autoOk={true}
+                                                    autoOk={false}
                                                     cancelLabel="cancelar"
                                                     container="dialog"
                                                     disableYearSelection={false}
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T04:41:20.000Z}
-                                                    minDate={2017-12-15T04:41:20.000Z}
-                                                    okLabel="OK"
+                                                    maxDate={2017-12-15T06:41:20.000Z}
+                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}
                                                   >
@@ -7658,6 +7751,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                       "opacity": 0.9,
                                                       "rippleBackgroundColor": "#616161",
                                                     },
+                                                    "userAgent": undefined,
                                                     "zIndex": Object {
                                                       "appBar": 1100,
                                                       "dialog": 1500,
@@ -8367,6 +8461,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
+                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,
@@ -8992,6 +9087,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                                 "opacity": 0.9,
                                                                 "rippleBackgroundColor": "#616161",
                                                               },
+                                                              "userAgent": undefined,
                                                               "zIndex": Object {
                                                                 "appBar": 1100,
                                                                 "dialog": 1500,

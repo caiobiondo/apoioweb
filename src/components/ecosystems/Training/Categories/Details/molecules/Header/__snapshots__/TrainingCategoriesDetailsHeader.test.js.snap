@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Category Header render correct when there is at least 1 banner 1`] = `
+<TrainingCategoriesDetailsHeaderstyles__Header>
+  <Row>
+    <Col
+      md={4}
+      sm={12}
+    >
+      <TrainingCategoriesDetailsHeaderstyles__BackButtonWrapper>
+        <Link
+          replace={false}
+          to="/training/categories"
+        >
+          <TrainingCategoriesDetailsHeaderstyles__BackButtonIcon>
+            <Icon
+              file="ico_back"
+            />
+          </TrainingCategoriesDetailsHeaderstyles__BackButtonIcon>
+          <TrainingCategoriesDetailsHeaderstyles__BackButtonText>
+            Test
+          </TrainingCategoriesDetailsHeaderstyles__BackButtonText>
+        </Link>
+      </TrainingCategoriesDetailsHeaderstyles__BackButtonWrapper>
+    </Col>
+    <Col
+      md={8}
+      sm={12}
+    >
+      <Row
+        end="md"
+        start="sm"
+      >
+        <Col
+          xs={12}
+        >
+          <TrainingCategoriesDetailsHeaderstyles__CategoryPercentageLabel>
+            <strong>
+              71.43
+              %
+            </strong>
+             
+            <FormattedMessage
+              id="trainingCategoryCompleted"
+              values={Object {}}
+            />
+          </TrainingCategoriesDetailsHeaderstyles__CategoryPercentageLabel>
+          <TrainingCategoriesDetailsHeaderstyles__CategoryPercentageBar
+            completedPercentage="71.43"
+          />
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+  <TrainingCategoriesDetailsHeaderstyles__BannerWrapper
+    className="row"
+  >
+    <Col
+      xs={12}
+    >
+      <TrainingCategoriesDetailsHeaderstyles__Banner
+        thumbnail="test.jpg"
+      />
+    </Col>
+  </TrainingCategoriesDetailsHeaderstyles__BannerWrapper>
+</TrainingCategoriesDetailsHeaderstyles__Header>
+`;
