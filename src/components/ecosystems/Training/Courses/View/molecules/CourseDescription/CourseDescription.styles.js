@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fs13, fs14, fs20, fs32, fw700, NaturaBold, RobotoRegular } from 'styles/typography';
+import { fs14, fs20, fs32, fw700, NaturaBold, RobotoRegular } from 'styles/typography';
 import { gray890 } from 'styles/colors';
 import { Responsive, getTheme } from '@entria/components';
 

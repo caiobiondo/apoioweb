@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
-import {
-  TittleWrapper,
-  CategoryNameWrapper,
-  Divider,
-  DescriptionWrapper,
-} from './CourseDescription.styles';
+import { TittleWrapper, Divider, DescriptionWrapper } from './CourseDescription.styles';
 
 class CourseDescription extends Component {
   render() {
