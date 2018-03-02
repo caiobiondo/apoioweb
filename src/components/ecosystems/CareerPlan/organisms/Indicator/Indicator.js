@@ -52,12 +52,23 @@ export class Indicator extends Component {
     });
   };
 
+  isFilled = indicatorData => {
+    return (
+      !indicatorData ||
+      (indicatorData.real || indicatorData.networkReal || indicatorData.accumulatedOverload)
+    );
+  };
+
   renderIndicatorData = (indicatorData, index) => {
+    const { indicatorDataItems } = this.state;
+
     return (
       <IndicatorData
         indicatorData={indicatorData}
         index={index}
         key={indicatorData.id}
+        canFill={this.isFilled(indicatorDataItems[index - 1])}
+        isFilled={this.isFilled(indicatorData)}
         onClick={indicatorData => this.setActiveData(indicatorData)}
       />
     );

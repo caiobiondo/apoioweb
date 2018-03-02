@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Icon } from 'natura-ui';
+import { Popover } from 'material-ui';
 
 import {
   IndicatorDataWrapper,
@@ -14,16 +15,24 @@ import {
   IndicatorDataRowInput,
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
+  PopoverStyles,
+  PopoverContent,
+  PopoverArrow,
 } from './IndicatorData.styles';
 
 export class IndicatorData extends Component {
-  onClick = () => {
-    const { onClick, indicatorData } = this.props;
-    return onClick(indicatorData);
-  };
+  state = {};
 
-  focusElement = () => {
-    this.indicatorDataNode.focus();
+  onClick = event => {
+    const { onClick, indicatorData } = this.props;
+
+    if (!this.canFill()) {
+      event.preventDefault();
+      this.togglePopover();
+      return console.log('Disabled Field');
+    }
+
+    return onClick(indicatorData);
   };
 
   setNode = node => {
@@ -32,24 +41,30 @@ export class IndicatorData extends Component {
 
   isFake = () => {
     const { indicatorData } = this.props;
-
     return !indicatorData.preLoaded;
   };
 
-  isFilled = () => {
-    const { indicatorData } = this.props;
+  canFill = () => {
+    const { indicatorData, canFill } = this.props;
+    return !indicatorData.preLoaded && canFill;
+  };
 
-    return (
-      this.isFake() &&
-      (indicatorData.real || indicatorData.networkReal || indicatorData.accumulatedOverload)
-    );
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  togglePopover = () => {
+    const { open } = this.state;
+    this.setState({ open: !open });
   };
 
   renderForm() {
-    const { indicatorData } = this.props;
+    const { indicatorData, isFilled } = this.props;
 
     const simulatorLabelNode =
-      !this.isFilled() && indicatorData.active ? (
+      !isFilled && indicatorData.active ? (
         <IndicatorDataSimulatorLabel>Simulador</IndicatorDataSimulatorLabel>
       ) : null;
 
@@ -69,13 +84,14 @@ export class IndicatorData extends Component {
           <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
-          <IndicatorDataRowInput value="165165" />
+          <IndicatorDataRowInput value="165165" disabled={!this.canFill()} />
         </IndicatorDataRow>
         <IndicatorDataRow>
-          <IndicatorDataRowInput value="165165" />
+          <IndicatorDataRowInput value="165165" disabled={!this.canFill()} />
         </IndicatorDataRow>
         <IndicatorDataRowAcc>{indicatorData.accumulatedOverload}</IndicatorDataRowAcc>
         <span IndicatorTableItemStatus />
+        {this.renderPopover()}
       </IndicatorDataContent>
     );
   }
@@ -100,6 +116,24 @@ export class IndicatorData extends Component {
         </IndicatorDataRowAcc>
         <span IndicatorTableItemStatus />
       </IndicatorDataContent>
+    );
+  }
+
+  renderPopover() {
+    return (
+      <Popover
+        open={this.state.open}
+        anchorEl={this.indicatorDataNode}
+        className="Popover"
+        anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
+        targetOrigin={{ horizontal: 'middle', vertical: 'bottom' }}
+        onRequestClose={this.handleRequestClose}
+        style={PopoverStyles}
+      >
+        <PopoverContent>
+          O simulador deve ser preenchido sequencialmente. <PopoverArrow />
+        </PopoverContent>
+      </Popover>
     );
   }
 
