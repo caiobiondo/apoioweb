@@ -70,7 +70,7 @@ export const CategoryPercentageBar = styled.div`
     display: block;
     left: 0;
     position: absolute;
-    right: ${props => 100 - props.completedPercentage}25%;
+    right: ${props => 100 - props.completedPercentage}%;
     top: 0;
   }
 
