@@ -151,6 +151,7 @@ export const IndicatorDataRowAcc = IndicatorDataRow.extend`
   color: ${gray890};
   font-weight: ${fw600};
   font-size: 16px;
+  min-height: 35px;
 `;
 
 export const IndicatorDataRowObj = IndicatorDataRow.extend`
@@ -180,6 +181,7 @@ export const PopoverStyles = {
 
 export const PopoverContent = styled.div`
   position: relative;
+  text-align: center;
 `;
 
 export const PopoverArrow = styled.div`
