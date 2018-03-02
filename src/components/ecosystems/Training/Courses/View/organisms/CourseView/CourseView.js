@@ -15,6 +15,7 @@ import {
 import CourseContent from '../../molecules/CourseContent';
 import CourseDescription from '../../molecules/CourseDescription';
 import RelatedCourses from '../../molecules/RelatedCourses';
+import CourseRating from '../../molecules/CourseRating';
 import CourseViewHeader from '../../molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
@@ -179,6 +180,7 @@ export class CourseView extends Component {
               </MylistButtonWrapper>
             </Col>
           </Row>
+          <CourseRating course={course} />
           <RelatedCourses />
         </Grid>
         {this.renderFeedbackModal()}

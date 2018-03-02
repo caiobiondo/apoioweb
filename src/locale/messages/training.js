@@ -31,6 +31,8 @@ export default {
     downloadCertificate: 'Baixar Certificado',
     trainingAddCourseToMyList: 'Adicionar à minha lista',
     trainingCategoryCompleted: 'Completa',
+    courseRatingAvaliation: 'Avaliação',
+    courseRatingTime: 'Tempo',
   },
 };
 /* eslint-disable sort-keys */
