@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Responsive, getTheme } from '@entria/components';
-import { RobotoRegular } from 'styles/typography';
+import { getTheme } from '@entria/components';
+import { RobotoRegular, NaturaBold, fs25 } from 'styles/typography';
 import { gray450 } from 'styles/colors';
 
 export const Main = styled.div`
@@ -11,6 +11,7 @@ export const Main = styled.div`
 
 export const MylistButtonWrapper = styled.div`
   display: flex;
+  align-items: center;
   border: 2px solid ${getTheme().palette.primary1Color};
   border-radius: 2.5px;
   min-width: 190px;
@@ -18,7 +19,9 @@ export const MylistButtonWrapper = styled.div`
 
   svg {
     fill: ${getTheme().palette.primary1Color};
-    width: 13px;
+    width: 11px;
+    height: 11px;
+    margin-right: 10px;
   }
 
   button {
@@ -37,4 +40,13 @@ export const MylistButton = {
   },
   backgroundColor: gray450,
   hoverColor: gray450,
+};
+
+export const CourseViewFeedbackModalTitle = {
+  fontFamily: NaturaBold,
+  fontSize: fs25,
+};
+
+export const CourseViewFeedbackModalAction = {
+  fontFamily: RobotoRegular,
 };
