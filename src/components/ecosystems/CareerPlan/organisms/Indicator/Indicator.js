@@ -52,11 +52,30 @@ export class Indicator extends Component {
     });
   };
 
+  updateIndicatorData = indicatorData => {
+    let { indicatorDataItems } = this.state;
+    const newIndicatorData = {
+      ...indicatorData,
+    };
+
+    indicatorDataItems = indicatorDataItems.map(item => {
+      if (item.id !== indicatorData.id) {
+        return {
+          ...item,
+        };
+      }
+
+      return newIndicatorData;
+    });
+
+    return this.setState({
+      ...this.state,
+      indicatorDataItems,
+    });
+  };
+
   isFilled = indicatorData => {
-    return (
-      !indicatorData ||
-      (indicatorData.real || indicatorData.networkReal || indicatorData.accumulatedOverload)
-    );
+    return !indicatorData || (indicatorData.real || indicatorData.networkReal);
   };
 
   renderIndicatorData = (indicatorData, index) => {
@@ -69,7 +88,8 @@ export class Indicator extends Component {
         key={indicatorData.id}
         canFill={this.isFilled(indicatorDataItems[index - 1])}
         isFilled={this.isFilled(indicatorData)}
-        onClick={indicatorData => this.setActiveData(indicatorData)}
+        onClick={this.setActiveData}
+        onChange={this.updateIndicatorData}
       />
     );
   };

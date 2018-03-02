@@ -21,7 +21,29 @@ import {
 } from './IndicatorData.styles';
 
 export class IndicatorData extends Component {
-  state = {};
+  constructor() {
+    super();
+    this.state = {
+      real: '',
+      networkReal: '',
+    };
+  }
+
+  componentWillReceiveProps({ indicatorData }) {
+    this.updateIndicatorDataInformation(indicatorData);
+  }
+
+  updateIndicatorDataInformation = indicatorData => {
+    if (!indicatorData) {
+      return;
+    }
+
+    this.setState({
+      ...this.state,
+      real: indicatorData.real || '',
+      networkReal: indicatorData.networkReal || '',
+    });
+  };
 
   onClick = event => {
     const { onClick, indicatorData } = this.props;
@@ -51,17 +73,26 @@ export class IndicatorData extends Component {
 
   handleRequestClose = () => {
     this.setState({
+      ...this.state,
       open: false,
     });
   };
 
   togglePopover = () => {
     const { open } = this.state;
-    this.setState({ open: !open });
+    this.setState({ ...this.state, open: !open });
+  };
+
+  onChange = event => {
+    const { onChange, indicatorData } = this.props;
+    const { name, value } = event.currentTarget;
+    indicatorData[name] = value;
+
+    onChange(indicatorData);
   };
 
   renderForm() {
-    const { indicatorData, isFilled } = this.props;
+    const { isFilled, indicatorData } = this.props;
 
     const simulatorLabelNode =
       !isFilled && indicatorData.active ? (
@@ -84,13 +115,26 @@ export class IndicatorData extends Component {
           <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
-          <IndicatorDataRowInput value="165165" disabled={!this.canFill()} />
+          <IndicatorDataRowInput
+            name="real"
+            type="text"
+            value={this.state.real}
+            onChange={this.onChange}
+            disabled={!this.canFill()}
+          />
         </IndicatorDataRow>
         <IndicatorDataRow>
-          <IndicatorDataRowInput value="165165" disabled={!this.canFill()} />
+          <IndicatorDataRowInput
+            name="networkReal"
+            type="text"
+            value={this.state.networkReal}
+            onChange={this.onChange}
+            disabled={!this.canFill()}
+          />
         </IndicatorDataRow>
-        <IndicatorDataRowAcc>{indicatorData.accumulatedOverload}</IndicatorDataRowAcc>
-        <span IndicatorTableItemStatus />
+        <IndicatorDataRowAcc>
+          <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
+        </IndicatorDataRowAcc>
         {this.renderPopover()}
       </IndicatorDataContent>
     );
@@ -114,7 +158,6 @@ export class IndicatorData extends Component {
         <IndicatorDataRowAcc>
           <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
         </IndicatorDataRowAcc>
-        <span IndicatorTableItemStatus />
       </IndicatorDataContent>
     );
   }
