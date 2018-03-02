@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import { gray150, gray300, gray700, gray890, blue100 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
@@ -41,6 +41,17 @@ export const IndicatorDataRowInput = styled.input`
   color: ${gray700};
   font-family: ${RobotoRegular};
   font-size: 13px;
+
+  &:focus {
+    outline: none;
+    background: ${gray890};
+    color: #fff;
+  }
+
+  &:disabled {
+    background: #fff;
+    cursor: pointer;
+  }
 `;
 
 export const IndicatorDataWrapper = styled.li`
@@ -157,4 +168,45 @@ export const IndicatorDataSimulatorLabel = styled.span`
 export const IndicatorDataValue = styled.span`
   display: inline-block;
   padding: 10px 0;
+`;
+
+export const PopoverStyles = {
+  padding: '20px',
+  maxWidth: '250px',
+  color: gray700,
+  fontSize: '14px',
+  overflow: 'visible',
+};
+
+export const PopoverContent = styled.div`
+  position: relative;
+`;
+
+export const PopoverArrow = styled.div`
+  position: absolute;
+  bottom: -60px;
+  transform: translate(-50%, 0);
+  left: 50%;
+  width: 100px;
+  height: 40px;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    transform: rotate(45deg);
+    top: -50px;
+    left: 25px;
+    box-shadow: -1px -1px 10px 0px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+// Overwrite default behavior for Material-UI popover
+injectGlobal`
+.Popover > div {
+  overflow: visible !important;
+}
 `;
