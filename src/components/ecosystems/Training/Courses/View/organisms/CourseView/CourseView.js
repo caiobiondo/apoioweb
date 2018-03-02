@@ -57,72 +57,60 @@ export class CourseView extends Component {
     return this.state.isFavorite === 'true' ? 'unfavorite' : 'favorite';
   };
 
-  handleMyListClick = (event, child) => {
-    const { formatMessage } = this.props.intl;
-    const { course } = this.props;
-    const valueToUpdate = this.valueToUpdateMyList();
+  handleMyListError = () => {
+    this.handleDefaultMyList('trainingAddCourseError', 'trainingRemoveCourseError');
+  };
 
+  handleNotUpdateMyList = () => {
+    this.handleDefaultMyList('trainingAddCourseFailure', 'trainingRemoveCourseFailure');
+  };
+
+  handleUpdateSuccessMyList = () => {
+    this.props.refetch();
+    this.handleDefaultMyList('trainingAddCourseSuccess', 'trainingRemoveCourseSuccess');
+  };
+
+  handleDefaultMyList = (addMsg, removeMsg) => {
+    const { formatMessage } = this.props.intl;
+    const message =
+      this.valueToUpdateMyList() === 'favorite'
+        ? formatMessage({ id: addMsg })
+        : formatMessage({ id: removeMsg });
+
+    this.setState({
+      feedbackModalOpened: true,
+      feedbackModalTitle: message,
+    });
+  };
+
+  handleMyListClick = (event, child) => {
+    const { course } = this.props;
     this.props
       .mutate({
         variables: {
-          input: { action: valueToUpdate },
+          input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
         },
       })
       .then(response => {
         if (response.error) {
-          const message =
-            valueToUpdate === 'favorite'
-              ? formatMessage({ id: 'trainingAddCourseError' })
-              : formatMessage({ id: 'trainingRemoveCourseError' });
-          this.setState({
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          });
-
-          // Handle error
+          this.handleMyListError();
           return;
         }
 
         if (!response.data.updateCourse.status) {
-          const message =
-            valueToUpdate === 'favorite'
-              ? formatMessage({ id: 'trainingAddCourseFailure' })
-              : formatMessage({ id: 'trainingRemoveCourseFailure' });
-          this.setState({
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          });
-          // Handle not updated
+          this.handleNotUpdateMyList();
           return;
         }
 
-        // Handle update success
-        this.props.refetch();
-        const message =
-          valueToUpdate === 'favorite'
-            ? formatMessage({ id: 'trainingAddCourseSuccess' })
-            : formatMessage({ id: 'trainingRemoveCourseSuccess' });
-
-        this.setState({
-          feedbackModalOpened: true,
-          feedbackModalTitle: message,
-        });
-
+        this.handleUpdateSuccessMyList();
         return;
       })
       .catch(err => {
         console.log('err', err);
-        // Handle error
-        const message =
-          valueToUpdate === 'favorite'
-            ? formatMessage({ id: 'trainingAddCourseError' })
-            : formatMessage({ id: 'trainingRemoveCourseError' });
-        this.setState({
-          feedbackModalOpened: true,
-          feedbackModalTitle: message,
-        });
+
+        this.handleMyListError();
       });
   };
 
