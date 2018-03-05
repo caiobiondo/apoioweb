@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Icon } from 'natura-ui';
 import { Popover } from 'material-ui';
+import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
 import {
   IndicatorDataWrapper,
@@ -21,29 +22,7 @@ import {
 } from './IndicatorData.styles';
 
 export class IndicatorData extends Component {
-  constructor() {
-    super();
-    this.state = {
-      real: '',
-      networkReal: '',
-    };
-  }
-
-  componentWillReceiveProps({ indicatorData }) {
-    this.updateIndicatorDataInformation(indicatorData);
-  }
-
-  updateIndicatorDataInformation = indicatorData => {
-    if (!indicatorData) {
-      return;
-    }
-
-    this.setState({
-      ...this.state,
-      real: indicatorData.real || '',
-      networkReal: indicatorData.networkReal || '',
-    });
-  };
+  state = {};
 
   onClick = event => {
     const { onClick, indicatorData } = this.props;
@@ -82,63 +61,6 @@ export class IndicatorData extends Component {
     const { open } = this.state;
     this.setState({ ...this.state, open: !open });
   };
-
-  onChange = event => {
-    const { onChange, indicatorData } = this.props;
-    const { name, value } = event.currentTarget;
-    indicatorData[name] = value;
-
-    onChange(indicatorData);
-  };
-
-  renderForm() {
-    const { isFilled, indicatorData } = this.props;
-
-    const simulatorLabelNode =
-      !isFilled && indicatorData.active ? (
-        <IndicatorDataSimulatorLabel>Simulador</IndicatorDataSimulatorLabel>
-      ) : null;
-
-    const IndicatorDataTrashIconNode = !indicatorData.active ? (
-      <IndicatorDataTrashIcon title="Deletar">
-        <Icon file="ico_trash" />
-      </IndicatorDataTrashIcon>
-    ) : null;
-
-    return (
-      <IndicatorDataContent>
-        <IndicatorDataRow>
-          {IndicatorDataTrashIconNode}
-          {simulatorLabelNode}
-        </IndicatorDataRow>
-        <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
-        </IndicatorDataRowObj>
-        <IndicatorDataRow>
-          <IndicatorDataRowInput
-            name="real"
-            type="text"
-            value={this.state.real}
-            onChange={this.onChange}
-            disabled={!this.canFill()}
-          />
-        </IndicatorDataRow>
-        <IndicatorDataRow>
-          <IndicatorDataRowInput
-            name="networkReal"
-            type="text"
-            value={this.state.networkReal}
-            onChange={this.onChange}
-            disabled={!this.canFill()}
-          />
-        </IndicatorDataRow>
-        <IndicatorDataRowAcc>
-          <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
-        </IndicatorDataRowAcc>
-        {this.renderPopover()}
-      </IndicatorDataContent>
-    );
-  }
 
   renderDisabled() {
     const { indicatorData } = this.props;
@@ -187,7 +109,11 @@ export class IndicatorData extends Component {
       <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>
     ) : null;
 
-    const contentNode = this.isFake() ? this.renderForm() : this.renderDisabled();
+    const contentNode = this.isFake() ? (
+      <IndicatorDataForm {...this.props} />
+    ) : (
+      this.renderDisabled()
+    );
 
     return (
       <IndicatorDataWrapper
@@ -202,6 +128,8 @@ export class IndicatorData extends Component {
         </IndicatorDataSort>
 
         {contentNode}
+
+        {this.renderPopover()}
       </IndicatorDataWrapper>
     );
   }
