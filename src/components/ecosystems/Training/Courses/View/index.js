@@ -13,9 +13,11 @@ class TrainingWrapper extends Component {
   };
 
   render() {
+    const { id } = this.props.match.params;
+
     return (
       <Main>
-        <CourseView user={this.props.user} courseId={1} onLoadFinished={this.onLoadFinished} />
+        <CourseView user={this.props.user} courseId={id} onLoadFinished={this.onLoadFinished} />
       </Main>
     );
   }

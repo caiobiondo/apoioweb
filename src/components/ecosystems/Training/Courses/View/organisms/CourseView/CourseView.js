@@ -181,7 +181,7 @@ export class CourseView extends Component {
             </Col>
           </Row>
           <CourseRating course={course} />
-          <RelatedCourses />
+          <RelatedCourses courses={course.relatedCourses} />
         </Grid>
         {this.renderFeedbackModal()}
       </Main>
