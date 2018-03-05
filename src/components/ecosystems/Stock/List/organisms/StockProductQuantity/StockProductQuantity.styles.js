@@ -11,7 +11,7 @@ const SubmittedMessage = styled.div`
   font-weight: bold;
   height: 25px;
   line-height: 25px;
-  width: 87px;
+  width: 100px;
   border: 1px solid #ccc;
   border-top: none;
   border-bottom-left-radius: 3px;
@@ -19,9 +19,9 @@ const SubmittedMessage = styled.div`
   text-transform: uppercase;
 
   & svg {
-    width: 6px;
+    width: 5px;
     margin-bottom: 1px;
-    margin-right: 6px;
+    margin-right: 5px;
   }
 `;
 
@@ -50,14 +50,14 @@ export const submitButtonStyles = {
   },
   buttonStyle: {
     color: white,
-    minWidth: 89,
-    width: 89,
+    minWidth: 102,
+    width: 102,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
   },
   overlayStyle: {
-    minWidth: 89,
-    width: 89,
+    minWidth: 102,
+    width: 102,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
   },
