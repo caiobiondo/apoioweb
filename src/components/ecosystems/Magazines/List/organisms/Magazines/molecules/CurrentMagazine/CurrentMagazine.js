@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
 import { FlatButton, Icon, FormButton } from 'natura-ui';
 import { Dialog } from 'material-ui';
