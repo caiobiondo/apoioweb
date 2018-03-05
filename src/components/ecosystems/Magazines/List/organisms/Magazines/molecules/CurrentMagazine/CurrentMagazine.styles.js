@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Responsive } from '@entria/components';
 import { spMedium } from 'styles/spacing';
-import { orange100, gray700 } from 'styles/colors';
-import { NaturaRegular, RobotoLight, RobotoRegular, RobotoMedium } from 'styles/typography';
+import { orange100, gray100, gray700 } from 'styles/colors';
+import { NaturaRegular, RobotoLight, RobotoRegular, RobotoMedium, fw600 } from 'styles/typography';
 
 export const CurrentMagazineWrapper = styled.div`
   padding: ${spMedium};
@@ -115,13 +115,15 @@ export const CurrentMagazineTaxInfoTitle = CurrentMagazineTax.extend`
   font-size: 11.5px;
   line-height: 2.17;
   padding-bottom: 10px;
+`;
 
-  a {
-    color: ${gray700};
-    font-family: ${RobotoMedium};
-    font-weight: bold;
-    text-decoration: none;
-  }
+export const CurrentMagazineTaxViewMore = styled.span`
+  color: ${gray700};
+  font-family: ${RobotoMedium};
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 5px;
+  cursor: pointer;
 `;
 
 export const CurrentMagazineTaxInfoDescription = CurrentMagazineTax.extend`
@@ -187,4 +189,23 @@ export const CurrentMagazineSeeMore = styled.div`
     display: block;
     margin: 10px 0;
   }
+`;
+
+export const CurrentMagazineTaxItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0 5px 0;
+  color: ${gray700};
+
+  & + & {
+    border-top: 1px solid ${gray100};
+  }
+`;
+
+export const CurrentMagazineTaxItemDatum = styled.div`
+  line-height: 1.25;
+`;
+
+export const CurrentMagazineHeaderTaxItemDatum = styled.div`
+  font-weight: ${fw600};
 `;

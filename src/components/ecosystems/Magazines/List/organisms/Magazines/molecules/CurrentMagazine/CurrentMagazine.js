@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
 import { FlatButton, Icon, FormButton } from 'natura-ui';
+import { Dialog } from 'material-ui';
 import {
   CurrentMagazineWrapper,
   CurrentMagazineHeader,
@@ -12,17 +13,23 @@ import {
   CurrentMagazineTaxWrapper,
   CurrentMagazineTaxInfoTitle,
   CurrentMagazineTaxInfoDescription,
+  CurrentMagazineTaxViewMore,
   ButtonWrapper,
   CurrentMagazineInfo,
   CurrentMagazineInfoWrapper,
   CurrentMagazineAdditionalInfo,
   CurrentMagazineSeeMore,
+  CurrentMagazineTaxItem,
+  CurrentMagazineTaxItemDatum,
+  CurrentMagazineHeaderTaxItemDatum,
 } from './CurrentMagazine.styles';
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
+import { FormattedNumber } from 'react-intl';
 
 export class CurrentMagazine extends Component {
   state = {
     additionalInfoOpened: false,
+    taxViewMoreOpened: false,
   };
 
   downloadMagazine = () => {
@@ -37,6 +44,62 @@ export class CurrentMagazine extends Component {
 
   toggleAdditionalInfo = () => {
     this.setState({ additionalInfoOpened: !this.state.additionalInfoOpened });
+  };
+
+  openTaxViewMore = () => {
+    this.setState({ taxViewMoreOpened: !this.state.taxViewMoreOpened });
+  };
+
+  handleTaxViewMoreClose = () => {
+    this.setState({ taxViewMoreOpened: false });
+  };
+
+  renderTaxViewMoreActions = () => {
+    return [
+      <FlatButton label={translate('ok')} primary={true} onClick={this.handleTaxViewMoreClose} />,
+    ];
+  };
+
+  renderTaxViewMoreDialog = () => {
+    const dialogData = [
+      { productType: translate('beardProducts'), tax: 56.48 },
+      { productType: translate('hairProducts'), tax: 51.33 },
+      { productType: translate('bodyProducts'), tax: 47.03 },
+      { productType: translate('deodorantColony'), tax: 44.99 },
+      { productType: translate('deodorantAnti'), tax: 44.99 },
+      { productType: translate('makeupProducts'), tax: 55.94 },
+      { productType: translate('bodyOils'), tax: 45.78 },
+      { productType: translate('parfum'), tax: 49.16 },
+    ];
+
+    return (
+      <Dialog
+        title={translate('taxBurden')}
+        actions={this.renderTaxViewMoreActions()}
+        open={this.state.taxViewMoreOpened}
+        modal={false}
+        onRequestClose={this.handleTaxViewMoreClose}
+      >
+        <CurrentMagazineTaxItem>
+          <CurrentMagazineHeaderTaxItemDatum>
+            {translate('productType')}
+          </CurrentMagazineHeaderTaxItemDatum>
+          <CurrentMagazineHeaderTaxItemDatum>
+            {translate('taxIBPT')}
+          </CurrentMagazineHeaderTaxItemDatum>
+        </CurrentMagazineTaxItem>
+        {dialogData.map((datum, index) => {
+          return (
+            <CurrentMagazineTaxItem key={index}>
+              <CurrentMagazineTaxItemDatum>{datum.productType}</CurrentMagazineTaxItemDatum>
+              <CurrentMagazineTaxItemDatum>
+                <FormattedNumber value={datum.tax} />%
+              </CurrentMagazineTaxItemDatum>
+            </CurrentMagazineTaxItem>
+          );
+        })}
+      </Dialog>
+    );
   };
 
   render() {
@@ -77,9 +140,9 @@ export class CurrentMagazine extends Component {
               </ButtonWrapper>
               <CurrentMagazineTaxWrapper>
                 <CurrentMagazineTaxInfoTitle>
-                  <Link to={''} target="_blank">
+                  <CurrentMagazineTaxViewMore onClick={this.openTaxViewMore}>
                     {translate('taxViewMore')}
-                  </Link>{' '}
+                  </CurrentMagazineTaxViewMore>
                   {translate('taxInfoTitle')}
                 </CurrentMagazineTaxInfoTitle>
                 <CurrentMagazineTaxInfoDescription>
@@ -98,6 +161,7 @@ export class CurrentMagazine extends Component {
             </CurrentMagazineSeeMore>
           </CurrentMagazineInfo>
         </CurrentMagazineInfoWrapper>
+        {this.renderTaxViewMoreDialog()}
       </CurrentMagazineWrapper>
     );
   }
