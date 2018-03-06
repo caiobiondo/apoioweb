@@ -28,6 +28,8 @@ import {
 import StockProduct from '../../molecules/StockProduct';
 import SectionTitle from 'components/molecules/SectionTitle';
 
+import MediaQuery from 'react-responsive';
+
 const MAX_PRODUCT_QTY = 100000;
 
 export class StockAddProductModal extends Component {
@@ -258,26 +260,55 @@ export class StockAddProductModal extends Component {
   }
 
   render() {
-    return [
-      <Modal
-        open={this.props.opened}
-        showCloseButton={true}
-        onCloseClick={this.onClose}
-        title={this.renderTitle()}
-        titleStyle={titleStyle}
-        contentStyle={contentStyle}
-        bodyStyle={bodyStyle}
-        autoScrollBodyContent={true}
-        key={'stockAddProductModal'}
-      >
-        <ModalContentWrapper>
-          {this.renderForm()}
-          {this.renderProduct()}
-        </ModalContentWrapper>
-        {this.renderFormButtom()}
-      </Modal>,
-      this.renderFeedbackDialog(),
-    ];
+    return (
+      <div>
+        <MediaQuery minWidth={768}>
+          <Modal
+            open={this.props.opened}
+            showCloseButton={true}
+            onCloseClick={this.onClose}
+            title={this.renderTitle()}
+            titleStyle={titleStyle}
+            contentStyle={contentStyle}
+            bodyStyle={bodyStyle}
+          >
+            <ModalContentWrapper>
+              {this.renderForm()}
+              {this.renderProduct()}
+            </ModalContentWrapper>
+            {this.renderFormButtom()}
+          </Modal>
+          this.renderFeedbackDialog()
+        </MediaQuery>
+        <MediaQuery maxWidth={767}>
+          <Modal
+            open={this.props.opened}
+            showCloseButton={true}
+            onCloseClick={this.onClose}
+            title={this.renderTitle()}
+            titleStyle={titleStyle}
+            autoDetectWindowHeight={false}
+            autoScrollBodyContent={false}
+            contentStyle={{
+              transform: 'unset',
+              width: 'unset',
+              maxWidth: 'unset',
+              maxHeight: '100%',
+              overflowY: 'scroll',
+            }}
+            paperProps={{ style: { borderRadius: 0 } }}
+            style={{ paddingTop: 0 }}
+            className="appcn-modal-mobile"
+          >
+            <ModalContentWrapper>
+              {this.renderFormButtom()}
+              {this.renderForm()}
+              {this.renderProduct()}
+            </ModalContentWrapper>
+          </Modal>
+        </MediaQuery>
+      </div>
+    );
   }
 }
 
