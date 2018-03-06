@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import { gray200 } from 'styles/colors';
 import { RobotoMedium, NaturaBold } from 'styles/typography';
 import { Responsive } from '@entria/components';
@@ -108,3 +108,13 @@ export const bodyStyle = {
 export const dialogContentStyle = {
   maxWidth: '450px',
 };
+
+injectGlobal`
+  .appcn-modal-mobile {
+    padding-top: 0 !important;
+
+    > div {
+      height: 100%;
+    }
+  }
+`;
