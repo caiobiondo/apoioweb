@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ContentWrapper } from './CourseContent.styles';
-import { Player } from 'video-react';
+import { Player, BigPlayButton } from 'video-react';
 import 'video-react/dist/video-react.css';
 
 class CourseContent extends Component {
@@ -28,7 +28,9 @@ class CourseContent extends Component {
           poster={course.thumbnail}
           src={course.courseContent.video}
           fluid={false}
-        />
+        >
+          <BigPlayButton position="center" />
+        </Player>
       </ContentWrapper>
     );
   }
