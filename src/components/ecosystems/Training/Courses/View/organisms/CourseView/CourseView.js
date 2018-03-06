@@ -166,7 +166,7 @@ export class CourseView extends Component {
       <Main>
         <Grid fluid>
           <CourseViewHeader course={course} />
-          <CourseContent />
+          <CourseContent course={course} />
           <CourseDescription course={course} />
           <Row>
             <Col md={1} sm={1}>

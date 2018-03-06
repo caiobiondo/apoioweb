@@ -1,5 +1,10 @@
 import styled from 'styled-components';
+import { getTheme } from '@entria/components';
 
 export const ContentWrapper = styled.div`
-  flex: 2 1 0;
+  margin-bottom: 25px;
+
+  .video-react .video-react-play-progress {
+    background: ${getTheme().palette.primary1Color};
+  }
 `;
