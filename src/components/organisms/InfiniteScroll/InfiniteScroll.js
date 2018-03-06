@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { Loading, Paper, CircularProgress } from 'natura-ui';
 import ReactInfiniteScroller from 'react-infinite-scroller';
 
-import debounce from 'utils/debounce.js';
+import { debounce } from 'utils/debounce';
 
 import { LoadingWrapper, fullContainer } from './InfiniteScroll.styles';
 

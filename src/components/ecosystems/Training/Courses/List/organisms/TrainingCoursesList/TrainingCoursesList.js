@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import propTypes from 'prop-types';
 import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
 import {
   TrainingCoursesQuery,
