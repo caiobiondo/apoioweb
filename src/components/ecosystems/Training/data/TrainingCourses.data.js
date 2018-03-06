@@ -17,26 +17,29 @@ export const TrainingCoursesQuery = gql`
       status: $status
       favorite: $favorite
     ) {
-      id
-      accessToken
-      categoryTitle
-      clientIdentifier
-      clientSecrets
-      courseContent {
-        video
-        html5
-        web
+      hasNextPage
+      items {
+        id
+        accessToken
+        categoryTitle
+        clientIdentifier
+        clientSecrets
+        courseContent {
+          video
+          html5
+          web
+        }
+        dateUpload
+        durationInSeconds
+        isfavorite
+        ratedByYou
+        status
+        stoppedAt
+        thumbnail
+        title
+        type
+        views
       }
-      dateUpload
-      durationInSeconds
-      isfavorite
-      ratedByYou
-      status
-      stoppedAt
-      thumbnail
-      title
-      type
-      views
     }
   }
 `;
@@ -46,8 +49,17 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
     return previousResult;
   }
 
+  const previousResultIds = previousResult.courses.items.map(item => item.id);
+  const fetchMoreResultsToAdd = fetchMoreResult.courses.items.filter(
+    item => previousResultIds.indexOf(item.id) < 0,
+  );
+
   return Object.assign({}, previousResult, {
-    courses: [...previousResult.courses, ...fetchMoreResult.courses],
+    courses: {
+      __typename: previousResult.courses.__typename,
+      hasNextPage: fetchMoreResult.courses.hasNextPage,
+      items: [...previousResult.courses.items, ...fetchMoreResultsToAdd],
+    },
   });
 };
 
@@ -66,19 +78,27 @@ export const TrainingCoursesQueryOptions = {
     };
   },
   props({ data }) {
+    const { refetch, loading } = data;
+    const courses = data.courses && data.courses.items;
+    const hasNextPage = data.courses && data.courses.hasNextPage;
+
     return {
       data,
-      refetch: data.refetch,
-      loading: data.loading,
-      courses: data.courses,
-      hasMultiplePages: data.courses && data.courses.length >= ITEMS_PER_PAGE,
+      refetch,
+      loading,
+      courses,
+      hasNextPage,
       fetchMore() {
-        const offset = data.courses ? data.courses.length : 0;
+        if (data.loading) {
+          return;
+        }
+
+        const offset = courses ? courses.length : 0;
+        const variables = { offset };
+
         return data.fetchMore({
-          variables: {
-            offset,
-          },
-          updateQuery: updateQuery,
+          variables,
+          updateQuery,
         });
       },
     };

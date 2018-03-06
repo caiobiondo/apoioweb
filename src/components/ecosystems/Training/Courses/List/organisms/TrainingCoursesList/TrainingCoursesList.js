@@ -212,6 +212,10 @@ export class TrainingCoursesList extends Component {
     );
   };
 
+  loadMore = debounce(() => {
+    this.props.fetchMore();
+  }, 1000);
+
   render() {
     if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
@@ -234,8 +238,9 @@ export class TrainingCoursesList extends Component {
       <TrainingCoursesListWrapper>
         <PageMenu />
         <InfiniteScroll
-          loadMore={this.props.fetchMore}
-          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
+          pageStart={0}
+          loadMore={this.loadMore}
+          hasMore={this.props.hasNextPage}
           loader={
             <LoadingWrapper>
               <CircularProgress thickness={2} />
@@ -248,6 +253,22 @@ export class TrainingCoursesList extends Component {
       </TrainingCoursesListWrapper>
     );
   }
+}
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return () => {
+    var context = this,
+      args = arguments;
+    var later = () => {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }
 
 export const TrainingCoursesListWithIntl = injectIntl(TrainingCoursesList);
