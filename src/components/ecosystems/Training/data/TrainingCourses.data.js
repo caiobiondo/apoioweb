@@ -56,7 +56,6 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
 
   return Object.assign({}, previousResult, {
     courses: {
-      __typename: previousResult.courses.__typename,
       hasNextPage: fetchMoreResult.courses.hasNextPage,
       items: [...previousResult.courses.items, ...fetchMoreResultsToAdd],
     },
@@ -80,7 +79,7 @@ export const TrainingCoursesQueryOptions = {
   props({ data }) {
     const { refetch, loading } = data;
     const courses = data.courses && data.courses.items;
-    const hasNextPage = data.courses && data.courses.hasNextPage;
+    const hasNextPage = (data.courses && data.courses.hasNextPage) || false;
 
     return {
       data,
