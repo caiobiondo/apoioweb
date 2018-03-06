@@ -278,7 +278,6 @@ export class StockAddProductModal extends Component {
             </ModalContentWrapper>
             {this.renderFormButtom()}
           </Modal>
-          this.renderFeedbackDialog()
         </MediaQuery>
         <MediaQuery maxWidth={767}>
           <Modal
@@ -307,6 +306,7 @@ export class StockAddProductModal extends Component {
             </ModalContentWrapper>
           </Modal>
         </MediaQuery>
+        {this.renderFeedbackDialog()}
       </div>
     );
   }
