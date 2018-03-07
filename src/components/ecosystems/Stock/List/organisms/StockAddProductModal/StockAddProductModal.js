@@ -292,11 +292,20 @@ export class StockAddProductModal extends Component {
               transform: 'unset',
               width: 'unset',
               maxWidth: 'unset',
-              maxHeight: '100%',
               overflowY: 'scroll',
+              height: '100%',
+              backgroundColor: 'rgb(255, 255, 255)',
+              boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px',
             }}
-            paperProps={{ style: { borderRadius: 0 } }}
-            style={{ paddingTop: 0 }}
+            paperProps={{
+              style: {
+                borderRadius: 0,
+                height: '100%',
+                backgroundColor: 'unset',
+                boxShadow: 'unset',
+              },
+            }}
+            style={{ paddingTop: 0, right: 0, bottom: 0 }}
             className="appcn-modal-mobile"
           >
             <ModalContentWrapper>
