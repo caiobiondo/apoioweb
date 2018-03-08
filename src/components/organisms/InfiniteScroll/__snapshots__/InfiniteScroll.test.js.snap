@@ -1,18 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Infinite Scroll renders correctly when it is an empty list 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
-/>
-`;
+exports[`Infinite Scroll renders correctly when it is an empty list 1`] = `""`;
 
 exports[`Infinite Scroll renders correctly when it is loading and there is no items 1`] = `
 <Loading

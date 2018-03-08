@@ -1,20 +1,20 @@
 import { StockProductsQuery, StockProductsQueryOptions, updateQuery } from './ListTable.data';
 
-describe('MyStockProductsQuery', () => {
+describe('StockProductsQuery', () => {
   it('should be the correct query', () => {
     expect(StockProductsQuery).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
-    const props = { productSearch: 'search' };
+    const props = { productSearch: null };
 
     const options = StockProductsQueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
+        filter: null,
         limit: 10,
         offset: 0,
-        filter: 'search',
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',
@@ -25,7 +25,7 @@ describe('MyStockProductsQuery', () => {
     const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
     const data = {
       data: {
-        loading: true,
+        loading: false,
         stockProducts: [],
         fetchMore: fetchMore,
       },
@@ -39,10 +39,28 @@ describe('MyStockProductsQuery', () => {
     expect(fetchMoreResult).toEqual('application of fetchMore');
   });
 
+  it('should not call fetchMore when the data is still loading', () => {
+    const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
+    const data = {
+      data: {
+        loading: true,
+        stockProducts: [],
+        fetchMore: fetchMore,
+      },
+    };
+
+    const props = StockProductsQueryOptions.props(data);
+    props.fetchMore();
+
+    expect(fetchMore).not.toBeCalled();
+  });
+
   describe('updateQuery', () => {
     it('should return the previous result', () => {
       const previousResult = {
-        stockProducts: [1, 2],
+        stockProducts: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
 
       const result = updateQuery(previousResult, { fetchMoreResult: null });
@@ -50,17 +68,36 @@ describe('MyStockProductsQuery', () => {
       expect(result).toEqual(previousResult);
     });
 
-    it('should return the merge from previous and fetchMore result', () => {
+    it('should return the merge from previous and fetchMore result on items array', () => {
       const previousResult = {
-        stockProducts: [1, 2],
+        stockProducts: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
-      const stockProducts = [3, 4];
+      const stockProducts = {
+        items: [{ id: 3 }, { id: 4 }],
+      };
 
       const result = updateQuery(previousResult, { fetchMoreResult: { stockProducts } });
 
-      expect(result).toEqual({
-        stockProducts: [1, 2, 3, 4],
-      });
+      expect(result.stockProducts.items).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
+    });
+
+    it('should return the updated value of hasNextPage', () => {
+      const previousResult = {
+        stockProducts: {
+          items: [],
+          hasNextPage: true,
+        },
+      };
+      const stockProducts = {
+        items: [],
+        hasNextPage: false,
+      };
+
+      const result = updateQuery(previousResult, { fetchMoreResult: { stockProducts } });
+
+      expect(result.stockProducts.hasNextPage).toBeFalsy();
     });
   });
 });

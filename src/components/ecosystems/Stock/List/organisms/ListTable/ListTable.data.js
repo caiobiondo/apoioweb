@@ -5,14 +5,17 @@ const ITEMS_PER_PAGE = 10;
 export const StockProductsQuery = gql`
   query StockProductsQuery($offset: Int!, $limit: Int!, $filter: String) {
     stockProducts(offset: $offset, limit: $limit, filter: $filter) {
-      id
-      userId
-      productCode
-      productName
-      productDescription
-      productImage
-      stockQuantity
-      productPrice
+      hasNextPage
+      items {
+        id
+        userId
+        productCode
+        productName
+        productDescription
+        productImage
+        stockQuantity
+        productPrice
+      }
     }
   }
 `;
@@ -22,8 +25,16 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
     return previousResult;
   }
 
+  const previousResultIds = previousResult.stockProducts.items.map(item => item.id);
+  const fetchMoreResultsToAdd = fetchMoreResult.stockProducts.items.filter(
+    item => previousResultIds.indexOf(item.id) < 0,
+  );
+
   return Object.assign({}, previousResult, {
-    stockProducts: [...previousResult.stockProducts, ...fetchMoreResult.stockProducts],
+    stockProducts: {
+      hasNextPage: fetchMoreResult.stockProducts.hasNextPage,
+      items: [...previousResult.stockProducts.items, ...fetchMoreResultsToAdd],
+    },
   });
 };
 
@@ -40,19 +51,27 @@ export const StockProductsQueryOptions = {
     };
   },
   props({ data }) {
+    const { refetch, loading } = data;
+    const stockProducts = data.stockProducts && data.stockProducts.items;
+    const hasNextPage = (data.stockProducts && data.stockProducts.hasNextPage) || false;
+
     return {
       data,
-      refetch: data.refetch,
-      loading: data.loading,
-      stockProducts: data.stockProducts,
-      hasMultiplePages: data.stockProducts && data.stockProducts.length >= ITEMS_PER_PAGE,
+      refetch,
+      loading,
+      stockProducts,
+      hasNextPage,
       fetchMore() {
-        const offset = data.stockProducts ? data.stockProducts.length : 0;
+        if (data.loading) {
+          return;
+        }
+
+        const offset = stockProducts ? stockProducts.length : 0;
+        const variables = { offset };
+
         return data.fetchMore({
-          variables: {
-            offset,
-          },
-          updateQuery: updateQuery,
+          variables,
+          updateQuery,
         });
       },
     };

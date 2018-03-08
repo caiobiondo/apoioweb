@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { Loading, CircularProgress, Paper, Table } from 'natura-ui';
+import { Paper, Table } from 'natura-ui';
 import { StockProductsQuery, StockProductsQueryOptions } from './ListTable.data';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 
 import StockProductQuantity from '../StockProductQuantity';
 import StockProductInfo from '../../molecules/StockProductInfo';
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
 import {
   WrapperStyle,
   TableWrapper,
   StockProductInfoWrapper,
-  LoadingWrapper,
   StockInputWrapper,
-  fullContainer,
 } from './ListTable.styles';
 
 export class ListTable extends Component {
@@ -51,7 +49,6 @@ export class ListTable extends Component {
 
   componentWillReceiveProps({ loading, stockProducts }) {
     this.notifyLoadFinish(loading, stockProducts);
-    this.checkIfHasMoreItems(loading, stockProducts);
   }
 
   notifyLoadFinish = (loading, stockProducts) => {
@@ -61,17 +58,6 @@ export class ListTable extends Component {
         this.isLoading(loading, stockProducts),
       );
     }
-  };
-
-  checkIfHasMoreItems = (loading, stockProducts) => {
-    if (this.props.loading === loading || !stockProducts) {
-      return;
-    }
-
-    const hasMoreItems =
-      (stockProducts && !this.props.stockProducts) ||
-      stockProducts.length !== this.props.stockProducts.length;
-    this.setState({ hasMoreItems });
   };
 
   isLoading = (loading, stockProducts) => {
@@ -103,30 +89,25 @@ export class ListTable extends Component {
   };
 
   render() {
-    if (!this.props.stockProducts && this.props.loading) {
-      return <Loading background="transparent" />;
-    }
-
-    if (!this.props.stockProducts || !this.props.stockProducts.length) {
-      const emptyListText = this.props.productSearch
-        ? 'emptySearchResult'
-        : 'stockEmptyListDescription';
-      return (
-        <Paper style={fullContainer}>
-          <EmptyList icon="ico_forklift" titleId="stockEmptyList" descriptionId={emptyListText} />
-        </Paper>
-      );
-    }
+    const { fetchMore, hasNextPage, loading, stockProducts } = this.props;
+    const emptyListText = this.props.productSearch
+      ? 'emptySearchResult'
+      : 'stockEmptyListDescription';
 
     return (
       <Paper style={WrapperStyle}>
         <InfiniteScroll
-          loadMore={this.props.fetchMore}
-          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
-          loader={
-            <LoadingWrapper>
-              <CircularProgress thickness={2} />
-            </LoadingWrapper>
+          onScroll={fetchMore}
+          hasMore={hasNextPage}
+          loading={loading}
+          debounce={500}
+          items={stockProducts}
+          emptyList={
+            <EmptyList
+              icon="ico_list_add"
+              titleId="coursesEmptyList"
+              descriptionId={emptyListText}
+            />
           }
         >
           <TableWrapper>

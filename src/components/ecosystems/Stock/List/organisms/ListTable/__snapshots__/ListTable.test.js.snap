@@ -1,34 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Stock Product List Table should render correctly when loading 1`] = `
-<Loading
-  background="transparent"
-  visible={true}
-  zIndex={9999}
-/>
-`;
-
-exports[`Stock Product List Table should render correctly when the list is empty 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
->
-  <EmptyList
-    descriptionId="stockEmptyListDescription"
-    icon="ico_forklift"
-    titleId="stockEmptyList"
-  />
-</Paper>
-`;
-
-exports[`Stock Product List Table should render correctly when the list is not empty 1`] = `
+exports[`Training Courses List renders correctly when the list is not empty 1`] = `
 <Paper
   circle={false}
   rounded={true}
@@ -44,28 +16,30 @@ exports[`Stock Product List Table should render correctly when the list is not e
   zDepth={1}
 >
   <InfiniteScroll
-    element="div"
-    hasMore={false}
-    initialLoad={true}
-    isReverse={false}
-    loadMore={[Function]}
-    loader={
-      <mixins__LoadingWrapperStyle>
-        <CircularProgress
-          max={100}
-          min={0}
-          mode="indeterminate"
-          size={40}
-          thickness={2}
-          value={0}
-        />
-      </mixins__LoadingWrapperStyle>
+    debounce={500}
+    emptyList={
+      <EmptyList
+        descriptionId="stockEmptyListDescription"
+        icon="ico_list_add"
+        titleId="coursesEmptyList"
+      />
     }
-    pageStart={0}
-    ref={null}
-    threshold={250}
-    useCapture={false}
-    useWindow={true}
+    hasMore={false}
+    items={
+      Array [
+        Object {
+          "name": "Product 1",
+        },
+        Object {
+          "name": "Product 2",
+        },
+        Object {
+          "name": "Product 3",
+        },
+      ]
+    }
+    loading={false}
+    onScroll={[Function]}
   >
     <ListTablestyles__TableWrapper>
       <NaturaTable

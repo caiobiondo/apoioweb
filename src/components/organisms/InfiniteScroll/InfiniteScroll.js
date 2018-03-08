@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { Loading, Paper, CircularProgress } from 'natura-ui';
+import { Loading, CircularProgress } from 'natura-ui';
 import ReactInfiniteScroller from 'react-infinite-scroller';
 
 import { debounce } from 'utils/debounce';
 
-import { LoadingWrapper, fullContainer } from './InfiniteScroll.styles';
+import { LoadingWrapper } from './InfiniteScroll.styles';
 
 export class InfiniteScroll extends Component {
   isEmpty = () => {
@@ -24,7 +24,7 @@ export class InfiniteScroll extends Component {
     }
 
     if (this.isEmpty()) {
-      return <Paper style={fullContainer}>{this.props.emptyList}</Paper>;
+      return this.props.emptyList;
     }
 
     return (
