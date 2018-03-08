@@ -1,72 +1,277 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StockAddProductModal renders correctly 1`] = `
-Array [
-  <Modal
-    autoScrollBodyContent={true}
-    bodyStyle={
+<div>
+  <MediaQuery
+    minWidth={768}
+    values={Object {}}
+  >
+    <Modal
+      bodyStyle={
         Object {
-            "borderWidth": 0,
-          }
-    }
-    contentStyle={
+          "borderWidth": 0,
+        }
+      }
+      contentStyle={
         Object {
-            "maxWidth": "800px",
-          }
-    }
-    key="stockAddProductModal"
-    onCloseClick={[Function]}
-    open={true}
-    showCloseButton={true}
-    title={
+          "maxWidth": "800px",
+        }
+      }
+      onCloseClick={[Function]}
+      open={true}
+      showCloseButton={true}
+      title={
         <StockAddProductModalstyles__ModalTitleWrapper>
-            <SectionTitle
-                iconName="ico_flask"
-                value="stockProductAddModalTitle"
-            />
+          <SectionTitle
+            iconName="ico_flask"
+            value="stockProductAddModalTitle"
+          />
         </StockAddProductModalstyles__ModalTitleWrapper>
-    }
-    titleStyle={
+      }
+      titleStyle={
         Object {
-            "fontFamily": "NaturaSans-Bold",
+          "fontFamily": "NaturaSans-Bold",
+        }
+      }
+    >
+      <StockAddProductModalstyles__ModalContentWrapper>
+        <StockAddProductModalstyles__FormWrapper>
+          <StockAddProductModalstyles__FormInputWrapper>
+            <Input
+              bordered={true}
+              dirty={false}
+              disabled={false}
+              help=""
+              initialFocus={false}
+              label="Código"
+              maskChar=""
+              maxlenght={null}
+              name="productCode"
+              onChange={[Function]}
+              placeholder=""
+              required={false}
+              showError={true}
+              type="text"
+              value=""
+            />
+          </StockAddProductModalstyles__FormInputWrapper>
+          <StockAddProductModalstyles__FormInputWrapper>
+            <Input
+              bordered={true}
+              dirty={false}
+              disabled={false}
+              help=""
+              initialFocus={false}
+              label="Quantidade"
+              maskChar=""
+              maxlenght={null}
+              name="qty"
+              onChange={[Function]}
+              placeholder=""
+              required={false}
+              showError={true}
+              type="text"
+              value={1}
+            />
+          </StockAddProductModalstyles__FormInputWrapper>
+        </StockAddProductModalstyles__FormWrapper>
+        <StockAddProductModalstyles__StockProductWrapper>
+          <StockProduct
+            loading={false}
+            product={null}
+            productCode=""
+          />
+        </StockAddProductModalstyles__StockProductWrapper>
+      </StockAddProductModalstyles__ModalContentWrapper>
+      <StockAddProductModalstyles__FormButtonWrapper>
+        <FormButton
+          backgroundColor="#c9c9c9"
+          buttonStyle={
+            Object {
+              "fontFamily": "Roboto-Medium",
+              "minWidth": "128px",
+            }
           }
-    }
-/>,
+          disabled={true}
+          height="50px"
+          label="Adicionar"
+          labelColor="#fff"
+          link={null}
+          onClick={[Function]}
+          overlayStyle={
+            Object {
+              "minWidth": "128px",
+            }
+          }
+          primary={true}
+          raised={false}
+        />
+      </StockAddProductModalstyles__FormButtonWrapper>
+    </Modal>
+  </MediaQuery>
+  <MediaQuery
+    maxWidth={767}
+    values={Object {}}
+  >
+    <Modal
+      autoDetectWindowHeight={false}
+      autoScrollBodyContent={false}
+      className="appcn-modal-mobile"
+      contentStyle={
+        Object {
+          "backgroundColor": "rgb(255, 255, 255)",
+          "boxShadow": "rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px",
+          "height": "100%",
+          "maxWidth": "unset",
+          "overflowY": "scroll",
+          "transform": "unset",
+          "width": "unset",
+        }
+      }
+      onCloseClick={[Function]}
+      open={true}
+      paperProps={
+        Object {
+          "style": Object {
+            "backgroundColor": "unset",
+            "borderRadius": 0,
+            "boxShadow": "unset",
+            "height": "100%",
+          },
+        }
+      }
+      showCloseButton={true}
+      style={
+        Object {
+          "bottom": 0,
+          "paddingTop": 0,
+          "right": 0,
+        }
+      }
+      title={
+        <StockAddProductModalstyles__ModalTitleWrapper>
+          <SectionTitle
+            iconName="ico_flask"
+            value="stockProductAddModalTitle"
+          />
+        </StockAddProductModalstyles__ModalTitleWrapper>
+      }
+      titleStyle={
+        Object {
+          "fontFamily": "NaturaSans-Bold",
+        }
+      }
+    >
+      <StockAddProductModalstyles__ModalContentWrapper>
+        <StockAddProductModalstyles__FormButtonWrapper>
+          <FormButton
+            backgroundColor="#c9c9c9"
+            buttonStyle={
+              Object {
+                "fontFamily": "Roboto-Medium",
+                "minWidth": "128px",
+              }
+            }
+            disabled={true}
+            height="50px"
+            label="Adicionar"
+            labelColor="#fff"
+            link={null}
+            onClick={[Function]}
+            overlayStyle={
+              Object {
+                "minWidth": "128px",
+              }
+            }
+            primary={true}
+            raised={false}
+          />
+        </StockAddProductModalstyles__FormButtonWrapper>
+        <StockAddProductModalstyles__FormWrapper>
+          <StockAddProductModalstyles__FormInputWrapper>
+            <Input
+              bordered={true}
+              dirty={false}
+              disabled={false}
+              help=""
+              initialFocus={false}
+              label="Código"
+              maskChar=""
+              maxlenght={null}
+              name="productCode"
+              onChange={[Function]}
+              placeholder=""
+              required={false}
+              showError={true}
+              type="text"
+              value=""
+            />
+          </StockAddProductModalstyles__FormInputWrapper>
+          <StockAddProductModalstyles__FormInputWrapper>
+            <Input
+              bordered={true}
+              dirty={false}
+              disabled={false}
+              help=""
+              initialFocus={false}
+              label="Quantidade"
+              maskChar=""
+              maxlenght={null}
+              name="qty"
+              onChange={[Function]}
+              placeholder=""
+              required={false}
+              showError={true}
+              type="text"
+              value={1}
+            />
+          </StockAddProductModalstyles__FormInputWrapper>
+        </StockAddProductModalstyles__FormWrapper>
+        <StockAddProductModalstyles__StockProductWrapper>
+          <StockProduct
+            loading={false}
+            product={null}
+            productCode=""
+          />
+        </StockAddProductModalstyles__StockProductWrapper>
+      </StockAddProductModalstyles__ModalContentWrapper>
+    </Modal>
+  </MediaQuery>
   <Dialog
     actions={
-        Array [
-            <FlatButton
-              disabled={false}
-              fullWidth={false}
-              label="OK"
-              labelPosition="after"
-              labelStyle={
-                    Object {
-                          "fontFamily": "Roboto",
-                        }
-              }
-              onClick={[Function]}
-              onKeyboardFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onTouchStart={[Function]}
-              primary={true}
-              secondary={false}
-        />,
-          ]
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label="OK"
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
     }
     autoDetectWindowHeight={true}
     autoScrollBodyContent={false}
     bodyStyle={
-        Object {
-            "fontFamily": "Roboto",
-            "padding": "12px 25px",
-          }
+      Object {
+        "fontFamily": "Roboto",
+        "padding": "12px 25px",
+      }
     }
     contentStyle={
-        Object {
-            "maxWidth": "450px",
-          }
+      Object {
+        "maxWidth": "450px",
+      }
     }
     key="successDialog"
     modal={false}
@@ -74,10 +279,10 @@ Array [
     open={false}
     repositionOnUpdate={true}
     titleStyle={
-        Object {
-            "fontWeight": 800,
-          }
+      Object {
+        "fontWeight": 800,
+      }
     }
-/>,
-]
+  />
+</div>
 `;
