@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ContentWrapper } from './CourseContent.styles';
 import { Player, BigPlayButton } from 'video-react';
+import CourseEvaluation from '../CourseEvaluation';
 import 'video-react/dist/video-react.css';
 
 class CourseContent extends Component {
+  state = {
+    ended: false,
+  };
+
   componentDidMount() {
     this.refs.player.subscribeToStateChange(this.handleStateChange.bind(this));
   }
 
   handleStateChange(state, prevState) {
     this.setState({
-      player: state,
       ended: state.ended,
     });
-
-    console.log(this.state.ended);
   }
 
   render() {
@@ -31,6 +33,7 @@ class CourseContent extends Component {
         >
           <BigPlayButton position="center" />
         </Player>
+        {this.state.ended && <CourseEvaluation />}
       </ContentWrapper>
     );
   }

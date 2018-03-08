@@ -33,6 +33,9 @@ export default {
     trainingCategoryCompleted: 'Completa',
     courseRatingAvaliation: 'Avaliação',
     courseRatingTime: 'Tempo',
+    courseEvaluationNext: 'Próximo',
+    courseEvaluationEnd: 'Finalizar',
+    courseEvaluationTitle: 'Avaliação do curso',
     relatedTraining: 'Treinamentos relacionados',
   },
 };
