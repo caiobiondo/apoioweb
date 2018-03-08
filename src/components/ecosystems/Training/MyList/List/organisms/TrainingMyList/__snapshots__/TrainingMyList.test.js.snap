@@ -1,73 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Training My List renders correctly when loading 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
->
-  <PageMenu />
-  <EmptyList
-    descriptionId="coursesEmptyListDescription"
-    icon="ico_list_add"
-    titleId="coursesEmptyList"
-  />
-</Paper>
-`;
-
-exports[`Training My List renders correctly when the list is empty 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
->
-  <PageMenu />
-  <EmptyList
-    descriptionId="coursesEmptyListDescription"
-    icon="ico_list_add"
-    titleId="coursesEmptyList"
-  />
-</Paper>
-`;
-
 exports[`Training My List renders correctly when the list is not empty 1`] = `
 <TrainingMyListstyles__TrainingMyListWrapper>
   <PageMenu />
   <InfiniteScroll
-    element="div"
-    hasMore={false}
-    initialLoad={true}
-    isReverse={false}
-    loadMore={[Function]}
-    loader={
-      <mixins__LoadingWrapperStyle>
-        <CircularProgress
-          max={100}
-          min={0}
-          mode="indeterminate"
-          size={40}
-          thickness={2}
-          value={0}
-        />
-      </mixins__LoadingWrapperStyle>
+    debounce={500}
+    emptyList={
+      <EmptyList
+        descriptionId="coursesEmptyListDescription"
+        icon="ico_list_add"
+        titleId="coursesEmptyList"
+      />
     }
-    pageStart={0}
-    ref={null}
-    threshold={250}
-    useCapture={false}
-    useWindow={true}
+    hasMore={false}
+    items={
+      Array [
+        Object {
+          "dateUpload": "2017-04-20T00:00:00.000Z",
+          "description": "new course description",
+          "durationInSeconds": 1234,
+          "isfavorite": true,
+          "status": "started",
+          "stoppedAt": 12,
+          "title": "new course",
+          "type": "VIDEO",
+          "views": 12,
+        },
+        Object {
+          "dateUpload": "2017-04-20T00:00:00.000Z",
+          "description": "new course description",
+          "durationInSeconds": 1234,
+          "isfavorite": false,
+          "status": "completed",
+          "stoppedAt": 12,
+          "title": "new course",
+          "type": "HTML5",
+          "views": 12,
+        },
+      ]
+    }
+    loading={false}
+    onScroll={[Function]}
   >
     <TrainingCourses
       courses={
