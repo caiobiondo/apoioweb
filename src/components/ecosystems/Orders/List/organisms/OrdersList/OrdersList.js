@@ -66,7 +66,7 @@ export class OrdersList extends Component {
   }
 
   render() {
-    const { loading, orders, fetchMore, importing, intl } = this.props;
+    const { loading, orders, fetchMore, importing, intl, hasNextPage } = this.props;
     if (this._loading(loading, orders)) {
       return <Loading background="transparent" />;
     }
@@ -81,7 +81,7 @@ export class OrdersList extends Component {
       <Paper style={scrolledContainer}>
         <InfiniteScroll
           loadMore={fetchMore}
-          hasMore={false}
+          hasMore={hasNextPage}
           loader={
             <LoadingWrapper>
               <CircularProgress thickness={2} />
