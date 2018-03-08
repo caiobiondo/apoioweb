@@ -15,52 +15,67 @@ import {
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      done: '',
-      networkDone: '',
+      indicatorDataValues: {
+        done: props.indicatorData.done || '',
+        networkDone: props.indicatorData.networkDone || '',
+      },
     };
   }
 
   componentWillReceiveProps({ indicatorData }) {
-    this.updateIndicatorDataInformation(indicatorData);
+    this.handleIndicatorDataBlur(indicatorData);
   }
 
-  updateIndicatorDataInformation = indicatorData => {
+  updateIndicatorDataValues = indicatorData => {
     if (!indicatorData) {
       return;
     }
 
-    this.setState({
-      ...this.state,
+    const indicatorDataValues = {
       done: indicatorData.done || '',
       networkDone: indicatorData.networkDone || '',
+    };
+
+    this.setState({
+      ...this.state,
+      indicatorDataValues,
     });
   };
 
-  onClick = event => {
-    const { onClick, indicatorData } = this.props;
-
-    if (!this.canFill()) {
-      event.preventDefault();
-      this.togglePopover();
-      return console.log('Disabled Field');
+  handleIndicatorDataBlur = indicatorData => {
+    if (this.props.indicatorData.active && !indicatorData.active) {
+      this.updateIndicatorDataValues(indicatorData);
     }
-
-    return onClick(indicatorData);
   };
 
   onChange = event => {
-    const { onChange, indicatorData } = this.props;
+    const indicatorData = Object.assign({}, this.state.indicatorDataValues);
     const { name, value } = event.currentTarget;
     indicatorData[name] = value;
 
-    onChange(indicatorData);
+    this.updateIndicatorDataValues(indicatorData);
+  };
+
+  onApply = event => {
+    event.stopPropagation();
+
+    const { onApply } = this.props;
+    const { indicatorDataValues } = this.state;
+    const indicatorData = {
+      ...this.props.indicatorData,
+      ...indicatorDataValues,
+      active: false,
+    };
+
+    return onApply(indicatorData);
   };
 
   render() {
     const { isFilled, indicatorData, canFill } = this.props;
+    const { indicatorDataValues } = this.state;
 
     const simulatorLabelNode = indicatorData.active ? (
       <IndicatorDataSimulatorLabel>Simulador</IndicatorDataSimulatorLabel>
@@ -82,21 +97,21 @@ export class IndicatorDataForm extends Component {
         <IndicatorDataRowObj>
           <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
         </IndicatorDataRowObj>
-        <IndicatorDataRow active={indicatorData.active} empty={!this.state.done}>
+        <IndicatorDataRow active={indicatorData.active} empty={!indicatorDataValues.done}>
           <IndicatorDataRowInput
             name="done"
             type="text"
-            value={this.state.done}
+            value={indicatorDataValues.done}
             onChange={this.onChange}
             disabled={!canFill}
           />
           <Icon file="ico_pencil" />
         </IndicatorDataRow>
-        <IndicatorDataRow active={indicatorData.active} empty={!this.state.networkDone}>
+        <IndicatorDataRow active={indicatorData.active} empty={!indicatorDataValues.networkDone}>
           <IndicatorDataRowInput
             name="networkDone"
             type="text"
-            value={this.state.networkDone}
+            value={indicatorDataValues.networkDone}
             onChange={this.onChange}
             disabled={!canFill}
           />
@@ -106,7 +121,9 @@ export class IndicatorDataForm extends Component {
           <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
         </IndicatorDataRowAcc>
 
-        {indicatorData.active && <IndicatorDataApplyButton>Aplicar</IndicatorDataApplyButton>}
+        {indicatorData.active && (
+          <IndicatorDataApplyButton onClick={this.onApply}>Aplicar</IndicatorDataApplyButton>
+        )}
       </IndicatorDataContent>
     );
   }

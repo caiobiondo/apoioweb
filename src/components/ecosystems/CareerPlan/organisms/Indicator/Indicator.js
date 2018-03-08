@@ -30,21 +30,11 @@ export class Indicator extends Component {
 
   setActiveData = indicatorData => {
     let { indicatorDataItems } = this.state;
-    const newIndicatorData = {
-      ...indicatorData,
-      active: true,
-    };
 
-    indicatorDataItems = indicatorDataItems.map(item => {
-      if (item.id !== indicatorData.id) {
-        return {
-          ...item,
-          active: false,
-        };
-      }
-
-      return newIndicatorData;
-    });
+    indicatorDataItems = indicatorDataItems.map(item => ({
+      ...item,
+      active: item.id === indicatorData.id,
+    }));
 
     return this.setState({
       ...this.state,
@@ -54,21 +44,15 @@ export class Indicator extends Component {
 
   updateIndicatorData = indicatorData => {
     let { indicatorDataItems } = this.state;
-    const newIndicatorData = {
-      ...indicatorData,
-    };
-
     indicatorDataItems = indicatorDataItems.map(item => {
       if (item.id !== indicatorData.id) {
-        return {
-          ...item,
-        };
+        return item;
       }
 
-      return newIndicatorData;
+      return indicatorData;
     });
 
-    return this.setState({
+    this.setState({
       ...this.state,
       indicatorDataItems,
     });
@@ -89,13 +73,15 @@ export class Indicator extends Component {
         canFill={this.isFilled(indicatorDataItems[index - 1])}
         isFilled={this.isFilled(indicatorData)}
         onClick={this.setActiveData}
-        onChange={this.updateIndicatorData}
+        onApply={this.updateIndicatorData}
       />
     );
   };
 
   render() {
     const { indicatorDataItems } = this.state;
+
+    console.log(indicatorDataItems);
 
     return (
       <IndicatorWrapper>
