@@ -1317,7 +1317,6 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
         locale="pt-BR"
         messages={
           Object {
-            "RelatedTraining": "Treinamentos relacionados",
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "beardProducts": "Produtos para barba",
             "blankSelectOption": "Selecione...",
@@ -1329,6 +1328,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseRatingAvaliation": "Avaliação",
+            "courseRatingTime": "Tempo",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
             "courses": "Cursos",
@@ -1491,6 +1492,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "presential": "Presencial",
             "previousMagazines": "Revistas anteriores",
             "productType": "Tipo do produto",
+            "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
@@ -3329,8 +3331,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T06:41:20.000Z}
-                                  minDate={2017-12-15T06:41:20.000Z}
+                                  maxDate={2017-12-15T04:41:20.000Z}
+                                  minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
@@ -3347,8 +3349,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T06:41:20.000Z}
-                                    minDate={2017-12-15T06:41:20.000Z}
+                                    maxDate={2017-12-15T04:41:20.000Z}
+                                    minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
@@ -3371,8 +3373,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T06:41:20.000Z}
-                                      minDate={2017-12-15T06:41:20.000Z}
+                                      maxDate={2017-12-15T04:41:20.000Z}
+                                      minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
@@ -3421,8 +3423,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T06:41:20.000Z}
-                                                minDate={2017-12-15T06:41:20.000Z}
+                                                maxDate={2017-12-15T04:41:20.000Z}
+                                                minDate={2017-12-15T04:41:20.000Z}
                                                 name="customer.birthday"
                                                 okLabel="confirmar"
                                                 onChange={[Function]}
@@ -3995,8 +3997,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T06:41:20.000Z}
-                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    maxDate={2017-12-15T04:41:20.000Z}
+                                                    minDate={2017-12-15T04:41:20.000Z}
                                                     okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}

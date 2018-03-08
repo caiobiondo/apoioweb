@@ -33,7 +33,7 @@ export default {
     trainingCategoryCompleted: 'Completa',
     courseRatingAvaliation: 'Avaliação',
     courseRatingTime: 'Tempo',
-    RelatedTraining: 'Treinamentos relacionados',
+    relatedTraining: 'Treinamentos relacionados',
   },
 };
 /* eslint-disable sort-keys */

@@ -103,5 +103,3 @@ exports[`RelatedCourses should render a slide with the courses 1`] = `
   </Paper>
 </RelatedCoursesstyles__PaperWrapper>
 `;
-
-exports[`RelatedCourses should render a slide with the empty courses 1`] = `""`;

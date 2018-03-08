@@ -65,7 +65,7 @@ export class RelatedCourses extends Component {
       <PaperWrapper>
         <Paper style={paperStyle}>
           <Wrapper>
-            <Header>{translate('RelatedTraining')}</Header>
+            <Header>{translate('relatedTraining')}</Header>
             <CourseCoverList>
               <Slider {...currentSettings}>
                 {courses.map(course => {
