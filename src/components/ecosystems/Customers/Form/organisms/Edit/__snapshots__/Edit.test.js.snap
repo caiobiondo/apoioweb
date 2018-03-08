@@ -856,6 +856,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         locale="pt-BR"
         messages={
           Object {
+            "RelatedTraining": "Treinamentos relacionados",
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "beardProducts": "Produtos para barba",
             "blankSelectOption": "Selecione...",
@@ -957,8 +958,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
@@ -2427,6 +2430,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
         locale="pt-BR"
         messages={
           Object {
+            "RelatedTraining": "Treinamentos relacionados",
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "beardProducts": "Produtos para barba",
             "blankSelectOption": "Selecione...",
@@ -2528,8 +2532,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
@@ -4291,6 +4297,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
         locale="pt-BR"
         messages={
           Object {
+            "RelatedTraining": "Treinamentos relacionados",
             "aclErrorMessage": "Desculpe, você não possui permissão para acessar esta página.",
             "beardProducts": "Produtos para barba",
             "blankSelectOption": "Selecione...",
@@ -4392,8 +4399,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
