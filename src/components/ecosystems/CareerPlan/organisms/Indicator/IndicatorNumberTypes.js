@@ -1,6 +1,6 @@
 export default {
   obj: 1,
-  real: 2,
-  networkReal: 3,
+  done: 2,
+  networkDone: 3,
   accumulatedOvercome: 4,
 };

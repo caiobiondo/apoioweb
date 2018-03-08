@@ -8,14 +8,11 @@ import {
   IndicatorDataWrapper,
   IndicatorDataSort,
   IndicatorDataSortCurrent,
-  IndicatorDataContent,
-  IndicatorDataRow,
-  IndicatorDataTrashIcon,
-  IndicatorDataRowAcc,
-  IndicatorDataRowObj,
-  IndicatorDataRowInput,
-  IndicatorDataSimulatorLabel,
-  IndicatorDataValue,
+  IndicatorDisabledDataContent,
+  IndicatorDisabledDataRow,
+  IndicatorDisabledDataRowAcc,
+  IndicatorDisabledDataRowObj,
+  IndicatorDisabledDataValue,
   PopoverStyles,
   PopoverContent,
   PopoverArrow,
@@ -66,21 +63,23 @@ export class IndicatorData extends Component {
     const { indicatorData } = this.props;
 
     return (
-      <IndicatorDataContent>
-        <IndicatorDataRow />
-        <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
-        </IndicatorDataRowObj>
-        <IndicatorDataRow>
-          <IndicatorDataValue>{indicatorData.real}</IndicatorDataValue>
-        </IndicatorDataRow>
-        <IndicatorDataRow>
-          <IndicatorDataValue>{indicatorData.networkReal}</IndicatorDataValue>
-        </IndicatorDataRow>
-        <IndicatorDataRowAcc>
-          <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
-        </IndicatorDataRowAcc>
-      </IndicatorDataContent>
+      <IndicatorDisabledDataContent>
+        <IndicatorDisabledDataRow />
+        <IndicatorDisabledDataRowObj>
+          <IndicatorDisabledDataValue>{indicatorData.obj}</IndicatorDisabledDataValue>
+        </IndicatorDisabledDataRowObj>
+        <IndicatorDisabledDataRow>
+          <IndicatorDisabledDataValue>{indicatorData.done}</IndicatorDisabledDataValue>
+        </IndicatorDisabledDataRow>
+        <IndicatorDisabledDataRow>
+          <IndicatorDisabledDataValue>{indicatorData.networkDone}</IndicatorDisabledDataValue>
+        </IndicatorDisabledDataRow>
+        <IndicatorDisabledDataRowAcc>
+          <IndicatorDisabledDataValue>
+            {indicatorData.accumulatedOverload}
+          </IndicatorDisabledDataValue>
+        </IndicatorDisabledDataRowAcc>
+      </IndicatorDisabledDataContent>
     );
   }
 
@@ -91,7 +90,7 @@ export class IndicatorData extends Component {
         anchorEl={this.indicatorDataNode}
         className="Popover"
         anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
-        targetOrigin={{ horizontal: 'middle', vertical: 'bottom' }}
+        targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
         onRequestClose={this.handleRequestClose}
         style={PopoverStyles}
       >

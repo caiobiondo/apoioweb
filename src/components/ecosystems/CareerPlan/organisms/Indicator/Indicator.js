@@ -75,7 +75,7 @@ export class Indicator extends Component {
   };
 
   isFilled = indicatorData => {
-    return !indicatorData || (indicatorData.real || indicatorData.networkReal);
+    return !indicatorData || (indicatorData.done || indicatorData.networkDone);
   };
 
   renderIndicatorData = (indicatorData, index) => {

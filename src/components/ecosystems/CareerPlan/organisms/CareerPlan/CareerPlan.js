@@ -12,7 +12,7 @@ import {
 
 export class CareerPlan extends Component {
   render() {
-    const indicators = [{ id: 1 }];
+    const indicators = [{ id: 1 }, { id: 1 }, { id: 1 }];
 
     return (
       <CareerPlanSection>

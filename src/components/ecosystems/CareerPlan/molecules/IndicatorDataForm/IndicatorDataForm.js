@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Icon } from 'natura-ui';
-import { Popover } from 'material-ui';
 
 import {
-  IndicatorDataWrapper,
-  IndicatorDataSort,
-  IndicatorDataSortCurrent,
   IndicatorDataContent,
   IndicatorDataRow,
   IndicatorDataTrashIcon,
@@ -15,17 +11,15 @@ import {
   IndicatorDataRowInput,
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
-  PopoverStyles,
-  PopoverContent,
-  PopoverArrow,
+  IndicatorDataApplyButton,
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
   constructor() {
     super();
     this.state = {
-      real: '',
-      networkReal: '',
+      done: '',
+      networkDone: '',
     };
   }
 
@@ -40,8 +34,8 @@ export class IndicatorDataForm extends Component {
 
     this.setState({
       ...this.state,
-      real: indicatorData.real || '',
-      networkReal: indicatorData.networkReal || '',
+      done: indicatorData.done || '',
+      networkDone: indicatorData.networkDone || '',
     });
   };
 
@@ -68,16 +62,16 @@ export class IndicatorDataForm extends Component {
   render() {
     const { isFilled, indicatorData, canFill } = this.props;
 
-    const simulatorLabelNode =
-      !isFilled && indicatorData.active ? (
-        <IndicatorDataSimulatorLabel>Simulador</IndicatorDataSimulatorLabel>
-      ) : null;
-
-    const IndicatorDataTrashIconNode = !indicatorData.active ? (
-      <IndicatorDataTrashIcon title="Deletar">
-        <Icon file="ico_trash" />
-      </IndicatorDataTrashIcon>
+    const simulatorLabelNode = indicatorData.active ? (
+      <IndicatorDataSimulatorLabel>Simulador</IndicatorDataSimulatorLabel>
     ) : null;
+
+    const IndicatorDataTrashIconNode =
+      !indicatorData.active && isFilled ? (
+        <IndicatorDataTrashIcon title="Deletar">
+          <Icon file="ico_trash" />
+        </IndicatorDataTrashIcon>
+      ) : null;
 
     return (
       <IndicatorDataContent>
@@ -88,27 +82,31 @@ export class IndicatorDataForm extends Component {
         <IndicatorDataRowObj>
           <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
         </IndicatorDataRowObj>
-        <IndicatorDataRow>
+        <IndicatorDataRow active={indicatorData.active} empty={!this.state.done}>
           <IndicatorDataRowInput
-            name="real"
+            name="done"
             type="text"
-            value={this.state.real}
+            value={this.state.done}
             onChange={this.onChange}
             disabled={!canFill}
           />
+          <Icon file="ico_pencil" />
         </IndicatorDataRow>
-        <IndicatorDataRow>
+        <IndicatorDataRow active={indicatorData.active} empty={!this.state.networkDone}>
           <IndicatorDataRowInput
-            name="networkReal"
+            name="networkDone"
             type="text"
-            value={this.state.networkReal}
+            value={this.state.networkDone}
             onChange={this.onChange}
             disabled={!canFill}
           />
+          <Icon file="ico_pencil" />
         </IndicatorDataRow>
         <IndicatorDataRowAcc>
           <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
         </IndicatorDataRowAcc>
+
+        {indicatorData.active && <IndicatorDataApplyButton>Aplicar</IndicatorDataApplyButton>}
       </IndicatorDataContent>
     );
   }
