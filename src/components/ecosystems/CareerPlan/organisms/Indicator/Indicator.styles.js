@@ -5,6 +5,7 @@ import { fw600, RobotoRegular } from 'styles/typography';
 export const IndicatorWrapper = styled.li`
   list-style-type: none;
   position: relative;
+  margin-bottom: 80px;
 `;
 
 export const IndicatorWeightWrapper = styled.div`

@@ -1,6 +1,20 @@
 import styled, { injectGlobal } from 'styled-components';
-import { gray150, gray300, gray700, gray890, blue100 } from 'styles/colors';
-import { fw600, RobotoRegular } from 'styles/typography';
+import { gray150, blue100 } from 'styles/colors';
+import { fw600 } from 'styles/typography';
+import {
+  IndicatorDataContent,
+  IndicatorDataRow,
+  IndicatorDataRowAcc,
+  IndicatorDataRowObj,
+  IndicatorDataValue,
+  IndicatorDataRowInput,
+} from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
+
+export const IndicatorDisabledDataContent = IndicatorDataContent;
+export const IndicatorDisabledDataRow = IndicatorDataRow;
+export const IndicatorDisabledDataRowAcc = IndicatorDataRowAcc;
+export const IndicatorDisabledDataRowObj = IndicatorDataRowObj;
+export const IndicatorDisabledDataValue = IndicatorDataValue;
 
 export const IndicatorDataSort = styled.div`
   color: ${gray150};
@@ -31,33 +45,10 @@ export const IndicatorDataSort = styled.div`
   }
 `;
 
-export const IndicatorDataRowInput = styled.input`
-  border: none;
-  border-radius: 2px;
-  padding: 5px 0;
-  margin: 5px 0px;
-  text-align: center;
-  width: 100%;
-  color: ${gray700};
-  font-family: ${RobotoRegular};
-  font-size: 13px;
-
-  &:focus {
-    outline: none;
-    background: ${gray890};
-    color: #fff;
-  }
-
-  &:disabled {
-    background: #fff;
-    cursor: pointer;
-  }
-`;
-
 export const IndicatorDataWrapper = styled.li`
   cursor: pointer;
   display: inline-block;
-  height: 240px;
+  min-height: 240px;
   list-style-type: none;
   padding: 0 10px;
   position: relative;
@@ -65,7 +56,7 @@ export const IndicatorDataWrapper = styled.li`
   transition: all 0.2s ease-in;
   vertical-align: top;
   white-space: initial;
-  width: 95px;
+  width: 110px;
 
   ${IndicatorDataSort} {
     ${({ active }) =>
@@ -113,62 +104,12 @@ export const IndicatorDataSortCurrent = styled.span`
   color: white;
   font-size: 10px;
   font-weight: ${fw600};
-  left: 8px;
+  left: 50%;
   padding: 7px 15px;
   position: absolute;
   text-transform: uppercase;
   top: -25px;
-`;
-
-export const IndicatorDataContent = styled.div`
-  display: inline-block;
-  font-size: 13px;
-`;
-
-export const IndicatorDataTrashIcon = styled.a`
-  cursor: pointer;
-  display: inline-block;
-  height: 12px;
-  width: 12px;
-
-  svg {
-    fill: ${gray300};
-  }
-`;
-
-export const IndicatorDataRow = styled.div`
-  display: inline-block;
-  width: 100%;
-  color: ${gray700};
-
-  &:first-child {
-    min-height: 45px;
-    padding: 15px 0;
-  }
-`;
-
-export const IndicatorDataRowAcc = IndicatorDataRow.extend`
-  color: ${gray890};
-  font-weight: ${fw600};
-  font-size: 16px;
-  min-height: 35px;
-`;
-
-export const IndicatorDataRowObj = IndicatorDataRow.extend`
-  color: ${gray890};
-  font-weight: ${fw600};
-`;
-
-export const IndicatorDataSimulatorLabel = styled.span`
-  font-size: 11px;
-  text-transform: uppercase;
-  color: ${gray890};
-  font-weight: ${fw600};
-`;
-
-export const IndicatorDataValue = styled.span`
-  display: inline-block;
-  padding: 10px 0;
+  transform: translate(-50%, 0);
 `;
 
 export const PopoverStyles = {
