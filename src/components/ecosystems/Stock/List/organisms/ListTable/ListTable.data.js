@@ -32,6 +32,7 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
 
   return Object.assign({}, previousResult, {
     stockProducts: {
+      __typename: previousResult.stockProducts.__typename,
       hasNextPage: fetchMoreResult.stockProducts.hasNextPage,
       items: [...previousResult.stockProducts.items, ...fetchMoreResultsToAdd],
     },
