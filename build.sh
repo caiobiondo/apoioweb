@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "${1}" ] ; then
-  build_target="build"
+  build_target="build:prod"
 else
   build_target="build:${1}"
 fi
