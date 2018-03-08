@@ -10,14 +10,15 @@ describe('TrainingCategoriesDetailsQuery', () => {
   });
 
   it('should be the correct query options', () => {
-    const props = { user: { codigo: 1 }, categoryId: 1 };
+    const props = { user: { codigo: 1 } };
 
     const options = TrainingCategoriesDetailsOptions.options(props);
 
     expect(options).toEqual({
       variables: {
         sellerId: 1,
-        categoryId: 1,
+        limit: 10,
+        offset: 0,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',
@@ -28,7 +29,7 @@ describe('TrainingCategoriesDetailsQuery', () => {
     const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
     const data = {
       data: {
-        loading: true,
+        loading: false,
         trainingCoursesByCategory: [],
         fetchMore: fetchMore,
       },
@@ -42,10 +43,28 @@ describe('TrainingCategoriesDetailsQuery', () => {
     expect(fetchMoreResult).toEqual('application of fetchMore');
   });
 
+  it('should not call fetchMore when the data is still loading', () => {
+    const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
+    const data = {
+      data: {
+        loading: true,
+        trainingCoursesByCategory: [],
+        fetchMore: fetchMore,
+      },
+    };
+
+    const props = TrainingCategoriesDetailsOptions.props(data);
+    props.fetchMore();
+
+    expect(fetchMore).not.toBeCalled();
+  });
+
   describe('updateQuery', () => {
     it('should return the previous result', () => {
       const previousResult = {
-        trainingCoursesByCategory: [1, 2],
+        trainingCoursesByCategory: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
 
       const result = updateQuery(previousResult, { fetchMoreResult: null });
@@ -53,19 +72,45 @@ describe('TrainingCategoriesDetailsQuery', () => {
       expect(result).toEqual(previousResult);
     });
 
-    it('should return the merge from previous and fetchMore result', () => {
+    it('should return the merge from previous and fetchMore result on items array', () => {
       const previousResult = {
-        trainingCoursesByCategory: [1, 2],
+        trainingCoursesByCategory: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
-      const trainingCoursesByCategory = [3, 4];
+      const trainingCoursesByCategory = {
+        items: [{ id: 3 }, { id: 4 }],
+      };
 
       const result = updateQuery(previousResult, {
         fetchMoreResult: { trainingCoursesByCategory },
       });
 
-      expect(result).toEqual({
-        trainingCoursesByCategory: [1, 2, 3, 4],
+      expect(result.trainingCoursesByCategory.items).toEqual([
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+      ]);
+    });
+
+    it('should return the updated value of hasNextPage', () => {
+      const previousResult = {
+        trainingCoursesByCategory: {
+          items: [],
+          hasNextPage: true,
+        },
+      };
+      const trainingCoursesByCategory = {
+        items: [],
+        hasNextPage: false,
+      };
+
+      const result = updateQuery(previousResult, {
+        fetchMoreResult: { trainingCoursesByCategory },
       });
+
+      expect(result.trainingCoursesByCategory.hasNextPage).toBeFalsy();
     });
   });
 });
