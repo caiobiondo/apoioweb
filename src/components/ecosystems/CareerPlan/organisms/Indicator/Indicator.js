@@ -24,8 +24,13 @@ export class Indicator extends Component {
     super();
 
     this.state = {
-      indicatorDataItems: mock,
+      indicatorDataItems: mock.map(item => ({
+        ...item,
+        preLoaded: Boolean(item.indicator.directSale && item.indicator.naturaNetwork),
+      })),
     };
+
+    console.log(this.state);
   }
 
   setActiveData = indicatorData => {
@@ -33,7 +38,7 @@ export class Indicator extends Component {
 
     indicatorDataItems = indicatorDataItems.map(item => ({
       ...item,
-      active: item.id === indicatorData.id,
+      active: item.cycle === indicatorData.cycle,
     }));
 
     return this.setState({ indicatorDataItems });
@@ -42,7 +47,7 @@ export class Indicator extends Component {
   updateIndicatorData = indicatorData => {
     let { indicatorDataItems } = this.state;
     indicatorDataItems = indicatorDataItems.map(item => {
-      if (item.id !== indicatorData.id) {
+      if (item.cycle !== indicatorData.cycle) {
         return item;
       }
 
@@ -53,7 +58,10 @@ export class Indicator extends Component {
   };
 
   isFilled = indicatorData => {
-    return !indicatorData || (indicatorData.done || indicatorData.networkDone);
+    return (
+      !indicatorData ||
+      (indicatorData.indicator.directSale || indicatorData.indicator.naturaNetwork)
+    );
   };
 
   renderIndicatorData = (indicatorData, index) => {
@@ -63,7 +71,7 @@ export class Indicator extends Component {
       <IndicatorData
         indicatorData={indicatorData}
         index={index}
-        key={indicatorData.id}
+        key={indicatorData.cycle}
         canFill={this.isFilled(indicatorDataItems[index - 1])}
         isFilled={this.isFilled(indicatorData)}
         onClick={this.setActiveData}
