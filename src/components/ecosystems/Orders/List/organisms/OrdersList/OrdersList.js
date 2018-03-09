@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CircularProgress, Paper } from 'natura-ui';
+import { Loading, CircularProgress, Paper } from 'natura-ui';
 import { List, LoadingWrapper, scrolledContainer } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from '../../molecules/Order';
@@ -68,6 +68,10 @@ export class OrdersList extends Component {
 
   render() {
     const { loading, orders, fetchMore, importing, intl, hasNextPage } = this.props;
+
+    if (this._loading(loading, orders)) {
+      return <Loading background="transparent" />;
+    }
 
     return (
       <Paper style={scrolledContainer}>

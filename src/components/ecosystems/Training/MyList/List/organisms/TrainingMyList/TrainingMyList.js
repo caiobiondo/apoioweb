@@ -20,6 +20,8 @@ import { RobotoRegular } from 'styles/typography';
 
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
+import { Loading } from 'natura-ui';
+
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
@@ -196,6 +198,10 @@ export class TrainingMyList extends Component {
 
   render() {
     const { fetchMore, loading, courses, hasNextPage } = this.props;
+
+    if (!courses && loading) {
+      return <Loading background="transparent" />;
+    }
 
     return (
       <TrainingMyListWrapper>

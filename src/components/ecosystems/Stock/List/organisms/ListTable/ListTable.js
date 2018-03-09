@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { Paper, Table } from 'natura-ui';
+import { Loading, Paper, Table } from 'natura-ui';
 import { StockProductsQuery, StockProductsQueryOptions } from './ListTable.data';
 import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
@@ -93,6 +93,10 @@ export class ListTable extends Component {
     const emptyListText = this.props.productSearch
       ? 'emptySearchResult'
       : 'stockEmptyListDescription';
+
+    if (!stockProducts && loading) {
+      return <Loading background="transparent" />;
+    }
 
     return (
       <Paper style={WrapperStyle}>
