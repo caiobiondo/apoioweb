@@ -14,7 +14,7 @@ import {
   IndicatorContentWrapper,
   IndicatorTableHeader,
   IndicatorTableHeaderItem,
-  IndicatorTableHeaderItemAccOrObj,
+  IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
   IndicatorTableContentWapper,
 } from './Indicator.styles';
@@ -87,10 +87,10 @@ export class Indicator extends Component {
         <IndicatorTitle>Volume de Pontos</IndicatorTitle>
         <IndicatorContentWrapper>
           <IndicatorTableHeader>
-            <IndicatorTableHeaderItemAccOrObj>Obj</IndicatorTableHeaderItemAccOrObj>
+            <IndicatorTableHeaderItemFeatured>Obj</IndicatorTableHeaderItemFeatured>
             <IndicatorTableHeaderItem>Real.</IndicatorTableHeaderItem>
             <IndicatorTableHeaderItem>Real rede</IndicatorTableHeaderItem>
-            <IndicatorTableHeaderItemAccOrObj>Superação acumulada</IndicatorTableHeaderItemAccOrObj>
+            <IndicatorTableHeaderItemFeatured>Superação acumulada</IndicatorTableHeaderItemFeatured>
           </IndicatorTableHeader>
 
           <IndicatorTableContentWapper>
