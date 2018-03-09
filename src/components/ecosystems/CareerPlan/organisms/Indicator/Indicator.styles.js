@@ -76,12 +76,11 @@ export const IndicatorTableContentWapper = styled.div`
   display: inline-block;
   position: relative;
   width: calc(100% - 110px);
-  height: 270px;
 
   &:before {
     background-color: white;
     border-radius: 3px;
-    bottom: 0;
+    bottom: 60px;
     box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
     content: '';
     left: 0;

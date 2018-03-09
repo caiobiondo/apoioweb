@@ -30,6 +30,13 @@ export const IndicatorDataRowInput = styled.input`
 export const IndicatorDataContent = styled.div`
   display: inline-block;
   font-size: 13px;
+  padding-top: 45px;
+  position: relative;
+
+  ${({ active }) =>
+    !active &&
+    `padding-bottom: 45px;
+  `};
 `;
 
 export const IndicatorDataTrashIcon = styled.a`
@@ -37,6 +44,10 @@ export const IndicatorDataTrashIcon = styled.a`
   display: inline-block;
   height: 12px;
   width: 12px;
+  position: absolute;
+  top: 20px;
+  transform: translate(-50%, 0);
+  left: 50%;
 
   svg {
     fill: ${gray300};
@@ -68,11 +79,6 @@ export const IndicatorDataRow = styled.div`
   display: inline-block;
   width: 100%;
   color: ${gray700};
-
-  &:first-child {
-    min-height: 45px;
-    padding: 15px 0;
-  }
 `;
 
 export const IndicatorDataRowAcc = IndicatorDataRow.extend`
@@ -105,6 +111,10 @@ export const IndicatorDataSimulatorLabel = styled.span`
   text-transform: uppercase;
   color: ${gray890};
   font-weight: ${fw600};
+  position: absolute;
+  top: 20px;
+  transform: translate(-50%, 0);
+  left: 50%;
 `;
 
 export const IndicatorDataValue = styled.span`
