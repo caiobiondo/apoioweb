@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const CourseEvaluationtQuery = gql`
+export const CourseEvaluationQuery = gql`
   query CourseEvaluationtQuery {
     trainingEvaluations {
       id
@@ -10,7 +10,20 @@ export const CourseEvaluationtQuery = gql`
   }
 `;
 
-export const CourseEvaluationtQueryOptions = {
+export const CourseAddEvaluationMutation = gql`
+  mutation AddCourseEvaluations(
+    $sellerId: Int!
+    $courseId: Int!
+    $input: AddCourseEvaluationInput!
+  ) {
+    addCourseEvaluations(sellerId: $sellerId, courseId: $courseId, input: $input) {
+      status
+      message
+    }
+  }
+`;
+
+export const CourseEvaluationQueryOptions = {
   options(props) {
     return {
       forceFetch: true,

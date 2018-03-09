@@ -34,9 +34,12 @@ export default {
     courseRatingAvaliation: 'Avaliação',
     courseRatingTime: 'Tempo',
     courseEvaluationNext: 'Próximo',
+    courseEvaluationBack: 'Voltar',
     courseEvaluationEnd: 'Finalizar',
     courseEvaluationTitle: 'Avaliação do curso',
     relatedTraining: 'Treinamentos relacionados',
+    courseAddEvaluationSuccess: 'Avaliação realizada com sucesso!',
+    courseAddEvaluationError: 'Não foi possível realizar a avaliação',
   },
 };
 /* eslint-disable sort-keys */

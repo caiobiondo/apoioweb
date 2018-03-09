@@ -20,6 +20,8 @@ class CourseContent extends Component {
     });
   }
 
+  canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
+
   render() {
     const { course } = this.props;
 
@@ -33,7 +35,9 @@ class CourseContent extends Component {
         >
           <BigPlayButton position="center" />
         </Player>
-        {this.state.ended && <CourseEvaluation />}
+        {this.canRenderEvaluation() && (
+          <CourseEvaluation courseId={course.id} sellerId={this.props.sellerId} />
+        )}
       </ContentWrapper>
     );
   }
@@ -41,6 +45,7 @@ class CourseContent extends Component {
 
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
+  sellerId: PropTypes.number.isRequired,
 };
 
 export default CourseContent;

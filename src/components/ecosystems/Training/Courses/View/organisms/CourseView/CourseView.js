@@ -19,9 +19,7 @@ import CourseRating from '../../molecules/CourseRating';
 import CourseViewHeader from '../../molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import Dialog from 'material-ui/Dialog';
-
-import { Loading, FlatButton, Icon } from 'natura-ui';
+import { Loading, FlatButton, Icon, Dialog } from 'natura-ui';
 import { translate } from 'locale';
 
 export class CourseView extends Component {
@@ -166,7 +164,7 @@ export class CourseView extends Component {
       <Main>
         <Grid fluid>
           <CourseViewHeader course={course} />
-          <CourseContent course={course} />
+          <CourseContent course={course} sellerId={this.props.user.codigo} />
           <CourseDescription course={course} />
           <Row>
             <Col md={1} sm={1}>
