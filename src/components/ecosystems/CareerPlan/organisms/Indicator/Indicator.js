@@ -81,8 +81,6 @@ export class Indicator extends Component {
   render() {
     const { indicatorDataItems } = this.state;
 
-    console.log(indicatorDataItems);
-
     return (
       <IndicatorWrapper>
         <IndicatorWeightWrapper>

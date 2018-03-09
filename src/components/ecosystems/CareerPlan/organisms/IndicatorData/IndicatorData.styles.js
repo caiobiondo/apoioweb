@@ -1,5 +1,5 @@
 import styled, { injectGlobal } from 'styled-components';
-import { gray150, blue100 } from 'styles/colors';
+import { gray150, blue100, gray400 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
 import {
   IndicatorDataContent,
@@ -80,7 +80,7 @@ export const IndicatorDataWrapper = styled.li`
   ${({ active }) =>
     active &&
     `
-    background: #fff;
+    background: ${gray400};
     box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
     border-radius: 15px 15px 0 0;
     outline: none;
