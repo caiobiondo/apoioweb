@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import mock from '../Indicator/IndicatorDataMock';
+import mock from './ConsolidatedDataMock';
 import { ConsolidatedWrapper } from './Consolidated.styles';
 
 import {
@@ -30,22 +30,22 @@ export class Consolidated extends Component {
     super();
 
     this.state = {
-      indicatorDataItems: mock,
+      consolidatedDataItems: mock,
     };
   }
 
   renderIndicatorData = (indicatorData, index) => {
-    const { indicatorDataItems } = this.state;
+    console.log(indicatorData);
 
     return (
       <IndicatorDataWrapper>
         <IndicatorDataSort index={index}>{index + 1}</IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
+            <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
+            <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
         </IndicatorDataContent>
       </IndicatorDataWrapper>
@@ -53,7 +53,7 @@ export class Consolidated extends Component {
   };
 
   render() {
-    const { indicatorDataItems } = this.state;
+    const { consolidatedDataItems } = this.state;
 
     return (
       <IndicatorWrapper>
@@ -80,7 +80,7 @@ export class Consolidated extends Component {
 
             <IndicatorTableContentWapper>
               <IndicatorTableContent>
-                {indicatorDataItems.map(this.renderIndicatorData)}
+                {consolidatedDataItems.map(this.renderIndicatorData)}
               </IndicatorTableContent>
             </IndicatorTableContentWapper>
           </IndicatorContentWrapper>

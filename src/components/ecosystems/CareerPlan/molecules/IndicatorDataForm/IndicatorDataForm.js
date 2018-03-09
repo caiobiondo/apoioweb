@@ -20,8 +20,8 @@ export class IndicatorDataForm extends Component {
     super();
     this.state = {
       indicatorDataValues: {
-        done: props.indicatorData.done || '',
-        networkDone: props.indicatorData.networkDone || '',
+        directSale: props.indicatorData.directSale || '',
+        naturaNetwork: props.indicatorData.naturaNetwork || '',
       },
     };
   }
@@ -36,8 +36,8 @@ export class IndicatorDataForm extends Component {
     }
 
     const indicatorDataValues = {
-      done: indicatorData.done || '',
-      networkDone: indicatorData.networkDone || '',
+      directSale: indicatorData.directSale || '',
+      naturaNetwork: indicatorData.naturaNetwork || '',
     };
 
     this.setState({ indicatorDataValues }, cb);
@@ -45,7 +45,7 @@ export class IndicatorDataForm extends Component {
 
   handleIndicatorDataBlur = indicatorData => {
     if (this.props.indicatorData.active && !indicatorData.active) {
-      this.updateIndicatorDataValues(indicatorData);
+      this.updateIndicatorDataValues(indicatorData.indicator);
     }
   };
 
@@ -61,8 +61,8 @@ export class IndicatorDataForm extends Component {
     event.stopPropagation();
 
     const indicatorData = {
-      done: null,
-      networkDone: null,
+      directSale: null,
+      naturaNetwork: null,
     };
 
     return this.updateIndicatorDataValues(indicatorData, this.applyValues);
@@ -75,7 +75,7 @@ export class IndicatorDataForm extends Component {
     const { indicatorDataValues } = this.state;
     const indicatorData = {
       ...this.props.indicatorData,
-      ...indicatorDataValues,
+      indicator: { ...this.props.indicatorData.indicator, ...indicatorDataValues },
       active: false,
     };
 
@@ -107,17 +107,17 @@ export class IndicatorDataForm extends Component {
         {IndicatorDataTrashIconNode}
         {simulatorLabelNode}
         <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.indicator.objective}</IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
           <IndicatorDataRowInputWrapper
             active={indicatorData.active}
-            empty={!indicatorDataValues.done}
+            empty={!indicatorDataValues.directSale}
           >
             <IndicatorDataRowInput
-              name="done"
+              name="directSale"
               type="text"
-              value={indicatorDataValues.done}
+              value={indicatorDataValues.directSale}
               onChange={this.onChange}
               disabled={!canFill}
             />
@@ -127,12 +127,12 @@ export class IndicatorDataForm extends Component {
         <IndicatorDataRow>
           <IndicatorDataRowInputWrapper
             active={indicatorData.active}
-            empty={!indicatorDataValues.networkDone}
+            empty={!indicatorDataValues.naturaNetwork}
           >
             <IndicatorDataRowInput
-              name="networkDone"
+              name="naturaNetwork"
               type="text"
-              value={indicatorDataValues.networkDone}
+              value={indicatorDataValues.naturaNetwork}
               onChange={this.onChange}
               disabled={!canFill}
             />
