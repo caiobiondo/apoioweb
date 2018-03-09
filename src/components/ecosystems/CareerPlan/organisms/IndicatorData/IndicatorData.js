@@ -8,7 +8,7 @@ import {
   IndicatorDataSortCurrent,
   IndicatorDisabledDataContent,
   IndicatorDisabledDataRow,
-  IndicatorDisabledDataRowAcc,
+  IndicatorDisabledDataRowFeatured,
   IndicatorDisabledDataRowObj,
   IndicatorDisabledDataValue,
   PopoverStyles,
@@ -69,11 +69,11 @@ export class IndicatorData extends Component {
         <IndicatorDisabledDataRow>
           <IndicatorDisabledDataValue>{indicatorData.networkDone}</IndicatorDisabledDataValue>
         </IndicatorDisabledDataRow>
-        <IndicatorDisabledDataRowAcc>
+        <IndicatorDisabledDataRowFeatured>
           <IndicatorDisabledDataValue>
             {indicatorData.accumulatedOverload}
           </IndicatorDisabledDataValue>
-        </IndicatorDisabledDataRowAcc>
+        </IndicatorDisabledDataRowFeatured>
       </IndicatorDisabledDataContent>
     );
   }

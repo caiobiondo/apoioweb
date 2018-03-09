@@ -5,5 +5,8 @@ export default {
     simulator: 'Simulador',
     delete: 'Deletar',
     apply: 'Aplicar',
+    consolidated: 'Consolidado',
+    finalResult: 'Resultado final',
+    rating: 'Conceito',
   },
 };

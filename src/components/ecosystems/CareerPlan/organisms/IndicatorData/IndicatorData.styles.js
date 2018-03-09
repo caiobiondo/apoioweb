@@ -12,7 +12,7 @@ import {
 
 export const IndicatorDisabledDataContent = IndicatorDataContent;
 export const IndicatorDisabledDataRow = IndicatorDataRow;
-export const IndicatorDisabledDataRowAcc = IndicatorDataRowAcc;
+export const IndicatorDisabledDataRowFeatured = IndicatorDataRowAcc;
 export const IndicatorDisabledDataRowObj = IndicatorDataRowObj;
 export const IndicatorDisabledDataValue = IndicatorDataValue;
 
