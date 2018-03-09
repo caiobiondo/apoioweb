@@ -1,20 +1,13 @@
 import styled, { injectGlobal } from 'styled-components';
 import { gray150, blue100, gray400 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
-import {
-  IndicatorDataContent,
-  IndicatorDataRow,
-  IndicatorDataRowAcc,
-  IndicatorDataRowObj,
-  IndicatorDataValue,
-  IndicatorDataRowInput,
-} from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
+import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
-export const IndicatorDisabledDataContent = IndicatorDataContent;
-export const IndicatorDisabledDataRow = IndicatorDataRow;
-export const IndicatorDisabledDataRowFeatured = IndicatorDataRowAcc;
-export const IndicatorDisabledDataRowObj = IndicatorDataRowObj;
-export const IndicatorDisabledDataValue = IndicatorDataValue;
+export const IndicatorDataContent = IndicatorDataFormComponents.IndicatorDataContent;
+export const IndicatorDataRow = IndicatorDataFormComponents.IndicatorDataRow;
+export const IndicatorDataRowFeatured = IndicatorDataFormComponents.IndicatorDataRowAcc;
+export const IndicatorDataRowObj = IndicatorDataFormComponents.IndicatorDataRowObj;
+export const IndicatorDataValue = IndicatorDataFormComponents.IndicatorDataValue;
 
 export const IndicatorDataSort = styled.div`
   color: ${gray150};
@@ -69,7 +62,7 @@ export const IndicatorDataWrapper = styled.li`
     `};
   }
 
-  ${IndicatorDataRowInput} {
+  ${IndicatorDataFormComponents.IndicatorDataRowInput} {
     ${({ active }) =>
       active &&
       `

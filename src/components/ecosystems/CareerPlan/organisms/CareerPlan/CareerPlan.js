@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import IndicatorList from '../IndicatorList';
-
+import Indicator from '../Indicator';
 import Consolidated from '../Consolidated/Consolidated';
 
 import {
@@ -10,6 +9,7 @@ import {
   CareerPlanTitleWrapper,
   CareerPlanTitle,
   CareerPlanDescription,
+  IndicatorListWrapper,
 } from './CareerPlan.styles';
 
 export class CareerPlan extends Component {
@@ -28,7 +28,9 @@ export class CareerPlan extends Component {
           </CareerPlanDescription>
         </CareerPlanTitleWrapper>
 
-        <IndicatorList indicators={indicators} />
+        <IndicatorListWrapper>
+          {indicators.map(indicator => <Indicator key={indicator.id} />)}
+        </IndicatorListWrapper>
 
         <Consolidated />
       </CareerPlanSection>

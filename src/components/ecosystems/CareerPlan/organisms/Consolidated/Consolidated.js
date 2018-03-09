@@ -20,10 +20,10 @@ import {
 
 import {
   IndicatorDataWrapper,
-  IndicatorDisabledDataRow,
-  IndicatorDisabledDataRowFeatured,
-  IndicatorDisabledDataValue,
-} from '../IndicatorData/IndicatorData.styles';
+  IndicatorDataRow,
+  IndicatorDataRowFeatured,
+  IndicatorDataValue,
+} from '../../molecules/IndicatorData/IndicatorData.styles';
 
 export class Consolidated extends Component {
   constructor() {
@@ -39,15 +39,11 @@ export class Consolidated extends Component {
 
     return (
       <IndicatorDataWrapper>
-        <IndicatorDisabledDataRow />
-        <IndicatorDisabledDataRowFeatured>
-          <IndicatorDisabledDataValue>
-            {indicatorData.accumulatedOverload}
-          </IndicatorDisabledDataValue>
-          <IndicatorDisabledDataValue>
-            {indicatorData.accumulatedOverload}
-          </IndicatorDisabledDataValue>
-        </IndicatorDisabledDataRowFeatured>
+        <IndicatorDataRow />
+        <IndicatorDataRowFeatured>
+          <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
+        </IndicatorDataRowFeatured>
       </IndicatorDataWrapper>
     );
   };

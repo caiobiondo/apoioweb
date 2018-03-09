@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import IndicatorData from '../IndicatorData/IndicatorData';
+import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
 
 import mock from './IndicatorDataMock';
 
