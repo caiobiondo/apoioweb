@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { injectIntl, FormattedMessage } from 'react-intl';
-import { Icon } from 'natura-ui';
 import { Popover } from 'material-ui';
 import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
@@ -48,15 +46,12 @@ export class IndicatorData extends Component {
   };
 
   handleRequestClose = () => {
-    this.setState({
-      ...this.state,
-      open: false,
-    });
+    this.setState({ open: false });
   };
 
   togglePopover = () => {
     const { open } = this.state;
-    this.setState({ ...this.state, open: !open });
+    this.setState({ open: !open });
   };
 
   renderDisabled() {
@@ -134,6 +129,4 @@ export class IndicatorData extends Component {
   }
 }
 
-export const IndicatorDataWithIntl = injectIntl(IndicatorData);
-
-export default IndicatorDataWithIntl;
+export default IndicatorData;

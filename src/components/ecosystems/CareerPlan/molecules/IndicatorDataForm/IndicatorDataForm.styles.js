@@ -43,16 +43,7 @@ export const IndicatorDataTrashIcon = styled.a`
   }
 `;
 
-export const IndicatorDataRow = styled.div`
-  display: inline-block;
-  width: 100%;
-  color: ${gray700};
-
-  &:first-child {
-    min-height: 45px;
-    padding: 15px 0;
-  }
-
+export const IndicatorDataRowInputWrapper = styled.div`
   svg {
     display: none;
     height: 10px;
@@ -71,6 +62,17 @@ export const IndicatorDataRow = styled.div`
         display: block;
       }
   `};
+`;
+
+export const IndicatorDataRow = styled.div`
+  display: inline-block;
+  width: 100%;
+  color: ${gray700};
+
+  &:first-child {
+    min-height: 45px;
+    padding: 15px 0;
+  }
 `;
 
 export const IndicatorDataRowAcc = IndicatorDataRow.extend`
