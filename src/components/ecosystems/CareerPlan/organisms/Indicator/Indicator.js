@@ -36,10 +36,7 @@ export class Indicator extends Component {
       active: item.id === indicatorData.id,
     }));
 
-    return this.setState({
-      ...this.state,
-      indicatorDataItems,
-    });
+    return this.setState({ indicatorDataItems });
   };
 
   updateIndicatorData = indicatorData => {
@@ -52,10 +49,7 @@ export class Indicator extends Component {
       return indicatorData;
     });
 
-    this.setState({
-      ...this.state,
-      indicatorDataItems,
-    });
+    this.setState({ indicatorDataItems });
   };
 
   isFilled = indicatorData => {
@@ -84,7 +78,9 @@ export class Indicator extends Component {
     return (
       <IndicatorWrapper>
         <IndicatorWeightWrapper>
-          <IndicatorWeightLabel>Peso</IndicatorWeightLabel>
+          <IndicatorWeightLabel>
+            <FormattedMessage id="weight" />
+          </IndicatorWeightLabel>
           <IndicatorWeightValue>50</IndicatorWeightValue>
         </IndicatorWeightWrapper>
 
