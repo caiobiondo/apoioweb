@@ -18,7 +18,7 @@ import {
 
 export class RelatedCourses extends Component {
   slickSettings = coursesLength => {
-    const settings = {
+    const slick = {
       dots: false,
       infinite: false,
       arrows: true,
@@ -38,7 +38,7 @@ export class RelatedCourses extends Component {
       prevArrow: <LeftCarouselArrow>{'<'}</LeftCarouselArrow>,
       nextArrow: <RightCarouselArrow>{'>'}</RightCarouselArrow>,
     };
-    const settings2 = {
+    const unslick = {
       infinite: false,
       arrows: true,
       draggable: false,
@@ -53,7 +53,7 @@ export class RelatedCourses extends Component {
       nextArrow: <div />,
     };
 
-    return coursesLength < 5 ? settings2 : settings;
+    return coursesLength < 5 ? unslick : slick;
   };
 
   render() {
@@ -85,7 +85,7 @@ export class RelatedCourses extends Component {
 }
 
 RelatedCourses.propTypes = {
-  courses: PropTypes.array,
+  courses: PropTypes.array.isRequired,
 };
 
 export default withRouter(RelatedCourses);

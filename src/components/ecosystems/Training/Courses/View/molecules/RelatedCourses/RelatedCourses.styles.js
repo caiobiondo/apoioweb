@@ -14,11 +14,11 @@ export const Header = styled.h2`
 `;
 
 export const Wrapper = styled.div`
-  padding: 25px;
   position: absolute;
   overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
+  margin-top: 58px;
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-bottom: 40px;
     position: relative;
@@ -64,13 +64,14 @@ export const LeftCarouselArrow = styled.span`
   display: flex;
   align-items: center;
   z-index: 9999;
-  text-shadow: 1px 0px 4px black;
+  text-shadow: 1px 0px 4px #000000a3;
   cursor: pointer;
+  margin: 10px 0 0 3px;
 `;
 
 export const RightCarouselArrow = LeftCarouselArrow.extend`
   right: 15px;
-  top: 2px;
+  top: 4px;
 `;
 
 export const paperStyle = {
