@@ -6,11 +6,11 @@ import {
   IndicatorDataWrapper,
   IndicatorDataSort,
   IndicatorDataSortCurrent,
-  IndicatorDisabledDataContent,
-  IndicatorDisabledDataRow,
-  IndicatorDisabledDataRowFeatured,
-  IndicatorDisabledDataRowObj,
-  IndicatorDisabledDataValue,
+  IndicatorDataContent,
+  IndicatorDataRow,
+  IndicatorDataRowFeatured,
+  IndicatorDataRowObj,
+  IndicatorDataValue,
   PopoverStyles,
   PopoverContent,
   PopoverArrow,
@@ -58,23 +58,21 @@ export class IndicatorData extends Component {
     const { indicatorData } = this.props;
 
     return (
-      <IndicatorDisabledDataContent>
-        <IndicatorDisabledDataRow />
-        <IndicatorDisabledDataRowObj>
-          <IndicatorDisabledDataValue>{indicatorData.obj}</IndicatorDisabledDataValue>
-        </IndicatorDisabledDataRowObj>
-        <IndicatorDisabledDataRow>
-          <IndicatorDisabledDataValue>{indicatorData.done}</IndicatorDisabledDataValue>
-        </IndicatorDisabledDataRow>
-        <IndicatorDisabledDataRow>
-          <IndicatorDisabledDataValue>{indicatorData.networkDone}</IndicatorDisabledDataValue>
-        </IndicatorDisabledDataRow>
-        <IndicatorDisabledDataRowFeatured>
-          <IndicatorDisabledDataValue>
-            {indicatorData.accumulatedOverload}
-          </IndicatorDisabledDataValue>
-        </IndicatorDisabledDataRowFeatured>
-      </IndicatorDisabledDataContent>
+      <IndicatorDataContent>
+        <IndicatorDataRow />
+        <IndicatorDataRowObj>
+          <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
+        </IndicatorDataRowObj>
+        <IndicatorDataRow>
+          <IndicatorDataValue>{indicatorData.done}</IndicatorDataValue>
+        </IndicatorDataRow>
+        <IndicatorDataRow>
+          <IndicatorDataValue>{indicatorData.networkDone}</IndicatorDataValue>
+        </IndicatorDataRow>
+        <IndicatorDataRowFeatured>
+          <IndicatorDataValue>{indicatorData.accumulatedOverload}</IndicatorDataValue>
+        </IndicatorDataRowFeatured>
+      </IndicatorDataContent>
     );
   }
 
