@@ -41,7 +41,6 @@ export const IndicatorDataSort = styled.div`
 export const IndicatorDataWrapper = styled.li`
   cursor: pointer;
   display: inline-block;
-  min-height: 240px;
   list-style-type: none;
   padding: 0 10px;
   position: relative;

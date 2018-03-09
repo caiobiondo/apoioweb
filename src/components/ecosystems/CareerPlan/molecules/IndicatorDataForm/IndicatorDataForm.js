@@ -103,11 +103,9 @@ export class IndicatorDataForm extends Component {
       ) : null;
 
     return (
-      <IndicatorDataContent>
-        <IndicatorDataRow>
-          {IndicatorDataTrashIconNode}
-          {simulatorLabelNode}
-        </IndicatorDataRow>
+      <IndicatorDataContent active={indicatorData.active}>
+        {IndicatorDataTrashIconNode}
+        {simulatorLabelNode}
         <IndicatorDataRowObj>
           <IndicatorDataValue>{indicatorData.obj}</IndicatorDataValue>
         </IndicatorDataRowObj>
