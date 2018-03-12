@@ -40,6 +40,7 @@ export default {
     relatedTraining: 'Treinamentos relacionados',
     courseAddEvaluationSuccess: 'Avaliação realizada com sucesso!',
     courseAddEvaluationError: 'Não foi possível realizar a avaliação',
+    trainings: 'Treinamentos',
   },
 };
 /* eslint-disable sort-keys */

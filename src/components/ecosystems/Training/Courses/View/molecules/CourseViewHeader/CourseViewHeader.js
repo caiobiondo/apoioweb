@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
 import { Icon } from 'natura-ui';
 import { Link } from 'react-router-dom';
+import { translate } from 'locale';
 
 import {
   Header,
@@ -25,7 +26,7 @@ export class CourseViewHeader extends Component {
                   <Icon file="ico_back" />
                 </BackButtonIcon>
 
-                <BackButtonText>{course.title}</BackButtonText>
+                <BackButtonText>{translate('trainings')}</BackButtonText>
               </Link>
             </BackButtonWrapper>
           </Col>
