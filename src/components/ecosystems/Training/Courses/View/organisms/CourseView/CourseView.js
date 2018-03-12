@@ -163,7 +163,7 @@ export class CourseView extends Component {
     return (
       <Main>
         <Grid fluid>
-          <CourseViewHeader course={course} />
+          <CourseViewHeader />
           <CourseContent course={course} sellerId={this.props.user.codigo} />
           <CourseDescription course={course} />
           <Row>

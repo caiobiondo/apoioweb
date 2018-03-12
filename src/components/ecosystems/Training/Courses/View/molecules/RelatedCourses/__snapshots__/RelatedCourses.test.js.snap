@@ -1,6 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RelatedCourses should not render a slide when courses are null 1`] = `""`;
+exports[`RelatedCourses should not render a slide when courses are null 1`] = `
+<RelatedCoursesstyles__PaperWrapper>
+  <Paper
+    circle={false}
+    rounded={true}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "boxShadow": "none",
+      }
+    }
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <RelatedCoursesstyles__Wrapper>
+      <RelatedCoursesstyles__Header>
+        Treinamentos relacionados
+      </RelatedCoursesstyles__Header>
+      <RelatedCoursesstyles__CourseCoverList>
+        <Slider
+          arrows={true}
+          draggable={false}
+          infinite={false}
+          nextArrow={<div />}
+          prevArrow={<div />}
+          responsive={
+            Array [
+              Object {
+                "breakpoint": 950,
+                "settings": "unslick",
+              },
+              Object {
+                "breakpoint": 1190,
+                "settings": Object {
+                  "slidesToShow": 2,
+                },
+              },
+              Object {
+                "breakpoint": 1440,
+                "settings": Object {
+                  "slidesToShow": 3,
+                },
+              },
+              Object {
+                "breakpoint": 1500,
+                "settings": Object {
+                  "slidesToShow": 4,
+                },
+              },
+              Object {
+                "breakpoint": 10000,
+                "settings": "unslick",
+              },
+            ]
+          }
+        />
+      </RelatedCoursesstyles__CourseCoverList>
+    </RelatedCoursesstyles__Wrapper>
+  </Paper>
+</RelatedCoursesstyles__PaperWrapper>
+`;
 
 exports[`RelatedCourses should render a slide with the courses 1`] = `
 <RelatedCoursesstyles__PaperWrapper>

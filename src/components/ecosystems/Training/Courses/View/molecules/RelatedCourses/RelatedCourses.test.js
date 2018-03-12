@@ -35,7 +35,7 @@ describe('RelatedCourses', () => {
   it('should not render a slide when courses are null', () => {
     // given
     const props = {
-      courses: null,
+      courses: [],
     };
 
     // when
