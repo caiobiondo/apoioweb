@@ -95,7 +95,7 @@ export class IndicatorDataForm extends Component {
 
   renderConfirmationDialog = () => {
     const title = translate('careerPlanCleanSimulation');
-    const { indicatorTitle, indicatorData } = this.props;
+    const { indicator, indicatorData } = this.props;
     const { open } = this.state;
     const actions = [
       <FlatButton
@@ -128,7 +128,7 @@ export class IndicatorDataForm extends Component {
         <FormattedMessage
           id="careerPlanCleanSimulationContent"
           values={{
-            indicatorTitle: <b>{indicatorTitle}</b>,
+            indicatorTitle: <b>{indicator.title}</b>,
             cycle: <b>{indicatorData.cycle}</b>,
           }}
         />

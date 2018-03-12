@@ -94,7 +94,7 @@ export class IndicatorData extends Component {
   }
 
   render() {
-    const { indicatorData, index } = this.props;
+    const { indicator, indicatorData, index } = this.props;
 
     const currentNode = indicatorData.current ? (
       <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>
@@ -108,6 +108,7 @@ export class IndicatorData extends Component {
 
     return (
       <IndicatorDataWrapper
+        indicatorId={indicator.id}
         active={indicatorData.active}
         key={indicatorData.cycle}
         onClick={this.onClick}
