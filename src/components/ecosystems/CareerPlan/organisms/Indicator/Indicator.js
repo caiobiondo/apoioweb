@@ -29,8 +29,6 @@ export class Indicator extends Component {
         preLoaded: Boolean(item.indicator.directSale && item.indicator.naturaNetwork),
       })),
     };
-
-    console.log(this.state);
   }
 
   setActiveData = indicatorData => {

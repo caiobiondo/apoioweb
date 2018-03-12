@@ -84,7 +84,7 @@ export const IndicatorDataWrapper = styled.li`
       height: 50px;
       left: -2px;
       position: absolute;
-      width: 2px;
+      width: 3px;
       z-index: 1;
     }
   `};
