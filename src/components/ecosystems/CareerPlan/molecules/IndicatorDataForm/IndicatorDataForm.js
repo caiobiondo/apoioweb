@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Icon } from 'natura-ui';
+import { translate } from 'locale';
+import { Icon, FlatButton, Dialog } from 'natura-ui';
+// import { dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 
 import {
   IndicatorDataContent,
@@ -13,6 +15,11 @@ import {
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
   IndicatorDataApplyButton,
+  IndicatorDataModalContent,
+  IndicatorDataModalPaper,
+  IndicatorDataModalTitle,
+  IndicatorDataModalBody,
+  IndicatorDataModalLabel,
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
@@ -57,14 +64,13 @@ export class IndicatorDataForm extends Component {
     this.updateIndicatorDataValues(indicatorData);
   };
 
-  deleteValues = event => {
-    event.stopPropagation();
-
+  deleteValues = () => {
     const indicatorData = {
       directSale: null,
       naturaNetwork: null,
     };
 
+    this.closeModal();
     return this.updateIndicatorDataValues(indicatorData, this.applyValues);
   };
 
@@ -82,8 +88,60 @@ export class IndicatorDataForm extends Component {
     return onApply(indicatorData);
   };
 
+  openModal = event => {
+    event.stopPropagation();
+    this.setState({ open: true });
+  };
+
+  closeModal = () => {
+    this.setState({ open: false });
+  };
+
+  renderConfirmationDialog = () => {
+    const title = translate('careerPlanCleanSimulation');
+    const { indicatorTitle, indicatorData } = this.props;
+    const { open } = this.state;
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="cancel" />}
+        primary={false}
+        onClick={this.closeModal}
+        labelStyle={IndicatorDataModalLabel}
+      />,
+      <FlatButton
+        label={<FormattedMessage id="remove" />}
+        primary={true}
+        onClick={this.deleteValues}
+        labelStyle={IndicatorDataModalLabel}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="confirmationDialog"
+        title={title}
+        actions={actions}
+        modal={false}
+        open={open}
+        onRequestClose={this.onCloseModal}
+        contentStyle={IndicatorDataModalContent}
+        titleStyle={IndicatorDataModalTitle}
+        bodyStyle={IndicatorDataModalBody}
+        paperProps={IndicatorDataModalPaper}
+      >
+        <FormattedMessage
+          id="careerPlanCleanSimulationContent"
+          values={{
+            indicatorTitle: <b>{indicatorTitle}</b>,
+            cycle: <b>{indicatorData.cycle}</b>,
+          }}
+        />
+      </Dialog>
+    );
+  };
+
   render() {
-    const { isFilled, indicatorData, canFill, intl } = this.props;
+    const { isFilled, indicatorData, canFill } = this.props;
     const { indicatorDataValues } = this.state;
 
     const simulatorLabelNode = indicatorData.active ? (
@@ -94,10 +152,7 @@ export class IndicatorDataForm extends Component {
 
     const IndicatorDataTrashIconNode =
       !indicatorData.active && isFilled ? (
-        <IndicatorDataTrashIcon
-          onClick={this.deleteValues}
-          title={intl.formatMessage({ id: 'delete' })}
-        >
+        <IndicatorDataTrashIcon onClick={this.openModal} title={translate('delete')}>
           <Icon file="ico_trash" />
         </IndicatorDataTrashIcon>
       ) : null;
@@ -148,6 +203,8 @@ export class IndicatorDataForm extends Component {
             <FormattedMessage id="apply" />
           </IndicatorDataApplyButton>
         )}
+
+        {this.renderConfirmationDialog()}
       </IndicatorDataContent>
     );
   }

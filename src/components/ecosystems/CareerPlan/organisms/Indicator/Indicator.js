@@ -11,6 +11,7 @@ import {
   IndicatorWeightLabel,
   IndicatorWeightValue,
   IndicatorTitle,
+  IndicatorInfo,
   IndicatorContentWrapper,
   IndicatorTableHeader,
   IndicatorTableHeaderItem,
@@ -74,6 +75,7 @@ export class Indicator extends Component {
         isFilled={this.isFilled(indicatorData)}
         onClick={this.setActiveData}
         onApply={this.updateIndicatorData}
+        indicatorTitle="Volume de pontos"
       />
     );
   };
@@ -91,6 +93,9 @@ export class Indicator extends Component {
         </IndicatorWeightWrapper>
 
         <IndicatorTitle>Volume de Pontos</IndicatorTitle>
+        <IndicatorInfo>
+          <FormattedMessage id="information" />
+        </IndicatorInfo>
         <IndicatorContentWrapper>
           <IndicatorTableHeader>
             <IndicatorTableHeaderItemFeatured>Obj</IndicatorTableHeaderItemFeatured>

@@ -44,6 +44,18 @@ export const IndicatorTitle = styled.h4`
   padding-left: 155px;
 `;
 
+export const IndicatorInfo = styled.a`
+  color: ${gray890};
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: ${fw600};
+  padding: 10px;
+  position: absolute;
+  right: -10px;
+  text-transform: uppercase;
+  top: -10px;
+`;
+
 export const IndicatorContentWrapper = styled.div`
   font-family: ${RobotoRegular};
   margin-top: 10px;
