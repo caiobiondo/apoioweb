@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
 import { CourseDescription } from './CourseDescription';
 
 describe('CourseDescription', () => {
@@ -11,11 +11,10 @@ describe('CourseDescription', () => {
         title: 'Title',
         description: 'Description',
       },
-      sellerId: 123,
     };
 
     // when
-    const result = render(<CourseDescription {...props} />);
+    const result = shallow(<CourseDescription {...props} />);
 
     // then
     expect(result).toMatchSnapshot();

@@ -2,36 +2,26 @@
 
 exports[`CourseDescription should render course description and title 1`] = `
 <div>
-  <div
-    class="row"
-  >
-    <div
-      class="col-md-12 col-sm-12"
+  <Row>
+    <Col
+      md={12}
+      sm={12}
     >
-      <div
-        class="CourseDescriptionstyles__TittleWrapper-eqWawD cHJOJC"
-      >
+      <CourseDescriptionstyles__TittleWrapper>
         Title
-      </div>
-    </div>
-  </div>
-  <span
-    class="CourseDescriptionstyles__Divider-eXAsJP hbbiom"
-  >
-    
-  </span>
-  <div
-    class="row"
-  >
-    <div
-      class="col-md-12 col-sm-12"
+      </CourseDescriptionstyles__TittleWrapper>
+    </Col>
+  </Row>
+  <CourseDescriptionstyles__Divider />
+  <Row>
+    <Col
+      md={12}
+      sm={12}
     >
-      <p
-        class="CourseDescriptionstyles__DescriptionWrapper-fnSggu jdkzkp"
-      >
+      <CourseDescriptionstyles__DescriptionWrapper>
         Description
-      </p>
-    </div>
-  </div>
+      </CourseDescriptionstyles__DescriptionWrapper>
+    </Col>
+  </Row>
 </div>
 `;
