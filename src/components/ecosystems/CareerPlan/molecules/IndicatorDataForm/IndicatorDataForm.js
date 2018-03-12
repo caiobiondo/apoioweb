@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
-// import { dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 
+import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
   IndicatorDataContent,
   IndicatorDataRow,
@@ -15,11 +15,6 @@ import {
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
   IndicatorDataApplyButton,
-  IndicatorDataModalContent,
-  IndicatorDataModalPaper,
-  IndicatorDataModalTitle,
-  IndicatorDataModalBody,
-  IndicatorDataModalLabel,
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
@@ -30,6 +25,7 @@ export class IndicatorDataForm extends Component {
         directSale: props.indicatorData.directSale || '',
         naturaNetwork: props.indicatorData.naturaNetwork || '',
       },
+      open: false,
     };
   }
 
@@ -106,28 +102,28 @@ export class IndicatorDataForm extends Component {
         label={<FormattedMessage id="cancel" />}
         primary={false}
         onClick={this.closeModal}
-        labelStyle={IndicatorDataModalLabel}
+        labelStyle={CareerPlanModal.label}
       />,
       <FlatButton
         label={<FormattedMessage id="remove" />}
         primary={true}
         onClick={this.deleteValues}
-        labelStyle={IndicatorDataModalLabel}
+        labelStyle={CareerPlanModal.label}
       />,
     ];
 
     return (
       <Dialog
-        key="confirmationDialog"
+        key="clearCycleModal"
         title={title}
         actions={actions}
         modal={false}
         open={open}
         onRequestClose={this.onCloseModal}
-        contentStyle={IndicatorDataModalContent}
-        titleStyle={IndicatorDataModalTitle}
-        bodyStyle={IndicatorDataModalBody}
-        paperProps={IndicatorDataModalPaper}
+        contentStyle={CareerPlanModal.content}
+        titleStyle={CareerPlanModal.title}
+        bodyStyle={CareerPlanModal.body}
+        paperProps={{ style: CareerPlanModal.paper }}
       >
         <FormattedMessage
           id="careerPlanCleanSimulationContent"

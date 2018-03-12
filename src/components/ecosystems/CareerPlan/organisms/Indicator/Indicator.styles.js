@@ -47,6 +47,7 @@ export const IndicatorTitle = styled.h4`
 export const IndicatorInfo = styled.a`
   color: ${gray890};
   cursor: pointer;
+  font-family: ${RobotoRegular};
   font-size: 13px;
   font-weight: ${fw600};
   padding: 10px;
