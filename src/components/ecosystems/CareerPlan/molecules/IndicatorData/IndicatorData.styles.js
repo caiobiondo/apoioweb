@@ -96,6 +96,7 @@ export const IndicatorDataWrapper = styled.li`
     background: ${gray400};
     box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
     border-radius: 15px 15px 0 0;
+    cursor: default;
     outline: none;
     z-index: 1;
 
