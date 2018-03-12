@@ -12,7 +12,7 @@ import {
 import { translate } from 'locale';
 import { Rating } from 'natura-ui';
 
-class CourseRating extends Component {
+export class CourseRating extends Component {
   getDurationInMinutes = course => {
     return `${Math.floor(course.durationInSeconds / 60)}:${(
       '0' + Math.floor(course.durationInSeconds % 60)
