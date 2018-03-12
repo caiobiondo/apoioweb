@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { FlatButton, Dialog } from 'natura-ui';
 
 import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
-
 import mock from './IndicatorDataMock';
 
+import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
   IndicatorWrapper,
   IndicatorWeightWrapper,
@@ -29,6 +30,7 @@ export class Indicator extends Component {
         ...item,
         preLoaded: Boolean(item.indicator.directSale && item.indicator.naturaNetwork),
       })),
+      informationModalOpened: false,
     };
   }
 
@@ -63,6 +65,44 @@ export class Indicator extends Component {
     );
   };
 
+  openInformationModal = () => {
+    this.setState({ informationModalOpened: true });
+  };
+
+  closeInformationModal = () => {
+    this.setState({ informationModalOpened: false });
+  };
+
+  renderConfirmationDialog = () => {
+    const title = 'Volume de Pontos';
+    const { informationModalOpened } = this.state;
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="close" />}
+        primary={true}
+        onClick={this.closeInformationModal}
+        labelStyle={CareerPlanModal.label}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="informationDialog"
+        title={title}
+        actions={actions}
+        modal={false}
+        open={informationModalOpened}
+        onRequestClose={this.onCloseModal}
+        contentStyle={CareerPlanModal.content}
+        bodyStyle={CareerPlanModal.body}
+        titleStyle={CareerPlanModal.title}
+        paper={{ style: CareerPlanModal.paper }}
+      >
+        teste
+      </Dialog>
+    );
+  };
+
   renderIndicatorData = (indicatorData, index) => {
     const { indicatorDataItems } = this.state;
 
@@ -93,7 +133,7 @@ export class Indicator extends Component {
         </IndicatorWeightWrapper>
 
         <IndicatorTitle>Volume de Pontos</IndicatorTitle>
-        <IndicatorInfo>
+        <IndicatorInfo onClick={this.openInformationModal}>
           <FormattedMessage id="information" />
         </IndicatorInfo>
         <IndicatorContentWrapper>
@@ -110,6 +150,8 @@ export class Indicator extends Component {
             </IndicatorTableContent>
           </IndicatorTableContentWapper>
         </IndicatorContentWrapper>
+
+        {this.renderConfirmationDialog()}
       </IndicatorWrapper>
     );
   }

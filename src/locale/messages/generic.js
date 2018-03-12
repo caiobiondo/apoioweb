@@ -14,6 +14,7 @@ export default {
     blankSelectOption: 'Selecione...',
     viewMore: 'Ver mais',
     hide: 'Esconder',
+    close: 'Fechar',
   },
 };
 /* eslint-disable sort-keys */

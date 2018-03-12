@@ -36,7 +36,7 @@ export class Consolidated extends Component {
 
   renderIndicatorData = (indicatorData, index) => {
     return (
-      <IndicatorDataWrapper>
+      <IndicatorDataWrapper key={indicatorData.cycle}>
         <IndicatorDataSort index={index}>{index + 1}</IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>

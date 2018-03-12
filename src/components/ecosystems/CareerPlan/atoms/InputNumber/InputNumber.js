@@ -24,7 +24,6 @@ const BaseInput = props => {
 
 BaseInput.propTypes = {
   className: PropTypes.string,
-  dirty: PropTypes.bool.isRequired,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   error: PropTypes.array,
   errorMessage: PropTypes.string,
@@ -40,7 +39,6 @@ BaseInput.propTypes = {
 };
 
 BaseInput.defaultProps = {
-  dirty: false,
   disabled: false,
   max: 999999,
   placeholder: '',
