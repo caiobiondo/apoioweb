@@ -35,8 +35,6 @@ export class Consolidated extends Component {
   }
 
   renderIndicatorData = (indicatorData, index) => {
-    console.log(indicatorData);
-
     return (
       <IndicatorDataWrapper>
         <IndicatorDataSort index={index}>{index + 1}</IndicatorDataSort>

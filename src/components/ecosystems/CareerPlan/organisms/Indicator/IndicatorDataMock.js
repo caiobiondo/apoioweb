@@ -73,6 +73,7 @@ export default [
       overcoming: 0,
       value: 'string',
     },
+    current: true,
   },
   {
     cycle: 6,
