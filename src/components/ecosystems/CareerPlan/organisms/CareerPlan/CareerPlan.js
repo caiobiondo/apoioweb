@@ -4,6 +4,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import Indicator from '../Indicator';
 import Consolidated from '../Consolidated/Consolidated';
 
+import { IndicatorTypes, IndicatorTypesLabels } from '../../IndicatorTypes.enum';
+
 import {
   CareerPlanSection,
   CareerPlanTitleWrapper,
@@ -13,9 +15,20 @@ import {
 } from './CareerPlan.styles';
 
 export class CareerPlan extends Component {
-  render() {
-    const indicators = [{ id: 1 }, { id: 2 }];
+  constructor() {
+    super();
+    this.indicators = this.getParsedIndicators();
+  }
 
+  getParsedIndicators = () => {
+    return Object.values(IndicatorTypes).map(id => ({
+      id,
+      title: IndicatorTypesLabels[id],
+      weight: 50,
+    }));
+  };
+
+  render() {
     return (
       <CareerPlanSection>
         <CareerPlanTitleWrapper>
@@ -29,7 +42,7 @@ export class CareerPlan extends Component {
         </CareerPlanTitleWrapper>
 
         <IndicatorListWrapper>
-          {indicators.map(indicator => <Indicator key={indicator.id} />)}
+          {this.indicators.map(indicator => <Indicator key={indicator.id} indicator={indicator} />)}
         </IndicatorListWrapper>
 
         <Consolidated />

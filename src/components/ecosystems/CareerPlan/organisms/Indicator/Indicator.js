@@ -26,43 +26,42 @@ export class Indicator extends Component {
     super();
 
     this.state = {
-      indicatorDataItems: mock.map(item => ({
-        ...item,
-        preLoaded: Boolean(item.indicator.directSale && item.indicator.naturaNetwork),
-      })),
+      cycles: this.getParsedCycles(),
       informationModalOpened: false,
     };
   }
 
-  setActiveData = indicatorData => {
-    let { indicatorDataItems } = this.state;
-
-    indicatorDataItems = indicatorDataItems.map(item => ({
+  getParsedCycles = () => {
+    return mock.map(item => ({
       ...item,
-      active: item.cycle === indicatorData.cycle,
+      preLoaded: this.isFilled(item),
     }));
-
-    return this.setState({ indicatorDataItems });
   };
 
-  updateIndicatorData = indicatorData => {
-    let { indicatorDataItems } = this.state;
-    indicatorDataItems = indicatorDataItems.map(item => {
-      if (item.cycle !== indicatorData.cycle) {
+  setActiveCycle = cycle => {
+    this.updateCycle({ cycle: cycle.cycle, active: true });
+  };
+
+  updateCycle = cycle => {
+    let { cycles } = this.state;
+
+    cycles = cycles.map(item => {
+      if (item.cycle !== cycle.cycle) {
         return item;
       }
 
-      return indicatorData;
+      return {
+        ...item,
+        ...cycle,
+      };
     });
 
-    this.setState({ indicatorDataItems });
+    this.setState({ cycles });
   };
 
-  isFilled = indicatorData => {
-    return (
-      !indicatorData ||
-      (indicatorData.indicator.directSale || indicatorData.indicator.naturaNetwork)
-    );
+  isFilled = cycle => {
+    const values = cycle && cycle.indicator;
+    return !values || Boolean(values.directSale || values.naturaNetwork);
   };
 
   openInformationModal = () => {
@@ -103,36 +102,38 @@ export class Indicator extends Component {
     );
   };
 
-  renderIndicatorData = (indicatorData, index) => {
-    const { indicatorDataItems } = this.state;
+  renderCycles = (cycle, index) => {
+    const { cycles } = this.state;
+    const { indicator } = this.props;
 
     return (
       <IndicatorData
-        indicatorData={indicatorData}
+        indicatorData={cycle}
         index={index}
-        key={indicatorData.cycle}
-        canFill={this.isFilled(indicatorDataItems[index - 1])}
-        isFilled={this.isFilled(indicatorData)}
-        onClick={this.setActiveData}
-        onApply={this.updateIndicatorData}
-        indicatorTitle="Volume de pontos"
+        key={cycle.cycle}
+        canFill={this.isFilled(cycles[index - 1])}
+        isFilled={this.isFilled(cycle)}
+        onClick={this.setActiveCycle}
+        onApply={this.updateCycle}
+        indicator={indicator}
       />
     );
   };
 
   render() {
-    const { indicatorDataItems } = this.state;
+    const { cycles } = this.state;
+    const { indicator } = this.props;
 
     return (
-      <IndicatorWrapper>
+      <IndicatorWrapper indicatorId={indicator.id}>
         <IndicatorWeightWrapper>
           <IndicatorWeightLabel>
             <FormattedMessage id="weight" />
           </IndicatorWeightLabel>
-          <IndicatorWeightValue>50</IndicatorWeightValue>
+          <IndicatorWeightValue>{indicator.weight}</IndicatorWeightValue>
         </IndicatorWeightWrapper>
 
-        <IndicatorTitle>Volume de Pontos</IndicatorTitle>
+        <IndicatorTitle>{indicator.title}</IndicatorTitle>
         <IndicatorInfo onClick={this.openInformationModal}>
           <FormattedMessage id="information" />
         </IndicatorInfo>
@@ -145,9 +146,7 @@ export class Indicator extends Component {
           </IndicatorTableHeader>
 
           <IndicatorTableContentWapper>
-            <IndicatorTableContent>
-              {indicatorDataItems.map(this.renderIndicatorData)}
-            </IndicatorTableContent>
+            <IndicatorTableContent>{cycles.map(this.renderCycles)}</IndicatorTableContent>
           </IndicatorTableContentWapper>
         </IndicatorContentWrapper>
 

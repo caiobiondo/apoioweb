@@ -1,13 +1,27 @@
 import styled, { injectGlobal } from 'styled-components';
-import { gray150, blue100, gray400 } from 'styles/colors';
+import { gray150, gray400 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
 import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
+import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
 
 export const IndicatorDataContent = IndicatorDataFormComponents.IndicatorDataContent;
 export const IndicatorDataRow = IndicatorDataFormComponents.IndicatorDataRow;
 export const IndicatorDataRowFeatured = IndicatorDataFormComponents.IndicatorDataRowAcc;
 export const IndicatorDataRowObj = IndicatorDataFormComponents.IndicatorDataRowObj;
 export const IndicatorDataValue = IndicatorDataFormComponents.IndicatorDataValue;
+
+export const IndicatorDataSortCurrent = styled.span`
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  font-weight: ${fw600};
+  left: 50%;
+  padding: 7px 15px;
+  position: absolute;
+  text-transform: uppercase;
+  top: -25px;
+  transform: translate(-50%, 0);
+`;
 
 export const IndicatorDataSort = styled.div`
   color: ${gray150};
@@ -61,6 +75,13 @@ export const IndicatorDataWrapper = styled.li`
     `};
   }
 
+  ${IndicatorDataSortCurrent} {
+    ${({ indicatorId }) =>
+      `
+      background-color: ${IndicatorTypesColors[indicatorId]}
+    `};
+  }
+
   ${IndicatorDataFormComponents.IndicatorDataRowInput} {
     ${({ active }) =>
       active &&
@@ -88,20 +109,6 @@ export const IndicatorDataWrapper = styled.li`
       z-index: 1;
     }
   `};
-`;
-
-export const IndicatorDataSortCurrent = styled.span`
-  background-color: ${blue100};
-  border-radius: 5px;
-  color: white;
-  font-size: 10px;
-  font-weight: ${fw600};
-  left: 50%;
-  padding: 7px 15px;
-  position: absolute;
-  text-transform: uppercase;
-  top: -25px;
-  transform: translate(-50%, 0);
 `;
 
 export const PopoverStyles = {

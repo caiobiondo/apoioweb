@@ -2,14 +2,9 @@ import styled from 'styled-components';
 import { gray890, blue100 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
-export const IndicatorWrapper = styled.li`
-  list-style-type: none;
-  position: relative;
-  margin-bottom: 80px;
-`;
+import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
 
 export const IndicatorWeightWrapper = styled.div`
-  background: ${blue100};
   border-radius: 5px;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
   color: #fff;
@@ -21,6 +16,30 @@ export const IndicatorWeightWrapper = styled.div`
   top: 0;
   width: 125px;
   z-index: 1;
+`;
+
+export const IndicatorTitle = styled.h4`
+  font-size: 21px;
+  margin: 0;
+  padding-left: 155px;
+`;
+
+export const IndicatorWrapper = styled.li`
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 80px;
+
+  ${IndicatorWeightWrapper} {
+    ${({ indicatorId }) => `
+      background: ${IndicatorTypesColors[indicatorId]}
+    `};
+  }
+
+  ${IndicatorTitle} {
+    ${({ indicatorId }) => `
+      color: ${IndicatorTypesColors[indicatorId]}
+    `};
+  }
 `;
 
 export const IndicatorWeightLabel = styled.span`
@@ -35,13 +54,6 @@ export const IndicatorWeightValue = styled.span`
   display: inline-block;
   font-size: 40px;
   width: 100%;
-`;
-
-export const IndicatorTitle = styled.h4`
-  color: ${blue100};
-  font-size: 21px;
-  margin: 0;
-  padding-left: 155px;
 `;
 
 export const IndicatorInfo = styled.a`
