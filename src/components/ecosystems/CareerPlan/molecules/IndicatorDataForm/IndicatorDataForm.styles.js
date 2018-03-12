@@ -99,6 +99,7 @@ export const IndicatorDataApplyButton = styled.button`
   border-radius: 4px;
   border: 2px solid ${gray890};
   color: ${gray890};
+  cursor: pointer;
   font-size: 11px;
   font-weight: ${fw600};
   padding: 8px 0;

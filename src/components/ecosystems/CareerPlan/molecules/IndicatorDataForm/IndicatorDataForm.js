@@ -20,11 +20,10 @@ import {
 export class IndicatorDataForm extends Component {
   constructor(props) {
     super();
+
+    const { directSale, naturaNetwork } = props.indicatorData.indicator;
     this.state = {
-      indicatorDataValues: {
-        directSale: props.indicatorData.directSale || '',
-        naturaNetwork: props.indicatorData.naturaNetwork || '',
-      },
+      indicatorDataValues: { directSale, naturaNetwork },
       open: false,
     };
   }
@@ -39,8 +38,8 @@ export class IndicatorDataForm extends Component {
     }
 
     const indicatorDataValues = {
-      directSale: indicatorData.directSale || '',
-      naturaNetwork: indicatorData.naturaNetwork || '',
+      directSale: indicatorData.directSale,
+      naturaNetwork: indicatorData.naturaNetwork,
     };
 
     this.setState({ indicatorDataValues }, cb);
@@ -73,15 +72,20 @@ export class IndicatorDataForm extends Component {
   applyValues = event => {
     event && event.stopPropagation();
 
-    const { onApply } = this.props;
+    const { onApply, indicatorData } = this.props;
     const { indicatorDataValues } = this.state;
-    const indicatorData = {
-      ...this.props.indicatorData,
-      indicator: { ...this.props.indicatorData.indicator, ...indicatorDataValues },
+    const valuesToApply = {
+      directSale: indicatorDataValues.directSale || 0,
+      naturaNetwork: indicatorDataValues.naturaNetwork || 0,
+    };
+
+    const newIndicatorData = {
+      ...indicatorData,
+      indicator: { ...indicatorData.indicator, ...valuesToApply },
       active: false,
     };
 
-    return onApply(indicatorData);
+    return onApply(newIndicatorData);
   };
 
   openModal = event => {

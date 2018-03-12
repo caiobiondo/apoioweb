@@ -34,12 +34,24 @@ export class Indicator extends Component {
   getParsedCycles = () => {
     return mock.map(item => ({
       ...item,
+      indicator: {
+        ...item.indicator,
+        directSale: item.indicator.directSale || '',
+        naturaNetwork: item.indicator.naturaNetwork || '',
+      },
       preLoaded: this.isFilled(item),
     }));
   };
 
-  setActiveCycle = cycle => {
-    this.updateCycle({ cycle: cycle.cycle, active: true });
+  setActiveCycle = indicatorData => {
+    let { cycles } = this.state;
+
+    cycles = cycles.map(item => ({
+      ...item,
+      active: item.cycle === indicatorData.cycle,
+    }));
+
+    this.setState({ cycles });
   };
 
   updateCycle = cycle => {
@@ -50,10 +62,7 @@ export class Indicator extends Component {
         return item;
       }
 
-      return {
-        ...item,
-        ...cycle,
-      };
+      return { ...item, ...cycle };
     });
 
     this.setState({ cycles });
