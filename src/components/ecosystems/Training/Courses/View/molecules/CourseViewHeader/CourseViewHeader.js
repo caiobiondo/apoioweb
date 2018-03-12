@@ -14,8 +14,6 @@ import {
 
 export class CourseViewHeader extends Component {
   render() {
-    const { course } = this.props;
-
     return (
       <Header>
         <Row>
@@ -35,9 +33,5 @@ export class CourseViewHeader extends Component {
     );
   }
 }
-
-CourseViewHeader.propTypes = {
-  course: PropTypes.object.isRequired,
-};
 
 export default CourseViewHeader;
