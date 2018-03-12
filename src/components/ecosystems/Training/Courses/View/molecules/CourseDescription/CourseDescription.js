@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
 import { TittleWrapper, Divider, DescriptionWrapper } from './CourseDescription.styles';
 
-class CourseDescription extends Component {
+export class CourseDescription extends Component {
   render() {
     const { course } = this.props;
 

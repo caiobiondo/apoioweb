@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseDescription should render course description and title 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <div
+      class="col-md-12 col-sm-12"
+    >
+      <div
+        class="CourseDescriptionstyles__TittleWrapper-eqWawD cHJOJC"
+      >
+        Title
+      </div>
+    </div>
+  </div>
+  <span
+    class="CourseDescriptionstyles__Divider-eXAsJP hbbiom"
+  >
+    
+  </span>
+  <div
+    class="row"
+  >
+    <div
+      class="col-md-12 col-sm-12"
+    >
+      <p
+        class="CourseDescriptionstyles__DescriptionWrapper-fnSggu jdkzkp"
+      >
+        Description
+      </p>
+    </div>
+  </div>
+</div>
+`;
