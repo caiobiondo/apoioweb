@@ -1,57 +1,26 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from 'enzyme';
 import { CourseContent } from './CourseContent';
 
 describe('CourseContent', () => {
-  it('should render a slide with the courses', () => {
+  it('should render a player with the course content', () => {
     // given
     const props = {
-      courses: [
-        {
-          id: 1,
-          title: 'Como entender as necessidades dos clientes',
-          type: 'VIDEO',
-          ratedByYou: 'true',
-          courseContent: {
-            video: '',
-          },
+      course: {
+        id: 1,
+        title: '',
+        type: 'VIDEO',
+        ratedByYou: 'true',
+        courseContent: {
+          video: '',
         },
-        {
-          id: 2,
-          title: 'Faça Acontecer!',
-          type: 'VIDEO',
-          ratedByYou: 'false',
-          courseContent: {
-            video: '',
-          },
-        },
-        {
-          id: 3,
-          title: 'Planejamento do Ciclo',
-          type: 'VIDEO',
-          ratedByYou: 'true',
-          courseContent: {
-            video: '',
-          },
-        },
-      ],
+        thumbnail: '',
+      },
+      sellerId: 123,
     };
 
     // when
-    const result = shallow(<CourseContent {...props} />);
-
-    // then
-    expect(result).toMatchSnapshot();
-  });
-
-  it('should not render a slide when courses are null', () => {
-    // given
-    const props = {
-      courses: null,
-    };
-
-    // when
-    const result = shallow(<CourseContent {...props} />);
+    const result = render(<CourseContent {...props} />);
 
     // then
     expect(result).toMatchSnapshot();

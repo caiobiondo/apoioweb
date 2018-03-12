@@ -5,7 +5,7 @@ import { Player, BigPlayButton } from 'video-react';
 import CourseEvaluation from '../CourseEvaluation';
 import 'video-react/dist/video-react.css';
 
-class CourseContent extends Component {
+export class CourseContent extends Component {
   state = {
     ended: false,
   };
