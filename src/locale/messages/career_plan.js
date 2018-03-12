@@ -12,5 +12,8 @@ export default {
     careerPlanCleanSimulation: 'Limpar simulação.',
     careerPlanCleanSimulationContent:
       'Tem certeza que deseja limpar a sia simulação do indicador {indicatorTitle} no ciclo {cycle}?',
+    careerPlanBelowRange: 'Abaixo de {rangeEnd}%',
+    careerPlanAboveRange: 'Acima de {rangeStart}%',
+    careerPlanBetweenRange: 'Entre {rangeStart}% e {rangeEnd}%',
   },
 };

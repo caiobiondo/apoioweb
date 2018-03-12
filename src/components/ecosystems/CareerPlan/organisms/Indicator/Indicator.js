@@ -4,6 +4,7 @@ import { FlatButton, Dialog } from 'natura-ui';
 
 import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
 import mock from './IndicatorDataMock';
+import conceptMock from './IndicatorConceptMock';
 
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
@@ -19,6 +20,8 @@ import {
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
   IndicatorTableContentWapper,
+  IndicatorConceptList,
+  IndicatorConceptListItem,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
@@ -27,6 +30,7 @@ export class Indicator extends Component {
 
     this.state = {
       cycles: this.getParsedCycles(),
+      concepts: conceptMock,
       informationModalOpened: false,
     };
   }
@@ -83,7 +87,7 @@ export class Indicator extends Component {
 
   renderConfirmationDialog = () => {
     const title = 'Volume de Pontos';
-    const { informationModalOpened } = this.state;
+    const { informationModalOpened, concepts } = this.state;
     const actions = [
       <FlatButton
         label={<FormattedMessage id="close" />}
@@ -104,9 +108,53 @@ export class Indicator extends Component {
         contentStyle={CareerPlanModal.content}
         bodyStyle={CareerPlanModal.body}
         titleStyle={CareerPlanModal.title}
-        paper={{ style: CareerPlanModal.paper }}
+        paperProps={{ style: CareerPlanModal.paper }}
       >
-        teste
+        <IndicatorConceptList>
+          {concepts.map(item => {
+            let conceptRange = null;
+
+            if (item && !item.rangeStart && item.rangeEnd) {
+              conceptRange = (
+                <span>
+                  <FormattedMessage
+                    id="careerPlanBelowRange"
+                    values={{ rangeEnd: item.rangeEnd }}
+                  />
+                </span>
+              );
+            }
+
+            if (item && item.rangeStart && !item.rangeEnd) {
+              conceptRange = (
+                <span>
+                  <FormattedMessage
+                    id="careerPlanAboveRange"
+                    values={{ rangeStart: item.rangeStart }}
+                  />
+                </span>
+              );
+            }
+
+            if (item && item.rangeStart && item.rangeEnd) {
+              conceptRange = (
+                <span>
+                  <FormattedMessage
+                    id="careerPlanBetweenRange"
+                    values={{ rangeStart: item.rangeStart, rangeEnd: item.rangeEnd }}
+                  />
+                </span>
+              );
+            }
+
+            return (
+              <IndicatorConceptListItem key={item.value} concept={item}>
+                <span>{item.value}</span>
+                {conceptRange}
+              </IndicatorConceptListItem>
+            );
+          })}
+        </IndicatorConceptList>
       </Dialog>
     );
   };

@@ -27,3 +27,9 @@ export const successGreen = '#80ba41';
 
 export const red500 = '#f44336';
 export const red400 = '#ef5350';
+export const red100 = '#e03726';
+
+export const yellow100 = '#fcdb17';
+
+export const green100 = '#cfde41';
+export const green200 = '#66a944';
