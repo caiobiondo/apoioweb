@@ -19,7 +19,7 @@ import {
   WrapperCount,
 } from './CourseEvaluation.styles';
 
-class CourseEvaluation extends Component {
+export class CourseEvaluation extends Component {
   state = {
     modalOpened: true,
     feedbackModalOpened: false,

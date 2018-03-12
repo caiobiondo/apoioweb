@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Course Evaluation render evaluation dialog 1`] = `
+<Dialog
+  actions={
+    Array [
+      <FlatButton
+        disabled={true}
+        fullWidth={false}
+        label={
+            <FormattedMessage
+                id="courseEvaluationNext"
+                values={Object {}}
+            />
+        }
+        labelPosition="after"
+        labelStyle={
+            Object {
+                "fontFamily": "Roboto-Regular",
+                "fontWeight": "700",
+              }
+        }
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={true}
+        secondary={false}
+    />,
+    ]
+  }
+  autoDetectWindowHeight={true}
+  autoScrollBodyContent={false}
+  key="evaluationkModal"
+  modal={false}
+  onRequestClose={[Function]}
+  open={true}
+  repositionOnUpdate={true}
+  title="Avaliação do curso"
+  titleStyle={
+    Object {
+      "fontFamily": "NaturaSans-Bold",
+      "fontSize": "25px",
+    }
+  }
+>
+  <CourseEvaluationstyles__ContentWrapper>
+    <CourseEvaluationstyles__TittleWrapper>
+      Description
+    </CourseEvaluationstyles__TittleWrapper>
+    <CourseEvaluationstyles__RatingWrapper>
+      <Rating
+        disabled={false}
+        iconFilled={
+          <ToggleStar
+            color="#ff9800"
+          />
+        }
+        iconHovered={
+          <ToggleStarBorder
+            color="#ff9800"
+          />
+        }
+        iconNormal={
+          <ToggleStarBorder
+            color="#e0e0e0"
+          />
+        }
+        itemIconStyle={
+          Object {
+            "height": "18",
+            "width": "18",
+          }
+        }
+        itemStyle={
+          Object {
+            "height": "18",
+            "padding": "0",
+            "width": "18",
+          }
+        }
+        max={5}
+        onChange={[Function]}
+        readOnly={false}
+        tooltipPosition="bottom-center"
+        value={0}
+      />
+    </CourseEvaluationstyles__RatingWrapper>
+  </CourseEvaluationstyles__ContentWrapper>
+  <CourseEvaluationstyles__WrapperCount>
+    1/2
+  </CourseEvaluationstyles__WrapperCount>
+</Dialog>
+`;
+
+exports[`Course Evaluation renders correctly when loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
