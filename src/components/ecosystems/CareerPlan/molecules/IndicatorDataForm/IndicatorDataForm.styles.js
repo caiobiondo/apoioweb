@@ -122,3 +122,26 @@ export const IndicatorDataValue = styled.span`
   display: inline-block;
   padding: 10px 0;
 `;
+
+export const IndicatorDataModalContent = {
+  maxWidth: '460px',
+};
+
+export const IndicatorDataModalPaper = {
+  style: { padding: '20px 5px' },
+};
+
+export const IndicatorDataModalTitle = {
+  color: gray890,
+  fontSize: 25,
+  fontWeight: fw600,
+};
+
+export const IndicatorDataModalBody = {
+  fontSize: 16,
+  fontFamily: RobotoRegular,
+};
+
+export const IndicatorDataModalLabel = {
+  fontWeight: fw600,
+};

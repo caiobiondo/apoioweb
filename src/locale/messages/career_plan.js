@@ -8,5 +8,9 @@ export default {
     consolidated: 'Consolidado',
     finalResult: 'Resultado final',
     rating: 'Conceito',
+    information: 'Informações',
+    careerPlanCleanSimulation: 'Limpar simulação.',
+    careerPlanCleanSimulationContent:
+      'Tem certeza que deseja limpar a sia simulação do indicador {indicatorTitle} no ciclo {cycle}?',
   },
 };
