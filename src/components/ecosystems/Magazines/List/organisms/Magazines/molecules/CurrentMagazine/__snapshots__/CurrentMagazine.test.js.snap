@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentMagazine should call additionalInfoOpened when change the screen for mobile show a button for hide options 1`] = `
+CurrentMagazine {
+  "context": Object {},
+  "downloadMagazine": [Function],
+  "openMagazine": [Function],
+  "props": Object {
+    "magazine": Object {},
+  },
+  "refs": Object {},
+  "state": Object {
+    "additionalInfoOpened": false,
+  },
+  "toggleAdditionalInfo": [Function],
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <CurrentMagazine
+        magazine={Object {}}
+/>,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": Object {
+        "additionalInfoOpened": false,
+      },
+      "_rendered": <CurrentMagazinestyles__CurrentMagazineWrapper>
+        <CurrentMagazinestyles__CurrentMagazineHeader>
+                Revista Atual
+        </CurrentMagazinestyles__CurrentMagazineHeader>
+        <CurrentMagazinestyles__CurrentMagazineInfoWrapper>
+                <CurrentMagazinestyles__CurrentMagazineCover>
+                        <ImageWithFallback
+                                fallbackIcon="ico_pictureless"
+                                imageUrl={undefined}
+                        />
+                </CurrentMagazinestyles__CurrentMagazineCover>
+                <CurrentMagazinestyles__CurrentMagazineInfo>
+                        <CurrentMagazinestyles__CurrentMagazinePeriod>
+                                Ciclo
+                                 
+                        </CurrentMagazinestyles__CurrentMagazinePeriod>
+                        <CurrentMagazinestyles__CurrentMagazineTitle />
+                        <CurrentMagazinestyles__CurrentMagazineAdditionalInfo
+                                opened={false}
+                        >
+                                <CurrentMagazinestyles__CurrentMagazineDescription
+                                        dangerouslySetInnerHTML={
+                                                Object {
+                                                        "__html": undefined,
+                                                      }
+                                        }
+                                />
+                                <CurrentMagazinestyles__ButtonWrapper>
+                                        <FlatButton
+                                                disabled={false}
+                                                fullWidth={false}
+                                                icon={
+                                                        <Icon
+                                                                file="ico_magazine_download"
+                                                        />
+                                                }
+                                                label="Baixar revista"
+                                                labelPosition="after"
+                                                labelStyle={Object {}}
+                                                onClick={[Function]}
+                                                onKeyboardFocus={[Function]}
+                                                onMouseEnter={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onTouchStart={[Function]}
+                                                primary={true}
+                                                secondary={false}
+                                        />
+                                        <FlatButton
+                                                disabled={false}
+                                                fullWidth={false}
+                                                icon={
+                                                        <Icon
+                                                                file="ico_view"
+                                                        />
+                                                }
+                                                label="Ver revista"
+                                                labelPosition="after"
+                                                labelStyle={Object {}}
+                                                onClick={[Function]}
+                                                onKeyboardFocus={[Function]}
+                                                onMouseEnter={[Function]}
+                                                onMouseLeave={[Function]}
+                                                onTouchStart={[Function]}
+                                                primary={true}
+                                                secondary={false}
+                                        />
+                                </CurrentMagazinestyles__ButtonWrapper>
+                                <CurrentMagazinestyles__CurrentMagazineTaxWrapper>
+                                        <CurrentMagazinestyles__CurrentMagazineTax>
+                                                <Link
+                                                        replace={false}
+                                                        target="_blank"
+                                                        to=""
+                                                >
+                                                        Confira aqui
+                                                </Link>
+                                                 
+                                                a carga tributária dos produtos Natura.
+                                        </CurrentMagazinestyles__CurrentMagazineTax>
+                                        <CurrentMagazinestyles__CurrentMagazineTax>
+                                                Os valores deste material são apenas sugestões que oferecemos aos Consultores Natura, que são absolutamente livre para revender os produtos pelos valores que melhor lhes atendem
+                                        </CurrentMagazinestyles__CurrentMagazineTax>
+                                </CurrentMagazinestyles__CurrentMagazineTaxWrapper>
+                        </CurrentMagazinestyles__CurrentMagazineAdditionalInfo>
+                        <CurrentMagazinestyles__CurrentMagazineSeeMore>
+                                <FormButton
+                                        backgroundColor="#c9c9c9"
+                                        disabled={false}
+                                        fullWidth={true}
+                                        height="44px"
+                                        label="Ver mais"
+                                        labelColor="#fff"
+                                        link={null}
+                                        onClick={[Function]}
+                                        primary={true}
+                                        raised="true"
+                                />
+                        </CurrentMagazinestyles__CurrentMagazineSeeMore>
+                </CurrentMagazinestyles__CurrentMagazineInfo>
+        </CurrentMagazinestyles__CurrentMagazineInfoWrapper>
+</CurrentMagazinestyles__CurrentMagazineWrapper>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+}
+`;

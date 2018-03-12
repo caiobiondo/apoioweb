@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Magazine View should render the magazine pages (initially just the cover) 1`] = `
+<indexstyles__Main>
+  <Apollo(MagazinePages)
+    id={123}
+    type="natura"
+  />
+</indexstyles__Main>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderDetails renders the order details page 1`] = `
+<indexstyles__OrderDetailsWrapper>
+  <Apollo(OrderDetailsData)
+    orderId={1}
+  />
+</indexstyles__OrderDetailsWrapper>
+`;

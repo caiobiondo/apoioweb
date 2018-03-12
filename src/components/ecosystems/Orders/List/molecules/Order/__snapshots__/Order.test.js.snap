@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order should render an order card 1`] = `
+<CustomCard
+  color="WARNING"
+>
+  <CardSection
+    alignItems="flex-start"
+    justifyContent="center"
+  >
+    <Orderstyles__Header>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderNumber"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          #123
+        </div>
+      </div>
+    </Orderstyles__Header>
+    <Orderstyles__Body>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderCycle"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          cycle
+        </div>
+      </div>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderDate"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          date
+        </div>
+      </div>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderEstimatedDeliveryDate"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          estimatedDeliveryDate
+        </div>
+      </div>
+    </Orderstyles__Body>
+  </CardSection>
+  <CardSection
+    alignItems="flex-start"
+    justifyContent="space-between"
+  >
+    <Orderstyles__Header>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderValue"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          R$ 123
+        </div>
+      </div>
+    </Orderstyles__Header>
+    <Orderstyles__Body>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderTotalScore"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          100
+        </div>
+      </div>
+    </Orderstyles__Body>
+  </CardSection>
+  <CardSection
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Orderstyles__Status>
+      <CustomCardText
+        color="WARNING"
+      >
+        status
+      </CustomCardText>
+    </Orderstyles__Status>
+    <FormButton
+      backgroundColor="#fff"
+      disabled={false}
+      height="44px"
+      label={
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderDetails"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+      }
+      labelColor="#000"
+      link="link"
+      primary={false}
+      raised="true"
+    />
+  </CardSection>
+</CustomCard>
+`;
+
+exports[`Order should render an order card without some field 1`] = `
+<CustomCard
+  color="DANGER"
+>
+  <CardSection
+    alignItems="flex-start"
+    justifyContent="center"
+  >
+    <Orderstyles__Header>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderNumber"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          #123
+        </div>
+      </div>
+    </Orderstyles__Header>
+    <Orderstyles__Body />
+  </CardSection>
+  <CardSection
+    alignItems="flex-start"
+    justifyContent="space-between"
+  >
+    <Orderstyles__Header>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderValue"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          R$ 123
+        </div>
+      </div>
+    </Orderstyles__Header>
+    <Orderstyles__Body>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderTotalScore"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          100
+        </div>
+      </div>
+    </Orderstyles__Body>
+  </CardSection>
+  <CardSection
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Orderstyles__Status>
+      <CustomCardText
+        color="DANGER"
+      >
+        status
+      </CustomCardText>
+    </Orderstyles__Status>
+    <FormButton
+      backgroundColor="#fff"
+      disabled={false}
+      height="44px"
+      label={
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderDetails"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+      }
+      labelColor="#000"
+      link="link"
+      primary={false}
+      raised="true"
+    />
+  </CardSection>
+</CustomCard>
+`;
+
+exports[`Order should render an order card without status 1`] = `
+<CustomCard
+  color="SUCCESS"
+>
+  <CardSection
+    alignItems="flex-start"
+    justifyContent="center"
+  >
+    <Orderstyles__Header>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderNumber"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          #123
+        </div>
+      </div>
+    </Orderstyles__Header>
+    <Orderstyles__Body>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderCycle"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          cycle
+        </div>
+      </div>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderDate"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          date
+        </div>
+      </div>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderEstimatedDeliveryDate"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          estimatedDeliveryDate
+        </div>
+      </div>
+    </Orderstyles__Body>
+  </CardSection>
+  <CardSection
+    alignItems="flex-start"
+    justifyContent="space-between"
+  >
+    <Orderstyles__Header>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderValue"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          R$ 123
+        </div>
+      </div>
+    </Orderstyles__Header>
+    <Orderstyles__Body>
+      <div>
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderTotalScore"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+        <div>
+          100
+        </div>
+      </div>
+    </Orderstyles__Body>
+  </CardSection>
+  <CardSection
+    alignItems="center"
+    justifyContent="center"
+  >
+    <FormButton
+      backgroundColor="#fff"
+      disabled={false}
+      height="44px"
+      label={
+        <Orderstyles__Label>
+          <FormattedMessage
+            id="orderDetails"
+            values={Object {}}
+          />
+        </Orderstyles__Label>
+      }
+      labelColor="#000"
+      link="link"
+      primary={false}
+      raised="true"
+    />
+  </CardSection>
+</CustomCard>
+`;

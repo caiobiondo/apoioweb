@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreCycles renders score cycles 1`] = `
+<ScoreCyclesstyles__Wrapper>
+  <MyScorestyles__SmallTitle>
+    <FormattedMessage
+      id="scoreStatementInPeriod"
+      values={Object {}}
+    />
+  </MyScorestyles__SmallTitle>
+  <MyScorestyles__PeriodTogglerWrapper>
+    <PeriodToggler />
+  </MyScorestyles__PeriodTogglerWrapper>
+  <PointsCycleSelection
+    currentCycleNumber={2017}
+    currentLevelColor="128, 128, 128"
+    selectedCycleNumber={2}
+  />
+  <Apollo(Apollo(PeriodHistory))
+    cycleNumber={2}
+    onClose={[Function]}
+    year="2016"
+  />
+</ScoreCyclesstyles__Wrapper>
+`;

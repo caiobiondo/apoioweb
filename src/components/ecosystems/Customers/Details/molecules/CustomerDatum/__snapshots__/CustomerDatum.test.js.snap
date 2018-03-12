@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerDatum renders an customer datum 1`] = `<CustomerDatumstyles__CustomerDatumBase />`;

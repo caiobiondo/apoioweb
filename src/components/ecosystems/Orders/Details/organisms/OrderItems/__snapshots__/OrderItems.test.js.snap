@@ -1,0 +1,856 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderItems renders order details items list (in importing mode) 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "24px",
+      "padding": "30px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_box"
+    value="orderItems"
+  />
+  <OrderItemsstyles__OrderItemsInfos>
+    <OrderItemsstyles__OrderItemsQuantityWrapper>
+      <FormattedMessage
+        id="orderItemsBoughtQuantity"
+        values={Object {}}
+      />
+      <OrderItemsstyles__OrderItemsQuantity>
+        (
+        2
+        )
+      </OrderItemsstyles__OrderItemsQuantity>
+    </OrderItemsstyles__OrderItemsQuantityWrapper>
+    <div>
+      <OrderItemsstyles__OrderItemsHeader>
+        <OrderItemsstyles__OrderItemsHeaderProductDescription>
+          <FormattedMessage
+            id="orderItemProduct"
+            values={Object {}}
+          />
+        </OrderItemsstyles__OrderItemsHeaderProductDescription>
+        <OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemQuantity"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemValue"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemPoints"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel />
+        </OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+      </OrderItemsstyles__OrderItemsHeader>
+      <OrderItem
+        imported={false}
+        importing={true}
+        intl={
+          Object {
+            "formatCurrency": [Function],
+            "formatDate": [Function],
+            "formatNumber": [Function],
+            "formatTime": [Function],
+          }
+        }
+        key="29415"
+        loading={false}
+        onImport={[Function]}
+        order={
+          Object {
+            "__typename": "Order",
+            "ciclo": "14/2017",
+            "codigoPedido": 378325469,
+            "dataEmissaoNotaFiscal": null,
+            "dataPedido": "2017-10-06T18:40:55.000Z",
+            "entrega": Object {
+              "__typename": "Delivery",
+              "dtNovaPrevisaoEntrega": null,
+              "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+              "dtPrevisaoEntregaProrrogada": null,
+              "dtPrimeiraTentativaEntrega": null,
+              "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+              "dtSegundaTentativaEntrega": null,
+              "enderecoEntrega": Object {
+                "__typename": "DeliveryAddress",
+                "bairro": "XANGRI LA",
+                "cep": "32187090",
+                "cidade": "CONTAGEM",
+                "complemento": "B",
+                "estado": "MG",
+                "nomeLogradouro": "ACUCENA",
+                "numero": "0",
+                "tipoLogradouro": "R",
+              },
+            },
+            "envioBoleto": "Impresso e Enviado com o Pedido",
+            "formasPagamento": Array [
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+            ],
+            "itemEnviadoCaixa": Array [
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 29415,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 8,
+                "quantidadePontosUnitario": 8,
+                "valorTotal": 33.529998779296875,
+              },
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 38889,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 2,
+                "quantidadePontosUnitario": 2,
+                "valorTotal": 8.399999618530273,
+              },
+            ],
+            "meioCaptacao": "WEB",
+            "modeloComercial": "Consultora",
+            "numeroNotaFiscal": null,
+            "ocorrencias": Array [
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-08T10:44:00.000Z",
+                "id": 87,
+                "motivo": "Saiu para Entrega",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Saiu para Entrega",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T16:39:00.000Z",
+                "id": 66,
+                "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+                "ocorrencia": "ENTREGA",
+                "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T05:40:00.000Z",
+                "id": 49,
+                "motivo": "Chegada Filial Destino",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Chegada Filial Destino",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-06T18:46:00.000Z",
+                "id": 88,
+                "motivo": "Coletado pela Transportadora",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Coletado pela Transportadora",
+              },
+            ],
+            "pontos": 68,
+            "qtdParcelas": 2,
+            "quantidadeItens": 1,
+            "status": "CONCLUÍDO E APROVADO",
+            "valor": 390.0799865722656,
+            "valorParcela": 200.89,
+            "vlAPagarSomaTaxa": 401.78238616943355,
+            "vlTaxaReal": 11.702399597167968,
+          }
+        }
+        orderItem={
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 29415,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 8,
+            "quantidadePontosUnitario": 8,
+            "valorTotal": 33.529998779296875,
+          }
+        }
+      />
+      <OrderItem
+        imported={false}
+        importing={true}
+        intl={
+          Object {
+            "formatCurrency": [Function],
+            "formatDate": [Function],
+            "formatNumber": [Function],
+            "formatTime": [Function],
+          }
+        }
+        key="38889"
+        loading={false}
+        onImport={[Function]}
+        order={
+          Object {
+            "__typename": "Order",
+            "ciclo": "14/2017",
+            "codigoPedido": 378325469,
+            "dataEmissaoNotaFiscal": null,
+            "dataPedido": "2017-10-06T18:40:55.000Z",
+            "entrega": Object {
+              "__typename": "Delivery",
+              "dtNovaPrevisaoEntrega": null,
+              "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+              "dtPrevisaoEntregaProrrogada": null,
+              "dtPrimeiraTentativaEntrega": null,
+              "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+              "dtSegundaTentativaEntrega": null,
+              "enderecoEntrega": Object {
+                "__typename": "DeliveryAddress",
+                "bairro": "XANGRI LA",
+                "cep": "32187090",
+                "cidade": "CONTAGEM",
+                "complemento": "B",
+                "estado": "MG",
+                "nomeLogradouro": "ACUCENA",
+                "numero": "0",
+                "tipoLogradouro": "R",
+              },
+            },
+            "envioBoleto": "Impresso e Enviado com o Pedido",
+            "formasPagamento": Array [
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+            ],
+            "itemEnviadoCaixa": Array [
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 29415,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 8,
+                "quantidadePontosUnitario": 8,
+                "valorTotal": 33.529998779296875,
+              },
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 38889,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 2,
+                "quantidadePontosUnitario": 2,
+                "valorTotal": 8.399999618530273,
+              },
+            ],
+            "meioCaptacao": "WEB",
+            "modeloComercial": "Consultora",
+            "numeroNotaFiscal": null,
+            "ocorrencias": Array [
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-08T10:44:00.000Z",
+                "id": 87,
+                "motivo": "Saiu para Entrega",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Saiu para Entrega",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T16:39:00.000Z",
+                "id": 66,
+                "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+                "ocorrencia": "ENTREGA",
+                "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T05:40:00.000Z",
+                "id": 49,
+                "motivo": "Chegada Filial Destino",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Chegada Filial Destino",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-06T18:46:00.000Z",
+                "id": 88,
+                "motivo": "Coletado pela Transportadora",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Coletado pela Transportadora",
+              },
+            ],
+            "pontos": 68,
+            "qtdParcelas": 2,
+            "quantidadeItens": 1,
+            "status": "CONCLUÍDO E APROVADO",
+            "valor": 390.0799865722656,
+            "valorParcela": 200.89,
+            "vlAPagarSomaTaxa": 401.78238616943355,
+            "vlTaxaReal": 11.702399597167968,
+          }
+        }
+        orderItem={
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 38889,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 2,
+            "quantidadePontosUnitario": 2,
+            "valorTotal": 8.399999618530273,
+          }
+        }
+      />
+    </div>
+  </OrderItemsstyles__OrderItemsInfos>
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="goToStock"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={false}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="importMoreProducts"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    bodyStyle={
+      Object {
+        "fontFamily": "Roboto",
+        "padding": "12px 25px",
+      }
+    }
+    contentStyle={
+      Object {
+        "maxWidth": "450px",
+      }
+    }
+    key="successDialog"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="Produto importado para o estoque com sucesso!"
+    titleStyle={
+      Object {
+        "fontWeight": 800,
+      }
+    }
+  />
+</Paper>
+`;
+
+exports[`OrderItems renders order details items list 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "marginBottom": "24px",
+      "padding": "30px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_box"
+    value="orderItems"
+  />
+  <OrderItemsstyles__OrderItemsInfos>
+    <OrderItemsstyles__OrderItemsQuantityWrapper>
+      <FormattedMessage
+        id="orderItemsBoughtQuantity"
+        values={Object {}}
+      />
+      <OrderItemsstyles__OrderItemsQuantity>
+        (
+        2
+        )
+      </OrderItemsstyles__OrderItemsQuantity>
+    </OrderItemsstyles__OrderItemsQuantityWrapper>
+    <div>
+      <OrderItemsstyles__OrderItemsHeader>
+        <OrderItemsstyles__OrderItemsHeaderProductDescription>
+          <FormattedMessage
+            id="orderItemProduct"
+            values={Object {}}
+          />
+        </OrderItemsstyles__OrderItemsHeaderProductDescription>
+        <OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemQuantity"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemValue"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+          <OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+            <FormattedMessage
+              id="orderItemPoints"
+              values={Object {}}
+            />
+          </OrderItemsstyles__OrderItemsHeaderProductValueLabel>
+        </OrderItemsstyles__OrderItemsHeaderProductValuesWrapper>
+      </OrderItemsstyles__OrderItemsHeader>
+      <OrderItem
+        imported={false}
+        importing={false}
+        intl={
+          Object {
+            "formatCurrency": [Function],
+            "formatDate": [Function],
+            "formatNumber": [Function],
+            "formatTime": [Function],
+          }
+        }
+        key="29415"
+        loading={false}
+        onImport={[Function]}
+        order={
+          Object {
+            "__typename": "Order",
+            "ciclo": "14/2017",
+            "codigoPedido": 378325469,
+            "dataEmissaoNotaFiscal": null,
+            "dataPedido": "2017-10-06T18:40:55.000Z",
+            "entrega": Object {
+              "__typename": "Delivery",
+              "dtNovaPrevisaoEntrega": null,
+              "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+              "dtPrevisaoEntregaProrrogada": null,
+              "dtPrimeiraTentativaEntrega": null,
+              "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+              "dtSegundaTentativaEntrega": null,
+              "enderecoEntrega": Object {
+                "__typename": "DeliveryAddress",
+                "bairro": "XANGRI LA",
+                "cep": "32187090",
+                "cidade": "CONTAGEM",
+                "complemento": "B",
+                "estado": "MG",
+                "nomeLogradouro": "ACUCENA",
+                "numero": "0",
+                "tipoLogradouro": "R",
+              },
+            },
+            "envioBoleto": "Impresso e Enviado com o Pedido",
+            "formasPagamento": Array [
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+            ],
+            "itemEnviadoCaixa": Array [
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 29415,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 8,
+                "quantidadePontosUnitario": 8,
+                "valorTotal": 33.529998779296875,
+              },
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 38889,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 2,
+                "quantidadePontosUnitario": 2,
+                "valorTotal": 8.399999618530273,
+              },
+            ],
+            "meioCaptacao": "WEB",
+            "modeloComercial": "Consultora",
+            "numeroNotaFiscal": null,
+            "ocorrencias": Array [
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-08T10:44:00.000Z",
+                "id": 87,
+                "motivo": "Saiu para Entrega",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Saiu para Entrega",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T16:39:00.000Z",
+                "id": 66,
+                "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+                "ocorrencia": "ENTREGA",
+                "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T05:40:00.000Z",
+                "id": 49,
+                "motivo": "Chegada Filial Destino",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Chegada Filial Destino",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-06T18:46:00.000Z",
+                "id": 88,
+                "motivo": "Coletado pela Transportadora",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Coletado pela Transportadora",
+              },
+            ],
+            "pontos": 68,
+            "qtdParcelas": 2,
+            "quantidadeItens": 1,
+            "status": "CONCLUÍDO E APROVADO",
+            "valor": 390.0799865722656,
+            "valorParcela": 200.89,
+            "vlAPagarSomaTaxa": 401.78238616943355,
+            "vlTaxaReal": 11.702399597167968,
+          }
+        }
+        orderItem={
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 29415,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 8,
+            "quantidadePontosUnitario": 8,
+            "valorTotal": 33.529998779296875,
+          }
+        }
+      />
+      <OrderItem
+        imported={false}
+        importing={false}
+        intl={
+          Object {
+            "formatCurrency": [Function],
+            "formatDate": [Function],
+            "formatNumber": [Function],
+            "formatTime": [Function],
+          }
+        }
+        key="38889"
+        loading={false}
+        onImport={[Function]}
+        order={
+          Object {
+            "__typename": "Order",
+            "ciclo": "14/2017",
+            "codigoPedido": 378325469,
+            "dataEmissaoNotaFiscal": null,
+            "dataPedido": "2017-10-06T18:40:55.000Z",
+            "entrega": Object {
+              "__typename": "Delivery",
+              "dtNovaPrevisaoEntrega": null,
+              "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+              "dtPrevisaoEntregaProrrogada": null,
+              "dtPrimeiraTentativaEntrega": null,
+              "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+              "dtSegundaTentativaEntrega": null,
+              "enderecoEntrega": Object {
+                "__typename": "DeliveryAddress",
+                "bairro": "XANGRI LA",
+                "cep": "32187090",
+                "cidade": "CONTAGEM",
+                "complemento": "B",
+                "estado": "MG",
+                "nomeLogradouro": "ACUCENA",
+                "numero": "0",
+                "tipoLogradouro": "R",
+              },
+            },
+            "envioBoleto": "Impresso e Enviado com o Pedido",
+            "formasPagamento": Array [
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+              Object {
+                "__typename": "PaymentMethod",
+                "descricaoCan": "21/42 DIAS",
+                "descricaoWeb": "21/42 DIAS",
+                "valorAcumulado": 401.78238616943355,
+              },
+            ],
+            "itemEnviadoCaixa": Array [
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 29415,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 8,
+                "quantidadePontosUnitario": 8,
+                "valorTotal": 33.529998779296875,
+              },
+              Object {
+                "__typename": "OrderItem",
+                "codigoProduto": 38889,
+                "produto": Object {
+                  "__typename": "Product",
+                  "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+                },
+                "quantidadeItem": 1,
+                "quantidadePontosTotal": 2,
+                "quantidadePontosUnitario": 2,
+                "valorTotal": 8.399999618530273,
+              },
+            ],
+            "meioCaptacao": "WEB",
+            "modeloComercial": "Consultora",
+            "numeroNotaFiscal": null,
+            "ocorrencias": Array [
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-08T10:44:00.000Z",
+                "id": 87,
+                "motivo": "Saiu para Entrega",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Saiu para Entrega",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T16:39:00.000Z",
+                "id": 66,
+                "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+                "ocorrencia": "ENTREGA",
+                "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-07T05:40:00.000Z",
+                "id": 49,
+                "motivo": "Chegada Filial Destino",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Chegada Filial Destino",
+              },
+              Object {
+                "__typename": "Event",
+                "data": "2015-05-06T18:46:00.000Z",
+                "id": 88,
+                "motivo": "Coletado pela Transportadora",
+                "ocorrencia": "INFORMATIVA",
+                "solucao": "Coletado pela Transportadora",
+              },
+            ],
+            "pontos": 68,
+            "qtdParcelas": 2,
+            "quantidadeItens": 1,
+            "status": "CONCLUÍDO E APROVADO",
+            "valor": 390.0799865722656,
+            "valorParcela": 200.89,
+            "vlAPagarSomaTaxa": 401.78238616943355,
+            "vlTaxaReal": 11.702399597167968,
+          }
+        }
+        orderItem={
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 38889,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 2,
+            "quantidadePontosUnitario": 2,
+            "valorTotal": 8.399999618530273,
+          }
+        }
+      />
+    </div>
+  </OrderItemsstyles__OrderItemsInfos>
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="goToStock"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={false}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="importMoreProducts"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    bodyStyle={
+      Object {
+        "fontFamily": "Roboto",
+        "padding": "12px 25px",
+      }
+    }
+    contentStyle={
+      Object {
+        "maxWidth": "450px",
+      }
+    }
+    key="successDialog"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="Produto importado para o estoque com sucesso!"
+    titleStyle={
+      Object {
+        "fontWeight": 800,
+      }
+    }
+  />
+</Paper>
+`;

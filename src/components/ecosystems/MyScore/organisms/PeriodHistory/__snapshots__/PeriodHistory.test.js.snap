@@ -1,0 +1,502 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeriodHistory renders period history when direct and ecommerce order has the same date 1`] = `
+<PeriodHistorystyles__Wrapper>
+  <PeriodHistorystyles__CloseButton>
+    <Icon
+      file="ico_times"
+    />
+  </PeriodHistorystyles__CloseButton>
+  <PeriodHistorystyles__OrderHistoryHeader>
+    <PeriodHistorystyles__OrderHistoryTitle>
+      <FormattedMessage
+        id="orderHistory"
+        values={Object {}}
+      />
+    </PeriodHistorystyles__OrderHistoryTitle>
+    <PeriodHistorystyles__OrderHistoryPoints>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="digital"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_monitor"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="presential"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_marker"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <FormattedMessage
+          id="totalInCycle"
+          values={Object {}}
+        />
+        : 
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+    </PeriodHistorystyles__OrderHistoryPoints>
+  </PeriodHistorystyles__OrderHistoryHeader>
+  <PeriodHistorystyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "body": Array [
+            Object {
+              "entryOrderDate": "2015-03-18T00:00:00.000Z",
+            },
+            Object {
+              "entryOrderDate": "2015-03-18T00:00:00.000Z",
+            },
+          ],
+          "columns": Array [
+            "type",
+            "orderNumber",
+            "entryOrderDate",
+            "totalOrderPoints",
+            "totalOrderValue",
+          ],
+          "renderer": Object {
+            "entryOrderDate": [Function],
+            "orderNumber": [Function],
+            "totalOrderPoints": [Function],
+            "totalOrderValue": [Function],
+            "type": [Function],
+          },
+          "style": Object {
+            "entryOrderDate": Object {
+              "width": "28%",
+            },
+            "icon": Object {
+              "width": "10%",
+            },
+            "orderNumber": Object {
+              "width": "25%",
+            },
+            "totalOrderPoints": Object {
+              "width": "15%",
+            },
+            "totalOrderValue": Object {
+              "textAlign": "right",
+              "width": "20%",
+            },
+          },
+        }
+      }
+    />
+  </PeriodHistorystyles__TableWrapper>
+</PeriodHistorystyles__Wrapper>
+`;
+
+exports[`PeriodHistory renders period history when direct order is older then ecommerce order 1`] = `
+<PeriodHistorystyles__Wrapper>
+  <PeriodHistorystyles__CloseButton>
+    <Icon
+      file="ico_times"
+    />
+  </PeriodHistorystyles__CloseButton>
+  <PeriodHistorystyles__OrderHistoryHeader>
+    <PeriodHistorystyles__OrderHistoryTitle>
+      <FormattedMessage
+        id="orderHistory"
+        values={Object {}}
+      />
+    </PeriodHistorystyles__OrderHistoryTitle>
+    <PeriodHistorystyles__OrderHistoryPoints>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="digital"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_monitor"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="presential"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_marker"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <FormattedMessage
+          id="totalInCycle"
+          values={Object {}}
+        />
+        : 
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+    </PeriodHistorystyles__OrderHistoryPoints>
+  </PeriodHistorystyles__OrderHistoryHeader>
+  <PeriodHistorystyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "body": Array [
+            Object {
+              "entryOrderDate": "2015-03-18T00:00:00.000Z",
+            },
+            Object {
+              "entryOrderDate": "2017-07-21T00:00:00.000Z",
+            },
+          ],
+          "columns": Array [
+            "type",
+            "orderNumber",
+            "entryOrderDate",
+            "totalOrderPoints",
+            "totalOrderValue",
+          ],
+          "renderer": Object {
+            "entryOrderDate": [Function],
+            "orderNumber": [Function],
+            "totalOrderPoints": [Function],
+            "totalOrderValue": [Function],
+            "type": [Function],
+          },
+          "style": Object {
+            "entryOrderDate": Object {
+              "width": "28%",
+            },
+            "icon": Object {
+              "width": "10%",
+            },
+            "orderNumber": Object {
+              "width": "25%",
+            },
+            "totalOrderPoints": Object {
+              "width": "15%",
+            },
+            "totalOrderValue": Object {
+              "textAlign": "right",
+              "width": "20%",
+            },
+          },
+        }
+      }
+    />
+  </PeriodHistorystyles__TableWrapper>
+</PeriodHistorystyles__Wrapper>
+`;
+
+exports[`PeriodHistory renders period history when ecommerce order is older then direct order 1`] = `
+<PeriodHistorystyles__Wrapper>
+  <PeriodHistorystyles__CloseButton>
+    <Icon
+      file="ico_times"
+    />
+  </PeriodHistorystyles__CloseButton>
+  <PeriodHistorystyles__OrderHistoryHeader>
+    <PeriodHistorystyles__OrderHistoryTitle>
+      <FormattedMessage
+        id="orderHistory"
+        values={Object {}}
+      />
+    </PeriodHistorystyles__OrderHistoryTitle>
+    <PeriodHistorystyles__OrderHistoryPoints>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="digital"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_monitor"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="presential"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_marker"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <FormattedMessage
+          id="totalInCycle"
+          values={Object {}}
+        />
+        : 
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+    </PeriodHistorystyles__OrderHistoryPoints>
+  </PeriodHistorystyles__OrderHistoryHeader>
+  <PeriodHistorystyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "body": Array [
+            Object {
+              "entryOrderDate": "2015-03-18T00:00:00.000Z",
+            },
+            Object {
+              "entryOrderDate": "2017-07-21T00:00:00.000Z",
+            },
+          ],
+          "columns": Array [
+            "type",
+            "orderNumber",
+            "entryOrderDate",
+            "totalOrderPoints",
+            "totalOrderValue",
+          ],
+          "renderer": Object {
+            "entryOrderDate": [Function],
+            "orderNumber": [Function],
+            "totalOrderPoints": [Function],
+            "totalOrderValue": [Function],
+            "type": [Function],
+          },
+          "style": Object {
+            "entryOrderDate": Object {
+              "width": "28%",
+            },
+            "icon": Object {
+              "width": "10%",
+            },
+            "orderNumber": Object {
+              "width": "25%",
+            },
+            "totalOrderPoints": Object {
+              "width": "15%",
+            },
+            "totalOrderValue": Object {
+              "textAlign": "right",
+              "width": "20%",
+            },
+          },
+        }
+      }
+    />
+  </PeriodHistorystyles__TableWrapper>
+</PeriodHistorystyles__Wrapper>
+`;
+
+exports[`PeriodHistory renders period history when there is no orders 1`] = `
+<PeriodHistorystyles__Wrapper>
+  <PeriodHistorystyles__CloseButton>
+    <Icon
+      file="ico_times"
+    />
+  </PeriodHistorystyles__CloseButton>
+  <PeriodHistorystyles__OrderHistoryHeader>
+    <PeriodHistorystyles__OrderHistoryTitle>
+      <FormattedMessage
+        id="orderHistory"
+        values={Object {}}
+      />
+    </PeriodHistorystyles__OrderHistoryTitle>
+    <PeriodHistorystyles__OrderHistoryPoints>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="digital"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_monitor"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <PeriodHistorystyles__OrderHistoryPointLabel>
+          <span>
+            <FormattedMessage
+              id="presential"
+              values={Object {}}
+            />
+            : 
+          </span>
+          <Icon
+            file="ico_marker"
+          />
+        </PeriodHistorystyles__OrderHistoryPointLabel>
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+      <PeriodHistorystyles__OrderHistoryPoint>
+        <FormattedMessage
+          id="totalInCycle"
+          values={Object {}}
+        />
+        : 
+        <FormattedMessage
+          id="cyclePoints"
+          values={
+            Object {
+              "points": 0,
+            }
+          }
+        />
+      </PeriodHistorystyles__OrderHistoryPoint>
+    </PeriodHistorystyles__OrderHistoryPoints>
+  </PeriodHistorystyles__OrderHistoryHeader>
+  <PeriodHistorystyles__TableWrapper>
+    <NaturaTable
+      data={
+        Object {
+          "body": Array [],
+          "columns": Array [
+            "type",
+            "orderNumber",
+            "entryOrderDate",
+            "totalOrderPoints",
+            "totalOrderValue",
+          ],
+          "renderer": Object {
+            "entryOrderDate": [Function],
+            "orderNumber": [Function],
+            "totalOrderPoints": [Function],
+            "totalOrderValue": [Function],
+            "type": [Function],
+          },
+          "style": Object {
+            "entryOrderDate": Object {
+              "width": "28%",
+            },
+            "icon": Object {
+              "width": "10%",
+            },
+            "orderNumber": Object {
+              "width": "25%",
+            },
+            "totalOrderPoints": Object {
+              "width": "15%",
+            },
+            "totalOrderValue": Object {
+              "textAlign": "right",
+              "width": "20%",
+            },
+          },
+        }
+      }
+    />
+  </PeriodHistorystyles__TableWrapper>
+</PeriodHistorystyles__Wrapper>
+`;

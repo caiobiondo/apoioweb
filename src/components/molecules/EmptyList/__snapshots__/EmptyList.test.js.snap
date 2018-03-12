@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyList should render a default empty list indicator 1`] = `
+<EmptyListstyles__Container>
+  <EmptyListstyles__IconWrapper>
+    <Icon
+      file="ico_box"
+    />
+  </EmptyListstyles__IconWrapper>
+  <EmptyListstyles__Title />
+  <EmptyListstyles__Description />
+</EmptyListstyles__Container>
+`;
+
+exports[`EmptyList should render an empty customers indicator 1`] = `
+<EmptyListstyles__Container>
+  <EmptyListstyles__IconWrapper>
+    <Icon
+      file="ico_add_customer"
+    />
+  </EmptyListstyles__IconWrapper>
+  <EmptyListstyles__Title>
+    <FormattedMessage
+      id="customersEmptyList"
+      values={Object {}}
+    />
+  </EmptyListstyles__Title>
+  <EmptyListstyles__Description>
+    <FormattedMessage
+      id="customersEmptyListDescription"
+      values={Object {}}
+    />
+  </EmptyListstyles__Description>
+</EmptyListstyles__Container>
+`;
+
+exports[`EmptyList should render an empty orders indicator 1`] = `
+<EmptyListstyles__Container>
+  <EmptyListstyles__IconWrapper>
+    <Icon
+      file="ico_box"
+    />
+  </EmptyListstyles__IconWrapper>
+  <EmptyListstyles__Title>
+    <FormattedMessage
+      id="ordersEmptyList"
+      values={Object {}}
+    />
+  </EmptyListstyles__Title>
+  <EmptyListstyles__Description>
+    <FormattedMessage
+      id="ordersWithoutOrders"
+      values={Object {}}
+    />
+  </EmptyListstyles__Description>
+</EmptyListstyles__Container>
+`;

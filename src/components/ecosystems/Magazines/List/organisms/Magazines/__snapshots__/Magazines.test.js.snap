@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MagazinesQuery should render a loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`MagazinesQuery should render the current magazine and magazines list 1`] = `
+<div>
+  <withRouter(CurrentMagazine) />
+  <withRouter(PreviousMagazines) />
+</div>
+`;

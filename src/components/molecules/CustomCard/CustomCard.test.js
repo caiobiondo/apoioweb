@@ -13,7 +13,25 @@ describe('CustomCard', () => {
         <CustomCard.Section>
           <CustomCard.Text>text</CustomCard.Text>
         </CustomCard.Section>
-      </CustomCard>
+      </CustomCard>,
+    );
+    const result = renderer.getRenderOutput();
+
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should render a custom card with colored border', () => {
+    const renderer = new ShallowRenderer();
+    const color = '#fff';
+
+    renderer.render(
+      <CustomCard color={color}>
+        <CustomCard.Section>content 1</CustomCard.Section>
+        <CustomCard.Section>content 2</CustomCard.Section>
+        <CustomCard.Section>
+          <CustomCard.Text>text</CustomCard.Text>
+        </CustomCard.Section>
+      </CustomCard>,
     );
     const result = renderer.getRenderOutput();
 

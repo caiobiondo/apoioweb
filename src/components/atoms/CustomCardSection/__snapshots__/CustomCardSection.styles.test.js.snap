@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wrapper should render a wrapper 1`] = `
+<div
+  className="CustomCardSectionstyles__Wrapper-kofQWm gBBakA"
+/>
+`;

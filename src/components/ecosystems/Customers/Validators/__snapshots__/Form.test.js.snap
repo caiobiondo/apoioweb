@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validateForm should correctly validate the addresses 1`] = `
+Object {
+  "addresses": Array [
+    Object {
+      "city": Array [
+        "Cidade é obrigatório",
+      ],
+      "neighborhood": Array [
+        "Bairro é obrigatório",
+      ],
+      "state": Array [
+        "UF é obrigatório",
+      ],
+      "street_number": Array [
+        "Número é obrigatório",
+      ],
+      "zipcode": Array [
+        "CEP é obrigatório",
+        "CEP informado é inválido",
+      ],
+    },
+    Object {
+      "city": Array [
+        "Cidade é obrigatório",
+      ],
+      "neighborhood": Array [
+        "Bairro é obrigatório",
+      ],
+      "state": Array [
+        "UF é obrigatório",
+      ],
+      "street_name": Array [
+        "Endereço é obrigatório",
+      ],
+      "street_number": Array [
+        "Número é obrigatório",
+      ],
+      "zipcode": Array [
+        "CEP é obrigatório",
+        "CEP informado é inválido",
+      ],
+    },
+    null,
+  ],
+}
+`;
+
+exports[`validateForm should correctly validate the phones 1`] = `
+Object {
+  "phones": Array [
+    Object {
+      "phone": Array [
+        "Telefone é obrigatório",
+      ],
+    },
+    Object {
+      "phone": Array [
+        "Telefone é obrigatório",
+      ],
+    },
+    null,
+  ],
+}
+`;
+
+exports[`validateForm should return the correct error messages 1`] = `
+Object {
+  "birthday": Array [
+    "Nascimento é obrigatório",
+  ],
+  "gender": Array [
+    "Gênero é obrigatório",
+  ],
+  "name": Array [
+    "Nome Completo é obrigatório",
+  ],
+}
+`;

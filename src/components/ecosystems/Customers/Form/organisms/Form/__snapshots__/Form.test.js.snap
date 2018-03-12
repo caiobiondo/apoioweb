@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form correctly renders the customer form 1`] = `
+<Formstyles__Wrapper
+  onSubmit={[Function]}
+>
+  <WizardSteps
+    steps={
+      Array [
+        Object {
+          "completed": false,
+          "current": true,
+          "label": "Informações Pessoais",
+        },
+        Object {
+          "completed": false,
+          "current": false,
+          "label": "Endereço",
+        },
+        Object {
+          "completed": false,
+          "current": false,
+          "label": "Notas",
+        },
+      ]
+    }
+  />
+  <Formstyles__PageTitle>
+    <FormattedMessage
+      id="formCustomerCreateTitle"
+      values={Object {}}
+    />
+  </Formstyles__PageTitle>
+  <Formstyles__PageText>
+    <FormattedHTMLMessage
+      id="formCustomerText"
+      values={Object {}}
+    />
+  </Formstyles__PageText>
+  <Formstyles__FormWrapper>
+    <BasicInfoForm
+      addNewPhone={[Function]}
+      handleSubmit={[Function]}
+      history={
+        Object {
+          "back": [Function],
+        }
+      }
+      mutate={[Function]}
+      removePhone={[Function]}
+      setFieldValue={[Function]}
+      submitted={false}
+      values={Object {}}
+    />
+    <Formstyles__FormButtonsWrapper>
+      <FormButton
+        backgroundColor="#c9c9c9"
+        disabled={false}
+        height="50px"
+        label={
+          <FormattedMessage
+            id="formCustomerBack"
+            values={Object {}}
+          />
+        }
+        labelColor="#fff"
+        labelStyle={
+          Object {
+            "fontFamily": "Roboto-Medium",
+          }
+        }
+        link={null}
+        onClick={[Function]}
+        primary={false}
+        raised={false}
+      />
+      <FormButton
+        backgroundColor="#c9c9c9"
+        disabled={false}
+        height="50px"
+        label={
+          <FormattedMessage
+            id="formCustomerNext"
+            values={Object {}}
+          />
+        }
+        labelColor="#fff"
+        labelStyle={
+          Object {
+            "fontFamily": "Roboto-Medium",
+          }
+        }
+        link={null}
+        onClick={[Function]}
+        primary={true}
+        raised={false}
+        type="submit"
+      />
+    </Formstyles__FormButtonsWrapper>
+  </Formstyles__FormWrapper>
+</Formstyles__Wrapper>
+`;

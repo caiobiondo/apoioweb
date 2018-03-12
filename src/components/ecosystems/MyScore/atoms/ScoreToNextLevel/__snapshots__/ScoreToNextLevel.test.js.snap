@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreToNextLevel should render correctly 1`] = `
+<ScoreToNextLevelstyles__Wrapper>
+  <ScoreToNextLevelstyles__ContentWrapper>
+    <FormattedMessage
+      id="pointsToNextLevel"
+      values={
+        Object {
+          "nextLevelName": "Next Level",
+          "points": <b>
+            100
+        </b>,
+        }
+      }
+    />
+  </ScoreToNextLevelstyles__ContentWrapper>
+</ScoreToNextLevelstyles__Wrapper>
+`;

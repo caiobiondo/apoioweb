@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LevelList Styles should render the table row with correct font color 1`] = `
+<tr
+  className="LevelListstyles__TableRow-gJaVbf jxjahz"
+  color="#000"
+/>
+`;

@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Orders should render the orders page 1`] = `
-<Card
-  style={Object {}}
->
-  <Apollo(OrdersList) />
-</Card>
-`;

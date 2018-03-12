@@ -1,14 +1,33 @@
+/* eslint-enable sort-keys */
+import myScoreMessages from './messages/my_score';
+import orderMessages from './messages/order';
+import customerMessages from './messages/customer';
+import genericMessages from './messages/generic';
+import formValidationMessages from './messages/form_validation';
+import stockMessages from './messages/stock';
+import magazineMessages from './messages/magazine';
+import trainingMessages from './messages/training';
+
 export default {
   'en-US': {
-    orderNumber: 'Order number'
+    ...customerMessages['en-US'],
+    ...formValidationMessages['en-US'],
+    ...genericMessages['en-US'],
+    ...myScoreMessages['en-US'],
+    ...orderMessages['en-US'],
+    ...stockMessages['en-US'],
+    ...magazineMessages['en-US'],
+    ...trainingMessages['en-US'],
   },
   'pt-BR': {
-    orderCycle: 'Ciclo',
-    orderDate: 'Data do pedido',
-    orderDetails: 'Detalhe',
-    orderEstimatedDeliveryDate: 'Previsão de entrega',
-    orderNumber: 'Número do pedido',
-    orderTotalScore: 'Pontos',
-    orderValue: 'Valor total'
-  }
+    ...customerMessages['pt-BR'],
+    ...formValidationMessages['pt-BR'],
+    ...genericMessages['pt-BR'],
+    ...myScoreMessages['pt-BR'],
+    ...orderMessages['pt-BR'],
+    ...stockMessages['pt-BR'],
+    ...magazineMessages['pt-BR'],
+    ...trainingMessages['pt-BR'],
+  },
 };
+/* eslint-disable sort-keys */

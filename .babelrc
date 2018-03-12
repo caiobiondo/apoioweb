@@ -1,0 +1,12 @@
+{
+  "presets": ["es2015", "react", "stage-0"],
+  "plugins": [
+    "transform-runtime",
+    "babel-plugin-styled-components"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["dynamic-import-node", "syntax-dynamic-import"]
+    }
+  }
+}

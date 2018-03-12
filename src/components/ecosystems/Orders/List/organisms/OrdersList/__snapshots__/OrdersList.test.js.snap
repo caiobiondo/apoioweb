@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersList should render a loading indicator 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`OrdersList should render an empty list indicator 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <EmptyList
+    descriptionId="ordersWithoutOrders"
+    icon="ico_box"
+    titleId="ordersEmptyList"
+  />
+</Paper>
+`;
+
+exports[`OrdersList should render an order list 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "flex": "1 1 0",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "paddingBottom": "70px",
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <InfiniteScroll
+    element="div"
+    hasMore={false}
+    initialLoad={true}
+    isReverse={false}
+    loadMore={[Function]}
+    loader={
+      <mixins__LoadingWrapperStyle>
+        <CircularProgress
+          max={100}
+          min={0}
+          mode="indeterminate"
+          size={40}
+          thickness={2}
+          value={0}
+        />
+      </mixins__LoadingWrapperStyle>
+    }
+    pageStart={0}
+    ref={null}
+    threshold={250}
+    useCapture={false}
+    useWindow={true}
+  >
+    <OrdersListstyles__List>
+      <Order
+        importing={undefined}
+        left={
+          Object {
+            "body": Object {
+              "orderDate": "formatedDate",
+              "orderEstimatedDeliveryDate": "formatedDate",
+            },
+            "header": Object {
+              "orderNumber": "#311619650",
+            },
+          }
+        }
+        middle={
+          Object {
+            "body": Object {
+              "orderCycle": "13/2017",
+              "orderTotalScore": 27,
+            },
+            "header": Object {
+              "orderValue": "formatedNumber 420.17",
+            },
+          }
+        }
+        right={
+          Object {
+            "details": "/my-orders/detail/311619650",
+            "status": "CONCLUÍDO E APROVADO",
+          }
+        }
+        statusType="pending"
+      />
+      <Order
+        importing={undefined}
+        left={
+          Object {
+            "body": Object {
+              "orderDate": "formatedDate",
+              "orderEstimatedDeliveryDate": "formatedDate",
+            },
+            "header": Object {
+              "orderNumber": "#311619651",
+            },
+          }
+        }
+        middle={
+          Object {
+            "body": Object {
+              "orderCycle": "13/2017",
+              "orderTotalScore": 27,
+            },
+            "header": Object {
+              "orderValue": "formatedNumber 420.17",
+            },
+          }
+        }
+        right={
+          Object {
+            "details": "/my-orders/detail/311619651",
+            "status": "CONCLUÍDO E APROVADO",
+          }
+        }
+        statusType="pending"
+      />
+    </OrdersListstyles__List>
+  </InfiniteScroll>
+</Paper>
+`;

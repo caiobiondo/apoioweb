@@ -1,6 +1,7 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,6 +13,8 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const convertDimensions = require('./webpack/svgo/convertDimensions');
+const DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -20,7 +23,7 @@ const publicPath = paths.servedPath;
 // For these, "homepage" can be set to "." to enable relative asset paths.
 const shouldUseRelativeAssetPaths = publicPath === './';
 // Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP === 'true';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
@@ -78,7 +81,7 @@ module.exports = {
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
-    modules: ['node_modules', paths.appNodeModules].concat(
+    modules: ['node_modules', paths.appNodeModules, paths.appSrc].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
@@ -102,6 +105,18 @@ module.exports = {
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+      new DirectoryNamedWebpackPlugin({
+        honorIndex: true,
+        exclude: /node_modules/
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'common',
+        filename: 'common.[chunkhash].js',
+        minChunks(module, count) {
+          var context = module.context;
+          return context && context.indexOf('node_modules') >= 0;
+        },
+      }),
     ],
   },
   module: {
@@ -152,6 +167,31 @@ module.exports = {
 
               compact: true,
             },
+          },
+          {
+            test: /\.svg$/,
+            include: [paths.naturaUiComponents, paths.appSrc],
+            use: [
+              {
+                loader: 'svg-react-loader',
+                options: {
+                  query: {
+                    classIdPrefix: '[name].[hash]'
+                  },
+                }
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeUselessStrokeAndFill: true },
+                    { convertPathData: false },
+                    { removeTitle: true },
+                    { custom: convertDimensions },
+                  ],
+                }
+              },
+            ],
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
@@ -217,7 +257,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
@@ -229,6 +269,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+      safe: true, // load .env.example (defaults to "false" which does not use dotenv-safe)
+    }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">

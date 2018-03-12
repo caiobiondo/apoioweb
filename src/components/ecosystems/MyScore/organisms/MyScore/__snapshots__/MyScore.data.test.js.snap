@@ -1,0 +1,505 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyScoreQuery queries correctly 1`] = `
+Object {
+  "definitions": Array [
+    Object {
+      "directives": Array [],
+      "kind": "OperationDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "MyScoreQuery",
+      },
+      "operation": "query",
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "consultantId",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "consultantId",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "commercialStructureMarketManagementId",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "commercialStructureMarketManagementId",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "commercialStructureStrategicRegionId",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "commercialStructureStrategicRegionId",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "commercialStructureSalesManagementId",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "commercialStructureSalesManagementId",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "commercialStructureSectorId",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "commercialStructureSectorId",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "commercialStructureGroupId",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "commercialStructureGroupId",
+                  },
+                },
+              },
+            ],
+            "directives": Array [],
+            "kind": "Field",
+            "name": Object {
+              "kind": "Name",
+              "value": "growthStatus",
+            },
+            "selectionSet": Object {
+              "kind": "SelectionSet",
+              "selections": Array [
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "currentLevelName",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "currentLevelId",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "periodTotalPoints",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "periodNaturaNetwork",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "periodDirectSales",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "periodStartCycle",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "periodEndCycle",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "cycle",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "parsedCycle",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "currentPlan",
+                  },
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "selections": Array [
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "growthPlanName",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "growthPlanYear",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "levels",
+                        },
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "levelId",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "levelName",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "levelSequence",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "levelPointsRangeStart",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "levelPointsRangeEnd",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "levelPointsRemaining",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "color_r",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "color_g",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "color_b",
+                              },
+                              "selectionSet": null,
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "variableDefinitions": Array [
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Int",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "consultantId",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Int",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "commercialStructureMarketManagementId",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Int",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "commercialStructureStrategicRegionId",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Int",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "commercialStructureSalesManagementId",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Int",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "commercialStructureSectorId",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Int",
+              },
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "commercialStructureGroupId",
+            },
+          },
+        },
+      ],
+    },
+  ],
+  "kind": "Document",
+  "loc": Object {
+    "end": 1221,
+    "start": 0,
+  },
+}
+`;

@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'natura-ui';
+import { Paper } from 'natura-ui';
 
-import CustomCardSection from '../../atoms/CustomCardSection/CustomCardSection';
-import CustomCardText from '../../atoms/CustomCardText/CustomCardText';
-import { CARD_COLOR } from '../../../utils/colors';
+import CustomCardSection from 'components/atoms/CustomCardSection/CustomCardSection';
+import CustomCardText from 'components/atoms/CustomCardText/CustomCardText';
+import { CARD_COLOR } from 'utils/colors';
 
 import { Wrapper, Border, Content, cardStyle } from './CustomCard.styles';
 
 const CustomCard = ({ color, children }) => (
   <Wrapper>
-    <Card style={cardStyle}>
+    <Paper style={cardStyle}>
       {color && <Border color={color} />}
       <Content>{children}</Content>
-    </Card>
+    </Paper>
   </Wrapper>
 );
 
@@ -25,11 +25,11 @@ CustomCard.Section = CustomCardSection;
 CustomCard.Text = CustomCardText;
 
 CustomCard.defaultProps = {
-  color: null
+  color: null,
 };
 
 CustomCard.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 export default CustomCard;

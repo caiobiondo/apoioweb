@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withUserData HOC should render without crashing 1`] = `
+<loading
+  error={null}
+  isLoading={true}
+  pastDelay={false}
+  timedOut={false}
+/>
+`;

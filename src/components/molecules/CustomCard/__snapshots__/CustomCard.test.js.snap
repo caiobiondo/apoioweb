@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomCard should render a custom card 1`] = `
-<styled.div>
-  <Card
+<CustomCardstyles__Wrapper>
+  <Paper
+    circle={false}
+    rounded={true}
     style={
       Object {
         "borderRadius": 3,
@@ -12,8 +14,10 @@ exports[`CustomCard should render a custom card 1`] = `
         "wordBreak": "break-word",
       }
     }
+    transitionEnabled={true}
+    zDepth={1}
   >
-    <styled.div>
+    <CustomCardstyles__Content>
       <CardSection
         alignItems="center"
         justifyContent="center"
@@ -36,7 +40,55 @@ exports[`CustomCard should render a custom card 1`] = `
           text
         </CustomCardText>
       </CardSection>
-    </styled.div>
-  </Card>
-</styled.div>
+    </CustomCardstyles__Content>
+  </Paper>
+</CustomCardstyles__Wrapper>
+`;
+
+exports[`CustomCard should render a custom card with colored border 1`] = `
+<CustomCardstyles__Wrapper>
+  <Paper
+    circle={false}
+    rounded={true}
+    style={
+      Object {
+        "borderRadius": 3,
+        "boxShadow": "2px 4px 5px -2px rgba(0,0,0,0.1)",
+        "overflow": "hidden",
+        "padding": 0,
+        "wordBreak": "break-word",
+      }
+    }
+    transitionEnabled={true}
+    zDepth={1}
+  >
+    <CustomCardstyles__Border
+      color="#fff"
+    />
+    <CustomCardstyles__Content>
+      <CardSection
+        alignItems="center"
+        justifyContent="center"
+      >
+        content 1
+      </CardSection>
+      <CardSection
+        alignItems="center"
+        justifyContent="center"
+      >
+        content 2
+      </CardSection>
+      <CardSection
+        alignItems="center"
+        justifyContent="center"
+      >
+        <CustomCardText
+          color={null}
+        >
+          text
+        </CustomCardText>
+      </CardSection>
+    </CustomCardstyles__Content>
+  </Paper>
+</CustomCardstyles__Wrapper>
 `;

@@ -1,0 +1,28 @@
+export default {
+  'en-US': {},
+  'pt-BR': {
+    myStock: 'Meu Estoque',
+    stockAddProduct: 'Adicionar novo produto',
+    stockEmptyList: 'Estoque vazio',
+    stockEmptyListDescription: 'Você ainda não possui produtos em seu estoque',
+    stockImportFromOrders: 'Importar produtos de pedido',
+    stockNoProductFound: 'Nenhum produto encontrado',
+    stockProductAdd: 'Adicionar',
+    stockProductAdding: 'Adicionando',
+    stockProductAddModalTitle: 'Adicionar novo produto ao estoque',
+    stockProductAdded:
+      '{quantity, number} {quantity, plural, one {Adicionado} other {Adicionados} }',
+    stockProductAddSuccessful: 'Produto adicionado com sucesso!',
+    stockProductAddFailure: 'Ocorreu um erro na adição do produto',
+    stockProductCodeLabel: 'Código',
+    stockProductQuantityLabel: 'Quantidade',
+    stockProductCode: 'Código: {code}',
+    stockProductHeaderName: 'Produto',
+    stockProductHeaderQuantity: 'Quantidade',
+    stockProductImported: 'Produto importado para o estoque com sucesso!',
+    stockProductRemove: 'Remover',
+    stockProductRemoved: '{quantity, number} {quantity, plural, one {Removido} other {Removidos} }',
+    stockProductNameOrCode: 'Produto/Código',
+    stockSearchInfo: 'Preencha o campo abaixo para buscar seus produtos',
+  },
+};

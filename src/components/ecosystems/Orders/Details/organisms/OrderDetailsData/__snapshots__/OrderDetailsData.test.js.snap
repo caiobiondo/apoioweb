@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderDetailsData renders order details 1`] = `
+<div>
+  <OrderInfo
+    intl={
+      Object {
+        "formatCurrency": [Function],
+        "formatDate": [Function],
+        "formatNumber": [Function],
+        "formatTime": [Function],
+      }
+    }
+    order={
+      Object {
+        "__typename": "Order",
+        "ciclo": "14/2017",
+        "codigoPedido": 378325469,
+        "dataEmissaoNotaFiscal": null,
+        "dataPedido": "2017-10-06T18:40:55.000Z",
+        "entrega": Object {
+          "__typename": "Delivery",
+          "dtNovaPrevisaoEntrega": null,
+          "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+          "dtPrevisaoEntregaProrrogada": null,
+          "dtPrimeiraTentativaEntrega": null,
+          "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+          "dtSegundaTentativaEntrega": null,
+          "enderecoEntrega": Object {
+            "__typename": "DeliveryAddress",
+            "bairro": "XANGRI LA",
+            "cep": "32187090",
+            "cidade": "CONTAGEM",
+            "complemento": "B",
+            "estado": "MG",
+            "nomeLogradouro": "ACUCENA",
+            "numero": "0",
+            "tipoLogradouro": "R",
+          },
+        },
+        "envioBoleto": "Impresso e Enviado com o Pedido",
+        "formasPagamento": Array [
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+        ],
+        "itemEnviadoCaixa": Array [
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 29415,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 8,
+            "quantidadePontosUnitario": 8,
+            "valorTotal": 33.529998779296875,
+          },
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 38889,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 2,
+            "quantidadePontosUnitario": 2,
+            "valorTotal": 8.399999618530273,
+          },
+        ],
+        "meioCaptacao": "WEB",
+        "modeloComercial": "Consultora",
+        "numeroNotaFiscal": null,
+        "ocorrencias": Array [
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-08T10:44:00.000Z",
+            "id": 87,
+            "motivo": "Saiu para Entrega",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Saiu para Entrega",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T16:39:00.000Z",
+            "id": 66,
+            "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+            "ocorrencia": "ENTREGA",
+            "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T05:40:00.000Z",
+            "id": 49,
+            "motivo": "Chegada Filial Destino",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Chegada Filial Destino",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-06T18:46:00.000Z",
+            "id": 88,
+            "motivo": "Coletado pela Transportadora",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Coletado pela Transportadora",
+          },
+        ],
+        "pontos": 68,
+        "qtdParcelas": 2,
+        "quantidadeItens": 1,
+        "status": "CONCLUÍDO E APROVADO",
+        "valor": 390.0799865722656,
+        "valorParcela": 200.89,
+        "vlAPagarSomaTaxa": 401.78238616943355,
+        "vlTaxaReal": 11.702399597167968,
+      }
+    }
+  />
+  <withRouter(Apollo(OrderItems))
+    intl={
+      Object {
+        "formatCurrency": [Function],
+        "formatDate": [Function],
+        "formatNumber": [Function],
+        "formatTime": [Function],
+      }
+    }
+    order={
+      Object {
+        "__typename": "Order",
+        "ciclo": "14/2017",
+        "codigoPedido": 378325469,
+        "dataEmissaoNotaFiscal": null,
+        "dataPedido": "2017-10-06T18:40:55.000Z",
+        "entrega": Object {
+          "__typename": "Delivery",
+          "dtNovaPrevisaoEntrega": null,
+          "dtPrevisaoEntrega": "2017-10-11T03:00:00.000Z",
+          "dtPrevisaoEntregaProrrogada": null,
+          "dtPrimeiraTentativaEntrega": null,
+          "dtRealEntrega": "2017-10-11T03:00:00.000Z",
+          "dtSegundaTentativaEntrega": null,
+          "enderecoEntrega": Object {
+            "__typename": "DeliveryAddress",
+            "bairro": "XANGRI LA",
+            "cep": "32187090",
+            "cidade": "CONTAGEM",
+            "complemento": "B",
+            "estado": "MG",
+            "nomeLogradouro": "ACUCENA",
+            "numero": "0",
+            "tipoLogradouro": "R",
+          },
+        },
+        "envioBoleto": "Impresso e Enviado com o Pedido",
+        "formasPagamento": Array [
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+          Object {
+            "__typename": "PaymentMethod",
+            "descricaoCan": "21/42 DIAS",
+            "descricaoWeb": "21/42 DIAS",
+            "valorAcumulado": 401.78238616943355,
+          },
+        ],
+        "itemEnviadoCaixa": Array [
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 29415,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "POLPA HIDRAT CORPO ANDIROBA EKOS        ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 8,
+            "quantidadePontosUnitario": 8,
+            "valorTotal": 33.529998779296875,
+          },
+          Object {
+            "__typename": "OrderItem",
+            "codigoProduto": 38889,
+            "produto": Object {
+              "__typename": "Product",
+              "description": "SOU SAB BARRA CREMOSIDADE 5X90G         ",
+            },
+            "quantidadeItem": 1,
+            "quantidadePontosTotal": 2,
+            "quantidadePontosUnitario": 2,
+            "valorTotal": 8.399999618530273,
+          },
+        ],
+        "meioCaptacao": "WEB",
+        "modeloComercial": "Consultora",
+        "numeroNotaFiscal": null,
+        "ocorrencias": Array [
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-08T10:44:00.000Z",
+            "id": 87,
+            "motivo": "Saiu para Entrega",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Saiu para Entrega",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T16:39:00.000Z",
+            "id": 66,
+            "motivo": "1a. Tentativa de Entrega Sem Sucesso. Motivo: Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+            "ocorrencia": "ENTREGA",
+            "solucao": "1a. Tentativa de Entrega Sem Sucesso - Ausência no Ato da Entrega - Aguarde Nova Tentativa.",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-07T05:40:00.000Z",
+            "id": 49,
+            "motivo": "Chegada Filial Destino",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Chegada Filial Destino",
+          },
+          Object {
+            "__typename": "Event",
+            "data": "2015-05-06T18:46:00.000Z",
+            "id": 88,
+            "motivo": "Coletado pela Transportadora",
+            "ocorrencia": "INFORMATIVA",
+            "solucao": "Coletado pela Transportadora",
+          },
+        ],
+        "pontos": 68,
+        "qtdParcelas": 2,
+        "quantidadeItens": 1,
+        "status": "CONCLUÍDO E APROVADO",
+        "valor": 390.0799865722656,
+        "valorParcela": 200.89,
+        "vlAPagarSomaTaxa": 401.78238616943355,
+        "vlTaxaReal": 11.702399597167968,
+      }
+    }
+  />
+</div>
+`;

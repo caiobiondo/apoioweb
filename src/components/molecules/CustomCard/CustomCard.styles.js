@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { getGradientColor } from '../../../utils/colors';
+import { getGradientColor } from 'utils/colors';
 
 export const Wrapper = styled.div`
   margin: 15px 0px;
+  position: relative;
   width: 100%;
 `;
 
@@ -12,6 +13,7 @@ export const Border = styled.div`
   left: 0px;
   bottom: 0px;
   width: 4px;
+  border-radius: 4px 0 0 4px;
   background: ${props => getGradientColor(props.color)};
 `;
 
@@ -26,9 +28,9 @@ export const Content = styled.div`
 `;
 
 export const cardStyle = {
-  padding: 0,
   borderRadius: 3,
-  overflow: 'hidden',
   boxShadow: '2px 4px 5px -2px rgba(0,0,0,0.1)',
-  wordBreak: 'break-word'
+  overflow: 'hidden',
+  padding: 0,
+  wordBreak: 'break-word',
 };

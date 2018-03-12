@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:8.9.1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build
+          command: npm run build:staging
+      - run:
+          name: Install react-deploy-s3
+          command: sudo npm i -g react-deploy-s3
+      - run:
+          name: Deploy to AWS using react-deploy-s3
+          command: react-deploy-s3 deploy --access-key-id $AWS_KEY --secret-access-key $AWS_SECRET --bucket $BUCKET --region $REGION --distribution-id $DIST_ID
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - staging

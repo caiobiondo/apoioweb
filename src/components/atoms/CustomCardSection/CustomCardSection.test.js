@@ -18,7 +18,7 @@ describe('CustomCardSection', () => {
     renderer.render(
       <CustomCardSection justifyContent="flex-start" alignItems="space-between">
         content
-      </CustomCardSection>
+      </CustomCardSection>,
     );
     const result = renderer.getRenderOutput();
 

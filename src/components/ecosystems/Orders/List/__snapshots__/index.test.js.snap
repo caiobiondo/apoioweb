@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Orders should render the orders page 1`] = `
+<indexstyles__Main
+  empty={false}
+  loading={true}
+>
+  <Apollo(OrdersList)
+    onLoadFinished={[Function]}
+    user={undefined}
+  />
+</indexstyles__Main>
+`;

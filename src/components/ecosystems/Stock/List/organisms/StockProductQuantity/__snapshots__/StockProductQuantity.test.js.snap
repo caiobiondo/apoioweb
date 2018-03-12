@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stock Product Quantity should render correctly 1`] = `
+<StockProductQuantitystyles__Wrapper>
+  <CounterInput
+    disabled={false}
+    max={100000}
+    min={0}
+    onChange={[Function]}
+    value={10}
+  />
+</StockProductQuantitystyles__Wrapper>
+`;
+
+exports[`Stock Product Quantity should render with submit button (for add) 1`] = `
+<StockProductQuantitystyles__Wrapper>
+  <CounterInput
+    disabled={false}
+    max={100000}
+    min={0}
+    onChange={[Function]}
+    value={1}
+  />
+  <FormButton
+    backgroundColor="#c9c9c9"
+    buttonStyle={
+      Object {
+        "borderTopLeftRadius": 0,
+        "borderTopRightRadius": 0,
+        "color": "#fff",
+        "minWidth": 89,
+        "width": 89,
+      }
+    }
+    disabled={false}
+    height={25}
+    label={
+      <FormattedMessage
+        id="stockProductRemove"
+        values={Object {}}
+      />
+    }
+    labelColor="#fff"
+    labelStyle={
+      Object {
+        "fontFamily": "Roboto-Regular",
+        "fontSize": "9px",
+        "fontWeight": "bold",
+        "textTransform": "uppercase",
+      }
+    }
+    link={null}
+    onClick={[Function]}
+    overlayStyle={
+      Object {
+        "borderTopLeftRadius": 0,
+        "borderTopRightRadius": 0,
+        "minWidth": 89,
+        "width": 89,
+      }
+    }
+    primary={true}
+    raised={false}
+  />
+</StockProductQuantitystyles__Wrapper>
+`;
+
+exports[`Stock Product Quantity should render with submit button (for remove) 1`] = `
+<StockProductQuantitystyles__Wrapper>
+  <CounterInput
+    disabled={false}
+    max={100000}
+    min={0}
+    onChange={[Function]}
+    value={2}
+  />
+  <FormButton
+    backgroundColor="#c9c9c9"
+    buttonStyle={
+      Object {
+        "borderTopLeftRadius": 0,
+        "borderTopRightRadius": 0,
+        "color": "#fff",
+        "minWidth": 89,
+        "width": 89,
+      }
+    }
+    disabled={false}
+    height={25}
+    label={
+      <FormattedMessage
+        id="stockProductAdd"
+        values={Object {}}
+      />
+    }
+    labelColor="#fff"
+    labelStyle={
+      Object {
+        "fontFamily": "Roboto-Regular",
+        "fontSize": "9px",
+        "fontWeight": "bold",
+        "textTransform": "uppercase",
+      }
+    }
+    link={null}
+    onClick={[Function]}
+    overlayStyle={
+      Object {
+        "borderTopLeftRadius": 0,
+        "borderTopRightRadius": 0,
+        "minWidth": 89,
+        "width": 89,
+      }
+    }
+    primary={true}
+    raised={false}
+  />
+</StockProductQuantitystyles__Wrapper>
+`;
+
+exports[`Stock Product Quantity should render with submitted message (added message) 1`] = `
+<StockProductQuantitystyles__Wrapper>
+  <CounterInput
+    disabled={false}
+    max={100000}
+    min={0}
+    onChange={[Function]}
+    value={1}
+  />
+  <StockProductQuantitystyles__SubmittedMessage>
+    <Icon
+      file="ico_check"
+    />
+    <FormattedMessage
+      id="stockProductAdded"
+      values={
+        Object {
+          "quantity": 1,
+        }
+      }
+    />
+  </StockProductQuantitystyles__SubmittedMessage>
+</StockProductQuantitystyles__Wrapper>
+`;
+
+exports[`Stock Product Quantity should render with submitted message (removed message) 1`] = `
+<StockProductQuantitystyles__Wrapper>
+  <CounterInput
+    disabled={false}
+    max={100000}
+    min={0}
+    onChange={[Function]}
+    value={1}
+  />
+  <FormButton
+    backgroundColor="#c9c9c9"
+    buttonStyle={
+      Object {
+        "borderTopLeftRadius": 0,
+        "borderTopRightRadius": 0,
+        "color": "#fff",
+        "minWidth": 89,
+        "width": 89,
+      }
+    }
+    disabled={false}
+    height={25}
+    label={
+      <FormattedMessage
+        id="stockProductRemove"
+        values={Object {}}
+      />
+    }
+    labelColor="#fff"
+    labelStyle={
+      Object {
+        "fontFamily": "Roboto-Regular",
+        "fontSize": "9px",
+        "fontWeight": "bold",
+        "textTransform": "uppercase",
+      }
+    }
+    link={null}
+    onClick={[Function]}
+    overlayStyle={
+      Object {
+        "borderTopLeftRadius": 0,
+        "borderTopRightRadius": 0,
+        "minWidth": 89,
+        "width": 89,
+      }
+    }
+    primary={true}
+    raised={false}
+  />
+</StockProductQuantitystyles__Wrapper>
+`;

@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveCustomerButton should render the add customers button 1`] = `
+Array [
+  <CustomerButton
+    action={[Function]}
+    remove={false}
+/>,
+  <Dialog
+    actions={
+        Array [
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label={
+                    <FormattedMessage
+                          id="cancel"
+                          values={Object {}}
+                    />
+              }
+              labelPosition="after"
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+        />,
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label={
+                    <FormattedMessage
+                          id="remove"
+                          values={Object {}}
+                    />
+              }
+              labelPosition="after"
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={true}
+              secondary={false}
+        />,
+          ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    bodyStyle={
+        Object {
+            "fontFamily": "Roboto",
+            "padding": "12px 25px",
+          }
+    }
+    contentStyle={
+        Object {
+            "maxWidth": "450px",
+          }
+    }
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="Excluir Cliente?"
+    titleStyle={
+        Object {
+            "fontWeight": 800,
+          }
+    }
+>
+    <FormattedMessage
+        id="customerShouldBeRemovedWarning"
+        values={
+            Object {
+                "names": <b />,
+              }
+        }
+    />
+</Dialog>,
+]
+`;
+
+exports[`RemoveCustomerButton should render the remove customers button 1`] = `
+Array [
+  <CustomerButton
+    action={[Function]}
+    remove={true}
+/>,
+  <Dialog
+    actions={
+        Array [
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label={
+                    <FormattedMessage
+                          id="cancel"
+                          values={Object {}}
+                    />
+              }
+              labelPosition="after"
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+        />,
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label={
+                    <FormattedMessage
+                          id="remove"
+                          values={Object {}}
+                    />
+              }
+              labelPosition="after"
+              labelStyle={
+                    Object {
+                          "fontFamily": "Roboto",
+                        }
+              }
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={true}
+              secondary={false}
+        />,
+          ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    bodyStyle={
+        Object {
+            "fontFamily": "Roboto",
+            "padding": "12px 25px",
+          }
+    }
+    contentStyle={
+        Object {
+            "maxWidth": "450px",
+          }
+    }
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="Excluir Cliente?"
+    titleStyle={
+        Object {
+            "fontWeight": 800,
+          }
+    }
+>
+    <FormattedMessage
+        id="customerShouldBeRemovedWarning"
+        values={
+            Object {
+                "names": <b />,
+              }
+        }
+    />
+</Dialog>,
+]
+`;

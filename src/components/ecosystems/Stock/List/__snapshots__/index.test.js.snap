@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockList Ecosystem should render the stock list page 1`] = `
+<indexstyles__Main>
+  <withApollo(Apollo(StockAddProductModal))
+    handleClose={[Function]}
+    opened={false}
+    user={undefined}
+  />
+  <Apollo(ListTable)
+    onLoadFinished={[Function]}
+    productSearch=""
+  />
+</indexstyles__Main>
+`;

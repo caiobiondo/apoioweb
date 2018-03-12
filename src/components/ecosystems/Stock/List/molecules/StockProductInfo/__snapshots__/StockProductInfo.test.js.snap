@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockProductInfo should render the stock product info 1`] = `
+<StockProductInfostyles__Wrapper>
+  <StockProductInfostyles__ProductImage
+    imageUrl="an image"
+    width="65px"
+  />
+  <StockProductInfostyles__ValuesWrapper>
+    <StockProductInfostyles__ProductName>
+      Name 
+    </StockProductInfostyles__ProductName>
+    <StockProductInfostyles__ProductCode>
+      <FormattedMessage
+        id="stockProductCode"
+        values={
+          Object {
+            "code": 123,
+          }
+        }
+      />
+    </StockProductInfostyles__ProductCode>
+  </StockProductInfostyles__ValuesWrapper>
+</StockProductInfostyles__Wrapper>
+`;

@@ -53,4 +53,5 @@ module.exports = {
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
   entriaComponents: resolveApp('node_modules/@entria'),
+  naturaUiComponents: resolveApp('node_modules/natura-ui'),
 };
