@@ -4,15 +4,11 @@ export const CourseViewQuery = gql`
   query CourseViewQuery($sellerId: Int!, $courseId: Int!) {
     course(sellerId: $sellerId, courseId: $courseId) {
       id
-      accessToken
-      clientIdentifier
-      clientSecrets
       courseContent {
         video
         html5
         web
       }
-      dateUpload
       durationInSeconds
       description
       generalRating
