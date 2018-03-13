@@ -41,7 +41,7 @@ export class CourseView extends Component {
 
   componentWillMount() {
     const { course } = this.props;
-    if (course) this.state({ isFavorite: course.isfavorite });
+    if (course) this.setState({ isFavorite: course.isfavorite });
   }
 
   isLoading = (loading, course) => loading && !course;
@@ -82,7 +82,7 @@ export class CourseView extends Component {
     });
   };
 
-  handleMyListClick = (event, child) => {
+  handleMyListClick = () => {
     const { course } = this.props;
     this.props
       .mutate({
