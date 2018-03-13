@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { Loading, CircularProgress } from 'natura-ui';
 import {
   TrainingCategoriesDetailsQuery,
   TrainingCategoriesDetailsOptions,
@@ -10,8 +9,7 @@ import { graphql, compose } from 'react-apollo';
 
 import TrainingCategoriesDetailsHeader from '../../molecules/Header/TrainingCategoriesDetailsHeader';
 import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
-
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
 import { translate } from 'locale';
 import MenuItem from 'material-ui/MenuItem';
@@ -30,7 +28,6 @@ import {
   TitleWrapper,
   CategoryIcon,
   Title,
-  LoadingWrapper,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
 } from './TrainingCategoriesDetails.styles';
@@ -40,7 +37,6 @@ export class TrainingCategoriesDetails extends Component {
     super(props);
 
     this.state = {
-      hasMoreItems: true,
       feedbackModalOpened: false,
       feedbackModalTitle: '',
     };
@@ -48,24 +44,12 @@ export class TrainingCategoriesDetails extends Component {
 
   componentWillReceiveProps({ loading, trainingCourses }) {
     this.notifyLoadFinish(loading, trainingCourses);
-    this.checkIfHasMoreItems(loading, trainingCourses);
   }
 
   notifyLoadFinish = (loading, items) => {
     if (!loading && this.props.onLoadFinished) {
       this.props.onLoadFinished(this.isEmpty(loading, items), this.isLoading(loading, items));
     }
-  };
-
-  checkIfHasMoreItems = (loading, traininigCourses) => {
-    if (this.props.loading === loading || !traininigCourses) {
-      return;
-    }
-
-    const hasMoreItems =
-      (traininigCourses && !this.props.traininigCourses) ||
-      traininigCourses.length !== this.props.traininigCourses.length;
-    this.setState({ hasMoreItems });
   };
 
   isLoading = (loading, items) => {
@@ -218,29 +202,10 @@ export class TrainingCategoriesDetails extends Component {
   };
 
   render() {
-    const { loading, trainingCourses, trainingCategory, fetchMore } = this.props;
+    const { loading, hasNextPage, trainingCourses, trainingCategory, fetchMore } = this.props;
 
-    if (this.isLoading(loading, trainingCourses)) {
-      return <Loading background="transparent" />;
-    }
-
-    if (!this.props.trainingCourses || !this.props.trainingCourses.length) {
-      return (
-        <TrainingCategoriesDetailsWrapper>
-          <TrainingCategoriesDetailsHeader category={trainingCategory} />
-          <TrainingCategoriesDetailsContentWrapper>
-            <TitleWrapper>
-              <CategoryIcon src={trainingCategory.thumbnail} alt={trainingCategory.name} />
-              <Title>{trainingCategory.name}</Title>
-            </TitleWrapper>
-            <EmptyList
-              icon="ico_list_add"
-              titleId="coursesEmptyList"
-              descriptionId="coursesEmptyListDescription"
-            />
-          </TrainingCategoriesDetailsContentWrapper>
-        </TrainingCategoriesDetailsWrapper>
-      );
+    if (!trainingCategory) {
+      return null;
     }
 
     return (
@@ -252,12 +217,17 @@ export class TrainingCategoriesDetails extends Component {
             <Title>{trainingCategory.name}</Title>
           </TitleWrapper>
           <InfiniteScroll
-            loadMore={fetchMore}
-            hasMore={false}
-            loader={
-              <LoadingWrapper>
-                <CircularProgress thickness={2} />
-              </LoadingWrapper>
+            onScroll={fetchMore}
+            hasMore={hasNextPage}
+            loading={loading}
+            debounce={500}
+            items={trainingCourses}
+            emptyList={
+              <EmptyList
+                icon="ico_list_add"
+                titleId="coursesEmptyList"
+                descriptionId="coursesEmptyListDescription"
+              />
             }
           >
             <TrainingCourses courses={trainingCourses} renderMenuItems={this.renderMenuItems} />

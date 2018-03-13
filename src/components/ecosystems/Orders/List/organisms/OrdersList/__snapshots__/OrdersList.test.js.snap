@@ -1,33 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrdersList should render a loading indicator 1`] = `
-<Loading
-  background="transparent"
-  visible={true}
-  zIndex={9999}
-/>
-`;
-
-exports[`OrdersList should render an empty list indicator 1`] = `
-<Paper
-  circle={false}
-  rounded={true}
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
-  transitionEnabled={true}
-  zDepth={1}
->
-  <EmptyList
-    descriptionId="ordersWithoutOrders"
-    icon="ico_box"
-    titleId="ordersEmptyList"
-  />
-</Paper>
-`;
-
 exports[`OrdersList should render an order list 1`] = `
 <Paper
   circle={false}
@@ -44,11 +16,39 @@ exports[`OrdersList should render an order list 1`] = `
   zDepth={1}
 >
   <InfiniteScroll
-    element="div"
+    debounce={500}
+    emptyList={
+      <EmptyList
+        descriptionId="ordersWithoutOrders"
+        icon="ico_box"
+        titleId="ordersEmptyList"
+      />
+    }
     hasMore={false}
-    initialLoad={true}
-    isReverse={false}
-    loadMore={[Function]}
+    items={
+      Array [
+        Object {
+          "ciclo": "13/2017",
+          "codigoPedido": 311619650,
+          "dataPedido": "2017-10-08T22:27:48.000Z",
+          "dataPrevisaoEntrega": "2017-10-13T03:00:00.000Z",
+          "pontos": 27,
+          "status": "CONCLUÍDO E APROVADO",
+          "valor": 420.17,
+          "valorLucro": 30.99,
+        },
+        Object {
+          "ciclo": "13/2017",
+          "codigoPedido": 311619651,
+          "dataPedido": "2017-10-08T22:27:48.000Z",
+          "dataPrevisaoEntrega": "2017-10-13T03:00:00.000Z",
+          "pontos": 27,
+          "status": "CONCLUÍDO E APROVADO",
+          "valor": 420.17,
+          "valorLucro": 30.99,
+        },
+      ]
+    }
     loader={
       <mixins__LoadingWrapperStyle>
         <CircularProgress
@@ -61,11 +61,8 @@ exports[`OrdersList should render an order list 1`] = `
         />
       </mixins__LoadingWrapperStyle>
     }
-    pageStart={0}
-    ref={null}
-    threshold={250}
-    useCapture={false}
-    useWindow={true}
+    loading={false}
+    onScroll={[Function]}
   >
     <OrdersListstyles__List>
       <Order

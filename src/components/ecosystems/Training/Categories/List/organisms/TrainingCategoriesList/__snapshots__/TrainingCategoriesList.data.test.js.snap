@@ -290,12 +290,9 @@ Object {
 exports[`TrainingCategoriesQuery should be the correct query props 1`] = `
 Object {
   "data": Object {
-    "fetchMore": [Function],
     "loading": true,
     "trainingCategories": Array [],
   },
-  "fetchMore": [Function],
-  "hasMultiplePages": undefined,
   "loading": true,
   "refetch": undefined,
   "trainingCategories": undefined,

@@ -4,13 +4,18 @@ exports[`CurrentMagazine should call additionalInfoOpened when change the screen
 CurrentMagazine {
   "context": Object {},
   "downloadMagazine": [Function],
+  "handleTaxViewMoreClose": [Function],
   "openMagazine": [Function],
+  "openTaxViewMore": [Function],
   "props": Object {
     "magazine": Object {},
   },
   "refs": Object {},
+  "renderTaxViewMoreActions": [Function],
+  "renderTaxViewMoreDialog": [Function],
   "state": Object {
     "additionalInfoOpened": false,
+    "taxViewMoreOpened": false,
   },
   "toggleAdditionalInfo": [Function],
   "updater": Updater {
@@ -24,6 +29,7 @@ CurrentMagazine {
       "_instance": [Circular],
       "_newState": Object {
         "additionalInfoOpened": false,
+        "taxViewMoreOpened": false,
       },
       "_rendered": <CurrentMagazinestyles__CurrentMagazineWrapper>
         <CurrentMagazinestyles__CurrentMagazineHeader>
@@ -94,14 +100,11 @@ CurrentMagazine {
                                 </CurrentMagazinestyles__ButtonWrapper>
                                 <CurrentMagazinestyles__CurrentMagazineTaxWrapper>
                                         <CurrentMagazinestyles__CurrentMagazineTax>
-                                                <Link
-                                                        replace={false}
-                                                        target="_blank"
-                                                        to=""
+                                                <CurrentMagazinestyles__CurrentMagazineTaxViewMore
+                                                        onClick={[Function]}
                                                 >
                                                         Confira aqui
-                                                </Link>
-                                                 
+                                                </CurrentMagazinestyles__CurrentMagazineTaxViewMore>
                                                 a carga tributária dos produtos Natura.
                                         </CurrentMagazinestyles__CurrentMagazineTax>
                                         <CurrentMagazinestyles__CurrentMagazineTax>
@@ -125,6 +128,130 @@ CurrentMagazine {
                         </CurrentMagazinestyles__CurrentMagazineSeeMore>
                 </CurrentMagazinestyles__CurrentMagazineInfo>
         </CurrentMagazinestyles__CurrentMagazineInfoWrapper>
+        <Dialog
+                actions={
+                        Array [
+                                <FlatButton
+                                  disabled={false}
+                                  fullWidth={false}
+                                  label="OK"
+                                  labelPosition="after"
+                                  labelStyle={Object {}}
+                                  onClick={[Function]}
+                                  onKeyboardFocus={[Function]}
+                                  onMouseEnter={[Function]}
+                                  onMouseLeave={[Function]}
+                                  onTouchStart={[Function]}
+                                  primary={true}
+                                  secondary={false}
+                        />,
+                              ]
+                }
+                autoDetectWindowHeight={true}
+                autoScrollBodyContent={false}
+                modal={false}
+                onRequestClose={[Function]}
+                open={false}
+                repositionOnUpdate={true}
+                title="Carga tributária"
+        >
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineHeaderTaxItemDatum>
+                                Tipo do produto
+                        </CurrentMagazinestyles__CurrentMagazineHeaderTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineHeaderTaxItemDatum>
+                                Carga IBPT
+                        </CurrentMagazinestyles__CurrentMagazineHeaderTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Produtos para barba
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={56.48}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Produtos para cabelos
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={51.33}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Produtos para corpo
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={47.03}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Desodorante colônia
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={44.99}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Desodorante antitranspirante
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={44.99}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Produtos de maquiagem
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={55.94}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Óleos corporais
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={45.78}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+                <CurrentMagazinestyles__CurrentMagazineTaxItem>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                Eau de parfum e água de colônia
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                        <CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                                <FormattedNumber
+                                        value={49.16}
+                                />
+                                %
+                        </CurrentMagazinestyles__CurrentMagazineTaxItemDatum>
+                </CurrentMagazinestyles__CurrentMagazineTaxItem>
+        </Dialog>
 </CurrentMagazinestyles__CurrentMagazineWrapper>,
       "_rendering": false,
       "_updater": [Circular],

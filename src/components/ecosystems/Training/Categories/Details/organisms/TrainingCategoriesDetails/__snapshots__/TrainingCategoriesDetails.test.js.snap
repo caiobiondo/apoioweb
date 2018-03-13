@@ -21,10 +21,67 @@ exports[`Training Categories Details renders correctly 1`] = `
         Test
       </TrainingCategoriesDetailsstyles__Title>
     </TrainingCategoriesDetailsstyles__TitleWrapper>
-    <EmptyList
-      descriptionId="coursesEmptyListDescription"
-      icon="ico_list_add"
-      titleId="coursesEmptyList"
+    <InfiniteScroll
+      debounce={500}
+      emptyList={
+        <EmptyList
+          descriptionId="coursesEmptyListDescription"
+          icon="ico_list_add"
+          titleId="coursesEmptyList"
+        />
+      }
+      hasMore={false}
+      items={Array []}
+      loading={false}
+      onScroll={[Function]}
+    >
+      <TrainingCourses
+        courses={Array []}
+        renderMenuItems={[Function]}
+      />
+    </InfiniteScroll>
+    <Dialog
+      actions={
+        Array [
+          <FlatButton
+            disabled={false}
+            fullWidth={false}
+            label={
+                <FormattedMessage
+                    id="ok"
+                    values={Object {}}
+                />
+            }
+            labelPosition="after"
+            labelStyle={
+                Object {
+                    "fontFamily": "Roboto-Regular",
+                  }
+            }
+            onClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={true}
+            secondary={false}
+        />,
+        ]
+      }
+      autoDetectWindowHeight={true}
+      autoScrollBodyContent={false}
+      key="feedbackModal"
+      modal={false}
+      onRequestClose={[Function]}
+      open={false}
+      repositionOnUpdate={true}
+      title=""
+      titleStyle={
+        Object {
+          "fontFamily": "NaturaSans-Bold",
+          "fontSize": "25px",
+        }
+      }
     />
   </TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsContentWrapper>
 </TrainingCategoriesDetailsstyles__TrainingCategoriesDetailsWrapper>

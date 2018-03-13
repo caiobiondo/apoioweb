@@ -3,18 +3,26 @@ import gql from 'graphql-tag';
 const ITEMS_PER_PAGE = 10;
 
 export const TrainingCategoriesDetailsQuery = gql`
-  query TrainingCategoriesDetails($sellerId: Int!, $categoryId: Int!) {
-    trainingCoursesByCategory(sellerId: $sellerId, categoryId: $categoryId) {
-      id
-      title
-      thumbnail
-      dateUpload
-      durationInSeconds
-      type
-      views
-      stoppedAt
-      status
-      isfavorite
+  query TrainingCategoriesDetails($sellerId: Int!, $categoryId: Int!, $offset: Int!, $limit: Int!) {
+    trainingCoursesByCategory(
+      sellerId: $sellerId
+      categoryId: $categoryId
+      offset: $offset
+      limit: $limit
+    ) {
+      hasNextPage
+      items {
+        id
+        title
+        thumbnail
+        dateUpload
+        durationInSeconds
+        type
+        views
+        stoppedAt
+        status
+        isfavorite
+      }
     }
     trainingCategory(sellerId: $sellerId, categoryId: $categoryId) {
       id
@@ -36,11 +44,17 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
     return previousResult;
   }
 
+  const previousResultIds = previousResult.trainingCoursesByCategory.items.map(item => item.id);
+  const fetchMoreResultsToAdd = fetchMoreResult.trainingCoursesByCategory.items.filter(
+    item => previousResultIds.indexOf(item.id) < 0,
+  );
+
   return Object.assign({}, previousResult, {
-    trainingCoursesByCategory: [
-      ...previousResult.trainingCoursesByCategory,
-      ...fetchMoreResult.trainingCoursesByCategory,
-    ],
+    trainingCoursesByCategory: {
+      __typename: previousResult.trainingCoursesByCategory.__typename,
+      hasNextPage: fetchMoreResult.trainingCoursesByCategory.hasNextPage,
+      items: [...previousResult.trainingCoursesByCategory.items, ...fetchMoreResultsToAdd],
+    },
   });
 };
 
@@ -50,27 +64,37 @@ export const TrainingCategoriesDetailsOptions = {
       variables: {
         sellerId: props.user.codigo,
         categoryId: props.categoryId,
+        limit: ITEMS_PER_PAGE,
+        offset: 0,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',
     };
   },
   props({ data }) {
+    const { refetch, loading, trainingCategory } = data;
+    const trainingCourses = data.trainingCoursesByCategory && data.trainingCoursesByCategory.items;
+    const hasNextPage =
+      (data.trainingCoursesByCategory && data.trainingCoursesByCategory.hasNextPage) || false;
+
     return {
       data,
-      refetch: data.refetch,
-      loading: data.loading,
-      trainingCourses: data.trainingCoursesByCategory,
-      trainingCategory: data.trainingCategory,
-      hasMultiplePages:
-        data.trainingCoursesByCategory && data.trainingCoursesByCategory.length >= ITEMS_PER_PAGE,
+      refetch: refetch,
+      loading: loading,
+      trainingCourses,
+      trainingCategory,
+      hasNextPage,
       fetchMore() {
-        const offset = data.trainingCoursesByCategory ? data.trainingCoursesByCategory.length : 0;
+        if (data.loading) {
+          return;
+        }
+
+        const offset = trainingCourses ? trainingCourses.length : 0;
+        const variables = { offset };
+
         return data.fetchMore({
-          variables: {
-            offset,
-          },
-          updateQuery: updateQuery,
+          variables,
+          updateQuery,
         });
       },
     };

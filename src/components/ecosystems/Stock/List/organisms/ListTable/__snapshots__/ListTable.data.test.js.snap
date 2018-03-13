@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyStockProductsQuery should be the correct query 1`] = `
+exports[`StockProductsQuery should be the correct query 1`] = `
 Object {
   "definitions": Array [
     Object {
@@ -76,7 +76,7 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "id",
+                    "value": "hasNextPage",
                   },
                   "selectionSet": null,
                 },
@@ -87,75 +87,101 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "userId",
+                    "value": "items",
                   },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "productCode",
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "selections": Array [
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "id",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "userId",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "productCode",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "productName",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "productDescription",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "productImage",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "stockQuantity",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "productPrice",
+                        },
+                        "selectionSet": null,
+                      },
+                    ],
                   },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "productName",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "productDescription",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "productImage",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "stockQuantity",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "productPrice",
-                  },
-                  "selectionSet": null,
                 },
               ],
             },
@@ -228,23 +254,23 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 296,
+    "end": 352,
     "start": 0,
   },
 }
 `;
 
-exports[`MyStockProductsQuery should be the correct query props 1`] = `
+exports[`StockProductsQuery should be the correct query props 1`] = `
 Object {
   "data": Object {
     "fetchMore": [Function],
-    "loading": true,
+    "loading": false,
     "stockProducts": Array [],
   },
   "fetchMore": [Function],
-  "hasMultiplePages": false,
-  "loading": true,
+  "hasNextPage": false,
+  "loading": false,
   "refetch": undefined,
-  "stockProducts": Array [],
+  "stockProducts": undefined,
 }
 `;
