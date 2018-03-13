@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-import { IndicatorTableContentWapper } from '../Indicator/Indicator.styles';
+import {
+  IndicatorWeightWrapper,
+  IndicatorTableHeader,
+  IndicatorTableContent,
+} from '../Indicator/Indicator.styles';
 
 import {
   IndicatorDataContent,
@@ -8,9 +12,21 @@ import {
 } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
 export const ConsolidatedWrapper = styled.div`
-  ${IndicatorTableContentWapper} {
-    &:before {
-      top: 95px;
+  ${IndicatorTableHeader} {
+    margin-top: 110px;
+  }
+
+  ${IndicatorTableContent} {
+    padding: 15px 0 10px;
+  }
+
+  ${IndicatorWeightWrapper} {
+    > img {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
     }
   }
 

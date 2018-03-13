@@ -23,6 +23,7 @@ export default [
     cycle: 5,
     overcoming: 0,
     value: 'string',
+    current: true,
   },
   {
     cycle: 6,
