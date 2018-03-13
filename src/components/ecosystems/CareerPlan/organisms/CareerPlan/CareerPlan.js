@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import Indicator from '../Indicator';
-import Consolidated from '../Consolidated/Consolidated';
 import CycleMenu from '../../molecules/CycleMenu';
+import IndicatorList from '../IndicatorList';
 
 import { IndicatorTypes, IndicatorTypesLabels } from '../../IndicatorTypes.enum';
 
@@ -12,7 +11,6 @@ import {
   CareerPlanTitleWrapper,
   CareerPlanTitle,
   CareerPlanDescription,
-  IndicatorListWrapper,
 } from './CareerPlan.styles';
 
 export class CareerPlan extends Component {
@@ -25,12 +23,12 @@ export class CareerPlan extends Component {
         {
           id: 1,
           label: 'Ciclo 01-10',
-          component: this.renderIndicatorList(),
+          component: this.renderIndicatorList({ from: 0, to: 10 }),
         },
         {
           id: 2,
           label: 'Ciclo 11-19',
-          component: <div>oi</div>,
+          component: this.renderIndicatorList({ from: 11, to: 999 }),
         },
         {
           id: 3,
@@ -58,17 +56,10 @@ export class CareerPlan extends Component {
     }));
   };
 
-  renderIndicatorList() {
+  renderIndicatorList(range) {
     const { indicators } = this;
 
-    return (
-      <div>
-        <IndicatorListWrapper>
-          {indicators.map(indicator => <Indicator key={indicator.id} indicator={indicator} />)}
-        </IndicatorListWrapper>
-        <Consolidated />
-      </div>
-    );
+    return <IndicatorList indicators={indicators} range={range} />;
   }
 
   render() {
