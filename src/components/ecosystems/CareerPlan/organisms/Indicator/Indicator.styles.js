@@ -31,14 +31,15 @@ export const IndicatorWrapper = styled.li`
   position: relative;
   margin-bottom: 80px;
   display: inline-block;
+  width: 100%;
 
   ${IndicatorWeightWrapper} {
-    ${({ indicatorId }) => `
-      background: ${IndicatorTypesColors[indicatorId]}
+    ${({ indicatorType }) => `
+      background: ${IndicatorTypesColors[indicatorType]}
     `};
 
-    ${({ indicatorId }) =>
-      !indicatorId &&
+    ${({ indicatorType }) =>
+      !indicatorType &&
       `
         background: ${gray890};
         background-image: url(/static/trophy.png);
@@ -46,8 +47,8 @@ export const IndicatorWrapper = styled.li`
   }
 
   ${IndicatorTitle} {
-    ${({ indicatorId }) => `
-      color: ${IndicatorTypesColors[indicatorId]}
+    ${({ indicatorType }) => `
+      color: ${IndicatorTypesColors[indicatorType]}
     `};
   }
 `;

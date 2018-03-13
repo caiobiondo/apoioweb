@@ -21,7 +21,7 @@ export class IndicatorDataForm extends Component {
   constructor(props) {
     super();
 
-    const { directSale, naturaNetwork } = props.indicatorData.indicator;
+    const { directSale, naturaNetwork } = props.indicatorData;
     this.state = {
       indicatorDataValues: { directSale, naturaNetwork },
       open: false,
@@ -47,7 +47,7 @@ export class IndicatorDataForm extends Component {
 
   handleIndicatorDataBlur = indicatorData => {
     if (this.props.indicatorData.active && !indicatorData.active) {
-      this.updateIndicatorDataValues(indicatorData.indicator);
+      this.updateIndicatorDataValues(indicatorData);
     }
   };
 
@@ -61,11 +61,12 @@ export class IndicatorDataForm extends Component {
 
   deleteValues = () => {
     const indicatorData = {
-      directSale: null,
-      naturaNetwork: null,
+      directSale: '',
+      naturaNetwork: '',
     };
 
     this.closeModal();
+
     return this.updateIndicatorDataValues(indicatorData, this.applyValues);
   };
 
@@ -74,14 +75,10 @@ export class IndicatorDataForm extends Component {
 
     const { onApply, indicatorData } = this.props;
     const { indicatorDataValues } = this.state;
-    const valuesToApply = {
-      directSale: indicatorDataValues.directSale || 0,
-      naturaNetwork: indicatorDataValues.naturaNetwork || 0,
-    };
-
     const newIndicatorData = {
       ...indicatorData,
-      indicator: { ...indicatorData.indicator, ...valuesToApply },
+      directSale: indicatorDataValues.directSale || 0,
+      naturaNetwork: indicatorDataValues.naturaNetwork || 0,
       active: false,
     };
 
@@ -162,7 +159,7 @@ export class IndicatorDataForm extends Component {
         {IndicatorDataTrashIconNode}
         {simulatorLabelNode}
         <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.indicator.objective}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.objective}</IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
           <IndicatorDataRowInputWrapper

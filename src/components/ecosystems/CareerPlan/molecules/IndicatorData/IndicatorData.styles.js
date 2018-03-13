@@ -76,9 +76,9 @@ export const IndicatorDataWrapper = styled.li`
   }
 
   ${IndicatorDataSortCurrent} {
-    ${({ indicatorId }) =>
+    ${({ indicatorType }) =>
       `
-      background-color: ${IndicatorTypesColors[indicatorId]}
+      background-color: ${IndicatorTypesColors[indicatorType]}
     `};
   }
 
