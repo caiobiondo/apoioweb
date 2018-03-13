@@ -3,6 +3,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import Indicator from '../Indicator';
 import Consolidated from '../Consolidated/Consolidated';
+import CycleMenu from '../../molecules/CycleMenu';
 
 import { IndicatorTypes, IndicatorTypesLabels } from '../../IndicatorTypes.enum';
 
@@ -18,7 +19,36 @@ export class CareerPlan extends Component {
   constructor() {
     super();
     this.indicators = this.getParsedIndicators();
+    this.state = {
+      activeMenu: 1,
+      menuItems: [
+        {
+          id: 1,
+          label: 'Ciclo 01-10',
+          component: this.renderIndicatorList(),
+        },
+        {
+          id: 2,
+          label: 'Ciclo 11-19',
+          component: <div>oi</div>,
+        },
+        {
+          id: 3,
+          label: 'Anual',
+          component: <div>teste</div>,
+        },
+      ],
+    };
   }
+
+  getActiveMenuContent = () => {
+    const { activeMenu, menuItems } = this.state;
+    return menuItems.filter(menuItem => menuItem.id === activeMenu)[0].component;
+  };
+
+  onMenuChange = menuItem => {
+    this.setState({ activeMenu: menuItem.id });
+  };
 
   getParsedIndicators = () => {
     return Object.values(IndicatorTypes).map(id => ({
@@ -28,7 +58,22 @@ export class CareerPlan extends Component {
     }));
   };
 
+  renderIndicatorList() {
+    const { indicators } = this;
+
+    return (
+      <div>
+        <IndicatorListWrapper>
+          {indicators.map(indicator => <Indicator key={indicator.id} indicator={indicator} />)}
+        </IndicatorListWrapper>
+        <Consolidated />
+      </div>
+    );
+  }
+
   render() {
+    const { activeMenu, menuItems } = this.state;
+
     return (
       <CareerPlanSection>
         <CareerPlanTitleWrapper>
@@ -41,11 +86,9 @@ export class CareerPlan extends Component {
           </CareerPlanDescription>
         </CareerPlanTitleWrapper>
 
-        <IndicatorListWrapper>
-          {this.indicators.map(indicator => <Indicator key={indicator.id} indicator={indicator} />)}
-        </IndicatorListWrapper>
+        <CycleMenu menuItems={menuItems} onMenuChange={this.onMenuChange} activeMenu={activeMenu} />
 
-        <Consolidated />
+        {this.getActiveMenuContent()}
       </CareerPlanSection>
     );
   }
