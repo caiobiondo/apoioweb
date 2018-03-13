@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gray300, gray700, gray890 } from 'styles/colors';
-import { fw600, RobotoRegular } from 'styles/typography';
+import { fw400, fw600, RobotoRegular } from 'styles/typography';
 import InputNumber from 'components/ecosystems/CareerPlan/atoms/InputNumber';
 
 export const IndicatorDataRowInput = styled(InputNumber)`
@@ -31,13 +31,8 @@ export const IndicatorDataRowInput = styled(InputNumber)`
 export const IndicatorDataContent = styled.div`
   display: inline-block;
   font-size: 13px;
-  padding-top: 45px;
+  padding: 45px 0;
   position: relative;
-
-  ${({ active }) =>
-    !active &&
-    `padding-bottom: 45px;
-  `};
 `;
 
 export const IndicatorDataTrashIcon = styled.a`
@@ -97,16 +92,23 @@ export const IndicatorDataRowObj = IndicatorDataRow.extend`
 export const IndicatorDataApplyButton = styled.button`
   background: transparent;
   border-radius: 4px;
-  border: 2px solid ${gray890};
+  border: 1px solid ${gray890};
   color: ${gray890};
   cursor: pointer;
   font-size: 11px;
-  font-weight: ${fw600};
-  padding: 8px 0;
+  font-weight: ${fw400};
+  padding: 8px 25px;
   text-transform: uppercase;
-  width: 100%;
-  margin-bottom: 10px;
+  position: absolute;
+  bottom: 3px;
+  left: -6px;
+
+  &:active {
+    outline: none;
+  }
 `;
+
+export const ApplyButtonHeight = '32px';
 
 export const IndicatorDataSimulatorLabel = styled.span`
   font-size: 11px;

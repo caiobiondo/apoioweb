@@ -4,6 +4,7 @@ import { fw600, RobotoRegular } from 'styles/typography';
 
 import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
 import { IndicatorConceptsColors } from '../../IndicatorConcepts.enum';
+import { ApplyButtonHeight } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
 export const IndicatorWeightWrapper = styled.div`
   border-radius: 5px;
@@ -34,6 +35,13 @@ export const IndicatorWrapper = styled.li`
     ${({ indicatorId }) => `
       background: ${IndicatorTypesColors[indicatorId]}
     `};
+
+    ${({ indicatorId }) =>
+      !indicatorId &&
+      `
+        background: ${gray890};
+        background-image: url(/static/trophy.png);
+      `};
   }
 
   ${IndicatorTitle} {
@@ -106,7 +114,7 @@ export const IndicatorTableContentWapper = styled.div`
   &:before {
     background-color: white;
     border-radius: 3px;
-    bottom: 60px;
+    bottom: calc(${ApplyButtonHeight} + 30px);
     box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
     content: '';
     left: 0;
@@ -118,7 +126,7 @@ export const IndicatorTableContentWapper = styled.div`
 
 export const IndicatorTableContent = styled.ul`
   overflow-x: auto;
-  padding: 30px 0 10px;
+  padding: 30px 0;
   position: relative;
   vertical-align: top;
   white-space: nowrap;

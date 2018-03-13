@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { translate } from 'locale';
 
 import mock from './ConsolidatedDataMock';
 import { ConsolidatedWrapper } from './Consolidated.styles';
+
+import TrophyIcon from 'assets/images/trophy.png';
 
 import {
   IndicatorWrapper,
@@ -54,13 +57,10 @@ export class Consolidated extends Component {
     const { consolidatedDataItems } = this.state;
 
     return (
-      <IndicatorWrapper>
+      <IndicatorWrapper indicatorId={0}>
         <ConsolidatedWrapper>
           <IndicatorWeightWrapper>
-            <IndicatorWeightLabel>
-              <FormattedMessage id="weight" />
-            </IndicatorWeightLabel>
-            <IndicatorWeightValue>50</IndicatorWeightValue>
+            <img src={TrophyIcon} alt={translate('consolidated')} />
           </IndicatorWeightWrapper>
 
           <IndicatorTitle>
