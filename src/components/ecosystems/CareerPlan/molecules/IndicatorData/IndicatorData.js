@@ -60,16 +60,16 @@ export class IndicatorData extends Component {
     return (
       <IndicatorDataContent>
         <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.indicator.objective}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.objective}</IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
-          <IndicatorDataValue>{indicatorData.indicator.directSale}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.directSale}</IndicatorDataValue>
         </IndicatorDataRow>
         <IndicatorDataRow>
-          <IndicatorDataValue>{indicatorData.indicator.naturaNetwork}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.naturaNetwork}</IndicatorDataValue>
         </IndicatorDataRow>
         <IndicatorDataRowFeatured>
-          <IndicatorDataValue>{indicatorData.indicator.overcoming}</IndicatorDataValue>
+          <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
         </IndicatorDataRowFeatured>
       </IndicatorDataContent>
     );
@@ -108,7 +108,7 @@ export class IndicatorData extends Component {
 
     return (
       <IndicatorDataWrapper
-        indicatorId={indicator.id}
+        indicatorType={indicator.indicatorType}
         active={indicatorData.active}
         key={indicatorData.cycle}
         onClick={this.onClick}

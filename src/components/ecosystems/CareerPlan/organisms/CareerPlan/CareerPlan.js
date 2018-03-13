@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import propTypes from 'prop-types';
 
 import CycleMenu from '../../molecules/CycleMenu';
 import IndicatorList from '../IndicatorList';
 
-import { IndicatorTypes, IndicatorTypesLabels } from '../../IndicatorTypes.enum';
+import IndicatorMock from './IndicatorMock';
 
 import {
   CareerPlanSection,
@@ -13,27 +14,37 @@ import {
   CareerPlanDescription,
 } from './CareerPlan.styles';
 
+const CYCLES_PER_VIEW = 10;
+
 export class CareerPlan extends Component {
-  constructor() {
+  constructor(props) {
     super();
-    this.indicators = this.getParsedIndicators();
+
+    const careerPlan = this;
+
     this.state = {
       activeMenu: 1,
       menuItems: [
         {
           id: 1,
-          label: 'Ciclo 01-10',
-          component: this.renderIndicatorList({ from: 0, to: 10 }),
+          label: `Ciclo 01-${CYCLES_PER_VIEW}`,
+          get component() {
+            return careerPlan.renderIndicatorList({ range: { from: 0, to: 10 }, ...props });
+          },
         },
         {
           id: 2,
-          label: 'Ciclo 11-19',
-          component: this.renderIndicatorList({ from: 11, to: 999 }),
+          label: `Ciclo ${CYCLES_PER_VIEW + 1}-${props.indicators[0].cycles.length}`,
+          get component() {
+            return careerPlan.renderIndicatorList({ range: { from: 11, to: 999 }, ...props });
+          },
         },
         {
           id: 3,
           label: 'Anual',
-          component: <div>teste</div>,
+          get component() {
+            return <div>teste</div>;
+          },
         },
       ],
     };
@@ -48,17 +59,7 @@ export class CareerPlan extends Component {
     this.setState({ activeMenu: menuItem.id });
   };
 
-  getParsedIndicators = () => {
-    return Object.values(IndicatorTypes).map(id => ({
-      id,
-      title: IndicatorTypesLabels[id],
-      weight: 50,
-    }));
-  };
-
-  renderIndicatorList(range) {
-    const { indicators } = this;
-
+  renderIndicatorList({ range, indicators }) {
     return <IndicatorList indicators={indicators} range={range} />;
   }
 
@@ -84,6 +85,14 @@ export class CareerPlan extends Component {
     );
   }
 }
+
+CareerPlan.propTypes = {
+  indicators: propTypes.array,
+};
+
+CareerPlan.defaultProps = {
+  indicators: IndicatorMock,
+};
 
 export const CareerPlanWithIntl = injectIntl(CareerPlan);
 

@@ -4,7 +4,6 @@ import { FlatButton, Dialog } from 'natura-ui';
 import propTypes from 'prop-types';
 
 import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
-import mock from './IndicatorDataMock';
 import conceptMock from './IndicatorConceptMock';
 
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
@@ -26,24 +25,20 @@ import {
 } from './Indicator.styles';
 
 export class Indicator extends Component {
-  constructor(props) {
+  constructor({ indicator }) {
     super();
-
     this.state = {
-      cycles: this.getParsedCycles(),
+      cycles: this.parseCycles(indicator.cycles),
       concepts: conceptMock,
       informationModalOpened: false,
     };
   }
 
-  getParsedCycles = () => {
-    return mock.map(item => ({
+  parseCycles = cycles => {
+    return cycles.map(item => ({
       ...item,
-      indicator: {
-        ...item.indicator,
-        directSale: item.indicator.directSale || '',
-        naturaNetwork: item.indicator.naturaNetwork || '',
-      },
+      directSale: item.directSale || '',
+      naturaNetwork: item.naturaNetwork || '',
       preLoaded: this.isFilled(item),
     }));
   };
@@ -80,8 +75,7 @@ export class Indicator extends Component {
   };
 
   isFilled = cycle => {
-    const values = cycle && cycle.indicator;
-    return !values || Boolean(values.directSale || values.naturaNetwork);
+    return !cycle || Boolean(cycle.directSale || cycle.naturaNetwork);
   };
 
   openInformationModal = () => {
@@ -188,12 +182,12 @@ export class Indicator extends Component {
     const visibleCycles = this.getVisibleCycles(range);
 
     return (
-      <IndicatorWrapper indicatorId={indicator.id}>
+      <IndicatorWrapper indicatorType={indicator.indicatorType}>
         <IndicatorWeightWrapper>
           <IndicatorWeightLabel>
             <FormattedMessage id="weight" />
           </IndicatorWeightLabel>
-          <IndicatorWeightValue>{indicator.weight}</IndicatorWeightValue>
+          <IndicatorWeightValue>{indicator.significance}</IndicatorWeightValue>
         </IndicatorWeightWrapper>
 
         <IndicatorTitle>{indicator.title}</IndicatorTitle>
