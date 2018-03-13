@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
 import { Icon } from 'natura-ui';
 import { Link } from 'react-router-dom';
