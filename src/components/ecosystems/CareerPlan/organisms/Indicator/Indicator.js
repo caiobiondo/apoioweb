@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { FlatButton, Dialog } from 'natura-ui';
+import propTypes from 'prop-types';
 
 import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
 import mock from './IndicatorDataMock';
@@ -25,7 +26,7 @@ import {
 } from './Indicator.styles';
 
 export class Indicator extends Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
@@ -45,6 +46,12 @@ export class Indicator extends Component {
       },
       preLoaded: this.isFilled(item),
     }));
+  };
+
+  getVisibleCycles = ({ from, to }) => {
+    const { cycles } = this.state;
+    const start = from === 0 ? 0 : from - 1;
+    return cycles.slice(start, to);
   };
 
   setActiveCycle = indicatorData => {
@@ -166,7 +173,6 @@ export class Indicator extends Component {
     return (
       <IndicatorData
         indicatorData={cycle}
-        index={index}
         key={cycle.cycle}
         canFill={this.isFilled(cycles[index - 1])}
         isFilled={this.isFilled(cycle)}
@@ -178,8 +184,8 @@ export class Indicator extends Component {
   };
 
   render() {
-    const { cycles } = this.state;
-    const { indicator } = this.props;
+    const { indicator, range } = this.props;
+    const visibleCycles = this.getVisibleCycles(range);
 
     return (
       <IndicatorWrapper indicatorId={indicator.id}>
@@ -203,7 +209,7 @@ export class Indicator extends Component {
           </IndicatorTableHeader>
 
           <IndicatorTableContentWapper>
-            <IndicatorTableContent>{cycles.map(this.renderCycles)}</IndicatorTableContent>
+            <IndicatorTableContent>{visibleCycles.map(this.renderCycles)}</IndicatorTableContent>
           </IndicatorTableContentWapper>
         </IndicatorContentWrapper>
 
@@ -212,6 +218,21 @@ export class Indicator extends Component {
     );
   }
 }
+
+Indicator.propTypes = {
+  indicators: propTypes.array.isRequired,
+  range: propTypes.shape({
+    from: propTypes.number,
+    to: propTypes.number,
+  }),
+};
+
+Indicator.defaultProps = {
+  range: {
+    from: 0,
+    to: 10,
+  },
+};
 
 export const IndicatorWithIntl = injectIntl(Indicator);
 

@@ -97,11 +97,12 @@ export const IndicatorDataApplyButton = styled.button`
   cursor: pointer;
   font-size: 11px;
   font-weight: ${fw400};
-  padding: 8px 25px;
+  padding: 8px 17px;
   text-transform: uppercase;
   position: absolute;
-  bottom: 3px;
-  left: -6px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 
   &:active {
     outline: none;

@@ -165,4 +165,124 @@ export default [
       value: 'string',
     },
   },
+  {
+    cycle: 12,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 13,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 14,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 15,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 16,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 17,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 18,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
+  {
+    cycle: 19,
+    indicator: {
+      significance: 0,
+      objective: 123,
+      directSale: 0,
+      naturaNetwork: 0,
+      overcoming: 0,
+      value: 'string',
+    },
+    consolidated: {
+      overcoming: 0,
+      value: 'string',
+    },
+  },
 ];

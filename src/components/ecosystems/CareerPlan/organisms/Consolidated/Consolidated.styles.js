@@ -12,6 +12,8 @@ import {
 } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
 export const ConsolidatedWrapper = styled.div`
+  width: 100%;
+
   ${IndicatorTableHeader} {
     margin-top: 110px;
   }

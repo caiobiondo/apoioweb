@@ -62,7 +62,7 @@ export const IndicatorDataWrapper = styled.li`
   transition: all 0.2s ease-in;
   vertical-align: top;
   white-space: initial;
-  width: 110px;
+  width: 10%;
 
   ${IndicatorDataSort} {
     ${({ active }) =>

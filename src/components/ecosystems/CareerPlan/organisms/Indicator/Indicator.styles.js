@@ -30,6 +30,7 @@ export const IndicatorWrapper = styled.li`
   list-style-type: none;
   position: relative;
   margin-bottom: 80px;
+  display: inline-block;
 
   ${IndicatorWeightWrapper} {
     ${({ indicatorId }) => `
@@ -114,7 +115,7 @@ export const IndicatorTableContentWapper = styled.div`
   &:before {
     background-color: white;
     border-radius: 3px;
-    bottom: calc(${ApplyButtonHeight} + 30px);
+    bottom: ${ApplyButtonHeight};
     box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
     content: '';
     left: 0;
@@ -125,8 +126,8 @@ export const IndicatorTableContentWapper = styled.div`
 `;
 
 export const IndicatorTableContent = styled.ul`
-  overflow-x: auto;
-  padding: 30px 0;
+  overflow: hidden;
+  padding: 30px 0 0;
   position: relative;
   vertical-align: top;
   white-space: nowrap;
