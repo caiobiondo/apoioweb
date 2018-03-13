@@ -1549,6 +1549,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
