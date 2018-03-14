@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import InputMask from 'react-input-mask';
-
-const generateMask = (max = 999999) => {
-  let generatedMask = '';
-  const maxNumberSize = (max + '').length;
-
-  for (let i = maxNumberSize - 1; i >= 0; i--) {
-    generatedMask += '9';
-  }
-
-  return generatedMask;
-};
+import ReactNumberFormat from 'react-number-format';
 
 const BaseInput = props => {
-  const mask = generateMask(props.max);
-
   return (
-    <InputMask {...props} value={props.value} onChange={props.onChange} mask={mask} maskChar="" />
+    <ReactNumberFormat
+      {...props}
+      type="tel"
+      value={props.value}
+      onValueChange={(value, event) => {
+        props.onChange(value.floatValue || 0, event);
+      }}
+      onChange={() => {}}
+      isNumericString
+      allowNegative={false}
+      thousandSeparator="."
+      decimalSeparator=","
+    />
   );
 };
 
