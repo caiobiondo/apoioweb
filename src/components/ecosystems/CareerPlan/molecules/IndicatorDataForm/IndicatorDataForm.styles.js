@@ -60,8 +60,8 @@ export const IndicatorDataRowInputWrapper = styled.div`
     z-index: 0;
   }
 
-  ${({ active, empty }) =>
-    active &&
+  ${({ isActive, empty }) =>
+    isActive &&
     empty &&
     `position: relative;
 

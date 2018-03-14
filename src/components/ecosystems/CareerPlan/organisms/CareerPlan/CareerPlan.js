@@ -20,47 +20,85 @@ export class CareerPlan extends Component {
   constructor(props) {
     super();
 
-    const careerPlan = this;
-
     this.state = {
       activeMenu: 1,
       menuItems: [
         {
           id: 1,
           label: `Ciclo 01-${CYCLES_PER_VIEW}`,
-          get component() {
-            return careerPlan.renderIndicatorList({ range: { from: 0, to: 10 }, ...props });
-          },
         },
         {
           id: 2,
           label: `Ciclo ${CYCLES_PER_VIEW + 1}-${props.indicators[0].cycles.length}`,
-          get component() {
-            return careerPlan.renderIndicatorList({ range: { from: 11, to: 999 }, ...props });
-          },
         },
         {
           id: 3,
           label: 'Anual',
-          get component() {
-            return <div>teste</div>;
-          },
         },
       ],
+      indicators: props.indicators,
     };
   }
-
-  getActiveMenuContent = () => {
-    const { activeMenu, menuItems } = this.state;
-    return menuItems.filter(menuItem => menuItem.id === activeMenu)[0].component;
-  };
 
   onMenuChange = menuItem => {
     this.setState({ activeMenu: menuItem.id });
   };
 
-  renderIndicatorList({ range, indicators }) {
-    return <IndicatorList indicators={indicators} range={range} />;
+  getEditedIndicators = (indicators, indicatorToEdit) => {
+    return indicators.map(indicator => {
+      if (indicator.indicatorType !== indicatorToEdit.indicatorType) {
+        return indicator;
+      }
+
+      return { ...indicator, ...indicatorToEdit };
+    });
+  };
+
+  getEditedCycles = (cycles, cycleToEdit) => {
+    return cycles.map(cycle => {
+      if (cycle.cycle !== cycleToEdit.cycle) {
+        return cycle;
+      }
+
+      return { ...cycle, ...cycleToEdit };
+    });
+  };
+
+  updateCycle = ({ cycle, indicatorType }, cb) => {
+    const currentIndicators = this.state.indicators;
+    const indicator = currentIndicators.filter(i => i.indicatorType === indicatorType)[0];
+    const cycles = this.getEditedCycles(indicator.cycles, cycle);
+    const indicators = this.getEditedIndicators(currentIndicators, { cycles, indicatorType });
+
+    this.setState({ indicators }, cb);
+  };
+
+  renderIndicatorList() {
+    const { activeMenu, indicators } = this.state;
+
+    if (activeMenu === 1) {
+      return (
+        <IndicatorList
+          indicators={indicators}
+          range={{ from: 0, to: 10 }}
+          updateCycle={this.updateCycle}
+        />
+      );
+    }
+
+    if (activeMenu === 2) {
+      return (
+        <IndicatorList
+          indicators={indicators}
+          range={{ from: 11, to: 999 }}
+          updateCycle={this.updateCycle}
+        />
+      );
+    }
+
+    if (activeMenu === 3) {
+      return <div>teste</div>;
+    }
   }
 
   render() {
@@ -80,7 +118,7 @@ export class CareerPlan extends Component {
 
         <CycleMenu menuItems={menuItems} onMenuChange={this.onMenuChange} activeMenu={activeMenu} />
 
-        {this.getActiveMenuContent()}
+        {this.renderIndicatorList()}
       </CareerPlanSection>
     );
   }

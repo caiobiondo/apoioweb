@@ -65,8 +65,8 @@ export const IndicatorDataWrapper = styled.li`
   width: 10%;
   z-index: 0;
 
-  ${({ active }) =>
-    active &&
+  ${({ isActive }) =>
+    isActive &&
     `
     background: ${gray400};
     box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
@@ -89,8 +89,8 @@ export const IndicatorDataWrapper = styled.li`
   ${({ editable }) => !editable && `cursor: default;`};
 
   &:hover {
-    ${({ active, indicatorType, editable }) =>
-      !active &&
+    ${({ isActive, indicatorType, editable }) =>
+      !isActive &&
       editable &&
       `
       &:after {
@@ -107,8 +107,8 @@ export const IndicatorDataWrapper = styled.li`
   }
 
   ${IndicatorDataSort} {
-    ${({ active }) =>
-      active &&
+    ${({ isActive }) =>
+      isActive &&
       `
       color: ${gray890};
       &:before,
@@ -123,7 +123,7 @@ export const IndicatorDataWrapper = styled.li`
   }
 
   ${IndicatorDataFormComponents.IndicatorDataRowInput} {
-    ${({ active }) => active && `box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1); `};
+    ${({ isActive }) => isActive && `box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1); `};
   }
 `;
 

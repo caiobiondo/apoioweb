@@ -13,7 +13,6 @@ import {
   IndicatorDataValue,
   PopoverStyles,
   PopoverContent,
-  PopoverArrow,
 } from './IndicatorData.styles';
 
 export class IndicatorData extends Component {
@@ -35,23 +34,18 @@ export class IndicatorData extends Component {
     this.indicatorDataNode = node;
   };
 
-  isFake = () => {
-    const { indicatorData } = this.props;
-    return !indicatorData.preLoaded;
-  };
-
   canFill = () => {
     const { indicatorData, canFill } = this.props;
-    return !indicatorData.preLoaded && canFill;
+    return !indicatorData.isClosed && canFill;
   };
 
   handleRequestClose = () => {
-    this.setState({ open: false });
+    this.setState({ showPopover: false });
   };
 
   togglePopover = () => {
-    const { open } = this.state;
-    this.setState({ open: !open });
+    const { showPopover } = this.state;
+    this.setState({ showPopover: !showPopover });
   };
 
   renderDisabled() {
@@ -78,13 +72,13 @@ export class IndicatorData extends Component {
   renderPopover() {
     const { indicatorData } = this.props;
 
-    if (indicatorData.preLoaded) {
+    if (indicatorData.isClosed) {
       return null;
     }
 
     return (
       <Popover
-        open={this.state.open}
+        show={this.state.showPopover}
         anchorEl={this.indicatorDataNode}
         className="Popover"
         anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
@@ -98,14 +92,14 @@ export class IndicatorData extends Component {
   }
 
   render() {
-    const { indicator, indicatorData } = this.props;
+    const { indicator, indicatorData, activeCycle } = this.props;
 
     const currentNode = indicatorData.current ? (
       <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>
     ) : null;
 
-    const contentNode = this.isFake() ? (
-      <IndicatorDataForm {...this.props} />
+    const contentNode = !indicatorData.isClosed ? (
+      <IndicatorDataForm {...this.props} isActive={indicatorData.cycle === activeCycle} />
     ) : (
       this.renderDisabled()
     );
@@ -113,8 +107,8 @@ export class IndicatorData extends Component {
     return (
       <IndicatorDataWrapper
         indicatorType={indicator.indicatorType}
-        editable={!indicatorData.preLoaded}
-        active={indicatorData.active}
+        editable={!indicatorData.isClosed}
+        isActive={indicatorData.cycle === activeCycle}
         key={indicatorData.cycle}
         onClick={this.onClick}
         innerRef={this.setNode}

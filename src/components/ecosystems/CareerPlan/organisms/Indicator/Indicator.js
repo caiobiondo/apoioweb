@@ -28,56 +28,20 @@ export class Indicator extends Component {
   constructor({ indicator }) {
     super();
     this.state = {
-      cycles: this.parseCycles(indicator.cycles),
       concepts: conceptMock,
       informationModalOpened: false,
+      activeCycle: null,
     };
   }
 
-  parseCycles = cycles => {
-    return cycles.map(item => ({
-      ...item,
-      directSale: item.directSale || '',
-      naturaNetwork: item.naturaNetwork || '',
-      preLoaded: this.isFilled(item),
-    }));
-  };
-
   getVisibleCycles = ({ from, to }) => {
-    const { cycles } = this.state;
+    const { cycles } = this.props.indicator;
     const start = from === 0 ? 0 : from - 1;
     return cycles.slice(start, to);
   };
 
-  setActiveCycle = indicatorData => {
-    let { cycles } = this.state;
-
-    cycles = cycles.map(item => ({
-      ...item,
-      active: item.cycle === indicatorData.cycle,
-    }));
-
-    this.setState({ cycles });
-  };
-
-  updateCycle = cycle => {
-    let { cycles } = this.state;
-    const { onChange, indicator } = this.props;
-
-    cycles = cycles.map(item => {
-      if (item.cycle !== cycle.cycle) {
-        return item;
-      }
-
-      return { ...item, ...cycle };
-    });
-
-    this.setState({ cycles }, () => {
-      onChange({
-        ...indicator,
-        cycles,
-      });
-    });
+  setActiveCycle = cycle => {
+    this.setState({ activeCycle: cycle.cycle });
   };
 
   isFilled = cycle => {
@@ -92,9 +56,39 @@ export class Indicator extends Component {
     this.setState({ informationModalOpened: false });
   };
 
-  renderConfirmationDialog = () => {
+  updateCycle = (cycle, cb) => {
+    const { indicator, updateCycle } = this.props;
+    return updateCycle({ cycle, indicatorType: indicator.indicatorType }, cb);
+  };
+
+  onApply = cycle => {
+    this.updateCycle(cycle, () => {
+      this.setState({ activeCycle: null });
+    });
+  };
+
+  renderCycles = (cycle, index) => {
+    const { cycles } = this.props.indicator;
+    const { indicator } = this.props;
+    const { activeCycle } = this.state;
+
+    return (
+      <IndicatorData
+        indicatorData={cycle}
+        key={cycle.cycle}
+        canFill={this.isFilled(cycles[index - 1])}
+        isFilled={this.isFilled(cycle)}
+        onClick={this.setActiveCycle}
+        onApply={this.onApply}
+        indicator={indicator}
+        activeCycle={activeCycle}
+      />
+    );
+  };
+
+  renderConfirmationDialog() {
     const title = 'Volume de Pontos';
-    const { informationModalOpened, concepts } = this.state;
+    const { informationModalOpened } = this.state;
     const actions = [
       <FlatButton
         label={<FormattedMessage id="close" />}
@@ -117,71 +111,54 @@ export class Indicator extends Component {
         titleStyle={CareerPlanModal.title}
         paperProps={{ style: CareerPlanModal.paper }}
       >
-        <IndicatorConceptList>
-          {concepts.map(item => {
-            let conceptRange = null;
-
-            if (item && !item.rangeStart && item.rangeEnd) {
-              conceptRange = (
-                <span>
-                  <FormattedMessage
-                    id="careerPlanBelowRange"
-                    values={{ rangeEnd: item.rangeEnd }}
-                  />
-                </span>
-              );
-            }
-
-            if (item && item.rangeStart && !item.rangeEnd) {
-              conceptRange = (
-                <span>
-                  <FormattedMessage
-                    id="careerPlanAboveRange"
-                    values={{ rangeStart: item.rangeStart }}
-                  />
-                </span>
-              );
-            }
-
-            if (item && item.rangeStart && item.rangeEnd) {
-              conceptRange = (
-                <span>
-                  <FormattedMessage
-                    id="careerPlanBetweenRange"
-                    values={{ rangeStart: item.rangeStart, rangeEnd: item.rangeEnd }}
-                  />
-                </span>
-              );
-            }
-
-            return (
-              <IndicatorConceptListItem key={item.value} concept={item}>
-                <span>{item.value}</span>
-                {conceptRange}
-              </IndicatorConceptListItem>
-            );
-          })}
-        </IndicatorConceptList>
+        {this.renderConfirmationDialogContent()}
       </Dialog>
     );
-  };
+  }
 
-  renderCycles = (cycle, index) => {
-    const { cycles } = this.state;
-    const { indicator } = this.props;
+  renderConfirmationDialogContent() {
+    const { concepts } = this.state;
 
     return (
-      <IndicatorData
-        indicatorData={cycle}
-        key={cycle.cycle}
-        canFill={this.isFilled(cycles[index - 1])}
-        isFilled={this.isFilled(cycle)}
-        onClick={this.setActiveCycle}
-        onApply={this.updateCycle}
-        indicator={indicator}
-      />
+      <IndicatorConceptList>
+        {concepts.map(concept => {
+          const { rangeStart, rangeEnd, value } = concept;
+          let conceptRange = null;
+
+          if (!rangeStart && rangeEnd) {
+            conceptRange = (
+              <span>
+                <FormattedMessage id="careerPlanBelowRange" values={{ rangeEnd }} />
+              </span>
+            );
+          }
+
+          if (rangeStart && !rangeEnd) {
+            conceptRange = (
+              <span>
+                <FormattedMessage id="careerPlanAboveRange" values={{ rangeStart }} />
+              </span>
+            );
+          }
+
+          if (rangeStart && rangeEnd) {
+            conceptRange = (
+              <span>
+                <FormattedMessage id="careerPlanBetweenRange" values={{ rangeStart, rangeEnd }} />
+              </span>
+            );
+          }
+
+          return (
+            <IndicatorConceptListItem key={value} concept={concept}>
+              <span>{value}</span>
+              {conceptRange}
+            </IndicatorConceptListItem>
+          );
+        })}
+      </IndicatorConceptList>
     );
-  };
+  }
 
   render() {
     const { indicator, range } = this.props;
@@ -221,17 +198,6 @@ export class Indicator extends Component {
 
 Indicator.propTypes = {
   indicators: propTypes.array.isRequired,
-  range: propTypes.shape({
-    from: propTypes.number,
-    to: propTypes.number,
-  }),
-};
-
-Indicator.defaultProps = {
-  range: {
-    from: 0,
-    to: 10,
-  },
 };
 
 export const IndicatorWithIntl = injectIntl(Indicator);

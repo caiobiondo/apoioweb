@@ -11,7 +11,11 @@ export class IndicatorData extends Component {
       <CycleMenuWrapper>
         <CycleMenu>
           {menuItems.map(item => (
-            <CycleMenuItem active={item.id === activeMenu} onClick={() => onMenuChange(item)}>
+            <CycleMenuItem
+              key={item.id}
+              active={item.id === activeMenu}
+              onClick={() => onMenuChange(item)}
+            >
               {item.label}
             </CycleMenuItem>
           ))}
