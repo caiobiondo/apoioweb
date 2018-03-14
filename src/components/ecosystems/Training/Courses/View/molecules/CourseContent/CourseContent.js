@@ -84,6 +84,7 @@ export class CourseContent extends Component {
 
   render() {
     const { course } = this.props;
+    const startTime = course.stoppedAt || 0;
 
     return (
       <ContentWrapper>
@@ -92,6 +93,7 @@ export class CourseContent extends Component {
           poster={course.thumbnail}
           src={course.courseContent.video}
           fluid={false}
+          startTime={startTime}
         >
           <BigPlayButton position="center" />
         </Player>
