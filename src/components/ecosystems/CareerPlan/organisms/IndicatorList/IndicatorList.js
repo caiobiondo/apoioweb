@@ -8,6 +8,16 @@ import Consolidated from '../Consolidated/Consolidated';
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
 export class IndicatorList extends Component {
+  isCycleFilled = cycle => {
+    if (!cycle) {
+      return true;
+    }
+
+    const { naturaNetwork, directSale } = cycle;
+
+    return naturaNetwork !== 0 || directSale || 0;
+  };
+
   render() {
     const { indicators } = this.props;
 
@@ -19,11 +29,12 @@ export class IndicatorList extends Component {
               key={indicator.indicatorType}
               indicator={indicator}
               onChange={this.updateIndicator}
+              isCycleFilled={this.isCycleFilled}
               {...this.props}
             />
           ))}
         </IndicatorListWrapper>
-        <Consolidated indicators={indicators} />
+        <Consolidated {...this.props} isCycleFilled={this.isCycleFilled} />
       </div>
     );
   }

@@ -23,7 +23,7 @@ export class IndicatorData extends Component {
 
     if (!this.canFill()) {
       event.preventDefault();
-      this.togglePopover();
+      this.showPopover();
       return console.log('Disabled Field');
     }
 
@@ -39,13 +39,12 @@ export class IndicatorData extends Component {
     return !indicatorData.isClosed && canFill;
   };
 
-  handleRequestClose = () => {
+  hidePopover = () => {
     this.setState({ showPopover: false });
   };
 
-  togglePopover = () => {
-    const { showPopover } = this.state;
-    this.setState({ showPopover: !showPopover });
+  showPopover = () => {
+    this.setState({ showPopover: true });
   };
 
   renderDisabled() {
@@ -78,12 +77,12 @@ export class IndicatorData extends Component {
 
     return (
       <Popover
-        show={this.state.showPopover}
+        open={this.state.showPopover}
         anchorEl={this.indicatorDataNode}
         className="Popover"
         anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
         targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
-        onRequestClose={this.handleRequestClose}
+        onRequestClose={this.hidePopover}
         style={PopoverStyles}
       >
         <PopoverContent>O simulador deve ser preenchido sequencialmente.</PopoverContent>
