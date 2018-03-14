@@ -85,7 +85,3 @@ export const TrainingCourseMenu = styled.div`
   top: 12px;
   right: 12px;
 `;
-
-export const TrainingCourseMenuItem = styled.div`
-  font-family: ${RobotoRegular};
-`;

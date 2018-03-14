@@ -10,13 +10,9 @@ import {
   TrainingCourseDescriptionTitle,
   TrainingCourseDescriptionViews,
   TrainingCourseMenu,
-  TrainingCourseMenuItem,
 } from './TrainingCourse.styles';
-import { Icon, CircularProgress, Loading } from 'natura-ui';
+import { Icon } from 'natura-ui';
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
-import Img from 'react-image';
-import { translate } from 'locale';
-import { RobotoRegular } from 'styles/typography';
 
 class TrainingCourse extends Component {
   renderCourseIcon = course => {
