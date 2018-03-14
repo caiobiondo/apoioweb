@@ -62,6 +62,7 @@ export class Indicator extends Component {
 
   updateCycle = cycle => {
     let { cycles } = this.state;
+    const { onChange, indicator } = this.props;
 
     cycles = cycles.map(item => {
       if (item.cycle !== cycle.cycle) {
@@ -71,7 +72,12 @@ export class Indicator extends Component {
       return { ...item, ...cycle };
     });
 
-    this.setState({ cycles });
+    this.setState({ cycles }, () => {
+      onChange({
+        ...indicator,
+        cycles,
+      });
+    });
   };
 
   isFilled = cycle => {
