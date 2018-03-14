@@ -27,7 +27,7 @@ export class IndicatorData extends Component {
 
 IndicatorData.propTypes = {
   menuItems: propTypes.array.isRequired,
-  onClick: propTypes.func.isRequired,
+  onMenuChange: propTypes.func.isRequired,
 };
 
 export default IndicatorData;

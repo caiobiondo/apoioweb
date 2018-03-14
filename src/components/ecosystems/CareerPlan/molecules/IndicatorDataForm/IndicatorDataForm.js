@@ -24,8 +24,8 @@ export class IndicatorDataForm extends Component {
     const { directSale, naturaNetwork } = props.indicatorData;
     this.state = {
       indicatorDataValues: {
-        directSale: directSale || '',
-        naturaNetwork: naturaNetwork || '',
+        directSale: directSale,
+        naturaNetwork: naturaNetwork,
       },
       showDeleteModal: false,
     };
@@ -60,8 +60,8 @@ export class IndicatorDataForm extends Component {
 
   deleteValues = () => {
     const indicatorData = {
-      directSale: '',
-      naturaNetwork: '',
+      directSale: 0,
+      naturaNetwork: 0,
     };
 
     this.closeModal();
@@ -82,13 +82,6 @@ export class IndicatorDataForm extends Component {
     });
   };
 
-  hasFilledValues = () => {
-    const { naturaNetwork, directSale } = this.state.indicatorDataValues;
-    return (
-      naturaNetwork !== null && directSale !== null && naturaNetwork !== '' && directSale !== ''
-    );
-  };
-
   openModal = event => {
     event.stopPropagation();
     this.setState({ showDeleteModal: true });
@@ -98,7 +91,7 @@ export class IndicatorDataForm extends Component {
     this.setState({ showDeleteModal: false });
   };
 
-  renderConfirmationDialog() {
+  renderDeleteDialog() {
     const title = translate('careerPlanCleanSimulation');
     const { indicator, indicatorData } = this.props;
     const { showDeleteModal } = this.state;
@@ -142,7 +135,7 @@ export class IndicatorDataForm extends Component {
   }
 
   render() {
-    const { isFilled, indicatorData, canFill, isActive } = this.props;
+    const { isFilled, indicatorData, canFill, isActive, isCycleFilled } = this.props;
     const { indicatorDataValues } = this.state;
 
     const simulatorLabelNode = isActive ? (
@@ -170,6 +163,7 @@ export class IndicatorDataForm extends Component {
             <IndicatorDataRowInput
               name="directSale"
               type="text"
+              props={{ isActive }}
               value={indicatorDataValues.directSale}
               onChange={this.onChange}
               disabled={!canFill}
@@ -187,6 +181,7 @@ export class IndicatorDataForm extends Component {
             <IndicatorDataRowInput
               name="naturaNetwork"
               type="text"
+              props={{ isActive }}
               value={indicatorDataValues.naturaNetwork}
               onChange={this.onChange}
               disabled={!canFill}
@@ -201,12 +196,15 @@ export class IndicatorDataForm extends Component {
         </IndicatorDataRowAcc>
 
         {isActive && (
-          <IndicatorDataApplyButton onClick={this.applyValues} disabled={!this.hasFilledValues()}>
+          <IndicatorDataApplyButton
+            onClick={this.applyValues}
+            disabled={!isCycleFilled(indicatorDataValues)}
+          >
             <FormattedMessage id="apply" />
           </IndicatorDataApplyButton>
         )}
 
-        {this.renderConfirmationDialog()}
+        {this.renderDeleteDialog()}
       </IndicatorDataContent>
     );
   }

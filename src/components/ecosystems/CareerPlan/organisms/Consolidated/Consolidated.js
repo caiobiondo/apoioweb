@@ -10,8 +10,6 @@ import TrophyIcon from 'assets/images/trophy.png';
 import {
   IndicatorWrapper,
   IndicatorWeightWrapper,
-  IndicatorWeightLabel,
-  IndicatorWeightValue,
   IndicatorTitle,
   IndicatorContentWrapper,
   IndicatorTableHeader,
@@ -37,16 +35,26 @@ export class Consolidated extends Component {
     };
   }
 
-  renderIndicatorData = (indicatorData, index) => {
+  isValidCycle = cycle => {
+    const { indicators, isCycleFilled } = this.props;
     return (
-      <IndicatorDataWrapper key={indicatorData.cycle}>
+      indicators.filter(indicator => {
+        const cycleToValidate = indicator.cycles.filter(c => c.cycle === cycle.cycle)[0];
+        return isCycleFilled(cycleToValidate);
+      }).length === indicators.length
+    );
+  };
+
+  renderIndicatorData = (cycle, index) => {
+    return (
+      <IndicatorDataWrapper key={cycle.cycle}>
         <IndicatorDataSort index={index}>{index + 1}</IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
+            <IndicatorDataValue>{this.isValidCycle(cycle) && 'Valid Cycle'}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
+            <IndicatorDataValue>{this.isValidCycle(cycle) && 'Valid Cycle'}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
         </IndicatorDataContent>
       </IndicatorDataWrapper>

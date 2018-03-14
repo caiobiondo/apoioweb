@@ -44,10 +44,6 @@ export class Indicator extends Component {
     this.setState({ activeCycle: cycle.cycle });
   };
 
-  isFilled = cycle => {
-    return !cycle || Boolean(cycle.directSale || cycle.naturaNetwork);
-  };
-
   openInformationModal = () => {
     this.setState({ informationModalOpened: true });
   };
@@ -69,19 +65,20 @@ export class Indicator extends Component {
 
   renderCycles = (cycle, index) => {
     const { cycles } = this.props.indicator;
-    const { indicator } = this.props;
+    const { indicator, isCycleFilled } = this.props;
     const { activeCycle } = this.state;
 
     return (
       <IndicatorData
         indicatorData={cycle}
         key={cycle.cycle}
-        canFill={this.isFilled(cycles[index - 1])}
-        isFilled={this.isFilled(cycle)}
+        canFill={isCycleFilled(cycles[index - 1])}
+        isFilled={isCycleFilled(cycle)}
         onClick={this.setActiveCycle}
         onApply={this.onApply}
         indicator={indicator}
         activeCycle={activeCycle}
+        {...this.props}
       />
     );
   };

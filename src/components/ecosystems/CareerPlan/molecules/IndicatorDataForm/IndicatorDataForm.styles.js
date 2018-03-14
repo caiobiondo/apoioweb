@@ -26,6 +26,13 @@ export const IndicatorDataRowInput = styled(InputNumber)`
     background: #fff;
     cursor: pointer;
   }
+
+  ${({ props, value }) =>
+    !props.isActive &&
+    !value &&
+    `
+    visibility: hidden;
+  `};
 `;
 
 export const IndicatorDataContent = styled.div`
