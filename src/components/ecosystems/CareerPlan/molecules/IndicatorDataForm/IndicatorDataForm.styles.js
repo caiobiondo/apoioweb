@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray300, gray700, gray890 } from 'styles/colors';
+import { gray150, gray300, gray700, gray890 } from 'styles/colors';
 import { fw400, fw600, RobotoRegular } from 'styles/typography';
 import InputNumber from 'components/ecosystems/CareerPlan/atoms/InputNumber';
 
@@ -99,13 +99,20 @@ export const IndicatorDataApplyButton = styled.button`
   font-weight: ${fw400};
   padding: 8px 17px;
   text-transform: uppercase;
+  transition: all 0.2s ease-in;
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 5px;
   width: 100%;
 
   &:active {
     outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: ${gray150};
+    color: ${gray150};
   }
 `;
 

@@ -1,5 +1,5 @@
-import styled, { injectGlobal } from 'styled-components';
-import { gray150, gray400 } from 'styles/colors';
+import styled from 'styled-components';
+import { gray150, gray400, gray890 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
 import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
@@ -63,32 +63,7 @@ export const IndicatorDataWrapper = styled.li`
   vertical-align: top;
   white-space: initial;
   width: 10%;
-
-  ${IndicatorDataSort} {
-    ${({ active }) =>
-      active &&
-      `
-      &:before,
-      &:after {
-        display: none;
-      }
-    `};
-  }
-
-  ${IndicatorDataSortCurrent} {
-    ${({ indicatorType }) =>
-      `
-      background-color: ${IndicatorTypesColors[indicatorType]}
-    `};
-  }
-
-  ${IndicatorDataFormComponents.IndicatorDataRowInput} {
-    ${({ active }) =>
-      active &&
-      `
-        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
-    `};
-  }
+  z-index: 0;
 
   ${({ active }) =>
     active &&
@@ -110,6 +85,46 @@ export const IndicatorDataWrapper = styled.li`
       z-index: 1;
     }
   `};
+
+  ${({ editable }) => !editable && `cursor: default;`};
+
+  &:hover {
+    ${({ active, indicatorType, editable }) =>
+      !active &&
+      editable &&
+      `
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        box-shadow: 0px 5px 15px 0 rgba(0,0,0,0.1);
+        z-index: -1;
+      }
+    `};
+  }
+
+  ${IndicatorDataSort} {
+    ${({ active }) =>
+      active &&
+      `
+      color: ${gray890};
+      &:before,
+      &:after {
+        display: none;
+      }
+    `};
+  }
+
+  ${IndicatorDataSortCurrent} {
+    ${({ indicatorType }) => `background-color: ${IndicatorTypesColors[indicatorType]}`};
+  }
+
+  ${IndicatorDataFormComponents.IndicatorDataRowInput} {
+    ${({ active }) => active && `box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1); `};
+  }
 `;
 
 export const PopoverStyles = {
@@ -123,33 +138,4 @@ export const PopoverStyles = {
 export const PopoverContent = styled.div`
   position: relative;
   text-align: center;
-`;
-
-export const PopoverArrow = styled.div`
-  bottom: -60px;
-  height: 40px;
-  left: 50%;
-  overflow: hidden;
-  position: absolute;
-  transform: translate(-50%, 0);
-  width: 100px;
-
-  // &:after {
-  //   background: #fff;
-  //   box-shadow: -1px -1px 10px 0px rgba(0, 0, 0, 0.5);
-  //   content: '';
-  //   height: 50px;
-  //   left: 25px;
-  //   position: absolute;
-  //   top: -50px;
-  //   transform: rotate(45deg);
-  //   width: 50px;
-  // }
-`;
-
-// Overwrite default behavior for Material-UI popover
-injectGlobal`
-.Popover > div {
-  overflow: visible !important;
-}
 `;
