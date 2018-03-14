@@ -8,22 +8,44 @@ import Consolidated from '../Consolidated/Consolidated';
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
 export class IndicatorList extends Component {
-  constructor() {
+  constructor(props) {
     super();
-    this.state = {};
+    this.state = {
+      indicators: props.indicators,
+    };
   }
 
+  updateIndicator = indicator => {
+    let { indicators } = this.state;
+
+    indicators = indicators.map(item => {
+      if (item.indicatorType !== indicator.indicatorType) {
+        return item;
+      }
+
+      return indicator;
+    });
+
+    this.setState({ indicators });
+  };
+
   render() {
-    const { indicators, range } = this.props;
+    const { range } = this.props;
+    const { indicators } = this.state;
 
     return (
       <div>
         <IndicatorListWrapper>
           {indicators.map(indicator => (
-            <Indicator key={indicator.id} indicator={indicator} range={range} />
+            <Indicator
+              key={indicator.id}
+              indicator={indicator}
+              range={range}
+              onChange={this.updateIndicator}
+            />
           ))}
         </IndicatorListWrapper>
-        <Consolidated />
+        <Consolidated indicators={indicators} />
       </div>
     );
   }
