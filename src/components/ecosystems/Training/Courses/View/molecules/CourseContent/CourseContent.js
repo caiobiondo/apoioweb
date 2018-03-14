@@ -12,9 +12,6 @@ export class CourseContent extends Component {
     ended: false,
     hasStarted: false,
     paused: false,
-    hasNotSentInitializeStatus: true,
-    hasNotSentPausedStatus: true,
-    hasNotSentEndedStatus: true,
     currentTime: 0,
   };
 
@@ -22,30 +19,30 @@ export class CourseContent extends Component {
     this.refs.player.subscribeToStateChange(this.handleStateChange.bind(this));
   }
 
+  componentWillUnmount() {
+    this.mutateVideoCourseStatus('paused', { stoppedAt: this.roundCurrentTime() });
+  }
+
   defineVideoCourseStatus = () => {
-    if (this.state.hasNotSentInitializeStatus && this.state.hasStarted) {
+    if (this.state.hasStarted) {
       this.mutateVideoCourseStatus('initialized');
-      this.setState({ hasNotSentInitializeStatus: false });
+      this.setState({ hasStarted: false });
     }
 
-    if (
-      !this.state.hasNotSentInitializeStatus &&
-      this.state.hasNotSentPausedStatus &&
-      this.state.paused
-    ) {
+    if (this.state.paused && !this.state.ended) {
       this.mutateVideoCourseStatus('paused');
-      this.setState({ hasNotSentPausedStatus: false });
+      this.setState({ paused: false });
     }
 
-    if (this.state.hasNotSentEndedStatus && this.state.ended) {
+    if (this.state.ended) {
       this.mutateVideoCourseStatus('terminated');
-      this.setState({ hasNotSentEndedStatus: false });
+      this.setState({ ended: false });
     }
   };
 
   roundCurrentTime = () => Math.round(this.state.currentTime).toString();
 
-  mutateVideoCourseStatus = action => {
+  mutateVideoCourseStatus = (action, additional) => {
     let input = { action };
 
     if (this.state.paused) {
@@ -55,6 +52,8 @@ export class CourseContent extends Component {
     if (this.state.ended) {
       input = { ...input, stoppedAt: '1' };
     }
+
+    if (additional) input = { ...input, ...additional };
 
     this.props
       .mutate({
@@ -70,14 +69,24 @@ export class CourseContent extends Component {
   };
 
   handleStateChange(state, prevState) {
-    this.setState({
-      ended: state.ended,
-      hasStarted: state.hasStarted,
-      paused: state.paused,
-      currentTime: state.currentTime,
-    });
+    this.setState({ currentTime: state.currentTime });
 
-    this.defineVideoCourseStatus();
+    if (state.hasStarted !== prevState.hasStarted) {
+      this.setState({ hasStarted: true }, this.defineVideoCourseStatus);
+      return;
+    }
+
+    if (state.paused && state.paused !== prevState.paused) {
+      this.setState({ paused: true, currentTime: state.currentTime }, this.defineVideoCourseStatus);
+      return;
+    }
+
+    if (!state.paused && prevState.paused) {
+      this.setState({ hasStarted: true }, this.defineVideoCourseStatus);
+      return;
+    }
+
+    if (state.ended) this.setState({ ended: true }, this.defineVideoCourseStatus);
   }
 
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
