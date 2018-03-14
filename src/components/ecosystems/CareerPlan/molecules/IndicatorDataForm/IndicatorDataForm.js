@@ -51,9 +51,9 @@ export class IndicatorDataForm extends Component {
     }
   };
 
-  onChange = event => {
+  onChange = (value, event) => {
     const indicatorData = Object.assign({}, this.state.indicatorDataValues);
-    const { name, value } = event.currentTarget;
+    const { name } = event.target;
     indicatorData[name] = value;
 
     this.updateIndicatorDataValues(indicatorData);
@@ -86,8 +86,10 @@ export class IndicatorDataForm extends Component {
   };
 
   hasFilledValues = () => {
-    const { indicatorDataValues } = this.state;
-    return indicatorDataValues.naturaNetwork && indicatorDataValues.directSale;
+    const { naturaNetwork, directSale } = this.state.indicatorDataValues;
+    return (
+      naturaNetwork !== null && directSale !== null && naturaNetwork !== '' && directSale !== ''
+    );
   };
 
   openModal = event => {
@@ -177,6 +179,8 @@ export class IndicatorDataForm extends Component {
               value={indicatorDataValues.directSale}
               onChange={this.onChange}
               disabled={!canFill}
+              maxLength={7}
+              thousandSeparator="."
             />
             <Icon file="ico_pencil" />
           </IndicatorDataRowInputWrapper>
@@ -192,6 +196,8 @@ export class IndicatorDataForm extends Component {
               value={indicatorDataValues.naturaNetwork}
               onChange={this.onChange}
               disabled={!canFill}
+              maxLength={7}
+              thousandSeparator="."
             />
             <Icon file="ico_pencil" />
           </IndicatorDataRowInputWrapper>
