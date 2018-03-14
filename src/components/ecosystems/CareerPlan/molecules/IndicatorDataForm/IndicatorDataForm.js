@@ -77,12 +77,17 @@ export class IndicatorDataForm extends Component {
     const { indicatorDataValues } = this.state;
     const newIndicatorData = {
       ...indicatorData,
-      directSale: indicatorDataValues.directSale || 0,
-      naturaNetwork: indicatorDataValues.naturaNetwork || 0,
+      directSale: indicatorDataValues.directSale,
+      naturaNetwork: indicatorDataValues.naturaNetwork,
       active: false,
     };
 
     return onApply(newIndicatorData);
+  };
+
+  hasFilledValues = () => {
+    const { indicatorDataValues } = this.state;
+    return indicatorDataValues.naturaNetwork && indicatorDataValues.directSale;
   };
 
   openModal = event => {
@@ -196,7 +201,7 @@ export class IndicatorDataForm extends Component {
         </IndicatorDataRowAcc>
 
         {indicatorData.active && (
-          <IndicatorDataApplyButton onClick={this.applyValues}>
+          <IndicatorDataApplyButton onClick={this.applyValues} disabled={!this.hasFilledValues()}>
             <FormattedMessage id="apply" />
           </IndicatorDataApplyButton>
         )}

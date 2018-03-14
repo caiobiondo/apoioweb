@@ -73,9 +73,9 @@ export const IndicatorInfo = styled.a`
   font-family: ${RobotoRegular};
   font-size: 13px;
   font-weight: ${fw600};
-  padding: 10px;
+  padding: 10px 0;
   position: absolute;
-  right: -10px;
+  right: 0;
   text-transform: uppercase;
   top: -10px;
 `;
@@ -128,7 +128,7 @@ export const IndicatorTableContentWapper = styled.div`
 
 export const IndicatorTableContent = styled.ul`
   overflow: hidden;
-  padding: 30px 0 0;
+  padding: 30px 0 15px;
   position: relative;
   vertical-align: top;
   white-space: nowrap;

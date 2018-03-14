@@ -76,6 +76,12 @@ export class IndicatorData extends Component {
   }
 
   renderPopover() {
+    const { indicatorData } = this.props;
+
+    if (indicatorData.preLoaded) {
+      return null;
+    }
+
     return (
       <Popover
         open={this.state.open}
@@ -86,9 +92,7 @@ export class IndicatorData extends Component {
         onRequestClose={this.handleRequestClose}
         style={PopoverStyles}
       >
-        <PopoverContent>
-          O simulador deve ser preenchido sequencialmente. <PopoverArrow />
-        </PopoverContent>
+        <PopoverContent>O simulador deve ser preenchido sequencialmente.</PopoverContent>
       </Popover>
     );
   }
@@ -109,6 +113,7 @@ export class IndicatorData extends Component {
     return (
       <IndicatorDataWrapper
         indicatorType={indicator.indicatorType}
+        editable={!indicatorData.preLoaded}
         active={indicatorData.active}
         key={indicatorData.cycle}
         onClick={this.onClick}
