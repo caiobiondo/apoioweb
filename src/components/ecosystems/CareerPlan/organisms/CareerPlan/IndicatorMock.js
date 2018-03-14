@@ -5,6 +5,7 @@ export default [
     cycles: [
       {
         cycle: 1,
+        isClosed: true,
         significance: 0,
         objective: 1,
         directSale: 32,
@@ -18,6 +19,7 @@ export default [
       },
       {
         cycle: 2,
+        isClosed: true,
         significance: 0,
         objective: 233,
         directSale: 213,
@@ -31,6 +33,7 @@ export default [
       },
       {
         cycle: 3,
+        isClosed: true,
         significance: 0,
         objective: 12333,
         directSale: 123123,
@@ -44,6 +47,7 @@ export default [
       },
       {
         cycle: 4,
+        isClosed: true,
         significance: 0,
         objective: 123,
         directSale: 123,
@@ -259,6 +263,7 @@ export default [
     cycles: [
       {
         cycle: 1,
+        isClosed: true,
         significance: 0,
         objective: 1,
         directSale: 32,
@@ -272,6 +277,7 @@ export default [
       },
       {
         cycle: 2,
+        isClosed: true,
         significance: 0,
         objective: 233,
         directSale: 213,
@@ -285,6 +291,7 @@ export default [
       },
       {
         cycle: 3,
+        isClosed: true,
         significance: 0,
         objective: 12333,
         directSale: 123123,
@@ -298,6 +305,7 @@ export default [
       },
       {
         cycle: 4,
+        isClosed: true,
         significance: 0,
         objective: 123,
         directSale: 123,
@@ -513,6 +521,7 @@ export default [
     cycles: [
       {
         cycle: 1,
+        isClosed: true,
         significance: 0,
         objective: 1,
         directSale: 32,
@@ -526,6 +535,7 @@ export default [
       },
       {
         cycle: 2,
+        isClosed: true,
         significance: 0,
         objective: 233,
         directSale: 213,
@@ -539,6 +549,7 @@ export default [
       },
       {
         cycle: 3,
+        isClosed: true,
         significance: 0,
         objective: 12333,
         directSale: 123123,
@@ -552,6 +563,7 @@ export default [
       },
       {
         cycle: 4,
+        isClosed: true,
         significance: 0,
         objective: 123,
         directSale: 123,

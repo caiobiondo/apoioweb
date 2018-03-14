@@ -23,20 +23,19 @@ export class IndicatorDataForm extends Component {
 
     const { directSale, naturaNetwork } = props.indicatorData;
     this.state = {
-      indicatorDataValues: { directSale, naturaNetwork },
-      open: false,
+      indicatorDataValues: {
+        directSale: directSale || '',
+        naturaNetwork: naturaNetwork || '',
+      },
+      showDeleteModal: false,
     };
   }
 
-  componentWillReceiveProps({ indicatorData }) {
-    this.handleIndicatorDataBlur(indicatorData);
+  componentWillReceiveProps({ isActive }) {
+    this.handleIndicatorDataBlur(isActive);
   }
 
   updateIndicatorDataValues = (indicatorData, cb) => {
-    if (!indicatorData) {
-      return;
-    }
-
     const indicatorDataValues = {
       directSale: indicatorData.directSale,
       naturaNetwork: indicatorData.naturaNetwork,
@@ -45,9 +44,9 @@ export class IndicatorDataForm extends Component {
     this.setState({ indicatorDataValues }, cb);
   };
 
-  handleIndicatorDataBlur = indicatorData => {
-    if (this.props.indicatorData.active && !indicatorData.active) {
-      this.updateIndicatorDataValues(indicatorData);
+  handleIndicatorDataBlur = isActive => {
+    if (this.props.isActive && !isActive) {
+      this.updateIndicatorDataValues(this.props.indicatorData);
     }
   };
 
@@ -75,14 +74,12 @@ export class IndicatorDataForm extends Component {
 
     const { onApply, indicatorData } = this.props;
     const { indicatorDataValues } = this.state;
-    const newIndicatorData = {
+
+    return onApply({
       ...indicatorData,
       directSale: indicatorDataValues.directSale,
       naturaNetwork: indicatorDataValues.naturaNetwork,
-      active: false,
-    };
-
-    return onApply(newIndicatorData);
+    });
   };
 
   hasFilledValues = () => {
@@ -94,17 +91,17 @@ export class IndicatorDataForm extends Component {
 
   openModal = event => {
     event.stopPropagation();
-    this.setState({ open: true });
+    this.setState({ showDeleteModal: true });
   };
 
   closeModal = () => {
-    this.setState({ open: false });
+    this.setState({ showDeleteModal: false });
   };
 
-  renderConfirmationDialog = () => {
+  renderConfirmationDialog() {
     const title = translate('careerPlanCleanSimulation');
     const { indicator, indicatorData } = this.props;
-    const { open } = this.state;
+    const { showDeleteModal } = this.state;
     const actions = [
       <FlatButton
         label={<FormattedMessage id="cancel" />}
@@ -126,7 +123,7 @@ export class IndicatorDataForm extends Component {
         title={title}
         actions={actions}
         modal={false}
-        open={open}
+        open={showDeleteModal}
         onRequestClose={this.onCloseModal}
         contentStyle={CareerPlanModal.content}
         titleStyle={CareerPlanModal.title}
@@ -142,37 +139,34 @@ export class IndicatorDataForm extends Component {
         />
       </Dialog>
     );
-  };
+  }
 
   render() {
-    const { isFilled, indicatorData, canFill } = this.props;
+    const { isFilled, indicatorData, canFill, isActive } = this.props;
     const { indicatorDataValues } = this.state;
 
-    const simulatorLabelNode = indicatorData.active ? (
+    const simulatorLabelNode = isActive ? (
       <IndicatorDataSimulatorLabel>
         <FormattedMessage id="simulator" />
       </IndicatorDataSimulatorLabel>
     ) : null;
 
     const IndicatorDataTrashIconNode =
-      !indicatorData.active && isFilled ? (
+      !isActive && isFilled ? (
         <IndicatorDataTrashIcon onClick={this.openModal} title={translate('delete')}>
           <Icon file="ico_trash" />
         </IndicatorDataTrashIcon>
       ) : null;
 
     return (
-      <IndicatorDataContent active={indicatorData.active}>
+      <IndicatorDataContent active={isActive}>
         {IndicatorDataTrashIconNode}
         {simulatorLabelNode}
         <IndicatorDataRowObj>
           <IndicatorDataValue>{indicatorData.objective}</IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
-          <IndicatorDataRowInputWrapper
-            active={indicatorData.active}
-            empty={!indicatorDataValues.directSale}
-          >
+          <IndicatorDataRowInputWrapper active={isActive} empty={!indicatorDataValues.directSale}>
             <IndicatorDataRowInput
               name="directSale"
               type="text"
@@ -187,7 +181,7 @@ export class IndicatorDataForm extends Component {
         </IndicatorDataRow>
         <IndicatorDataRow>
           <IndicatorDataRowInputWrapper
-            active={indicatorData.active}
+            active={isActive}
             empty={!indicatorDataValues.naturaNetwork}
           >
             <IndicatorDataRowInput
@@ -206,7 +200,7 @@ export class IndicatorDataForm extends Component {
           <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
         </IndicatorDataRowAcc>
 
-        {indicatorData.active && (
+        {isActive && (
           <IndicatorDataApplyButton onClick={this.applyValues} disabled={!this.hasFilledValues()}>
             <FormattedMessage id="apply" />
           </IndicatorDataApplyButton>
