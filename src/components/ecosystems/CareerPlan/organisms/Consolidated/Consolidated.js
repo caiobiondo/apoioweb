@@ -29,7 +29,6 @@ import {
 export class Consolidated extends Component {
   constructor() {
     super();
-
     this.state = {
       consolidatedDataItems: mock,
     };
@@ -45,10 +44,17 @@ export class Consolidated extends Component {
     );
   };
 
-  renderIndicatorData = (cycle, index) => {
+  getVisibleCycles = () => {
+    const { consolidatedDataItems } = this.state;
+    const { from, to } = this.props.range;
+    const start = from === 0 ? 0 : from - 1;
+    return consolidatedDataItems.slice(start, to);
+  };
+
+  renderIndicatorData = cycle => {
     return (
       <IndicatorDataWrapper key={cycle.cycle}>
-        <IndicatorDataSort index={index}>{index + 1}</IndicatorDataSort>
+        <IndicatorDataSort>{cycle.cycle}</IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>
             <IndicatorDataValue>{this.isValidCycle(cycle) && 'Valid Cycle'}</IndicatorDataValue>
@@ -62,7 +68,7 @@ export class Consolidated extends Component {
   };
 
   render() {
-    const { consolidatedDataItems } = this.state;
+    const consolidatedDataItems = this.getVisibleCycles();
 
     return (
       <IndicatorWrapper indicatorId={0}>
