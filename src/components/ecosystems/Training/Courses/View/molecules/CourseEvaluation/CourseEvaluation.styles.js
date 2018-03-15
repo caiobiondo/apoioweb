@@ -25,7 +25,7 @@ export const ContentWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const TittleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   font-family: ${RobotoRegular};
   font-size: ${fs16};
   color: ${gray700};

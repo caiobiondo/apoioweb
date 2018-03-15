@@ -32,7 +32,7 @@ exports[`Course Evaluation render evaluation dialog 1`] = `
   }
   autoDetectWindowHeight={true}
   autoScrollBodyContent={false}
-  key="evaluationkModal"
+  key="evaluationModal"
   modal={false}
   onRequestClose={[Function]}
   open={true}
@@ -46,9 +46,9 @@ exports[`Course Evaluation render evaluation dialog 1`] = `
   }
 >
   <CourseEvaluationstyles__ContentWrapper>
-    <CourseEvaluationstyles__TittleWrapper>
+    <CourseEvaluationstyles__TitleWrapper>
       Description
-    </CourseEvaluationstyles__TittleWrapper>
+    </CourseEvaluationstyles__TitleWrapper>
     <CourseEvaluationstyles__RatingWrapper>
       <Rating
         disabled={false}

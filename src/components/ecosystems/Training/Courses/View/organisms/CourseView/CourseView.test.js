@@ -101,7 +101,7 @@ describe('Training Course View', () => {
       expect(props.mutate).toBeCalled();
     });
 
-    it('correctly call mutation and trow an error', () => {
+    it('correctly call mutation and throw an error', () => {
       // given
 
       // when

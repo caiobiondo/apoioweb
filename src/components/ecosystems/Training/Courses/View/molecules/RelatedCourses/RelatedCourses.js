@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { translate } from 'locale';
 import { Paper } from 'natura-ui';
@@ -88,4 +87,4 @@ RelatedCourses.propTypes = {
   courses: PropTypes.array.isRequired,
 };
 
-export default withRouter(RelatedCourses);
+export default RelatedCourses;

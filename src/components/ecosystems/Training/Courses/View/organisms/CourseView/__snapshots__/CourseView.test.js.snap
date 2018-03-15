@@ -99,7 +99,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
         }
       }
     />
-    <withRouter(RelatedCourses) />
+    <RelatedCourses />
   </Grid>
   <Dialog
     actions={

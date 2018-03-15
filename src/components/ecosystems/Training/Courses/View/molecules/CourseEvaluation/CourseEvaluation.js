@@ -12,7 +12,7 @@ import {
 import {
   CourseEvaluationModalTitle,
   CourseEvaluationModalAction,
-  TittleWrapper,
+  TitleWrapper,
   RatingWrapper,
   RatingStyles,
   ContentWrapper,
@@ -185,7 +185,7 @@ export class CourseEvaluation extends Component {
       ];
       return (
         <Dialog
-          key="feedbacEvaluationkModal"
+          key="feedbackEvaluationModal"
           title={this.state.feedbackModalTitle}
           actions={action}
           modal={false}
@@ -202,7 +202,7 @@ export class CourseEvaluation extends Component {
 
     return (
       <Dialog
-        key="evaluationkModal"
+        key="evaluationModal"
         title={translate('courseEvaluationTitle')}
         actions={actions}
         modal={false}
@@ -211,7 +211,7 @@ export class CourseEvaluation extends Component {
         onRequestClose={this.handleClose}
       >
         <ContentWrapper>
-          <TittleWrapper>{evaluation.description}</TittleWrapper>
+          <TitleWrapper>{evaluation.description}</TitleWrapper>
           <RatingWrapper>
             <Rating
               value={this.findEvaluateUserRate(evaluation)}
