@@ -14,6 +14,7 @@ import {
   IndicatorDataRowInput,
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
+  IndicatorDataConceptValue,
   IndicatorDataApplyButton,
 } from './IndicatorDataForm.styles';
 
@@ -194,6 +195,9 @@ export class IndicatorDataForm extends Component {
         <IndicatorDataRowAcc>
           <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
         </IndicatorDataRowAcc>
+        <IndicatorDataRow>
+          <IndicatorDataConceptValue concept={indicatorData.consolidated.value} />
+        </IndicatorDataRow>
 
         {isActive && (
           <IndicatorDataApplyButton

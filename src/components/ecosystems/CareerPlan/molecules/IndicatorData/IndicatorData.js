@@ -11,6 +11,7 @@ import {
   IndicatorDataRowFeatured,
   IndicatorDataRowObj,
   IndicatorDataValue,
+  IndicatorDataConceptValue,
   PopoverStyles,
   PopoverContent,
 } from './IndicatorData.styles';
@@ -21,13 +22,12 @@ export class IndicatorData extends Component {
   onClick = event => {
     const { onClick, indicatorData } = this.props;
 
-    if (!this.canFill()) {
-      event.preventDefault();
-      this.showPopover();
-      return console.log('Disabled Field');
+    if (this.canFill()) {
+      return onClick(indicatorData);
     }
 
-    return onClick(indicatorData);
+    event.preventDefault();
+    this.showPopover();
   };
 
   setNode = node => {
@@ -64,6 +64,9 @@ export class IndicatorData extends Component {
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
         </IndicatorDataRowFeatured>
+        <IndicatorDataRow>
+          <IndicatorDataConceptValue concept={indicatorData.consolidated.value} />
+        </IndicatorDataRow>
       </IndicatorDataContent>
     );
   }
