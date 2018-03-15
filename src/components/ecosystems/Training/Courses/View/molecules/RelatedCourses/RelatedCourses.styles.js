@@ -64,7 +64,7 @@ export const LeftCarouselArrow = styled.span`
   display: flex;
   align-items: center;
   z-index: 9999;
-  text-shadow: 1px 0px 4px #000000a3;
+  text-shadow: 1px 0px 4px ${black};
   cursor: pointer;
   margin: 10px 0 0 3px;
 `;
