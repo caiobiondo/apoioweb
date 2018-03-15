@@ -120,7 +120,7 @@ export const IndicatorDataConceptValue = styled.span`
   ${({ concept }) =>
     concept &&
     `
-    background: ${IndicatorConceptsColors[concept]}
+    background: ${IndicatorConceptsColors[concept]};
     border: none;
   `};
 `;
