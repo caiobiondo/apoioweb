@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CourseEvaluation } from './CourseEvaluation';
+import { FlatButton } from 'natura-ui';
 
 const setup = propOverrides => {
   const intl = {
@@ -27,7 +28,7 @@ const setup = propOverrides => {
       mutate: jest.fn().mockReturnValue(
         Promise.resolve({
           data: {
-            updateCourse: {
+            addCourseEvaluations: {
               status: true,
               message: 'success',
             },
@@ -71,12 +72,35 @@ describe('Course Evaluation', () => {
     expect(props.onLoadFinished).toBeCalledWith(false, false);
   });
 
-  it('render evaluation dialog', () => {
-    // given
-    // when
-    const { result, props } = setup({ fetchMore: jest.fn(), loading: false });
+  describe('Dialogs', () => {
+    it('render evaluation dialog', () => {
+      // given
+      // when
+      const { result, props } = setup({ fetchMore: jest.fn(), loading: false });
 
-    // then
-    expect(result).toMatchSnapshot();
+      // then
+      expect(result).toMatchSnapshot();
+    });
+
+    it('renders feedback evaluation dialog', () => {
+      // given
+      // when
+      const { result } = setup({ fetchMore: jest.fn(), loading: false });
+      result.setState({ feedbackModalOpened: true });
+
+      // then
+      expect(result).toMatchSnapshot();
+    });
+
+    it('correctly call mutation', () => {
+      // given
+      // when
+      const { result, props } = setup({ fetchMore: jest.fn(), loading: false });
+      result.setState({ currentIndex: 1 });
+      result.instance().handleClose();
+
+      // then
+      expect(props.mutate).toBeCalled();
+    });
   });
 });

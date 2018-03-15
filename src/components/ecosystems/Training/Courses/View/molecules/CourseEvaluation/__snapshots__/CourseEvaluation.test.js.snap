@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Course Evaluation render evaluation dialog 1`] = `
+exports[`Course Evaluation Dialogs render evaluation dialog 1`] = `
 <Dialog
   actions={
     Array [
@@ -92,6 +92,52 @@ exports[`Course Evaluation render evaluation dialog 1`] = `
     1/2
   </CourseEvaluationstyles__WrapperCount>
 </Dialog>
+`;
+
+exports[`Course Evaluation Dialogs renders feedback evaluation dialog 1`] = `
+<Dialog
+  actions={
+    Array [
+      <FlatButton
+        disabled={false}
+        fullWidth={false}
+        label={
+            <FormattedMessage
+                id="ok"
+                values={Object {}}
+            />
+        }
+        labelPosition="after"
+        labelStyle={
+            Object {
+                "fontFamily": "Roboto-Regular",
+                "fontWeight": "700",
+              }
+        }
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={true}
+        secondary={false}
+    />,
+    ]
+  }
+  autoDetectWindowHeight={true}
+  autoScrollBodyContent={false}
+  key="feedbackEvaluationModal"
+  modal={false}
+  open={true}
+  repositionOnUpdate={true}
+  title=""
+  titleStyle={
+    Object {
+      "fontFamily": "NaturaSans-Bold",
+      "fontSize": "25px",
+    }
+  }
+/>
 `;
 
 exports[`Course Evaluation renders correctly when loading 1`] = `
