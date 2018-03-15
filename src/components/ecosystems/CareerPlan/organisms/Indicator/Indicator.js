@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 
 import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
 import conceptMock from './IndicatorConceptMock';
+import { IndicatorTypesLabels } from '../../IndicatorTypes.enum';
 
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
@@ -170,7 +171,7 @@ export class Indicator extends Component {
           <IndicatorWeightValue>{indicator.significance}</IndicatorWeightValue>
         </IndicatorWeightWrapper>
 
-        <IndicatorTitle>{indicator.title}</IndicatorTitle>
+        <IndicatorTitle>{IndicatorTypesLabels[indicator.indicatorType]}</IndicatorTitle>
         <IndicatorInfo onClick={this.openInformationModal}>
           <FormattedMessage id="information" />
         </IndicatorInfo>

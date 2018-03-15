@@ -18,11 +18,7 @@ export const ConsolidatedWrapper = styled.div`
   width: 100%;
 
   ${IndicatorTableHeader} {
-    margin-top: 110px;
-  }
-
-  ${IndicatorTableContent} {
-    padding: 15px 0 10px;
+    margin-top: 116px;
   }
 
   ${IndicatorWeightWrapper} {
@@ -36,7 +32,7 @@ export const ConsolidatedWrapper = styled.div`
   }
 
   ${IndicatorDataContent} {
-    padding: 35px 0;
+    padding: 45px 0 35px;
   }
 
   ${IndicatorDataRowAcc} {

@@ -122,6 +122,10 @@ export const IndicatorDataWrapper = styled.li`
     ${({ indicatorType }) => `background-color: ${IndicatorTypesColors[indicatorType]}`};
   }
 
+  ${IndicatorDataSortCurrent} {
+    ${({ indicatorType }) => !indicatorType && `background-color: ${gray890}}`};
+  }
+
   ${IndicatorDataFormComponents.IndicatorDataRowInput} {
     ${({ isActive }) => isActive && `box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1); `};
   }

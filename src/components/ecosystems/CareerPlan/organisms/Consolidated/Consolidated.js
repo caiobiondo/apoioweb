@@ -28,6 +28,7 @@ import {
   IndicatorDataValue,
   PopoverStyles,
   PopoverContent,
+  IndicatorDataSortCurrent,
 } from '../../molecules/IndicatorData/IndicatorData.styles';
 
 import { IndicatorDataRowConcept } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
@@ -121,6 +122,10 @@ export class Consolidated extends Component {
       </ConsolidateWarningIcon>
     ) : null;
 
+    const currentNode = cycle.current ? (
+      <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>
+    ) : null;
+
     const overcomingValue = isActiveCycle ? null : isValidCycle ? cycle.overcoming : '-';
     const conceptValue = isActiveCycle
       ? null
@@ -135,7 +140,9 @@ export class Consolidated extends Component {
         }}
         innerRef={node => this.setNode(cycle, node)}
       >
-        <IndicatorDataSort>{cycle.cycle}</IndicatorDataSort>
+        <IndicatorDataSort>
+          {cycle.cycle} {currentNode}
+        </IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>
             <IndicatorDataValue>{overcomingValue}</IndicatorDataValue>

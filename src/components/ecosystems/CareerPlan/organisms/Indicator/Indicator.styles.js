@@ -127,6 +127,7 @@ export const IndicatorTableContentWrapper = styled.div`
 `;
 
 export const IndicatorTableContent = styled.ul`
+  margin: 0;
   overflow: hidden;
   padding: 30px 0 15px;
   position: relative;
