@@ -381,7 +381,9 @@ Object {
   "data": Object {
     "course": Object {},
     "loading": true,
+    "refetch": [Function],
   },
   "loading": true,
+  "refetch": [Function],
 }
 `;
