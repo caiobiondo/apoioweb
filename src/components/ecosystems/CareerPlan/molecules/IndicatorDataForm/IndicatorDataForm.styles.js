@@ -3,6 +3,8 @@ import { gray150, gray300, gray700, gray890 } from 'styles/colors';
 import { fw400, fw600, RobotoRegular } from 'styles/typography';
 import InputNumber from 'components/ecosystems/CareerPlan/atoms/InputNumber';
 
+import { IndicatorConceptsColors } from '../../IndicatorConcepts.enum';
+
 export const IndicatorDataRowInput = styled(InputNumber)`
   border: none;
   border-radius: 2px;
@@ -82,6 +84,15 @@ export const IndicatorDataRow = styled.div`
   display: inline-block;
   width: 100%;
   color: ${gray700};
+`;
+
+export const IndicatorDataRowConcept = styled(IndicatorDataRow)`
+  ${({ concept }) => `
+    color: ${IndicatorConceptsColors[concept] || gray700};
+    font-weight: bold;
+    min-height: 45px;
+    text-transform: uppercase;
+  `};
 `;
 
 export const IndicatorDataRowAcc = IndicatorDataRow.extend`

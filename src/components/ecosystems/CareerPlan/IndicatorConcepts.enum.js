@@ -8,6 +8,24 @@ export const IndicatorConcepts = {
   Exceed: 'Excede',
 };
 
+export const IndicatorConceptsLabels = {
+  get [IndicatorConcepts.Below]() {
+    return 'Abaixo';
+  },
+  get [IndicatorConcepts.Attempt]() {
+    return 'Atende';
+  },
+  get [IndicatorConcepts.Inside]() {
+    return 'Dentro';
+  },
+  get [IndicatorConcepts.Overcome]() {
+    return 'Supera';
+  },
+  get [IndicatorConcepts.Exceed]() {
+    return 'Excede';
+  },
+};
+
 export const IndicatorConceptsColors = {
   get [IndicatorConcepts.Below]() {
     return red100;

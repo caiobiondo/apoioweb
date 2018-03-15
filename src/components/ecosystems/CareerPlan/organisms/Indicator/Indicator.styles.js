@@ -108,7 +108,7 @@ export const IndicatorTableHeaderItemFeatured = IndicatorTableHeaderItem.extend`
   font-weight: ${fw600};
 `;
 
-export const IndicatorTableContentWapper = styled.div`
+export const IndicatorTableContentWrapper = styled.div`
   display: inline-block;
   position: relative;
   width: calc(100% - 110px);

@@ -19,7 +19,7 @@ import {
   IndicatorTableHeaderItem,
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
-  IndicatorTableContentWapper,
+  IndicatorTableContentWrapper,
   IndicatorConceptList,
   IndicatorConceptListItem,
 } from './Indicator.styles';
@@ -182,9 +182,9 @@ export class Indicator extends Component {
             <IndicatorTableHeaderItemFeatured>Superação acumulada</IndicatorTableHeaderItemFeatured>
           </IndicatorTableHeader>
 
-          <IndicatorTableContentWapper>
+          <IndicatorTableContentWrapper>
             <IndicatorTableContent>{visibleCycles.map(this.renderCycles)}</IndicatorTableContent>
-          </IndicatorTableContentWapper>
+          </IndicatorTableContentWrapper>
         </IndicatorContentWrapper>
 
         {this.renderConfirmationDialog()}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
+import { Popover } from 'material-ui';
+import { Icon } from 'natura-ui';
 
 import mock from './ConsolidatedDataMock';
-import { ConsolidatedWrapper } from './Consolidated.styles';
-
+import { IndicatorConceptsLabels } from '../../IndicatorConcepts.enum';
+import { ConsolidatedWrapper, ConsolidateWarningIcon } from './Consolidated.styles';
 import TrophyIcon from 'assets/images/trophy.png';
 
 import {
@@ -15,7 +17,7 @@ import {
   IndicatorTableHeader,
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
-  IndicatorTableContentWapper,
+  IndicatorTableContentWrapper,
 } from '../Indicator/Indicator.styles';
 
 import {
@@ -24,15 +26,29 @@ import {
   IndicatorDataSort,
   IndicatorDataRowFeatured,
   IndicatorDataValue,
+  PopoverStyles,
+  PopoverContent,
 } from '../../molecules/IndicatorData/IndicatorData.styles';
+
+import { IndicatorDataRowConcept } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
 export class Consolidated extends Component {
   constructor() {
     super();
+    this.cyclesNodes = {};
     this.state = {
-      consolidatedDataItems: mock,
+      consolidatedCycles: mock,
     };
   }
+
+  onClick = (cycle, event) => {
+    if (this.isValidCycle(cycle)) {
+      return;
+    }
+
+    event.preventDefault();
+    this.showPopover();
+  };
 
   isValidCycle = cycle => {
     const { indicators, isCycleFilled } = this.props;
@@ -45,30 +61,99 @@ export class Consolidated extends Component {
   };
 
   getVisibleCycles = () => {
-    const { consolidatedDataItems } = this.state;
+    const { consolidatedCycles } = this.state;
     const { from, to } = this.props.range;
     const start = from === 0 ? 0 : from - 1;
-    return consolidatedDataItems.slice(start, to);
+    return consolidatedCycles.slice(start, to);
+  };
+
+  isActiveCycle = cycle => {
+    const { consolidatedCycles } = this.state;
+    const index = consolidatedCycles.indexOf(cycle);
+
+    return (
+      (index === 0 || this.isValidCycle(consolidatedCycles[index - 1])) && !this.isValidCycle(cycle)
+    );
+  };
+
+  setNode = (cycle, node) => {
+    this.cyclesNodes[cycle.cycle] = node;
+  };
+
+  hidePopover = () => {
+    this.setState({ showPopover: false });
+  };
+
+  showPopover = () => {
+    this.setState({ showPopover: true });
+  };
+
+  renderPopover = cycle => {
+    if (!this.isActiveCycle(cycle)) {
+      return;
+    }
+
+    return (
+      <Popover
+        open={this.state.showPopover}
+        anchorEl={this.cyclesNodes[cycle.cycle]}
+        className="Popover"
+        anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
+        targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
+        onRequestClose={this.hidePopover}
+        style={PopoverStyles}
+      >
+        <PopoverContent>
+          Simule os indicadores <strong>Cadastro Médio</strong> e{' '}
+          <strong>Atingido, Meta e Grupo</strong> no ciclo <strong>5</strong> para obter o
+          consolidado
+        </PopoverContent>
+      </Popover>
+    );
   };
 
   renderIndicatorData = cycle => {
+    const isValidCycle = this.isValidCycle(cycle);
+    const isActiveCycle = this.isActiveCycle(cycle);
+    const warningIcon = isActiveCycle ? (
+      <ConsolidateWarningIcon>
+        <Icon file="ico_warning_info" />
+      </ConsolidateWarningIcon>
+    ) : null;
+
+    const overcomingValue = isActiveCycle ? null : isValidCycle ? cycle.overcoming : '-';
+    const conceptValue = isActiveCycle
+      ? null
+      : isValidCycle ? IndicatorConceptsLabels[cycle.value] : '-';
+
     return (
-      <IndicatorDataWrapper key={cycle.cycle}>
+      <IndicatorDataWrapper
+        key={cycle.cycle}
+        isActive={this.isActiveCycle(cycle)}
+        onClick={event => {
+          this.onClick(cycle, event);
+        }}
+        innerRef={node => this.setNode(cycle, node)}
+      >
         <IndicatorDataSort>{cycle.cycle}</IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{this.isValidCycle(cycle) && 'Valid Cycle'}</IndicatorDataValue>
+            <IndicatorDataValue>{overcomingValue}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
-          <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{this.isValidCycle(cycle) && 'Valid Cycle'}</IndicatorDataValue>
-          </IndicatorDataRowFeatured>
+          <IndicatorDataRowConcept concept={cycle.value}>
+            <IndicatorDataValue>{conceptValue}</IndicatorDataValue>
+          </IndicatorDataRowConcept>
         </IndicatorDataContent>
+
+        {warningIcon}
+
+        {this.renderPopover(cycle)}
       </IndicatorDataWrapper>
     );
   };
 
   render() {
-    const consolidatedDataItems = this.getVisibleCycles();
+    const consolidatedCycles = this.getVisibleCycles();
 
     return (
       <IndicatorWrapper indicatorId={0}>
@@ -90,11 +175,11 @@ export class Consolidated extends Component {
               </IndicatorTableHeaderItemFeatured>
             </IndicatorTableHeader>
 
-            <IndicatorTableContentWapper>
+            <IndicatorTableContentWrapper>
               <IndicatorTableContent>
-                {consolidatedDataItems.map(this.renderIndicatorData)}
+                {consolidatedCycles.map(this.renderIndicatorData)}
               </IndicatorTableContent>
-            </IndicatorTableContentWapper>
+            </IndicatorTableContentWrapper>
           </IndicatorContentWrapper>
         </ConsolidatedWrapper>
       </IndicatorWrapper>

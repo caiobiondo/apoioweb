@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+import { gray200 } from 'styles/colors';
 
 import {
   IndicatorWeightWrapper,
   IndicatorTableHeader,
   IndicatorTableContent,
 } from '../Indicator/Indicator.styles';
+
+import { IndicatorDataRowFeatured } from '../../molecules/IndicatorData/IndicatorData.styles';
 
 import {
   IndicatorDataContent,
@@ -33,10 +36,30 @@ export const ConsolidatedWrapper = styled.div`
   }
 
   ${IndicatorDataContent} {
-    padding-top: 35px;
+    padding: 35px 0;
   }
 
   ${IndicatorDataRowAcc} {
     min-height: 45px;
+  }
+
+  ${IndicatorDataRowFeatured} {
+    display: block;
+    width: 100%;
+    line-height: 25px;
+  }
+`;
+
+export const ConsolidateWarningIcon = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% + 20px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: ${gray200};
   }
 `;
