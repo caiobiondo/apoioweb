@@ -50,7 +50,7 @@ describe('CourseContent', () => {
   describe('when handleStateChange', () => {
     it('correctly call mutation', () => {
       // given
-      const state = {
+      const defaultState = {
         ended: true,
         hasStarted: true,
         paused: true,
@@ -61,41 +61,51 @@ describe('CourseContent', () => {
       const { props } = setup({ loading: false });
       const result = mount(<CourseContent {...props} />);
 
-      result.instance().handleStateChange(state, null);
+      result.instance().handleStateChange(defaultState, defaultState);
 
       // then
       expect(props.mutate).toBeCalled();
     });
+  });
 
-    it('correctly call mutation and trow an error', () => {
+  describe('when defineVideoCourseStatus', () => {
+    it('correctly defined final hasStarted state', () => {
       // given
-      const state = {
-        ended: false,
-        hasStarted: true,
-        paused: true,
-        currentTime: 1,
-      };
       // when
-      const { props } = setup({
-        loading: false,
-        mutate: jest.fn().mockReturnValue(
-          Promise.reject({
-            data: {
-              updateCourse: {
-                status: false,
-                message: 'error',
-              },
-            },
-          }),
-        ),
-      });
+      const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-
-      result.instance().handleStateChange(state, null);
+      result.setState({ hasStarted: true });
+      result.instance().defineVideoCourseStatus();
 
       // then
-      expect(props.mutate).toBeCalled();
+      expect(result.state('hasStarted')).toBe(false);
+    });
+
+    it('correctly defined final paused state', () => {
+      // given
+      // when
+      const { props } = setup({ loading: false });
+
+      const result = mount(<CourseContent {...props} />);
+      result.setState({ paused: true });
+      result.instance().defineVideoCourseStatus();
+
+      // then
+      expect(result.state('paused')).toBe(false);
+    });
+
+    it('correctly defined final ended state', () => {
+      // given
+      // when
+      const { props } = setup({ loading: false });
+
+      const result = mount(<CourseContent {...props} />);
+      result.setState({ ended: true });
+      result.instance().defineVideoCourseStatus();
+
+      // then
+      expect(result.state('ended')).toBe(false);
     });
   });
 });
