@@ -101,28 +101,5 @@ describe('Training Course View', () => {
       // then
       expect(props.mutate).toBeCalled();
     });
-
-    it('correctly call mutation and throw an error', () => {
-      // given
-
-      // when
-      const { result, props } = setup({
-        loading: false,
-        mutate: jest.fn().mockReturnValue(
-          Promise.reject({
-            data: {
-              updateCourse: {
-                status: false,
-                message: 'error',
-              },
-            },
-          }),
-        ),
-      });
-      result.instance().handleMyListClick();
-
-      // then
-      expect(props.mutate).toBeCalled();
-    });
   });
 });

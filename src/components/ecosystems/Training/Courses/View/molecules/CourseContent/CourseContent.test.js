@@ -69,40 +69,46 @@ describe('CourseContent', () => {
   });
 
   describe('when defineVideoCourseStatus', () => {
-    it('correctly defined final hasStarted state', () => {
+    it('correctly defined final hasStarted state', done => {
       // given
       // when
       const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-      result.setState({ hasStarted: true });
-      result.instance().defineVideoCourseStatus();
+      result.setState({ hasStarted: true }, () => {
+        result.instance().defineVideoCourseStatus();
+        done();
+      });
 
       // then
       expect(result.state('hasStarted')).toBe(false);
     });
 
-    it('correctly defined final paused state', () => {
+    it('correctly defined final paused state', done => {
       // given
       // when
       const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-      result.setState({ paused: true });
-      result.instance().defineVideoCourseStatus();
+      result.setState({ paused: true }, () => {
+        result.instance().defineVideoCourseStatus();
+        done();
+      });
 
       // then
       expect(result.state('paused')).toBe(false);
     });
 
-    it('correctly defined final ended state', () => {
+    it('correctly defined final ended state', done => {
       // given
       // when
       const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-      result.setState({ ended: true });
-      result.instance().defineVideoCourseStatus();
+      result.setState({ ended: true }, () => {
+        result.instance().defineVideoCourseStatus();
+        done();
+      });
 
       // then
       expect(result.state('ended')).toBe(false);
