@@ -383,5 +383,6 @@ Object {
     "loading": true,
   },
   "loading": true,
+  "refetch": undefined,
 }
 `;

@@ -24,7 +24,6 @@ import { translate } from 'locale';
 
 export class CourseView extends Component {
   state = {
-    isFavorite: false,
     feedbackModalOpened: false,
     feedbackModalTitle: '',
   };
@@ -39,21 +38,16 @@ export class CourseView extends Component {
     }
   };
 
-  componentWillMount() {
-    const { course } = this.props;
-    if (course) this.setState({ isFavorite: course.isfavorite });
-  }
-
   isLoading = (loading, course) => loading && !course;
 
   isEmpty = (loading, course) => !loading && !course.id;
 
-  myListIconName = course => {
-    return this.state.isFavorite === 'true' ? 'ico_minus' : 'ico_plus';
+  myListIconName = () => {
+    return this.props.course.isFavorite === 'true' ? 'ico_minus' : 'ico_plus';
   };
 
   valueToUpdateMyList = () => {
-    return this.state.isFavorite === 'true' ? 'unfavorite' : 'favorite';
+    return this.props.course.isFavorite === 'true' ? 'unfavorite' : 'favorite';
   };
 
   handleMyListError = () => {

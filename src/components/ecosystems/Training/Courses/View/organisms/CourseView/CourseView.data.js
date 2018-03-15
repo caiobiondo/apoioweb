@@ -48,6 +48,7 @@ export const CourseViewQueryOptions = {
       data,
       loading: data.loading,
       course: data.course,
+      refetch: data.refetch,
     };
   },
 };
