@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray150, gray400, gray890 } from 'styles/colors';
+import { gray150, gray400, gray700, gray890 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
 import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
@@ -9,6 +9,7 @@ export const IndicatorDataRow = IndicatorDataFormComponents.IndicatorDataRow;
 export const IndicatorDataRowFeatured = IndicatorDataFormComponents.IndicatorDataRowAcc;
 export const IndicatorDataRowObj = IndicatorDataFormComponents.IndicatorDataRowObj;
 export const IndicatorDataValue = IndicatorDataFormComponents.IndicatorDataValue;
+export const IndicatorDataConceptValue = IndicatorDataFormComponents.IndicatorDataConceptValue;
 
 export const IndicatorDataSortCurrent = styled.span`
   border-radius: 5px;
@@ -132,7 +133,7 @@ export const IndicatorDataWrapper = styled.li`
 `;
 
 export const PopoverStyles = {
-  color: '#777777',
+  color: gray700,
   fontSize: '14px',
   maxWidth: '250px',
   overflow: 'visible',

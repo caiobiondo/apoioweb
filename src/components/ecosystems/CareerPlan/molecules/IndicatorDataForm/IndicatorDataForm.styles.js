@@ -107,6 +107,23 @@ export const IndicatorDataRowObj = IndicatorDataRow.extend`
   font-weight: ${fw600};
 `;
 
+export const IndicatorDataConceptValue = styled.span`
+  display: inline-block;
+  width: 12px;
+  height: 7px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid ${gray700};
+  margin-top: 5px;
+
+  ${({ concept }) =>
+    concept &&
+    `
+    border: none;
+    background: ${IndicatorConceptsColors[concept]}
+  `};
+`;
+
 export const IndicatorDataApplyButton = styled.button`
   background: transparent;
   border-radius: 4px;
