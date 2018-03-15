@@ -867,6 +867,14 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationError": "Não foi possível realizar a avaliação",
+            "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
+            "courseEvaluationBack": "Voltar",
+            "courseEvaluationEnd": "Finalizar",
+            "courseEvaluationNext": "Próximo",
+            "courseEvaluationTitle": "Avaliação do curso",
+            "courseRatingAvaliation": "Avaliação",
+            "courseRatingTime": "Tempo",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
             "courses": "Cursos",
@@ -957,8 +965,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
@@ -1027,6 +1037,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "presential": "Presencial",
             "previousMagazines": "Revistas anteriores",
             "productType": "Tipo do produto",
+            "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
@@ -1077,6 +1088,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
@@ -2438,6 +2450,14 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationError": "Não foi possível realizar a avaliação",
+            "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
+            "courseEvaluationBack": "Voltar",
+            "courseEvaluationEnd": "Finalizar",
+            "courseEvaluationNext": "Próximo",
+            "courseEvaluationTitle": "Avaliação do curso",
+            "courseRatingAvaliation": "Avaliação",
+            "courseRatingTime": "Tempo",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
             "courses": "Cursos",
@@ -2528,8 +2548,10 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
@@ -2598,6 +2620,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "presential": "Presencial",
             "previousMagazines": "Revistas anteriores",
             "productType": "Tipo do produto",
+            "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
@@ -2648,6 +2671,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
@@ -4302,6 +4326,14 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationError": "Não foi possível realizar a avaliação",
+            "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
+            "courseEvaluationBack": "Voltar",
+            "courseEvaluationEnd": "Finalizar",
+            "courseEvaluationNext": "Próximo",
+            "courseEvaluationTitle": "Avaliação do curso",
+            "courseRatingAvaliation": "Avaliação",
+            "courseRatingTime": "Tempo",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
             "courses": "Cursos",
@@ -4392,8 +4424,10 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
@@ -4462,6 +4496,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "presential": "Presencial",
             "previousMagazines": "Revistas anteriores",
             "productType": "Tipo do produto",
+            "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
@@ -4512,6 +4547,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
@@ -6503,14 +6539,14 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T06:41:20.000Z}
-                                  minDate={2017-12-15T06:41:20.000Z}
+                                  maxDate={2017-12-15T04:41:20.000Z}
+                                  minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   required={true}
-                                  value={2017-12-15T06:41:20.000Z}
+                                  value={2017-12-15T04:41:20.000Z}
                                 >
                                   <InputDate
                                     autoOk={false}
@@ -6521,15 +6557,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T06:41:20.000Z}
-                                    minDate={2017-12-15T06:41:20.000Z}
+                                    maxDate={2017-12-15T04:41:20.000Z}
+                                    minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     required={true}
                                     showError={true}
-                                    value={2017-12-15T06:41:20.000Z}
+                                    value={2017-12-15T04:41:20.000Z}
                                     width="100%"
                                   >
                                     <FormGroup
@@ -6545,15 +6581,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T06:41:20.000Z}
-                                      minDate={2017-12-15T06:41:20.000Z}
+                                      maxDate={2017-12-15T04:41:20.000Z}
+                                      minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
                                       onChange={[Function]}
                                       required={true}
                                       showError={true}
-                                      value={2017-12-15T06:41:20.000Z}
+                                      value={2017-12-15T04:41:20.000Z}
                                       width="100%"
                                     >
                                       <styled.div
@@ -6595,8 +6631,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T06:41:20.000Z}
-                                                minDate={2017-12-15T06:41:20.000Z}
+                                                maxDate={2017-12-15T04:41:20.000Z}
+                                                minDate={2017-12-15T04:41:20.000Z}
                                                 name="customer.birthday"
                                                 okLabel="confirmar"
                                                 onChange={[Function]}
@@ -6608,7 +6644,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                     "width": "100%",
                                                   }
                                                 }
-                                                value={2017-12-15T06:41:20.000Z}
+                                                value={2017-12-15T04:41:20.000Z}
                                               >
                                                 <div
                                                   style={
@@ -7169,8 +7205,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T06:41:20.000Z}
-                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    maxDate={2017-12-15T04:41:20.000Z}
+                                                    minDate={2017-12-15T04:41:20.000Z}
                                                     okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}

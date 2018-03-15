@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Course View renders correctly when loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`Training Course View renders correctly when the course is defined 1`] = `
+<CourseViewstyles__Main>
+  <Grid
+    fluid={true}
+  >
+    <CourseViewHeader />
+    <Apollo(CourseContent)
+      course={
+        Object {
+          "dateUpload": "2017-04-20T00:00:00.000Z",
+          "description": "new course description",
+          "durationInSeconds": 1234,
+          "id": 1,
+          "isfavorite": true,
+          "relatedCourses": Array [],
+          "status": "started",
+          "stoppedAt": 12,
+          "title": "new course",
+          "type": "VIDEO",
+          "views": 12,
+        }
+      }
+      sellerId={1234}
+    />
+    <CourseDescription
+      course={
+        Object {
+          "dateUpload": "2017-04-20T00:00:00.000Z",
+          "description": "new course description",
+          "durationInSeconds": 1234,
+          "id": 1,
+          "isfavorite": true,
+          "relatedCourses": Array [],
+          "status": "started",
+          "stoppedAt": 12,
+          "title": "new course",
+          "type": "VIDEO",
+          "views": 12,
+        }
+      }
+    />
+    <Row>
+      <Col
+        md={1}
+        sm={1}
+      >
+        <CourseViewstyles__MylistButtonWrapper>
+          <FlatButton
+            backgroundColor="#f8f8f8"
+            disabled={false}
+            fullWidth={false}
+            hoverColor="#f8f8f8"
+            icon={
+              <Icon
+                file="ico_plus"
+              />
+            }
+            label="Minha Lista"
+            labelPosition="after"
+            labelStyle={
+              Object {
+                "color": "#2B8CE9",
+                "fontFamily": "Roboto-Regular",
+                "textTransform": "uppercase",
+              }
+            }
+            onClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+          />
+        </CourseViewstyles__MylistButtonWrapper>
+      </Col>
+    </Row>
+    <CourseRating
+      course={
+        Object {
+          "dateUpload": "2017-04-20T00:00:00.000Z",
+          "description": "new course description",
+          "durationInSeconds": 1234,
+          "id": 1,
+          "isfavorite": true,
+          "relatedCourses": Array [],
+          "status": "started",
+          "stoppedAt": 12,
+          "title": "new course",
+          "type": "VIDEO",
+          "views": 12,
+        }
+      }
+    />
+    <RelatedCourses
+      courses={Array []}
+    />
+  </Grid>
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="ok"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto-Regular",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    key="feedbackModal"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title=""
+    titleStyle={
+      Object {
+        "fontFamily": "NaturaSans-Bold",
+        "fontSize": "25px",
+      }
+    }
+  />
+</CourseViewstyles__Main>
+`;
+
+exports[`Training Course View renders correctly when the course is not defined 1`] = `
+<CourseViewstyles__Main>
+  <EmptyList
+    descriptionId="myCourseEmptyListDescription"
+    icon="ico_list_add"
+    titleId="myCourseEmptyList"
+  />
+</CourseViewstyles__Main>
+`;

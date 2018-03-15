@@ -1328,6 +1328,14 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationError": "Não foi possível realizar a avaliação",
+            "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
+            "courseEvaluationBack": "Voltar",
+            "courseEvaluationEnd": "Finalizar",
+            "courseEvaluationNext": "Próximo",
+            "courseEvaluationTitle": "Avaliação do curso",
+            "courseRatingAvaliation": "Avaliação",
+            "courseRatingTime": "Tempo",
             "courseViews.many": "visualizações",
             "courseViews.one": "visualização",
             "courses": "Cursos",
@@ -1418,8 +1426,10 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "makeupProducts": "Produtos de maquiagem",
             "male": "Masculino",
             "myCertificatesEmptyList": "Lista de certificados vazia",
+            "myCourseEmptyList": "Não há curso",
+            "myCourseEmptyListDescription": "O curso não está disponível",
             "myCoursesEmptyList": "Lista de cursos vazia",
-            "myCoursesEmptyListDescription": "Você ainda não possui clientes cadastrados",
+            "myCoursesEmptyListDescription": "Não existem cursos disponíveis",
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
@@ -1488,6 +1498,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "presential": "Presencial",
             "previousMagazines": "Revistas anteriores",
             "productType": "Tipo do produto",
+            "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
@@ -1538,6 +1549,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
             "visualizeMagazine": "Ver revista",
@@ -3326,8 +3338,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T06:41:20.000Z}
-                                  minDate={2017-12-15T06:41:20.000Z}
+                                  maxDate={2017-12-15T04:41:20.000Z}
+                                  minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
@@ -3344,8 +3356,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T06:41:20.000Z}
-                                    minDate={2017-12-15T06:41:20.000Z}
+                                    maxDate={2017-12-15T04:41:20.000Z}
+                                    minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
@@ -3368,8 +3380,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T06:41:20.000Z}
-                                      minDate={2017-12-15T06:41:20.000Z}
+                                      maxDate={2017-12-15T04:41:20.000Z}
+                                      minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
@@ -3418,8 +3430,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T06:41:20.000Z}
-                                                minDate={2017-12-15T06:41:20.000Z}
+                                                maxDate={2017-12-15T04:41:20.000Z}
+                                                minDate={2017-12-15T04:41:20.000Z}
                                                 name="customer.birthday"
                                                 okLabel="confirmar"
                                                 onChange={[Function]}
@@ -3992,8 +4004,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T06:41:20.000Z}
-                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    maxDate={2017-12-15T04:41:20.000Z}
+                                                    minDate={2017-12-15T04:41:20.000Z}
                                                     okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}
