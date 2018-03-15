@@ -22,6 +22,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
           "durationInSeconds": 1234,
           "id": 1,
           "isfavorite": true,
+          "relatedCourses": Array [],
           "status": "started",
           "stoppedAt": 12,
           "title": "new course",
@@ -39,6 +40,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
           "durationInSeconds": 1234,
           "id": 1,
           "isfavorite": true,
+          "relatedCourses": Array [],
           "status": "started",
           "stoppedAt": 12,
           "title": "new course",
@@ -91,6 +93,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
           "durationInSeconds": 1234,
           "id": 1,
           "isfavorite": true,
+          "relatedCourses": Array [],
           "status": "started",
           "stoppedAt": 12,
           "title": "new course",
@@ -99,7 +102,9 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
         }
       }
     />
-    <RelatedCourses />
+    <RelatedCourses
+      courses={Array []}
+    />
   </Grid>
   <Dialog
     actions={

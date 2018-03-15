@@ -23,6 +23,7 @@ const setup = propOverrides => {
         type: 'VIDEO',
         status: 'started',
         isfavorite: true,
+        relatedCourses: [],
       },
       mutate: jest.fn().mockReturnValue(
         Promise.resolve({
