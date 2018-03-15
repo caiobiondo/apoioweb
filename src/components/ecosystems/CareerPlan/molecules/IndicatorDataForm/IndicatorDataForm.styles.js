@@ -6,26 +6,26 @@ import InputNumber from 'components/ecosystems/CareerPlan/atoms/InputNumber';
 import { IndicatorConceptsColors } from '../../IndicatorConcepts.enum';
 
 export const IndicatorDataRowInput = styled(InputNumber)`
-  border: none;
   border-radius: 2px;
-  padding: 5px 0;
-  margin: 5px 0px;
-  text-align: center;
-  width: 100%;
+  border: none;
   color: ${gray700};
   font-family: ${RobotoRegular};
   font-size: 13px;
+  margin: 5px 0px;
+  padding: 5px 0;
   position: relative;
+  text-align: center;
+  width: 100%;
 
   &:focus {
-    outline: none;
     background: ${gray890};
-    color: #fff;
+    color: white;
+    outline: none;
     z-index: 1;
   }
 
   &:disabled {
-    background: #fff;
+    background: white;
     cursor: pointer;
   }
 
@@ -48,11 +48,11 @@ export const IndicatorDataTrashIcon = styled.a`
   cursor: pointer;
   display: inline-block;
   height: 12px;
-  width: 12px;
+  left: 50%;
   position: absolute;
   top: 20px;
   transform: translate(-50%, 0);
-  left: 50%;
+  width: 12px;
 
   svg {
     fill: ${gray300};
@@ -60,6 +60,8 @@ export const IndicatorDataTrashIcon = styled.a`
 `;
 
 export const IndicatorDataRowInputWrapper = styled.div`
+  position: relative;
+
   svg {
     display: none;
     height: 10px;
@@ -72,18 +74,17 @@ export const IndicatorDataRowInputWrapper = styled.div`
   ${({ isActive, empty }) =>
     isActive &&
     empty &&
-    `position: relative;
-
-      svg {
-        display: block;
-      }
+    `
+    svg {
+      display: block;
+    }
   `};
 `;
 
 export const IndicatorDataRow = styled.div`
+  color: ${gray700};
   display: inline-block;
   width: 100%;
-  color: ${gray700};
 `;
 
 export const IndicatorDataRowConcept = styled(IndicatorDataRow)`
@@ -97,8 +98,8 @@ export const IndicatorDataRowConcept = styled(IndicatorDataRow)`
 
 export const IndicatorDataRowAcc = IndicatorDataRow.extend`
   color: ${gray890};
-  font-weight: ${fw600};
   font-size: 16px;
+  font-weight: ${fw600};
   min-height: 35px;
 `;
 
@@ -108,19 +109,19 @@ export const IndicatorDataRowObj = IndicatorDataRow.extend`
 `;
 
 export const IndicatorDataConceptValue = styled.span`
-  display: inline-block;
-  width: 12px;
-  height: 7px;
-  border-radius: 3px;
   background-color: white;
+  border-radius: 3px;
   border: 1px solid ${gray700};
+  display: inline-block;
+  height: 7px;
   margin-top: 5px;
+  width: 12px;
 
   ${({ concept }) =>
     concept &&
     `
-    border: none;
     background: ${IndicatorConceptsColors[concept]}
+    border: none;
   `};
 `;
 
@@ -128,16 +129,16 @@ export const IndicatorDataApplyButton = styled.button`
   background: transparent;
   border-radius: 4px;
   border: 1px solid ${gray890};
+  bottom: 5px;
   color: ${gray890};
   cursor: pointer;
   font-size: 11px;
   font-weight: ${fw400};
+  left: 0;
   padding: 8px 17px;
+  position: absolute;
   text-transform: uppercase;
   transition: all 0.2s ease-in;
-  position: absolute;
-  left: 0;
-  bottom: 5px;
   width: 100%;
 
   &:active {
@@ -145,23 +146,23 @@ export const IndicatorDataApplyButton = styled.button`
   }
 
   &:disabled {
-    cursor: not-allowed;
     border-color: ${gray150};
     color: ${gray150};
+    cursor: not-allowed;
   }
 `;
 
 export const ApplyButtonHeight = '32px';
 
 export const IndicatorDataSimulatorLabel = styled.span`
-  font-size: 11px;
-  text-transform: uppercase;
   color: ${gray890};
+  font-size: 11px;
   font-weight: ${fw600};
+  left: 50%;
   position: absolute;
+  text-transform: uppercase;
   top: 20px;
   transform: translate(-50%, 0);
-  left: 50%;
 `;
 
 export const IndicatorDataValue = styled.span`
