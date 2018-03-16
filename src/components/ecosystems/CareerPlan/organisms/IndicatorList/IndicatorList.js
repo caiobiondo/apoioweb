@@ -14,8 +14,19 @@ export class IndicatorList extends Component {
     }
 
     const { naturaNetwork, directSale } = cycle;
-
     return naturaNetwork !== 0 || directSale || 0;
+  };
+
+  renderIndicator = indicator => {
+    return (
+      <Indicator
+        key={indicator.indicatorType}
+        indicator={indicator}
+        onChange={this.updateIndicator}
+        isCycleFilled={this.isCycleFilled}
+        {...this.props}
+      />
+    );
   };
 
   render() {
@@ -23,17 +34,7 @@ export class IndicatorList extends Component {
 
     return (
       <div>
-        <IndicatorListWrapper>
-          {indicators.map(indicator => (
-            <Indicator
-              key={indicator.indicatorType}
-              indicator={indicator}
-              onChange={this.updateIndicator}
-              isCycleFilled={this.isCycleFilled}
-              {...this.props}
-            />
-          ))}
-        </IndicatorListWrapper>
+        <IndicatorListWrapper>{indicators.map(this.renderIndicator)}</IndicatorListWrapper>
         <Consolidated {...this.props} isCycleFilled={this.isCycleFilled} />
       </div>
     );
