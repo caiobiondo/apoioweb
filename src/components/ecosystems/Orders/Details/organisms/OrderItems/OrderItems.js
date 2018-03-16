@@ -32,6 +32,7 @@ export class OrderItems extends Component {
   state = {
     importedOrderItems: [],
     importedModalOpened: false,
+    importSuccess: false,
     productsImporting: [],
   };
 
@@ -64,15 +65,25 @@ export class OrderItems extends Component {
       })
       .then(() => {
         this.setState({
-          productsImporting: [...this.state.productsImporting.slice(indexItem)],
+          productsImporting: [...this.state.productsImporting.splice(indexItem, 1)],
           importedModalOpened: true,
+          importSuccess: true,
           importedOrderItems: [...this.state.importedOrderItems, orderItem],
+        });
+      })
+      .catch(() => {
+        this.setState({
+          productsImporting: [...this.state.productsImporting.splice(indexItem, 1)],
+          importedModalOpened: true,
+          importSuccess: false,
         });
       });
   };
 
-  renderSuccessDialog = () => {
-    const title = translate('stockProductImported');
+  renderDialog = () => {
+    const title = this.state.importSuccess
+      ? translate('stockProductImportSuccess')
+      : translate('stockProductImportFailure');
     const actions = [
       <FlatButton
         label={<FormattedMessage id="goToStock" />}
@@ -80,7 +91,7 @@ export class OrderItems extends Component {
         labelStyle={dialogActions}
       />,
       <FlatButton
-        label={<FormattedMessage id="importMoreProducts" />}
+        label={<FormattedMessage id="importOtherProducts" />}
         primary={true}
         onClick={this.onFinish}
         labelStyle={dialogActions}
@@ -89,7 +100,6 @@ export class OrderItems extends Component {
 
     return (
       <Dialog
-        key="successDialog"
         title={title}
         actions={actions}
         modal={false}
@@ -171,7 +181,7 @@ export class OrderItems extends Component {
           </OrderItemsQuantityWrapper>
           {this.renderOrderItems(order.itemEnviadoCaixa)}
         </OrderItemsInfos>
-        {this.renderSuccessDialog()}
+        {this.renderDialog()}
       </Paper>
     );
   }
