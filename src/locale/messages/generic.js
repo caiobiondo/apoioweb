@@ -15,6 +15,7 @@ export default {
     viewMore: 'Ver mais',
     hide: 'Esconder',
     close: 'Fechar',
+    current: 'Atual',
   },
 };
 /* eslint-disable sort-keys */

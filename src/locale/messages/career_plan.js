@@ -15,5 +15,6 @@ export default {
     careerPlanBelowRange: 'Abaixo de {rangeEnd}%',
     careerPlanAboveRange: 'Acima de {rangeStart}%',
     careerPlanBetweenRange: 'Entre {rangeStart}% e {rangeEnd}%',
+    careerPlanNotFilled: 'O simulador deve ser preenchido sequencialmente',
   },
 };

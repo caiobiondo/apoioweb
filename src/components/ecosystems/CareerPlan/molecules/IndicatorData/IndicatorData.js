@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Popover } from 'material-ui';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
 import {
@@ -88,23 +89,39 @@ export class IndicatorData extends Component {
         onRequestClose={this.hidePopover}
         style={PopoverStyles}
       >
-        <PopoverContent>O simulador deve ser preenchido sequencialmente.</PopoverContent>
+        <PopoverContent>
+          <FormattedMessage id="careerPlanNotFilled" />
+        </PopoverContent>
       </Popover>
+    );
+  }
+
+  renderContentNode() {
+    const { indicatorData, activeCycle } = this.props;
+
+    if (!indicatorData.isClosed) {
+      this.renderDisabled();
+    }
+
+    return <IndicatorDataForm {...this.props} isActive={indicatorData.cycle === activeCycle} />;
+  }
+
+  renderCurrentLabel() {
+    const { indicatorData } = this.props;
+
+    if (!indicatorData.current) {
+      return;
+    }
+
+    return (
+      <IndicatorDataSortCurrent>
+        <FormattedMessage id="current" />
+      </IndicatorDataSortCurrent>
     );
   }
 
   render() {
     const { indicator, indicatorData, activeCycle } = this.props;
-
-    const currentNode = indicatorData.current ? (
-      <IndicatorDataSortCurrent>Atual</IndicatorDataSortCurrent>
-    ) : null;
-
-    const contentNode = !indicatorData.isClosed ? (
-      <IndicatorDataForm {...this.props} isActive={indicatorData.cycle === activeCycle} />
-    ) : (
-      this.renderDisabled()
-    );
 
     return (
       <IndicatorDataWrapper
@@ -117,10 +134,10 @@ export class IndicatorData extends Component {
       >
         <IndicatorDataSort index={indicatorData.cycle}>
           {indicatorData.cycle}
-          {currentNode}
+          {this.renderCurrentLabel()}
         </IndicatorDataSort>
 
-        {contentNode}
+        {this.renderContentNode()}
 
         {this.renderPopover()}
       </IndicatorDataWrapper>
@@ -128,4 +145,6 @@ export class IndicatorData extends Component {
   }
 }
 
-export default IndicatorData;
+export const IndicatorWithIntl = injectIntl(IndicatorData);
+
+export default IndicatorWithIntl;
