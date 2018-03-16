@@ -8,23 +8,23 @@ export const CycleMenuWrapper = styled.div`
 `;
 
 export const CycleMenu = styled.ul`
-  display: inline-block;
-  padding: 2px;
   background: white;
   border-radius: 10px;
+  display: inline-block;
   margin-bottom: 60px;
+  padding: 2px;
 `;
 
 export const CycleMenuItem = styled.li`
+  border-radius: 10px;
+  color: ${gray700};
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: ${fw600};
   list-style-type: none;
   padding: 12px 18px;
   text-transform: uppercase;
-  font-size: 11px;
-  color: ${gray700};
-  font-weight: ${fw600};
-  display: inline-block;
-  border-radius: 10px;
-  cursor: pointer;
   transition: background-color 0.3s ease-in;
 
   ${({ active }) =>
