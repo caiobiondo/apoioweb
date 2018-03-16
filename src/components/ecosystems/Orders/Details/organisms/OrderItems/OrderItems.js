@@ -65,15 +65,19 @@ export class OrderItems extends Component {
       })
       .then(() => {
         this.setState({
-          productsImporting: [...this.state.productsImporting.splice(indexItem, 1)],
+          productsImporting: this.state.productsImporting.filter(e => {
+            return e !== orderItem.codigoProduto;
+          }),
           importedModalOpened: true,
           importSuccess: true,
           importedOrderItems: [...this.state.importedOrderItems, orderItem],
         });
       })
-      .catch(() => {
+      .catch(e => {
         this.setState({
-          productsImporting: [...this.state.productsImporting.splice(indexItem, 1)],
+          productsImporting: this.state.productsImporting.filter(e => {
+            return e !== orderItem.codigoProduto;
+          }),
           importedModalOpened: true,
           importSuccess: false,
         });
