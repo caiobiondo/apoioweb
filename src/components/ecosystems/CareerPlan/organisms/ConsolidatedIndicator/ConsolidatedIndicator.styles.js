@@ -1,11 +1,6 @@
 import styled from 'styled-components';
-import { gray200 } from 'styles/colors';
 
-import {
-  IndicatorWeightWrapper,
-  IndicatorTableHeader,
-  IndicatorTableContent,
-} from '../Indicator/Indicator.styles';
+import { IndicatorWeightWrapper, IndicatorTableHeader } from '../Indicator/Indicator.styles';
 
 import { IndicatorDataRowFeatured } from '../../molecules/IndicatorData/IndicatorData.styles';
 
@@ -14,7 +9,7 @@ import {
   IndicatorDataRowAcc,
 } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
-export const ConsolidatedWrapper = styled.div`
+export const ConsolidatedIndicatorWrapper = styled.div`
   width: 100%;
 
   ${IndicatorTableHeader} {
@@ -41,21 +36,7 @@ export const ConsolidatedWrapper = styled.div`
 
   ${IndicatorDataRowFeatured} {
     display: block;
-    width: 100%;
     line-height: 25px;
-  }
-`;
-
-export const ConsolidateWarningIcon = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: calc(50% + 20px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  svg {
-    width: 18px;
-    height: 18px;
-    fill: ${gray200};
+    width: 100%;
   }
 `;
