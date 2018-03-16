@@ -31,14 +31,14 @@ export const IndicatorDataSort = styled.div`
   position: relative;
 
   &:before {
+    background-color: ${gray150};
+    bottom: 0;
     content: '';
     display: block;
     position: absolute;
-    top: 0;
-    bottom: 0;
     right: -10px;
+    top: 0;
     width: 1px;
-    background-color: ${gray150};
   }
 
   &:after {
@@ -70,8 +70,8 @@ export const IndicatorDataWrapper = styled.li`
     isActive &&
     `
     background: ${gray400};
-    box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
     border-radius: 15px 15px 0 0;
+    box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
     cursor: default;
     outline: none;
     z-index: 1;
@@ -95,13 +95,13 @@ export const IndicatorDataWrapper = styled.li`
       editable &&
       `
       &:after {
-        content: '';
-        position: absolute;
-        top: 50px;
         bottom: 20px;
-        left: 0;
-        right: 0;
         box-shadow: 0px 5px 15px 0 rgba(0,0,0,0.1);
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 50px;
         z-index: -1;
       }
     `};
@@ -112,6 +112,7 @@ export const IndicatorDataWrapper = styled.li`
       isActive &&
       `
       color: ${gray890};
+
       &:before,
       &:after {
         display: none;
