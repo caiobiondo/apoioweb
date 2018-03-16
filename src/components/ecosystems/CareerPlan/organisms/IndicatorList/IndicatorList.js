@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl';
 import propTypes from 'prop-types';
 
 import Indicator from '../Indicator';
-import Consolidated from '../Consolidated/Consolidated';
+import Consolidated from '../ConsolidatedIndicator';
 
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
