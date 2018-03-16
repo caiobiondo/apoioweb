@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { FlatButton, Dialog } from 'natura-ui';
 import propTypes from 'prop-types';
 
-import IndicatorData from '../../molecules/IndicatorData/IndicatorData';
+import ModalConcept from '../../molecules/ModalConcept/';
+import IndicatorData from '../../molecules/IndicatorData/';
 import conceptMock from './IndicatorConceptMock';
 import { IndicatorTypesLabels } from '../../IndicatorTypes.enum';
 
-import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
   IndicatorWrapper,
   IndicatorWeightWrapper,
@@ -21,8 +20,6 @@ import {
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
   IndicatorTableContentWrapper,
-  IndicatorConceptList,
-  IndicatorConceptListItem,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
@@ -84,82 +81,9 @@ export class Indicator extends Component {
     );
   };
 
-  renderConfirmationDialog() {
-    const title = 'Volume de Pontos';
-    const { informationModalOpened } = this.state;
-    const actions = [
-      <FlatButton
-        label={<FormattedMessage id="close" />}
-        primary={true}
-        onClick={this.closeInformationModal}
-        labelStyle={CareerPlanModal.label}
-      />,
-    ];
-
-    return (
-      <Dialog
-        key="informationDialog"
-        title={title}
-        actions={actions}
-        modal={false}
-        open={informationModalOpened}
-        onRequestClose={this.onCloseModal}
-        contentStyle={CareerPlanModal.content}
-        bodyStyle={CareerPlanModal.body}
-        titleStyle={CareerPlanModal.title}
-        paperProps={{ style: CareerPlanModal.paper }}
-      >
-        {this.renderConfirmationDialogContent()}
-      </Dialog>
-    );
-  }
-
-  renderConfirmationDialogContent() {
-    const { concepts } = this.state;
-
-    return (
-      <IndicatorConceptList>
-        {concepts.map(concept => {
-          const { rangeStart, rangeEnd, value } = concept;
-          let conceptRange = null;
-
-          if (!rangeStart && rangeEnd) {
-            conceptRange = (
-              <span>
-                <FormattedMessage id="careerPlanBelowRange" values={{ rangeEnd }} />
-              </span>
-            );
-          }
-
-          if (rangeStart && !rangeEnd) {
-            conceptRange = (
-              <span>
-                <FormattedMessage id="careerPlanAboveRange" values={{ rangeStart }} />
-              </span>
-            );
-          }
-
-          if (rangeStart && rangeEnd) {
-            conceptRange = (
-              <span>
-                <FormattedMessage id="careerPlanBetweenRange" values={{ rangeStart, rangeEnd }} />
-              </span>
-            );
-          }
-
-          return (
-            <IndicatorConceptListItem key={value} concept={concept}>
-              <span>{value}</span>
-              {conceptRange}
-            </IndicatorConceptListItem>
-          );
-        })}
-      </IndicatorConceptList>
-    );
-  }
-
   render() {
     const { indicator, range } = this.props;
+    const { informationModalOpened, concepts } = this.state;
     const visibleCycles = this.getVisibleCycles(range);
 
     return (
@@ -188,7 +112,13 @@ export class Indicator extends Component {
           </IndicatorTableContentWrapper>
         </IndicatorContentWrapper>
 
-        {this.renderConfirmationDialog()}
+        <ModalConcept
+          key="informationDialog"
+          title={IndicatorTypesLabels[indicator.indicatorType]}
+          onClose={this.closeInformationModal}
+          open={informationModalOpened}
+          concepts={concepts}
+        />
       </IndicatorWrapper>
     );
   }
