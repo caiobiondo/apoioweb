@@ -3,8 +3,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 
 import CycleMenu from './molecules/CycleMenu';
-import IndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
-import ChartIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/ChartIndicatorList';
+import CyclesIndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
+import AnualIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/IndicatorList';
 
 import IndicatorMock from 'components/ecosystems/CareerPlan/mocks/IndicatorMock';
 
@@ -79,7 +79,7 @@ export class CareerPlan extends Component {
 
     if (activeMenu === 1) {
       return (
-        <IndicatorList
+        <CyclesIndicatorList
           indicators={indicators}
           range={{ from: 0, to: 10 }}
           updateCycle={this.updateCycle}
@@ -89,7 +89,7 @@ export class CareerPlan extends Component {
 
     if (activeMenu === 2) {
       return (
-        <IndicatorList
+        <CyclesIndicatorList
           indicators={indicators}
           range={{ from: 11, to: 999 }}
           updateCycle={this.updateCycle}
@@ -98,7 +98,7 @@ export class CareerPlan extends Component {
     }
 
     if (activeMenu === 3) {
-      return <ChartIndicatorList indicators={indicators} />;
+      return <AnualIndicatorList indicators={indicators} />;
     }
   }
 
