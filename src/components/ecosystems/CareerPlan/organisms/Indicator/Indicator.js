@@ -100,7 +100,7 @@ export class Indicator extends Component {
           <FormattedMessage id="information" />
         </IndicatorInfo>
         <IndicatorContentWrapper>
-          <IndicatorTableHeader>
+          <IndicatorTableHeader hasActions>
             <IndicatorTableHeaderItemFeatured>Obj</IndicatorTableHeaderItemFeatured>
             <IndicatorTableHeaderItem>Real.</IndicatorTableHeaderItem>
             <IndicatorTableHeaderItem>Real rede</IndicatorTableHeaderItem>

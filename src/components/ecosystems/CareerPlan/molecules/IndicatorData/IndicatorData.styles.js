@@ -63,7 +63,7 @@ export const IndicatorDataWrapper = styled.li`
   transition: all 0.2s ease-in;
   vertical-align: top;
   white-space: initial;
-  width: 10%;
+  width: ${({ size }) => size || '10'}%;
   z-index: 0;
 
   ${({ isActive }) =>
@@ -89,13 +89,15 @@ export const IndicatorDataWrapper = styled.li`
 
   ${({ editable }) => !editable && `cursor: default;`};
 
+  ${({ bordered }) => bordered && `border-right: 1px solid ${gray150}`};
+
   &:hover {
     ${({ isActive, indicatorType, editable }) =>
       !isActive &&
       editable &&
       `
       &:after {
-        bottom: 20px;
+        bottom: 12px;
         box-shadow: 0px 5px 15px 0 rgba(0,0,0,0.1);
         content: '';
         left: 0;
@@ -113,6 +115,15 @@ export const IndicatorDataWrapper = styled.li`
       `
       color: ${gray890};
 
+      &:before,
+      &:after {
+        display: none;
+      }
+    `};
+
+    ${({ bordered }) =>
+      bordered &&
+      `
       &:before,
       &:after {
         display: none;

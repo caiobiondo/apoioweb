@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { IndicatorWeightWrapper, IndicatorTableHeader } from '../Indicator/Indicator.styles';
+import { IndicatorWeightWrapper } from '../Indicator/Indicator.styles';
 
 import { IndicatorDataRowFeatured } from '../../molecules/IndicatorData/IndicatorData.styles';
 
@@ -11,10 +11,6 @@ import {
 
 export const ConsolidatedIndicatorWrapper = styled.div`
   width: 100%;
-
-  ${IndicatorTableHeader} {
-    margin-top: 116px;
-  }
 
   ${IndicatorWeightWrapper} {
     > img {
