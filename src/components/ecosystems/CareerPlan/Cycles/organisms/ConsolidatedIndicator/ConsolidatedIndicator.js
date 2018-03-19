@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 
-import mock from './ConsolidatedDataMock';
+import mock from 'components/ecosystems/CareerPlan/mocks/ConsolidatedDataMock';
 import TrophyIcon from 'assets/images/trophy.png';
 import ConsolidatedIndicatorData from '../../molecules/ConsolidatedIndicatorData';
 

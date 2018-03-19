@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { gray150, gray700, gray890, blue100 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
-import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
+import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { ApplyButtonHeight } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 
 import { IndicatorDataWrapper } from '../../molecules/IndicatorData/IndicatorData.styles';

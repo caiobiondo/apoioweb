@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { gray150, gray400, gray700, gray890 } from 'styles/colors';
 import { fw600 } from 'styles/typography';
 import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
-import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
+import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 export const IndicatorDataContent = IndicatorDataFormComponents.IndicatorDataContent;
 export const IndicatorDataRow = IndicatorDataFormComponents.IndicatorDataRow;

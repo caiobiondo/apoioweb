@@ -1,3 +1,3 @@
-import CareerPlan from './organisms/CareerPlan';
+import CareerPlan from './CareerPlan';
 
 export default CareerPlan;

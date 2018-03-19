@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 
-import ModalConcept from '../../molecules/ModalConcept/';
+import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
 import IndicatorData from '../../molecules/IndicatorData/';
-import conceptMock from './IndicatorConceptMock';
-import { IndicatorTypesLabels } from '../../IndicatorTypes.enum';
+import conceptMock from 'components/ecosystems/CareerPlan/mocks/IndicatorConceptMock';
+import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import {
   IndicatorWrapper,

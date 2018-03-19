@@ -3,8 +3,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Popover } from 'material-ui';
 import { Icon } from 'natura-ui';
 
-import { IndicatorTypesLabels } from '../../IndicatorTypes.enum';
-import { IndicatorConceptsLabels } from '../../IndicatorConcepts.enum';
+import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import { IndicatorConceptsLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
 import { ConsolidateWarningIcon } from './ConsolidatedIndicatorData.styles';
 
 import {

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { gray150, gray300, gray700, gray890 } from 'styles/colors';
 import { fw400, fw600, RobotoRegular } from 'styles/typography';
-import InputNumber from 'components/ecosystems/CareerPlan/atoms/InputNumber';
+import InputNumber from 'components/ecosystems/CareerPlan/Cycles/atoms/InputNumber';
 
-import { IndicatorConceptsColors } from '../../IndicatorConcepts.enum';
+import { IndicatorConceptsColors } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
 
 export const IndicatorDataRowInput = styled(InputNumber)`
   border-radius: 2px;
