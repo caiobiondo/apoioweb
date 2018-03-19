@@ -44,6 +44,7 @@ export default {
     myTrainings: 'Meus Treinamentos',
     myTrainingsSearchDescription: 'Faça um busca rápida dos treinamentos disponíveis',
     trainingLabel: 'Treinamento',
+    startTraining: 'Iniciar treinamento',
   },
 };
 /* eslint-disable sort-keys */

@@ -168,6 +168,14 @@ export default class App extends Component {
                     'training',
                   )}
                 />
+                <Route
+                  exact
+                  path="/training/courses/:id/start"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Courses/StartView'),
+                    'training',
+                  )}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>

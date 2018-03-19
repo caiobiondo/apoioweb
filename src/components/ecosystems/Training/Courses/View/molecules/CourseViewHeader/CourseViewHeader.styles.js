@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import { gray890, orange100 } from 'styles/colors';
 import { fs15, fs16, fs20, RobotoLight } from 'styles/typography';
-import { screenMd } from 'styles/spacing';
 import { Responsive } from '@entria/components';
 
 export const Header = styled.div`
-  margin: 40px 0 25px;
-
-  @media screen and (max-width: ${screenMd}) {
-    margin: 40px 0 25px;
-  }
+  margin: 15px 0 35px;
 `;
 
 export const BackButtonWrapper = styled.div`

@@ -16,7 +16,7 @@ export class CourseViewHeader extends Component {
     return (
       <Header>
         <Row>
-          <Col md={4} sm={12}>
+          <Col md={12} sm={12}>
             <BackButtonWrapper>
               <Link to="/training/categories">
                 <BackButtonIcon>

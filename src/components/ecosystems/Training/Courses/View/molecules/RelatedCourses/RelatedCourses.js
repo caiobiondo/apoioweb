@@ -57,7 +57,7 @@ export class RelatedCourses extends Component {
 
   render() {
     const { courses } = this.props;
-    if (!courses) return null;
+    if (!courses || !courses.length) return null;
     const currentSettings = this.slickSettings(courses.length);
 
     return (
