@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray150, gray700, gray890, blue100 } from 'styles/colors';
+import { gray150, gray700, gray890 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
@@ -119,21 +119,6 @@ export const IndicatorTableContent = styled.ul`
   vertical-align: top;
   white-space: nowrap;
   width: 100%;
-
-  &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar {
-    height: 10px;
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${blue100};
-    border-radius: 10px;
-  }
 `;
 
 export const IndicatorTableContentWrapper = styled.div`
@@ -154,28 +139,20 @@ export const IndicatorTableContentWrapper = styled.div`
   }
 
   ${IndicatorDataWrapper} {
-    ${({ hasChart }) =>
-      hasChart &&
-      `
-      padding-bottom: 90px;
-    `};
+    ${({ hasChart }) => hasChart && ` padding-bottom: 90px;`};
   }
 
   ${IndicatorTableContent} {
     ${({ hasChart }) =>
       hasChart &&
       `
-      padding-bottom: 0;
+      overflow: visible;
+      z-index: 1;
+      padding-left: 20px;
     `};
   }
 
-  ${({ hasChart }) =>
-    hasChart &&
-    `
-    &:before {
-      bottom: 0;
-    }
-  `};
+  ${({ hasChart }) => hasChart && ` &:before { bottom: 20px; }`};
 `;
 
 export const IndicatorTableLegendItem = styled.li`

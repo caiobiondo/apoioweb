@@ -135,7 +135,7 @@ export const IndicatorDataApplyButton = styled.button`
   font-size: 11px;
   font-weight: ${fw400};
   left: 0;
-  padding: 8px 17px;
+  padding: 8px 0;
   position: absolute;
   text-transform: uppercase;
   transition: all 0.2s ease-in;
