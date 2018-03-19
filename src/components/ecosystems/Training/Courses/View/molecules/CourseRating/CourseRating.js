@@ -26,7 +26,7 @@ export class CourseRating extends Component {
     return (
       <RowWrapper>
         <Row>
-          <ColWrapper borderRight={true}>
+          <ColWrapper>
             <TittleWrapper>{translate('courseRatingAvaliation')}</TittleWrapper>
             <RatingWrapper>
               <Rating

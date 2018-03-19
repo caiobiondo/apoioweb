@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Row, Col, Grid } from 'react-flexbox-grid';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
@@ -9,8 +8,6 @@ import {
 } from 'components/ecosystems/Training/Courses/StartView/organisms/CourseStartView/CourseView.data';
 import {
   Main,
-  MylistButtonWrapper,
-  MylistButton,
   CourseViewFeedbackModalTitle,
   CourseViewFeedbackModalAction,
 } from './CourseView.styles';
@@ -23,6 +20,7 @@ import {
   TrainingCourseTitle,
   TrainingCourseActions,
   TrainingCourseActionButton,
+  TrainingCourseActionButtonMobile,
   TrainingCourseActionButtonWrapper,
   TrainingCourseRatingWrapper,
 } from './CourseStartView.styles';
@@ -39,7 +37,7 @@ import { translate } from 'locale';
 
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
 
-import CourseDescription from 'components/ecosystems/Training/Courses/View/molecules/CourseDescription';
+import MediaQuery from 'react-responsive';
 
 export class CourseView extends Component {
   state = {
@@ -177,11 +175,41 @@ export class CourseView extends Component {
 
     return (
       <Main>
-        <Grid fluid>
-          <CourseViewHeader course={course} />
+        <CourseViewHeader course={course} />
+        <MediaQuery maxWidth={767}>
           <TrainingCourseThumbnailWrapper>
-            <TrainingCourseThumbnail>
-              <ImageWithFallback imageUrl={course.thumbnail} fallbackIcon="ico_photo" />
+            <TrainingCourseThumbnail imageUrl={course.thumbnail}>
+              <TrainingCourseThumbnailDescriptionWrapper>
+                <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
+                <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
+              </TrainingCourseThumbnailDescriptionWrapper>
+            </TrainingCourseThumbnail>
+            <TrainingCourseActions>
+              <TrainingCourseActionButtonWrapper>
+                <FlatButton
+                  {...TrainingCourseActionButtonMobile}
+                  label={translate('startTraining')}
+                  icon={<Icon file="ico_play_circle" />}
+                  onClick={this.handleMyListClick}
+                />
+              </TrainingCourseActionButtonWrapper>
+              <TrainingCourseActionButtonWrapper>
+                <FlatButton
+                  {...TrainingCourseActionButtonMobile}
+                  label={translate('myList')}
+                  icon={<Icon file={this.myListIconName()} />}
+                  onClick={this.handleMyListClick}
+                />
+              </TrainingCourseActionButtonWrapper>
+            </TrainingCourseActions>
+            <TrainingCourseRatingWrapper>
+              <CourseRating course={course} />
+            </TrainingCourseRatingWrapper>
+          </TrainingCourseThumbnailWrapper>
+        </MediaQuery>
+        <MediaQuery minWidth={768}>
+          <TrainingCourseThumbnailWrapper>
+            <TrainingCourseThumbnail imageUrl={course.thumbnail}>
               <TrainingCourseThumbnailDescriptionWrapper>
                 <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
                 <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
@@ -209,8 +237,8 @@ export class CourseView extends Component {
               <CourseRating course={course} />
             </TrainingCourseRatingWrapper>
           </TrainingCourseThumbnailWrapper>
-          <RelatedCourses courses={course.relatedCourses} />
-        </Grid>
+        </MediaQuery>
+        <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
       </Main>
     );

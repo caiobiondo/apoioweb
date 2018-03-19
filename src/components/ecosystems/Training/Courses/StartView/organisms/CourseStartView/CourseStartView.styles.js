@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white, gray100, orange100 } from 'styles/colors';
+import { white, gray100, gray450, orange100 } from 'styles/colors';
 import {
   fs14,
   fs20,
@@ -15,10 +15,15 @@ export const TrainingCourseThumbnailWrapper = styled.div`
   display: inline-block;
 `;
 
+/* eslint-disable no-confusing-arrow */
 export const TrainingCourseThumbnail = styled.div`
   position: relative;
   background-color: ${gray100};
-  display: inline-block;
+  background-image: url(${props => (props.imageUrl ? props.imageUrl : '')});
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 560px;
+  border-radius: 4px;
 
   &:before {
     position: absolute;
@@ -32,21 +37,11 @@ export const TrainingCourseThumbnail = styled.div`
     border-radius: 4px;
   }
 
-  > div:first-child {
-    display: flex;
-
-    img {
-      object-fit: cover;
-      height: 500px;
-      max-width: 900px;
-      border-radius: 4px;
-    }
-
-    svg {
-      height: 40px;
-    }
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    height: 250px;
   }
 `;
+/* eslint-enable no-confusing-arrow */
 
 export const TrainingCourseThumbnailDescriptionWrapper = styled.div`
   position: absolute;
@@ -61,6 +56,7 @@ export const TrainingCourseThumbnailDescriptionWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   color: ${white};
+  padding: 15px;
 `;
 
 export const TrainingCourseTitle = styled.div`
@@ -94,11 +90,21 @@ export const TrainingCourseDescription = styled.div`
   text-align: center;
   max-width: 500px;
   margin-bottom: 30px;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const TrainingCourseActions = styled.div`
   flex: 0 1 auto;
   display: flex;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
 `;
 
 export const TrainingCourseActionButtonWrapper = styled.div`
@@ -118,6 +124,20 @@ export const TrainingCourseActionButtonWrapper = styled.div`
   & + & {
     margin-left: 55px;
   }
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    border: 2px solid ${orange100};
+    border-radius: 2.5px;
+
+    & + & {
+      margin-left: 0px;
+      margin-top: 20px;
+    }
+
+    svg {
+      fill: ${orange100};
+    }
+  }
 `;
 
 export const TrainingCourseActionButton = {
@@ -130,6 +150,18 @@ export const TrainingCourseActionButton = {
   },
   backgroundColor: orange100,
   hoverColor: orange100,
+};
+
+export const TrainingCourseActionButtonMobile = {
+  labelStyle: {
+    color: orange100,
+    textTransform: 'uppercase',
+    fontFamily: RobotoMedium,
+    paddingRight: '40px',
+    paddingLeft: '0px',
+  },
+  backgroundColor: gray450,
+  hoverColor: gray450,
 };
 
 export const TrainingCourseRatingWrapper = styled.div`
