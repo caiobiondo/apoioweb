@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseFormSearch Organism should render input and submit button 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "padding": 30,
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_add_customer"
+    value="myCustomers"
+  />
+  <BaseFormSearchstyles__BaseFormSearchDescription>
+    Preencha o campo abaixo para buscar seus clientes
+  </BaseFormSearchstyles__BaseFormSearchDescription>
+  <BaseFormSearchstyles__FormWrapper>
+    <BaseFormSearchstyles__FormInput
+      label="Nome"
+      name="inputBaseFormSearch"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <BaseFormSearchstyles__FormButtonWrapper>
+      <FormButton
+        backgroundColor="#c9c9c9"
+        disabled={false}
+        height={54}
+        label="Buscar"
+        labelColor="#fff"
+        labelStyle={
+          Object {
+            "color": "#fff",
+            "fontFamily": "Roboto-Regular",
+            "textAlign": "center",
+            "textTransform": "uppercase",
+          }
+        }
+        link={null}
+        onClick={[Function]}
+        primary={true}
+        raised={false}
+        type="submit"
+      />
+    </BaseFormSearchstyles__FormButtonWrapper>
+  </BaseFormSearchstyles__FormWrapper>
+</Paper>
+`;
