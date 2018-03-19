@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 
 import CycleMenu from '../../molecules/CycleMenu';
 import IndicatorList from '../IndicatorList';
+import ChartIndicatorList from '../ChartIndicatorList';
 
 import IndicatorMock from './IndicatorMock';
 
@@ -21,7 +22,7 @@ export class CareerPlan extends Component {
     super();
 
     this.state = {
-      activeMenu: 1,
+      activeMenu: 3,
       menuItems: [
         {
           id: 1,
@@ -97,7 +98,7 @@ export class CareerPlan extends Component {
     }
 
     if (activeMenu === 3) {
-      return <div>teste</div>;
+      return <ChartIndicatorList indicators={indicators} />;
     }
   }
 

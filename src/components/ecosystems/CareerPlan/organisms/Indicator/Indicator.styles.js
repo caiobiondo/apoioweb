@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { gray890, blue100 } from 'styles/colors';
+import { gray150, gray700, gray890, blue100 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
 import { IndicatorTypesColors } from '../../IndicatorTypes.enum';
 import { ApplyButtonHeight } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
+
+import { IndicatorDataWrapper } from '../../molecules/IndicatorData/IndicatorData.styles';
 
 export const IndicatorWeightWrapper = styled.div`
   border-radius: 5px;
@@ -86,11 +88,13 @@ export const IndicatorContentWrapper = styled.div`
 
 export const IndicatorTableHeader = styled.ul`
   display: inline-block;
-  margin-top: 125px;
+  margin-top: 115px;
   padding: 0 20px 0 0;
   text-align: right;
   vertical-align: top;
   width: 110px;
+
+  ${({ hasActions }) => hasActions && `margin-top: 125px;`};
 `;
 
 export const IndicatorTableHeaderItem = styled.li`
@@ -107,28 +111,10 @@ export const IndicatorTableHeaderItemFeatured = IndicatorTableHeaderItem.extend`
   font-weight: ${fw600};
 `;
 
-export const IndicatorTableContentWrapper = styled.div`
-  display: inline-block;
-  position: relative;
-  width: calc(100% - 110px);
-
-  &:before {
-    background-color: white;
-    border-radius: 3px;
-    bottom: ${ApplyButtonHeight};
-    box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 80px;
-  }
-`;
-
 export const IndicatorTableContent = styled.ul`
   margin: 0;
   overflow: hidden;
-  padding: 30px 0 15px;
+  padding: 30px 0 20px;
   position: relative;
   vertical-align: top;
   white-space: nowrap;
@@ -147,5 +133,82 @@ export const IndicatorTableContent = styled.ul`
   &::-webkit-scrollbar-thumb {
     background-color: ${blue100};
     border-radius: 10px;
+  }
+`;
+
+export const IndicatorTableContentWrapper = styled.div`
+  display: inline-block;
+  position: relative;
+  width: calc(100% - 110px);
+
+  &:before {
+    background-color: white;
+    border-radius: 3px;
+    bottom: ${ApplyButtonHeight};
+    box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 80px;
+  }
+
+  ${IndicatorDataWrapper} {
+    ${({ hasChart }) =>
+      hasChart &&
+      `
+      padding-bottom: 90px;
+    `};
+  }
+
+  ${IndicatorTableContent} {
+    ${({ hasChart }) =>
+      hasChart &&
+      `
+      padding-bottom: 0;
+    `};
+  }
+
+  ${({ hasChart }) =>
+    hasChart &&
+    `
+    &:before {
+      bottom: 0;
+    }
+  `};
+`;
+
+export const IndicatorTableLegendItem = styled.li`
+  list-style-type: none;
+  margin-bottom: 20px;
+  color: ${gray700};
+  padding-left: 20px;
+  display: inline-block;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 5px;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background-color: ${gray150};
+  }
+`;
+
+export const IndicatorTableLegend = styled.ul`
+  padding: 0;
+  margin-top: 30px;
+  font-size: 14px;
+
+  ${IndicatorTableLegendItem} {
+    &:first-child {
+      &:before {
+        ${({ indicatorType }) => `background-color: ${IndicatorTypesColors[indicatorType]}`};
+      }
+    }
   }
 `;
