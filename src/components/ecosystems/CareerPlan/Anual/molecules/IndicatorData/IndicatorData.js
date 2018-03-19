@@ -34,7 +34,8 @@ export class ChartIndicator extends Component {
 }
 
 ChartIndicator.propTypes = {
-  indicators: propTypes.array.isRequired,
+  indicatorData: propTypes.object.isRequired,
+  setRef: propTypes.func.isRequired,
 };
 
 export default ChartIndicator;

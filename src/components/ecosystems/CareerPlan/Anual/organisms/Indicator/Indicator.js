@@ -2,24 +2,11 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 
-import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept';
-
-import {
-  IndicatorTypesLabels,
-  IndicatorTypesColors,
-} from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
-
-import conceptsMock from 'components/ecosystems/CareerPlan/mocks/IndicatorConceptMock';
+import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import IndicatorData from 'components/ecosystems/CareerPlan/Anual/molecules/IndicatorData';
-
-import { VictoryLine, VictoryGroup } from 'victory';
-
-import { gray150 } from 'styles/colors';
-
-import { IndicatorChartWrapper } from './Indicator.styles';
-
 import IndicatorChart from 'components/ecosystems/CareerPlan/Anual/molecules/IndicatorChart';
+import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept';
 
 import {
   IndicatorWrapper,
@@ -42,6 +29,14 @@ export class Indicator extends Component {
     super();
     this.state = {};
   }
+
+  openInformationModal = () => {
+    this.setState({ informationModalOpened: true });
+  };
+
+  closeInformationModal = () => {
+    this.setState({ informationModalOpened: false });
+  };
 
   setIndicatorDataNode = node => {
     this.setState({
@@ -75,6 +70,9 @@ export class Indicator extends Component {
   render() {
     const { informationModalOpened } = this.state;
     const { indicator, concepts } = this.props;
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const lastYear = currentYear - 1;
 
     return (
       <IndicatorWrapper indicatorType={indicator.indicatorType}>
@@ -94,8 +92,8 @@ export class Indicator extends Component {
             <IndicatorTableHeaderItemFeatured>Superação acumulada</IndicatorTableHeaderItemFeatured>
 
             <IndicatorTableLegend indicatorType={indicator.indicatorType}>
-              <IndicatorTableLegendItem>2018</IndicatorTableLegendItem>
-              <IndicatorTableLegendItem>2017</IndicatorTableLegendItem>
+              <IndicatorTableLegendItem>{currentYear}</IndicatorTableLegendItem>
+              <IndicatorTableLegendItem>{lastYear}</IndicatorTableLegendItem>
             </IndicatorTableLegend>
           </IndicatorTableHeader>
 
@@ -120,7 +118,8 @@ export class Indicator extends Component {
 }
 
 Indicator.propTypes = {
-  indicators: propTypes.array.isRequired,
+  concepts: propTypes.array.isRequired,
+  indicator: propTypes.object.isRequired,
 };
 
 export const IndicatorWithIntl = injectIntl(Indicator);
