@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TrainingCoursesList from './organisms/TrainingCoursesList';
 import { Main, CourseSearchContainer } from './index.styles';
-import CourseSearch from 'components/ecosystems/Training/atoms/CourseSearch/CourseSearch';
+import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
 
 class TrainingWrapper extends Component {
   state = {
@@ -33,10 +33,18 @@ class TrainingWrapper extends Component {
   render() {
     const { loading, empty } = this.state;
 
+    const baseFormSearchProps = {
+      onSearch: this.onSearch,
+      searchValue: this.state.courseFilter,
+      sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
+      description: 'myTrainingsSearchDescription',
+      inputLabel: 'trainingLabel',
+    };
+
     return (
       <Main loading={loading} empty={empty}>
         <CourseSearchContainer>
-          <CourseSearch onSearch={this.onSearch} searchValue={this.state.courseFilter} />
+          <BaseFormSearch {...baseFormSearchProps} />
         </CourseSearchContainer>
 
         <TrainingCoursesList
