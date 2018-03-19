@@ -87,6 +87,20 @@ Object {
                   },
                 },
               },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "filter",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "filter",
+                  },
+                },
+              },
             ],
             "directives": Array [],
             "kind": "Field",
@@ -441,12 +455,30 @@ Object {
             },
           },
         },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "filter",
+            },
+          },
+        },
       ],
     },
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 677,
+    "end": 719,
     "start": 0,
   },
 }

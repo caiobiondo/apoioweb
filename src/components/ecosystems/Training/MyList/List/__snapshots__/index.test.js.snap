@@ -2,6 +2,11 @@
 
 exports[`TrainingMyList Ecosystem should render the training courses list page 1`] = `
 <indexstyles__Main>
+  <indexstyles__CourseSearchContainer>
+    <CourseSearch
+      onSearch={[Function]}
+    />
+  </indexstyles__CourseSearchContainer>
   <Apollo(Apollo(TrainingMyList))
     favorite={true}
     onLoadFinished={[Function]}
