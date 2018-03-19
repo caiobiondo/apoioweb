@@ -89,8 +89,7 @@ export class IndicatorChart extends Component {
 }
 
 IndicatorChart.propTypes = {
-  cycleNode: propTypes.node,
-  cycles: propTypes.array,
+  cycles: propTypes.object,
 };
 
 IndicatorChart.defaultProps = {

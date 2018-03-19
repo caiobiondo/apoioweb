@@ -30,27 +30,75 @@ export const IndicatorDataSort = styled.div`
   padding: 12px 0;
   position: relative;
 
-  &:before {
-    background-color: ${gray150};
+  &:before,
+  &:after {
     bottom: 0;
     content: '';
     display: block;
     position: absolute;
-    right: -10px;
     top: 0;
     width: 1px;
   }
 
+  &:before {
+    background-color: ${gray150};
+    right: -10px;
+  }
+
   &:after {
     background-color: white;
-    bottom: 0;
-    content: '';
-    display: block;
-    position: absolute;
     right: -11px;
-    top: 0;
-    width: 1px;
   }
+`;
+
+export const IndicatorFloatContent = styled.div`
+  background: white;
+  border-radius: 10px;
+  bottom: -15px;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+  display: none;
+  left: 50%;
+  position: absolute;
+  top: -15px;
+  transform: translate(-50%, 0);
+  width: 80px;
+`;
+
+export const IndicatorFloatContentClose = styled.a`
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 7.1px 0.4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+
+  svg {
+    fill: ${gray700};
+    height: 30px;
+    width: 10px;
+  }
+`;
+
+export const IndicatorDataSortNumber = styled.span`
+  font-size: 21px;
+  padding: 25px 0 20px;
+  display: inline-block;
+`;
+
+export const IndicatorDataSmallLabel = styled.span`
+  font-size: 11px;
+  display: block;
+  text-transform: uppercase;
+`;
+export const IndicatorDataSmallValue = styled.span`
+  font-size: 11px;
+  display: block;
+  font-weight: ${fw600};
+  margin-bottom: 10px;
 `;
 
 export const IndicatorDataWrapper = styled.li`
@@ -87,17 +135,13 @@ export const IndicatorDataWrapper = styled.li`
     }
   `};
 
-  ${({ editable }) => !editable && `cursor: default;`};
-
-  ${({ bordered }) => bordered && `border-right: 1px solid ${gray150}`};
-
   &:hover {
-    ${({ isActive, indicatorType, editable }) =>
+    ${({ isActive, editable }) =>
       !isActive &&
       editable &&
       `
       &:after {
-        bottom: 12px;
+        bottom: 0;
         box-shadow: 0px 5px 15px 0 rgba(0,0,0,0.1);
         content: '';
         left: 0;
@@ -107,6 +151,29 @@ export const IndicatorDataWrapper = styled.li`
         z-index: -1;
       }
     `};
+
+    ${IndicatorDataContent} {
+      ${({ isActive, editable, hasChart }) =>
+        !isActive && editable && !hasChart && `padding-bottom: 35px;`};
+    }
+  }
+
+  ${({ showDetails }) => showDetails && `z-index: 1;`};
+
+  ${({ editable }) => !editable && `cursor: default;`};
+
+  ${({ bordered }) => bordered && `border-right: 1px solid ${gray150}`};
+
+  ${IndicatorFloatContent} {
+    ${({ showDetails }) =>
+      showDetails &&
+      `
+      display: block;
+    `};
+  }
+
+  ${IndicatorDataConceptValue} {
+    ${({ hasChart }) => hasChart && `margin-bottom: 30px;`};
   }
 
   ${IndicatorDataSort} {
@@ -137,6 +204,14 @@ export const IndicatorDataWrapper = styled.li`
 
   ${IndicatorDataSortCurrent} {
     ${({ indicatorType }) => !indicatorType && `background-color: ${gray890}}`};
+  }
+
+  ${IndicatorDataSortNumber} {
+    ${({ indicatorType }) => `color: ${IndicatorTypesColors[indicatorType]}}`};
+  }
+
+  ${IndicatorDataSmallLabel} {
+    ${({ indicatorType }) => `color: ${IndicatorTypesColors[indicatorType]}}`};
   }
 
   ${IndicatorDataFormComponents.IndicatorDataRowInput} {

@@ -27,7 +27,9 @@ import {
 export class Indicator extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      informationModalOpened: false,
+    };
   }
 
   openInformationModal = () => {
@@ -44,6 +46,14 @@ export class Indicator extends Component {
     });
   };
 
+  setActiveCycle = cycle => {
+    this.setState({ activeCycle: cycle.cycle });
+  };
+
+  removeActiveCycle = () => {
+    this.setState({ activeCycle: null });
+  };
+
   renderIndicatorChart = () => {
     const { indicator } = this.props;
     const { indicatorCycleNode } = this.state;
@@ -58,11 +68,17 @@ export class Indicator extends Component {
   };
 
   renderIndicatorData = indicatorData => {
+    const { indicator } = this.props;
+
     return (
       <IndicatorData
+        indicator={indicator}
         indicatorData={indicatorData}
         key={indicatorData.cycle}
         setRef={this.setIndicatorDataNode}
+        showDetails={this.state.activeCycle === indicatorData.cycle}
+        onClick={this.setActiveCycle}
+        onClose={this.removeActiveCycle}
       />
     );
   };

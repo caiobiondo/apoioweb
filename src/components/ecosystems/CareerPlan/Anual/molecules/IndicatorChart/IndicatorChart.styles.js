@@ -4,15 +4,16 @@ import { gray150 } from 'styles/colors';
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 export const IndicatorChartWrapper = styled.div`
-  left: 0;
-  bottom: 20px;
+  bottom: 40px;
   display: inline-block;
   height: 80px;
+  left: 20px;
   position: absolute;
   text-align: left;
+  z-index: 0;
 
   ${({ width, indicatorType }) => `
-    width: ${width};
+    width: ${width}px;
   `};
 `;
 
