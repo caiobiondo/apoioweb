@@ -17,11 +17,7 @@ class TrainingWrapper extends Component {
 
     return (
       <Main loading={loading} empty={empty}>
-        <TrainingCategoriesList
-          user={this.props.user}
-          onLoadFinished={this.onLoadFinished}
-          productSearch={this.state.productSearch}
-        />
+        <TrainingCategoriesList user={this.props.user} onLoadFinished={this.onLoadFinished} />
       </Main>
     );
   }
