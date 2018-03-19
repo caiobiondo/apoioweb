@@ -4,20 +4,13 @@ import propTypes from 'prop-types';
 
 import conceptsMock from 'components/ecosystems/CareerPlan/mocks/IndicatorConceptMock';
 
-import { IndicatorListWrapper } from './IndicatorList.styles';
-
 import Indicator from 'components/ecosystems/CareerPlan/Anual/organisms/Indicator';
 
-export class IndicatorList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      concepts: conceptsMock,
-    };
-  }
+import { IndicatorListWrapper } from './IndicatorList.styles';
 
+export class IndicatorList extends Component {
   renderIndicator = indicator => {
-    const { concepts } = this.state;
+    const { concepts } = this.props;
     return <Indicator key={indicator.indicatorType} indicator={indicator} concepts={concepts} />;
   };
 
@@ -34,6 +27,11 @@ export class IndicatorList extends Component {
 
 IndicatorList.propTypes = {
   indicators: propTypes.array.isRequired,
+  concepts: propTypes.array,
+};
+
+IndicatorList.defaultProps = {
+  concepts: conceptsMock,
 };
 
 export const IndicatorListWithIntl = injectIntl(IndicatorList);

@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { gray150 } from 'styles/colors';
+
+import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 export const IndicatorChartWrapper = styled.div`
   left: 0;
@@ -12,3 +15,15 @@ export const IndicatorChartWrapper = styled.div`
     width: ${width};
   `};
 `;
+
+export const IndicatorChartStyles = ({ indicatorType }) => ({
+  Group: {
+    data: { strokeWidth: '1' },
+  },
+  CurrentYear: {
+    data: { stroke: IndicatorTypesColors[indicatorType] },
+  },
+  PastYear: {
+    data: { stroke: gray150 },
+  },
+});
