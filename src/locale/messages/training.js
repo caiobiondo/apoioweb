@@ -41,6 +41,9 @@ export default {
     courseAddEvaluationSuccess: 'Avaliação realizada com sucesso!',
     courseAddEvaluationError: 'Não foi possível realizar a avaliação',
     trainings: 'Treinamentos',
+    myTrainings: 'Meus Treinamentos',
+    myTrainingsSearchDescription: 'Faça um busca rápida dos treinamentos disponíveis',
+    trainingLabel: 'Treinamento',
   },
 };
 /* eslint-disable sort-keys */
