@@ -10,6 +10,14 @@ class TrainingWrapper extends Component {
     courseFilter: '',
   };
 
+  componentWillMount() {
+    const params = new URLSearchParams(this.props.location.search);
+    const filter = params.get('filter');
+    if (filter) {
+      this.onSearch({ name: filter });
+    }
+  }
+
   onLoadFinished = (empty, loading) => {
     this.setState({ empty: empty, loading: loading });
   };
@@ -28,7 +36,7 @@ class TrainingWrapper extends Component {
     return (
       <Main loading={loading} empty={empty}>
         <CourseSearchContainer>
-          <CourseSearch onSearch={this.onSearch} />
+          <CourseSearch onSearch={this.onSearch} searchValue={this.state.courseFilter} />
         </CourseSearchContainer>
 
         <TrainingCoursesList

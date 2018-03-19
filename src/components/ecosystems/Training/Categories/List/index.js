@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TrainingCategoriesList from './organisms/TrainingCategoriesList/TrainingCategoriesList';
-import { Main } from './index.styles';
+import CourseSearch from 'components/ecosystems/Training/atoms/CourseSearch/CourseSearch';
+import { Main, CourseSearchContainer } from './index.styles';
 
 class TrainingWrapper extends Component {
   state = {
@@ -12,11 +13,19 @@ class TrainingWrapper extends Component {
     this.setState({ empty: empty, loading: loading });
   };
 
+  onSearch = filter => {
+    this.props.history.push(`/training/courses?filter=${filter.name}`);
+  };
+
   render() {
     const { loading, empty } = this.state;
 
     return (
       <Main loading={loading} empty={empty}>
+        <CourseSearchContainer>
+          <CourseSearch onSearch={this.onSearch} />
+        </CourseSearchContainer>
+
         <TrainingCategoriesList user={this.props.user} onLoadFinished={this.onLoadFinished} />
       </Main>
     );

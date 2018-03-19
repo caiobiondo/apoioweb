@@ -13,6 +13,11 @@ import {
 } from './CourseSearch.styles';
 
 export class CourseSearch extends BaseSearch {
+  componentWillMount() {
+    const { searchValue } = this.props;
+    if (searchValue) this.setState({ name: searchValue });
+  }
+
   render() {
     return (
       <Paper style={Wrapper}>
