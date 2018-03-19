@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 
-import ModalConcept from '../../molecules/ModalConcept/';
+import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept';
 
-import { IndicatorTypesLabels, IndicatorTypesColors } from '../../IndicatorTypes.enum';
+import {
+  IndicatorTypesLabels,
+  IndicatorTypesColors,
+} from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
-import conceptsMock from '../Indicator/IndicatorConceptMock';
+import conceptsMock from 'components/ecosystems/CareerPlan/mocks/IndicatorConceptMock';
 
 import { VictoryLine, VictoryGroup } from 'victory';
 
@@ -20,7 +23,7 @@ import {
   IndicatorDataContent,
   IndicatorDataRow,
   IndicatorDataConceptValue,
-} from '../../molecules/IndicatorData/IndicatorData.styles';
+} from 'components/ecosystems/CareerPlan/Cycles/molecules/IndicatorData/IndicatorData.styles';
 
 import {
   IndicatorWrapper,
@@ -36,7 +39,7 @@ import {
   IndicatorTableContentWrapper,
   IndicatorTableLegend,
   IndicatorTableLegendItem,
-} from '../Indicator/Indicator.styles';
+} from 'components/ecosystems/CareerPlan/Cycles/organisms/Indicator/Indicator.styles';
 
 export class ChartIndicatorList extends Component {
   constructor() {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { gray150, gray700 } from 'styles/colors';
 
-import { IndicatorConceptsColors } from '../../IndicatorConcepts.enum';
+import { IndicatorConceptsColors } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
 
 export const IndicatorConceptList = styled.ul`
   padding: 0;

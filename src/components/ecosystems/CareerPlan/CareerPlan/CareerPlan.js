@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 
-import CycleMenu from '../../molecules/CycleMenu';
-import IndicatorList from '../IndicatorList';
-import ChartIndicatorList from '../ChartIndicatorList';
+import CycleMenu from './molecules/CycleMenu';
+import IndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
+import ChartIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/ChartIndicatorList';
 
-import IndicatorMock from './IndicatorMock';
+import IndicatorMock from 'components/ecosystems/CareerPlan/mocks/IndicatorMock';
 
 import {
   CareerPlanSection,
