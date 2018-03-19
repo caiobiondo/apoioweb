@@ -3,6 +3,7 @@ import { white, gray100, gray450, orange100 } from 'styles/colors';
 import {
   fs14,
   fs20,
+  fs25,
   fs32,
   fw700,
   NaturaBold,
@@ -10,6 +11,21 @@ import {
   RobotoRegular,
 } from 'styles/typography';
 import { Responsive } from '@entria/components';
+
+export const Main = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CourseViewFeedbackModalTitle = {
+  fontFamily: NaturaBold,
+  fontSize: fs25,
+};
+
+export const CourseViewFeedbackModalAction = {
+  fontFamily: RobotoRegular,
+};
 
 export const TrainingCourseThumbnailWrapper = styled.div`
   display: inline-block;
@@ -65,7 +81,6 @@ export const TrainingCourseTitle = styled.div`
   font-weight: ${fw700};
   position: relative;
   text-align: center;
-  max-width: 500px;
   margin-bottom: 30px;
   flex: 0 1 auto;
 
@@ -88,17 +103,13 @@ export const TrainingCourseDescription = styled.div`
   font-size: ${fs14};
   font-family: ${RobotoRegular};
   text-align: center;
-  max-width: 500px;
-  margin-bottom: 30px;
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    margin-bottom: 0;
-  }
 `;
 
 export const TrainingCourseActions = styled.div`
   flex: 0 1 auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     flex-direction: column;
@@ -108,6 +119,9 @@ export const TrainingCourseActions = styled.div`
 `;
 
 export const TrainingCourseActionButtonWrapper = styled.div`
+  margin-right: 55px;
+  margin-top: 30px;
+
   button {
     height: 50px !important;
     border-radius: 4px !important;
@@ -121,16 +135,17 @@ export const TrainingCourseActionButtonWrapper = styled.div`
     vertical-align: middle;
   }
 
-  & + & {
-    margin-left: 55px;
+  &:last-of-type {
+    margin-right: 0;
   }
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     border: 2px solid ${orange100};
     border-radius: 2.5px;
+    margin-right: 0;
+    margin-top: 0;
 
     & + & {
-      margin-left: 0px;
       margin-top: 20px;
     }
 

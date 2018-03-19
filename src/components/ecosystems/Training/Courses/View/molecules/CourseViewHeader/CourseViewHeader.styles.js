@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { gray890, orange100 } from 'styles/colors';
-import { fs15, fs16, fs20, RobotoLight } from 'styles/typography';
-import { Responsive } from '@entria/components';
+import { fs16, fs20, RobotoLight } from 'styles/typography';
 
 export const Header = styled.div`
   margin: 15px 0 35px;

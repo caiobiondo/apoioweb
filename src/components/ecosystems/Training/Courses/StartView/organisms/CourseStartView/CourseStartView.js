@@ -5,14 +5,12 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CourseViewQuery,
   CourseViewQueryOptions,
-} from 'components/ecosystems/Training/Courses/StartView/organisms/CourseStartView/CourseView.data';
+} from 'components/ecosystems/Training/Courses/StartView/organisms/CourseStartView/CourseStartView.data';
+
 import {
   Main,
   CourseViewFeedbackModalTitle,
   CourseViewFeedbackModalAction,
-} from './CourseView.styles';
-
-import {
   TrainingCourseThumbnail,
   TrainingCourseThumbnailWrapper,
   TrainingCourseThumbnailDescriptionWrapper,
@@ -34,8 +32,6 @@ import Dialog from 'material-ui/Dialog';
 
 import { Loading, FlatButton, Icon } from 'natura-ui';
 import { translate } from 'locale';
-
-import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
 
 import MediaQuery from 'react-responsive';
 
@@ -91,6 +87,38 @@ export class CourseView extends Component {
       feedbackModalOpened: true,
       feedbackModalTitle: message,
     });
+  };
+
+  handleTrainingClick = action => event => {
+    const { course } = this.props;
+
+    this.props
+      .mutate({
+        variables: {
+          input: { action },
+          sellerId: this.props.user.codigo,
+          courseId: course.id,
+        },
+      })
+      .then(response => {
+        if (response.error) {
+          this.handleMyListError();
+          return;
+        }
+
+        if (!response.data.updateCourse.status) {
+          this.handleNotUpdateMyList();
+          return;
+        }
+
+        this.handleUpdateSuccessMyList();
+        return;
+      })
+      .catch(err => {
+        console.log('err', err);
+
+        this.handleMyListError();
+      });
   };
 
   handleMyListClick = (event, child) => {
@@ -152,6 +180,70 @@ export class CourseView extends Component {
     );
   };
 
+  renderActionButtons = (buttonStyle, course) => {
+    const buttons = [];
+    if (course.status === 'pending') {
+      buttons.push(
+        <TrainingCourseActionButtonWrapper>
+          <FlatButton
+            {...buttonStyle}
+            label={translate('startTraining')}
+            icon={<Icon file="ico_play_circle" />}
+            onClick={this.handleTrainingClick('initialized')}
+          />
+        </TrainingCourseActionButtonWrapper>,
+      );
+    }
+
+    if (course.status === 'started') {
+      buttons.push(
+        <TrainingCourseActionButtonWrapper>
+          <FlatButton
+            {...buttonStyle}
+            label={translate('resumeTraining')}
+            icon={<Icon file="ico_play_circle" />}
+            onClick={this.handleTrainingClick('initialized')}
+          />
+        </TrainingCourseActionButtonWrapper>,
+      );
+      buttons.push(
+        <TrainingCourseActionButtonWrapper>
+          <FlatButton
+            {...buttonStyle}
+            label={translate('finishTraining')}
+            icon={<Icon file="ico_play_circle" />}
+            onClick={this.handleTrainingClick('terminated')}
+          />
+        </TrainingCourseActionButtonWrapper>,
+      );
+    }
+
+    if (course.status === 'finished') {
+      buttons.push(
+        <TrainingCourseActionButtonWrapper>
+          <FlatButton
+            {...buttonStyle}
+            label={translate('reviewTraining')}
+            icon={<Icon file="ico_play_circle" />}
+            onClick={this.handleTrainingClick('initialized')}
+          />
+        </TrainingCourseActionButtonWrapper>,
+      );
+    }
+
+    return [
+      ...buttons,
+      <TrainingCourseActionButtonWrapper>
+        <FlatButton
+          {...buttonStyle}
+          label={translate('myList')}
+          icon={<Icon file={this.myListIconName()} />}
+          onClick={this.handleMyListClick}
+        />
+      </TrainingCourseActionButtonWrapper>,
+    ];
+  };
+
   render() {
     const { course } = this.props;
 
@@ -185,22 +277,7 @@ export class CourseView extends Component {
               </TrainingCourseThumbnailDescriptionWrapper>
             </TrainingCourseThumbnail>
             <TrainingCourseActions>
-              <TrainingCourseActionButtonWrapper>
-                <FlatButton
-                  {...TrainingCourseActionButtonMobile}
-                  label={translate('startTraining')}
-                  icon={<Icon file="ico_play_circle" />}
-                  onClick={this.handleMyListClick}
-                />
-              </TrainingCourseActionButtonWrapper>
-              <TrainingCourseActionButtonWrapper>
-                <FlatButton
-                  {...TrainingCourseActionButtonMobile}
-                  label={translate('myList')}
-                  icon={<Icon file={this.myListIconName()} />}
-                  onClick={this.handleMyListClick}
-                />
-              </TrainingCourseActionButtonWrapper>
+              {this.renderActionButtons(TrainingCourseActionButtonMobile, course)}
             </TrainingCourseActions>
             <TrainingCourseRatingWrapper>
               <CourseRating course={course} />
@@ -214,22 +291,7 @@ export class CourseView extends Component {
                 <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
                 <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
                 <TrainingCourseActions>
-                  <TrainingCourseActionButtonWrapper>
-                    <FlatButton
-                      {...TrainingCourseActionButton}
-                      label={translate('startTraining')}
-                      icon={<Icon file="ico_play_circle" />}
-                      onClick={this.handleMyListClick}
-                    />
-                  </TrainingCourseActionButtonWrapper>
-                  <TrainingCourseActionButtonWrapper>
-                    <FlatButton
-                      {...TrainingCourseActionButton}
-                      label={translate('myList')}
-                      icon={<Icon file={this.myListIconName()} />}
-                      onClick={this.handleMyListClick}
-                    />
-                  </TrainingCourseActionButtonWrapper>
+                  {this.renderActionButtons(TrainingCourseActionButton, course)}
                 </TrainingCourseActions>
               </TrainingCourseThumbnailDescriptionWrapper>
             </TrainingCourseThumbnail>

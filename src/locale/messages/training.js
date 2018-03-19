@@ -45,6 +45,9 @@ export default {
     myTrainingsSearchDescription: 'Faça um busca rápida dos treinamentos disponíveis',
     trainingLabel: 'Treinamento',
     startTraining: 'Iniciar treinamento',
+    finishTraining: 'Finalizar treinamento',
+    resumeTraining: 'Continuar treinamento',
+    reviewTraining: 'Revisar treinamento',
   },
 };
 /* eslint-disable sort-keys */
