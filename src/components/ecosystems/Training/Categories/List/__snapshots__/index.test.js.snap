@@ -6,8 +6,17 @@ exports[`TrainingCategoriesList Ecosystem should render the training courses lis
   loading={true}
 >
   <indexstyles__CourseSearchContainer>
-    <CourseSearch
+    <BaseFormSearch
+      description="myTrainingsSearchDescription"
+      inputLabel="trainingLabel"
       onSearch={[Function]}
+      searchValue={undefined}
+      sectionTitle={
+        Object {
+          "iconName": "ico_graduate_cap",
+          "value": "myTrainings",
+        }
+      }
     />
   </indexstyles__CourseSearchContainer>
   <Apollo(TrainingCategoriesList)

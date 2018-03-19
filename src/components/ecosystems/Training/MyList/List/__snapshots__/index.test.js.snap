@@ -3,8 +3,17 @@
 exports[`TrainingMyList Ecosystem should render the training courses list page 1`] = `
 <indexstyles__Main>
   <indexstyles__CourseSearchContainer>
-    <CourseSearch
+    <BaseFormSearch
+      description="myTrainingsSearchDescription"
+      inputLabel="trainingLabel"
       onSearch={[Function]}
+      searchValue={undefined}
+      sectionTitle={
+        Object {
+          "iconName": "ico_graduate_cap",
+          "value": "myTrainings",
+        }
+      }
     />
   </indexstyles__CourseSearchContainer>
   <Apollo(Apollo(TrainingMyList))
