@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CustomersSearch from './organisms/CustomerSearch/CustomerSearch';
+import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
 import CustomersList from './organisms/CustomersList/CustomersList';
 import {
   Main,
@@ -56,6 +56,14 @@ class CustomersListWrapper extends Component {
     const isFiltered = filters && filters.name;
     const totalSelectedCustomers = selectedCustomers.length;
 
+    const baseFormSearchProps = {
+      onSearch: this.onSearch,
+      searchValue: this.state.courseFilter,
+      sectionTitle: { iconName: 'ico_add_customer', value: 'myCustomers' },
+      description: 'customersSearchInfo',
+      inputLabel: 'customerName',
+    };
+
     return (
       <Main loading={loading} empty={empty}>
         {!loading && (
@@ -69,7 +77,7 @@ class CustomersListWrapper extends Component {
         )}
         {!loading && (
           <CustomersSearchContainer>
-            <CustomersSearch onSearch={this.onSearch} />
+            <BaseFormSearch {...baseFormSearchProps} />
           </CustomersSearchContainer>
         )}
         <SelectedCustomersDescription>

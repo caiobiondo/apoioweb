@@ -21,19 +21,18 @@ export class BaseFormSearch extends BaseSearch {
   }
 
   render() {
+    const { props } = this;
     return (
       <Paper style={Wrapper}>
-        <SectionTitle iconName="ico_graduate_cap" value="myTrainings" />
-        <BaseFormSearchDescription>
-          {translate('myTrainingsSearchDescription')}
-        </BaseFormSearchDescription>
+        <SectionTitle {...props.sectionTitle} />
+        <BaseFormSearchDescription>{translate(props.description)}</BaseFormSearchDescription>
         <FormWrapper>
           <FormInput
             type="text"
-            name="courseSearch"
+            name="inputBaseFormSearch"
             onKeyPress={this.onKeyPress}
             onChange={this.handleNameChange}
-            label={translate('trainingLabel')}
+            label={translate(props.inputLabel)}
             value={this.state.name}
           />
           <FormButtonWrapper>
