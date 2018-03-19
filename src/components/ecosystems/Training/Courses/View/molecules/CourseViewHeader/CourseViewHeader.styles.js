@@ -21,10 +21,6 @@ export const BackButtonText = styled.span`
   font-size: ${fs20};
   font-weight: ${fs16};
   padding-left: 50px;
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    font-size: ${fs15};
-  }
 `;
 
 export const BackButtonIcon = styled.span`
