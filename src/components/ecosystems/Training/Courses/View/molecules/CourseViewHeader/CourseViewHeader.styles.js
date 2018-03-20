@@ -7,11 +7,9 @@ export const Header = styled.div`
 `;
 
 export const BackButtonWrapper = styled.div`
-  > a {
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-  }
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
 `;
 
 export const BackButtonText = styled.span`
@@ -25,7 +23,7 @@ export const BackButtonText = styled.span`
 export const BackButtonIcon = styled.span`
   left: 0;
   position: absolute;
-  top: -5px;
+  top: 2px;
   width: 20px;
 
   svg {

@@ -27,18 +27,18 @@ export const SubCategoryWrapper = styled.li`
   @media (max-width: 900px) {
     width: calc(50% - 14px);
   }
-`;
 
-export const SubCategoryLink = styled.a`
-  align-items: center;
-  bottom: 0;
-  display: flex;
-  left: 0;
-  padding: 15px;
-  position: absolute;
-  right: 0;
-  text-decoration: none;
-  top: 0;
+  > a {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    left: 0;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    top: 0;
+  }
 `;
 
 export const SubCategoryTitleWrapper = styled.div`

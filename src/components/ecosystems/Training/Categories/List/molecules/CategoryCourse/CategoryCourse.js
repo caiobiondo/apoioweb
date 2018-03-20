@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'natura-ui';
+import { Link } from 'react-router-dom';
 
 import { orange100 } from 'styles/colors';
 
 import {
   CategoryCourseWrapper,
   CategoryCourseCover,
-  CategoryCourseLink,
   CategoryCourseTitleWrapper,
   CategoryCourseIcon,
   CategoryCourseTitle,
@@ -61,7 +61,7 @@ const CategoryCourse = ({ course }) => {
 
   return (
     <CategoryCourseWrapper>
-      <CategoryCourseLink href={`/training/courses/${course.id}`} title={course.title}>
+      <Link to={`/training/courses/${course.id}`}>
         <CategoryCourseCover thumbnail={course.thumbnail} />
 
         <CategoryCourseTitleWrapper viewedPercentage={getViewedPercentage()}>
@@ -72,7 +72,7 @@ const CategoryCourse = ({ course }) => {
 
           {getDurationNode()}
         </CategoryCourseTitleWrapper>
-      </CategoryCourseLink>
+      </Link>
     </CategoryCourseWrapper>
   );
 };
