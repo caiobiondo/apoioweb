@@ -69,6 +69,8 @@ export class CourseContent extends Component {
   };
 
   handleStateChange(state, prevState) {
+    if (state.error) return;
+
     this.setState({ currentTime: state.currentTime });
 
     if (state.hasStarted !== prevState.hasStarted) {
