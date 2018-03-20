@@ -40,6 +40,7 @@ export default {
     relatedTraining: 'Treinamentos relacionados',
     courseAddEvaluationSuccess: 'Avaliação realizada com sucesso!',
     courseAddEvaluationError: 'Não foi possível realizar a avaliação',
+    courseAddEvaluationDuplicationError: 'Não é possível realizar a avaliação novamente',
     trainings: 'Treinamentos',
     myTrainings: 'Meus Treinamentos',
     myTrainingsSearchDescription: 'Faça um busca rápida dos treinamentos disponíveis',

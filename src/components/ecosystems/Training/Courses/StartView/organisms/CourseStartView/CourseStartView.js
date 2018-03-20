@@ -24,6 +24,7 @@ import {
 } from './CourseStartView.styles';
 
 import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
+import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
 import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
 import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
@@ -39,6 +40,7 @@ export class CourseView extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
+    showEvaluation: false,
   };
 
   componentWillReceiveProps({ loading, course }) {
@@ -106,12 +108,14 @@ export class CourseView extends Component {
           return;
         }
 
-        if (!response.data.updateCourse.status) {
-          this.handleNotUpdateMyList();
-          return;
+        if (action === 'started') {
+          // Link to course
         }
 
-        this.handleUpdateSuccessMyList();
+        if (action === 'terminated') {
+          this.setState({ showEvaluation: true });
+        }
+
         return;
       })
       .catch(err => {
@@ -302,6 +306,9 @@ export class CourseView extends Component {
         </MediaQuery>
         <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
+        {this.state.showEvaluation && (
+          <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+        )}
       </Main>
     );
   }
