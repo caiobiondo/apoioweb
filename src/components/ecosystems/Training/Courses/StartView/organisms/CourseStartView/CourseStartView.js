@@ -36,7 +36,7 @@ import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
 
-export class CourseView extends Component {
+export class CourseStartView extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
@@ -314,9 +314,9 @@ export class CourseView extends Component {
   }
 }
 
-export const CourseViewWithIntl = injectIntl(CourseView);
+export const CourseStartViewWithIntl = injectIntl(CourseStartView);
 
 export default compose(
   graphql(CourseViewQuery, CourseViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseViewWithIntl);
+)(CourseStartViewWithIntl);
