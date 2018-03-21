@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import propTypes from 'prop-types';
 
-import conceptsMock from 'components/ecosystems/CareerPlan/mocks/IndicatorConceptMock';
-
 import Indicator from 'components/ecosystems/CareerPlan/Anual/organisms/Indicator';
 
 import { IndicatorListWrapper } from './IndicatorList.styles';
@@ -43,11 +41,7 @@ export class IndicatorList extends Component {
 
 IndicatorList.propTypes = {
   indicators: propTypes.array.isRequired,
-  concepts: propTypes.array,
-};
-
-IndicatorList.defaultProps = {
-  concepts: conceptsMock,
+  concepts: propTypes.array.isRequired,
 };
 
 export const IndicatorListWithIntl = injectIntl(IndicatorList);

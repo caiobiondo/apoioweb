@@ -4,7 +4,6 @@ import propTypes from 'prop-types';
 
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
 import IndicatorData from '../../molecules/IndicatorData/';
-import conceptMock from 'components/ecosystems/CareerPlan/mocks/IndicatorConceptMock';
 import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import {
@@ -26,7 +25,6 @@ export class Indicator extends Component {
   constructor({ indicator }) {
     super();
     this.state = {
-      concepts: conceptMock,
       informationModalOpened: false,
       activeCycle: null,
     };
@@ -82,8 +80,8 @@ export class Indicator extends Component {
   };
 
   render() {
-    const { indicator, range } = this.props;
-    const { informationModalOpened, concepts } = this.state;
+    const { indicator, range, concepts } = this.props;
+    const { informationModalOpened } = this.state;
     const visibleCycles = this.getVisibleCycles(range);
 
     return (
