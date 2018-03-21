@@ -31,6 +31,7 @@ export default {
     downloadCertificate: 'Baixar Certificado',
     trainingAddCourseToMyList: 'Adicionar à minha lista',
     trainingCategoryCompleted: 'Completa',
+    continueCourses: 'Continue seus cursos',
     courseRatingAvaliation: 'Avaliação',
     courseRatingTime: 'Tempo',
     courseEvaluationNext: 'Próximo',
