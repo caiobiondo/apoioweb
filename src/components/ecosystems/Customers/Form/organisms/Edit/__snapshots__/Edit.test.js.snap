@@ -867,6 +867,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
             "courseEvaluationBack": "Voltar",
@@ -915,6 +916,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
             "female": "Feminino",
+            "finishTraining": "Finalizar treinamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -1042,11 +1044,14 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
+            "resumeTraining": "Continuar treinamento",
+            "reviewTraining": "Revisar treinamento",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
             "selectedCustomers": "clientes selecionadas",
+            "startTraining": "Iniciar treinamento",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
@@ -2456,6 +2461,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
             "courseEvaluationBack": "Voltar",
@@ -2504,6 +2510,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
             "female": "Feminino",
+            "finishTraining": "Finalizar treinamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -2631,11 +2638,14 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
+            "resumeTraining": "Continuar treinamento",
+            "reviewTraining": "Revisar treinamento",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
             "selectedCustomers": "clientes selecionadas",
+            "startTraining": "Iniciar treinamento",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
@@ -4338,6 +4348,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
             "courseEvaluationBack": "Voltar",
@@ -4386,6 +4397,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
             "female": "Feminino",
+            "finishTraining": "Finalizar treinamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -4513,11 +4525,14 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
+            "resumeTraining": "Continuar treinamento",
+            "reviewTraining": "Revisar treinamento",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
             "selectedCustomers": "clientes selecionadas",
+            "startTraining": "Iniciar treinamento",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
@@ -5120,6 +5135,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
+                                inputOnly={false}
                                 label="Nome / Apelido"
                                 maskChar=""
                                 maxlenght={null}
@@ -5141,6 +5157,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
+                                  inputOnly={false}
                                   label="Nome / Apelido"
                                   maskChar=""
                                   maxlenght={null}
@@ -5748,6 +5765,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
+                                inputOnly={false}
                                 label="Nome Completo"
                                 maskChar=""
                                 maxlenght={null}
@@ -5770,6 +5788,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
+                                  inputOnly={false}
                                   label="Nome Completo"
                                   maskChar=""
                                   maxlenght={null}
@@ -7296,6 +7315,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
+                                inputOnly={false}
                                 label="Email"
                                 maskChar=""
                                 maxlenght={null}
@@ -7318,6 +7338,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
+                                  inputOnly={false}
                                   label="Email"
                                   maskChar=""
                                   maxlenght={null}
@@ -7975,6 +7996,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           disabled={false}
                                           help=""
                                           initialFocus={false}
+                                          inputOnly={false}
                                           label="Telefone"
                                           mask="(99) 9999-99999"
                                           maskChar=""
@@ -7998,6 +8020,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             hasError={false}
                                             help=""
                                             initialFocus={false}
+                                            inputOnly={false}
                                             label="Telefone"
                                             mask="(99) 9999-99999"
                                             maskChar=""
@@ -8634,6 +8657,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           disabled={false}
                                           help=""
                                           initialFocus={false}
+                                          inputOnly={false}
                                           label="Operadora"
                                           maskChar=""
                                           maxlenght={null}
@@ -8655,6 +8679,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             hasError={false}
                                             help=""
                                             initialFocus={false}
+                                            inputOnly={false}
                                             label="Operadora"
                                             maskChar=""
                                             maxlenght={null}

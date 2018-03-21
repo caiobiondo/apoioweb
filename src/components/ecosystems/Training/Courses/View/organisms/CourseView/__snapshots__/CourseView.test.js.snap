@@ -13,7 +13,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
   <Grid
     fluid={true}
   >
-    <CourseViewHeader />
+    <withRouter(CourseViewHeader) />
     <Apollo(CourseContent)
       course={
         Object {

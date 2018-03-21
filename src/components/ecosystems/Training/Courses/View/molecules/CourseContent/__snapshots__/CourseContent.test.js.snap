@@ -5,8 +5,8 @@ exports[`CourseContent should render a player with the course content 1`] = `
   class="CourseContentstyles__ContentWrapper-igDuWn eXEIqx"
 >
   <div
-    class="video-react-controls-enabled video-react-paused video-react-user-active video-react-workinghover video-react"
-    style="width:400px;height:225px"
+    class="video-react-controls-enabled video-react-paused video-react-fluid video-react-user-active video-react-workinghover video-react"
+    style="padding-top:56.25%"
     tabindex="-1"
   >
     <video

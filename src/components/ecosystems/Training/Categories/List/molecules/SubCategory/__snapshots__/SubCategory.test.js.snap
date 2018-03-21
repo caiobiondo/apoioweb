@@ -2,9 +2,9 @@
 
 exports[`SubCategory render correct then the sub category card 1`] = `
 <SubCategorystyles__SubCategoryWrapper>
-  <SubCategorystyles__SubCategoryLink
-    href="/training/categories/1"
-    title="Test"
+  <Link
+    replace={false}
+    to="/training/categories/1"
   >
     <SubCategorystyles__SubCategoryTitleWrapper>
       <SubCategorystyles__SubCategoryIcon
@@ -14,6 +14,6 @@ exports[`SubCategory render correct then the sub category card 1`] = `
         Test
       </SubCategorystyles__SubCategoryTitle>
     </SubCategorystyles__SubCategoryTitleWrapper>
-  </SubCategorystyles__SubCategoryLink>
+  </Link>
 </SubCategorystyles__SubCategoryWrapper>
 `;

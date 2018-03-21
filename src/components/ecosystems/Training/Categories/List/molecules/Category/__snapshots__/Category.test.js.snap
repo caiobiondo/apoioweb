@@ -22,7 +22,7 @@ exports[`Category renders correctly when there are courses 1`] = `
     </Categorystyles__ViewAll>
   </Categorystyles__CategoryTitleHolder>
   <Categorystyles__List>
-    <CategoryCourse
+    <withRouter(CategoryCourse)
       course={
         Object {
           "id": 1,
