@@ -5,7 +5,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import {
   CourseViewQuery,
   CourseViewQueryOptions,
-} from 'components/ecosystems/Training/Courses/StartView/organisms/CourseStartView/CourseStartView.data';
+} from 'components/ecosystems/Training/data/CourseView.data';
 
 import {
   Main,
@@ -108,7 +108,7 @@ export class CourseStartView extends Component {
           return;
         }
 
-        if (action === 'started') {
+        if (action === 'initialized') {
           // Link to course
         }
 
@@ -188,7 +188,7 @@ export class CourseStartView extends Component {
     const buttons = [];
     if (course.status === 'pending') {
       buttons.push(
-        <TrainingCourseActionButtonWrapper>
+        <TrainingCourseActionButtonWrapper key="start">
           <FlatButton
             {...buttonStyle}
             label={translate('startTraining')}
@@ -201,7 +201,7 @@ export class CourseStartView extends Component {
 
     if (course.status === 'started') {
       buttons.push(
-        <TrainingCourseActionButtonWrapper>
+        <TrainingCourseActionButtonWrapper key="resume">
           <FlatButton
             {...buttonStyle}
             label={translate('resumeTraining')}
@@ -211,7 +211,7 @@ export class CourseStartView extends Component {
         </TrainingCourseActionButtonWrapper>,
       );
       buttons.push(
-        <TrainingCourseActionButtonWrapper>
+        <TrainingCourseActionButtonWrapper key="finish">
           <FlatButton
             {...buttonStyle}
             label={translate('finishTraining')}
@@ -224,7 +224,7 @@ export class CourseStartView extends Component {
 
     if (course.status === 'finished') {
       buttons.push(
-        <TrainingCourseActionButtonWrapper>
+        <TrainingCourseActionButtonWrapper key="review">
           <FlatButton
             {...buttonStyle}
             label={translate('reviewTraining')}
@@ -237,7 +237,7 @@ export class CourseStartView extends Component {
 
     return [
       ...buttons,
-      <TrainingCourseActionButtonWrapper>
+      <TrainingCourseActionButtonWrapper key="list">
         <FlatButton
           {...buttonStyle}
           label={translate('myList')}
@@ -246,6 +246,11 @@ export class CourseStartView extends Component {
         />
       </TrainingCourseActionButtonWrapper>,
     ];
+  };
+
+  canEvaluate = () => {
+    const { course } = this.props;
+    return this.state.showEvaluation && course.ratedByYou !== 'true';
   };
 
   render() {
@@ -306,7 +311,7 @@ export class CourseStartView extends Component {
         </MediaQuery>
         <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
-        {this.state.showEvaluation && (
+        {this.canEvaluate() && (
           <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
         )}
       </Main>

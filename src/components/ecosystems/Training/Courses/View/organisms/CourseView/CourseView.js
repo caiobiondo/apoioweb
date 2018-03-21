@@ -3,7 +3,10 @@ import { graphql, compose } from 'react-apollo';
 import { Row, Col, Grid } from 'react-flexbox-grid';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import { CourseViewQuery, CourseViewQueryOptions } from './CourseView.data';
+import {
+  CourseViewQuery,
+  CourseViewQueryOptions,
+} from 'components/ecosystems/Training/data/CourseView.data';
 import {
   Main,
   MylistButtonWrapper,
