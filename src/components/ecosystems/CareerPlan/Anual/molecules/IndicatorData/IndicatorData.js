@@ -42,6 +42,7 @@ export class ChartIndicator extends Component {
 
   render() {
     const { indicator, indicatorData, setRef, showDetails } = this.props;
+    const concept = indicatorData.consolidated ? indicatorData.consolidated.value : '';
 
     return (
       <IndicatorDataWrapper
@@ -58,7 +59,7 @@ export class ChartIndicator extends Component {
 
         <IndicatorDataContent>
           <IndicatorDataRow>
-            <IndicatorDataConceptValue concept={indicatorData.consolidated.value} />
+            <IndicatorDataConceptValue concept={concept} />
           </IndicatorDataRow>
         </IndicatorDataContent>
 
@@ -72,7 +73,7 @@ export class ChartIndicator extends Component {
             <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
           <IndicatorDataRow>
-            <IndicatorDataConceptValue concept={indicatorData.consolidated.value} />
+            <IndicatorDataConceptValue concept={concept} />
           </IndicatorDataRow>
 
           <IndicatorDataRow>

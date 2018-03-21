@@ -100,8 +100,8 @@ export class IndicatorData extends Component {
   renderContentNode() {
     const { indicatorData, activeCycle } = this.props;
 
-    if (!indicatorData.isClosed) {
-      this.renderDisabled();
+    if (indicatorData.isClosed) {
+      return this.renderDisabled();
     }
 
     return <IndicatorDataForm {...this.props} isActive={indicatorData.cycle === activeCycle} />;

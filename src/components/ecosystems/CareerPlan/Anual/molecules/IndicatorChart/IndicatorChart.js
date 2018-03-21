@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
-import propTypes from 'prop-types';
 
 import { VictoryLine, VictoryGroup } from 'victory';
 
@@ -8,14 +7,15 @@ import IndicatorChartConfig from './IndicatorChart.config';
 import { IndicatorChartWrapper, IndicatorChartStyles } from './IndicatorChart.styles';
 
 export class IndicatorChart extends Component {
-  constructor({ cycles }) {
+  constructor(props) {
     super();
     this.state = {
-      cycles: this.parseCycles(cycles),
+      cycles: this.updateChartData(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
+    this.updateChartData(nextProps);
     this.updateChartDimensions(nextProps);
   }
 
@@ -40,9 +40,27 @@ export class IndicatorChart extends Component {
     this.chartNode = node;
   };
 
+  updateChartData = ({ indicator, pastIndicator }) => {
+    if (!indicator || !pastIndicator) {
+      return;
+    }
+
+    const currentPeriod = indicator.cycles.map((cycle, index) => ({
+      x: cycle.objective,
+      y: index + 1,
+    }));
+
+    const pastPeriod = pastIndicator.cycles.map((cycle, index) => ({
+      x: cycle.objective,
+      y: index + 1,
+    }));
+
+    return { currentPeriod, pastPeriod };
+  };
+
   updateChartDimensions = (props = {}) => {
     const { cycleNode } = props;
-    const { currentYear } = this.state.cycles;
+    const { currentPeriod } = this.state.cycles;
     const cycleWidth = cycleNode ? cycleNode.offsetWidth : 0;
 
     if (!this.chartNode) {
@@ -51,7 +69,7 @@ export class IndicatorChart extends Component {
 
     this.setState({
       chartHeight: this.chartNode.offsetHeight,
-      chartWidth: cycleWidth * currentYear.length,
+      chartWidth: cycleWidth * currentPeriod.length,
     });
   };
 
@@ -73,70 +91,20 @@ export class IndicatorChart extends Component {
           {...IndicatorChartConfig.Group}
         >
           <VictoryLine
-            style={chartStyles.CurrentYear}
-            data={cycles.currentYear}
-            {...IndicatorChartConfig.CurrentYear}
+            style={chartStyles.CurrentPeriod}
+            data={cycles.currentPeriod}
+            {...IndicatorChartConfig.CurrentPeriod}
           />
           <VictoryLine
-            style={chartStyles.PastYear}
-            data={cycles.pastYear}
-            {...IndicatorChartConfig.PastYear}
+            style={chartStyles.PastPeriod}
+            data={cycles.pastPeriod}
+            {...IndicatorChartConfig.PastPeriod}
           />
         </VictoryGroup>
       </IndicatorChartWrapper>
     );
   }
 }
-
-IndicatorChart.propTypes = {
-  cycles: propTypes.object,
-};
-
-IndicatorChart.defaultProps = {
-  cycles: {
-    currentYear: [
-      { x: 1, y: 1 },
-      { x: 2, y: 2 },
-      { x: 3, y: 3 },
-      { x: 4, y: 4 },
-      { x: 5, y: 5 },
-      { x: 6, y: 5 },
-      { x: 7, y: 4 },
-      { x: 8, y: 3 },
-      { x: 9, y: 3 },
-      { x: 10, y: 2 },
-      { x: 11, y: 1 },
-      { x: 12, y: 2 },
-      { x: 13, y: 3 },
-      { x: 14, y: 4 },
-      { x: 15, y: 5 },
-      { x: 16, y: 6 },
-      { x: 17, y: 4 },
-      { x: 18, y: 3 },
-      { x: 18, y: 3 },
-    ],
-    pastYear: [
-      { x: 1, y: 5 },
-      { x: 2, y: 4 },
-      { x: 3, y: 2 },
-      { x: 4, y: 1 },
-      { x: 5, y: 4 },
-      { x: 6, y: 6 },
-      { x: 7, y: 8 },
-      { x: 8, y: 8 },
-      { x: 9, y: 7 },
-      { x: 10, y: 1 },
-      { x: 11, y: 3 },
-      { x: 12, y: 2 },
-      { x: 13, y: 5 },
-      { x: 14, y: 8 },
-      { x: 15, y: 9 },
-      { x: 16, y: 2 },
-      { x: 17, y: 3 },
-      { x: 18, y: 2 },
-    ],
-  },
-};
 
 export const IndicatorWithIntl = injectIntl(IndicatorChart);
 

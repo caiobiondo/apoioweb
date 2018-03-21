@@ -9,9 +9,20 @@ import Indicator from 'components/ecosystems/CareerPlan/Anual/organisms/Indicato
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
 export class IndicatorList extends Component {
-  renderIndicator = indicator => {
+  renderIndicator = (indicator, pastIndicator) => {
     const { concepts } = this.props;
-    return <Indicator key={indicator.indicatorType} indicator={indicator} concepts={concepts} />;
+    return (
+      <Indicator
+        key={indicator.indicatorType}
+        pastIndicator={pastIndicator}
+        indicator={indicator}
+        concepts={concepts}
+      />
+    );
+  };
+
+  getPastIndicator = indicatorType => {
+    return this.props.pastIndicators.filter(i => i.indicatorType === indicatorType)[0];
   };
 
   render() {
@@ -19,7 +30,12 @@ export class IndicatorList extends Component {
 
     return (
       <div>
-        <IndicatorListWrapper>{indicators.map(this.renderIndicator)}</IndicatorListWrapper>
+        <IndicatorListWrapper>
+          {indicators.map(indicator => {
+            const pastIndicator = this.getPastIndicator(indicator.indicatorType);
+            return this.renderIndicator(indicator, pastIndicator);
+          })}
+        </IndicatorListWrapper>
       </div>
     );
   }

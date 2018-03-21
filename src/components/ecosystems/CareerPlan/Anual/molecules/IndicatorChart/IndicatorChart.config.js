@@ -3,13 +3,13 @@ export default {
     domainPadding: { x: 10, y: 20 },
     padding: 0,
   },
-  CurrentYear: {
+  CurrentPeriod: {
     animate: {
       onLoad: { duration: 800 },
     },
     interpolation: 'natural',
   },
-  PastYear: {
+  PastPeriod: {
     animate: {
       onLoad: { duration: 800 },
     },
