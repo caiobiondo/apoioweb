@@ -23,7 +23,7 @@ import { Loading } from 'natura-ui';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import StartedCoursesList from '../../molecules/StartedCoursesList/StartedCoursesList';
+import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
 
 import {
   StartedWrapper,

@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import {
   Header,
   Wrapper,
-  CourseInCoverInfo,
-  CourseCategoryTitle,
-  CourseTitle,
+  StartedCourseInfo,
+  StartedCourseCategoryTitle,
+  StartedCourseTitle,
   LeftCarouselArrow,
   RightCarouselArrow,
   StartedCoursesWrapper,
@@ -22,13 +22,32 @@ import { graphql } from 'react-apollo';
 
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
 
+class LeftArrow extends Component {
+  render() {
+    const { onClick, currentSlide } = this.props;
+    if (currentSlide === 0) {
+      return null;
+    }
+    return <LeftCarouselArrow onClick={onClick}>{'<'}</LeftCarouselArrow>;
+  }
+}
+
+class RightArrow extends Component {
+  render() {
+    const { onClick, currentSlide, slideCount, slidesToScroll } = this.props;
+    if (currentSlide + slidesToScroll >= slideCount) {
+      return null;
+    }
+    return <RightCarouselArrow onClick={onClick}>{'>'}</RightCarouselArrow>;
+  }
+}
+
 export class StartedCoursesList extends Component {
   handleCourseClick = course => event => {
     const url = course.type === 'VIDEO' ? `${course.id}` : `${course.id}/start`;
 
     this.props.history.push(`/training/courses/${url}`);
   };
-
   render() {
     const settings = {
       arrows: true,
@@ -41,8 +60,6 @@ export class StartedCoursesList extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      prevArrow: <LeftCarouselArrow>{'<'}</LeftCarouselArrow>,
-      nextArrow: <RightCarouselArrow>{'>'}</RightCarouselArrow>,
       responsive: [
         {
           breakpoint: 768,
@@ -53,6 +70,8 @@ export class StartedCoursesList extends Component {
           },
         },
       ],
+      prevArrow: <LeftArrow />,
+      nextArrow: <RightArrow slidesToScroll={1} />,
     };
     const { courses } = this.props;
     if (!courses) return null;
@@ -64,10 +83,10 @@ export class StartedCoursesList extends Component {
             {courses.map(course => {
               return (
                 <StartedCoursesThumbnail key={course.id}>
-                  <CourseInCoverInfo onClick={this.handleCourseClick(course)}>
-                    <CourseTitle>{course.title}</CourseTitle>
-                    <CourseCategoryTitle>{course.categoryTitle}</CourseCategoryTitle>
-                  </CourseInCoverInfo>
+                  <StartedCourseInfo onClick={this.handleCourseClick(course)}>
+                    <StartedCourseTitle>{course.title}</StartedCourseTitle>
+                    <StartedCourseCategoryTitle>{course.categoryTitle}</StartedCourseCategoryTitle>
+                  </StartedCourseInfo>
                   <ImageWithFallback imageUrl={course.thumbnail} />
                 </StartedCoursesThumbnail>
               );

@@ -32,8 +32,8 @@ export const StartedCoursesWrapper = styled.div`
   height: 400px;
   width: 100%;
 
-  @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
-    height: 240px;
+  @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) and (max-width: 975px), (max-width: 1024px) {
+    height: 215px;
   }
 
   > div {
@@ -101,7 +101,7 @@ export const StartedCoursesWrapper = styled.div`
   }
 `;
 
-export const CourseInCoverInfo = styled.div`
+export const StartedCourseInfo = styled.div`
   position: absolute;
   top: 0;
   bottom: 5px;
@@ -116,7 +116,7 @@ export const CourseInCoverInfo = styled.div`
   cursor: pointer;
 `;
 
-export const CourseTitle = styled.h2`
+export const StartedCourseTitle = styled.h2`
   font-family: ${NaturaRegular};
   font-size: 38.8px;
   font-weight: bold;
@@ -137,18 +137,13 @@ export const CourseTitle = styled.h2`
     position: absolute;
   }
 
-  @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
-    margin: -30px 0px 40px 47px
-    font-size: 20px;
-  }
-
-  @media (max-width: 481px) {
-    margin: -10px 0px 40px 47px;
+  @media (max-width: 1024px) {
+    margin: -15px 0px 40px 47px;
     font-size: 20px;
   }
 `;
 
-export const CourseCategoryTitle = styled.span`
+export const StartedCourseCategoryTitle = styled.span`
   font-family: ${RobotoMedium};
   font-size: 20.5px;
   font-weight: normal;
@@ -159,9 +154,9 @@ export const CourseCategoryTitle = styled.span`
   margin-left: 84px;
   text-shadow: 0px 2.5px 15px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 481px) {
+  @media (max-width: 1024px) {
     margin-left: 46px;
-    font-size: 10px;
+    font-size: 15px;
   }
 `;
 
@@ -171,18 +166,16 @@ export const StartedCoursesThumbnail = styled.div`
   position: relative;
   margin-top: 28px;
 
-  @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
-    height: 350px
-  }
-
     img {
       width: 100%;
       object-fit: cover;
       height: 350px;
 
-      @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
+      @media (max-width: 1024px) {
+        object-fit: cover;
         height: 195px
       }
+
     }
 
   }
@@ -200,14 +193,9 @@ export const LeftCarouselArrow = styled.span`
   cursor: pointer;
   margin-left: 23px;
 
-  @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
-    font-size: 70px;
-    top: 38%;
-  }
-
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    font-size: 70px;
-    top: 38%;
+  @media (max-width: 1024px) {
+    font-size: 60px;
+    top: 40%;
   }
 `;
 
