@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import propTypes from 'prop-types';
+import { graphql } from 'react-apollo';
 
+import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
 import CyclesIndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
 import AnualIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/IndicatorList';
-
-import IndicatorMock from 'components/ecosystems/CareerPlan/mocks/IndicatorMock';
+import { IndicatorListQuery, IndicatorListQueryOptions } from './CareerPlan.data';
 
 import {
   CareerPlanSection,
@@ -18,31 +18,52 @@ import {
 const CYCLES_PER_VIEW = 10;
 
 export class CareerPlan extends Component {
-  constructor(props) {
-    super();
+  state = {
+    activeMenu: 1,
+  };
 
-    this.state = {
-      activeMenu: 3,
-      menuItems: [
-        {
-          id: 1,
-          label: `Ciclo 01-${CYCLES_PER_VIEW}`,
-        },
-        {
-          id: 2,
-          label: `Ciclo ${CYCLES_PER_VIEW + 1}-${props.indicators[0].cycles.length}`,
-        },
-        {
-          id: 3,
-          label: 'Anual',
-        },
-      ],
-      indicators: props.indicators,
-    };
+  componentWillReceiveProps({ loading, indicators }) {
+    this.handleLoadingFinished({ loading, indicators });
+    this.setIndicators(indicators);
   }
 
   onMenuChange = menuItem => {
     this.setState({ activeMenu: menuItem.id });
+  };
+
+  handleLoadingFinished = ({ loading, indicators }) => {
+    if (loading) {
+      return;
+    }
+
+    this.setMenu({ indicators });
+  };
+
+  setMenu = ({ indicators }) => {
+    const menuItems = [
+      {
+        id: 1,
+        label: `Ciclo 01-${CYCLES_PER_VIEW}`,
+      },
+      {
+        id: 2,
+        label: `Ciclo ${CYCLES_PER_VIEW + 1}-${indicators[0].cycles.length}`,
+      },
+      {
+        id: 3,
+        label: 'Anual',
+      },
+    ];
+
+    this.setState({ menuItems });
+  };
+
+  setIndicators = indicators => {
+    if (!indicators) {
+      return;
+    }
+
+    this.setState({ indicators });
   };
 
   getEditedIndicators = (indicators, indicatorToEdit) => {
@@ -77,6 +98,10 @@ export class CareerPlan extends Component {
   renderIndicatorList() {
     const { activeMenu, indicators } = this.state;
 
+    if (!indicators) {
+      return null;
+    }
+
     if (activeMenu === 1) {
       return (
         <CyclesIndicatorList
@@ -102,37 +127,44 @@ export class CareerPlan extends Component {
     }
   }
 
-  render() {
+  renderMenu() {
     const { activeMenu, menuItems } = this.state;
+
+    if (!menuItems) {
+      return null;
+    }
+
+    return (
+      <CycleMenu menuItems={menuItems} onMenuChange={this.onMenuChange} activeMenu={activeMenu} />
+    );
+  }
+
+  render() {
+    const { loading } = this.props;
 
     return (
       <CareerPlanSection>
-        <CareerPlanTitleWrapper>
-          <CareerPlanTitle>
-            <FormattedMessage id="careerPlanTitle" />
-          </CareerPlanTitle>
+        <LoadingHandler loading={loading}>
+          <div>
+            <CareerPlanTitleWrapper>
+              <CareerPlanTitle>
+                <FormattedMessage id="careerPlanTitle" />
+              </CareerPlanTitle>
 
-          <CareerPlanDescription>
-            <FormattedMessage id="careerPlanDescription" />
-          </CareerPlanDescription>
-        </CareerPlanTitleWrapper>
+              <CareerPlanDescription>
+                <FormattedMessage id="careerPlanDescription" />
+              </CareerPlanDescription>
+            </CareerPlanTitleWrapper>
 
-        <CycleMenu menuItems={menuItems} onMenuChange={this.onMenuChange} activeMenu={activeMenu} />
-
-        {this.renderIndicatorList()}
+            {this.renderMenu()}
+            {this.renderIndicatorList()}
+          </div>
+        </LoadingHandler>
       </CareerPlanSection>
     );
   }
 }
 
-CareerPlan.propTypes = {
-  indicators: propTypes.array,
-};
-
-CareerPlan.defaultProps = {
-  indicators: IndicatorMock,
-};
-
 export const CareerPlanWithIntl = injectIntl(CareerPlan);
 
-export default CareerPlanWithIntl;
+export default graphql(IndicatorListQuery, IndicatorListQueryOptions)(CareerPlanWithIntl);

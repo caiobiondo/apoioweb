@@ -196,6 +196,7 @@ export class IndicatorDataForm extends Component {
   render() {
     const { indicatorData, canFill, isActive } = this.props;
     const { directSale, naturaNetwork } = this.state.indicatorDataValues;
+    const concept = indicatorData.consolidated ? indicatorData.consolidated.value : '';
 
     return (
       <IndicatorDataContent>
@@ -238,7 +239,7 @@ export class IndicatorDataForm extends Component {
           <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
         </IndicatorDataRowAcc>
         <IndicatorDataRow>
-          <IndicatorDataConceptValue concept={indicatorData.consolidated.value} />
+          <IndicatorDataConceptValue concept={concept} />
         </IndicatorDataRow>
         {this.renderApplyButton()}
         {this.renderDeleteDialog()}
