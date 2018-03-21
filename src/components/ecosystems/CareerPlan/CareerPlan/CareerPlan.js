@@ -102,7 +102,7 @@ export class CareerPlan extends Component {
 
   renderIndicatorList() {
     const { activeMenu, indicators } = this.state;
-    const { pastIndicators } = this.props;
+    const { pastIndicators, concepts } = this.props;
 
     if (!indicators) {
       return null;
@@ -114,6 +114,7 @@ export class CareerPlan extends Component {
           indicators={indicators}
           range={{ from: 0, to: 10 }}
           updateCycle={this.updateCycle}
+          concepts={concepts}
         />
       );
     }
@@ -124,12 +125,19 @@ export class CareerPlan extends Component {
           indicators={indicators}
           range={{ from: 11, to: 999 }}
           updateCycle={this.updateCycle}
+          concepts={concepts}
         />
       );
     }
 
     if (activeMenu === CYCLES_MENUS.Anual) {
-      return <AnualIndicatorList indicators={indicators} pastIndicators={pastIndicators} />;
+      return (
+        <AnualIndicatorList
+          indicators={indicators}
+          pastIndicators={pastIndicators}
+          concepts={concepts}
+        />
+      );
     }
   }
 

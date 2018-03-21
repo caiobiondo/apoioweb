@@ -26,6 +26,11 @@ export const IndicatorListQuery = gql`
         overcoming
       }
     }
+    concepts(sellerId: $sellerId, cycle: 1) {
+      rangeStart
+      rangeEnd
+      value
+    }
   }
 `;
 
@@ -44,6 +49,7 @@ export const IndicatorListQueryOptions = {
       loading: data.loading,
       indicators: data.currentIndicators,
       pastIndicators: data.pastIndicators,
+      concepts: data.concepts,
     };
   },
 };
