@@ -50,6 +50,7 @@ export class IndicatorData extends Component {
 
   renderDisabled() {
     const { indicatorData } = this.props;
+    const concept = indicatorData.consolidated ? indicatorData.consolidated.value : '';
 
     return (
       <IndicatorDataContent>
@@ -66,7 +67,7 @@ export class IndicatorData extends Component {
           <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
-          <IndicatorDataConceptValue concept={indicatorData.consolidated.value} />
+          <IndicatorDataConceptValue concept={concept} />
         </IndicatorDataRow>
       </IndicatorDataContent>
     );
