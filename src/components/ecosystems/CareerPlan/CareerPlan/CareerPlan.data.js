@@ -1,11 +1,29 @@
 import gql from 'graphql-tag';
 
 export const IndicatorListQuery = gql`
-  query OrdersListQuery($sellerId: Int!, $year: Int!) {
-    indicators(sellerId: $sellerId, year: $year) {
+  query OrdersListQuery($sellerId: Int!) {
+    currentIndicators: indicators(sellerId: $sellerId, year: 1) {
       indicatorType
+      significance
       cycles {
         cycle
+        isClosed
+        objective
+        directSale
+        naturaNetwork
+        overcoming
+      }
+    }
+    pastIndicators: indicators(sellerId: $sellerId, year: 2) {
+      indicatorType
+      significance
+      cycles {
+        cycle
+        isClosed
+        objective
+        directSale
+        naturaNetwork
+        overcoming
       }
     }
   }
@@ -15,7 +33,6 @@ export const IndicatorListQueryOptions = {
   options({ user }) {
     return {
       variables: {
-        year: 0,
         sellerId: user.codigo,
       },
       forceFetch: true,
@@ -25,7 +42,8 @@ export const IndicatorListQueryOptions = {
     return {
       data,
       loading: data.loading,
-      indicators: data.indicators,
+      indicators: data.currentIndicators,
+      pastIndicators: data.pastIndicators,
     };
   },
 };

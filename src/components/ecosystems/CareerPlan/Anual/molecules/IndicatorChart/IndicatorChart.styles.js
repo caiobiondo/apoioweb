@@ -21,10 +21,10 @@ export const IndicatorChartStyles = ({ indicatorType }) => ({
   Group: {
     data: { strokeWidth: '1' },
   },
-  CurrentYear: {
+  CurrentPeriod: {
     data: { stroke: IndicatorTypesColors[indicatorType] },
   },
-  PastYear: {
+  PastPeriod: {
     data: { stroke: gray150 },
   },
 });

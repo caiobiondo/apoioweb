@@ -55,7 +55,7 @@ export class Indicator extends Component {
   };
 
   renderIndicatorChart = () => {
-    const { indicator } = this.props;
+    const { indicator, pastIndicator } = this.props;
     const { indicatorCycleNode } = this.state;
 
     return (
@@ -63,6 +63,7 @@ export class Indicator extends Component {
         key={indicator.indicatorType}
         cycleNode={indicatorCycleNode}
         indicator={indicator}
+        pastIndicator={pastIndicator}
       />
     );
   };

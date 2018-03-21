@@ -16,10 +16,15 @@ import {
 } from './CareerPlan.styles';
 
 const CYCLES_PER_VIEW = 10;
+const CYCLES_MENUS = {
+  CyclesFirstRange: 1,
+  CyclesSecondRange: 2,
+  Anual: 3,
+};
 
 export class CareerPlan extends Component {
   state = {
-    activeMenu: 1,
+    activeMenu: CYCLES_MENUS.CyclesFirstRange,
   };
 
   componentWillReceiveProps({ loading, indicators }) {
@@ -42,15 +47,15 @@ export class CareerPlan extends Component {
   setMenu = ({ indicators }) => {
     const menuItems = [
       {
-        id: 1,
+        id: CYCLES_MENUS.CyclesFirstRange,
         label: `Ciclo 01-${CYCLES_PER_VIEW}`,
       },
       {
-        id: 2,
+        id: CYCLES_MENUS.CyclesSecondRange,
         label: `Ciclo ${CYCLES_PER_VIEW + 1}-${indicators[0].cycles.length}`,
       },
       {
-        id: 3,
+        id: CYCLES_MENUS.Anual,
         label: 'Anual',
       },
     ];
@@ -97,12 +102,13 @@ export class CareerPlan extends Component {
 
   renderIndicatorList() {
     const { activeMenu, indicators } = this.state;
+    const { pastIndicators } = this.props;
 
     if (!indicators) {
       return null;
     }
 
-    if (activeMenu === 1) {
+    if (activeMenu === CYCLES_MENUS.CyclesFirstRange) {
       return (
         <CyclesIndicatorList
           indicators={indicators}
@@ -112,7 +118,7 @@ export class CareerPlan extends Component {
       );
     }
 
-    if (activeMenu === 2) {
+    if (activeMenu === CYCLES_MENUS.CyclesSecondRange) {
       return (
         <CyclesIndicatorList
           indicators={indicators}
@@ -122,8 +128,8 @@ export class CareerPlan extends Component {
       );
     }
 
-    if (activeMenu === 3) {
-      return <AnualIndicatorList indicators={indicators} />;
+    if (activeMenu === CYCLES_MENUS.Anual) {
+      return <AnualIndicatorList indicators={indicators} pastIndicators={pastIndicators} />;
     }
   }
 
