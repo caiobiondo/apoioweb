@@ -8,7 +8,12 @@ import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
 import CyclesIndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
 import AnualIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/IndicatorList';
-import { IndicatorListQuery, IndicatorListQueryOptions, OvercomingQuery } from './CareerPlan.data';
+import {
+  IndicatorListQuery,
+  IndicatorListQueryOptions,
+  OvercomingQuery,
+  ConsolidatedOvercomingQuery,
+} from './CareerPlan.data';
 
 import {
   CareerPlanSection,
@@ -25,7 +30,7 @@ export class CareerPlan extends Component {
   }
 
   componentWillReceiveProps({ loading, indicators }) {
-    this.setIndicators(indicators);
+    this.handleIndicatorsChange(indicators);
   }
 
   onMenuChange = menuItem => {
@@ -33,11 +38,20 @@ export class CareerPlan extends Component {
   };
 
   setIndicators = indicators => {
+    this.setState({ indicators });
+  };
+
+  setConsolidatedCycles = consolidatedCycles => {
+    this.setState({ consolidatedCycles });
+  };
+
+  handleIndicatorsChange = indicators => {
     if (!indicators) {
       return;
     }
 
-    this.setState({ indicators });
+    this.setIndicators(indicators);
+    this.fetchConsolidatedOvercoming(indicators);
   };
 
   getEditedIndicators = (indicators, indicatorToEdit) => {
@@ -66,7 +80,10 @@ export class CareerPlan extends Component {
     const cycles = this.getEditedCycles(indicator.cycles, cycle);
     const indicators = this.getEditedIndicators(currentIndicators, { cycles, indicatorType });
 
-    this.setState({ indicators }, cb);
+    this.setState({ indicators }, () => {
+      this.fetchConsolidatedOvercoming(indicators);
+      cb();
+    });
   };
 
   fetchOvercoming = ({ indicatorType, cycle }, cb) => {
@@ -99,17 +116,36 @@ export class CareerPlan extends Component {
     });
   };
 
+  fetchConsolidatedOvercoming = indicators => {
+    const { user, client } = this.props;
+    const query = {
+      query: ConsolidatedOvercomingQuery,
+      variables: {
+        year: 1,
+        simulation: indicators.map(item => ({ indicatorType: item.indicatorType })),
+        sellerId: user.codigo,
+      },
+    };
+
+    client.query(query).then(({ data }) => {
+      this.setConsolidatedCycles(data.consolidatedOvercoming);
+    });
+  };
+
   renderIndicatorList() {
-    const { activeMenu, indicators } = this.state;
-    const { pastIndicators, concepts } = this.props;
+    const { activeMenu, indicators, consolidatedCycles } = this.state;
+    const { pastIndicators, concepts, user } = this.props;
 
     if (activeMenu === CareerPlanMenus.CyclesFirstRange) {
       return (
         <CyclesIndicatorList
           indicators={indicators}
+          consolidatedCycles={consolidatedCycles}
           range={{ from: 0, to: this.cyclesPerPage }}
           fetchOvercoming={this.fetchOvercoming}
+          fetchConsolidatedOvercoming={this.fetchConsolidatedOvercoming}
           concepts={concepts}
+          user={user}
         />
       );
     }
@@ -118,9 +154,12 @@ export class CareerPlan extends Component {
       return (
         <CyclesIndicatorList
           indicators={indicators}
+          consolidatedCycles={consolidatedCycles}
           range={{ from: 2 * this.cyclesPerPage - this.cyclesPerPage, to: 999 }}
           fetchOvercoming={this.fetchOvercoming}
+          fetchConsolidatedOvercoming={this.fetchConsolidatedOvercoming}
           concepts={concepts}
+          user={user}
         />
       );
     }
@@ -129,6 +168,7 @@ export class CareerPlan extends Component {
       return (
         <AnualIndicatorList
           indicators={indicators}
+          consolidatedCycles={consolidatedCycles}
           pastIndicators={pastIndicators}
           concepts={concepts}
         />

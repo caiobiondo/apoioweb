@@ -14,7 +14,7 @@ export class IndicatorList extends Component {
     }
 
     const { naturaNetwork, directSale } = cycle;
-    return naturaNetwork !== 0 || directSale || 0;
+    return naturaNetwork !== 0 || directSale !== 0;
   };
 
   renderIndicator = indicator => {

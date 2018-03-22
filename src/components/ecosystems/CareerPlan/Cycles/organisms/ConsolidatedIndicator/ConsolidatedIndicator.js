@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 
-import mock from 'components/ecosystems/CareerPlan/mocks/ConsolidatedDataMock';
 import TrophyIcon from 'assets/images/trophy.png';
 import ConsolidatedIndicatorData from '../../molecules/ConsolidatedIndicatorData';
 
@@ -23,13 +22,10 @@ export class ConsolidatedIndicator extends Component {
   constructor() {
     super();
     this.cyclesNodes = {};
-    this.state = {
-      consolidatedCycles: mock,
-    };
   }
 
-  isValidCycle = cycle => {
-    const { indicators, isCycleFilled } = this.props;
+  isValidCycle = (cycle, indicators = this.props.indicators) => {
+    const { isCycleFilled } = this.props;
     return (
       indicators.filter(indicator => {
         const cycleToValidate = indicator.cycles.filter(c => c.cycle === cycle.cycle)[0];
@@ -39,14 +35,14 @@ export class ConsolidatedIndicator extends Component {
   };
 
   getVisibleCycles = () => {
-    const { consolidatedCycles } = this.state;
+    const { consolidatedCycles } = this.props;
     const { from, to } = this.props.range;
     const start = from === 0 ? 0 : from - 1;
     return consolidatedCycles.slice(start, to);
   };
 
   isActiveCycle = cycle => {
-    const { consolidatedCycles } = this.state;
+    const { consolidatedCycles } = this.props;
     const index = consolidatedCycles.indexOf(cycle);
 
     return (
@@ -61,7 +57,7 @@ export class ConsolidatedIndicator extends Component {
         cycle={cycle}
         isValid={this.isValidCycle(cycle)}
         isActive={this.isActiveCycle(cycle)}
-        consolidatedCycles={this.state.consolidatedCycles}
+        consolidatedCycles={this.props.consolidatedCycles}
         {...this.props}
       />
     );
@@ -101,6 +97,10 @@ export class ConsolidatedIndicator extends Component {
     );
   }
 }
+
+ConsolidatedIndicator.defaultProps = {
+  consolidatedCycles: [],
+};
 
 export const ConsolidatedIndicatorWithIntl = injectIntl(ConsolidatedIndicator);
 
