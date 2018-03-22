@@ -109,13 +109,14 @@ export class CourseStartView extends Component {
         }
 
         if (action === 'initialized') {
-          // Link to course
+          if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
         }
 
         if (action === 'terminated') {
           this.setState({ showEvaluation: true });
         }
 
+        this.props.refetch();
         return;
       })
       .catch(err => {
