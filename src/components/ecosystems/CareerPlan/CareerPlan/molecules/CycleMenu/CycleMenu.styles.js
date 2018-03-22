@@ -7,7 +7,7 @@ export const CycleMenuWrapper = styled.div`
   text-align: center;
 `;
 
-export const CycleMenu = styled.ul`
+export const CycleMenuList = styled.ul`
   background: white;
   border-radius: 10px;
   display: inline-block;
