@@ -127,7 +127,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/**/*.js",
+      "!src/**/*.styles.js"
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/index.js"
