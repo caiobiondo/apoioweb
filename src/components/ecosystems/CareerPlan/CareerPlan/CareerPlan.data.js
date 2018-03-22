@@ -64,6 +64,16 @@ export const OvercomingQuery = gql`
   }
 `;
 
+export const ConsolidatedOvercomingQuery = gql`
+  query ConsolidatedOvercomingQuery($sellerId: Int!, $year: Int!, $simulation: [IndicatorInput]!) {
+    consolidatedOvercoming(sellerId: $sellerId, year: $year, simulation: $simulation) {
+      cycle
+      value
+      concept
+    }
+  }
+`;
+
 export const IndicatorListQueryOptions = {
   options({ user }) {
     return {

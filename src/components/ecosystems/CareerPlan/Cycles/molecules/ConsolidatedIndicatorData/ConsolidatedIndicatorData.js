@@ -111,9 +111,9 @@ export class ConsolidatedIndicatorData extends Component {
   render() {
     const { cycle, isValid, isActive } = this.props;
 
-    const conceptValue = isActive ? null : isValid ? IndicatorConceptsLabels[cycle.value] : '-';
+    const conceptValue = isActive ? null : isValid ? IndicatorConceptsLabels[cycle.concept] : '-';
     const overcomingValue = isActive ? null : isValid ? (
-      <PercentageFormat value={cycle.overcoming} />
+      <PercentageFormat value={cycle.value} />
     ) : (
       '-'
     );
@@ -133,7 +133,7 @@ export class ConsolidatedIndicatorData extends Component {
           <IndicatorDataRowFeatured>
             <IndicatorDataValue>{overcomingValue}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
-          <IndicatorDataRowConcept concept={cycle.value}>
+          <IndicatorDataRowConcept concept={cycle.concept}>
             <IndicatorDataValue>{conceptValue}</IndicatorDataValue>
           </IndicatorDataRowConcept>
         </IndicatorDataContent>
