@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Icon } from 'natura-ui';
 
+import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
+
 import {
   IndicatorDataWrapper,
   IndicatorDataSort,
@@ -42,7 +44,7 @@ export class ChartIndicator extends Component {
 
   render() {
     const { indicator, indicatorData, setRef, showDetails } = this.props;
-    const concept = indicatorData.consolidated ? indicatorData.consolidated.value : '';
+    const { concept, value } = indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
       <IndicatorDataWrapper
@@ -70,7 +72,9 @@ export class ChartIndicator extends Component {
 
           <IndicatorDataSortNumber>{indicatorData.cycle}</IndicatorDataSortNumber>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
+            <IndicatorDataValue>
+              <PercentageFormat value={value} />
+            </IndicatorDataValue>
           </IndicatorDataRowFeatured>
           <IndicatorDataRow>
             <IndicatorDataConceptValue concept={concept} />
@@ -78,17 +82,23 @@ export class ChartIndicator extends Component {
 
           <IndicatorDataRow>
             <IndicatorDataSmallLabel>Objetivo</IndicatorDataSmallLabel>
-            <IndicatorDataSmallValue>{indicatorData.objective}</IndicatorDataSmallValue>
+            <IndicatorDataSmallValue>
+              <NumberFormat value={indicatorData.objective} />
+            </IndicatorDataSmallValue>
           </IndicatorDataRow>
 
           <IndicatorDataRow>
             <IndicatorDataSmallLabel>Real</IndicatorDataSmallLabel>
-            <IndicatorDataSmallValue>{indicatorData.directSale}</IndicatorDataSmallValue>
+            <IndicatorDataSmallValue>
+              <NumberFormat value={indicatorData.directSale} />
+            </IndicatorDataSmallValue>
           </IndicatorDataRow>
 
           <IndicatorDataRow>
             <IndicatorDataSmallLabel>Real rede</IndicatorDataSmallLabel>
-            <IndicatorDataSmallValue>{indicatorData.networkSale}</IndicatorDataSmallValue>
+            <IndicatorDataSmallValue>
+              <NumberFormat value={indicatorData.directSale} />
+            </IndicatorDataSmallValue>
           </IndicatorDataRow>
         </IndicatorFloatContent>
       </IndicatorDataWrapper>

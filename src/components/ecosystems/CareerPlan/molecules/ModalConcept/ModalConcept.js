@@ -3,6 +3,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 import { FlatButton, Dialog } from 'natura-ui';
 
+import { PercentageFormat } from 'utils/numberFormat';
+
 import { IndicatorConceptList, IndicatorConceptListItem } from './ModalConcept.styles';
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 
@@ -23,7 +25,10 @@ export class Indicator extends Component {
           if (!rangeStart && rangeEnd) {
             conceptRange = (
               <span>
-                <FormattedMessage id="careerPlanBelowRange" values={{ rangeEnd }} />
+                <FormattedMessage
+                  id="careerPlanBelowRange"
+                  values={{ rangeEnd: <PercentageFormat value={rangeEnd} /> }}
+                />
               </span>
             );
           }
@@ -31,7 +36,10 @@ export class Indicator extends Component {
           if (rangeStart && !rangeEnd) {
             conceptRange = (
               <span>
-                <FormattedMessage id="careerPlanAboveRange" values={{ rangeStart }} />
+                <FormattedMessage
+                  id="careerPlanAboveRange"
+                  values={{ rangeStart: <PercentageFormat value={rangeStart} /> }}
+                />
               </span>
             );
           }
@@ -39,7 +47,13 @@ export class Indicator extends Component {
           if (rangeStart && rangeEnd) {
             conceptRange = (
               <span>
-                <FormattedMessage id="careerPlanBetweenRange" values={{ rangeStart, rangeEnd }} />
+                <FormattedMessage
+                  id="careerPlanBetweenRange"
+                  values={{
+                    rangeStart: <PercentageFormat value={rangeStart} />,
+                    rangeEnd: <PercentageFormat value={rangeEnd} />,
+                  }}
+                />
               </span>
             );
           }
