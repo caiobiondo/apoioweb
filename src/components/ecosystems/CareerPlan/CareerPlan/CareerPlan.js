@@ -30,28 +30,20 @@ export class CareerPlan extends Component {
   }
 
   componentWillReceiveProps({ loading, indicators }) {
-    this.handleIndicatorsChange(indicators);
+    this.handleIndicators(indicators);
   }
 
-  onMenuChange = menuItem => {
-    this.setState({ activeMenu: menuItem.id });
-  };
-
-  setIndicators = indicators => {
-    this.setState({ indicators });
-  };
-
-  setConsolidatedCycles = consolidatedCycles => {
-    this.setState({ consolidatedCycles });
-  };
-
-  handleIndicatorsChange = indicators => {
+  handleIndicators = indicators => {
     if (!indicators) {
       return;
     }
 
-    this.setIndicators(indicators);
     this.fetchConsolidatedOvercoming(indicators);
+    this.setState({ indicators });
+  };
+
+  onMenuChange = menuItem => {
+    this.setState({ activeMenu: menuItem.id });
   };
 
   getEditedIndicators = (indicators, indicatorToEdit) => {
@@ -74,16 +66,18 @@ export class CareerPlan extends Component {
     });
   };
 
-  updateCycle = ({ cycle, indicatorType }, cb) => {
+  updateCycle = ({ cycle, indicatorType }, cb = () => {}) => {
     const currentIndicators = this.state.indicators;
     const indicator = currentIndicators.filter(i => i.indicatorType === indicatorType)[0];
     const cycles = this.getEditedCycles(indicator.cycles, cycle);
     const indicators = this.getEditedIndicators(currentIndicators, { cycles, indicatorType });
 
-    this.setState({ indicators }, () => {
-      this.fetchConsolidatedOvercoming(indicators);
+    const onStateSuccess = () => {
       cb();
-    });
+      this.fetchConsolidatedOvercoming(indicators);
+    };
+
+    this.setState({ indicators }, onStateSuccess);
   };
 
   fetchOvercoming = ({ indicatorType, cycle }, cb) => {
@@ -128,23 +122,9 @@ export class CareerPlan extends Component {
     };
 
     client.query(query).then(({ data }) => {
-      this.setConsolidatedCycles(data.consolidatedOvercoming);
+      this.setState({ consolidatedCycles: data.consolidatedOvercoming });
     });
   };
-
-  renderMenu() {
-    const { activeMenu } = this.state;
-    const { indicators } = this.props;
-
-    return (
-      <CycleMenu
-        indicators={indicators}
-        onMenuChange={this.onMenuChange}
-        activeMenu={activeMenu}
-        cyclesPerPage={this.cyclesPerPage}
-      />
-    );
-  }
 
   render() {
     const { loading, pastIndicators, concepts } = this.props;
@@ -179,7 +159,6 @@ export class CareerPlan extends Component {
               activeMenu={activeMenu}
               cyclesPerPage={this.cyclesPerPage}
               fetchOvercoming={this.fetchOvercoming}
-              fetchConsolidatedOvercoming={this.fetchConsolidatedOvercoming}
             />
           </div>
         </LoadingHandler>

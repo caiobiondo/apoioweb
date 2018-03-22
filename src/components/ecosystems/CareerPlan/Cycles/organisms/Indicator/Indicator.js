@@ -50,6 +50,7 @@ export class Indicator extends Component {
 
   fetchOvercoming = (cycle, cb) => {
     const { indicator, fetchOvercoming } = this.props;
+
     return fetchOvercoming({ cycle, indicatorType: indicator.indicatorType }, cb);
   };
 

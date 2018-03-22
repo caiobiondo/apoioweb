@@ -22,7 +22,6 @@ export class IndicatorList extends Component {
       <Indicator
         key={indicator.indicatorType}
         indicator={indicator}
-        onChange={this.updateIndicator}
         isCycleFilled={this.isCycleFilled}
         {...this.props}
       />

@@ -39,7 +39,7 @@ export class CycleMenu extends Component {
     const cycles = indicators[0].cycles;
     const splicedCycles = cycles.slice(
       range * cyclesPerPage - cyclesPerPage,
-      range * cyclesPerPage - 1,
+      range * cyclesPerPage,
     );
 
     return {
