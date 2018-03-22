@@ -8,13 +8,12 @@ import { IndicatorListWrapper } from './IndicatorList.styles';
 
 export class IndicatorList extends Component {
   renderIndicator = (indicator, pastIndicator) => {
-    const { concepts } = this.props;
     return (
       <Indicator
         key={indicator.indicatorType}
-        pastIndicator={pastIndicator}
         indicator={indicator}
-        concepts={concepts}
+        pastIndicator={pastIndicator}
+        {...this.props}
       />
     );
   };
