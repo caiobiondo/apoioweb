@@ -17,47 +17,19 @@ import {
   CareerPlanDescription,
 } from './CareerPlan.styles';
 
-const CYCLES_PER_VIEW = 10;
-
 export class CareerPlan extends Component {
-  state = {
-    activeMenu: CareerPlanMenus.CyclesFirstRange,
-  };
+  constructor() {
+    super();
+    this.state = { activeMenu: CareerPlanMenus.CyclesFirstRange };
+    this.cyclesPerPage = 10;
+  }
 
   componentWillReceiveProps({ loading, indicators }) {
-    this.handleLoadingFinished({ loading, indicators });
     this.setIndicators(indicators);
   }
 
   onMenuChange = menuItem => {
     this.setState({ activeMenu: menuItem.id });
-  };
-
-  handleLoadingFinished = ({ loading, indicators }) => {
-    if (loading) {
-      return;
-    }
-
-    this.setMenu({ indicators });
-  };
-
-  setMenu = ({ indicators }) => {
-    const menuItems = [
-      {
-        id: CareerPlanMenus.CyclesFirstRange,
-        label: `Ciclo 01-${CYCLES_PER_VIEW}`,
-      },
-      {
-        id: CareerPlanMenus.CyclesSecondRange,
-        label: `Ciclo ${CYCLES_PER_VIEW + 1}-${indicators[0].cycles.length}`,
-      },
-      {
-        id: CareerPlanMenus.Anual,
-        label: 'Anual',
-      },
-    ];
-
-    this.setState({ menuItems });
   };
 
   setIndicators = indicators => {
@@ -101,6 +73,10 @@ export class CareerPlan extends Component {
     const { user, client } = this.props;
     const { directSale, naturaNetwork } = cycle;
 
+    if (!naturaNetwork && !directSale) {
+      return this.updateCycle({ cycle: { ...cycle, overcoming: null }, indicatorType });
+    }
+
     const query = {
       query: OvercomingQuery,
       variables: {
@@ -111,10 +87,6 @@ export class CareerPlan extends Component {
         cycleArray: [cycle.cycle],
       },
     };
-
-    if (!naturaNetwork && !directSale) {
-      return this.updateCycle({ cycle: { ...cycle, overcoming: null }, indicatorType });
-    }
 
     client.query(query).then(({ data }) => {
       const overcoming = data.overcoming[0];
@@ -131,15 +103,11 @@ export class CareerPlan extends Component {
     const { activeMenu, indicators } = this.state;
     const { pastIndicators, concepts } = this.props;
 
-    if (!indicators) {
-      return null;
-    }
-
     if (activeMenu === CareerPlanMenus.CyclesFirstRange) {
       return (
         <CyclesIndicatorList
           indicators={indicators}
-          range={{ from: 0, to: 10 }}
+          range={{ from: 0, to: this.cyclesPerPage }}
           fetchOvercoming={this.fetchOvercoming}
           concepts={concepts}
         />
@@ -150,7 +118,7 @@ export class CareerPlan extends Component {
       return (
         <CyclesIndicatorList
           indicators={indicators}
-          range={{ from: 11, to: 999 }}
+          range={{ from: 2 * this.cyclesPerPage - this.cyclesPerPage, to: 999 }}
           fetchOvercoming={this.fetchOvercoming}
           concepts={concepts}
         />
@@ -169,14 +137,16 @@ export class CareerPlan extends Component {
   }
 
   renderMenu() {
-    const { activeMenu, menuItems } = this.state;
-
-    if (!menuItems) {
-      return null;
-    }
+    const { activeMenu } = this.state;
+    const { indicators } = this.props;
 
     return (
-      <CycleMenu menuItems={menuItems} onMenuChange={this.onMenuChange} activeMenu={activeMenu} />
+      <CycleMenu
+        indicators={indicators}
+        onMenuChange={this.onMenuChange}
+        activeMenu={activeMenu}
+        cyclesPerPage={this.cyclesPerPage}
+      />
     );
   }
 

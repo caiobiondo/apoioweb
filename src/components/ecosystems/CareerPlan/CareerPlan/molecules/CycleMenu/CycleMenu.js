@@ -1,9 +1,53 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
-import { CycleMenuWrapper, CycleMenu, CycleMenuItem } from './CycleMenu.styles';
+import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
 
-export class IndicatorData extends Component {
+import { CycleMenuWrapper, CycleMenuList, CycleMenuItem } from './CycleMenu.styles';
+
+export class CycleMenu extends Component {
+  constructor(props) {
+    super();
+    this.menuItems = this.getMenuItems(props);
+  }
+
+  getMenuItems = props => {
+    if (!props.indicators) {
+      return;
+    }
+
+    const firstRange = this.getRangeCycles(1, props);
+    const secondRange = this.getRangeCycles(2, props);
+
+    return [
+      {
+        id: CareerPlanMenus.CyclesFirstRange,
+        label: `Ciclo ${firstRange.firstCycle}-${firstRange.lastCycle}`,
+      },
+      {
+        id: CareerPlanMenus.CyclesSecondRange,
+        label: `Ciclo ${secondRange.firstCycle}-${secondRange.lastCycle}`,
+      },
+      {
+        id: CareerPlanMenus.Anual,
+        label: 'Anual',
+      },
+    ];
+  };
+
+  getRangeCycles = (range, { indicators, cyclesPerPage }) => {
+    const cycles = indicators[0].cycles;
+    const splicedCycles = cycles.slice(
+      range * cyclesPerPage - cyclesPerPage,
+      range * cyclesPerPage - 1,
+    );
+
+    return {
+      firstCycle: splicedCycles[0].cycle,
+      lastCycle: splicedCycles[splicedCycles.length - 1].cycle,
+    };
+  };
+
   renderMenuItem = menuItem => {
     const { onMenuChange, activeMenu } = this.props;
 
@@ -19,19 +63,16 @@ export class IndicatorData extends Component {
   };
 
   render() {
-    const { menuItems } = this.props;
-
     return (
       <CycleMenuWrapper>
-        <CycleMenu>{menuItems.map(this.renderMenuItem)}</CycleMenu>
+        <CycleMenuList>{this.menuItems.map(this.renderMenuItem)}</CycleMenuList>
       </CycleMenuWrapper>
     );
   }
 }
 
-IndicatorData.propTypes = {
-  menuItems: propTypes.array.isRequired,
+CycleMenu.propTypes = {
   onMenuChange: propTypes.func.isRequired,
 };
 
-export default IndicatorData;
+export default CycleMenu;
