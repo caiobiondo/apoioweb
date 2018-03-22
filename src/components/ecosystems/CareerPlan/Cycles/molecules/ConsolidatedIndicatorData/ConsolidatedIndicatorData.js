@@ -3,6 +3,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Popover } from 'material-ui';
 import { Icon } from 'natura-ui';
 
+import { PercentageFormat } from 'utils/numberFormat';
+
 import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { IndicatorConceptsLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
 import { ConsolidateWarningIcon } from './ConsolidatedIndicatorData.styles';
@@ -109,8 +111,12 @@ export class ConsolidatedIndicatorData extends Component {
   render() {
     const { cycle, isValid, isActive } = this.props;
 
-    const overcomingValue = isActive ? null : isValid ? cycle.overcoming : '-';
     const conceptValue = isActive ? null : isValid ? IndicatorConceptsLabels[cycle.value] : '-';
+    const overcomingValue = isActive ? null : isValid ? (
+      <PercentageFormat value={cycle.overcoming} />
+    ) : (
+      '-'
+    );
 
     return (
       <IndicatorDataWrapper

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { graphql } from 'react-apollo';
+import { graphql, withApollo } from 'react-apollo';
 
 import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
 import CyclesIndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
 import AnualIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/IndicatorList';
-import { IndicatorListQuery, IndicatorListQueryOptions } from './CareerPlan.data';
+import { IndicatorListQuery, IndicatorListQueryOptions, OvercomingQuery } from './CareerPlan.data';
 
 import {
   CareerPlanSection,
@@ -100,6 +100,32 @@ export class CareerPlan extends Component {
     this.setState({ indicators }, cb);
   };
 
+  fetchOvercoming = ({ indicatorType, cycle }, cb) => {
+    const { user, client } = this.props;
+    const { directSale, naturaNetwork } = cycle;
+
+    const query = {
+      query: OvercomingQuery,
+      variables: {
+        indicatorType,
+        directSale,
+        naturaNetwork,
+        sellerId: user.codigo,
+        cycleArray: [cycle.cycle],
+      },
+    };
+
+    client.query(query).then(({ data }) => {
+      const overcoming = data.overcoming[0];
+      const updateCycleModel = {
+        indicatorType,
+        cycle: { ...cycle, overcoming },
+      };
+
+      this.updateCycle(updateCycleModel, cb);
+    });
+  };
+
   renderIndicatorList() {
     const { activeMenu, indicators } = this.state;
     const { pastIndicators, concepts } = this.props;
@@ -113,7 +139,7 @@ export class CareerPlan extends Component {
         <CyclesIndicatorList
           indicators={indicators}
           range={{ from: 0, to: 10 }}
-          updateCycle={this.updateCycle}
+          fetchOvercoming={this.fetchOvercoming}
           concepts={concepts}
         />
       );
@@ -124,7 +150,7 @@ export class CareerPlan extends Component {
         <CyclesIndicatorList
           indicators={indicators}
           range={{ from: 11, to: 999 }}
-          updateCycle={this.updateCycle}
+          fetchOvercoming={this.fetchOvercoming}
           concepts={concepts}
         />
       );
@@ -181,4 +207,6 @@ export class CareerPlan extends Component {
 
 export const CareerPlanWithIntl = injectIntl(CareerPlan);
 
-export default graphql(IndicatorListQuery, IndicatorListQueryOptions)(CareerPlanWithIntl);
+export default withApollo(
+  graphql(IndicatorListQuery, IndicatorListQueryOptions)(CareerPlanWithIntl),
+);
