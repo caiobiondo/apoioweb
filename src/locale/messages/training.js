@@ -49,6 +49,7 @@ export default {
     finishTraining: 'Finalizar treinamento',
     resumeTraining: 'Continuar treinamento',
     reviewTraining: 'Revisar treinamento',
+    trainingStatusUpdateError: 'Ocorreu um erro ao atualizar o status do curso',
   },
 };
 /* eslint-disable sort-keys */

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 
 import {
   CourseViewQuery,
@@ -65,6 +66,15 @@ export class CourseStartView extends Component {
     return this.props.course.isfavorite === 'true' ? 'unfavorite' : 'favorite';
   };
 
+  handleTrainingError = () => {
+    const { formatMessage } = this.props.intl;
+
+    this.setState({
+      feedbackModalOpened: true,
+      feedbackModalTitle: formatMessage({ id: 'trainingStatusUpdateError' }),
+    });
+  };
+
   handleMyListError = () => {
     this.handleDefaultMyList('trainingAddCourseError', 'trainingRemoveCourseError');
   };
@@ -103,13 +113,9 @@ export class CourseStartView extends Component {
         },
       })
       .then(response => {
-        if (response.error) {
-          this.handleMyListError();
-          return;
-        }
-
         if (action === 'initialized') {
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
+          if (course.type === 'VIDEO') this.props.history.push(`/training/courses/${course.id}`);
         }
 
         if (action === 'terminated') {
@@ -122,7 +128,7 @@ export class CourseStartView extends Component {
       .catch(err => {
         console.log('err', err);
 
-        this.handleMyListError();
+        this.handleTrainingError();
       });
   };
 
@@ -200,7 +206,7 @@ export class CourseStartView extends Component {
       );
     }
 
-    if (course.status === 'started') {
+    if (course.status === 'started' || course.status === 'paused') {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="resume">
           <FlatButton
@@ -321,8 +327,9 @@ export class CourseStartView extends Component {
 }
 
 export const CourseStartViewWithIntl = injectIntl(CourseStartView);
+export const CourseStartViewWithRouter = withRouter(CourseStartViewWithIntl);
 
 export default compose(
   graphql(CourseViewQuery, CourseViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseStartViewWithIntl);
+)(CourseStartViewWithRouter);

@@ -26,6 +26,7 @@ const setup = propOverrides => {
         relatedCourses: [],
         ratedByYou: 'false',
       },
+      history: { push: jest.fn() },
       mutate: jest.fn().mockReturnValue(
         Promise.resolve({
           data: {
@@ -166,6 +167,74 @@ describe('Training Course Start View', () => {
 
           // then
           expect(result.instance().canEvaluate()).toBeFalsy();
+        });
+      });
+    });
+
+    describe('when starting/resuming a training course', () => {
+      describe('when course type is web', () => {
+        it('opens a new tab', async () => {
+          // given
+          const course = {
+            id: 1,
+            title: 'new course',
+            description: 'new course description',
+            durationInSeconds: 1234,
+            stoppedAt: 12,
+            views: 12,
+            dateUpload: '2017-04-20T00:00:00.000Z',
+            type: 'WEB',
+            status: 'pending',
+            isfavorite: true,
+            relatedCourses: [],
+            ratedByYou: 'false',
+            courseContent: {
+              web: 'google.com',
+              video: null,
+              html5: null,
+            },
+          };
+          global.open = jest.fn();
+
+          // when
+          const { result } = setup({ loading: false, course });
+          await result.instance().handleTrainingClick('initialized')();
+
+          // then
+          expect(global.open).toBeCalledWith(course.courseContent.web, '_blank');
+        });
+      });
+
+      describe('when course type is video', () => {
+        it('redirects to course details page', async () => {
+          // given
+          const course = {
+            id: 1,
+            title: 'new course',
+            description: 'new course description',
+            durationInSeconds: 1234,
+            stoppedAt: 12,
+            views: 12,
+            dateUpload: '2017-04-20T00:00:00.000Z',
+            type: 'VIDEO',
+            status: 'pending',
+            isfavorite: true,
+            relatedCourses: [],
+            ratedByYou: 'false',
+            courseContent: {
+              web: null,
+              video: 'youtube.com',
+              html5: null,
+            },
+          };
+          global.open = jest.fn();
+
+          // when
+          const { result, props } = setup({ loading: false, course });
+          await result.instance().handleTrainingClick('initialized')();
+
+          // then
+          expect(props.history.push).toBeCalledWith(`/training/courses/${course.id}`);
         });
       });
     });

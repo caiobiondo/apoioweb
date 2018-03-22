@@ -2,7 +2,7 @@
 
 exports[`CourseStartView Ecosystem should render the training course page 1`] = `
 <indexstyles__Main>
-  <Apollo(Apollo(CourseStartView))
+  <Apollo(Apollo(withRouter(CourseStartView)))
     courseId={1}
     onLoadFinished={[Function]}
     user={
