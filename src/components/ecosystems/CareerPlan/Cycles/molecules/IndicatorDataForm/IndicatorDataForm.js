@@ -3,6 +3,8 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
 
+import { PercentageFormat } from 'utils/numberFormat';
+
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
   IndicatorDataContent,
@@ -196,7 +198,7 @@ export class IndicatorDataForm extends Component {
   render() {
     const { indicatorData, canFill, isActive } = this.props;
     const { directSale, naturaNetwork } = this.state.indicatorDataValues;
-    const concept = indicatorData.consolidated ? indicatorData.consolidated.value : '';
+    const { value, concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
       <IndicatorDataContent>
@@ -236,7 +238,10 @@ export class IndicatorDataForm extends Component {
           </IndicatorDataRowInputWrapper>
         </IndicatorDataRow>
         <IndicatorDataRowAcc>
-          <IndicatorDataValue>{indicatorData.accumulatedOverload || '-'}</IndicatorDataValue>
+          <IndicatorDataValue>
+            {Boolean(value) && <PercentageFormat value={value} />}
+            {!value && '-'}
+          </IndicatorDataValue>
         </IndicatorDataRowAcc>
         <IndicatorDataRow>
           <IndicatorDataConceptValue concept={concept} />

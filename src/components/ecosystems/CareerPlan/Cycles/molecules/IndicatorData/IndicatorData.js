@@ -3,6 +3,8 @@ import { Popover } from 'material-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
+import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
+
 import {
   IndicatorDataWrapper,
   IndicatorDataSort,
@@ -50,21 +52,30 @@ export class IndicatorData extends Component {
 
   renderDisabled() {
     const { indicatorData } = this.props;
-    const concept = indicatorData.consolidated ? indicatorData.consolidated.value : '';
+    const { value, concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
+    const { objective, directSale, naturaNetwork } = indicatorData;
 
     return (
       <IndicatorDataContent>
         <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.objective}</IndicatorDataValue>
+          <IndicatorDataValue>
+            <NumberFormat value={objective} />
+          </IndicatorDataValue>
         </IndicatorDataRowObj>
         <IndicatorDataRow>
-          <IndicatorDataValue>{indicatorData.directSale}</IndicatorDataValue>
+          <IndicatorDataValue>
+            <NumberFormat value={directSale} />
+          </IndicatorDataValue>
         </IndicatorDataRow>
         <IndicatorDataRow>
-          <IndicatorDataValue>{indicatorData.naturaNetwork}</IndicatorDataValue>
+          <IndicatorDataValue>
+            <NumberFormat value={naturaNetwork} />
+          </IndicatorDataValue>
         </IndicatorDataRow>
         <IndicatorDataRowFeatured>
-          <IndicatorDataValue>{indicatorData.overcoming}</IndicatorDataValue>
+          <IndicatorDataValue>
+            <PercentageFormat value={value} />
+          </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
           <IndicatorDataConceptValue concept={concept} />

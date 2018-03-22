@@ -11,7 +11,11 @@ export const IndicatorListQuery = gql`
         objective
         directSale
         naturaNetwork
-        overcoming
+        overcoming {
+          cycle
+          value
+          concept
+        }
       }
     }
     pastIndicators: indicators(sellerId: $sellerId, year: 2) {
@@ -23,13 +27,39 @@ export const IndicatorListQuery = gql`
         objective
         directSale
         naturaNetwork
-        overcoming
+        overcoming {
+          cycle
+          value
+          concept
+        }
       }
     }
     concepts(sellerId: $sellerId, cycle: 1) {
       rangeStart
       rangeEnd
       value
+    }
+  }
+`;
+
+export const OvercomingQuery = gql`
+  query OvercomingQuery(
+    $sellerId: Int!
+    $cycleArray: [Int]!
+    $indicatorType: String!
+    $directSale: [Float]!
+    $naturaNetwork: [Float]!
+  ) {
+    overcoming(
+      sellerId: $sellerId
+      cycleArray: $cycleArray
+      indicatorType: $indicatorType
+      directSale: $directSale
+      naturaNetwork: $naturaNetwork
+    ) {
+      cycle
+      value
+      concept
     }
   }
 `;
