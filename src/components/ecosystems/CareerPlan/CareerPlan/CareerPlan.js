@@ -6,8 +6,8 @@ import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMe
 
 import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
-import CyclesIndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
-import AnualIndicatorList from 'components/ecosystems/CareerPlan/Anual/organisms/IndicatorList';
+import CycleMenuViewer from './molecules/CycleMenuViewer';
+
 import {
   IndicatorListQuery,
   IndicatorListQueryOptions,
@@ -132,50 +132,6 @@ export class CareerPlan extends Component {
     });
   };
 
-  renderIndicatorList() {
-    const { activeMenu, indicators, consolidatedCycles } = this.state;
-    const { pastIndicators, concepts, user } = this.props;
-
-    if (activeMenu === CareerPlanMenus.CyclesFirstRange) {
-      return (
-        <CyclesIndicatorList
-          indicators={indicators}
-          consolidatedCycles={consolidatedCycles}
-          range={{ from: 0, to: this.cyclesPerPage }}
-          fetchOvercoming={this.fetchOvercoming}
-          fetchConsolidatedOvercoming={this.fetchConsolidatedOvercoming}
-          concepts={concepts}
-          user={user}
-        />
-      );
-    }
-
-    if (activeMenu === CareerPlanMenus.CyclesSecondRange) {
-      return (
-        <CyclesIndicatorList
-          indicators={indicators}
-          consolidatedCycles={consolidatedCycles}
-          range={{ from: 2 * this.cyclesPerPage - this.cyclesPerPage, to: 999 }}
-          fetchOvercoming={this.fetchOvercoming}
-          fetchConsolidatedOvercoming={this.fetchConsolidatedOvercoming}
-          concepts={concepts}
-          user={user}
-        />
-      );
-    }
-
-    if (activeMenu === CareerPlanMenus.Anual) {
-      return (
-        <AnualIndicatorList
-          indicators={indicators}
-          consolidatedCycles={consolidatedCycles}
-          pastIndicators={pastIndicators}
-          concepts={concepts}
-        />
-      );
-    }
-  }
-
   renderMenu() {
     const { activeMenu } = this.state;
     const { indicators } = this.props;
@@ -191,7 +147,8 @@ export class CareerPlan extends Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, pastIndicators, concepts } = this.props;
+    const { activeMenu, indicators, consolidatedCycles } = this.state;
 
     return (
       <CareerPlanSection>
@@ -207,8 +164,23 @@ export class CareerPlan extends Component {
               </CareerPlanDescription>
             </CareerPlanTitleWrapper>
 
-            {this.renderMenu()}
-            {this.renderIndicatorList()}
+            <CycleMenu
+              indicators={indicators}
+              onMenuChange={this.onMenuChange}
+              activeMenu={activeMenu}
+              cyclesPerPage={this.cyclesPerPage}
+            />
+
+            <CycleMenuViewer
+              indicators={indicators}
+              pastIndicators={pastIndicators}
+              concepts={concepts}
+              consolidatedCycles={consolidatedCycles}
+              activeMenu={activeMenu}
+              cyclesPerPage={this.cyclesPerPage}
+              fetchOvercoming={this.fetchOvercoming}
+              fetchConsolidatedOvercoming={this.fetchConsolidatedOvercoming}
+            />
           </div>
         </LoadingHandler>
       </CareerPlanSection>
