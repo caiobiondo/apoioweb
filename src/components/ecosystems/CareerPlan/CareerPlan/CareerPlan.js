@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { graphql, withApollo } from 'react-apollo';
 
+import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
+
 import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
 import CyclesIndicatorList from 'components/ecosystems/CareerPlan/Cycles/organisms/IndicatorList';
@@ -16,15 +18,10 @@ import {
 } from './CareerPlan.styles';
 
 const CYCLES_PER_VIEW = 10;
-const CYCLES_MENUS = {
-  CyclesFirstRange: 1,
-  CyclesSecondRange: 2,
-  Anual: 3,
-};
 
 export class CareerPlan extends Component {
   state = {
-    activeMenu: CYCLES_MENUS.CyclesFirstRange,
+    activeMenu: CareerPlanMenus.CyclesFirstRange,
   };
 
   componentWillReceiveProps({ loading, indicators }) {
@@ -47,15 +44,15 @@ export class CareerPlan extends Component {
   setMenu = ({ indicators }) => {
     const menuItems = [
       {
-        id: CYCLES_MENUS.CyclesFirstRange,
+        id: CareerPlanMenus.CyclesFirstRange,
         label: `Ciclo 01-${CYCLES_PER_VIEW}`,
       },
       {
-        id: CYCLES_MENUS.CyclesSecondRange,
+        id: CareerPlanMenus.CyclesSecondRange,
         label: `Ciclo ${CYCLES_PER_VIEW + 1}-${indicators[0].cycles.length}`,
       },
       {
-        id: CYCLES_MENUS.Anual,
+        id: CareerPlanMenus.Anual,
         label: 'Anual',
       },
     ];
@@ -115,6 +112,10 @@ export class CareerPlan extends Component {
       },
     };
 
+    if (!naturaNetwork && !directSale) {
+      return this.updateCycle({ cycle: { ...cycle, overcoming: null }, indicatorType });
+    }
+
     client.query(query).then(({ data }) => {
       const overcoming = data.overcoming[0];
       const updateCycleModel = {
@@ -134,7 +135,7 @@ export class CareerPlan extends Component {
       return null;
     }
 
-    if (activeMenu === CYCLES_MENUS.CyclesFirstRange) {
+    if (activeMenu === CareerPlanMenus.CyclesFirstRange) {
       return (
         <CyclesIndicatorList
           indicators={indicators}
@@ -145,7 +146,7 @@ export class CareerPlan extends Component {
       );
     }
 
-    if (activeMenu === CYCLES_MENUS.CyclesSecondRange) {
+    if (activeMenu === CareerPlanMenus.CyclesSecondRange) {
       return (
         <CyclesIndicatorList
           indicators={indicators}
@@ -156,7 +157,7 @@ export class CareerPlan extends Component {
       );
     }
 
-    if (activeMenu === CYCLES_MENUS.Anual) {
+    if (activeMenu === CareerPlanMenus.Anual) {
       return (
         <AnualIndicatorList
           indicators={indicators}
