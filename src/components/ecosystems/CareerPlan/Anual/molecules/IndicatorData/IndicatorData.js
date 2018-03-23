@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import { Icon } from 'natura-ui';
 
@@ -19,11 +19,11 @@ import {
   IndicatorDataSmallValue,
 } from 'components/ecosystems/CareerPlan/Cycles/molecules/IndicatorData/IndicatorData.styles';
 
-export class ChartIndicator extends Component {
+export class IndicatorData extends Component {
   onClick = event => {
-    const { onClick, indicatorData } = this.props;
+    const { onClick, indicatorData, isSimulated } = this.props;
 
-    if (this.isSimulated()) {
+    if (isSimulated) {
       return onClick(indicatorData);
     }
 
@@ -37,25 +37,87 @@ export class ChartIndicator extends Component {
     return onClose();
   };
 
-  isSimulated = () => {
-    const { indicatorData } = this.props;
-    return indicatorData.directSale || indicatorData.naturaNetwork;
+  renderContent = () => {
+    if (!this.props.indicatorType) {
+      return this.renderConsolidatedData();
+    }
+
+    return this.renderIndicatorData();
   };
 
-  render() {
-    const { indicator, indicatorData, setRef, showDetails } = this.props;
+  renderConsolidatedData() {
+    const { indicatorData } = this.props;
+    const { concept, value } = indicatorData;
+
+    return (
+      <Fragment>
+        <IndicatorDataRowFeatured>
+          <IndicatorDataValue>
+            <PercentageFormat value={value} />
+          </IndicatorDataValue>
+        </IndicatorDataRowFeatured>
+        <IndicatorDataRow>
+          <IndicatorDataConceptValue concept={concept} />
+        </IndicatorDataRow>
+      </Fragment>
+    );
+  }
+
+  renderIndicatorData() {
+    const { indicatorData } = this.props;
     const { concept, value } = indicatorData.overcoming ? indicatorData.overcoming : {};
+
+    return (
+      <Fragment>
+        <IndicatorDataRowFeatured>
+          <IndicatorDataValue>
+            <PercentageFormat value={value} />
+          </IndicatorDataValue>
+        </IndicatorDataRowFeatured>
+        <IndicatorDataRow>
+          <IndicatorDataConceptValue concept={concept} />
+        </IndicatorDataRow>
+
+        <IndicatorDataRow>
+          <IndicatorDataSmallLabel>Objetivo</IndicatorDataSmallLabel>
+          <IndicatorDataSmallValue>
+            <NumberFormat value={indicatorData.objective} />
+          </IndicatorDataSmallValue>
+        </IndicatorDataRow>
+
+        <IndicatorDataRow>
+          <IndicatorDataSmallLabel>Real</IndicatorDataSmallLabel>
+          <IndicatorDataSmallValue>
+            <NumberFormat value={indicatorData.directSale} />
+          </IndicatorDataSmallValue>
+        </IndicatorDataRow>
+
+        <IndicatorDataRow>
+          <IndicatorDataSmallLabel>Real rede</IndicatorDataSmallLabel>
+          <IndicatorDataSmallValue>
+            <NumberFormat value={indicatorData.directSale} />
+          </IndicatorDataSmallValue>
+        </IndicatorDataRow>
+      </Fragment>
+    );
+  }
+
+  render() {
+    const { indicatorType, indicatorData, setRef, showDetails, isSimulated } = this.props;
+    const { concept } = !this.props.indicatorType
+      ? indicatorData
+      : indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
       <IndicatorDataWrapper
         innerRef={setRef}
         showDetails={showDetails}
-        editable={this.isSimulated()}
+        editable={isSimulated}
         onClick={this.onClick}
         size="5"
         bordered
         hasChart
-        indicatorType={indicator.indicatorType}
+        indicatorType={indicatorType}
       >
         <IndicatorDataSort index={indicatorData.cycle}>{indicatorData.cycle}</IndicatorDataSort>
 
@@ -71,46 +133,17 @@ export class ChartIndicator extends Component {
           </IndicatorFloatContentClose>
 
           <IndicatorDataSortNumber>{indicatorData.cycle}</IndicatorDataSortNumber>
-          <IndicatorDataRowFeatured>
-            <IndicatorDataValue>
-              <PercentageFormat value={value} />
-            </IndicatorDataValue>
-          </IndicatorDataRowFeatured>
-          <IndicatorDataRow>
-            <IndicatorDataConceptValue concept={concept} />
-          </IndicatorDataRow>
-
-          <IndicatorDataRow>
-            <IndicatorDataSmallLabel>Objetivo</IndicatorDataSmallLabel>
-            <IndicatorDataSmallValue>
-              <NumberFormat value={indicatorData.objective} />
-            </IndicatorDataSmallValue>
-          </IndicatorDataRow>
-
-          <IndicatorDataRow>
-            <IndicatorDataSmallLabel>Real</IndicatorDataSmallLabel>
-            <IndicatorDataSmallValue>
-              <NumberFormat value={indicatorData.directSale} />
-            </IndicatorDataSmallValue>
-          </IndicatorDataRow>
-
-          <IndicatorDataRow>
-            <IndicatorDataSmallLabel>Real rede</IndicatorDataSmallLabel>
-            <IndicatorDataSmallValue>
-              <NumberFormat value={indicatorData.directSale} />
-            </IndicatorDataSmallValue>
-          </IndicatorDataRow>
+          {this.renderContent()}
         </IndicatorFloatContent>
       </IndicatorDataWrapper>
     );
   }
 }
 
-ChartIndicator.propTypes = {
-  indicator: propTypes.object.isRequired,
+IndicatorData.propTypes = {
   indicatorData: propTypes.object.isRequired,
   setRef: propTypes.func.isRequired,
   showDetails: propTypes.bool.isRequired,
 };
 
-export default ChartIndicator;
+export default IndicatorData;

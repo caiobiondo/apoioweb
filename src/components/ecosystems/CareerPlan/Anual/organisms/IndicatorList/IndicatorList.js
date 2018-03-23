@@ -3,6 +3,7 @@ import { injectIntl } from 'react-intl';
 import propTypes from 'prop-types';
 
 import Indicator from 'components/ecosystems/CareerPlan/Anual/organisms/Indicator';
+import ConsolidatedIndicator from 'components/ecosystems/CareerPlan/Anual/organisms/ConsolidatedIndicator';
 
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
@@ -33,6 +34,7 @@ export class IndicatorList extends Component {
             return this.renderIndicator(indicator, pastIndicator);
           })}
         </IndicatorListWrapper>
+        <ConsolidatedIndicator {...this.props} />
       </div>
     );
   }

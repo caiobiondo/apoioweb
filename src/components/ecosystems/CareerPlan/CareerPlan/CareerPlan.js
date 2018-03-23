@@ -127,7 +127,7 @@ export class CareerPlan extends Component {
   };
 
   render() {
-    const { loading, pastIndicators, concepts } = this.props;
+    const { loading, pastIndicators, pastConsolidatedCycles, concepts } = this.props;
     const { activeMenu, indicators, consolidatedCycles } = this.state;
 
     return (
@@ -154,8 +154,9 @@ export class CareerPlan extends Component {
             <CycleMenuViewer
               indicators={indicators}
               pastIndicators={pastIndicators}
-              concepts={concepts}
               consolidatedCycles={consolidatedCycles}
+              pastConsolidatedCycles={pastConsolidatedCycles}
+              concepts={concepts}
               activeMenu={activeMenu}
               cyclesPerPage={this.cyclesPerPage}
               fetchOvercoming={this.fetchOvercoming}

@@ -184,7 +184,8 @@ export const IndicatorTableLegend = styled.ul`
   ${IndicatorTableLegendItem} {
     &:first-child {
       &:before {
-        ${({ indicatorType }) => `background-color: ${IndicatorTypesColors[indicatorType]}`};
+        ${({ indicatorType }) =>
+          `background-color: ${IndicatorTypesColors[indicatorType] || gray700}}`};
       }
     }
   }

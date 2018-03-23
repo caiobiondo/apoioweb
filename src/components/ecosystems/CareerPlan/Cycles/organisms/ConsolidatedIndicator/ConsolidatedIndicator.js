@@ -5,7 +5,6 @@ import { translate } from 'locale';
 import TrophyIcon from 'assets/images/trophy.png';
 import ConsolidatedIndicatorData from '../../molecules/ConsolidatedIndicatorData';
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
-import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import { ConsolidatedIndicatorWrapper } from './ConsolidatedIndicator.styles';
 
@@ -115,7 +114,7 @@ export class ConsolidatedIndicator extends Component {
 
         <ModalConcept
           key="informationDialog"
-          title="Consolidado"
+          title={translate('consolidated')}
           onClose={this.closeInformationModal}
           open={informationModalOpened}
           concepts={concepts}
