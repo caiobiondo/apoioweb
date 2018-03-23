@@ -125,7 +125,14 @@ export class IndicatorData extends Component {
           </IndicatorDataRow>
         </IndicatorDataContent>
 
-        <ReactCSSTransitionGroup transitionName="fadeIn" transitionAppear transitionLeave>
+        <ReactCSSTransitionGroup
+          transitionName="fadeIn"
+          transitionAppear
+          transitionLeave
+          transitionEnter={false}
+          transitionAppearTimeout={300}
+          transitionLeaveTimeout={300}
+        >
           {showDetails && (
             <IndicatorFloatContent>
               <IndicatorFloatContentClose onClick={this.onClose}>
