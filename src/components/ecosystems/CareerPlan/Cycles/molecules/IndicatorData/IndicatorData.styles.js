@@ -124,16 +124,27 @@ export const IndicatorDataWrapper = styled.li`
     outline: none;
     z-index: 1;
 
-    &:before {
-      background-color: #f4f3f3;
-      content: '';
-      height: 50px;
-      left: -2px;
-      position: absolute;
-      width: 3px;
-      z-index: 1;
+    &:not(:first-child) {
+      &:before {
+        background-color: #f4f3f3;
+        content: '';
+        height: 50px;
+        left: -2px;
+        position: absolute;
+        width: 3px;
+        z-index: 1;
+      }
     }
   `};
+
+  &:last-child {
+    ${IndicatorDataSort} {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
 
   &:hover {
     ${({ isActive, editable }) =>
