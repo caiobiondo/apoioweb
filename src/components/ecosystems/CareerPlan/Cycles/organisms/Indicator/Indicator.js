@@ -36,7 +36,7 @@ export class Indicator extends Component {
 
   getVisibleCycles = ({ from, to }) => {
     const { cycles } = this.props.indicator;
-    const start = from === 0 ? 0 : from - 1;
+    const start = from === 0 ? 0 : from;
     return cycles.slice(start, to);
   };
 
@@ -64,16 +64,20 @@ export class Indicator extends Component {
     });
   };
 
-  renderCycles = (cycle, index) => {
+  renderCycles = cycle => {
     const { cycles } = this.props.indicator;
     const { indicator, isCycleFilled } = this.props;
     const { activeCycle } = this.state;
+    const previousCycle = cycles.filter((item, index) => {
+      const nextCycle = cycles[index + 1];
+      return !nextCycle || nextCycle.cycle === cycle.cycle;
+    })[0];
 
     return (
       <IndicatorData
         indicatorData={cycle}
         key={cycle.cycle}
-        canFill={isCycleFilled(cycles[index - 1])}
+        canFill={isCycleFilled(previousCycle)}
         isFilled={isCycleFilled(cycle)}
         onClick={this.setActiveCycle}
         onApply={this.onApply}
