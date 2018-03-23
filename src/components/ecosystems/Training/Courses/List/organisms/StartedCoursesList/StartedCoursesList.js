@@ -22,7 +22,7 @@ import { graphql } from 'react-apollo';
 
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
 
-class LeftArrow extends Component {
+export class LeftArrow extends Component {
   render() {
     const { onClick, currentSlide } = this.props;
     if (currentSlide === 0) {
@@ -32,7 +32,7 @@ class LeftArrow extends Component {
   }
 }
 
-class RightArrow extends Component {
+export class RightArrow extends Component {
   render() {
     const { onClick, currentSlide, slideCount, slidesToScroll } = this.props;
     if (currentSlide + slidesToScroll >= slideCount) {
