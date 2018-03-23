@@ -4,7 +4,11 @@ import propTypes from 'prop-types';
 
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
 import IndicatorData from '../../molecules/IndicatorData/';
-import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import {
+  IndicatorFields,
+  IndicatorTypesLabels,
+} from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import { IndicatorFieldsTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorFields';
 
 import {
   IndicatorWrapper,
@@ -101,8 +105,13 @@ export class Indicator extends Component {
         <IndicatorContentWrapper>
           <IndicatorTableHeader hasActions>
             <IndicatorTableHeaderItemFeatured>Obj</IndicatorTableHeaderItemFeatured>
-            <IndicatorTableHeaderItem>Real.</IndicatorTableHeaderItem>
-            <IndicatorTableHeaderItem>Real rede</IndicatorTableHeaderItem>
+
+            {IndicatorFields[indicator.indicatorType].map(field => (
+              <IndicatorTableHeaderItem key={field}>
+                {IndicatorFieldsTypesLabels[field]}
+              </IndicatorTableHeaderItem>
+            ))}
+
             <IndicatorTableHeaderItemFeatured>Superação acumulada</IndicatorTableHeaderItemFeatured>
           </IndicatorTableHeader>
 

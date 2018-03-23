@@ -3,6 +3,7 @@ import { Popover } from 'material-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
+import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 
 import {
@@ -51,9 +52,9 @@ export class IndicatorData extends Component {
   };
 
   renderDisabled() {
-    const { indicatorData } = this.props;
+    const { indicatorData, indicator } = this.props;
     const { value, concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
-    const { objective, directSale, naturaNetwork } = indicatorData;
+    const { objective } = indicatorData;
 
     return (
       <IndicatorDataContent>
@@ -62,16 +63,15 @@ export class IndicatorData extends Component {
             <NumberFormat value={objective} />
           </IndicatorDataValue>
         </IndicatorDataRowObj>
-        <IndicatorDataRow>
-          <IndicatorDataValue>
-            <NumberFormat value={directSale} />
-          </IndicatorDataValue>
-        </IndicatorDataRow>
-        <IndicatorDataRow>
-          <IndicatorDataValue>
-            <NumberFormat value={naturaNetwork} />
-          </IndicatorDataValue>
-        </IndicatorDataRow>
+
+        {IndicatorFields[indicator.indicatorType].map(field => (
+          <IndicatorDataRow key={field}>
+            <IndicatorDataValue>
+              <NumberFormat value={indicatorData[field]} />
+            </IndicatorDataValue>
+          </IndicatorDataRow>
+        ))}
+
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>
             <PercentageFormat value={value} />

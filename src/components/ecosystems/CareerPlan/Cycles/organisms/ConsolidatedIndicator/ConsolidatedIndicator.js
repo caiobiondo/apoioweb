@@ -34,7 +34,7 @@ export class ConsolidatedIndicator extends Component {
     return (
       indicators.filter(indicator => {
         const cycleToValidate = indicator.cycles.filter(c => c.cycle === cycle.cycle)[0];
-        return isCycleFilled(cycleToValidate);
+        return isCycleFilled(cycleToValidate, indicator.indicatorType);
       }).length === indicators.length
     );
   };
