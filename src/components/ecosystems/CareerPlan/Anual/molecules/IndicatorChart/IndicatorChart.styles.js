@@ -7,7 +7,7 @@ export const IndicatorChartWrapper = styled.div`
   bottom: 40px;
   display: inline-block;
   height: 80px;
-  left: 20px;
+  left: calc(20px + 2.5%);
   position: absolute;
   text-align: left;
   z-index: 0;

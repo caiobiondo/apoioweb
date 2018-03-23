@@ -1,6 +1,6 @@
 export default {
   Group: {
-    domainPadding: { x: 10, y: 20 },
+    domainPadding: { x: 0, y: 20 },
     padding: 0,
   },
   CurrentPeriod: {

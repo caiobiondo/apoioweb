@@ -73,7 +73,7 @@ export class IndicatorChart extends Component {
 
     this.setState({
       chartHeight: this.chartNode.offsetHeight,
-      chartWidth: cycleWidth * pastPeriod.length,
+      chartWidth: cycleWidth * (pastPeriod.length - 1),
     });
   };
 
