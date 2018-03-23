@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import { Icon } from 'natura-ui';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
@@ -124,14 +125,18 @@ export class IndicatorData extends Component {
           </IndicatorDataRow>
         </IndicatorDataContent>
 
-        <IndicatorFloatContent>
-          <IndicatorFloatContentClose onClick={this.onClose}>
-            <Icon file="ico_times" />
-          </IndicatorFloatContentClose>
+        <ReactCSSTransitionGroup transitionName="fadeIn" transitionAppear transitionLeave>
+          {showDetails && (
+            <IndicatorFloatContent>
+              <IndicatorFloatContentClose onClick={this.onClose}>
+                <Icon file="ico_times" />
+              </IndicatorFloatContentClose>
 
-          <IndicatorDataSortNumber>{indicatorData.cycle}</IndicatorDataSortNumber>
-          {this.renderContent()}
-        </IndicatorFloatContent>
+              <IndicatorDataSortNumber>{indicatorData.cycle}</IndicatorDataSortNumber>
+              {this.renderContent()}
+            </IndicatorFloatContent>
+          )}
+        </ReactCSSTransitionGroup>
       </IndicatorDataWrapper>
     );
   }

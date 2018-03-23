@@ -56,7 +56,6 @@ export const IndicatorFloatContent = styled.div`
   border-radius: 10px;
   bottom: -15px;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
-  display: none;
   left: 50%;
   position: absolute;
   top: -15px;
@@ -109,6 +108,7 @@ export const IndicatorDataWrapper = styled.li`
   position: relative;
   text-align: center;
   transition: all 0.2s ease-in;
+  transition-property: background, box-shadow, border-radius;
   vertical-align: top;
   white-space: initial;
   width: ${({ size }) => size || '10'}%;
@@ -118,7 +118,7 @@ export const IndicatorDataWrapper = styled.li`
     isActive &&
     `
     background: ${gray400};
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 5px 5px;
     box-shadow: 0px 5px 35px 0 rgba(0, 0, 0, 0.1);
     cursor: default;
     outline: none;
@@ -174,14 +174,6 @@ export const IndicatorDataWrapper = styled.li`
   ${({ editable }) => !editable && `cursor: default;`};
 
   ${({ bordered }) => bordered && `border-right: 1px solid ${gray150}`};
-
-  ${IndicatorFloatContent} {
-    ${({ showDetails }) =>
-      showDetails &&
-      `
-      display: block;
-    `};
-  }
 
   ${IndicatorDataConceptValue} {
     ${({ hasChart }) => hasChart && `margin-bottom: 30px;`};
