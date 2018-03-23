@@ -1,4 +1,5 @@
 import { blue100, orange100, orange200 } from 'styles/colors';
+import { IndicatorFieldsTypes } from './IndicatorFields';
 
 export const IndicatorTypes = {
   ScoresTotal: 'scoresTotal',
@@ -16,6 +17,15 @@ export const IndicatorTypesColors = {
   get [IndicatorTypes.Active]() {
     return orange200;
   },
+};
+
+export const IndicatorFields = {
+  [IndicatorTypes.ScoresTotal]: [
+    IndicatorFieldsTypes.DirectSale,
+    IndicatorFieldsTypes.NaturaNetwork,
+  ],
+  [IndicatorTypes.Registration]: [IndicatorFieldsTypes.DirectSale],
+  [IndicatorTypes.Active]: [IndicatorFieldsTypes.DirectSale],
 };
 
 export const IndicatorTypesLabels = {

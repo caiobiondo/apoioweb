@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import propTypes from 'prop-types';
 
+import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import Indicator from '../Indicator';
 import Consolidated from '../ConsolidatedIndicator';
 
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
 export class IndicatorList extends Component {
-  isCycleFilled = cycle => {
+  isCycleFilled = (cycle, indicatorType) => {
     if (!cycle) {
       return true;
     }
 
-    const { naturaNetwork, directSale } = cycle;
-    return naturaNetwork !== 0 || directSale !== 0;
+    return IndicatorFields[indicatorType].some(field => cycle[field] > 0);
   };
 
   renderIndicator = indicator => {
@@ -22,7 +22,7 @@ export class IndicatorList extends Component {
       <Indicator
         key={indicator.indicatorType}
         indicator={indicator}
-        isCycleFilled={this.isCycleFilled}
+        isCycleFilled={cycle => this.isCycleFilled(cycle, indicator.indicatorType)}
         {...this.props}
       />
     );

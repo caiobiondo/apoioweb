@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 
-import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import {
+  IndicatorFields,
+  IndicatorTypesLabels,
+} from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import IndicatorData from 'components/ecosystems/CareerPlan/Anual/molecules/IndicatorData';
 import IndicatorChart from 'components/ecosystems/CareerPlan/Anual/molecules/IndicatorChart';
@@ -71,8 +74,8 @@ export class Indicator extends Component {
     );
   };
 
-  isSimulated = cycle => {
-    return cycle.naturaNetwork || cycle.directSale;
+  isSimulated = (cycle, indicatorType) => {
+    return IndicatorFields[indicatorType].some(field => cycle[field] > 0);
   };
 
   renderIndicatorData = indicatorData => {
@@ -82,7 +85,7 @@ export class Indicator extends Component {
       <IndicatorData
         indicatorType={indicator.indicatorType}
         indicatorData={indicatorData}
-        isSimulated={this.isSimulated(indicatorData)}
+        isSimulated={this.isSimulated(indicatorData, indicator.indicatorType)}
         key={indicatorData.cycle}
         setRef={this.setIndicatorDataNode}
         showDetails={this.state.activeCycle === indicatorData.cycle}

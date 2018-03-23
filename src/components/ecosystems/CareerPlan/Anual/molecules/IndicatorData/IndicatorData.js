@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import { Icon } from 'natura-ui';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
+import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import { IndicatorFieldsTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorFields';
 
 import {
   IndicatorDataWrapper,
@@ -64,7 +66,7 @@ export class IndicatorData extends Component {
   }
 
   renderIndicatorData() {
-    const { indicatorData } = this.props;
+    const { indicatorData, indicatorType } = this.props;
     const { concept, value } = indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
@@ -85,19 +87,14 @@ export class IndicatorData extends Component {
           </IndicatorDataSmallValue>
         </IndicatorDataRow>
 
-        <IndicatorDataRow>
-          <IndicatorDataSmallLabel>Real</IndicatorDataSmallLabel>
-          <IndicatorDataSmallValue>
-            <NumberFormat value={indicatorData.directSale} />
-          </IndicatorDataSmallValue>
-        </IndicatorDataRow>
-
-        <IndicatorDataRow>
-          <IndicatorDataSmallLabel>Real rede</IndicatorDataSmallLabel>
-          <IndicatorDataSmallValue>
-            <NumberFormat value={indicatorData.directSale} />
-          </IndicatorDataSmallValue>
-        </IndicatorDataRow>
+        {IndicatorFields[indicatorType].map(field => (
+          <IndicatorDataRow key={field}>
+            <IndicatorDataSmallLabel>{IndicatorFieldsTypesLabels[field]}</IndicatorDataSmallLabel>
+            <IndicatorDataSmallValue>
+              <NumberFormat value={indicatorData[field]} />
+            </IndicatorDataSmallValue>
+          </IndicatorDataRow>
+        ))}
       </Fragment>
     );
   }

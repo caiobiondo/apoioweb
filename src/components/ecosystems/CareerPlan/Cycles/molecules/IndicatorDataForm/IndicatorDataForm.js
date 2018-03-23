@@ -4,6 +4,7 @@ import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
 
 import { PercentageFormat } from 'utils/numberFormat';
+import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
@@ -21,16 +22,17 @@ import {
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
-  constructor(props) {
+  constructor({ indicatorData, indicator }) {
     super();
+    this.indicatorFields = IndicatorFields[indicator.indicatorType];
 
-    const { directSale, naturaNetwork } = props.indicatorData;
+    const indicatorDataValues = {};
+    this.indicatorFields.forEach(field => {
+      indicatorDataValues[field] = indicatorData[field];
+    });
 
     this.state = {
-      indicatorDataValues: {
-        directSale: directSale,
-        naturaNetwork: naturaNetwork,
-      },
+      indicatorDataValues,
       showDeleteModal: false,
     };
   }
@@ -39,11 +41,11 @@ export class IndicatorDataForm extends Component {
     this.handleIndicatorDataBlur(isActive);
   }
 
-  updateIndicatorDataValues = ({ directSale, naturaNetwork }, cb) => {
-    const indicatorDataValues = {
-      directSale,
-      naturaNetwork,
-    };
+  updateIndicatorDataValues = (indicatorData, cb) => {
+    const indicatorDataValues = {};
+    this.indicatorFields.forEach(field => {
+      indicatorDataValues[field] = indicatorData[field];
+    });
 
     this.setState({ indicatorDataValues }, cb);
   };
@@ -65,10 +67,10 @@ export class IndicatorDataForm extends Component {
   };
 
   deleteValues = () => {
-    const indicatorData = {
-      directSale: 0,
-      naturaNetwork: 0,
-    };
+    const indicatorData = {};
+    this.indicatorFields.forEach(field => {
+      indicatorData[field] = 0;
+    });
 
     this.closeModal();
 
@@ -77,14 +79,16 @@ export class IndicatorDataForm extends Component {
 
   applyValues = event => {
     event && event.stopPropagation();
-
     const { onApply, indicatorData } = this.props;
-    const { directSale, naturaNetwork } = this.state.indicatorDataValues;
+
+    const values = {};
+    this.indicatorFields.forEach(field => {
+      values[field] = this.state.indicatorDataValues[field];
+    });
 
     return onApply({
       ...indicatorData,
-      directSale,
-      naturaNetwork,
+      ...values,
     });
   };
 
@@ -197,7 +201,6 @@ export class IndicatorDataForm extends Component {
 
   render() {
     const { indicatorData, canFill, isActive } = this.props;
-    const { directSale, naturaNetwork } = this.state.indicatorDataValues;
     const { value, concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
@@ -207,36 +210,28 @@ export class IndicatorDataForm extends Component {
         <IndicatorDataRowObj>
           <IndicatorDataValue>{indicatorData.objective}</IndicatorDataValue>
         </IndicatorDataRowObj>
-        <IndicatorDataRow>
-          <IndicatorDataRowInputWrapper isActive={isActive} empty={!directSale}>
-            <IndicatorDataRowInput
-              name="directSale"
-              type="text"
-              props={{ isActive }}
-              value={directSale}
-              onChange={this.onChange}
-              disabled={!canFill}
-              maxLength={7}
-              thousandSeparator="."
-            />
-            <Icon file="ico_pencil" />
-          </IndicatorDataRowInputWrapper>
-        </IndicatorDataRow>
-        <IndicatorDataRow>
-          <IndicatorDataRowInputWrapper isActive={isActive} empty={!naturaNetwork}>
-            <IndicatorDataRowInput
-              name="naturaNetwork"
-              type="text"
-              props={{ isActive }}
-              value={naturaNetwork}
-              onChange={this.onChange}
-              disabled={!canFill}
-              maxLength={7}
-              thousandSeparator="."
-            />
-            <Icon file="ico_pencil" />
-          </IndicatorDataRowInputWrapper>
-        </IndicatorDataRow>
+
+        {this.indicatorFields.map(field => (
+          <IndicatorDataRow key={field}>
+            <IndicatorDataRowInputWrapper
+              isActive={isActive}
+              empty={!this.state.indicatorDataValues[field]}
+            >
+              <IndicatorDataRowInput
+                name={field}
+                type="text"
+                props={{ isActive }}
+                value={this.state.indicatorDataValues[field]}
+                onChange={this.onChange}
+                disabled={!canFill}
+                maxLength={7}
+                thousandSeparator="."
+              />
+              <Icon file="ico_pencil" />
+            </IndicatorDataRowInputWrapper>
+          </IndicatorDataRow>
+        ))}
+
         <IndicatorDataRowAcc>
           <IndicatorDataValue>
             {Boolean(value) && <PercentageFormat value={value} />}
