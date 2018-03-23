@@ -39,6 +39,11 @@ export const IndicatorListQuery = gql`
       rangeEnd
       value
     }
+    pastConsolidatedCycles: consolidatedOvercoming(sellerId: $sellerId, year: 2, simulation: []) {
+      cycle
+      value
+      concept
+    }
   }
 `;
 
@@ -90,6 +95,7 @@ export const IndicatorListQueryOptions = {
       indicators: data.currentIndicators,
       pastIndicators: data.pastIndicators,
       concepts: data.concepts,
+      pastConsolidatedCycles: data.pastConsolidatedCycles,
     };
   },
 };

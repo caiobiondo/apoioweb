@@ -40,50 +40,51 @@ export class IndicatorChart extends Component {
     this.chartNode = node;
   };
 
-  updateChartData = ({ indicator, pastIndicator }) => {
-    if (!indicator || !pastIndicator) {
+  updateChartData = ({ cycles, pastCycles, value }) => {
+    if (!cycles || !pastCycles) {
       return;
     }
 
-    const currentPeriod = indicator.cycles.map((cycle, index) => ({
-      x: cycle.objective,
-      y: index + 1,
-    }));
+    const currentPeriod = cycles
+      .map((cycle, index) => ({
+        x: index + 1,
+        y: value(cycle),
+      }))
+      .filter(item => item.y > 0);
 
-    const pastPeriod = pastIndicator.cycles.map((cycle, index) => ({
-      x: cycle.objective,
-      y: index + 1,
-    }));
+    const pastPeriod = pastCycles
+      .map((cycle, index) => ({
+        x: index + 1,
+        y: value(cycle),
+      }))
+      .filter(item => item.y > 0);
 
     return { currentPeriod, pastPeriod };
   };
 
   updateChartDimensions = (props = {}) => {
-    const { cycleNode } = props;
-    const { currentPeriod } = this.state.cycles;
-    const cycleWidth = cycleNode ? cycleNode.offsetWidth : 0;
-
     if (!this.chartNode) {
       return;
     }
 
+    const { cycleNode } = props;
+    const { pastPeriod } = this.state.cycles;
+    const cycleWidth = cycleNode ? cycleNode.offsetWidth : 0;
+
     this.setState({
       chartHeight: this.chartNode.offsetHeight,
-      chartWidth: cycleWidth * currentPeriod.length,
+      chartWidth: cycleWidth * pastPeriod.length,
     });
   };
 
   render() {
     const { chartWidth, chartHeight, cycles } = this.state;
-    const { indicator } = this.props;
-    const chartStyles = IndicatorChartStyles(indicator);
+    const { indicatorType } = this.props;
+    const chartStyles = IndicatorChartStyles({ indicatorType });
+    const { currentPeriod, pastPeriod } = cycles ? cycles : {};
 
     return (
-      <IndicatorChartWrapper
-        key={indicator.indicatorType}
-        innerRef={this.setChartNode}
-        width={chartWidth}
-      >
+      <IndicatorChartWrapper key={indicatorType} innerRef={this.setChartNode} width={chartWidth}>
         <VictoryGroup
           width={chartWidth}
           height={chartHeight}
@@ -92,12 +93,12 @@ export class IndicatorChart extends Component {
         >
           <VictoryLine
             style={chartStyles.CurrentPeriod}
-            data={cycles.currentPeriod}
+            data={currentPeriod}
             {...IndicatorChartConfig.CurrentPeriod}
           />
           <VictoryLine
             style={chartStyles.PastPeriod}
-            data={cycles.pastPeriod}
+            data={pastPeriod}
             {...IndicatorChartConfig.PastPeriod}
           />
         </VictoryGroup>

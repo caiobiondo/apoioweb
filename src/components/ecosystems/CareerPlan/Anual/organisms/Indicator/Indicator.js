@@ -60,12 +60,19 @@ export class Indicator extends Component {
 
     return (
       <IndicatorChart
-        key={indicator.indicatorType}
+        indicatorType={indicator.indicatorType}
         cycleNode={indicatorCycleNode}
-        indicator={indicator}
-        pastIndicator={pastIndicator}
+        cycles={indicator.cycles}
+        pastCycles={pastIndicator.cycles}
+        value={item => {
+          return item.overcoming ? item.overcoming.value : 0;
+        }}
       />
     );
+  };
+
+  isSimulated = cycle => {
+    return cycle.naturaNetwork || cycle.directSale;
   };
 
   renderIndicatorData = indicatorData => {
@@ -73,8 +80,9 @@ export class Indicator extends Component {
 
     return (
       <IndicatorData
-        indicator={indicator}
+        indicatorType={indicator.indicatorType}
         indicatorData={indicatorData}
+        isSimulated={this.isSimulated(indicatorData)}
         key={indicatorData.cycle}
         setRef={this.setIndicatorDataNode}
         showDetails={this.state.activeCycle === indicatorData.cycle}
