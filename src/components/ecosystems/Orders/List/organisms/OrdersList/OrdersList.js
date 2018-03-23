@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Loading, CircularProgress, Paper } from 'natura-ui';
-import { List, LoadingWrapper, scrolledContainer, fullContainer } from './OrdersList.styles';
+import { List, LoadingWrapper, scrolledContainer } from './OrdersList.styles';
 import { OrdersListQuery, OrdersListQueryOptions } from './OrdersList.data';
 import Order from '../../molecules/Order';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
-import InfiniteScroll from 'react-infinite-scroller';
+
+import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
 const renderOrder = (order, importing, intl) => {
   const orderDate = formatDate(order.dataPedido, intl, '-');
@@ -66,29 +67,34 @@ export class OrdersList extends Component {
   }
 
   render() {
-    const { loading, orders, fetchMore, importing, intl } = this.props;
+    const { loading, orders, fetchMore, importing, intl, hasNextPage } = this.props;
+
     if (this._loading(loading, orders)) {
       return <Loading background="transparent" />;
     }
-    if (this._empty(loading, orders)) {
-      return (
-        <Paper style={fullContainer}>
-          <EmptyList icon="ico_box" titleId="ordersEmptyList" descriptionId="ordersWithoutOrders" />
-        </Paper>
-      );
-    }
+
     return (
       <Paper style={scrolledContainer}>
         <InfiniteScroll
-          loadMore={fetchMore}
-          hasMore={false}
+          onScroll={fetchMore}
+          hasMore={hasNextPage}
+          loading={loading}
+          debounce={500}
+          items={orders}
+          emptyList={
+            <EmptyList
+              icon="ico_box"
+              titleId="ordersEmptyList"
+              descriptionId="ordersWithoutOrders"
+            />
+          }
           loader={
             <LoadingWrapper>
               <CircularProgress thickness={2} />
             </LoadingWrapper>
           }
         >
-          <List>{orders.map(order => renderOrder(order, importing, intl))}</List>
+          <List>{orders && orders.map(order => renderOrder(order, importing, intl))}</List>
         </InfiniteScroll>
       </Paper>
     );

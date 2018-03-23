@@ -380,7 +380,7 @@ exports[`OrderItems renders order details items list (in importing mode) 1`] = `
           fullWidth={false}
           label={
               <FormattedMessage
-                  id="importMoreProducts"
+                  id="importOtherProducts"
                   values={Object {}}
               />
           }
@@ -413,12 +413,11 @@ exports[`OrderItems renders order details items list (in importing mode) 1`] = `
         "maxWidth": "450px",
       }
     }
-    key="successDialog"
     modal={false}
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
-    title="Produto importado para o estoque com sucesso!"
+    title="Ocorreu um erro na importação"
     titleStyle={
       Object {
         "fontWeight": 800,
@@ -807,7 +806,7 @@ exports[`OrderItems renders order details items list 1`] = `
           fullWidth={false}
           label={
               <FormattedMessage
-                  id="importMoreProducts"
+                  id="importOtherProducts"
                   values={Object {}}
               />
           }
@@ -840,12 +839,11 @@ exports[`OrderItems renders order details items list 1`] = `
         "maxWidth": "450px",
       }
     }
-    key="successDialog"
     modal={false}
     onRequestClose={[Function]}
     open={false}
     repositionOnUpdate={true}
-    title="Produto importado para o estoque com sucesso!"
+    title="Ocorreu um erro na importação"
     titleStyle={
       Object {
         "fontWeight": 800,

@@ -28,8 +28,8 @@ exports[`Stock Product Quantity should render with submit button (for add) 1`] =
         "borderTopLeftRadius": 0,
         "borderTopRightRadius": 0,
         "color": "#fff",
-        "minWidth": 89,
-        "width": 89,
+        "minWidth": 102,
+        "width": 102,
       }
     }
     disabled={false}
@@ -55,8 +55,8 @@ exports[`Stock Product Quantity should render with submit button (for add) 1`] =
       Object {
         "borderTopLeftRadius": 0,
         "borderTopRightRadius": 0,
-        "minWidth": 89,
-        "width": 89,
+        "minWidth": 102,
+        "width": 102,
       }
     }
     primary={true}
@@ -81,8 +81,8 @@ exports[`Stock Product Quantity should render with submit button (for remove) 1`
         "borderTopLeftRadius": 0,
         "borderTopRightRadius": 0,
         "color": "#fff",
-        "minWidth": 89,
-        "width": 89,
+        "minWidth": 102,
+        "width": 102,
       }
     }
     disabled={false}
@@ -108,8 +108,8 @@ exports[`Stock Product Quantity should render with submit button (for remove) 1`
       Object {
         "borderTopLeftRadius": 0,
         "borderTopRightRadius": 0,
-        "minWidth": 89,
-        "width": 89,
+        "minWidth": 102,
+        "width": 102,
       }
     }
     primary={true}
@@ -159,8 +159,8 @@ exports[`Stock Product Quantity should render with submitted message (removed me
         "borderTopLeftRadius": 0,
         "borderTopRightRadius": 0,
         "color": "#fff",
-        "minWidth": 89,
-        "width": 89,
+        "minWidth": 102,
+        "width": 102,
       }
     }
     disabled={false}
@@ -186,8 +186,8 @@ exports[`Stock Product Quantity should render with submitted message (removed me
       Object {
         "borderTopLeftRadius": 0,
         "borderTopRightRadius": 0,
-        "minWidth": 89,
-        "width": 89,
+        "minWidth": 102,
+        "width": 102,
       }
     }
     primary={true}

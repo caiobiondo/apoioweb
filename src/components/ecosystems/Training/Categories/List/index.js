@@ -13,8 +13,10 @@ class TrainingWrapper extends Component {
   };
 
   render() {
+    const { loading, empty } = this.state;
+
     return (
-      <Main>
+      <Main loading={loading} empty={empty}>
         <TrainingCategoriesList
           user={this.props.user}
           onLoadFinished={this.onLoadFinished}

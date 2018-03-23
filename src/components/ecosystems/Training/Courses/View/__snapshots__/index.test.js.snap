@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseView Ecosystem should render the training course page 1`] = `
+<indexstyles__Main>
+  <Apollo(Apollo(CourseView))
+    courseId={1}
+    onLoadFinished={[Function]}
+  />
+</indexstyles__Main>
+`;

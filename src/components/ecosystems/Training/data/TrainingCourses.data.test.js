@@ -31,7 +31,7 @@ describe('TrainingCoursesQuery', () => {
     const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
     const data = {
       data: {
-        loading: true,
+        loading: false,
         courses: [],
         fetchMore: fetchMore,
       },
@@ -45,10 +45,28 @@ describe('TrainingCoursesQuery', () => {
     expect(fetchMoreResult).toEqual('application of fetchMore');
   });
 
+  it('should not call fetchMore when the data is still loading', () => {
+    const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
+    const data = {
+      data: {
+        loading: true,
+        courses: [],
+        fetchMore: fetchMore,
+      },
+    };
+
+    const props = TrainingCoursesQueryOptions.props(data);
+    props.fetchMore();
+
+    expect(fetchMore).not.toBeCalled();
+  });
+
   describe('updateQuery', () => {
     it('should return the previous result', () => {
       const previousResult = {
-        courses: [1, 2],
+        courses: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
 
       const result = updateQuery(previousResult, { fetchMoreResult: null });
@@ -56,17 +74,36 @@ describe('TrainingCoursesQuery', () => {
       expect(result).toEqual(previousResult);
     });
 
-    it('should return the merge from previous and fetchMore result', () => {
+    it('should return the merge from previous and fetchMore result on items array', () => {
       const previousResult = {
-        courses: [1, 2],
+        courses: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
-      const courses = [3, 4];
+      const courses = {
+        items: [{ id: 3 }, { id: 4 }],
+      };
 
       const result = updateQuery(previousResult, { fetchMoreResult: { courses } });
 
-      expect(result).toEqual({
-        courses: [1, 2, 3, 4],
-      });
+      expect(result.courses.items).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
+    });
+
+    it('should return the updated value of hasNextPage', () => {
+      const previousResult = {
+        courses: {
+          items: [],
+          hasNextPage: true,
+        },
+      };
+      const courses = {
+        items: [],
+        hasNextPage: false,
+      };
+
+      const result = updateQuery(previousResult, { fetchMoreResult: { courses } });
+
+      expect(result.courses.hasNextPage).toBeFalsy();
     });
   });
 });

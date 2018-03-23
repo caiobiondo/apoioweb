@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
-import { Loading, Paper, CircularProgress } from 'natura-ui';
 import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
@@ -19,16 +17,17 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
 
-import InfiniteScroll from 'react-infinite-scroller';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
+import InfiniteScroll from 'components/organisms/InfiniteScroll';
+
+import { Loading } from 'natura-ui';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import {
   TrainingCoursesListWrapper,
-  fullContainer,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
-  LoadingWrapper,
 } from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
@@ -36,7 +35,6 @@ export class TrainingCoursesList extends Component {
     super(props);
 
     this.state = {
-      hasMoreItems: true,
       feedbackModalOpened: false,
       feedbackModalTitle: '',
     };
@@ -44,31 +42,20 @@ export class TrainingCoursesList extends Component {
 
   componentWillReceiveProps({ loading, courses }) {
     this.notifyLoadFinish(loading, courses);
-    this.checkIfHasMoreItems(loading, courses);
   }
 
-  notifyLoadFinish = (loading, courses) => {
+  notifyLoadFinish = (loading, items) => {
     if (!loading && this.props.onLoadFinished) {
-      this.props.onLoadFinished(this.isEmpty(loading, courses), this.isLoading(loading, courses));
+      this.props.onLoadFinished(this.isEmpty(loading, items), this.isLoading(loading, items));
     }
   };
 
-  checkIfHasMoreItems = (loading, courses) => {
-    if (this.props.loading === loading || !courses) {
-      return;
-    }
-
-    const hasMoreItems =
-      (courses && !this.props.courses) || courses.length !== this.props.courses.length;
-    this.setState({ hasMoreItems });
+  isLoading = (loading, items) => {
+    return loading && !items;
   };
 
-  isLoading = (loading, courses) => {
-    return loading && !courses;
-  };
-
-  isEmpty = (loading, courses) => {
-    return !loading && (!courses || courses.length === 0);
+  isEmpty = (loading, items) => {
+    return !loading && (!items || items.length === 0);
   };
 
   handleMenuItemClick = (event, child) => {
@@ -217,29 +204,21 @@ export class TrainingCoursesList extends Component {
       return <Loading background="transparent" />;
     }
 
-    if (!this.props.courses || !this.props.courses.length) {
-      return (
-        <Paper style={fullContainer}>
-          <PageMenu />
-          <EmptyList
-            icon="ico_list_add"
-            titleId="coursesEmptyList"
-            descriptionId="coursesEmptyListDescription"
-          />
-        </Paper>
-      );
-    }
-
     return (
       <TrainingCoursesListWrapper>
         <PageMenu />
         <InfiniteScroll
-          loadMore={this.props.fetchMore}
-          hasMore={this.props.hasMultiplePages && this.state.hasMoreItems}
-          loader={
-            <LoadingWrapper>
-              <CircularProgress thickness={2} />
-            </LoadingWrapper>
+          onScroll={this.props.fetchMore}
+          hasMore={this.props.hasNextPage}
+          loading={this.props.loading}
+          debounce={500}
+          items={this.props.courses}
+          emptyList={
+            <EmptyList
+              icon="ico_list_add"
+              titleId="coursesEmptyList"
+              descriptionId="coursesEmptyListDescription"
+            />
           }
         >
           <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />

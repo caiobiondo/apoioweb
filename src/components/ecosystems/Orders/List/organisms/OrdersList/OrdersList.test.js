@@ -59,34 +59,6 @@ describe('OrdersList', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('should render a loading indicator', () => {
-    const renderer = new ShallowRenderer();
-    const loading = true;
-    const orders = null;
-    const fetchMore = jest.fn();
-
-    renderer.render(
-      <OrdersList loading={loading} orders={orders} fetchMore={fetchMore} intl={intl} />,
-    );
-    const result = renderer.getRenderOutput();
-
-    expect(result).toMatchSnapshot();
-  });
-
-  it('should render an empty list indicator', () => {
-    const renderer = new ShallowRenderer();
-    const loading = false;
-    const orders = [];
-    const fetchMore = jest.fn();
-
-    renderer.render(
-      <OrdersList loading={loading} orders={orders} fetchMore={fetchMore} intl={intl} />,
-    );
-    const result = renderer.getRenderOutput();
-
-    expect(result).toMatchSnapshot();
-  });
-
   it('should call onLoadFinished when loading is changed to false', () => {
     const loading = true;
     const onLoadFinished = jest.fn();

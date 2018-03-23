@@ -5,15 +5,18 @@ const ITEMS_PER_PAGE = 10;
 export const OrdersListQuery = gql`
   query OrdersListQuery($offset: Int!, $limit: Int!) {
     orders(offset: $offset, limit: $limit) {
-      codigoPedido
-      dataPedido
-      ciclo
-      dataPrevisaoEntrega
-      valor
-      pontos
-      valorLucro
-      status
-      statusTipo
+      hasNextPage
+      items {
+        codigoPedido
+        dataPedido
+        ciclo
+        dataPrevisaoEntrega
+        valor
+        pontos
+        valorLucro
+        status
+        statusTipo
+      }
     }
   }
 `;
@@ -22,8 +25,18 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
   if (!fetchMoreResult) {
     return previousResult;
   }
+
+  const previousResultIds = previousResult.orders.items.map(item => item.id);
+  const fetchMoreResultsToAdd = fetchMoreResult.orders.items.filter(
+    item => previousResultIds.indexOf(item.id) < 0,
+  );
+
   return Object.assign({}, previousResult, {
-    orders: [...previousResult.orders, ...fetchMoreResult.orders],
+    orders: {
+      __typename: previousResult.orders.__typename,
+      hasNextPage: fetchMoreResult.orders.hasNextPage,
+      items: [...previousResult.orders.items, ...fetchMoreResultsToAdd],
+    },
   });
 };
 
@@ -38,16 +51,27 @@ export const OrdersListQueryOptions = {
     };
   },
   props({ data }) {
+    const { refetch, loading } = data;
+    const orders = data.orders && data.orders.items;
+    const hasNextPage = (data.orders && data.orders.hasNextPage) || false;
+
     return {
       data,
-      loading: data.loading,
-      orders: data.orders,
+      refetch,
+      loading,
+      orders,
+      hasNextPage,
       fetchMore() {
+        if (data.loading) {
+          return;
+        }
+
+        const offset = orders ? orders.length : 0;
+        const variables = { offset };
+
         return data.fetchMore({
-          variables: {
-            offset: data.orders.length,
-          },
-          updateQuery: updateQuery,
+          variables,
+          updateQuery,
         });
       },
     };

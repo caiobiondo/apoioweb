@@ -24,5 +24,5 @@ export default class TrainingCourses extends Component {
 
 TrainingCourses.propTypes = {
   renderMenuItems: PropTypes.func,
-  courses: PropTypes.array.isRequired,
+  courses: PropTypes.array,
 };

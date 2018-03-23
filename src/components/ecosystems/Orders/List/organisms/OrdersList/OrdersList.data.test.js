@@ -23,7 +23,7 @@ describe('OrdersListQuery', () => {
     const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
     const data = {
       data: {
-        loading: true,
+        loading: false,
         orders: [],
         fetchMore: fetchMore,
       },
@@ -37,10 +37,28 @@ describe('OrdersListQuery', () => {
     expect(fetchMoreResult).toEqual('application of fetchMore');
   });
 
+  it('should not call fetchMore when the data is still loading', () => {
+    const fetchMore = jest.fn().mockReturnValue('application of fetchMore');
+    const data = {
+      data: {
+        loading: true,
+        orders: [],
+        fetchMore: fetchMore,
+      },
+    };
+
+    const props = OrdersListQueryOptions.props(data);
+    props.fetchMore();
+
+    expect(fetchMore).not.toBeCalled();
+  });
+
   describe('updateQuery', () => {
     it('should return the previous result', () => {
       const previousResult = {
-        orders: [1, 2],
+        orders: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
 
       const result = updateQuery(previousResult, { fetchMoreResult: null });
@@ -48,17 +66,36 @@ describe('OrdersListQuery', () => {
       expect(result).toEqual(previousResult);
     });
 
-    it('should return the merge from previous and fetchMore result', () => {
+    it('should return the merge from previous and fetchMore result on items array', () => {
       const previousResult = {
-        orders: [1, 2],
+        orders: {
+          items: [{ id: 1 }, { id: 2 }],
+        },
       };
-      const orders = [3, 4];
+      const orders = {
+        items: [{ id: 3 }, { id: 4 }],
+      };
 
       const result = updateQuery(previousResult, { fetchMoreResult: { orders } });
 
-      expect(result).toEqual({
-        orders: [1, 2, 3, 4],
-      });
+      expect(result.orders.items).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
+    });
+
+    it('should return the updated value of hasNextPage', () => {
+      const previousResult = {
+        orders: {
+          items: [],
+          hasNextPage: true,
+        },
+      };
+      const orders = {
+        items: [],
+        hasNextPage: false,
+      };
+
+      const result = updateQuery(previousResult, { fetchMoreResult: { orders } });
+
+      expect(result.orders.hasNextPage).toBeFalsy();
     });
   });
 });

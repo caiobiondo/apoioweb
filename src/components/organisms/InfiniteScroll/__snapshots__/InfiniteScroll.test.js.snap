@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Infinite Scroll renders correctly when it is an empty list 1`] = `""`;
+
+exports[`Infinite Scroll renders correctly when it is loading and there is no items 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`Infinite Scroll renders correctly when there are items on the list 1`] = `
+<InfiniteScroll
+  element="div"
+  hasMore={false}
+  initialLoad={true}
+  isReverse={false}
+  loadMore={[Function]}
+  loader={
+    <mixins__LoadingWrapperStyle>
+      <CircularProgress
+        max={100}
+        min={0}
+        mode="indeterminate"
+        size={40}
+        thickness={2}
+        value={0}
+      />
+    </mixins__LoadingWrapperStyle>
+  }
+  pageStart={0}
+  ref={null}
+  threshold={250}
+  useCapture={false}
+  useWindow={true}
+>
+  <div>
+    Test
+  </div>
+</InfiniteScroll>
+`;

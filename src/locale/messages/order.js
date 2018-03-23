@@ -5,7 +5,7 @@ export default {
   },
   'pt-BR': {
     goToStock: 'Ir para meu estoque',
-    importMoreProducts: 'Importar mais produtos',
+    importOtherProducts: 'Importar outros produtos',
     loading: 'Carregando...',
     orderCycle: 'Ciclo',
     orderData: 'Dados do pedido',

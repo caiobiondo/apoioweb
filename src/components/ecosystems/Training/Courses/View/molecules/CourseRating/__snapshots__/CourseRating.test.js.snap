@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseRating should render course rating 1`] = `
+<CourseRatingstyles__RowWrapper>
+  <Row>
+    <CourseRatingstyles__ColWrapper
+      borderRight={true}
+    >
+      <CourseRatingstyles__TittleWrapper>
+        Avaliação
+      </CourseRatingstyles__TittleWrapper>
+      <CourseRatingstyles__RatingWrapper>
+        <Rating
+          disabled={false}
+          iconFilled={
+            <ToggleStar
+              color="#ff9800"
+            />
+          }
+          iconHovered={
+            <ToggleStarBorder
+              color="#ff9800"
+            />
+          }
+          iconNormal={
+            <ToggleStarBorder
+              color="#e0e0e0"
+            />
+          }
+          itemIconStyle={
+            Object {
+              "height": "15",
+              "width": "15",
+            }
+          }
+          itemStyle={
+            Object {
+              "height": "15",
+              "padding": "0",
+              "width": "15",
+            }
+          }
+          max={5}
+          readOnly={false}
+          tooltipPosition="bottom-center"
+          value={4}
+        />
+      </CourseRatingstyles__RatingWrapper>
+    </CourseRatingstyles__ColWrapper>
+    <CourseRatingstyles__ColWrapper>
+      <CourseRatingstyles__TittleWrapper>
+        Tempo
+      </CourseRatingstyles__TittleWrapper>
+      <CourseRatingstyles__TimeWrapper>
+        1:00
+      </CourseRatingstyles__TimeWrapper>
+    </CourseRatingstyles__ColWrapper>
+  </Row>
+</CourseRatingstyles__RowWrapper>
+`;

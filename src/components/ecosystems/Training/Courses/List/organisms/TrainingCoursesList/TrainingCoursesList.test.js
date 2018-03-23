@@ -62,24 +62,6 @@ const setup = propOverrides => {
 };
 
 describe('Training Courses List', () => {
-  it('renders correctly when loading', () => {
-    // given
-    // when
-    const { result } = setup({ fetchMore: jest.fn(), loading: true, courses: [] });
-
-    // then
-    expect(result).toMatchSnapshot();
-  });
-
-  it('renders correctly when the list is empty', () => {
-    // given
-    // when
-    const { result } = setup({ fetchMore: jest.fn(), loading: false, courses: [] });
-
-    // then
-    expect(result).toMatchSnapshot();
-  });
-
   it('renders correctly when the list is not empty', () => {
     // given
     // when

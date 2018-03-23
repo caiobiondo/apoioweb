@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { Loading, Paper, CircularProgress } from 'natura-ui';
+import { Loading, Paper } from 'natura-ui';
 import {
   TrainingCategoriesQuery,
   TrainingCategoriesQueryOptions,
@@ -10,9 +10,7 @@ import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 
 import Category from 'components/ecosystems/Training/Categories/List/molecules/Category';
 
-import InfiniteScroll from 'react-infinite-scroller';
-
-import { fullContainer, List, LoadingWrapper, ListItem } from './TrainingCategoriesList.styles';
+import { fullContainer, List, ListItem } from './TrainingCategoriesList.styles';
 
 const renderTrainingCategory = trainingCategory => {
   return (
@@ -34,30 +32,16 @@ const renderEmptyList = (
 );
 
 export class TrainingCategoriesList extends Component {
-  state = {
-    hasMoreItems: true,
-  };
+  state = {};
 
   componentWillReceiveProps({ loading, trainingCategories }) {
     this.notifyLoadFinish(loading, trainingCategories);
-    this.checkIfHasMoreItems(loading, trainingCategories);
   }
 
   notifyLoadFinish = (loading, items) => {
     if (!loading && this.props.onLoadFinished) {
       this.props.onLoadFinished(this.isEmpty(loading, items), this.isLoading(loading, items));
     }
-  };
-
-  checkIfHasMoreItems = (loading, items) => {
-    if (this.props.loading === loading || !items) {
-      return;
-    }
-
-    const hasMoreItems =
-      (items && !this.props.trainingCategories) ||
-      items.length !== this.props.trainingCategories.length;
-    this.setState({ hasMoreItems });
   };
 
   isLoading = (loading, items) => {
@@ -69,7 +53,7 @@ export class TrainingCategoriesList extends Component {
   };
 
   render() {
-    const { fetchMore, loading, trainingCategories } = this.props;
+    const { loading, trainingCategories } = this.props;
 
     if (!trainingCategories && loading) {
       return <Loading background="transparent" />;
@@ -82,17 +66,7 @@ export class TrainingCategoriesList extends Component {
     return (
       <Paper style={fullContainer}>
         <PageMenu />
-        <InfiniteScroll
-          loadMore={fetchMore}
-          hasMore={false}
-          loader={
-            <LoadingWrapper>
-              <CircularProgress thickness={2} />
-            </LoadingWrapper>
-          }
-        >
-          <List>{trainingCategories.map(category => renderTrainingCategory(category))}</List>
-        </InfiniteScroll>
+        <List>{trainingCategories.map(category => renderTrainingCategory(category))}</List>
       </Paper>
     );
   }

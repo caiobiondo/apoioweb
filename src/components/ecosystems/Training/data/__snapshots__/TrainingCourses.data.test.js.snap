@@ -104,7 +104,7 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "id",
+                    "value": "hasNextPage",
                   },
                   "selectionSet": null,
                 },
@@ -115,51 +115,7 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "accessToken",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "categoryTitle",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "clientIdentifier",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "clientSecrets",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "courseContent",
+                    "value": "items",
                   },
                   "selectionSet": Object {
                     "kind": "SelectionSet",
@@ -171,7 +127,7 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "video",
+                          "value": "id",
                         },
                         "selectionSet": null,
                       },
@@ -182,7 +138,7 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "html5",
+                          "value": "accessToken",
                         },
                         "selectionSet": null,
                       },
@@ -193,122 +149,192 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "web",
+                          "value": "categoryTitle",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "clientIdentifier",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "clientSecrets",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "courseContent",
+                        },
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "video",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "html5",
+                              },
+                              "selectionSet": null,
+                            },
+                            Object {
+                              "alias": null,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "web",
+                              },
+                              "selectionSet": null,
+                            },
+                          ],
+                        },
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "dateUpload",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "durationInSeconds",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "isfavorite",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "ratedByYou",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "status",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "stoppedAt",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "thumbnail",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "title",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "type",
+                        },
+                        "selectionSet": null,
+                      },
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "views",
                         },
                         "selectionSet": null,
                       },
                     ],
                   },
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "dateUpload",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "durationInSeconds",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "isfavorite",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "ratedByYou",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "status",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "stoppedAt",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "thumbnail",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "title",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "type",
-                  },
-                  "selectionSet": null,
-                },
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "views",
-                  },
-                  "selectionSet": null,
                 },
               ],
             },
@@ -420,7 +446,7 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 597,
+    "end": 677,
     "start": 0,
   },
 }
@@ -428,15 +454,15 @@ Object {
 
 exports[`TrainingCoursesQuery should be the correct query props 1`] = `
 Object {
-  "courses": Array [],
+  "courses": undefined,
   "data": Object {
     "courses": Array [],
     "fetchMore": [Function],
-    "loading": true,
+    "loading": false,
   },
   "fetchMore": [Function],
-  "hasMultiplePages": false,
-  "loading": true,
+  "hasNextPage": false,
+  "loading": false,
   "refetch": undefined,
 }
 `;

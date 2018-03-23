@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TrainingCoursesList Ecosystem should render the training courses list page 1`] = `
-<indexstyles__Main>
+<indexstyles__Main
+  empty={false}
+  loading={true}
+>
   <Apollo(Apollo(TrainingCoursesList))
     onLoadFinished={[Function]}
     productSearch={undefined}
