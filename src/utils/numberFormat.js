@@ -20,7 +20,7 @@ export const NumberFormat = ({ value, decimalScale }) => {
   return (
     <ReactNumberFormat
       displayType="text"
-      value={value * 100}
+      value={value}
       thousandSeparator="."
       decimalSeparator=","
       fixedDecimalScale
