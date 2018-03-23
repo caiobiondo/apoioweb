@@ -4,6 +4,8 @@ import { translate } from 'locale';
 
 import TrophyIcon from 'assets/images/trophy.png';
 import ConsolidatedIndicatorData from '../../molecules/ConsolidatedIndicatorData';
+import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
+import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 import { ConsolidatedIndicatorWrapper } from './ConsolidatedIndicator.styles';
 
@@ -11,6 +13,7 @@ import {
   IndicatorWrapper,
   IndicatorWeightWrapper,
   IndicatorTitle,
+  IndicatorInfo,
   IndicatorContentWrapper,
   IndicatorTableHeader,
   IndicatorTableHeaderItemFeatured,
@@ -22,6 +25,9 @@ export class ConsolidatedIndicator extends Component {
   constructor() {
     super();
     this.cyclesNodes = {};
+    this.state = {
+      informationModalOpened: false,
+    };
   }
 
   isValidCycle = (cycle, indicators = this.props.indicators) => {
@@ -63,8 +69,18 @@ export class ConsolidatedIndicator extends Component {
     );
   };
 
+  openInformationModal = () => {
+    this.setState({ informationModalOpened: true });
+  };
+
+  closeInformationModal = () => {
+    this.setState({ informationModalOpened: false });
+  };
+
   render() {
     const consolidatedCycles = this.getVisibleCycles();
+    const { concepts } = this.props;
+    const { informationModalOpened } = this.state;
 
     return (
       <IndicatorWrapper>
@@ -76,6 +92,9 @@ export class ConsolidatedIndicator extends Component {
           <IndicatorTitle>
             <FormattedMessage id="consolidated" />
           </IndicatorTitle>
+          <IndicatorInfo onClick={this.openInformationModal}>
+            <FormattedMessage id="information" />
+          </IndicatorInfo>
           <IndicatorContentWrapper>
             <IndicatorTableHeader>
               <IndicatorTableHeaderItemFeatured>
@@ -93,6 +112,14 @@ export class ConsolidatedIndicator extends Component {
             </IndicatorTableContentWrapper>
           </IndicatorContentWrapper>
         </ConsolidatedIndicatorWrapper>
+
+        <ModalConcept
+          key="informationDialog"
+          title="Consolidado"
+          onClose={this.closeInformationModal}
+          open={informationModalOpened}
+          concepts={concepts}
+        />
       </IndicatorWrapper>
     );
   }
