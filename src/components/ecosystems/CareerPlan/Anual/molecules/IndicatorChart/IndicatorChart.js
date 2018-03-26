@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import { injectIntl } from 'react-intl';
 
 import { VictoryLine, VictoryGroup } from 'victory';
 
 import IndicatorChartConfig from './IndicatorChart.config';
 import { IndicatorChartWrapper, IndicatorChartStyles } from './IndicatorChart.styles';
 
-export class IndicatorChart extends Component {
+export default class IndicatorChart extends Component {
   constructor(props) {
     super();
     this.state = {
-      cycles: this.updateChartData(props),
+      cycles: this.getChartData(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.updateChartData(nextProps);
     this.updateChartDimensions(nextProps);
   }
 
   componentDidMount() {
-    this.updateChartDimensions();
     window.addEventListener('resize', () => {
       this.updateChartDimensions(this.props);
     });
@@ -32,48 +29,37 @@ export class IndicatorChart extends Component {
     });
   }
 
-  parseCycles = cycles => {
-    return cycles;
-  };
-
   setChartNode = node => {
     this.chartNode = node;
   };
 
-  updateChartData = ({ cycles, pastCycles, value }) => {
-    if (!cycles || !pastCycles) {
-      return;
-    }
+  getChartData = ({ cycles, pastCycles, value }) => {
+    const parseData = (cycle, index) => ({
+      x: index + 1,
+      y: value(cycle),
+    });
 
-    const currentPeriod = cycles
-      .map((cycle, index) => ({
-        x: index + 1,
-        y: value(cycle),
-      }))
-      .filter(item => item.y > 0);
-
-    const pastPeriod = pastCycles
-      .map((cycle, index) => ({
-        x: index + 1,
-        y: value(cycle),
-      }))
-      .filter(item => item.y > 0);
+    const currentPeriod = cycles.map(parseData).filter(item => item.y > 0);
+    const pastPeriod = pastCycles.map(parseData).filter(item => item.y > 0);
 
     return { currentPeriod, pastPeriod };
   };
 
   updateChartDimensions = (props = {}) => {
-    if (!this.chartNode) {
+    if (!this.chartNode || !props.cycleNode) {
       return;
     }
 
     const { cycleNode } = props;
     const { pastPeriod } = this.state.cycles;
-    const cycleWidth = cycleNode ? cycleNode.offsetWidth : 0;
+    const cycleWidth = cycleNode.offsetWidth;
+
+    const chartHeight = this.chartNode.offsetHeight;
+    const chartWidth = cycleWidth * (pastPeriod.length - 1);
 
     this.setState({
-      chartHeight: this.chartNode.offsetHeight,
-      chartWidth: cycleWidth * (pastPeriod.length - 1),
+      chartHeight,
+      chartWidth,
     });
   };
 
@@ -106,7 +92,3 @@ export class IndicatorChart extends Component {
     );
   }
 }
-
-export const IndicatorWithIntl = injectIntl(IndicatorChart);
-
-export default IndicatorWithIntl;
