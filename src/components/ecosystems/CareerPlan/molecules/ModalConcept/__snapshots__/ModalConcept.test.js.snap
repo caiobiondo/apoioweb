@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal concept should render the modal with the correctly props 1`] = `
+<Dialog
+  actions={
+    Array [
+      <FlatButton
+        disabled={false}
+        fullWidth={false}
+        label={
+            <FormattedMessage
+                id="close"
+                values={Object {}}
+            />
+        }
+        labelPosition="after"
+        labelStyle={
+            Object {
+                "fontWeight": "600",
+              }
+        }
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={true}
+        secondary={false}
+    />,
+    ]
+  }
+  autoDetectWindowHeight={true}
+  autoScrollBodyContent={false}
+  bodyStyle={
+    Object {
+      "fontFamily": "Roboto-Regular",
+      "fontSize": 16,
+    }
+  }
+  contentStyle={
+    Object {
+      "maxWidth": "460px",
+    }
+  }
+  key="informationDialog"
+  modal={false}
+  onRequestClose={[Function]}
+  open={false}
+  paperProps={
+    Object {
+      "style": Object {
+        "padding": "20px 5px",
+      },
+    }
+  }
+  repositionOnUpdate={true}
+  title="Title"
+  titleStyle={
+    Object {
+      "color": "#333333",
+      "fontSize": 25,
+      "fontWeight": "600",
+    }
+  }
+>
+  <ModalConceptstyles__IndicatorConceptList>
+    <ModalConceptstyles__IndicatorConceptListItem
+      concept={
+        Object {
+          "rangeEnd": 1,
+          "rangeStart": 0,
+          "value": "Value 1",
+        }
+      }
+      key="Value 1"
+    >
+      <span>
+        Value 1
+      </span>
+      <span>
+        <FormattedMessage
+          id="careerPlanBelowRange"
+          values={
+            Object {
+              "rangeEnd": <PercentageFormat
+                decimalScale={2}
+                value={1}
+            />,
+            }
+          }
+        />
+      </span>
+    </ModalConceptstyles__IndicatorConceptListItem>
+    <ModalConceptstyles__IndicatorConceptListItem
+      concept={
+        Object {
+          "rangeEnd": 2,
+          "rangeStart": 1.1,
+          "value": "Value 2",
+        }
+      }
+      key="Value 2"
+    >
+      <span>
+        Value 2
+      </span>
+      <span>
+        <FormattedMessage
+          id="careerPlanBetweenRange"
+          values={
+            Object {
+              "rangeEnd": <PercentageFormat
+                decimalScale={2}
+                value={2}
+            />,
+              "rangeStart": <PercentageFormat
+                decimalScale={2}
+                value={1.1}
+            />,
+            }
+          }
+        />
+      </span>
+    </ModalConceptstyles__IndicatorConceptListItem>
+    <ModalConceptstyles__IndicatorConceptListItem
+      concept={
+        Object {
+          "rangeEnd": 0,
+          "rangeStart": 2.1,
+          "value": "Value 3",
+        }
+      }
+      key="Value 3"
+    >
+      <span>
+        Value 3
+      </span>
+      <span>
+        <FormattedMessage
+          id="careerPlanAboveRange"
+          values={
+            Object {
+              "rangeStart": <PercentageFormat
+                decimalScale={2}
+                value={2.1}
+            />,
+            }
+          }
+        />
+      </span>
+    </ModalConceptstyles__IndicatorConceptListItem>
+  </ModalConceptstyles__IndicatorConceptList>
+</Dialog>
+`;

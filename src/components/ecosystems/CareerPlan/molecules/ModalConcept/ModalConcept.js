@@ -8,7 +8,7 @@ import { PercentageFormat } from 'utils/numberFormat';
 import { IndicatorConceptList, IndicatorConceptListItem } from './ModalConcept.styles';
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 
-export class Indicator extends Component {
+export class ModalConcept extends Component {
   constructor({ indicator }) {
     super();
   }
@@ -99,12 +99,12 @@ export class Indicator extends Component {
   }
 }
 
-Indicator.propTypes = {
+ModalConcept.propTypes = {
   concepts: propTypes.array.isRequired,
   onClose: propTypes.func.isRequired,
   open: propTypes.bool.isRequired,
 };
 
-export const IndicatorWithIntl = injectIntl(Indicator);
+export const IndicatorWithIntl = injectIntl(ModalConcept);
 
 export default IndicatorWithIntl;
