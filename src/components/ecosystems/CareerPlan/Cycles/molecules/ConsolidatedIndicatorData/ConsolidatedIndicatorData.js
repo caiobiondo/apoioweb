@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Popover } from 'material-ui';
+import { Popover, Menu } from 'material-ui';
 import { Icon } from 'natura-ui';
 
 import { PercentageFormat } from 'utils/numberFormat';
@@ -71,15 +71,17 @@ export class ConsolidatedIndicatorData extends Component {
         onRequestClose={this.hidePopover}
         style={PopoverStyles}
       >
-        <PopoverContent>
-          <FormattedMessage
-            id="careerPlanConsolidatedIndicatorError"
-            values={{
-              indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
-              cycle: <strong>5</strong>,
-            }}
-          />
-        </PopoverContent>
+        <Menu>
+          <PopoverContent>
+            <FormattedMessage
+              id="careerPlanConsolidatedIndicatorError"
+              values={{
+                indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
+                cycle: <strong>5</strong>,
+              }}
+            />
+          </PopoverContent>
+        </Menu>
       </Popover>
     );
   };
