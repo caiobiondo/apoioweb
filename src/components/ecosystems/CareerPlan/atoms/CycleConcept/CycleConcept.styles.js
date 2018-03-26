@@ -31,7 +31,7 @@ export const CycleConceptValue = styled.span`
 `;
 
 export const ConceptTooltipWrapper = styled.div`
-  padding: 10px 30px;
+  padding: 10px 15px;
   font-family: ${RobotoRegular};
   text-transform: uppercase;
   font-size: 14px;
