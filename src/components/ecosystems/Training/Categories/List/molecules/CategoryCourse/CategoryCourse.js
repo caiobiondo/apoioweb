@@ -35,11 +35,13 @@ const CategoryCourse = ({ course }) => {
     return `${course.title.substr(0, 30)}...`;
   };
 
+  /* eslint-disable */
   const getDurationInMinutes = () => {
-    return `${Math.floor(course.durationInSeconds / 60)}:${(
-      '0' + Math.floor(course.durationInSeconds % 60)
+    return `${Math.floor(course.durationInSeconds / 60)}:${('0' +
+      Math.floor(course.durationInSeconds % 60)
     ).slice(-2)}`;
   };
+  /* eslint-enable */
 
   const getDurationNode = () => {
     if (!course.durationInSeconds) {

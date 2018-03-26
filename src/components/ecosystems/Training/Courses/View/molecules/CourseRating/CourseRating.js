@@ -13,11 +13,13 @@ import { translate } from 'locale';
 import { Rating } from 'natura-ui';
 
 export class CourseRating extends Component {
+  /* eslint-disable */
   getDurationInMinutes = course => {
-    return `${Math.floor(course.durationInSeconds / 60)}:${(
-      '0' + Math.floor(course.durationInSeconds % 60)
+    return `${Math.floor(course.durationInSeconds / 60)}:${('0' +
+      Math.floor(course.durationInSeconds % 60)
     ).slice(-2)}`;
   };
+  /* eslint-enable */
 
   render() {
     const { course } = this.props;
