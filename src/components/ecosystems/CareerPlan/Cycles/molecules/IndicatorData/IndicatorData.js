@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Popover, Menu } from 'material-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
+import IndicatorDataForm from '../../molecules/IndicatorDataForm';
+import CycleConcept from 'components/ecosystems/CareerPlan/atoms/CycleConcept';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 
@@ -15,7 +16,6 @@ import {
   IndicatorDataRowFeatured,
   IndicatorDataRowObj,
   IndicatorDataValue,
-  IndicatorDataConceptValue,
   PopoverStyles,
   PopoverContent,
 } from './IndicatorData.styles';
@@ -78,7 +78,7 @@ export class IndicatorData extends Component {
           </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
-          <IndicatorDataConceptValue concept={concept} />
+          <CycleConcept concept={concept} />
         </IndicatorDataRow>
       </IndicatorDataContent>
     );

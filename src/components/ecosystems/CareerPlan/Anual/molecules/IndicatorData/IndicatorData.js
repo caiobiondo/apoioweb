@@ -6,13 +6,13 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { IndicatorFieldsTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorFields';
+import CycleConcept from 'components/ecosystems/CareerPlan/atoms/CycleConcept';
 
 import {
   IndicatorDataWrapper,
   IndicatorDataSort,
   IndicatorDataContent,
   IndicatorDataRow,
-  IndicatorDataConceptValue,
   IndicatorFloatContent,
   IndicatorFloatContentClose,
   IndicatorDataSortNumber,
@@ -60,7 +60,7 @@ export class IndicatorData extends Component {
           </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
-          <IndicatorDataConceptValue concept={concept} />
+          <CycleConcept concept={concept} size="large" />
         </IndicatorDataRow>
       </Fragment>
     );
@@ -78,7 +78,7 @@ export class IndicatorData extends Component {
           </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
-          <IndicatorDataConceptValue concept={concept} />
+          <CycleConcept concept={concept} size="large" />
         </IndicatorDataRow>
 
         <IndicatorDataRow>
@@ -121,7 +121,7 @@ export class IndicatorData extends Component {
 
         <IndicatorDataContent>
           <IndicatorDataRow>
-            <IndicatorDataConceptValue concept={concept} />
+            <CycleConcept concept={concept} size="large" />
           </IndicatorDataRow>
         </IndicatorDataContent>
 
