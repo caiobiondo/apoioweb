@@ -5,6 +5,7 @@ import { Icon, FlatButton, Dialog } from 'natura-ui';
 
 import { PercentageFormat } from 'utils/numberFormat';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import CycleConcept from 'components/ecosystems/CareerPlan/atoms/CycleConcept';
 
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
 import {
@@ -17,7 +18,6 @@ import {
   IndicatorDataRowInput,
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
-  IndicatorDataConceptValue,
   IndicatorDataApplyButton,
 } from './IndicatorDataForm.styles';
 
@@ -239,7 +239,7 @@ export class IndicatorDataForm extends Component {
           </IndicatorDataValue>
         </IndicatorDataRowAcc>
         <IndicatorDataRow>
-          <IndicatorDataConceptValue concept={concept} />
+          <CycleConcept concept={concept} />
         </IndicatorDataRow>
         {this.renderApplyButton()}
         {this.renderDeleteDialog()}

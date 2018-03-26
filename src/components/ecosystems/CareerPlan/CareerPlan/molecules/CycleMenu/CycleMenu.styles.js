@@ -25,7 +25,7 @@ export const CycleMenuItem = styled.li`
   list-style-type: none;
   padding: 12px 18px;
   text-transform: uppercase;
-  transition: background-color 0.3s ease-in;
+  transition: background-color 0.1s ease-in;
 
   ${({ active }) =>
     active &&

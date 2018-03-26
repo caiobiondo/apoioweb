@@ -9,7 +9,6 @@ export const IndicatorDataRow = IndicatorDataFormComponents.IndicatorDataRow;
 export const IndicatorDataRowFeatured = IndicatorDataFormComponents.IndicatorDataRowAcc;
 export const IndicatorDataRowObj = IndicatorDataFormComponents.IndicatorDataRowObj;
 export const IndicatorDataValue = IndicatorDataFormComponents.IndicatorDataValue;
-export const IndicatorDataConceptValue = IndicatorDataFormComponents.IndicatorDataConceptValue;
 
 export const IndicatorDataSortCurrent = styled.span`
   border-radius: 5px;
@@ -174,15 +173,6 @@ export const IndicatorDataWrapper = styled.li`
   ${({ editable }) => !editable && `cursor: default;`};
 
   ${({ bordered }) => bordered && `border-right: 1px solid ${gray150}`};
-
-  ${IndicatorDataConceptValue} {
-    ${({ hasChart }) =>
-      hasChart &&
-      `
-    margin-bottom: 30px;
-    height: 15px;
-  `};
-  }
 
   ${IndicatorDataSort} {
     ${({ isActive }) =>
