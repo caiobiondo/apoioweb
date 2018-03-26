@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Popover } from 'material-ui';
+import { Popover, Menu } from 'material-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 
@@ -101,9 +101,11 @@ export class IndicatorData extends Component {
         onRequestClose={this.hidePopover}
         style={PopoverStyles}
       >
-        <PopoverContent>
-          <FormattedMessage id="careerPlanNotFilled" />
-        </PopoverContent>
+        <Menu>
+          <PopoverContent>
+            <FormattedMessage id="careerPlanNotFilled" />
+          </PopoverContent>
+        </Menu>
       </Popover>
     );
   }
