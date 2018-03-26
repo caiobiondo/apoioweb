@@ -176,7 +176,12 @@ export const IndicatorDataWrapper = styled.li`
   ${({ bordered }) => bordered && `border-right: 1px solid ${gray150}`};
 
   ${IndicatorDataConceptValue} {
-    ${({ hasChart }) => hasChart && `margin-bottom: 30px;`};
+    ${({ hasChart }) =>
+      hasChart &&
+      `
+    margin-bottom: 30px;
+    height: 15px;
+  `};
   }
 
   ${IndicatorDataSort} {
