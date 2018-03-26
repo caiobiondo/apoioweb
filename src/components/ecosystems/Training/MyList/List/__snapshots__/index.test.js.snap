@@ -7,7 +7,6 @@ exports[`TrainingMyList Ecosystem should render the training courses list page 1
       description="myTrainingsSearchDescription"
       inputLabel="trainingLabel"
       onSearch={[Function]}
-      searchValue={undefined}
       sectionTitle={
         Object {
           "iconName": "ico_graduate_cap",
@@ -19,7 +18,11 @@ exports[`TrainingMyList Ecosystem should render the training courses list page 1
   <Apollo(Apollo(TrainingMyList))
     favorite={true}
     onLoadFinished={[Function]}
-    user={undefined}
+    user={
+      Object {
+        "codigo": 1,
+      }
+    }
   />
 </indexstyles__Main>
 `;
