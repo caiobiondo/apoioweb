@@ -23,8 +23,11 @@ export const fs19 = '19px';
 export const fs20 = '20px';
 export const fs25 = '25px';
 export const fs28 = '28px';
+export const fs30 = '30px';
 export const fs32 = '32px';
 export const fs38 = '38px';
+export const fs60 = '60px';
+export const fs100 = '100px';
 
 //
 // Font Families

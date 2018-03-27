@@ -205,7 +205,6 @@ export class TrainingCoursesList extends Component {
     if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
-
     return (
       <StartedWrapper>
         <StartedCoursesList status="started" user={this.props.user} />

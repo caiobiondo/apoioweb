@@ -48,6 +48,7 @@ export class StartedCoursesList extends Component {
 
     this.props.history.push(`/training/courses/${url}`);
   };
+
   render() {
     const settings = {
       arrows: true,
@@ -73,8 +74,11 @@ export class StartedCoursesList extends Component {
       prevArrow: <LeftArrow />,
       nextArrow: <RightArrow slidesToScroll={1} />,
     };
+
     const { courses } = this.props;
+
     if (!courses) return null;
+
     return (
       <Wrapper>
         <Header>{translate('continueCourses')}</Header>
@@ -101,6 +105,7 @@ export class StartedCoursesList extends Component {
 StartedCoursesList.propTypes = {
   user: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
+  courses: PropTypes.array,
 };
 
 export const StartedCoursesListWithRouter = withRouter(StartedCoursesList);

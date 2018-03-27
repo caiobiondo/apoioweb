@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
-import { black, white } from 'styles/colors';
-import { RobotoMedium, NaturaRegular } from 'styles/typography';
+import { black, white, orange100 } from 'styles/colors';
+import {
+  RobotoMedium,
+  NaturaRegular,
+  fs15,
+  fs20,
+  fs25,
+  fs30,
+  fs60,
+  fs100,
+} from 'styles/typography';
 
 export const Wrapper = styled.div`
-  margin-top: 52px;
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     position: relative;
     padding: 0px 10px 0px 10px;
@@ -13,15 +21,16 @@ export const Wrapper = styled.div`
 
 export const Header = styled.h2`
   font-family: ${NaturaRegular};
-  font-size: 30px;
+  font-size: ${fs30};
   font-weight: bold;
   line-height: 0.4;
   text-align: left;
   color: ${black};
-  margin-bottom: 28px;
+  padding-top: 15px;
+  margin: 0;
 
   @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
-    font-size: 25px;
+    font-size: ${fs25};
     padding: 20px;
     margin-bottom: -22px;
   }
@@ -90,12 +99,12 @@ export const StartedCoursesWrapper = styled.div`
           height: 10px;
           border-radius: 50%;
           background-color: white;
-          border: 1px solid #f3971f;
+          border: 1px solid ${orange100};
         }
       }
 
       &.slick-active button:before {
-        background-color: #f3971f;
+        background-color: ${orange100};
       }
     }
   }
@@ -139,7 +148,7 @@ export const StartedCourseTitle = styled.h2`
 
   @media (max-width: 1024px) {
     margin: -15px 0px 40px 47px;
-    font-size: 20px;
+    font-size: ${fs20};
   }
 `;
 
@@ -156,7 +165,7 @@ export const StartedCourseCategoryTitle = styled.span`
 
   @media (max-width: 1024px) {
     margin-left: 46px;
-    font-size: 15px;
+    font-size: ${fs15};
   }
 `;
 
@@ -183,7 +192,7 @@ export const StartedCoursesThumbnail = styled.div`
 
 export const LeftCarouselArrow = styled.span`
   position: absolute;
-  font-size: 100px;
+  font-size: ${fs100};
   color: #fff;
   display: flex;
   align-items: center;
@@ -194,7 +203,7 @@ export const LeftCarouselArrow = styled.span`
   margin-left: 23px;
 
   @media (max-width: 1024px) {
-    font-size: 60px;
+    font-size: ${fs60};
     top: 40%;
   }
 `;
