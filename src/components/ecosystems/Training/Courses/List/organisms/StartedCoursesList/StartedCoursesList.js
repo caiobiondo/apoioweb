@@ -103,9 +103,8 @@ export class StartedCoursesList extends Component {
 }
 
 StartedCoursesList.propTypes = {
-  user: PropTypes.object.isRequired,
-  status: PropTypes.string.isRequired,
   courses: PropTypes.array,
+  status: PropTypes.string.isRequired,
 };
 
 export const StartedCoursesListWithRouter = withRouter(StartedCoursesList);

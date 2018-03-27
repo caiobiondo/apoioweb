@@ -8,6 +8,7 @@ describe('StartedCourses', () => {
       history: {
         push: jest.fn(),
       },
+      status: 'started',
       courses: [
         {
           id: '1',
@@ -17,8 +18,6 @@ describe('StartedCourses', () => {
           thumbnail: '',
         },
       ],
-      user: {},
-      status: 'start',
     };
 
     const result = shallow(<StartedCoursesList {...props} />);
@@ -33,6 +32,7 @@ describe('StartedCourses', () => {
       history: {
         push: jest.fn(),
       },
+      status: 'started',
       courses: [
         {
           id: '1',
@@ -42,8 +42,6 @@ describe('StartedCourses', () => {
           thumbnail: '',
         },
       ],
-      user: {},
-      status: 'start',
     };
 
     const result = shallow(<StartedCoursesList {...props} />);
@@ -56,6 +54,7 @@ describe('StartedCourses', () => {
   it('should render a slide with the courses', () => {
     // given
     const props = {
+      status: 'started',
       courses: [
         {
           id: 1,
@@ -65,8 +64,6 @@ describe('StartedCourses', () => {
           thumbnail: '',
         },
       ],
-      user: {},
-      status: 'start',
     };
 
     // when
@@ -80,6 +77,7 @@ describe('StartedCourses', () => {
     // given
     const props = {
       courses: null,
+      status: 'started',
     };
 
     // when

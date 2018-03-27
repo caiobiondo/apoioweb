@@ -4,11 +4,6 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
 <TrainingCoursesListstyles__StartedWrapper>
   <Apollo(withRouter(StartedCoursesList))
     status="started"
-    user={
-      Object {
-        "codigo": 1234,
-      }
-    }
   />
   <TrainingCoursesListstyles__TrainingCoursesListWrapper>
     <PageMenu />

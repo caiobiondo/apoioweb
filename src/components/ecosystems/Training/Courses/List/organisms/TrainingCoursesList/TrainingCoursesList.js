@@ -207,7 +207,7 @@ export class TrainingCoursesList extends Component {
     }
     return (
       <StartedWrapper>
-        <StartedCoursesList status="started" user={this.props.user} />
+        <StartedCoursesList status="started" />
         <TrainingCoursesListWrapper>
           <PageMenu />
           <InfiniteScroll
