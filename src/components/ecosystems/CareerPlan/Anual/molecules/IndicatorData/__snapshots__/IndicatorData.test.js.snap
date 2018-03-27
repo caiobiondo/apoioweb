@@ -12,49 +12,6 @@ exports[`IndicatorData renderContent method should call renderConsolidatedData m
   <IndicatorDatastyles__IndicatorDataSortNumber>
     1
   </IndicatorDatastyles__IndicatorDataSortNumber>
-  <React.Fragment>
-    <IndicatorDataFormstyles__IndicatorDataRow>
-      <IndicatorDataFormstyles__IndicatorDataValue>
-        <PercentageFormat
-          decimalScale={2}
-        />
-      </IndicatorDataFormstyles__IndicatorDataValue>
-    </IndicatorDataFormstyles__IndicatorDataRow>
-    <IndicatorDataFormstyles__IndicatorDataRow>
-      <CycleConcept
-        concept="Excede"
-        size="large"
-      />
-    </IndicatorDataFormstyles__IndicatorDataRow>
-    <IndicatorDataFormstyles__IndicatorDataRow>
-      <IndicatorDatastyles__IndicatorDataSmallLabel>
-        Objetivo
-      </IndicatorDatastyles__IndicatorDataSmallLabel>
-      <IndicatorDatastyles__IndicatorDataSmallValue>
-        <NumberFormat />
-      </IndicatorDatastyles__IndicatorDataSmallValue>
-    </IndicatorDataFormstyles__IndicatorDataRow>
-    <IndicatorDataFormstyles__IndicatorDataRow
-      key="directSale"
-    >
-      <IndicatorDatastyles__IndicatorDataSmallLabel>
-        Real.
-      </IndicatorDatastyles__IndicatorDataSmallLabel>
-      <IndicatorDatastyles__IndicatorDataSmallValue>
-        <NumberFormat />
-      </IndicatorDatastyles__IndicatorDataSmallValue>
-    </IndicatorDataFormstyles__IndicatorDataRow>
-    <IndicatorDataFormstyles__IndicatorDataRow
-      key="naturaNetwork"
-    >
-      <IndicatorDatastyles__IndicatorDataSmallLabel>
-        Real Rede
-      </IndicatorDatastyles__IndicatorDataSmallLabel>
-      <IndicatorDatastyles__IndicatorDataSmallValue>
-        <NumberFormat />
-      </IndicatorDatastyles__IndicatorDataSmallValue>
-    </IndicatorDataFormstyles__IndicatorDataRow>
-  </React.Fragment>
 </IndicatorDatastyles__IndicatorFloatContent>
 `;
 
@@ -70,20 +27,5 @@ exports[`IndicatorData renderContent method should call renderConsolidatedData m
   <IndicatorDatastyles__IndicatorDataSortNumber>
     1
   </IndicatorDatastyles__IndicatorDataSortNumber>
-  <React.Fragment>
-    <IndicatorDataFormstyles__IndicatorDataRow>
-      <IndicatorDataFormstyles__IndicatorDataValue>
-        <PercentageFormat
-          decimalScale={2}
-        />
-      </IndicatorDataFormstyles__IndicatorDataValue>
-    </IndicatorDataFormstyles__IndicatorDataRow>
-    <IndicatorDataFormstyles__IndicatorDataRow>
-      <CycleConcept
-        concept="Excede"
-        size="large"
-      />
-    </IndicatorDataFormstyles__IndicatorDataRow>
-  </React.Fragment>
 </IndicatorDatastyles__IndicatorFloatContent>
 `;
