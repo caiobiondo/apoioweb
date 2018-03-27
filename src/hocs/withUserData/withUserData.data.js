@@ -16,6 +16,7 @@ export const UserDataQuery = gql`
         training
         magazine
         cnd
+        careerPlan
       }
       estrutura {
         codigo
