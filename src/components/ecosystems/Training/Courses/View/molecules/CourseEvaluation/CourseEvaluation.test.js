@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CourseEvaluation } from './CourseEvaluation';
-import { FlatButton } from 'natura-ui';
 
 const setup = propOverrides => {
   const intl = {
@@ -87,7 +86,7 @@ describe('Course Evaluation', () => {
     it('render evaluation dialog', () => {
       // given
       // when
-      const { result, props } = setup({ fetchMore: jest.fn(), loading: false });
+      const { result } = setup({ fetchMore: jest.fn(), loading: false });
 
       // then
       expect(result).toMatchSnapshot();
