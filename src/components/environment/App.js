@@ -173,7 +173,7 @@ export default class App extends Component {
                   path="/person/:id/careerPlan"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/CareerPlan'),
-                    'person',
+                    'careerPlan',
                   )}
                 />
               </div>
