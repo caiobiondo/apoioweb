@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CustomerSearch Organism should render input and submit button 1`] = `
+exports[`BaseFormSearch Organism should render input and submit button 1`] = `
 <Paper
   circle={false}
   rounded={true}
@@ -16,19 +16,19 @@ exports[`CustomerSearch Organism should render input and submit button 1`] = `
     iconName="ico_add_customer"
     value="myCustomers"
   />
-  <CustomerSearchstyles__CustomerSearchDescription>
+  <BaseFormSearchstyles__BaseFormSearchDescription>
     Preencha o campo abaixo para buscar seus clientes
-  </CustomerSearchstyles__CustomerSearchDescription>
-  <CustomerSearchstyles__FormWrapper>
-    <CustomerSearchstyles__FormInput
+  </BaseFormSearchstyles__BaseFormSearchDescription>
+  <BaseFormSearchstyles__FormWrapper>
+    <BaseFormSearchstyles__FormInput
       label="Nome"
-      name="customerSearch"
+      name="inputBaseFormSearch"
       onChange={[Function]}
       onKeyPress={[Function]}
       type="text"
       value=""
     />
-    <CustomerSearchstyles__FormButtonWrapper>
+    <BaseFormSearchstyles__FormButtonWrapper>
       <FormButton
         backgroundColor="#c9c9c9"
         disabled={false}
@@ -49,7 +49,7 @@ exports[`CustomerSearch Organism should render input and submit button 1`] = `
         raised={false}
         type="submit"
       />
-    </CustomerSearchstyles__FormButtonWrapper>
-  </CustomerSearchstyles__FormWrapper>
+    </BaseFormSearchstyles__FormButtonWrapper>
+  </BaseFormSearchstyles__FormWrapper>
 </Paper>
 `;

@@ -5,9 +5,23 @@ exports[`TrainingCoursesList Ecosystem should render the training courses list p
   empty={false}
   loading={true}
 >
+  <indexstyles__CourseSearchContainer>
+    <BaseFormSearch
+      description="myTrainingsSearchDescription"
+      inputLabel="trainingLabel"
+      onSearch={[Function]}
+      searchValue=""
+      sectionTitle={
+        Object {
+          "iconName": "ico_graduate_cap",
+          "value": "myTrainings",
+        }
+      }
+    />
+  </indexstyles__CourseSearchContainer>
   <Apollo(Apollo(TrainingCoursesList))
+    courseFilter=""
     onLoadFinished={[Function]}
-    productSearch={undefined}
     user={undefined}
   />
 </indexstyles__Main>

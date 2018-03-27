@@ -14,3 +14,7 @@ export const Main = styled.div`
     return props.loading || props.empty ? Full : null;
   }};
 `;
+
+export const CourseSearchContainer = styled.div`
+  margin-bottom: ${spMedium};
+`;

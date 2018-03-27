@@ -22,6 +22,7 @@ import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithF
 import { injectIntl, FormattedRelative, FormattedPlural } from 'react-intl';
 import { translate } from 'locale';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom';
 
 export class TrainingCourse extends Component {
   renderCourseIcon = course => {
@@ -54,6 +55,11 @@ export class TrainingCourse extends Component {
     return <TrainingCourseThumbnailStoppedAt key={3} width={`${percentage}%`} />;
   };
 
+  linkTo = course => event => {
+    const url = course.type === 'VIDEO' ? course.id : `${course.id}/start`;
+    this.props.history.push(`/training/courses/${url}`);
+  };
+
   render() {
     const { course } = this.props;
     const { formatMessage } = this.props.intl;
@@ -63,7 +69,7 @@ export class TrainingCourse extends Component {
         <TrainingCoursePaper>
           <TrainingCourseDescriptionWrapper>
             {this.renderCourseIcon(course)}
-            <TrainingCourseDescription>
+            <TrainingCourseDescription onClick={this.linkTo(course)}>
               <TrainingCourseDescriptionTitle>{course.title}</TrainingCourseDescriptionTitle>
               <TrainingCourseDescriptionViews>
                 {course.views}&nbsp;
@@ -78,7 +84,7 @@ export class TrainingCourse extends Component {
             </TrainingCourseDescription>
             <TrainingCourseMenu>{this.props.children}</TrainingCourseMenu>
           </TrainingCourseDescriptionWrapper>
-          <TrainingCourseThumbnail>
+          <TrainingCourseThumbnail onClick={this.linkTo(course)}>
             <ImageWithFallback imageUrl={course.thumbnail} fallbackIcon="ico_photo" />
             {course.type === 'VIDEO' && [
               <TrainingCourseThumbnailPlayWrapper key={1}>
@@ -107,4 +113,5 @@ TrainingCourse.propTypes = {
   course: PropTypes.object.isRequired,
 };
 
-export default injectIntl(TrainingCourse);
+export const TrainingCoursewithIntl = injectIntl(TrainingCourse);
+export default withRouter(TrainingCoursewithIntl);

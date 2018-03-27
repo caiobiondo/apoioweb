@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Certificate should render a certificate 1`] = `
+<Certificatestyles__CertificateWrapper>
+  <Certificatestyles__CertificateImageWrapper>
+    <Img
+      decode={true}
+      loader={false}
+      src={Array []}
+      unloader={false}
+    />
+  </Certificatestyles__CertificateImageWrapper>
+  <Certificatestyles__CertificateName />
+  <Certificatestyles__CertificateSliderWrapper>
+    <Certificatestyles__SliderPercentage>
+      60
+      %
+    </Certificatestyles__SliderPercentage>
+    <Certificatestyles__SliderWrapper>
+      <Certificatestyles__Slider
+        percentage={60}
+      />
+    </Certificatestyles__SliderWrapper>
+    <Certificatestyles__CompletedIconWrapper>
+      <Icon
+        file="ico_trophy"
+      />
+    </Certificatestyles__CompletedIconWrapper>
+  </Certificatestyles__CertificateSliderWrapper>
+  <Certificatestyles__DownloadCertificateButtonWrapper />
+</Certificatestyles__CertificateWrapper>
+`;

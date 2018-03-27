@@ -53,7 +53,7 @@ export const FormInput = styled(BaseFormInput)`
   flex: 1 1 auto;
 `;
 
-export const CustomerSearchDescription = styled.div`
+export const BaseFormSearchDescription = styled.div`
   font-family: ${RobotoRegular};
   margin: 16px 0;
 `;

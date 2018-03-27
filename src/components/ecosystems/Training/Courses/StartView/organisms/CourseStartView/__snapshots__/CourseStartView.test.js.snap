@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Training Course Start View renders correctly when loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`Training Course Start View renders correctly when the course is defined 1`] = `
+<CourseStartViewstyles__Main>
+  <withRouter(CourseViewHeader)
+    course={
+      Object {
+        "dateUpload": "2017-04-20T00:00:00.000Z",
+        "description": "new course description",
+        "durationInSeconds": 1234,
+        "id": 1,
+        "isfavorite": true,
+        "ratedByYou": "false",
+        "relatedCourses": Array [],
+        "status": "started",
+        "stoppedAt": 12,
+        "title": "new course",
+        "type": "VIDEO",
+        "views": 12,
+      }
+    }
+  />
+  <MediaQuery
+    maxWidth={767}
+    values={Object {}}
+  >
+    <CourseStartViewstyles__TrainingCourseThumbnailWrapper>
+      <CourseStartViewstyles__TrainingCourseThumbnail>
+        <CourseStartViewstyles__TrainingCourseThumbnailDescriptionWrapper>
+          <CourseStartViewstyles__TrainingCourseTitle>
+            new course
+          </CourseStartViewstyles__TrainingCourseTitle>
+          <CourseStartViewstyles__TrainingCourseDescription>
+            new course description
+          </CourseStartViewstyles__TrainingCourseDescription>
+        </CourseStartViewstyles__TrainingCourseThumbnailDescriptionWrapper>
+      </CourseStartViewstyles__TrainingCourseThumbnail>
+      <CourseStartViewstyles__TrainingCourseActions>
+        <CourseStartViewstyles__TrainingCourseActionButtonWrapper
+          key="resume"
+        >
+          <FlatButton
+            backgroundColor="#f8f8f8"
+            disabled={false}
+            fullWidth={false}
+            hoverColor="#f8f8f8"
+            icon={
+              <Icon
+                file="ico_play_circle"
+              />
+            }
+            label="Continuar treinamento"
+            labelPosition="after"
+            labelStyle={
+              Object {
+                "color": "#f3971f",
+                "fontFamily": "Roboto-Medium",
+                "paddingLeft": "0px",
+                "paddingRight": "40px",
+                "textTransform": "uppercase",
+              }
+            }
+            onClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+          />
+        </CourseStartViewstyles__TrainingCourseActionButtonWrapper>
+        <CourseStartViewstyles__TrainingCourseActionButtonWrapper
+          key="finish"
+        >
+          <FlatButton
+            backgroundColor="#f8f8f8"
+            disabled={false}
+            fullWidth={false}
+            hoverColor="#f8f8f8"
+            icon={
+              <Icon
+                file="ico_play_circle"
+              />
+            }
+            label="Finalizar treinamento"
+            labelPosition="after"
+            labelStyle={
+              Object {
+                "color": "#f3971f",
+                "fontFamily": "Roboto-Medium",
+                "paddingLeft": "0px",
+                "paddingRight": "40px",
+                "textTransform": "uppercase",
+              }
+            }
+            onClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+          />
+        </CourseStartViewstyles__TrainingCourseActionButtonWrapper>
+        <CourseStartViewstyles__TrainingCourseActionButtonWrapper
+          key="list"
+        >
+          <FlatButton
+            backgroundColor="#f8f8f8"
+            disabled={false}
+            fullWidth={false}
+            hoverColor="#f8f8f8"
+            icon={
+              <Icon
+                file="ico_plus"
+              />
+            }
+            label="Minha Lista"
+            labelPosition="after"
+            labelStyle={
+              Object {
+                "color": "#f3971f",
+                "fontFamily": "Roboto-Medium",
+                "paddingLeft": "0px",
+                "paddingRight": "40px",
+                "textTransform": "uppercase",
+              }
+            }
+            onClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+          />
+        </CourseStartViewstyles__TrainingCourseActionButtonWrapper>
+      </CourseStartViewstyles__TrainingCourseActions>
+      <CourseStartViewstyles__TrainingCourseRatingWrapper>
+        <CourseRating
+          course={
+            Object {
+              "dateUpload": "2017-04-20T00:00:00.000Z",
+              "description": "new course description",
+              "durationInSeconds": 1234,
+              "id": 1,
+              "isfavorite": true,
+              "ratedByYou": "false",
+              "relatedCourses": Array [],
+              "status": "started",
+              "stoppedAt": 12,
+              "title": "new course",
+              "type": "VIDEO",
+              "views": 12,
+            }
+          }
+        />
+      </CourseStartViewstyles__TrainingCourseRatingWrapper>
+    </CourseStartViewstyles__TrainingCourseThumbnailWrapper>
+  </MediaQuery>
+  <MediaQuery
+    minWidth={768}
+    values={Object {}}
+  >
+    <CourseStartViewstyles__TrainingCourseThumbnailWrapper>
+      <CourseStartViewstyles__TrainingCourseThumbnail>
+        <CourseStartViewstyles__TrainingCourseThumbnailDescriptionWrapper>
+          <CourseStartViewstyles__TrainingCourseTitle>
+            new course
+          </CourseStartViewstyles__TrainingCourseTitle>
+          <CourseStartViewstyles__TrainingCourseDescription>
+            new course description
+          </CourseStartViewstyles__TrainingCourseDescription>
+          <CourseStartViewstyles__TrainingCourseActions>
+            <CourseStartViewstyles__TrainingCourseActionButtonWrapper
+              key="resume"
+            >
+              <FlatButton
+                backgroundColor="#f3971f"
+                disabled={false}
+                fullWidth={false}
+                hoverColor="#f3971f"
+                icon={
+                  <Icon
+                    file="ico_play_circle"
+                  />
+                }
+                label="Continuar treinamento"
+                labelPosition="after"
+                labelStyle={
+                  Object {
+                    "color": "#fff",
+                    "fontFamily": "Roboto-Medium",
+                    "paddingLeft": "0px",
+                    "paddingRight": "40px",
+                    "textTransform": "uppercase",
+                  }
+                }
+                onClick={[Function]}
+                onKeyboardFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onTouchStart={[Function]}
+                primary={false}
+                secondary={false}
+              />
+            </CourseStartViewstyles__TrainingCourseActionButtonWrapper>
+            <CourseStartViewstyles__TrainingCourseActionButtonWrapper
+              key="finish"
+            >
+              <FlatButton
+                backgroundColor="#f3971f"
+                disabled={false}
+                fullWidth={false}
+                hoverColor="#f3971f"
+                icon={
+                  <Icon
+                    file="ico_play_circle"
+                  />
+                }
+                label="Finalizar treinamento"
+                labelPosition="after"
+                labelStyle={
+                  Object {
+                    "color": "#fff",
+                    "fontFamily": "Roboto-Medium",
+                    "paddingLeft": "0px",
+                    "paddingRight": "40px",
+                    "textTransform": "uppercase",
+                  }
+                }
+                onClick={[Function]}
+                onKeyboardFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onTouchStart={[Function]}
+                primary={false}
+                secondary={false}
+              />
+            </CourseStartViewstyles__TrainingCourseActionButtonWrapper>
+            <CourseStartViewstyles__TrainingCourseActionButtonWrapper
+              key="list"
+            >
+              <FlatButton
+                backgroundColor="#f3971f"
+                disabled={false}
+                fullWidth={false}
+                hoverColor="#f3971f"
+                icon={
+                  <Icon
+                    file="ico_plus"
+                  />
+                }
+                label="Minha Lista"
+                labelPosition="after"
+                labelStyle={
+                  Object {
+                    "color": "#fff",
+                    "fontFamily": "Roboto-Medium",
+                    "paddingLeft": "0px",
+                    "paddingRight": "40px",
+                    "textTransform": "uppercase",
+                  }
+                }
+                onClick={[Function]}
+                onKeyboardFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onTouchStart={[Function]}
+                primary={false}
+                secondary={false}
+              />
+            </CourseStartViewstyles__TrainingCourseActionButtonWrapper>
+          </CourseStartViewstyles__TrainingCourseActions>
+        </CourseStartViewstyles__TrainingCourseThumbnailDescriptionWrapper>
+      </CourseStartViewstyles__TrainingCourseThumbnail>
+      <CourseStartViewstyles__TrainingCourseRatingWrapper>
+        <CourseRating
+          course={
+            Object {
+              "dateUpload": "2017-04-20T00:00:00.000Z",
+              "description": "new course description",
+              "durationInSeconds": 1234,
+              "id": 1,
+              "isfavorite": true,
+              "ratedByYou": "false",
+              "relatedCourses": Array [],
+              "status": "started",
+              "stoppedAt": 12,
+              "title": "new course",
+              "type": "VIDEO",
+              "views": 12,
+            }
+          }
+        />
+      </CourseStartViewstyles__TrainingCourseRatingWrapper>
+    </CourseStartViewstyles__TrainingCourseThumbnailWrapper>
+  </MediaQuery>
+  <RelatedCourses
+    courses={Array []}
+  />
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="ok"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto-Regular",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    key="feedbackModal"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title=""
+    titleStyle={
+      Object {
+        "fontFamily": "NaturaSans-Bold",
+        "fontSize": "25px",
+      }
+    }
+  />
+</CourseStartViewstyles__Main>
+`;
+
+exports[`Training Course Start View renders correctly when the course is not defined 1`] = `
+<CourseStartViewstyles__Main>
+  <EmptyList
+    descriptionId="myCourseEmptyListDescription"
+    icon="ico_list_add"
+    titleId="myCourseEmptyList"
+  />
+</CourseStartViewstyles__Main>
+`;

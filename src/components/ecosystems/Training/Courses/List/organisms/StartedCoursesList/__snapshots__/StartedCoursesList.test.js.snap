@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeftArrow should render a left arrow 1`] = `
+<StartedCoursesListstyles__LeftCarouselArrow
+  onClick={[Function]}
+>
+  &lt;
+</StartedCoursesListstyles__LeftCarouselArrow>
+`;
+
+exports[`LeftArrow should render null 1`] = `""`;
+
+exports[`RightArrow should render a RightArrow 1`] = `""`;
+
+exports[`RightArrow should render a right arrow 1`] = `
+<StartedCoursesListstyles__LeftCarouselArrow
+  onClick={[Function]}
+>
+  &gt;
+</StartedCoursesListstyles__LeftCarouselArrow>
+`;
+
+exports[`RightArrow when RightArrow is null 1`] = `
+<StartedCoursesListstyles__LeftCarouselArrow
+  onClick={[Function]}
+>
+  &gt;
+</StartedCoursesListstyles__LeftCarouselArrow>
+`;
+
+exports[`RightArrow when right arrow is null 1`] = `""`;
+
+exports[`StartedCourses should LeftArrow 1`] = `""`;
+
+exports[`StartedCourses should LeftCarouselArrow 1`] = `""`;
+
+exports[`StartedCourses should RightArrow 1`] = `""`;
+
+exports[`StartedCourses should RightCarouselArrow 1`] = `""`;
+
+exports[`StartedCourses should not render a slide when courses are null 1`] = `""`;
+
+exports[`StartedCourses should render a slide with the courses 1`] = `
+<StartedCoursesListstyles__Wrapper>
+  <StartedCoursesListstyles__Header>
+    Continue seus cursos
+  </StartedCoursesListstyles__Header>
+  <StartedCoursesListstyles__StartedCoursesWrapper>
+    <Slider
+      adaptiveHeight={true}
+      arrows={true}
+      autoplay={false}
+      autoplaySpeed={5000}
+      dots={true}
+      draggable={true}
+      infinite={false}
+      nextArrow={
+        <RightArrow
+          slidesToScroll={1}
+        />
+      }
+      prevArrow={<LeftArrow />}
+      responsive={
+        Array [
+          Object {
+            "breakpoint": 768,
+            "settings": Object {
+              "autoplay": false,
+              "dots": false,
+              "draggable": true,
+            },
+          },
+        ]
+      }
+      slidesToScroll={1}
+      slidesToShow={1}
+      speed={500}
+    >
+      <StartedCoursesListstyles__StartedCoursesThumbnail
+        key="1"
+      >
+        <StartedCoursesListstyles__StartedCourseInfo
+          onClick={[Function]}
+        >
+          <StartedCoursesListstyles__StartedCourseTitle>
+            Como entender as necessidades dos clientes
+          </StartedCoursesListstyles__StartedCourseTitle>
+          <StartedCoursesListstyles__StartedCourseCategoryTitle />
+        </StartedCoursesListstyles__StartedCourseInfo>
+        <ImageWithFallback
+          fallbackIcon="ico_pictureless"
+          imageUrl=""
+        />
+      </StartedCoursesListstyles__StartedCoursesThumbnail>
+    </Slider>
+  </StartedCoursesListstyles__StartedCoursesWrapper>
+</StartedCoursesListstyles__Wrapper>
+`;

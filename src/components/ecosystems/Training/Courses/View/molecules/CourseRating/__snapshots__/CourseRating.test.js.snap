@@ -3,9 +3,7 @@
 exports[`CourseRating should render course rating 1`] = `
 <CourseRatingstyles__RowWrapper>
   <Row>
-    <CourseRatingstyles__ColWrapper
-      borderRight={true}
-    >
+    <CourseRatingstyles__ColWrapper>
       <CourseRatingstyles__TittleWrapper>
         Avaliação
       </CourseRatingstyles__TittleWrapper>
@@ -46,14 +44,6 @@ exports[`CourseRating should render course rating 1`] = `
           value={4}
         />
       </CourseRatingstyles__RatingWrapper>
-    </CourseRatingstyles__ColWrapper>
-    <CourseRatingstyles__ColWrapper>
-      <CourseRatingstyles__TittleWrapper>
-        Tempo
-      </CourseRatingstyles__TittleWrapper>
-      <CourseRatingstyles__TimeWrapper>
-        1:00
-      </CourseRatingstyles__TimeWrapper>
     </CourseRatingstyles__ColWrapper>
   </Row>
 </CourseRatingstyles__RowWrapper>

@@ -69,6 +69,8 @@ export class CourseContent extends Component {
   };
 
   handleStateChange(state, prevState) {
+    if (state.error) return;
+
     this.setState({ currentTime: state.currentTime });
 
     if (state.hasStarted !== prevState.hasStarted) {
@@ -101,7 +103,7 @@ export class CourseContent extends Component {
           ref="player"
           poster={course.thumbnail}
           src={course.courseContent.video}
-          fluid={false}
+          fluid={true}
           startTime={startTime}
         >
           <BigPlayButton position="center" />

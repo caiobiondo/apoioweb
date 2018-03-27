@@ -7,7 +7,6 @@ import {
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose } from 'react-apollo';
-
 import { translate } from 'locale';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
@@ -24,7 +23,10 @@ import { Loading } from 'natura-ui';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
+import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
+
 import {
+  StartedWrapper,
   TrainingCoursesListWrapper,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
@@ -203,28 +205,30 @@ export class TrainingCoursesList extends Component {
     if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
-
     return (
-      <TrainingCoursesListWrapper>
-        <PageMenu />
-        <InfiniteScroll
-          onScroll={this.props.fetchMore}
-          hasMore={this.props.hasNextPage}
-          loading={this.props.loading}
-          debounce={500}
-          items={this.props.courses}
-          emptyList={
-            <EmptyList
-              icon="ico_list_add"
-              titleId="coursesEmptyList"
-              descriptionId="coursesEmptyListDescription"
-            />
-          }
-        >
-          <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
-        </InfiniteScroll>
-        {this.renderFeedbackModal()}
-      </TrainingCoursesListWrapper>
+      <StartedWrapper>
+        <StartedCoursesList status="started" user={this.props.user} />
+        <TrainingCoursesListWrapper>
+          <PageMenu />
+          <InfiniteScroll
+            onScroll={this.props.fetchMore}
+            hasMore={this.props.hasNextPage}
+            loading={this.props.loading}
+            debounce={500}
+            items={this.props.courses}
+            emptyList={
+              <EmptyList
+                icon="ico_list_add"
+                titleId="coursesEmptyList"
+                descriptionId="coursesEmptyListDescription"
+              />
+            }
+          >
+            <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
+          </InfiniteScroll>
+          {this.renderFeedbackModal()}
+        </TrainingCoursesListWrapper>
+      </StartedWrapper>
     );
   }
 }

@@ -42,3 +42,6 @@ export const TrainingCourseFeedbackModalTitle = {
 export const TrainingCourseFeedbackModalAction = {
   fontFamily: RobotoRegular,
 };
+export const StartedWrapper = styled.div`
+  background: none;
+`;

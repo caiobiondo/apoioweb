@@ -4,23 +4,20 @@ exports[`CourseViewHeader molecules should render a menu to training page 1`] = 
 <CourseViewHeaderstyles__Header>
   <Row>
     <Col
-      md={4}
+      md={12}
       sm={12}
     >
-      <CourseViewHeaderstyles__BackButtonWrapper>
-        <Link
-          replace={false}
-          to="/training/categories"
-        >
-          <CourseViewHeaderstyles__BackButtonIcon>
-            <Icon
-              file="ico_back"
-            />
-          </CourseViewHeaderstyles__BackButtonIcon>
-          <CourseViewHeaderstyles__BackButtonText>
-            Treinamentos
-          </CourseViewHeaderstyles__BackButtonText>
-        </Link>
+      <CourseViewHeaderstyles__BackButtonWrapper
+        onClick={[Function]}
+      >
+        <CourseViewHeaderstyles__BackButtonIcon>
+          <Icon
+            file="ico_back"
+          />
+        </CourseViewHeaderstyles__BackButtonIcon>
+        <CourseViewHeaderstyles__BackButtonText>
+          Treinamentos
+        </CourseViewHeaderstyles__BackButtonText>
       </CourseViewHeaderstyles__BackButtonWrapper>
     </Col>
   </Row>

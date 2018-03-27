@@ -26,7 +26,7 @@ export class CourseRating extends Component {
     return (
       <RowWrapper>
         <Row>
-          <ColWrapper borderRight={true}>
+          <ColWrapper>
             <TittleWrapper>{translate('courseRatingAvaliation')}</TittleWrapper>
             <RatingWrapper>
               <Rating
@@ -37,10 +37,12 @@ export class CourseRating extends Component {
               />
             </RatingWrapper>
           </ColWrapper>
-          <ColWrapper>
-            <TittleWrapper>{translate('courseRatingTime')}</TittleWrapper>
-            <TimeWrapper>{this.getDurationInMinutes(course)}</TimeWrapper>
-          </ColWrapper>
+          {course.type === 'VIDEO' && (
+            <ColWrapper>
+              <TittleWrapper>{translate('courseRatingTime')}</TittleWrapper>
+              <TimeWrapper>{this.getDurationInMinutes(course)}</TimeWrapper>
+            </ColWrapper>
+          )}
         </Row>
       </RowWrapper>
     );
