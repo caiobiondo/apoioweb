@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Icon } from 'natura-ui';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -53,7 +53,7 @@ export class IndicatorData extends Component {
     const { concept, value } = indicatorData;
 
     return (
-      <Fragment>
+      <div>
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>
             <PercentageFormat value={value} />
@@ -62,7 +62,7 @@ export class IndicatorData extends Component {
         <IndicatorDataRow>
           <CycleConcept concept={concept} size="large" />
         </IndicatorDataRow>
-      </Fragment>
+      </div>
     );
   }
 
@@ -71,7 +71,7 @@ export class IndicatorData extends Component {
     const { concept, value } = indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
-      <Fragment>
+      <div>
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>
             <PercentageFormat value={value} />
@@ -96,7 +96,7 @@ export class IndicatorData extends Component {
             </IndicatorDataSmallValue>
           </IndicatorDataRow>
         ))}
-      </Fragment>
+      </div>
     );
   }
 
