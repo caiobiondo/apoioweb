@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { gray890 } from 'styles/colors';
 import { fw600, RobotoRegular } from 'styles/typography';
 
@@ -15,3 +16,7 @@ export const CareerPlanModal = {
   label: { fontWeight: fw600 },
   paper: { padding: '20px 5px' },
 };
+
+export const Wrapper = styled.div`
+  min-height: 150px;
+`;
