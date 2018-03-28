@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gray150, gray400, gray700, gray890 } from 'styles/colors';
-import { fw600 } from 'styles/typography';
+import { fw600, RobotoRegular } from 'styles/typography';
 import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
@@ -223,6 +223,8 @@ export const PopoverStyles = {
   maxWidth: '250px',
   overflow: 'visible',
   padding: '20px',
+  fontFamily: RobotoRegular,
+  lineHeight: '24px',
 };
 
 export const PopoverContent = styled.div`
