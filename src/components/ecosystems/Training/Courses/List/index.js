@@ -30,8 +30,6 @@ class TrainingWrapper extends Component {
   };
 
   render() {
-    const { loading, empty } = this.state;
-
     return (
       <Main>
         <TrainingCoursesList
