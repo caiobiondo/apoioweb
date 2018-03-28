@@ -129,9 +129,10 @@ export class IndicatorData extends Component {
           transitionName="fadeIn"
           transitionAppear
           transitionLeave
-          transitionEnter={false}
-          transitionAppearTimeout={300}
-          transitionLeaveTimeout={300}
+          transitionEnter
+          transitionEnterTimeout={200}
+          transitionAppearTimeout={200}
+          transitionLeaveTimeout={200}
         >
           {showDetails && (
             <IndicatorFloatContent>
