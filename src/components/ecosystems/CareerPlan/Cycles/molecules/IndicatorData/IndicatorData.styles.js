@@ -56,10 +56,11 @@ export const IndicatorFloatContent = styled.div`
   bottom: -15px;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
   left: 50%;
+  min-width: 80px;
   position: absolute;
   top: -15px;
   transform: translate(-50%, 0);
-  width: 80px;
+  width: 150%;
 `;
 
 export const IndicatorFloatContentClose = styled.a`
