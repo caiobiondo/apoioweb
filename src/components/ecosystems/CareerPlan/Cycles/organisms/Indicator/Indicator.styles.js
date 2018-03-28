@@ -88,20 +88,20 @@ export const IndicatorContentWrapper = styled.div`
 
 export const IndicatorTableHeader = styled.ul`
   display: inline-block;
-  margin-top: 115px;
+  margin-top: 125px;
   padding: 0 20px 0 0;
   text-align: right;
   vertical-align: top;
   width: 110px;
 
-  ${({ hasActions }) => hasActions && `margin-top: 125px;`};
+  ${({ hasActions }) => hasActions && `margin-top: 132px;`};
 `;
 
 export const IndicatorTableHeaderItem = styled.li`
   display: inline-block;
   font-size: 14px;
   list-style-type: none;
-  margin: 10px 0;
+  margin-bottom: 20px;
   text-transform: uppercase;
   width: 100%;
 `;
