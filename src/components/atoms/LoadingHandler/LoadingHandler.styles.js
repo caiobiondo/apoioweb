@@ -2,7 +2,7 @@ import styled, { injectGlobal } from 'styled-components';
 
 export const LoadingContent = styled.div``;
 export const LoadingContainer = styled.div`
-  min-height: 100px;
+  min-height: 50px;
   width: 100%;
 `;
 

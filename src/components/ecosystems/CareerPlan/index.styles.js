@@ -18,5 +18,5 @@ export const CareerPlanModal = {
 };
 
 export const Wrapper = styled.div`
-  min-height: 150px;
+  position: relative;
 `;
