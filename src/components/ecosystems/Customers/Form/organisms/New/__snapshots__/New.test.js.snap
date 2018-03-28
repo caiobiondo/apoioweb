@@ -1328,6 +1328,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "continueCourses": "Continue seus cursos",
             "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",

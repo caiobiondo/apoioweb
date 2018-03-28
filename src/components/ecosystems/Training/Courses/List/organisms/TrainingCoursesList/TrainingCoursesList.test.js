@@ -48,6 +48,7 @@ const setup = propOverrides => {
       ),
       refetch: jest.fn(),
       onLoadFinished: jest.fn(),
+      onSearch: jest.fn(),
       intl,
     },
     propOverrides,
