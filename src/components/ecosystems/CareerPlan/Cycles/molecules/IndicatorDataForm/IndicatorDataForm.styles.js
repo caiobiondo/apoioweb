@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gray150, gray300, gray700, gray890 } from 'styles/colors';
-import { fw400, fw600, RobotoRegular } from 'styles/typography';
+import { fw400, RobotoRegular, RobotoMedium } from 'styles/typography';
 import InputNumber from 'components/ecosystems/CareerPlan/Cycles/atoms/InputNumber';
 
 import { IndicatorConceptsColors } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
@@ -99,13 +99,13 @@ export const IndicatorDataRowConcept = styled(IndicatorDataRow)`
 export const IndicatorDataRowAcc = IndicatorDataRow.extend`
   color: ${gray890};
   font-size: 16px;
-  font-weight: ${fw600};
+  font-family: ${RobotoMedium};
   min-height: 35px;
 `;
 
 export const IndicatorDataRowObj = IndicatorDataRow.extend`
   color: ${gray890};
-  font-weight: ${fw600};
+  font-family: ${RobotoMedium};
 `;
 
 export const IndicatorDataApplyButton = styled.button`
@@ -141,7 +141,7 @@ export const ApplyButtonHeight = '32px';
 export const IndicatorDataSimulatorLabel = styled.span`
   color: ${gray890};
   font-size: 11px;
-  font-weight: ${fw600};
+  font-family: ${RobotoMedium};
   left: 50%;
   position: absolute;
   text-transform: uppercase;
