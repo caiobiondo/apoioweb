@@ -4,7 +4,7 @@ import { LoadingWrapperStyle } from 'styles/mixins';
 import { white } from 'styles/colors';
 import { RobotoRegular, NaturaBold, fs25 } from 'styles/typography';
 
-import { spPage } from 'styles/spacing';
+import { spMedium, spPage } from 'styles/spacing';
 
 export const LoadingWrapper = LoadingWrapperStyle;
 
@@ -44,4 +44,8 @@ export const TrainingCourseFeedbackModalAction = {
 };
 export const StartedWrapper = styled.div`
   background: none;
+`;
+
+export const CourseSearchContainer = styled.div`
+  margin-bottom: ${spMedium};
 `;

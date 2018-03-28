@@ -10,6 +10,19 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
       }
     }
   />
+  <TrainingCoursesListstyles__CourseSearchContainer>
+    <BaseFormSearch
+      description="myTrainingsSearchDescription"
+      inputLabel="trainingLabel"
+      onSearch={[Function]}
+      sectionTitle={
+        Object {
+          "iconName": "ico_graduate_cap",
+          "value": "myTrainings",
+        }
+      }
+    />
+  </TrainingCoursesListstyles__CourseSearchContainer>
   <TrainingCoursesListstyles__TrainingCoursesListWrapper>
     <PageMenu />
     <InfiniteScroll
@@ -87,6 +100,7 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
         loading={false}
         mutate={[Function]}
         onLoadFinished={[Function]}
+        onSearch={[Function]}
         refetch={[Function]}
         renderMenuItems={[Function]}
         user={
