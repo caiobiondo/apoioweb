@@ -3,7 +3,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
 
-import { PercentageFormat } from 'utils/numberFormat';
+import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import CycleConcept from 'components/ecosystems/CareerPlan/atoms/CycleConcept';
 
@@ -208,7 +208,9 @@ export class IndicatorDataForm extends Component {
         {this.renderTrashButton()}
         {this.renderSimulatorLabelNode()}
         <IndicatorDataRowObj>
-          <IndicatorDataValue>{indicatorData.objective}</IndicatorDataValue>
+          <IndicatorDataValue>
+            <NumberFormat value={indicatorData.objective} />
+          </IndicatorDataValue>
         </IndicatorDataRowObj>
 
         {this.indicatorFields.map(field => (

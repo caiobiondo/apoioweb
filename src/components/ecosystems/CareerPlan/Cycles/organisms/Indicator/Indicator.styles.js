@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gray150, gray700, gray890 } from 'styles/colors';
-import { fw600, RobotoRegular } from 'styles/typography';
+import { RobotoRegular, RobotoMedium } from 'styles/typography';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { ApplyButtonHeight } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
@@ -71,9 +71,8 @@ export const IndicatorWeightValue = styled.span`
 export const IndicatorInfo = styled.a`
   color: ${gray890};
   cursor: pointer;
-  font-family: ${RobotoRegular};
+  font-family: ${RobotoMedium};
   font-size: 13px;
-  font-weight: ${fw600};
   padding: 10px 0;
   position: absolute;
   right: 0;
@@ -98,6 +97,7 @@ export const IndicatorTableHeader = styled.ul`
 `;
 
 export const IndicatorTableHeaderItem = styled.li`
+  color: ${gray700};
   display: inline-block;
   font-size: 14px;
   list-style-type: none;
@@ -108,7 +108,7 @@ export const IndicatorTableHeaderItem = styled.li`
 
 export const IndicatorTableHeaderItemFeatured = IndicatorTableHeaderItem.extend`
   color: ${gray890};
-  font-weight: ${fw600};
+  font-family: ${RobotoMedium};
 `;
 
 export const IndicatorTableContent = styled.ul`

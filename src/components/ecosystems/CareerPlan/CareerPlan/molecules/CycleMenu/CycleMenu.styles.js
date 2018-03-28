@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fw600, RobotoRegular } from 'styles/typography';
-import { gray100, gray700 } from 'styles/colors';
+import { gray100, gray700, gray890 } from 'styles/colors';
 
 export const CycleMenuWrapper = styled.div`
   font-family: ${RobotoRegular};
@@ -31,5 +31,6 @@ export const CycleMenuItem = styled.li`
     active &&
     `
     background-color: ${gray100};
+    color: ${gray890};
   `};
 `;
