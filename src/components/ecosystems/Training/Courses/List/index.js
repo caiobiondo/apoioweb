@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TrainingCoursesList from './organisms/TrainingCoursesList';
-import { Main, CourseSearchContainer } from './index.styles';
-import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
+import { Main } from './index.styles';
 
 class TrainingWrapper extends Component {
   state = {
@@ -33,24 +32,13 @@ class TrainingWrapper extends Component {
   render() {
     const { loading, empty } = this.state;
 
-    const baseFormSearchProps = {
-      onSearch: this.onSearch,
-      searchValue: this.state.courseFilter,
-      sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
-      description: 'myTrainingsSearchDescription',
-      inputLabel: 'trainingLabel',
-    };
-
     return (
-      <Main loading={loading} empty={empty}>
-        <CourseSearchContainer>
-          <BaseFormSearch {...baseFormSearchProps} />
-        </CourseSearchContainer>
-
+      <Main>
         <TrainingCoursesList
           user={this.props.user}
           onLoadFinished={this.onLoadFinished}
           courseFilter={this.state.courseFilter}
+          onSearch={this.onSearch}
         />
       </Main>
     );

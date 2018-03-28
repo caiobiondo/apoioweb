@@ -25,11 +25,14 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
 
+import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
+
 import {
   StartedWrapper,
   TrainingCoursesListWrapper,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
+  CourseSearchContainer,
 } from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
@@ -205,9 +208,22 @@ export class TrainingCoursesList extends Component {
     if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
+
+    const baseFormSearchProps = {
+      onSearch: this.props.onSearch,
+      searchValue: this.props.courseFilter,
+      sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
+      description: 'myTrainingsSearchDescription',
+      inputLabel: 'trainingLabel',
+    };
+
     return (
       <StartedWrapper>
         <StartedCoursesList status="started" user={this.props.user} />
+        <CourseSearchContainer>
+          <BaseFormSearch {...baseFormSearchProps} />
+        </CourseSearchContainer>
+
         <TrainingCoursesListWrapper>
           <PageMenu />
           <InfiniteScroll
