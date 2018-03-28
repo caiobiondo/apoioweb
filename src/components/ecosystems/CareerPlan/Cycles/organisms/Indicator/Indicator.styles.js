@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray150, gray700, gray890 } from 'styles/colors';
+import { orange100, gray150, gray700, gray890 } from 'styles/colors';
 import { RobotoRegular, RobotoMedium } from 'styles/typography';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
@@ -77,7 +77,12 @@ export const IndicatorInfo = styled.a`
   position: absolute;
   right: 0;
   text-transform: uppercase;
+  transition: color 0.1s ease-in;
   top: -10px;
+
+  &:hover {
+    color: ${orange100};
+  }
 `;
 
 export const IndicatorContentWrapper = styled.div`
