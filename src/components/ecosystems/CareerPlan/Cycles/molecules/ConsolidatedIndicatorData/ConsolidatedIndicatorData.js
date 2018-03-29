@@ -77,7 +77,7 @@ export class ConsolidatedIndicatorData extends Component {
               id="careerPlanConsolidatedIndicatorError"
               values={{
                 indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
-                cycle: <strong>5</strong>,
+                cycle: <strong>{cycle.cycle}</strong>,
               }}
             />
           </PopoverContent>
