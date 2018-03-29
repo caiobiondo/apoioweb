@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ReactNumberFormat from 'react-number-format';
 
-const BaseInput = props => {
-  return (
-    <ReactNumberFormat
-      {...props}
-      type="tel"
-      value={props.value}
-      onValueChange={(value, event) => {
-        props.onChange(value.floatValue || 0, event);
-      }}
-      onChange={() => {}}
-      isNumericString
-      allowNegative={false}
-      thousandSeparator="."
-      decimalSeparator=","
-    />
-  );
-};
+export default class InputNumber extends Component {
+  onValueChange = (value, event) => {
+    this.props.onChange(value.floatValue || 0, event);
+  };
 
-BaseInput.propTypes = {
+  render() {
+    return (
+      <ReactNumberFormat
+        {...this.props}
+        type="tel"
+        value={this.props.value}
+        onValueChange={this.onValueChange}
+        onChange={() => {}}
+        isNumericString
+        allowNegative={false}
+        thousandSeparator="."
+        decimalSeparator=","
+      />
+    );
+  }
+}
+
+InputNumber.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  error: PropTypes.array,
-  errorMessage: PropTypes.string,
   max: PropTypes.number,
   min: PropTypes.number,
   name: PropTypes.string.isRequired,
@@ -37,12 +39,10 @@ BaseInput.propTypes = {
   value: PropTypes.any,
 };
 
-BaseInput.defaultProps = {
+InputNumber.defaultProps = {
   disabled: false,
   max: 999999,
   placeholder: '',
   required: false,
   type: 'text',
 };
-
-export default BaseInput;

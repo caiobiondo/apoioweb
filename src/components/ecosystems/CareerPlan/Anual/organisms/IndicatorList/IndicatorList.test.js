@@ -3,7 +3,12 @@ import { shallow } from 'enzyme';
 import { IndicatorList } from './IndicatorList';
 
 const setup = propOverrides => {
-  const props = Object.assign(propOverrides);
+  const props = Object.assign(
+    {
+      concepts: [],
+    },
+    propOverrides,
+  );
 
   const result = shallow(<IndicatorList {...props} />);
 
