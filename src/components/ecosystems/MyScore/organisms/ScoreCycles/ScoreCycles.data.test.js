@@ -43,8 +43,8 @@ describe('ScoreCyclesQuery', () => {
         currentLevelId: 2,
         cycle: '201708',
         parsedCycle: '2017/08',
-        periodStartCycle: 1,
-        periodEndCycle: 10,
+        periodStartCycle: 11,
+        periodEndCycle: 18,
       },
     };
 
@@ -56,8 +56,8 @@ describe('ScoreCyclesQuery', () => {
       forceFetch: true,
       variables: {
         consultantId: 1,
-        cycleStart: 1,
-        cycleEnd: 10,
+        cycleStart: 11,
+        cycleEnd: 18,
         cycle: '201601',
       },
     });
