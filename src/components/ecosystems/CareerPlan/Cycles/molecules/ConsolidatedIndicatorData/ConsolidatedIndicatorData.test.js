@@ -112,10 +112,10 @@ describe('ConsolidatedIndicatorData', () => {
 
       // when
       const { result } = setup({ isActive: false });
-      const popover = result.find('Icon[file="ico_warning_info"]');
+      const warningIcon = result.find('Icon[file="ico_warning_info"]');
 
       // then
-      expect(popover.length).toBeFalsy();
+      expect(warningIcon.length).toBeFalsy();
     });
 
     it('should render warningIcon if the item is active', () => {
@@ -123,10 +123,32 @@ describe('ConsolidatedIndicatorData', () => {
 
       // when
       const { result } = setup({ isActive: true });
-      const popover = result.find('Icon[file="ico_warning_info"]');
+      const warningIcon = result.find('Icon[file="ico_warning_info"]');
 
       // then
-      expect(popover.length).toBeTruthy();
+      expect(warningIcon.length).toBeTruthy();
+    });
+
+    it('should not render the current label if the item is not the current one', () => {
+      // given
+
+      // when
+      const { result } = setup({ current: false });
+      const currentLabel = result.find('IndicatorDatastyles__IndicatorDataSortCurrent');
+
+      // then
+      expect(currentLabel.length).toBeFalsy();
+    });
+
+    it('should render the current label if the item is the current one', () => {
+      // given
+
+      // when
+      const { result } = setup({ current: true });
+      const currentLabel = result.find('IndicatorDatastyles__IndicatorDataSortCurrent');
+
+      // then
+      expect(currentLabel.length).toBeTruthy();
     });
   });
 });
