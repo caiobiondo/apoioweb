@@ -19,11 +19,13 @@ CurrentMagazine {
   },
   "toggleAdditionalInfo": [Function],
   "updater": Updater {
+    "_callbacks": Array [],
     "_renderer": ReactShallowRenderer {
       "_context": Object {},
       "_element": <CurrentMagazine
         magazine={Object {}}
 />,
+      "_forcedUpdate": false,
       "_instance": [Circular],
       "_newState": Object {
         "additionalInfoOpened": false,

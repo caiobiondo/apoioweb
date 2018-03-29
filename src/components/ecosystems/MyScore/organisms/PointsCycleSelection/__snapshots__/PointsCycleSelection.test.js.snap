@@ -56,6 +56,20 @@ exports[`PointsCycleSelection renders points cycle selection 1`] = `
         </PointsCycleSelectionstyles__CycleText>
       </PointsCycleSelectionstyles__CycleButton>
       <PointsCycleSelectionstyles__CycleButton
+        background="128, 128, 128"
+        color="#fff"
+        key="1"
+        onClick={[Function]}
+      >
+        <PointsCycleSelectionstyles__CycleNumber>
+          1
+        </PointsCycleSelectionstyles__CycleNumber>
+        <PointsCycleSelectionstyles__LineBreak />
+        <PointsCycleSelectionstyles__CycleText>
+           
+        </PointsCycleSelectionstyles__CycleText>
+      </PointsCycleSelectionstyles__CycleButton>
+      <PointsCycleSelectionstyles__CycleButton
         background="#FAFAFA"
         color="#e03726"
         key="2"

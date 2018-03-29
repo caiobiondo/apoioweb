@@ -1305,14 +1305,12 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
               setFieldError={[Function]}
               setFieldTouched={[Function]}
               setFieldValue={[Function]}
-              setFormikState={[Function]}
               setStatus={[Function]}
               setSubmitting={[Function]}
               setTouched={[Function]}
               setValues={[Function]}
               submitForm={[Function]}
               touched={Object {}}
-              validateForm={[Function]}
               validateOnBlur={true}
               validateOnChange={true}
               values={
@@ -2760,14 +2758,12 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
               setFieldError={[Function]}
               setFieldTouched={[Function]}
               setFieldValue={[Function]}
-              setFormikState={[Function]}
               setStatus={[Function]}
               setSubmitting={[Function]}
               setTouched={[Function]}
               setValues={[Function]}
               submitForm={[Function]}
               touched={Object {}}
-              validateForm={[Function]}
               validateOnBlur={true}
               validateOnChange={true}
               values={
@@ -4790,14 +4786,12 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
               setFieldError={[Function]}
               setFieldTouched={[Function]}
               setFieldValue={[Function]}
-              setFormikState={[Function]}
               setStatus={[Function]}
               setSubmitting={[Function]}
               setTouched={[Function]}
               setValues={[Function]}
               submitForm={[Function]}
               touched={Object {}}
-              validateForm={[Function]}
               validateOnBlur={true}
               validateOnChange={true}
               values={
@@ -5079,7 +5073,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                         setFieldError={[Function]}
                         setFieldTouched={[Function]}
                         setFieldValue={[Function]}
-                        setFormikState={[Function]}
                         setStatus={[Function]}
                         setSubmitting={[Function]}
                         setTouched={[Function]}
@@ -5087,7 +5080,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                         submitForm={[Function]}
                         submitted={false}
                         touched={Object {}}
-                        validateForm={[Function]}
                         validateOnBlur={true}
                         validateOnChange={true}
                         values={
@@ -5141,7 +5133,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
-                                inputOnly={false}
                                 label="Nome / Apelido"
                                 maskChar=""
                                 maxlenght={null}
@@ -5163,7 +5154,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
-                                  inputOnly={false}
                                   label="Nome / Apelido"
                                   maskChar=""
                                   maxlenght={null}
@@ -5771,7 +5761,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
-                                inputOnly={false}
                                 label="Nome Completo"
                                 maskChar=""
                                 maxlenght={null}
@@ -5794,7 +5783,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
-                                  inputOnly={false}
                                   label="Nome Completo"
                                   maskChar=""
                                   maxlenght={null}
@@ -6584,14 +6572,14 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   dirty={false}
                                   label="Nascimento"
                                   locale="pt-BR"
-                                  maxDate={2017-12-15T06:41:20.000Z}
-                                  minDate={2017-12-15T06:41:20.000Z}
+                                  maxDate={2017-12-15T04:41:20.000Z}
+                                  minDate={2017-12-15T04:41:20.000Z}
                                   name="customer.birthday"
                                   okLabel="confirmar"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   required={true}
-                                  value={2017-12-15T06:41:20.000Z}
+                                  value={2017-12-15T04:41:20.000Z}
                                 >
                                   <InputDate
                                     autoOk={false}
@@ -6602,15 +6590,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                     disabled={false}
                                     label="Nascimento"
                                     locale="pt-BR"
-                                    maxDate={2017-12-15T06:41:20.000Z}
-                                    minDate={2017-12-15T06:41:20.000Z}
+                                    maxDate={2017-12-15T04:41:20.000Z}
+                                    minDate={2017-12-15T04:41:20.000Z}
                                     name="customer.birthday"
                                     okLabel="confirmar"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     required={true}
                                     showError={true}
-                                    value={2017-12-15T06:41:20.000Z}
+                                    value={2017-12-15T04:41:20.000Z}
                                     width="100%"
                                   >
                                     <FormGroup
@@ -6626,15 +6614,15 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                       help={null}
                                       label="Nascimento"
                                       locale="pt-BR"
-                                      maxDate={2017-12-15T06:41:20.000Z}
-                                      minDate={2017-12-15T06:41:20.000Z}
+                                      maxDate={2017-12-15T04:41:20.000Z}
+                                      minDate={2017-12-15T04:41:20.000Z}
                                       name="customer.birthday"
                                       okLabel="confirmar"
                                       onBlur={[Function]}
                                       onChange={[Function]}
                                       required={true}
                                       showError={true}
-                                      value={2017-12-15T06:41:20.000Z}
+                                      value={2017-12-15T04:41:20.000Z}
                                       width="100%"
                                     >
                                       <styled.div
@@ -6676,8 +6664,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                 hideCalendarDate={false}
                                                 id="customer.birthday"
                                                 locale="pt-BR"
-                                                maxDate={2017-12-15T06:41:20.000Z}
-                                                minDate={2017-12-15T06:41:20.000Z}
+                                                maxDate={2017-12-15T04:41:20.000Z}
+                                                minDate={2017-12-15T04:41:20.000Z}
                                                 name="customer.birthday"
                                                 okLabel="confirmar"
                                                 onChange={[Function]}
@@ -6689,7 +6677,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                     "width": "100%",
                                                   }
                                                 }
-                                                value={2017-12-15T06:41:20.000Z}
+                                                value={2017-12-15T04:41:20.000Z}
                                               >
                                                 <div
                                                   style={
@@ -7250,8 +7238,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                                     firstDayOfWeek={1}
                                                     hideCalendarDate={false}
                                                     locale="pt-BR"
-                                                    maxDate={2017-12-15T06:41:20.000Z}
-                                                    minDate={2017-12-15T06:41:20.000Z}
+                                                    maxDate={2017-12-15T04:41:20.000Z}
+                                                    minDate={2017-12-15T04:41:20.000Z}
                                                     okLabel="confirmar"
                                                     onAccept={[Function]}
                                                     openToYearSelection={false}
@@ -7321,7 +7309,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
-                                inputOnly={false}
                                 label="Email"
                                 maskChar=""
                                 maxlenght={null}
@@ -7344,7 +7331,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
-                                  inputOnly={false}
                                   label="Email"
                                   maskChar=""
                                   maxlenght={null}
@@ -8002,7 +7988,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           disabled={false}
                                           help=""
                                           initialFocus={false}
-                                          inputOnly={false}
                                           label="Telefone"
                                           mask="(99) 9999-99999"
                                           maskChar=""
@@ -8026,7 +8011,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             hasError={false}
                                             help=""
                                             initialFocus={false}
-                                            inputOnly={false}
                                             label="Telefone"
                                             mask="(99) 9999-99999"
                                             maskChar=""
@@ -8663,7 +8647,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           disabled={false}
                                           help=""
                                           initialFocus={false}
-                                          inputOnly={false}
                                           label="Operadora"
                                           maskChar=""
                                           maxlenght={null}
@@ -8685,7 +8668,6 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             hasError={false}
                                             help=""
                                             initialFocus={false}
-                                            inputOnly={false}
                                             label="Operadora"
                                             maskChar=""
                                             maxlenght={null}

@@ -19,18 +19,22 @@ export const ScoreCyclesQuery = gql`
 export const ScoreCyclesQueryOptions = {
   options(props) {
     let cycle = props.growthStatus.cycle;
+    let cycleStart = props.growthStatus.periodStartCycle;
+    let cycleEnd = props.growthStatus.periodEndCycle;
 
     if (props.selectedPeriod === 'last') {
       cycle = props.previousPeriod.start;
+      cycleStart = 11;
+      cycleEnd = 18;
     }
 
     return {
       forceFetch: true,
       variables: {
         consultantId: props.user.codigo,
-        cycleStart: props.growthStatus.periodStartCycle,
-        cycleEnd: props.growthStatus.periodEndCycle,
-        cycle: cycle,
+        cycleStart,
+        cycleEnd,
+        cycle,
       },
     };
   },

@@ -78,7 +78,7 @@ const getCurrentLevel = growthStatus => {
 };
 
 const getPointsToNextLevel = (growthStatus, currentLevel) => {
-  return currentLevel.points - growthStatus.periodTotalPoints;
+  return currentLevel.points + 1 - growthStatus.periodTotalPoints;
 };
 
 const parseAllLevels = growthStatus => {
