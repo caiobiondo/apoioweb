@@ -184,6 +184,7 @@ export class TrainingCoursesList extends Component {
     const { feedbackModalTitle } = this.state;
     const actions = [
       <FlatButton
+        key="ok"
         label={<FormattedMessage id="ok" />}
         primary={true}
         labelStyle={TrainingCourseFeedbackModalAction}

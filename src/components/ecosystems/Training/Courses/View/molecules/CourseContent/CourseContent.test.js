@@ -12,6 +12,7 @@ const setup = propOverrides => {
         ratedByYou: 'true',
         courseContent: {
           video: '',
+          videoEmbed: '',
         },
         thumbnail: '',
       },
@@ -45,27 +46,6 @@ describe('CourseContent', () => {
 
     // then
     expect(result).toMatchSnapshot();
-  });
-
-  describe('when handleStateChange', () => {
-    it('correctly call mutation', () => {
-      // given
-      const defaultState = {
-        ended: true,
-        hasStarted: true,
-        paused: true,
-        currentTime: 1,
-      };
-
-      // when
-      const { props } = setup({ loading: false });
-      const result = mount(<CourseContent {...props} />);
-
-      result.instance().handleStateChange(defaultState, defaultState);
-
-      // then
-      expect(props.mutate).toBeCalled();
-    });
   });
 
   describe('when defineVideoCourseStatus', () => {
