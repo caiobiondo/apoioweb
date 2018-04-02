@@ -1343,6 +1343,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
+            "coursesNoSearchResult": "Nenhum resultado encontrado",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
