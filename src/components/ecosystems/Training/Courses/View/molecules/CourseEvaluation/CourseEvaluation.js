@@ -18,6 +18,8 @@ import {
   ContentWrapper,
   WrapperCount,
 } from './CourseEvaluation.styles';
+import { ToggleStar, ToggleStarBorder } from 'material-ui/svg-icons';
+import { red500 } from 'styles/colors';
 
 export class CourseEvaluation extends Component {
   state = {
@@ -204,6 +206,8 @@ export class CourseEvaluation extends Component {
     const evaluation = evaluations[currentIndex];
     const actions = this.defineModalActions();
 
+    const ratingColorNormal = red500;
+
     return (
       <Dialog
         key="evaluationModal"
@@ -223,6 +227,9 @@ export class CourseEvaluation extends Component {
               itemIconStyle={RatingStyles.itemIconStyle}
               itemStyle={RatingStyles.itemStyle}
               onChange={this.handleRate}
+              iconNormal={<ToggleStarBorder color={ratingColorNormal} />}
+              iconFilled={<ToggleStar color={ratingColorNormal} />}
+              iconHovered={<ToggleStar color={ratingColorNormal} />}
             />
           </RatingWrapper>
         </ContentWrapper>

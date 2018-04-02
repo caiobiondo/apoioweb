@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { fs10, fs14, RobotoRegular, NaturaRegular } from 'styles/typography';
 import { getTheme } from '@entria/components';
-import { gray200, gray700 } from 'styles/colors';
+import { orange100, gray200, gray700 } from 'styles/colors';
 
 export const TittleWrapper = styled.div`
   font-size: ${fs10};
@@ -27,11 +27,13 @@ export const ColWrapper = styled.div`
   }
 `;
 
+/* eslint-disable no-confusing-arrow */
 export const RatingWrapper = styled.div`
   div {
     display: flex;
   }
 `;
+/* eslint-enable no-confusing-arrow */
 
 export const RowWrapper = styled.div`
   margin-top: 40px;

@@ -64,7 +64,7 @@ export class CourseContent extends Component {
 
     if (this.state.ended) {
       this.mutateVideoCourseStatus('terminated');
-      this.setState({ ended: false });
+      this.setState({ ended: true });
     }
   };
 
@@ -90,6 +90,9 @@ export class CourseContent extends Component {
           sellerId: this.props.sellerId,
           courseId: this.props.course.id,
         },
+      })
+      .then(() => {
+        this.props.refetch();
       })
       .catch(err => {
         console.log('err', err);
@@ -130,6 +133,7 @@ export class CourseContent extends Component {
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
+  refetch: PropTypes.func.isRequired,
 };
 
 export default graphql(TrainingCourseUpdateMutation)(CourseContent);
