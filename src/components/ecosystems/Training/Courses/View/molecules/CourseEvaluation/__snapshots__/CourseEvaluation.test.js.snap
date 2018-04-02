@@ -54,17 +54,17 @@ exports[`Course Evaluation Dialogs render evaluation dialog 1`] = `
         disabled={false}
         iconFilled={
           <ToggleStar
-            color="#ff9800"
+            color="#f44336"
           />
         }
         iconHovered={
-          <ToggleStarBorder
-            color="#ff9800"
+          <ToggleStar
+            color="#f44336"
           />
         }
         iconNormal={
           <ToggleStarBorder
-            color="#e0e0e0"
+            color="#f44336"
           />
         }
         itemIconStyle={

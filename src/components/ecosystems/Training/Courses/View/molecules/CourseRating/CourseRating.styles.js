@@ -27,11 +27,13 @@ export const ColWrapper = styled.div`
   }
 `;
 
+/* eslint-disable no-confusing-arrow */
 export const RatingWrapper = styled.div`
   div {
     display: flex;
   }
 `;
+/* eslint-enable no-confusing-arrow */
 
 export const RowWrapper = styled.div`
   margin-top: 40px;

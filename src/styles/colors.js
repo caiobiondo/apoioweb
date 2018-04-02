@@ -21,3 +21,6 @@ export const gray900 = '#222222';
 export const orange100 = '#f3971f';
 
 export const successGreen = '#80ba41';
+
+export const red500 = '#f44336';
+export const red400 = '#ef5350';

@@ -11,6 +11,8 @@ import {
 } from './CourseRating.styles';
 import { translate } from 'locale';
 import { Rating } from 'natura-ui';
+import { ToggleStar, ToggleStarBorder } from 'material-ui/svg-icons';
+import { orange100, gray150, red500 } from 'styles/colors';
 
 export class CourseRating extends Component {
   /* eslint-disable */
@@ -23,17 +25,24 @@ export class CourseRating extends Component {
 
   render() {
     const { course } = this.props;
+
+    const rating = course.ratedByYou === 'true' ? course.myRating : course.generalRating;
+    const ratingColorNormal = course.ratedByYou === 'true' ? red500 : gray150;
+    const ratingColorFilled = course.ratedByYou === 'true' ? red500 : orange100;
+
     return (
       <RowWrapper>
         <Row>
           <ColWrapper>
             <TittleWrapper>{translate('courseRatingAvaliation')}</TittleWrapper>
-            <RatingWrapper>
+            <RatingWrapper ratedByYou={course.ratedByYou}>
               <Rating
-                value={course.generalRating}
+                value={rating}
                 max={5}
                 itemIconStyle={RatingStyles.itemIconStyle}
                 itemStyle={RatingStyles.itemStyle}
+                iconNormal={<ToggleStarBorder color={ratingColorNormal} />}
+                iconFilled={<ToggleStar color={ratingColorFilled} />}
               />
             </RatingWrapper>
           </ColWrapper>

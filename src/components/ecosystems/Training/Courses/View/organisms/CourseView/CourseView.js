@@ -161,7 +161,11 @@ export class CourseView extends Component {
       <Main>
         <Grid fluid>
           <CourseViewHeader />
-          <CourseContent course={course} sellerId={this.props.user.codigo} />
+          <CourseContent
+            course={course}
+            sellerId={this.props.user.codigo}
+            refetch={this.props.refetch}
+          />
           <CourseDescription course={course} />
           <Row>
             <Col md={1} sm={1}>

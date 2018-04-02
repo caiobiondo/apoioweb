@@ -8,11 +8,12 @@ import {
   IconWrapper,
   PlayerWrapper,
 } from './CourseContent.styles';
-import CourseEvaluation from '../CourseEvaluation';
+import CourseEvaluation from '../CourseEvaluation/CourseEvaluation';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import { graphql } from 'react-apollo';
 import { Icon } from 'natura-ui';
 import Player from '@vimeo/player';
+import { translate } from 'locale';
 
 export class CourseContent extends Component {
   state = {
@@ -64,7 +65,7 @@ export class CourseContent extends Component {
 
     if (this.state.ended) {
       this.mutateVideoCourseStatus('terminated');
-      this.setState({ ended: false });
+      this.setState({ ended: true });
     }
   };
 
@@ -91,6 +92,9 @@ export class CourseContent extends Component {
           courseId: this.props.course.id,
         },
       })
+      .then(() => {
+        this.props.refetch();
+      })
       .catch(err => {
         console.log('err', err);
       });
@@ -109,7 +113,7 @@ export class CourseContent extends Component {
               <IconWrapper>
                 <Icon file="ico_warning_info" />
               </IconWrapper>
-              <TrainingCourseTitle>Ooops, video não encontrado :(</TrainingCourseTitle>
+              <TrainingCourseTitle>{translate('trainingVideoNotFound')}</TrainingCourseTitle>
             </TrainingCourseThumbnailDescriptionWrapper>
           </TrainingCourseThumbnail>
         )}
@@ -130,6 +134,7 @@ export class CourseContent extends Component {
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
+  refetch: PropTypes.func.isRequired,
 };
 
 export default graphql(TrainingCourseUpdateMutation)(CourseContent);
