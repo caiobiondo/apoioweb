@@ -22,11 +22,9 @@ exports[`RelatedCourses should render a slide with the courses 1`] = `
       </RelatedCoursesstyles__Header>
       <RelatedCoursesstyles__CourseCoverList>
         <Slider
-          arrows={true}
+          arrows={false}
           draggable={false}
           infinite={false}
-          nextArrow={<div />}
-          prevArrow={<div />}
           responsive={
             Array [
               Object {
