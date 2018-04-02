@@ -30,6 +30,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
           "views": 12,
         }
       }
+      refetch={[Function]}
       sellerId={1234}
     />
     <CourseDescription

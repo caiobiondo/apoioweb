@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render, mount, shallow } from 'enzyme';
 import { CourseContent } from './CourseContent';
 
 const setup = propOverrides => {
@@ -27,6 +27,7 @@ const setup = propOverrides => {
           },
         }),
       ),
+      refetch: jest.fn(),
     },
     propOverrides,
   );
@@ -91,7 +92,37 @@ describe('CourseContent', () => {
       });
 
       // then
-      expect(result.state('ended')).toBe(false);
+      expect(result.state('ended')).toBeTruthy();
+    });
+
+    it('shows evaluation modal', done => {
+      // given
+      const params = {
+        course: {
+          id: 1,
+          title: '',
+          type: 'VIDEO',
+          ratedByYou: 'false',
+          courseContent: {
+            video: '',
+            videoEmbed: '',
+          },
+          thumbnail: '',
+        },
+        loading: false,
+      };
+      // when
+      const { props } = setup(params);
+
+      const result = shallow(<CourseContent {...props} />);
+
+      result.setState({ ended: true }, () => {
+        result.instance().defineVideoCourseStatus();
+        done();
+      });
+
+      // then
+      expect(result.find('Apollo(Apollo(CourseEvaluation))').exists()).toBeTruthy();
     });
   });
 });

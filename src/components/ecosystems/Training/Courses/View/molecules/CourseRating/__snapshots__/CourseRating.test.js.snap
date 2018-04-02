@@ -12,7 +12,7 @@ exports[`CourseRating should render course rating 1`] = `
           disabled={false}
           iconFilled={
             <ToggleStar
-              color="#ff9800"
+              color="#f3971f"
             />
           }
           iconHovered={
@@ -22,7 +22,7 @@ exports[`CourseRating should render course rating 1`] = `
           }
           iconNormal={
             <ToggleStarBorder
-              color="#e0e0e0"
+              color="#dddddd"
             />
           }
           itemIconStyle={
