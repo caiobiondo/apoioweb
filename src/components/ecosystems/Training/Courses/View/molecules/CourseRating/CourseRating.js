@@ -17,8 +17,8 @@ import { orange100, gray150, red500 } from 'styles/colors';
 export class CourseRating extends Component {
   /* eslint-disable */
   getDurationInMinutes = course => {
-    return `${Math.floor(course.durationInSeconds / 60)}:${('0' +
-      Math.floor(course.durationInSeconds % 60)
+    return `${Math.floor(course.durationInSeconds / 60)}:${(
+      '0' + Math.floor(course.durationInSeconds % 60)
     ).slice(-2)}`;
   };
   /* eslint-enable */
@@ -43,6 +43,7 @@ export class CourseRating extends Component {
                 itemStyle={RatingStyles.itemStyle}
                 iconNormal={<ToggleStarBorder color={ratingColorNormal} />}
                 iconFilled={<ToggleStar color={ratingColorFilled} />}
+                readOnly
               />
             </RatingWrapper>
           </ColWrapper>

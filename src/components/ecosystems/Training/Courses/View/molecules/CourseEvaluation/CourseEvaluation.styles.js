@@ -35,6 +35,11 @@ export const RatingWrapper = styled.div`
   div {
     display: flex;
   }
+
+  svg {
+    height: 15px;
+    width: 15px;
+  }
 `;
 
 export const RatingStyles = {

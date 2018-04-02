@@ -39,7 +39,7 @@ exports[`CourseRating should render course rating 1`] = `
             }
           }
           max={5}
-          readOnly={false}
+          readOnly={true}
           tooltipPosition="bottom-center"
           value={4}
         />

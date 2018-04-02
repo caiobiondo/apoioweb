@@ -32,6 +32,11 @@ export const RatingWrapper = styled.div`
   div {
     display: flex;
   }
+
+  svg {
+    height: 15px;
+    width: 15px;
+  }
 `;
 /* eslint-enable no-confusing-arrow */
 
