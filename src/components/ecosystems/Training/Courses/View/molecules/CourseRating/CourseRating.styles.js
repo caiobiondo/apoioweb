@@ -29,11 +29,13 @@ export const ColWrapper = styled.div`
 
 /* eslint-disable no-confusing-arrow */
 export const RatingWrapper = styled.div`
-  width: 75px;
-  height: 15px;
-
   div {
     display: flex;
+  }
+
+  svg {
+    height: 15px;
+    width: 15px;
   }
 `;
 /* eslint-enable no-confusing-arrow */
