@@ -217,6 +217,7 @@ export class TrainingCoursesList extends Component {
       description: 'myTrainingsSearchDescription',
       inputLabel: 'trainingLabel',
     };
+    const titleToEmptyList = this.props.courseFilter ? 'coursesNoSearchResult' : 'coursesEmptyList';
 
     return (
       <StartedWrapper>
@@ -236,7 +237,7 @@ export class TrainingCoursesList extends Component {
             emptyList={
               <EmptyList
                 icon="ico_list_add"
-                titleId="coursesEmptyList"
+                titleId={titleToEmptyList}
                 descriptionId="coursesEmptyListDescription"
               />
             }
