@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'natura-ui';
+import { withRouter } from 'react-router-dom';
 
 import { orange100 } from 'styles/colors';
 
 import {
   CategoryCourseWrapper,
   CategoryCourseCover,
-  CategoryCourseLink,
   CategoryCourseTitleWrapper,
   CategoryCourseIcon,
   CategoryCourseTitle,
   CategoryCourseDuration,
 } from './CategoryCourse.styles.js';
 
-const CategoryCourse = ({ course }) => {
+export const CategoryCourse = ({ course, ...props }) => {
   const getCourseIconFileName = () => {
     if (course && course.type === 'VIDEO') {
       return 'ico_film_stock';
@@ -59,20 +59,24 @@ const CategoryCourse = ({ course }) => {
     return course.stoppedAt / 100 * course.durationInSeconds;
   };
 
+  const handleCourseClick = () => {
+    const url = course.type === 'VIDEO' ? `${course.id}` : `${course.id}/start`;
+
+    props.history.push(`/training/courses/${url}`);
+  };
+
   return (
-    <CategoryCourseWrapper>
-      <CategoryCourseLink href={`/training/courses/${course.id}`} title={course.title}>
-        <CategoryCourseCover thumbnail={course.thumbnail} />
+    <CategoryCourseWrapper onClick={handleCourseClick}>
+      <CategoryCourseCover thumbnail={course.thumbnail} />
 
-        <CategoryCourseTitleWrapper viewedPercentage={getViewedPercentage()}>
-          <CategoryCourseIcon>
-            <Icon file={getCourseIconFileName()} color={orange100} />
-          </CategoryCourseIcon>
-          <CategoryCourseTitle>{getTruncatedTitle()}</CategoryCourseTitle>
+      <CategoryCourseTitleWrapper viewedPercentage={getViewedPercentage()}>
+        <CategoryCourseIcon>
+          <Icon file={getCourseIconFileName()} color={orange100} />
+        </CategoryCourseIcon>
+        <CategoryCourseTitle>{getTruncatedTitle()}</CategoryCourseTitle>
 
-          {getDurationNode()}
-        </CategoryCourseTitleWrapper>
-      </CategoryCourseLink>
+        {getDurationNode()}
+      </CategoryCourseTitleWrapper>
     </CategoryCourseWrapper>
   );
 };
@@ -81,4 +85,4 @@ CategoryCourse.propTypes = {
   course: PropTypes.object.isRequired,
 };
 
-export default CategoryCourse;
+export default withRouter(CategoryCourse);

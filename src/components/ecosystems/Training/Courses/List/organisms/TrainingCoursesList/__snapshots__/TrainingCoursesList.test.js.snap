@@ -1,49 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Training Courses List renders correctly when the list is not empty 1`] = `
-<TrainingCoursesListstyles__TrainingCoursesListWrapper>
-  <PageMenu />
-  <InfiniteScroll
-    debounce={500}
-    emptyList={
-      <EmptyList
-        descriptionId="coursesEmptyListDescription"
-        icon="ico_list_add"
-        titleId="coursesEmptyList"
-      />
+<TrainingCoursesListstyles__StartedWrapper>
+  <Apollo(withRouter(StartedCoursesList))
+    status="started"
+    user={
+      Object {
+        "codigo": 1234,
+      }
     }
-    hasMore={false}
-    items={
-      Array [
+  />
+  <TrainingCoursesListstyles__CourseSearchContainer>
+    <BaseFormSearch
+      description="myTrainingsSearchDescription"
+      inputLabel="trainingLabel"
+      onSearch={[Function]}
+      sectionTitle={
         Object {
-          "dateUpload": "2017-04-20T00:00:00.000Z",
-          "description": "new course description",
-          "durationInSeconds": 1234,
-          "isfavorite": true,
-          "status": "started",
-          "stoppedAt": 12,
-          "title": "new course",
-          "type": "VIDEO",
-          "views": 12,
-        },
-        Object {
-          "dateUpload": "2017-04-20T00:00:00.000Z",
-          "description": "new course description",
-          "durationInSeconds": 1234,
-          "isfavorite": false,
-          "status": "completed",
-          "stoppedAt": 12,
-          "title": "new course",
-          "type": "HTML5",
-          "views": 12,
-        },
-      ]
-    }
-    loading={false}
-    onScroll={[Function]}
-  >
-    <TrainingCourses
-      courses={
+          "iconName": "ico_graduate_cap",
+          "value": "myTrainings",
+        }
+      }
+    />
+  </TrainingCoursesListstyles__CourseSearchContainer>
+  <TrainingCoursesListstyles__TrainingCoursesListWrapper>
+    <PageMenu />
+    <InfiniteScroll
+      debounce={500}
+      emptyList={
+        <EmptyList
+          descriptionId="coursesEmptyListDescription"
+          icon="ico_list_add"
+          titleId="coursesEmptyList"
+        />
+      }
+      hasMore={false}
+      items={
         Array [
           Object {
             "dateUpload": "2017-04-20T00:00:00.000Z",
@@ -69,66 +61,98 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
           },
         ]
       }
-      fetchMore={[Function]}
-      intl={
-        Object {
-          "formatMessage": [Function],
-        }
-      }
       loading={false}
-      mutate={[Function]}
-      onLoadFinished={[Function]}
-      refetch={[Function]}
-      renderMenuItems={[Function]}
-      user={
+      onScroll={[Function]}
+    >
+      <TrainingCourses
+        courses={
+          Array [
+            Object {
+              "dateUpload": "2017-04-20T00:00:00.000Z",
+              "description": "new course description",
+              "durationInSeconds": 1234,
+              "isfavorite": true,
+              "status": "started",
+              "stoppedAt": 12,
+              "title": "new course",
+              "type": "VIDEO",
+              "views": 12,
+            },
+            Object {
+              "dateUpload": "2017-04-20T00:00:00.000Z",
+              "description": "new course description",
+              "durationInSeconds": 1234,
+              "isfavorite": false,
+              "status": "completed",
+              "stoppedAt": 12,
+              "title": "new course",
+              "type": "HTML5",
+              "views": 12,
+            },
+          ]
+        }
+        fetchMore={[Function]}
+        intl={
+          Object {
+            "formatMessage": [Function],
+          }
+        }
+        loading={false}
+        mutate={[Function]}
+        onLoadFinished={[Function]}
+        onSearch={[Function]}
+        refetch={[Function]}
+        renderMenuItems={[Function]}
+        user={
+          Object {
+            "codigo": 1234,
+          }
+        }
+      />
+    </InfiniteScroll>
+    <Dialog
+      actions={
+        Array [
+          <FlatButton
+            disabled={false}
+            fullWidth={false}
+            label={
+                <FormattedMessage
+                    id="ok"
+                    values={Object {}}
+                />
+            }
+            labelPosition="after"
+            labelStyle={
+                Object {
+                    "fontFamily": "Roboto-Regular",
+                  }
+            }
+            onClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={true}
+            secondary={false}
+        />,
+        ]
+      }
+      autoDetectWindowHeight={true}
+      autoScrollBodyContent={false}
+      key="feedbackModal"
+      modal={false}
+      onRequestClose={[Function]}
+      open={false}
+      repositionOnUpdate={true}
+      title=""
+      titleStyle={
         Object {
-          "codigo": 1234,
+          "fontFamily": "NaturaSans-Bold",
+          "fontSize": "25px",
         }
       }
     />
-  </InfiniteScroll>
-  <Dialog
-    actions={
-      Array [
-        <FlatButton
-          disabled={false}
-          fullWidth={false}
-          label={
-              <FormattedMessage
-                  id="ok"
-                  values={Object {}}
-              />
-          }
-          labelPosition="after"
-          labelStyle={
-              Object {
-                  "fontFamily": "Roboto-Regular",
-                }
-          }
-          onClick={[Function]}
-          onKeyboardFocus={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onTouchStart={[Function]}
-          primary={true}
-          secondary={false}
-      />,
-      ]
-    }
-    autoDetectWindowHeight={true}
-    autoScrollBodyContent={false}
-    key="feedbackModal"
-    modal={false}
-    onRequestClose={[Function]}
-    open={false}
-    repositionOnUpdate={true}
-    title=""
-    titleStyle={
-      Object {
-        "fontFamily": "NaturaSans-Bold",
-        "fontSize": "25px",
-      }
-    }
-  />
-</TrainingCoursesListstyles__TrainingCoursesListWrapper>
+  </TrainingCoursesListstyles__TrainingCoursesListWrapper>
+</TrainingCoursesListstyles__StartedWrapper>
 `;

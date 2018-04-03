@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TrainingCoursesList Ecosystem should render the training courses list page 1`] = `
-<indexstyles__Main
-  empty={false}
-  loading={true}
->
+<indexstyles__Main>
   <Apollo(Apollo(TrainingCoursesList))
+    courseFilter=""
     onLoadFinished={[Function]}
-    productSearch={undefined}
+    onSearch={[Function]}
     user={undefined}
   />
 </indexstyles__Main>

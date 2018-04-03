@@ -8,6 +8,7 @@ export const CourseViewQuery = gql`
         video
         html5
         web
+        videoEmbed
       }
       durationInSeconds
       description

@@ -1,6 +1,5 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
-import { shallow } from 'enzyme';
+import { shallow, render } from 'enzyme';
 import TrainingMyList from './index';
 
 const baseState = {
@@ -10,18 +9,22 @@ const baseState = {
 
 describe('TrainingMyList Ecosystem', () => {
   it('should render the training courses list page', () => {
-    const renderer = new ShallowRenderer();
+    const props = {
+      user: { codigo: 1 },
+    };
 
-    renderer.render(<TrainingMyList />);
-    const result = renderer.getRenderOutput();
+    const result = shallow(<TrainingMyList {...props} />);
 
     expect(result).toMatchSnapshot();
   });
 
   it('should update empty and loading state', () => {
     const expectedState = { ...baseState, empty: true, loading: false };
+    const props = {
+      user: { codigo: 1 },
+    };
 
-    const result = shallow(<TrainingMyList />);
+    const result = shallow(<TrainingMyList {...props} />);
     const instance = result.instance();
     instance.onLoadFinished(true, false);
 

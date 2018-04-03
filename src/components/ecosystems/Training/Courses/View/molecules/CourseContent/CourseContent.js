@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ContentWrapper } from './CourseContent.styles';
-import { Player, BigPlayButton } from 'video-react';
-import CourseEvaluation from '../CourseEvaluation';
-import 'video-react/dist/video-react.css';
+import {
+  ContentWrapper,
+  TrainingCourseThumbnail,
+  TrainingCourseThumbnailDescriptionWrapper,
+  TrainingCourseTitle,
+  IconWrapper,
+  PlayerWrapper,
+} from './CourseContent.styles';
+import CourseEvaluation from '../CourseEvaluation/CourseEvaluation';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import { graphql } from 'react-apollo';
+import { Icon } from 'natura-ui';
+import Player from '@vimeo/player';
+import { translate } from 'locale';
 
 export class CourseContent extends Component {
   state = {
@@ -16,7 +24,28 @@ export class CourseContent extends Component {
   };
 
   componentDidMount() {
-    this.refs.player.subscribeToStateChange(this.handleStateChange.bind(this));
+    if (!this.props.course.courseContent.videoEmbed) {
+      return;
+    }
+
+    const player = new Player(document.querySelector('iframe'));
+
+    player.on('ended', () => {
+      this.setState({ ended: true }, this.defineVideoCourseStatus);
+    });
+
+    player.on('play', () => {
+      this.setState({ hasStarted: true }, this.defineVideoCourseStatus);
+    });
+
+    player.on('pause', ({ seconds }) => {
+      this.setState({ paused: true, currentTime: seconds }, this.defineVideoCourseStatus);
+    });
+
+    const startTime = this.props.course.stoppedAt || 0;
+    player.setCurrentTime(startTime).then(() => {
+      player.pause();
+    });
   }
 
   componentWillUnmount() {
@@ -36,7 +65,7 @@ export class CourseContent extends Component {
 
     if (this.state.ended) {
       this.mutateVideoCourseStatus('terminated');
-      this.setState({ ended: false });
+      this.setState({ ended: true });
     }
   };
 
@@ -63,49 +92,37 @@ export class CourseContent extends Component {
           courseId: this.props.course.id,
         },
       })
+      .then(() => {
+        this.props.refetch();
+      })
       .catch(err => {
         console.log('err', err);
       });
   };
 
-  handleStateChange(state, prevState) {
-    this.setState({ currentTime: state.currentTime });
-
-    if (state.hasStarted !== prevState.hasStarted) {
-      this.setState({ hasStarted: true }, this.defineVideoCourseStatus);
-      return;
-    }
-
-    if (state.paused && state.paused !== prevState.paused) {
-      this.setState({ paused: true, currentTime: state.currentTime }, this.defineVideoCourseStatus);
-      return;
-    }
-
-    if (!state.paused && prevState.paused) {
-      this.setState({ hasStarted: true }, this.defineVideoCourseStatus);
-      return;
-    }
-
-    if (state.ended) this.setState({ ended: true }, this.defineVideoCourseStatus);
-  }
-
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
 
   render() {
     const { course } = this.props;
-    const startTime = course.stoppedAt || 0;
 
     return (
       <ContentWrapper>
-        <Player
-          ref="player"
-          poster={course.thumbnail}
-          src={course.courseContent.video}
-          fluid={false}
-          startTime={startTime}
-        >
-          <BigPlayButton position="center" />
-        </Player>
+        {!course.courseContent.videoEmbed && (
+          <TrainingCourseThumbnail imageUrl={course.thumbnail}>
+            <TrainingCourseThumbnailDescriptionWrapper>
+              <IconWrapper>
+                <Icon file="ico_warning_info" />
+              </IconWrapper>
+              <TrainingCourseTitle>{translate('trainingVideoNotFound')}</TrainingCourseTitle>
+            </TrainingCourseThumbnailDescriptionWrapper>
+          </TrainingCourseThumbnail>
+        )}
+        {!!course.courseContent.videoEmbed && (
+          <PlayerWrapper
+            ref="player"
+            dangerouslySetInnerHTML={{ __html: course.courseContent.videoEmbed }}
+          />
+        )}
         {this.canRenderEvaluation() && (
           <CourseEvaluation courseId={course.id} sellerId={this.props.sellerId} />
         )}
@@ -117,6 +134,7 @@ export class CourseContent extends Component {
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
+  refetch: PropTypes.func.isRequired,
 };
 
 export default graphql(TrainingCourseUpdateMutation)(CourseContent);

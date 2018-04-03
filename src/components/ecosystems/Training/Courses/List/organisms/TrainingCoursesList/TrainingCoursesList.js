@@ -7,7 +7,6 @@ import {
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose } from 'react-apollo';
-
 import { translate } from 'locale';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
@@ -24,10 +23,16 @@ import { Loading } from 'natura-ui';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
+import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
+
+import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
+
 import {
+  StartedWrapper,
   TrainingCoursesListWrapper,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
+  CourseSearchContainer,
 } from './TrainingCoursesList.styles';
 
 export class TrainingCoursesList extends Component {
@@ -179,6 +184,7 @@ export class TrainingCoursesList extends Component {
     const { feedbackModalTitle } = this.state;
     const actions = [
       <FlatButton
+        key="ok"
         label={<FormattedMessage id="ok" />}
         primary={true}
         labelStyle={TrainingCourseFeedbackModalAction}
@@ -204,27 +210,43 @@ export class TrainingCoursesList extends Component {
       return <Loading background="transparent" />;
     }
 
+    const baseFormSearchProps = {
+      onSearch: this.props.onSearch,
+      searchValue: this.props.courseFilter,
+      sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
+      description: 'myTrainingsSearchDescription',
+      inputLabel: 'trainingLabel',
+    };
+    const titleToEmptyList = this.props.courseFilter ? 'coursesNoSearchResult' : 'coursesEmptyList';
+
     return (
-      <TrainingCoursesListWrapper>
-        <PageMenu />
-        <InfiniteScroll
-          onScroll={this.props.fetchMore}
-          hasMore={this.props.hasNextPage}
-          loading={this.props.loading}
-          debounce={500}
-          items={this.props.courses}
-          emptyList={
-            <EmptyList
-              icon="ico_list_add"
-              titleId="coursesEmptyList"
-              descriptionId="coursesEmptyListDescription"
-            />
-          }
-        >
-          <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
-        </InfiniteScroll>
-        {this.renderFeedbackModal()}
-      </TrainingCoursesListWrapper>
+      <StartedWrapper>
+        <StartedCoursesList status="started" user={this.props.user} />
+        <CourseSearchContainer>
+          <BaseFormSearch {...baseFormSearchProps} />
+        </CourseSearchContainer>
+
+        <TrainingCoursesListWrapper>
+          <PageMenu />
+          <InfiniteScroll
+            onScroll={this.props.fetchMore}
+            hasMore={this.props.hasNextPage}
+            loading={this.props.loading}
+            debounce={500}
+            items={this.props.courses}
+            emptyList={
+              <EmptyList
+                icon="ico_list_add"
+                titleId={titleToEmptyList}
+                descriptionId="coursesEmptyListDescription"
+              />
+            }
+          >
+            <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
+          </InfiniteScroll>
+          {this.renderFeedbackModal()}
+        </TrainingCoursesListWrapper>
+      </StartedWrapper>
     );
   }
 }

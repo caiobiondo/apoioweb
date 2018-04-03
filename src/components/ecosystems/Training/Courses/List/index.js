@@ -6,21 +6,37 @@ class TrainingWrapper extends Component {
   state = {
     empty: false,
     loading: true,
+    courseFilter: '',
   };
+
+  componentWillMount() {
+    const params = new URLSearchParams(this.props.location.search);
+    const filter = params.get('filter');
+    if (filter) {
+      this.onSearch({ name: filter });
+    }
+  }
 
   onLoadFinished = (empty, loading) => {
     this.setState({ empty: empty, loading: loading });
   };
 
-  render() {
-    const { loading, empty } = this.state;
+  onSearch = filter => {
+    this.setState({
+      courseFilter: filter.name,
+      loading: true,
+      empty: false,
+    });
+  };
 
+  render() {
     return (
-      <Main loading={loading} empty={empty}>
+      <Main>
         <TrainingCoursesList
           user={this.props.user}
           onLoadFinished={this.onLoadFinished}
-          productSearch={this.state.productSearch}
+          courseFilter={this.state.courseFilter}
+          onSearch={this.onSearch}
         />
       </Main>
     );

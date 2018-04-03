@@ -79,28 +79,28 @@ const renderCycle = (cycle, props) => {
 const getCycles = props => {
   const { startCycle, endCycle, currentCycleNumber, scoreCycles } = props;
   const currentPeriodSelected = props.selectedPeriod === 'current';
-  const range = [...Array(endCycle).keys()];
-  let cycles = range.reduce((cycles, cycleNumber) => {
-    cycleNumber += 1;
+  let cycles = [];
+  const range = [...Array(endCycle + 1).keys()];
 
-    if (cycleNumber >= startCycle) {
-      cycles[cycleNumber] = {
+  if (currentPeriodSelected) {
+    cycles = range.map(cycleNumber => {
+      return {
         number: cycleNumber,
         text: '\u00A0',
       };
-    }
-
-    return cycles;
-  }, []);
+    });
+  }
 
   /* eslint-disable camelcase */
   scoreCycles.forEach(cycle => {
     const points = cycle.vl_score;
-    cycles[cycle.nm_cycle] = {
+    const newCycle = {
       number: cycle.nm_cycle,
       text: getCycleText(cycle.nm_cycle, currentCycleNumber, points, currentPeriodSelected),
       points,
     };
+
+    startCycle === cycle.nm_cycle ? (cycles[0] = newCycle) : (cycles[cycle.nm_cycle] = newCycle);
   });
   /* eslint-enable camelcase */
 

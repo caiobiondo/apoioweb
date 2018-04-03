@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { Icon } from 'natura-ui';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
 
 import {
@@ -12,19 +12,21 @@ import {
 } from './CourseViewHeader.styles';
 
 export class CourseViewHeader extends Component {
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <Header>
         <Row>
-          <Col md={4} sm={12}>
-            <BackButtonWrapper>
-              <Link to="/training/categories">
-                <BackButtonIcon>
-                  <Icon file="ico_back" />
-                </BackButtonIcon>
+          <Col md={12} sm={12}>
+            <BackButtonWrapper onClick={this.goBack}>
+              <BackButtonIcon>
+                <Icon file="ico_back" />
+              </BackButtonIcon>
 
-                <BackButtonText>{translate('trainings')}</BackButtonText>
-              </Link>
+              <BackButtonText>{translate('trainings')}</BackButtonText>
             </BackButtonWrapper>
           </Col>
         </Row>
@@ -33,4 +35,4 @@ export class CourseViewHeader extends Component {
   }
 }
 
-export default CourseViewHeader;
+export default withRouter(CourseViewHeader);

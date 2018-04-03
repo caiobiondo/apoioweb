@@ -3,9 +3,7 @@
 exports[`CourseRating should render course rating 1`] = `
 <CourseRatingstyles__RowWrapper>
   <Row>
-    <CourseRatingstyles__ColWrapper
-      borderRight={true}
-    >
+    <CourseRatingstyles__ColWrapper>
       <CourseRatingstyles__TittleWrapper>
         Avaliação
       </CourseRatingstyles__TittleWrapper>
@@ -14,7 +12,7 @@ exports[`CourseRating should render course rating 1`] = `
           disabled={false}
           iconFilled={
             <ToggleStar
-              color="#ff9800"
+              color="#f3971f"
             />
           }
           iconHovered={
@@ -24,7 +22,7 @@ exports[`CourseRating should render course rating 1`] = `
           }
           iconNormal={
             <ToggleStarBorder
-              color="#e0e0e0"
+              color="#dddddd"
             />
           }
           itemIconStyle={
@@ -41,19 +39,11 @@ exports[`CourseRating should render course rating 1`] = `
             }
           }
           max={5}
-          readOnly={false}
+          readOnly={true}
           tooltipPosition="bottom-center"
           value={4}
         />
       </CourseRatingstyles__RatingWrapper>
-    </CourseRatingstyles__ColWrapper>
-    <CourseRatingstyles__ColWrapper>
-      <CourseRatingstyles__TittleWrapper>
-        Tempo
-      </CourseRatingstyles__TittleWrapper>
-      <CourseRatingstyles__TimeWrapper>
-        1:00
-      </CourseRatingstyles__TimeWrapper>
     </CourseRatingstyles__ColWrapper>
   </Row>
 </CourseRatingstyles__RowWrapper>

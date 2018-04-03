@@ -42,6 +42,7 @@ export const TrainingCourseDescriptionWrapper = styled.div`
 export const TrainingCourseDescription = styled.div`
   display: inline-block;
   padding-right: 35px;
+  cursor: pointer;
 `;
 
 export const TrainingCourseDescriptionTitle = styled.div`
@@ -61,6 +62,7 @@ export const TrainingCourseThumbnail = styled.div`
   position: relative;
   height: 200px;
   background-color: ${gray100};
+  cursor: pointer;
 
   > div:first-child {
     display: flex;

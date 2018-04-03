@@ -18,20 +18,27 @@ export const TimeWrapper = styled.div`
 `;
 
 export const ColWrapper = styled.div`
-  border-right: ${props => {
-    return props.borderRight ? `1px solid ${gray200}` : '0px';
-  }};
-
-  width: 110px;
   height: 50px;
-  margin-right: 25px;
+  padding-right: 25px;
+
+  & + & {
+    border-left: 1px solid ${gray200};
+    padding-left: 25px;
+  }
 `;
 
+/* eslint-disable no-confusing-arrow */
 export const RatingWrapper = styled.div`
   div {
     display: flex;
   }
+
+  svg {
+    height: 15px;
+    width: 15px;
+  }
 `;
+/* eslint-enable no-confusing-arrow */
 
 export const RowWrapper = styled.div`
   margin-top: 40px;

@@ -9,3 +9,7 @@ export const Main = styled.div`
     margin: ${spMedium} 0;
   }
 `;
+
+export const CourseSearchContainer = styled.div`
+  margin-bottom: ${spMedium};
+`;

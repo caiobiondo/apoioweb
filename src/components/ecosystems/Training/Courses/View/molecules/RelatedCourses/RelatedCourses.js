@@ -39,7 +39,7 @@ export class RelatedCourses extends Component {
     };
     const unslick = {
       infinite: false,
-      arrows: true,
+      arrows: false,
       draggable: false,
       responsive: [
         { breakpoint: 950, settings: 'unslick' },
@@ -48,8 +48,6 @@ export class RelatedCourses extends Component {
         { breakpoint: 1500, settings: { slidesToShow: 4 } },
         { breakpoint: 10000, settings: 'unslick' },
       ],
-      prevArrow: <div />,
-      nextArrow: <div />,
     };
 
     return coursesLength < 5 ? unslick : slick;
@@ -57,7 +55,7 @@ export class RelatedCourses extends Component {
 
   render() {
     const { courses } = this.props;
-    if (!courses) return null;
+    if (!courses || courses.length === 0) return null;
     const currentSettings = this.slickSettings(courses.length);
 
     return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Category from './CategoryCourse';
+import { CategoryCourse } from './CategoryCourse';
 
 const setup = propOverrides => {
   const props = Object.assign({}, propOverrides);
 
-  const result = shallow(<Category {...props} />);
+  const result = shallow(<CategoryCourse {...props} />);
 
   return {
     props,

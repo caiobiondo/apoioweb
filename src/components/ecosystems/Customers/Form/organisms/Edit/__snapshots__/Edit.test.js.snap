@@ -867,6 +867,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "continueCourses": "Continue seus cursos",
+            "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
             "courseEvaluationBack": "Voltar",
@@ -880,6 +882,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
+            "coursesNoSearchResult": "Nenhum resultado encontrado",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -915,6 +918,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
             "female": "Feminino",
+            "finishTraining": "Finalizar treinamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -972,6 +976,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
+            "myTrainings": "Meus Treinamentos",
+            "myTrainingsSearchDescription": "Faça um busca rápida dos treinamentos disponíveis",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
             "ok": "OK",
@@ -1040,11 +1046,14 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
+            "resumeTraining": "Continuar treinamento",
+            "reviewTraining": "Revisar treinamento",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
             "selectedCustomers": "clientes selecionadas",
+            "startTraining": "Iniciar treinamento",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
@@ -1085,10 +1094,13 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
             "trainingCategoryCompleted": "Completa",
             "trainingCourseCompleted": "Concluído",
+            "trainingLabel": "Treinamento",
             "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainingStatusUpdateError": "Ocorreu um erro ao atualizar o status do curso",
+            "trainingVideoNotFound": "Ooops, video não encontrado :(",
             "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
@@ -2453,6 +2465,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "continueCourses": "Continue seus cursos",
+            "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
             "courseEvaluationBack": "Voltar",
@@ -2466,6 +2480,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
+            "coursesNoSearchResult": "Nenhum resultado encontrado",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -2501,6 +2516,7 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
             "female": "Feminino",
+            "finishTraining": "Finalizar treinamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -2558,6 +2574,8 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
+            "myTrainings": "Meus Treinamentos",
+            "myTrainingsSearchDescription": "Faça um busca rápida dos treinamentos disponíveis",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
             "ok": "OK",
@@ -2626,11 +2644,14 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
+            "resumeTraining": "Continuar treinamento",
+            "reviewTraining": "Revisar treinamento",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
             "selectedCustomers": "clientes selecionadas",
+            "startTraining": "Iniciar treinamento",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
@@ -2671,10 +2692,13 @@ exports[`EditCustomerForm rendering correctly renders the customer form when the
             "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
             "trainingCategoryCompleted": "Completa",
             "trainingCourseCompleted": "Concluído",
+            "trainingLabel": "Treinamento",
             "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainingStatusUpdateError": "Ocorreu um erro ao atualizar o status do curso",
+            "trainingVideoNotFound": "Ooops, video não encontrado :(",
             "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
@@ -4332,6 +4356,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "certificate": "Certificado",
             "certificatesEmptyListDescription": "Não existem certificados disponíveis.",
             "checkYourScore": "Confira sua Pontuação",
+            "continueCourses": "Continue seus cursos",
+            "courseAddEvaluationDuplicationError": "Não é possível realizar a avaliação novamente",
             "courseAddEvaluationError": "Não foi possível realizar a avaliação",
             "courseAddEvaluationSuccess": "Avaliação realizada com sucesso!",
             "courseEvaluationBack": "Voltar",
@@ -4345,6 +4371,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "courses": "Cursos",
             "coursesEmptyList": "Lista vazia",
             "coursesEmptyListDescription": "Não existem cursos disponíveis.",
+            "coursesNoSearchResult": "Nenhum resultado encontrado",
             "current": "atual",
             "currentMagazine": "Revista Atual",
             "currentPeriod": "Período atual",
@@ -4380,6 +4407,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "error": "Erro",
             "errorMessage": "Desculpe, houve um erro no processamento",
             "female": "Feminino",
+            "finishTraining": "Finalizar treinamento",
             "formCustomerAddAnotherPhone": "Adicionar outro telefone",
             "formCustomerAddress": "Endereço",
             "formCustomerBack": "Voltar",
@@ -4437,6 +4465,8 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "myCustomers": "Meus Clientes",
             "myList": "Minha Lista",
             "myStock": "Meu Estoque",
+            "myTrainings": "Meus Treinamentos",
+            "myTrainingsSearchDescription": "Faça um busca rápida dos treinamentos disponíveis",
             "naturaNetworkPointsTitle": "Rede Natura",
             "noDataToGenerateGraphExplanation": "Não há dados.",
             "ok": "OK",
@@ -4505,11 +4535,14 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "relatedTraining": "Treinamentos relacionados",
             "remove": "Excluir",
             "required": "{field} é obrigatório",
+            "resumeTraining": "Continuar treinamento",
+            "reviewTraining": "Revisar treinamento",
             "scoreExplanation": "Você pode mudar de nível a qualquer momento e ter mais vantagens. Veja quantos pontos você precisa para trocar de nível.",
             "scoreLabel": "Pontuação:",
             "scoreStatementInPeriod": "Extrato de Pontos no Período",
             "search": "Buscar",
             "selectedCustomers": "clientes selecionadas",
+            "startTraining": "Iniciar treinamento",
             "stockAddProduct": "Adicionar novo produto",
             "stockEmptyList": "Estoque vazio",
             "stockEmptyListDescription": "Você ainda não possui produtos em seu estoque",
@@ -4550,10 +4583,13 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
             "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
             "trainingCategoryCompleted": "Completa",
             "trainingCourseCompleted": "Concluído",
+            "trainingLabel": "Treinamento",
             "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",
             "trainingRemoveCourseMyList": "Remover da minha lista",
             "trainingRemoveCourseSuccess": "Treinamento removido de sua lista com sucesso!",
+            "trainingStatusUpdateError": "Ocorreu um erro ao atualizar o status do curso",
+            "trainingVideoNotFound": "Ooops, video não encontrado :(",
             "trainings": "Treinamentos",
             "viewAllCourses": "Ver todos",
             "viewMore": "Ver mais",
@@ -5111,6 +5147,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
+                                inputOnly={false}
                                 label="Nome / Apelido"
                                 maskChar=""
                                 maxlenght={null}
@@ -5132,6 +5169,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
+                                  inputOnly={false}
                                   label="Nome / Apelido"
                                   maskChar=""
                                   maxlenght={null}
@@ -5739,6 +5777,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
+                                inputOnly={false}
                                 label="Nome Completo"
                                 maskChar=""
                                 maxlenght={null}
@@ -5761,6 +5800,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
+                                  inputOnly={false}
                                   label="Nome Completo"
                                   maskChar=""
                                   maxlenght={null}
@@ -7287,6 +7327,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                 disabled={false}
                                 help=""
                                 initialFocus={false}
+                                inputOnly={false}
                                 label="Email"
                                 maskChar=""
                                 maxlenght={null}
@@ -7309,6 +7350,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                   hasError={false}
                                   help=""
                                   initialFocus={false}
+                                  inputOnly={false}
                                   label="Email"
                                   maskChar=""
                                   maxlenght={null}
@@ -7966,6 +8008,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           disabled={false}
                                           help=""
                                           initialFocus={false}
+                                          inputOnly={false}
                                           label="Telefone"
                                           mask="(99) 9999-99999"
                                           maskChar=""
@@ -7989,6 +8032,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             hasError={false}
                                             help=""
                                             initialFocus={false}
+                                            inputOnly={false}
                                             label="Telefone"
                                             mask="(99) 9999-99999"
                                             maskChar=""
@@ -8625,6 +8669,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                           disabled={false}
                                           help=""
                                           initialFocus={false}
+                                          inputOnly={false}
                                           label="Operadora"
                                           maskChar=""
                                           maxlenght={null}
@@ -8646,6 +8691,7 @@ exports[`EditCustomerForm rendering correctly renders the customer when the form
                                             hasError={false}
                                             help=""
                                             initialFocus={false}
+                                            inputOnly={false}
                                             label="Operadora"
                                             maskChar=""
                                             maxlenght={null}

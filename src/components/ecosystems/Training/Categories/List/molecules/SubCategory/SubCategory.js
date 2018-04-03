@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   SubCategoryWrapper,
-  SubCategoryLink,
   SubCategoryTitleWrapper,
   SubCategoryIcon,
   SubCategoryTitle,
@@ -11,12 +11,12 @@ import {
 const SubCategory = ({ category }) => {
   return (
     <SubCategoryWrapper>
-      <SubCategoryLink href={`/training/categories/${category.id}`} title={category.name}>
+      <Link to={`/training/categories/${category.id}`}>
         <SubCategoryTitleWrapper>
           <SubCategoryIcon src={category.thumbnail} />
           <SubCategoryTitle>{category.name}</SubCategoryTitle>
         </SubCategoryTitleWrapper>
-      </SubCategoryLink>
+      </Link>
     </SubCategoryWrapper>
   );
 };

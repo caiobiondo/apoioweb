@@ -3,29 +3,36 @@ import { Paper, FormButton } from 'natura-ui';
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import BaseSearch from 'components/molecules/BaseSearch';
 import { translate } from 'locale';
+import PropTypes from 'prop-types';
+
 import {
   Wrapper,
   FormWrapper,
   FormButtonWrapper,
   searchButtonStyles,
   FormInput,
-  CustomerSearchDescription,
-} from './CustomerSearch.styles';
+  BaseFormSearchDescription,
+} from './BaseFormSearch.styles';
 
-export class CustomerSearch extends BaseSearch {
+export class BaseFormSearch extends BaseSearch {
+  componentWillMount() {
+    const { searchValue } = this.props;
+    if (searchValue) this.setState({ name: searchValue });
+  }
+
   render() {
-    // const { name } = this.state;
+    const { props } = this;
     return (
       <Paper style={Wrapper}>
-        <SectionTitle iconName="ico_add_customer" value="myCustomers" />
-        <CustomerSearchDescription>{translate('customersSearchInfo')}</CustomerSearchDescription>
+        <SectionTitle {...props.sectionTitle} />
+        <BaseFormSearchDescription>{translate(props.description)}</BaseFormSearchDescription>
         <FormWrapper>
           <FormInput
             type="text"
-            name="customerSearch"
+            name="inputBaseFormSearch"
             onKeyPress={this.onKeyPress}
             onChange={this.handleNameChange}
-            label={translate('customerName')}
+            label={translate(props.inputLabel)}
             value={this.state.name}
           />
           <FormButtonWrapper>
@@ -43,4 +50,12 @@ export class CustomerSearch extends BaseSearch {
   }
 }
 
-export default CustomerSearch;
+BaseFormSearch.propTypes = {
+  sectionTitle: PropTypes.object.isRequired,
+  description: PropTypes.string.isRequired,
+  inputLabel: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  searchValue: PropTypes.string,
+};
+
+export default BaseFormSearch;

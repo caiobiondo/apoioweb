@@ -32,7 +32,7 @@ export class InfiniteScroll extends Component {
         loadMore={this.onScroll}
         hasMore={hasMore}
         loader={
-          <LoadingWrapper>
+          <LoadingWrapper key="loadingWrapper">
             <CircularProgress thickness={2} />
           </LoadingWrapper>
         }

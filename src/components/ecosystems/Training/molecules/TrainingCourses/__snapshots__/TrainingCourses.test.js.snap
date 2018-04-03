@@ -2,7 +2,7 @@
 
 exports[`TrainingCourses renders correctly 1`] = `
 <TrainingCoursesstyles__List>
-  <TrainingCourse
+  <withRouter(TrainingCourse)
     course={
       Object {
         "dateUpload": "2017-04-20T00:00:00.000Z",
@@ -17,7 +17,7 @@ exports[`TrainingCourses renders correctly 1`] = `
     }
     key="0"
   />
-  <TrainingCourse
+  <withRouter(TrainingCourse)
     course={
       Object {
         "dateUpload": "2017-04-20T00:00:00.000Z",

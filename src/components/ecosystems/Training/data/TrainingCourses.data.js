@@ -9,6 +9,7 @@ export const TrainingCoursesQuery = gql`
     $limit: Int!
     $status: String
     $favorite: Boolean
+    $filter: String
   ) {
     courses(
       sellerId: $sellerId
@@ -16,6 +17,7 @@ export const TrainingCoursesQuery = gql`
       limit: $limit
       status: $status
       favorite: $favorite
+      filter: $filter
     ) {
       hasNextPage
       items {
@@ -72,6 +74,7 @@ export const TrainingCoursesQueryOptions = {
         offset: 0,
         status: props.status,
         favorite: props.favorite,
+        filter: props.courseFilter,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',

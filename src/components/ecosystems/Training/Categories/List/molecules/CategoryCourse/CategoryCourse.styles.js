@@ -8,6 +8,7 @@ export const CategoryCourseWrapper = styled.li`
   overflow: hidden;
   position: relative;
   transition: transform 150ms ease-in;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1, 1.05);
