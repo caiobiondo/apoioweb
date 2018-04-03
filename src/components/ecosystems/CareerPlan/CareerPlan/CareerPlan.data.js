@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const IndicatorListQuery = gql`
-  query OrdersListQuery($sellerId: Int!) {
+  query OrdersListQuery($sellerId: Int!, $currentCycle: Int!) {
     currentIndicators: indicators(sellerId: $sellerId, year: 1) {
       indicatorType
       significance
@@ -34,7 +34,7 @@ export const IndicatorListQuery = gql`
         }
       }
     }
-    concepts(sellerId: $sellerId, cycle: 1) {
+    concepts(sellerId: $sellerId, cycle: $currentCycle) {
       rangeStart
       rangeEnd
       value
@@ -80,10 +80,11 @@ export const ConsolidatedOvercomingQuery = gql`
 `;
 
 export const IndicatorListQueryOptions = {
-  options({ user }) {
+  options({ user, currentCycle }) {
     return {
       variables: {
         sellerId: user.codigo,
+        currentCycle,
       },
       forceFetch: true,
     };
