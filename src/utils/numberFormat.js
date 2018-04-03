@@ -3,12 +3,7 @@ import ReactNumberFormat from 'react-number-format';
 
 export const PercentageFormat = ({ value, decimalScale }) => {
   return (
-    <ReactNumberFormat
-      displayType="text"
-      value={value * 100}
-      decimalScale={decimalScale}
-      suffix="%"
-    />
+    <ReactNumberFormat displayType="text" value={value} decimalScale={decimalScale} suffix="%" />
   );
 };
 
