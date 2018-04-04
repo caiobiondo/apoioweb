@@ -40,10 +40,11 @@ export default class CycleConcept extends Component {
 }
 
 CycleConcept.propTypes = {
-  concept: propTypes.string.isRequired,
+  concept: propTypes.string,
   size: propTypes.string,
 };
 
 CycleConcept.defaultProps = {
+  concept: '',
   size: 'normal',
 };
