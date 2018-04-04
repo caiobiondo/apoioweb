@@ -2,16 +2,18 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Indicator } from './Indicator';
 
+import { IndicatorTypes } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+
 const setup = propOverrides => {
   const props = Object.assign(
     {
       concepts: [{ value: 'Excede' }],
       indicator: {
-        indicatorType: 'scoresTotal',
+        indicatorType: IndicatorTypes.ScoresTotal,
         cycles: [],
       },
       pastIndicator: {
-        indicatorType: 'scoresTotal',
+        indicatorType: IndicatorTypes.ScoresTotal,
         cycles: [],
       },
     },
@@ -89,7 +91,7 @@ describe('Indicator', () => {
       // given
       const props = {
         indicator: {
-          indicatorType: 'scoresTotal',
+          indicatorType: IndicatorTypes.ScoresTotal,
           cycles: [{ cycle: 1 }],
         },
       };
@@ -109,7 +111,7 @@ describe('Indicator', () => {
       const cycle = 1;
       const props = {
         indicator: {
-          indicatorType: 'scoresTotal',
+          indicatorType: IndicatorTypes.ScoresTotal,
           cycles: [{ cycle }],
         },
       };
@@ -130,7 +132,7 @@ describe('Indicator', () => {
       const cycle = 1;
       const props = {
         indicator: {
-          indicatorType: 'scoresTotal',
+          indicatorType: IndicatorTypes.ScoresTotal,
           cycles: [{ cycle }],
         },
       };

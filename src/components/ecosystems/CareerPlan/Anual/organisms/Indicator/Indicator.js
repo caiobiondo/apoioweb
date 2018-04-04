@@ -60,13 +60,14 @@ export class Indicator extends Component {
   renderIndicatorChart = () => {
     const { indicator, pastIndicator } = this.props;
     const { indicatorCycleNode } = this.state;
+    const pastCycles = pastIndicator ? pastIndicator.cycles : [];
 
     return (
       <IndicatorChart
         indicatorType={indicator.indicatorType}
         cycleNode={indicatorCycleNode}
         cycles={indicator.cycles}
-        pastCycles={pastIndicator.cycles}
+        pastCycles={pastCycles}
         value={item => {
           return item.overcoming ? item.overcoming.value : 0;
         }}
