@@ -8,6 +8,7 @@ import { IndicatorChartWrapper, IndicatorChartStyles } from './IndicatorChart.st
 export default class IndicatorChart extends Component {
   constructor(props) {
     super();
+    this.chartStyles = IndicatorChartStyles({ indicatorType: props.indicatorType });
     this.state = {
       cycles: this.getChartData(props),
     };
@@ -63,31 +64,62 @@ export default class IndicatorChart extends Component {
     });
   };
 
-  render() {
+  renderChart = () => {
     const { chartWidth, chartHeight, cycles } = this.state;
+    const { pastPeriod, currentPeriod } = cycles ? cycles : {};
+
+    if (pastPeriod.length <= 1 && currentPeriod.length <= 1) {
+      return;
+    }
+
+    return (
+      <VictoryGroup
+        width={chartWidth}
+        height={chartHeight}
+        style={this.chartStyles.Group}
+        {...IndicatorChartConfig.Group}
+      >
+        {this.renderCurrentChart(currentPeriod)}
+        {this.renderPastChart(pastPeriod)}
+      </VictoryGroup>
+    );
+  };
+
+  renderCurrentChart = currentPeriod => {
+    if (!currentPeriod.length > 1) {
+      return;
+    }
+
+    return (
+      <VictoryLine
+        style={this.chartStyles.CurrentPeriod}
+        data={currentPeriod}
+        {...IndicatorChartConfig.CurrentPeriod}
+      />
+    );
+  };
+
+  renderPastChart = pastPeriod => {
+    if (!pastPeriod.length > 1) {
+      return;
+    }
+
+    return (
+      <VictoryLine
+        style={this.chartStyles.PastPeriod}
+        data={pastPeriod}
+        {...IndicatorChartConfig.PastPeriod}
+      />
+    );
+  };
+
+  render() {
+    const { chartWidth } = this.state;
     const { indicatorType } = this.props;
-    const chartStyles = IndicatorChartStyles({ indicatorType });
-    const { currentPeriod, pastPeriod } = cycles ? cycles : {};
 
     return (
       <IndicatorChartWrapper key={indicatorType} innerRef={this.setChartNode} width={chartWidth}>
-        <VictoryGroup
-          width={chartWidth}
-          height={chartHeight}
-          style={chartStyles.Group}
-          {...IndicatorChartConfig.Group}
-        >
-          <VictoryLine
-            style={chartStyles.CurrentPeriod}
-            data={currentPeriod}
-            {...IndicatorChartConfig.CurrentPeriod}
-          />
-          <VictoryLine
-            style={chartStyles.PastPeriod}
-            data={pastPeriod}
-            {...IndicatorChartConfig.PastPeriod}
-          />
-        </VictoryGroup>
+        {this.renderChart()}
       </IndicatorChartWrapper>
     );
   }
