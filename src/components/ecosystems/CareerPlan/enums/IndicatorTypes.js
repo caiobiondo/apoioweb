@@ -2,9 +2,9 @@ import { blue100, orange100, orange200 } from 'styles/colors';
 import { IndicatorFieldsTypes } from './IndicatorFields';
 
 export const IndicatorTypes = {
-  ScoresTotal: 'scoresTotal',
-  Registration: 'registration',
-  Active: 'active',
+  ScoresTotal: 1,
+  Registration: 2,
+  Active: 3,
 };
 
 export const IndicatorTypesColors = {

@@ -1,11 +1,11 @@
 import { red100, orange100, yellow100, green100, green200 } from 'styles/colors';
 
 export const IndicatorConcepts = {
-  Below: 'Abaixo',
-  Attempt: 'Atende',
-  Inside: 'Dentro',
-  Overcome: 'Supera',
-  Exceed: 'Excede',
+  Below: 'ABAIXO',
+  Attempt: 'ATENDE',
+  Inside: 'DENTRO',
+  Overcome: 'SUPERA',
+  Exceed: 'EXCEDE',
 };
 
 export const IndicatorConceptsLabels = {
