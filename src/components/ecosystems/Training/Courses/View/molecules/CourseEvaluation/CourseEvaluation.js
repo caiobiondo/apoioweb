@@ -14,7 +14,6 @@ import {
   CourseEvaluationModalAction,
   TitleWrapper,
   RatingWrapper,
-  RatingStyles,
   ContentWrapper,
   WrapperCount,
 } from './CourseEvaluation.styles';
@@ -222,14 +221,10 @@ export class CourseEvaluation extends Component {
           <TitleWrapper>{evaluation.description}</TitleWrapper>
           <RatingWrapper>
             <Rating
-              value={this.findEvaluateUserRate(evaluation)}
-              max={5}
-              itemIconStyle={RatingStyles.itemIconStyle}
-              itemStyle={RatingStyles.itemStyle}
+              initialRating={this.findEvaluateUserRate(evaluation)}
               onChange={this.handleRate}
-              iconNormal={<ToggleStarBorder color={ratingColorNormal} />}
-              iconFilled={<ToggleStar color={ratingColorNormal} />}
-              iconHovered={<ToggleStar color={ratingColorNormal} />}
+              emptySymbol={<ToggleStarBorder color={ratingColorNormal} />}
+              fullSymbol={<ToggleStar color={ratingColorNormal} />}
             />
           </RatingWrapper>
         </ContentWrapper>

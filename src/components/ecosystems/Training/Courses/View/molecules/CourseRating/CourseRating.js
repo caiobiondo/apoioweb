@@ -6,7 +6,6 @@ import {
   TimeWrapper,
   ColWrapper,
   RatingWrapper,
-  RatingStyles,
   RowWrapper,
 } from './CourseRating.styles';
 import { translate } from 'locale';
@@ -17,8 +16,8 @@ import { orange100, gray150, red500 } from 'styles/colors';
 export class CourseRating extends Component {
   /* eslint-disable */
   getDurationInMinutes = course => {
-    return `${Math.floor(course.durationInSeconds / 60)}:${(
-      '0' + Math.floor(course.durationInSeconds % 60)
+    return `${Math.floor(course.durationInSeconds / 60)}:${('0' +
+      Math.floor(course.durationInSeconds % 60)
     ).slice(-2)}`;
   };
   /* eslint-enable */
@@ -37,13 +36,10 @@ export class CourseRating extends Component {
             <TittleWrapper>{translate('courseRatingAvaliation')}</TittleWrapper>
             <RatingWrapper ratedByYou={course.ratedByYou}>
               <Rating
-                value={rating}
-                max={5}
-                itemIconStyle={RatingStyles.itemIconStyle}
-                itemStyle={RatingStyles.itemStyle}
-                iconNormal={<ToggleStarBorder color={ratingColorNormal} />}
-                iconFilled={<ToggleStar color={ratingColorFilled} />}
-                readOnly
+                initialRating={rating}
+                emptySymbol={<ToggleStarBorder color={ratingColorNormal} />}
+                fullSymbol={<ToggleStar color={ratingColorFilled} />}
+                readonly
               />
             </RatingWrapper>
           </ColWrapper>

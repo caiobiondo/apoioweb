@@ -37,22 +37,10 @@ export const RatingWrapper = styled.div`
   }
 
   svg {
-    height: 15px;
-    width: 15px;
+    height: 15px !important;
+    width: 15px !important;
   }
 `;
-
-export const RatingStyles = {
-  itemIconStyle: {
-    width: '18',
-    height: '18',
-  },
-  itemStyle: {
-    width: '18',
-    height: '18',
-    padding: '0',
-  },
-};
 
 export const WrapperCount = styled.div`
   position: absolute;
