@@ -29,7 +29,7 @@ class TrainingWrapper extends Component {
     };
 
     return (
-      <Main loading={loading} empty={empty}>
+      <Main>
         <CourseSearchContainer>
           <BaseFormSearch {...baseFormSearchProps} />
         </CourseSearchContainer>
