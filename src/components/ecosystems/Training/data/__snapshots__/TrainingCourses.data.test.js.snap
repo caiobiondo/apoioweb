@@ -101,6 +101,118 @@ Object {
                   },
                 },
               },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "ciclo",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "ciclo",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "setor",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "setor",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "gerenciaMercado",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "gerenciaMercado",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "grupo",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "grupo",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "papelDaConsultora",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "papelDaConsultora",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "canal",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "canal",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "gerenciaDeVendas",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "gerenciaDeVendas",
+                  },
+                },
+              },
+              Object {
+                "kind": "Argument",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "regiao",
+                },
+                "value": Object {
+                  "kind": "Variable",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "regiao",
+                  },
+                },
+              },
             ],
             "directives": Array [],
             "kind": "Field",
@@ -473,12 +585,156 @@ Object {
             },
           },
         },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "ciclo",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "setor",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "gerenciaMercado",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "grupo",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "papelDaConsultora",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "canal",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "gerenciaDeVendas",
+            },
+          },
+        },
+        Object {
+          "defaultValue": null,
+          "kind": "VariableDefinition",
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "Variable",
+            "name": Object {
+              "kind": "Name",
+              "value": "regiao",
+            },
+          },
+        },
       ],
     },
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 719,
+    "end": 1109,
     "start": 0,
   },
 }
