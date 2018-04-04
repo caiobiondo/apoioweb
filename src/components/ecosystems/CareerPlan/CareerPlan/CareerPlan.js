@@ -92,8 +92,8 @@ export class CareerPlan extends Component {
       query: OvercomingQuery,
       variables: {
         indicatorType,
-        directSale,
-        naturaNetwork,
+        directSale: directSale || 0,
+        naturaNetwork: naturaNetwork || 0,
         sellerId: user.codigo,
         cycleArray: [cycle.cycle],
       },
