@@ -11,38 +11,39 @@ import {
   fs60,
   fs100,
 } from 'styles/typography';
+import { Wrapper as ImageWithFallBackWrapper } from 'components/molecules/ImageWithFallback/ImageWithFallback.styles';
 
 export const Wrapper = styled.div`
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     position: relative;
     padding: 0px 10px 0px 10px;
   }
+
+  margin-bottom: 24px;
 `;
 
 export const Header = styled.h2`
   font-family: ${NaturaRegular};
   font-size: ${fs30};
   font-weight: bold;
-  line-height: 0.4;
   text-align: left;
   color: ${black};
   padding-top: 15px;
-  margin: 0;
 
   @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) {
     font-size: ${fs25};
-    padding: 20px;
-    margin-bottom: -22px;
+    padding: 0 0 20px 0;
+    margin: 0;
   }
 `;
 
 export const StartedCoursesWrapper = styled.div`
   position: relative;
-  height: 400px;
+  height: 350px;
   width: 100%;
 
   @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) and (max-width: 975px), (max-width: 1024px) {
-    height: 215px;
+    height: 195px;
   }
 
   > div {
@@ -113,7 +114,7 @@ export const StartedCoursesWrapper = styled.div`
 export const StartedCourseInfo = styled.div`
   position: absolute;
   top: 0;
-  bottom: 5px;
+  bottom: 0;
   left: 0;
   right: 0;
   display: flex;
@@ -173,21 +174,30 @@ export const StartedCoursesThumbnail = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: 28px;
 
-    img {
-      width: 100%;
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 350px;
+
+    @media (max-width: 1024px) {
       object-fit: cover;
-      height: 350px;
-
-      @media (max-width: 1024px) {
-        object-fit: cover;
-        height: 195px
-      }
-
+      height: 195px
     }
 
   }
+
+  ${ImageWithFallBackWrapper} {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 1024px) {
+      min-height: 195px
+    }
+  }
+}
 `;
 
 export const LeftCarouselArrow = styled.span`
@@ -197,14 +207,14 @@ export const LeftCarouselArrow = styled.span`
   display: flex;
   align-items: center;
   z-index: 2;
-  top: 38%;
+  top: 50%;
+  bottom: 50%;
   text-shadow: 1px 0px 4px black;
   cursor: pointer;
   margin-left: 23px;
 
   @media (max-width: 1024px) {
     font-size: ${fs60};
-    top: 40%;
   }
 `;
 
