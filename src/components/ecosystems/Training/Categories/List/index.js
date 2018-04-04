@@ -18,8 +18,6 @@ class TrainingWrapper extends Component {
   };
 
   render() {
-    const { loading, empty } = this.state;
-
     const baseFormSearchProps = {
       onSearch: this.onSearch,
       searchValue: this.state.courseFilter,

@@ -44,7 +44,7 @@
     "lodash.debounce": "~4.0.8",
     "material-ui-fullscreen-dialog": "~0.7.2",
     "moment": "~2.20.1",
-    "natura-ui": "git+ssh://git@bitbucket.org/myvizir/natura-ui.git#0.12.0",
+    "natura-ui": "git+ssh://git@bitbucket.org/myvizir/natura-ui.git#0.13.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",
