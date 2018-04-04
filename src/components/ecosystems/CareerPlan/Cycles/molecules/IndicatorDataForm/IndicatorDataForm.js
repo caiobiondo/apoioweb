@@ -126,7 +126,11 @@ export class IndicatorDataForm extends Component {
         id="careerPlanCleanSimulationContent"
         values={{
           indicatorTitle: <b>{indicator.title}</b>,
-          cycle: <b>{indicatorData.cycle}</b>,
+          cycle: (
+            <b>
+              <NumberFormat value={indicatorData.cycle} showLastDigits={2} />
+            </b>
+          ),
         }}
       />
     );

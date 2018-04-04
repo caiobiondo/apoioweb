@@ -117,7 +117,9 @@ export class IndicatorData extends Component {
         hasChart
         indicatorType={indicatorType}
       >
-        <IndicatorDataSort index={indicatorData.cycle}>{indicatorData.cycle}</IndicatorDataSort>
+        <IndicatorDataSort index={indicatorData.cycle}>
+          <NumberFormat value={indicatorData.cycle} showLastDigits={2} />
+        </IndicatorDataSort>
 
         <IndicatorDataContent>
           <IndicatorDataRow>
@@ -140,7 +142,9 @@ export class IndicatorData extends Component {
                 <Icon file="ico_times" />
               </IndicatorFloatContentClose>
 
-              <IndicatorDataSortNumber>{indicatorData.cycle}</IndicatorDataSortNumber>
+              <IndicatorDataSortNumber>
+                <NumberFormat value={indicatorData.cycle} showLastDigits={2} />
+              </IndicatorDataSortNumber>
               {this.renderContent()}
             </IndicatorFloatContent>
           )}

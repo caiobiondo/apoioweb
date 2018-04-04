@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
+import { NumberFormat } from 'utils/numberFormat';
 import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
 
 import { CycleMenuWrapper, CycleMenuList, CycleMenuItem } from './CycleMenu.styles';
@@ -13,7 +14,7 @@ export class CycleMenu extends Component {
 
   getMenuItems = props => {
     if (!props.indicators) {
-      return;
+      return [];
     }
 
     const firstRange = this.getRangeCycles(1, props);
@@ -22,11 +23,19 @@ export class CycleMenu extends Component {
     return [
       {
         id: CareerPlanMenus.CyclesFirstRange,
-        label: `Ciclo ${firstRange.firstCycle}-${firstRange.lastCycle}`,
+        label: (
+          <span>
+            Ciclo <NumberFormat value={firstRange.firstCycle} showLastDigits={2} />-<NumberFormat value={firstRange.lastCycle} showLastDigits={2} />
+          </span>
+        ),
       },
       {
         id: CareerPlanMenus.CyclesSecondRange,
-        label: `Ciclo ${secondRange.firstCycle}-${secondRange.lastCycle}`,
+        label: (
+          <span>
+            Ciclo <NumberFormat value={secondRange.firstCycle} showLastDigits={2} />-<NumberFormat value={secondRange.lastCycle} showLastDigits={2} />
+          </span>
+        ),
       },
       {
         id: CareerPlanMenus.Anual,

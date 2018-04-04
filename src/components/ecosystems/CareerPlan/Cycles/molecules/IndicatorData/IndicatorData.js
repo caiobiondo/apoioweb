@@ -147,7 +147,7 @@ export class IndicatorData extends Component {
         innerRef={this.setNode}
       >
         <IndicatorDataSort index={indicatorData.cycle}>
-          {indicatorData.cycle}
+          <NumberFormat value={indicatorData.cycle} showLastDigits={2} />
           {this.renderCurrentLabel()}
         </IndicatorDataSort>
 
