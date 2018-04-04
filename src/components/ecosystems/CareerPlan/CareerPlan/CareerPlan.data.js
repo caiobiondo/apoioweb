@@ -1,8 +1,20 @@
 import gql from 'graphql-tag';
+import { IndicatorTypes } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 export const IndicatorListQuery = gql`
-  query OrdersListQuery($sellerId: Int!, $currentCycle: Int!) {
-    currentIndicators: indicators(sellerId: $sellerId, year: 1) {
+  query OrdersListQuery(
+    $sellerId: Int!
+    $currentCycle: Int!
+    $currentYear: Int!
+    $pastYear: Int!
+    $indicatorTypes: [Int]
+  ) {
+    currentIndicators: indicators(
+      sellerId: $sellerId
+      year: $currentYear
+      cycle: $currentCycle
+      indicatorTypes: $indicatorTypes
+    ) {
       indicatorType
       significance
       cycles {
@@ -18,7 +30,12 @@ export const IndicatorListQuery = gql`
         }
       }
     }
-    pastIndicators: indicators(sellerId: $sellerId, year: 2) {
+    pastIndicators: indicators(
+      sellerId: $sellerId
+      year: $pastYear
+      cycle: $currentCycle
+      indicatorTypes: $indicatorTypes
+    ) {
       indicatorType
       significance
       cycles {
@@ -39,7 +56,11 @@ export const IndicatorListQuery = gql`
       rangeEnd
       value
     }
-    pastConsolidatedCycles: consolidatedOvercoming(sellerId: $sellerId, year: 2, simulation: []) {
+    pastConsolidatedCycles: consolidatedOvercoming(
+      sellerId: $sellerId
+      year: $pastYear
+      simulation: []
+    ) {
       cycle
       value
       concept
@@ -80,11 +101,14 @@ export const ConsolidatedOvercomingQuery = gql`
 `;
 
 export const IndicatorListQueryOptions = {
-  options({ user, currentCycle }) {
+  options({ user, currentCycle, currentYear, pastYear }) {
     return {
       variables: {
+        indicatorTypes: Object.values(IndicatorTypes),
         sellerId: user.codigo,
         currentCycle,
+        currentYear,
+        pastYear,
       },
       forceFetch: true,
     };
