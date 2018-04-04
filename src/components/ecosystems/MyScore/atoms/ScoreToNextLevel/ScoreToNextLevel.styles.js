@@ -9,5 +9,5 @@ export const ContentWrapper = styled.span`
   border: 1px solid #707070;
   padding: 4px 10px;
   font-family: Roboto-Regular;
-  font-size: 10px;
+  font-size: 13px;
 `;

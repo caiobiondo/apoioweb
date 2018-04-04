@@ -35,7 +35,7 @@ export const CycleButton = styled.a`
   border-radius: 10px;
   display: inline-block;
   padding: 12px 0;
-  width: 66px;
+  width: 50px;
   text-align: center;
   margin-left: 10px;
   color: ${props => props.color};
@@ -59,7 +59,7 @@ export const CycleNumber = styled.span`
 `;
 
 export const CycleText = styled.span`
-  font-size: 8.4px;
+  font-size: 11px;
 `;
 
 export const IconWrapper = styled.div`
