@@ -55,6 +55,10 @@ const renderCycle = (cycle, props) => {
       </SelectedCyclePointerWrapper>
     );
 
+    if (props.currentCycleNumber === props.selectedCycleNumber) {
+      color = props.currentLevelColor;
+    }
+
     background = '#FAFAFA';
   }
 

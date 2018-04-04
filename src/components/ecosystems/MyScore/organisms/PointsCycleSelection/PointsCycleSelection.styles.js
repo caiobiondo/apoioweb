@@ -24,7 +24,7 @@ export const InnerWrapper = styled.div`
 
 export const WrapperStyles = {
   textAlign: 'center',
-  padding: '9px 20px',
+  padding: '10px',
   borderRadius: '10px',
   display: 'inline-block',
   fontFamily: 'Lato-Regular',
@@ -45,7 +45,7 @@ export const CycleButton = styled.a`
 
 export const LabelsBlock = styled.a`
   display: inline-block;
-  padding: 12px 20px;
+  padding: 12px;
   text-align: center;
   font-size: 11.6px;
 `;
@@ -95,5 +95,5 @@ export const SelectedCyclePointerWrapper = styled.div`
   position: absolute;
   bottom: -23px;
   z-index: 1;
-  margin-left: 19px;
+  margin-left: 12px;
 `;
