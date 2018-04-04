@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import ReactNumberFormat from 'react-number-format';
 
 export const PercentageFormat = ({ value, decimalScale }) => {
@@ -11,14 +12,34 @@ PercentageFormat.defaultProps = {
   decimalScale: 2,
 };
 
-export const NumberFormat = ({ value, decimalScale }) => {
+PercentageFormat.propTypes = {
+  value: propTypes.number,
+  decimalScale: propTypes.number,
+};
+
+export const NumberFormat = ({ value, decimalScale, showLastDigits }) => {
+  let formattedValue = value;
+
+  if (showLastDigits) {
+    formattedValue = parseInt(value.toString().slice(-showLastDigits), 10);
+  }
+
   return (
     <ReactNumberFormat
       displayType="text"
-      value={value}
+      value={formattedValue}
       thousandSeparator="."
       decimalSeparator=","
-      fixedDecimalScale
+      decimalScale={decimalScale}
     />
   );
+};
+
+NumberFormat.defaultProps = {
+  decimalScale: 0,
+};
+
+NumberFormat.propTypes = {
+  value: propTypes.number,
+  decimalScale: propTypes.number,
 };
