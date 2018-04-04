@@ -13,7 +13,7 @@ export default class InputNumber extends Component {
       <ReactNumberFormat
         {...this.props}
         type="tel"
-        value={this.props.value}
+        value={this.props.value || 0}
         onValueChange={this.onValueChange}
         onChange={() => {}}
         isNumericString
