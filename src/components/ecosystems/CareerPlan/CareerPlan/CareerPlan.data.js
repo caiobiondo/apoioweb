@@ -117,10 +117,27 @@ export const IndicatorListQueryOptions = {
     return {
       data,
       loading: data.loading,
-      indicators: data.currentIndicators,
-      pastIndicators: data.pastIndicators,
+      indicators: getIndicators(data.currentIndicators, data.variables.indicatorTypes),
+      pastIndicators: getIndicators(data.pastIndicators, data.variables.indicatorTypes),
       concepts: data.concepts,
-      pastConsolidatedCycles: data.pastConsolidatedCycles,
+      consolidatedCycles: getConsolidatedCycles(data.currentIndicators),
+      pastConsolidatedCycles: getConsolidatedCycles(data.pastIndicators),
     };
   },
+};
+
+const getIndicators = (indicators, types) => {
+  if (!indicators) {
+    return null;
+  }
+
+  return indicators.filter(({ indicatorType }) => types.indexOf(indicatorType) > -1);
+};
+
+const getConsolidatedCycles = indicators => {
+  if (!indicators || !indicators.length) {
+    return [];
+  }
+
+  return indicators.filter(({ indicatorType }) => !indicatorType)[0].cycles;
 };

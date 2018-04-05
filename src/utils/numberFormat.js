@@ -5,6 +5,10 @@ import ReactNumberFormat from 'react-number-format';
 export const PercentageFormat = ({ value, decimalScale, isPercentage }) => {
   const formattedValue = isPercentage ? value * 100 : value;
 
+  if (value === null) {
+    return;
+  }
+
   return (
     <ReactNumberFormat
       displayType="text"

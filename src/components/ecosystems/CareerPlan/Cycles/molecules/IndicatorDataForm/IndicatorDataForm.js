@@ -4,7 +4,10 @@ import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
-import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import {
+  IndicatorFields,
+  IndicatorTypesLabels,
+} from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import CycleConcept from 'components/ecosystems/CareerPlan/atoms/CycleConcept';
 
 import { CareerPlanModal } from 'components/ecosystems/CareerPlan/index.styles.js';
@@ -125,7 +128,7 @@ export class IndicatorDataForm extends Component {
       <FormattedMessage
         id="careerPlanCleanSimulationContent"
         values={{
-          indicatorTitle: <b>{indicator.title}</b>,
+          indicatorTitle: <b>{IndicatorTypesLabels[indicator.indicatorType]}</b>,
           cycle: (
             <b>
               <NumberFormat value={indicatorData.cycle} showLastDigits={2} />

@@ -29,17 +29,16 @@ export class CareerPlan extends Component {
     this.cyclesPerPage = 10;
   }
 
-  componentWillReceiveProps({ loading, indicators }) {
-    this.handleIndicators(indicators);
+  componentWillReceiveProps(nextProps) {
+    this.handleIndicators(nextProps);
   }
 
-  handleIndicators = indicators => {
-    if (!indicators) {
+  handleIndicators = ({ indicators, consolidatedCycles }) => {
+    if (!indicators && !consolidatedCycles) {
       return;
     }
 
-    this.fetchConsolidatedOvercoming(indicators);
-    this.setState({ indicators });
+    this.setState({ indicators, consolidatedCycles });
   };
 
   onMenuChange = menuItem => {
@@ -72,12 +71,7 @@ export class CareerPlan extends Component {
     const cycles = this.getEditedCycles(indicator.cycles, cycle);
     const indicators = this.getEditedIndicators(currentIndicators, { cycles, indicatorType });
 
-    const onStateSuccess = () => {
-      cb();
-      this.fetchConsolidatedOvercoming(indicators);
-    };
-
-    this.setState({ indicators }, onStateSuccess);
+    this.setState({ indicators }, cb);
   };
 
   fetchOvercoming = ({ indicatorType, cycle }, cb) => {
