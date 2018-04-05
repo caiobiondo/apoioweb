@@ -3,7 +3,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Popover, Menu } from 'material-ui';
 import { Icon } from 'natura-ui';
 
-import { PercentageFormat } from 'utils/numberFormat';
+import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 
 import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { IndicatorConceptsLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
@@ -110,15 +110,28 @@ export class ConsolidatedIndicatorData extends Component {
     );
   }
 
-  render() {
-    const { cycle, isValid, isActive } = this.props;
+  renderConceptValue() {
+    const { cycle, isActive } = this.props;
 
-    const conceptValue = isActive ? null : isValid ? IndicatorConceptsLabels[cycle.concept] : '-';
-    const overcomingValue = isActive ? null : isValid ? (
-      <PercentageFormat value={cycle.value} />
-    ) : (
-      '-'
-    );
+    if (isActive) {
+      return;
+    }
+
+    return IndicatorConceptsLabels[cycle.overcoming.concept] || '-';
+  }
+
+  renderOvercoming() {
+    const { cycle, isActive } = this.props;
+
+    if (isActive) {
+      return;
+    }
+
+    return cycle.overcoming.value ? <PercentageFormat value={cycle.overcoming.value} /> : '-';
+  }
+
+  render() {
+    const { cycle, isActive } = this.props;
 
     return (
       <IndicatorDataWrapper
@@ -128,15 +141,15 @@ export class ConsolidatedIndicatorData extends Component {
         innerRef={this.setNode}
       >
         <IndicatorDataSort>
-          {cycle.cycle}
+          <NumberFormat showLastDigits={2} value={cycle.cycle} />
           {this.renderCurrentLabel()}
         </IndicatorDataSort>
         <IndicatorDataContent>
           <IndicatorDataRowFeatured>
-            <IndicatorDataValue>{overcomingValue}</IndicatorDataValue>
+            <IndicatorDataValue>{this.renderOvercoming()}</IndicatorDataValue>
           </IndicatorDataRowFeatured>
-          <IndicatorDataRowConcept concept={cycle.concept}>
-            <IndicatorDataValue>{conceptValue}</IndicatorDataValue>
+          <IndicatorDataRowConcept concept={cycle.overcoming.concept}>
+            <IndicatorDataValue>{this.renderConceptValue()}</IndicatorDataValue>
           </IndicatorDataRowConcept>
         </IndicatorDataContent>
         {this.renderWarningIcon()}
