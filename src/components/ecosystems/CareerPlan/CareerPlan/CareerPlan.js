@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { graphql, withApollo } from 'react-apollo';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
 
+import { Loading } from 'natura-ui';
 import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
 import CycleMenuViewer from './molecules/CycleMenuViewer';
@@ -20,6 +22,8 @@ import {
   CareerPlanTitleWrapper,
   CareerPlanTitle,
   CareerPlanDescription,
+  LoadingOverlay,
+  LoadingWrapper,
 } from './CareerPlan.styles';
 
 export class CareerPlan extends Component {
@@ -78,6 +82,8 @@ export class CareerPlan extends Component {
     const { user, client } = this.props;
     const { directSale, naturaNetwork } = cycle;
 
+    this.setState({ hasInternalLoading: true });
+
     if (!naturaNetwork && !directSale) {
       return this.updateCycle({ cycle: { ...cycle, overcoming: null }, indicatorType });
     }
@@ -93,15 +99,21 @@ export class CareerPlan extends Component {
       },
     };
 
-    client.query(query).then(({ data }) => {
-      const overcoming = data.overcoming[0];
-      const updateCycleModel = {
-        indicatorType,
-        cycle: { ...cycle, overcoming },
-      };
+    client
+      .query(query)
+      .then(({ data }) => {
+        const overcoming = data.overcoming[0];
 
-      this.updateCycle(updateCycleModel, cb);
-    });
+        const updateCycleModel = {
+          indicatorType,
+          cycle: { ...cycle, overcoming },
+        };
+
+        this.updateCycle(updateCycleModel, cb);
+      })
+      .finally(() => {
+        this.setState({ hasInternalLoading: false });
+      });
   };
 
   fetchConsolidatedOvercoming = indicators => {
@@ -122,12 +134,27 @@ export class CareerPlan extends Component {
 
   render() {
     const { loading, pastIndicators, pastConsolidatedCycles, concepts } = this.props;
-    const { activeMenu, indicators, consolidatedCycles } = this.state;
+    const { activeMenu, indicators, consolidatedCycles, hasInternalLoading } = this.state;
 
     return (
       <CareerPlanSection>
         <LoadingHandler loading={loading}>
           <div>
+            <ReactCSSTransitionGroup
+              transitionName="fadeIn"
+              transitionAppearTimeout={300}
+              transitionLeaveTimeout={300}
+              transitionAppear
+              transitionLeave
+            >
+              {hasInternalLoading && (
+                <LoadingOverlay>
+                  <LoadingWrapper>
+                    <Loading background="transparent" />
+                  </LoadingWrapper>
+                </LoadingOverlay>
+              )}
+            </ReactCSSTransitionGroup>
             <CareerPlanTitleWrapper>
               <CareerPlanTitle>
                 <FormattedMessage id="careerPlanTitle" />
