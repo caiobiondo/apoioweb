@@ -3,12 +3,33 @@ import gql from 'graphql-tag';
 const ITEMS_PER_PAGE = 10;
 
 export const TrainingCategoriesDetailsQuery = gql`
-  query TrainingCategoriesDetails($sellerId: Int!, $categoryId: Int!, $offset: Int!, $limit: Int!) {
+  query TrainingCategoriesDetails(
+    $sellerId: Int!
+    $categoryId: Int!
+    $offset: Int!
+    $limit: Int!
+    $ciclo: Int
+    $setor: Int
+    $gerenciaMercado: Int
+    $grupo: Int
+    $papelDaConsultora: Int
+    $canal: Int
+    $gerenciaDeVendas: Int
+    $regiao: Int
+  ) {
     trainingCoursesByCategory(
       sellerId: $sellerId
       categoryId: $categoryId
       offset: $offset
       limit: $limit
+      ciclo: $ciclo
+      setor: $setor
+      gerenciaMercado: $gerenciaMercado
+      grupo: $grupo
+      papelDaConsultora: $papelDaConsultora
+      canal: $canal
+      gerenciaDeVendas: $gerenciaDeVendas
+      regiao: $regiao
     ) {
       hasNextPage
       items {
@@ -66,6 +87,17 @@ export const TrainingCategoriesDetailsOptions = {
         categoryId: props.categoryId,
         limit: ITEMS_PER_PAGE,
         offset: 0,
+        ciclo:
+          props.user.estrutura.ciclo &&
+          props.user.estrutura.ciclo[0] &&
+          props.user.estrutura.ciclo[0].numero,
+        setor: props.user.estrutura.setor.codigo,
+        gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
+        grupo: props.user.estrutura.codigo,
+        papelDaConsultora: props.user.cdPapelAtivo,
+        canal: props.user.cdCanalCaptacao,
+        gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
+        regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',

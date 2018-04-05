@@ -34,8 +34,8 @@ export const RatingWrapper = styled.div`
   }
 
   svg {
-    height: 15px;
-    width: 15px;
+    height: 15px !important;
+    width: 15px !important;
   }
 `;
 /* eslint-enable no-confusing-arrow */
@@ -45,15 +45,3 @@ export const RowWrapper = styled.div`
   width: 100%;
   padding-left: 10px;
 `;
-
-export const RatingStyles = {
-  itemIconStyle: {
-    width: '15',
-    height: '15',
-  },
-  itemStyle: {
-    width: '15',
-    height: '15',
-    padding: '0',
-  },
-};

@@ -10,17 +10,53 @@ describe('TrainingCoursesQuery', () => {
   });
 
   it('should be the correct query options', () => {
-    const props = { user: { codigo: 1 }, status: null, favorite: null };
+    const user = {
+      codigo: 4064925,
+      cdCanalCaptacao: 8,
+      codigoCentro: 5800,
+      nomeCompleto: 'Fulano Ciclano',
+      estrutura: {
+        codigo: 7416,
+        codigoTipo: 5,
+        ciclo: [
+          {
+            numero: 201805,
+          },
+        ],
+        gerenciaMercado: {
+          codigo: 2,
+        },
+        regiaoEstrategica: {
+          codigo: 2,
+        },
+        gerenciaVenda: {
+          codigo: 23,
+        },
+        setor: {
+          codigo: 488,
+        },
+      },
+    };
+
+    const props = { user, status: null, favorite: null };
 
     const options = TrainingCoursesQueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
-        sellerId: 1,
+        sellerId: props.user.codigo,
         limit: 10,
         offset: 0,
         status: null,
         favorite: null,
+        ciclo: props.user.estrutura.ciclo[0].numero,
+        setor: props.user.estrutura.setor.codigo,
+        gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
+        grupo: props.user.estrutura.codigo,
+        papelDaConsultora: props.user.cdPapelAtivo,
+        canal: props.user.cdCanalCaptacao,
+        gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
+        regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',

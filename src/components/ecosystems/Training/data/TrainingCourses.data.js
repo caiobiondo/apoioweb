@@ -10,6 +10,14 @@ export const TrainingCoursesQuery = gql`
     $status: String
     $favorite: Boolean
     $filter: String
+    $ciclo: Int
+    $setor: Int
+    $gerenciaMercado: Int
+    $grupo: Int
+    $papelDaConsultora: Int
+    $canal: Int
+    $gerenciaDeVendas: Int
+    $regiao: Int
   ) {
     courses(
       sellerId: $sellerId
@@ -18,6 +26,14 @@ export const TrainingCoursesQuery = gql`
       status: $status
       favorite: $favorite
       filter: $filter
+      ciclo: $ciclo
+      setor: $setor
+      gerenciaMercado: $gerenciaMercado
+      grupo: $grupo
+      papelDaConsultora: $papelDaConsultora
+      canal: $canal
+      gerenciaDeVendas: $gerenciaDeVendas
+      regiao: $regiao
     ) {
       hasNextPage
       items {
@@ -75,6 +91,17 @@ export const TrainingCoursesQueryOptions = {
         status: props.status,
         favorite: props.favorite,
         filter: props.courseFilter,
+        ciclo:
+          props.user.estrutura.ciclo &&
+          props.user.estrutura.ciclo[0] &&
+          props.user.estrutura.ciclo[0].numero,
+        setor: props.user.estrutura.setor.codigo,
+        gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
+        grupo: props.user.estrutura.codigo,
+        papelDaConsultora: props.user.cdPapelAtivo,
+        canal: props.user.cdCanalCaptacao,
+        gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
+        regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
       forceFetch: true,
       fetchPolicy: 'cache-and-network',

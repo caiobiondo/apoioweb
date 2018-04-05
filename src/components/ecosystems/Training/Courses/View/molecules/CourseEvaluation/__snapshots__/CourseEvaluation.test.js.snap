@@ -50,41 +50,37 @@ exports[`Course Evaluation Dialogs render evaluation dialog 1`] = `
       Description
     </CourseEvaluationstyles__TitleWrapper>
     <CourseEvaluationstyles__RatingWrapper>
-      <Rating
-        disabled={false}
-        iconFilled={
-          <ToggleStar
-            color="#f44336"
-          />
-        }
-        iconHovered={
-          <ToggleStar
-            color="#f44336"
-          />
-        }
-        iconNormal={
+      <RatingAPILayer
+        direction="ltr"
+        emptySymbol={
           <ToggleStarBorder
             color="#f44336"
           />
         }
-        itemIconStyle={
-          Object {
-            "height": "18",
-            "width": "18",
-          }
+        fractions={1}
+        fullSymbol={
+          <ToggleStar
+            color="#f44336"
+          />
         }
-        itemStyle={
-          Object {
-            "height": "18",
-            "padding": "0",
-            "width": "18",
-          }
-        }
-        max={5}
+        initialRating={0}
         onChange={[Function]}
-        readOnly={false}
-        tooltipPosition="bottom-center"
-        value={0}
+        onHover={[Function]}
+        placeholderSymbol={
+          Object {
+            "backgroundColor": "red",
+            "border": "5px double white",
+            "borderRadius": "50%",
+            "display": "inline-block",
+            "height": 30,
+            "width": 30,
+          }
+        }
+        quiet={false}
+        readonly={false}
+        start={0}
+        step={1}
+        stop={5}
       />
     </CourseEvaluationstyles__RatingWrapper>
   </CourseEvaluationstyles__ContentWrapper>

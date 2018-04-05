@@ -8,40 +8,37 @@ exports[`CourseRating should render course rating 1`] = `
         Avaliação
       </CourseRatingstyles__TittleWrapper>
       <CourseRatingstyles__RatingWrapper>
-        <Rating
-          disabled={false}
-          iconFilled={
-            <ToggleStar
-              color="#f3971f"
-            />
-          }
-          iconHovered={
-            <ToggleStarBorder
-              color="#ff9800"
-            />
-          }
-          iconNormal={
+        <RatingAPILayer
+          direction="ltr"
+          emptySymbol={
             <ToggleStarBorder
               color="#dddddd"
             />
           }
-          itemIconStyle={
+          fractions={1}
+          fullSymbol={
+            <ToggleStar
+              color="#f3971f"
+            />
+          }
+          initialRating={4}
+          onChange={[Function]}
+          onHover={[Function]}
+          placeholderSymbol={
             Object {
-              "height": "15",
-              "width": "15",
+              "backgroundColor": "red",
+              "border": "5px double white",
+              "borderRadius": "50%",
+              "display": "inline-block",
+              "height": 30,
+              "width": 30,
             }
           }
-          itemStyle={
-            Object {
-              "height": "15",
-              "padding": "0",
-              "width": "15",
-            }
-          }
-          max={5}
-          readOnly={true}
-          tooltipPosition="bottom-center"
-          value={4}
+          quiet={false}
+          readonly={true}
+          start={0}
+          step={1}
+          stop={5}
         />
       </CourseRatingstyles__RatingWrapper>
     </CourseRatingstyles__ColWrapper>
