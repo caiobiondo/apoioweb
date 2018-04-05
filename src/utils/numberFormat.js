@@ -2,9 +2,16 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ReactNumberFormat from 'react-number-format';
 
-export const PercentageFormat = ({ value, decimalScale }) => {
+export const PercentageFormat = ({ value, decimalScale, isPercentage }) => {
+  const formattedValue = isPercentage ? value * 100 : value;
+
   return (
-    <ReactNumberFormat displayType="text" value={value} decimalScale={decimalScale} suffix="%" />
+    <ReactNumberFormat
+      displayType="text"
+      value={formattedValue}
+      decimalScale={decimalScale}
+      suffix="%"
+    />
   );
 };
 
