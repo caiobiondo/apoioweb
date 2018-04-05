@@ -56,15 +56,6 @@ export const IndicatorListQuery = gql`
       rangeEnd
       value
     }
-    pastConsolidatedCycles: consolidatedOvercoming(
-      sellerId: $sellerId
-      year: $pastYear
-      simulation: []
-    ) {
-      cycle
-      value
-      concept
-    }
   }
 `;
 
@@ -72,7 +63,7 @@ export const OvercomingQuery = gql`
   query OvercomingQuery(
     $sellerId: Int!
     $cycleArray: [Int]!
-    $indicatorType: String!
+    $indicatorType: Int!
     $directSale: [Float]!
     $naturaNetwork: [Float]!
   ) {
