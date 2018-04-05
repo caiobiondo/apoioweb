@@ -10,7 +10,10 @@ jest.mock('components/ecosystems/CareerPlan/enums/IndicatorTypes', () => ({
 }));
 
 const setup = propOverrides => {
-  const props = Object.assign({ cycle: { cycle: 1 } }, propOverrides);
+  const props = Object.assign(
+    { cycle: { cycle: 1, overcoming: { value: null, concept: null } } },
+    propOverrides,
+  );
 
   const result = shallow(<ConsolidatedIndicatorData {...props} />);
 
