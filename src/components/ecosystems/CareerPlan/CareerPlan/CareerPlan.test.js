@@ -43,28 +43,23 @@ describe('CareerPlan', () => {
   });
 
   describe('on componentWillReceiveProps method', () => {
-    it('should get the consolidated overcoming data and set the newIndicators', async () => {
+    it('should set the indicators and the consolidate', async () => {
       // given
-      const consolidatedOvercoming = [{ cycle: 1, value: 'excede' }];
-      const expectedConsolidatedOvercoming = {
-        data: { consolidatedOvercoming },
-      };
-      const newProps = { loading: false, indicators: [{ indicatorType: 'scoresTotal' }] };
-      const props = {
-        client: {
-          query: jest.fn().mockReturnValue(Promise.resolve(expectedConsolidatedOvercoming)),
-        },
+      const consolidatedCycles = [{ cycle: 1, overcoming: { value: 'excede' } }];
+      const newProps = {
+        loading: false,
+        indicators: [{ indicatorType: 'scoresTotal' }],
+        consolidatedCycles,
       };
 
       // when
-      const { result } = setup(props);
+      const { result } = setup({});
       const instance = result.instance();
       await instance.componentWillReceiveProps(newProps);
 
       // then
       expect(instance.state.indicators).toEqual(newProps.indicators);
-      expect(instance.state.consolidatedCycles).toEqual(consolidatedOvercoming);
-      expect(props.client.query).toBeCalled();
+      expect(instance.state.consolidatedCycles).toEqual(consolidatedCycles);
     });
   });
 
