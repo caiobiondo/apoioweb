@@ -36,7 +36,7 @@ export default class IndicatorChart extends Component {
 
   getChartData = ({ cycles, pastCycles, value }) => {
     const parseData = (cycle, index) => ({
-      x: index + 1,
+      x: index,
       y: value(cycle),
     });
 
@@ -52,11 +52,11 @@ export default class IndicatorChart extends Component {
     }
 
     const { cycleNode } = props;
-    const { pastPeriod } = this.state.cycles;
+    const { currentPeriod } = this.state.cycles;
     const cycleWidth = cycleNode.offsetWidth;
 
     const chartHeight = this.chartNode.offsetHeight;
-    const chartWidth = cycleWidth * (pastPeriod.length - 1);
+    const chartWidth = cycleWidth * (currentPeriod.length - 1);
 
     this.setState({
       chartHeight,
