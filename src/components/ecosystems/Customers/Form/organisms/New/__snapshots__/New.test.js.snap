@@ -1555,6 +1555,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "trainingCategoriesEmptyListDescription": "Não existem categorias disponíveis.",
             "trainingCategoryCompleted": "Completa",
             "trainingCourseCompleted": "Concluído",
+            "trainingCourseUnavailable": "Treinamento disponível em breve",
             "trainingLabel": "Treinamento",
             "trainingRemoveCourseError": "Ocorreu um erro ao remover o treinamento",
             "trainingRemoveCourseFailure": "Treinamento já foi removido da sua lista",

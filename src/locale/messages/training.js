@@ -53,6 +53,7 @@ export default {
     trainingStatusUpdateError: 'Ocorreu um erro ao atualizar o status do curso',
     trainingVideoNotFound: 'Ooops, video não encontrado :(',
     coursesNoSearchResult: 'Nenhum resultado encontrado',
+    trainingCourseUnavailable: 'Treinamento disponível em breve',
   },
 };
 /* eslint-disable sort-keys */
