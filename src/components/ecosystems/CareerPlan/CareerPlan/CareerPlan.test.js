@@ -90,7 +90,7 @@ describe('CareerPlan', () => {
       const { result } = setup({});
       const instance = result.instance();
       result.setProps({ indicators });
-      instance.updateCycle({ cycle: newCycle, indicatorType: indicator.indicatorType });
+      instance._updateCycle({ cycle: newCycle, indicatorType: indicator.indicatorType });
 
       // then
       expect(instance.state.indicators).toEqual(expectedIndicators);
@@ -107,14 +107,14 @@ describe('CareerPlan', () => {
       const { result } = setup({});
       const instance = result.instance();
       result.setProps({ indicators });
-      instance.updateCycle({ cycle: newCycle, indicatorType: indicator.indicatorType }, callback);
+      instance._updateCycle({ cycle: newCycle, indicatorType: indicator.indicatorType }, callback);
 
       // then
       expect(callback).toBeCalled();
     });
   });
 
-  describe('on fetchOvercoming method', async () => {
+  describe('on onApplyChanges method', async () => {
     it('should get the overcoming data for the specific cycle and update the state', async () => {
       // given
       const cycle = { cycle: 1, naturaNetwork: 1, directSale: 1 };
@@ -135,7 +135,7 @@ describe('CareerPlan', () => {
       const { result } = setup(props);
       const instance = result.instance();
       result.setProps({ indicators });
-      await instance.fetchOvercoming({ cycle, indicatorType: indicator.indicatorType });
+      await instance.onApplyChanges({ cycle, indicatorType: indicator.indicatorType });
 
       // then
       expect(instance.state.indicators).toEqual(expectedIndicators);
@@ -146,14 +146,14 @@ describe('CareerPlan', () => {
       const cycle = { cycle: 1, naturaNetwork: 0, directSale: 0 };
       const indicator = { indicatorType: 'scoresTotal', cycles: [cycle] };
       const indicators = [indicator];
-      const newCycle = { ...cycle, overcoming: null };
+      const newCycle = { ...cycle, overcoming: { value: null, concept: null } };
       const expectedIndicators = [{ ...indicator, cycles: [newCycle] }];
 
       // when
       const { result } = setup({});
       const instance = result.instance();
       result.setProps({ indicators });
-      await instance.fetchOvercoming({ cycle, indicatorType: indicator.indicatorType });
+      await instance.onApplyChanges({ cycle, indicatorType: indicator.indicatorType });
 
       // then
       expect(instance.state.indicators).toEqual(expectedIndicators);

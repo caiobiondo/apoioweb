@@ -14,7 +14,7 @@ export class IndicatorList extends Component {
       return true;
     }
 
-    return IndicatorFields[indicatorType].some(field => cycle[field] > 0);
+    return IndicatorFields[indicatorType].some(field => cycle[field] > 0 || cycle.isClosed);
   };
 
   renderIndicator = indicator => {

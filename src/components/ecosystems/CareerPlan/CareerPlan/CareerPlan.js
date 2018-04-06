@@ -27,15 +27,13 @@ import {
 } from './CareerPlan.styles';
 
 export class CareerPlan extends Component {
-  constructor() {
-    super();
-    this.state = { activeMenu: CareerPlanMenus.CyclesFirstRange };
-    this.cyclesPerPage = 10;
-  }
-
   componentWillReceiveProps(nextProps) {
     this.handleIndicators(nextProps);
   }
+
+  cyclesPerPage = 10;
+
+  state = { activeMenu: CareerPlanMenus.CyclesFirstRange };
 
   handleIndicators = ({ indicators, consolidatedCycles }) => {
     if (!indicators && !consolidatedCycles) {
@@ -49,7 +47,7 @@ export class CareerPlan extends Component {
     this.setState({ activeMenu: menuItem.id });
   };
 
-  getEditedIndicators = (indicators, indicatorToEdit) => {
+  _getEditedIndicators = (indicators, indicatorToEdit) => {
     return indicators.map(indicator => {
       if (indicator.indicatorType !== indicatorToEdit.indicatorType) {
         return indicator;
@@ -59,7 +57,7 @@ export class CareerPlan extends Component {
     });
   };
 
-  getEditedCycles = (cycles, cycleToEdit) => {
+  _getEditedCycles = (cycles, cycleToEdit) => {
     return cycles.map(cycle => {
       if (cycle.cycle !== cycleToEdit.cycle) {
         return cycle;
@@ -69,24 +67,39 @@ export class CareerPlan extends Component {
     });
   };
 
-  updateCycle = ({ cycle, indicatorType }, cb = () => {}) => {
+  _updateCycle = ({ cycle, indicatorType }, cb = () => {}) => {
     const currentIndicators = this.state.indicators;
     const indicator = currentIndicators.filter(i => i.indicatorType === indicatorType)[0];
-    const cycles = this.getEditedCycles(indicator.cycles, cycle);
-    const indicators = this.getEditedIndicators(currentIndicators, { cycles, indicatorType });
+    const cycles = this._getEditedCycles(indicator.cycles, cycle);
+    const indicators = this._getEditedIndicators(currentIndicators, { cycles, indicatorType });
 
     this.setState({ indicators }, cb);
   };
 
-  fetchOvercoming = ({ indicatorType, cycle }, cb) => {
+  onApplyChanges = ({ indicatorType, cycle }, cb) => {
+    const { directSale, naturaNetwork } = cycle;
+
+    if (naturaNetwork || directSale) {
+      return this._fetchOvercoming({ indicatorType, cycle }, cb);
+    }
+
+    return this._eraseCycle({ indicatorType, cycle }, cb);
+  };
+
+  _eraseCycle = ({ indicatorType, cycle }, cb) => {
+    const erasedCycle = {
+      ...cycle,
+      overcoming: { value: null, concept: null },
+    };
+
+    return this._updateCycle({ cycle: erasedCycle, indicatorType });
+  };
+
+  _fetchOvercoming = ({ indicatorType, cycle }, cb) => {
     const { user, client } = this.props;
     const { directSale, naturaNetwork } = cycle;
 
     this.setState({ hasInternalLoading: true });
-
-    if (!naturaNetwork && !directSale) {
-      return this.updateCycle({ cycle: { ...cycle, overcoming: null }, indicatorType });
-    }
 
     const query = {
       query: OvercomingQuery,
@@ -102,33 +115,43 @@ export class CareerPlan extends Component {
     client
       .query(query)
       .then(({ data }) => {
-        const overcoming = data.overcoming[0];
-
-        const updateCycleModel = {
-          indicatorType,
-          cycle: { ...cycle, overcoming },
-        };
-
-        this.updateCycle(updateCycleModel, cb);
+        this._onFetchOvercomingSuccess({ ...data, indicatorType, cycle, cb });
       })
       .finally(() => {
         this.setState({ hasInternalLoading: false });
       });
   };
 
-  fetchConsolidatedOvercoming = indicators => {
+  _onFetchOvercomingSuccess = ({ overcoming, indicatorType, cycle, cb }) => {
+    const updateCycleModel = {
+      indicatorType,
+      cycle: {
+        ...cycle,
+        overcoming: overcoming[0],
+      },
+    };
+
+    this._updateCycle(updateCycleModel, cb);
+  };
+
+  _fetchConsolidatedOvercoming = indicators => {
     const { user, client } = this.props;
+    const simulation = indicators.map(item => ({ indicatorType: item.indicatorType }));
     const query = {
       query: ConsolidatedOvercomingQuery,
       variables: {
         year: 1,
-        simulation: indicators.map(item => ({ indicatorType: item.indicatorType })),
+        simulation,
         sellerId: user.codigo,
       },
     };
 
-    client.query(query).then(({ data }) => {
-      this.setState({ consolidatedCycles: data.consolidatedOvercoming });
+    client.query(query).then(this._onFetchConsolidatedOvercomingSuccess);
+  };
+
+  _onFetchConsolidatedOvercomingSuccess = ({ data }) => {
+    this.setState({
+      consolidatedCycles: data.consolidatedOvercoming,
     });
   };
 
@@ -146,6 +169,7 @@ export class CareerPlan extends Component {
               transitionLeaveTimeout={300}
               transitionAppear
               transitionLeave
+              transitionEnter={false}
             >
               {hasInternalLoading && (
                 <LoadingOverlay>
@@ -180,7 +204,7 @@ export class CareerPlan extends Component {
               concepts={concepts}
               activeMenu={activeMenu}
               cyclesPerPage={this.cyclesPerPage}
-              fetchOvercoming={this.fetchOvercoming}
+              onApplyChanges={this.onApplyChanges}
             />
           </div>
         </LoadingHandler>

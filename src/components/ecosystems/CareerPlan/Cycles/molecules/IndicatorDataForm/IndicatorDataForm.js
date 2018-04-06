@@ -71,6 +71,7 @@ export class IndicatorDataForm extends Component {
 
   deleteValues = () => {
     const indicatorData = {};
+
     this.indicatorFields.forEach(field => {
       indicatorData[field] = 0;
     });
