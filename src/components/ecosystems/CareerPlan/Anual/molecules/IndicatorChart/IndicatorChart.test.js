@@ -24,8 +24,8 @@ describe('IndicatorChart', () => {
   it('should set the initial state correctly', () => {
     // given
     const expectedState = {
-      currentPeriod: [{ x: 1, y: 1 }],
-      pastPeriod: [{ x: 1, y: 1 }],
+      currentPeriod: [{ x: 0, y: 1 }],
+      pastPeriod: [{ x: 0, y: 1 }],
     };
     const props = {
       cycles: [{ value: 1 }],
@@ -44,7 +44,7 @@ describe('IndicatorChart', () => {
     it('should update the chart dimensions correctly', () => {
       // given
       const props = {
-        pastCycles: [{ value: 1 }, { value: 2 }],
+        cycles: [{ value: 1 }, { value: 2 }],
       };
       const updatedProps = {
         cycleNode: {
@@ -52,7 +52,7 @@ describe('IndicatorChart', () => {
         },
       };
       const expectedChartNode = { offsetHeight: 120 };
-      const expectedChartWidth = updatedProps.cycleNode.offsetWidth * (props.pastCycles.length - 1);
+      const expectedChartWidth = updatedProps.cycleNode.offsetWidth * (props.cycles.length - 1);
 
       // when
       const { result } = setup(props);
