@@ -6,7 +6,7 @@ export const PercentageFormat = ({ value, decimalScale, isPercentage }) => {
   const formattedValue = isPercentage ? value * 100 : value;
 
   if (value === null) {
-    return;
+    return value;
   }
 
   return (
@@ -30,6 +30,10 @@ PercentageFormat.propTypes = {
 
 export const NumberFormat = ({ value, decimalScale, showLastDigits }) => {
   let formattedValue = value;
+
+  if (value === null) {
+    return value;
+  }
 
   if (showLastDigits) {
     formattedValue = parseInt(value.toString().slice(-showLastDigits), 10);
