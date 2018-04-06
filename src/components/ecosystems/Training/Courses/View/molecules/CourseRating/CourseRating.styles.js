@@ -41,7 +41,7 @@ export const RatingWrapper = styled.div`
 /* eslint-enable no-confusing-arrow */
 
 export const RowWrapper = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   width: 100%;
   padding-left: 10px;
 `;
