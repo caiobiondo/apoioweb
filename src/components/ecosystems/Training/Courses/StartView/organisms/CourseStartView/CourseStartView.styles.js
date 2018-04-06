@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white, gray100, gray450, orange100 } from 'styles/colors';
+import { white, gray100, gray150, gray450, orange100 } from 'styles/colors';
 import {
   fs14,
   fs20,
@@ -29,6 +29,7 @@ export const CourseViewFeedbackModalAction = {
 
 export const TrainingCourseThumbnailWrapper = styled.div`
   display: inline-block;
+  margin-bottom: 30px;
 `;
 
 /* eslint-disable no-confusing-arrow */
@@ -73,6 +74,20 @@ export const TrainingCourseThumbnailDescriptionWrapper = styled.div`
   flex-direction: column;
   color: ${white};
   padding: 15px;
+`;
+
+export const TrainingCourseUnavailableTitle = styled.div`
+  font-size: ${fs32};
+  font-family: ${NaturaBold};
+  font-weight: ${fw700};
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+  flex: 0 1 auto;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    font-size: ${fs20};
+  }
 `;
 
 export const TrainingCourseTitle = styled.div`
@@ -185,5 +200,23 @@ export const TrainingCourseRatingWrapper = styled.div`
 
   > div {
     width: unset;
+  }
+`;
+
+export const IconWrapper = styled.div`
+  margin-bottom: 25px;
+  display: inline-block;
+
+  svg {
+    height: 81.5px;
+    width: 93px;
+    fill: ${gray150};
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    svg {
+      height: 71.5px;
+      width: 83px;
+    }
   }
 `;
