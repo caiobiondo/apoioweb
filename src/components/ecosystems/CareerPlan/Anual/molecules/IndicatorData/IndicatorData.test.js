@@ -9,7 +9,9 @@ const setup = propOverrides => {
     {
       indicatorData: {
         cycle: 1,
-        concept: 'Excede',
+        overcoming: {
+          concept: 'Excede',
+        },
       },
       setRef: () => {},
       showDetails: true,
@@ -31,7 +33,12 @@ describe('IndicatorData', () => {
       // given
       const eventMock = { preventDefault: jest.fn() };
       const props = {
-        indicatorData: { cycle: 1, concept: 'Excede' },
+        indicatorData: {
+          cycle: 1,
+          overcoming: {
+            concept: 'Excede',
+          },
+        },
         onClick: jest.fn(),
         isSimulated: true,
       };
@@ -107,7 +114,12 @@ describe('IndicatorData', () => {
     it('should call renderConsolidatedData method when a indicatorType is not given', () => {
       // given
       const props = {
-        indicatorData: { cycle: 1, concept: 'Excede' },
+        indicatorData: {
+          cycle: 1,
+          overcoming: {
+            concept: 'Excede',
+          },
+        },
         showDetails: true,
       };
 
