@@ -52,14 +52,14 @@ export class Indicator extends Component {
     this.setState({ informationModalOpened: false });
   };
 
-  fetchOvercoming = (cycle, cb) => {
-    const { indicator, fetchOvercoming } = this.props;
+  onApplyChanges = (cycle, cb) => {
+    const { indicator, onApplyChanges } = this.props;
 
-    return fetchOvercoming({ cycle, indicatorType: indicator.indicatorType }, cb);
+    return onApplyChanges({ cycle, indicatorType: indicator.indicatorType }, cb);
   };
 
   onApply = cycle => {
-    this.fetchOvercoming(cycle, () => {
+    this.onApplyChanges(cycle, () => {
       this.setState({ activeCycle: null });
     });
   };
