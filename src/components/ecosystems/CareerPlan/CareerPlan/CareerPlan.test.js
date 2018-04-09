@@ -15,6 +15,7 @@ const setup = propOverrides => {
             Promise.resolve({ data: { consolidatedOvercoming: null, overcoming: [] } }),
           ),
       },
+      consolidatedCycles: [],
     },
     propOverrides,
   );
@@ -120,9 +121,9 @@ describe('CareerPlan', () => {
       const cycle = { cycle: 1, naturaNetwork: 1, directSale: 1 };
       const indicator = { indicatorType: 'scoresTotal', cycles: [cycle] };
       const indicators = [indicator];
-      const overcoming = { overcoming: 1 };
+      const overcoming = { value: 1 };
       const expectedOvercoming = {
-        data: { overcoming: [overcoming] },
+        data: { cyclesOvercoming: [overcoming] },
       };
       const expectedIndicators = [{ ...indicator, cycles: [{ ...cycle, overcoming }] }];
       const props = {
