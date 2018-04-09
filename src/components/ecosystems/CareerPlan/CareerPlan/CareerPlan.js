@@ -14,7 +14,7 @@ import {
   IndicatorListQuery,
   IndicatorListQueryOptions,
   OvercomingQuery,
-  ConsolidatedOvercomingQuery,
+  CyclesConsolidatedQuery,
 } from './CareerPlan.data';
 
 import {
@@ -73,7 +73,12 @@ export class CareerPlan extends Component {
     const cycles = this._getEditedCycles(indicator.cycles, cycle);
     const indicators = this._getEditedIndicators(currentIndicators, { cycles, indicatorType });
 
-    this.setState({ indicators }, cb);
+    const onStateSuccess = () => {
+      cb();
+      this._simulate(indicators);
+    };
+
+    this.setState({ indicators }, onStateSuccess);
   };
 
   onApplyChanges = ({ indicatorType, cycle }, cb) => {
@@ -122,37 +127,65 @@ export class CareerPlan extends Component {
       });
   };
 
-  _onFetchOvercomingSuccess = ({ overcoming, indicatorType, cycle, cb }) => {
+  _onFetchOvercomingSuccess = ({ cyclesOvercoming, indicatorType, cycle, cb }) => {
     const updateCycleModel = {
       indicatorType,
       cycle: {
         ...cycle,
-        overcoming: overcoming[0],
+        overcoming: cyclesOvercoming[0],
       },
     };
 
     this._updateCycle(updateCycleModel, cb);
   };
 
-  _fetchConsolidatedOvercoming = indicators => {
+  _simulate = indicators => {
     const { user, client } = this.props;
-    const simulation = indicators.map(item => ({ indicatorType: item.indicatorType }));
     const query = {
-      query: ConsolidatedOvercomingQuery,
+      query: CyclesConsolidatedQuery,
       variables: {
         year: 1,
-        simulation,
+        indicators: this._getIndicatorsWithSimulatedCyles(indicators),
         sellerId: user.codigo,
       },
     };
 
-    client.query(query).then(this._onFetchConsolidatedOvercomingSuccess);
+    client
+      .query(query)
+      .then(this._onFetchConsolidatedOvercomingSuccess)
+      .finally(() => {
+        this.setState({ hasInternalLoading: false });
+      });
+  };
+
+  _getIndicatorsWithSimulatedCyles = indicators => {
+    return indicators.map(indicator => ({
+      ...indicator,
+      cycles: indicator.cycles.filter(cycle => !cycle.isClosed),
+    }));
   };
 
   _onFetchConsolidatedOvercomingSuccess = ({ data }) => {
-    this.setState({
-      consolidatedCycles: data.consolidatedOvercoming,
+    if (!data) {
+      return;
+    }
+
+    const { cyclesConsolidated } = data;
+
+    const consolidatedCycles = this.state.consolidatedCycles.map(cycle => {
+      const cycleOvercoming = cyclesConsolidated.filter(c => c.cycle === cycle.cycle)[0];
+
+      if (!cycleOvercoming) {
+        return cycle;
+      }
+
+      return {
+        ...cycle,
+        overcoming: cycleOvercoming,
+      };
     });
+
+    this.setState({ consolidatedCycles });
   };
 
   render() {
