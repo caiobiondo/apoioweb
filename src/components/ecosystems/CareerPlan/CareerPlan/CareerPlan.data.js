@@ -8,12 +8,16 @@ export const IndicatorListQuery = gql`
     $currentYear: Int!
     $pastYear: Int!
     $indicatorTypes: [Int]
+    $businessModel: Int!
+    $country: Int!
   ) {
     currentIndicators: indicators(
       sellerId: $sellerId
       year: $currentYear
       cycle: $currentCycle
       indicatorTypes: $indicatorTypes
+      businessModel: $businessModel
+      country: $country
     ) {
       indicatorType
       significance
@@ -35,6 +39,8 @@ export const IndicatorListQuery = gql`
       year: $pastYear
       cycle: $currentCycle
       indicatorTypes: $indicatorTypes
+      businessModel: $businessModel
+      country: $country
     ) {
       indicatorType
       significance
@@ -51,7 +57,12 @@ export const IndicatorListQuery = gql`
         }
       }
     }
-    concepts(sellerId: $sellerId, cycle: $currentCycle) {
+    concepts(
+      sellerId: $sellerId
+      cycle: $currentCycle
+      businessModel: $businessModel
+      country: $country
+    ) {
       rangeStart
       rangeEnd
       value
@@ -66,6 +77,8 @@ export const OvercomingQuery = gql`
     $indicatorType: Int!
     $directSale: [Float]!
     $naturaNetwork: [Float]!
+    $businessModel: Int!
+    $country: Int!
   ) {
     cyclesOvercoming(
       sellerId: $sellerId
@@ -73,6 +86,8 @@ export const OvercomingQuery = gql`
       indicatorType: $indicatorType
       directSale: $directSale
       naturaNetwork: $naturaNetwork
+      businessModel: $businessModel
+      country: $country
     ) {
       cycle
       value
@@ -82,8 +97,20 @@ export const OvercomingQuery = gql`
 `;
 
 export const CyclesConsolidatedQuery = gql`
-  query CyclesConsolidatedQuery($sellerId: Int!, $year: Int!, $indicators: [IndicatorInput]!) {
-    cyclesConsolidated(sellerId: $sellerId, year: $year, indicators: $indicators) {
+  query CyclesConsolidatedQuery(
+    $sellerId: Int!
+    $year: Int!
+    $indicators: [IndicatorInput]!
+    $businessModel: Int!
+    $country: Int!
+  ) {
+    cyclesConsolidated(
+      sellerId: $sellerId
+      year: $year
+      indicators: $indicators
+      businessModel: $businessModel
+      country: $country
+    ) {
       cycle
       value
       concept
@@ -92,7 +119,7 @@ export const CyclesConsolidatedQuery = gql`
 `;
 
 export const IndicatorListQueryOptions = {
-  options({ user, currentCycle, currentYear, pastYear }) {
+  options({ user, currentCycle, currentYear, pastYear, businessModel, country }) {
     return {
       variables: {
         indicatorTypes: Object.values(IndicatorTypes),
@@ -100,6 +127,8 @@ export const IndicatorListQueryOptions = {
         currentCycle,
         currentYear,
         pastYear,
+        businessModel,
+        country,
       },
       forceFetch: true,
     };

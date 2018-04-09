@@ -100,11 +100,15 @@ export class CareerPlan extends Component {
     return this._updateCycle({ cycle: erasedCycle, indicatorType });
   };
 
+  _setInternalLoading(hasInternalLoading) {
+    this.setState({ hasInternalLoading });
+  }
+
   _fetchOvercoming = ({ indicatorType, cycle }, cb) => {
-    const { user, client } = this.props;
+    const { user, client, businessModel, country } = this.props;
     const { directSale, naturaNetwork } = cycle;
 
-    this.setState({ hasInternalLoading: true });
+    this._setInternalLoading(true);
 
     const query = {
       query: OvercomingQuery,
@@ -114,16 +118,28 @@ export class CareerPlan extends Component {
         naturaNetwork: naturaNetwork || 0,
         sellerId: user.codigo,
         cycleArray: [cycle.cycle],
+        businessModel,
+        country,
       },
     };
 
-    client
+    const afterFetchOvercomingSuccess = () => {
+      cb();
+      this._setInternalLoading(false);
+    };
+
+    return client
       .query(query)
       .then(({ data }) => {
-        this._onFetchOvercomingSuccess({ ...data, indicatorType, cycle, cb });
+        return this._onFetchOvercomingSuccess({
+          ...data,
+          indicatorType,
+          cycle,
+          cb: afterFetchOvercomingSuccess,
+        });
       })
-      .finally(() => {
-        this.setState({ hasInternalLoading: false });
+      .catch(() => {
+        this._setInternalLoading(false);
       });
   };
 
@@ -140,13 +156,15 @@ export class CareerPlan extends Component {
   };
 
   _simulate = indicators => {
-    const { user, client } = this.props;
+    const { user, client, businessModel, country } = this.props;
     const query = {
       query: CyclesConsolidatedQuery,
       variables: {
         year: 1,
         indicators: this._getIndicatorsWithSimulatedCyles(indicators),
         sellerId: user.codigo,
+        businessModel,
+        country,
       },
     };
 
@@ -159,9 +177,10 @@ export class CareerPlan extends Component {
   };
 
   _getIndicatorsWithSimulatedCyles = indicators => {
-    return indicators.map(indicator => ({
-      ...indicator,
-      cycles: indicator.cycles.filter(cycle => !cycle.isClosed),
+    return indicators.map(({ indicatorType, significance, cycles }) => ({
+      indicatorType,
+      significance,
+      cycles: cycles.filter(cycle => !cycle.isClosed),
     }));
   };
 

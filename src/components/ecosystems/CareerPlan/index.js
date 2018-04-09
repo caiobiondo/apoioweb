@@ -5,8 +5,17 @@ import CareerPlan from './CareerPlan';
 
 import { Wrapper } from './index.styles';
 
+import LocalStorageData from 'infra/LocalStorageData';
+
 export default class CareerPlanWrapper extends Component {
-  currentCycle = parseInt(moment().format('YYYYMM'), 10);
+  constructor() {
+    const { cycle, businessModel, country } = new LocalStorageData();
+    super();
+    this.currentCycle = cycle;
+    this.businessModel = businessModel;
+    this.country = country;
+  }
+
   currentYear = moment().year();
   pastYear = moment()
     .subtract(1, 'years')
@@ -18,6 +27,8 @@ export default class CareerPlanWrapper extends Component {
         <CareerPlan
           user={this.props.user}
           currentCycle={this.currentCycle}
+          businessModel={this.businessModel}
+          country={this.country}
           currentYear={this.currentYear}
           pastYear={this.pastYear}
         />
