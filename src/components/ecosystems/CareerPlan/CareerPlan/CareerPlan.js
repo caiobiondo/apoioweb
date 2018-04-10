@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { graphql, withApollo } from 'react-apollo';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { omit } from 'lodash';
 
 import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
 
@@ -74,8 +75,7 @@ export class CareerPlan extends Component {
     const indicators = this._getEditedIndicators(currentIndicators, { cycles, indicatorType });
 
     const onStateSuccess = () => {
-      cb();
-      this._simulate(indicators);
+      this._simulate(indicators, cb);
     };
 
     this.setState({ indicators }, onStateSuccess);
@@ -124,23 +124,17 @@ export class CareerPlan extends Component {
     };
 
     const afterFetchOvercomingSuccess = () => {
-      cb();
       this._setInternalLoading(false);
     };
 
-    return client
-      .query(query)
-      .then(({ data }) => {
-        return this._onFetchOvercomingSuccess({
-          ...data,
-          indicatorType,
-          cycle,
-          cb: afterFetchOvercomingSuccess,
-        });
-      })
-      .catch(() => {
-        this._setInternalLoading(false);
+    return client.query(query).then(({ data }) => {
+      return this._onFetchOvercomingSuccess({
+        ...data,
+        indicatorType,
+        cycle,
+        cb: afterFetchOvercomingSuccess,
       });
+    });
   };
 
   _onFetchOvercomingSuccess = ({ cyclesOvercoming, indicatorType, cycle, cb }) => {
@@ -155,13 +149,13 @@ export class CareerPlan extends Component {
     this._updateCycle(updateCycleModel, cb);
   };
 
-  _simulate = indicators => {
+  _simulate = (indicators, cb) => {
     const { user, client, businessModel, country } = this.props;
     const query = {
       query: CyclesConsolidatedQuery,
       variables: {
         year: 1,
-        indicators: this._getIndicatorsWithSimulatedCyles(indicators),
+        indicators: this._omitTypename(this._getIndicatorsWithSimulatedCyles(indicators)),
         sellerId: user.codigo,
         businessModel,
         country,
@@ -172,7 +166,7 @@ export class CareerPlan extends Component {
       .query(query)
       .then(this._onFetchConsolidatedOvercomingSuccess)
       .finally(() => {
-        this.setState({ hasInternalLoading: false });
+        cb();
       });
   };
 
@@ -182,6 +176,31 @@ export class CareerPlan extends Component {
       significance,
       cycles: cycles.filter(cycle => !cycle.isClosed),
     }));
+  };
+
+  _omitTypename = indicators => {
+    return indicators.map(indicator =>
+      omit(
+        {
+          ...indicator,
+          cycles: indicator.cycles.map(cycle =>
+            omit(
+              {
+                ...cycle,
+                overcoming: omit(
+                  {
+                    ...cycle.overcoming,
+                  },
+                  '__typename',
+                ),
+              },
+              '__typename',
+            ),
+          ),
+        },
+        '__typename',
+      ),
+    );
   };
 
   _onFetchConsolidatedOvercomingSuccess = ({ data }) => {
