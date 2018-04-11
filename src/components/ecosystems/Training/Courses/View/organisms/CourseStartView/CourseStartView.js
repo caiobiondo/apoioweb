@@ -48,19 +48,6 @@ export class CourseStartView extends Component {
     this.notifyLoadFinish(loading, course);
   }
 
-  componentDidUpdate() {
-    if (
-      !this.props.course ||
-      !this.refs.html5Iframe ||
-      this.refs.html5Iframe.contentDocument.body.innerHTML
-    ) {
-      return;
-    }
-
-    this.refs.html5Iframe.contentDocument.open();
-    this.refs.html5Iframe.contentDocument.write(this.props.course.courseContent.html5Embed);
-  }
-
   notifyLoadFinish = (loading, course) => {
     if (!loading && this.props.onLoadFinished) {
       this.props.onLoadFinished(this.isEmpty(loading, course), this.isLoading(loading, course));
