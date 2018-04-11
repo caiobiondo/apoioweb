@@ -121,9 +121,9 @@ export class IndicatorData extends Component {
   }
 
   renderCurrentLabel() {
-    const { indicatorData } = this.props;
+    const { isCurrentCycle } = this.props;
 
-    if (!indicatorData.current) {
+    if (!isCurrentCycle) {
       return;
     }
 

@@ -11,7 +11,7 @@ export default class CareerPlanWrapper extends Component {
   constructor() {
     const { cycle, businessModel, country } = new LocalStorageData();
     super();
-    this.currentCycle = cycle;
+    this.currentCycle = parseInt(cycle, 10);
     this.businessModel = businessModel;
     this.country = country;
   }

@@ -99,7 +99,7 @@ export class ConsolidatedIndicatorData extends Component {
   }
 
   renderCurrentLabel() {
-    if (!this.props.current) {
+    if (!this.props.isCurrentCycle) {
       return;
     }
 
