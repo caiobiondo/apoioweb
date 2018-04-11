@@ -64,9 +64,9 @@ export class Indicator extends Component {
     });
   };
 
-  renderCycles = cycle => {
+  renderCycles = (cycle, index) => {
     const { cycles } = this.props.indicator;
-    const { indicator, isCycleFilled } = this.props;
+    const { indicator, isCycleFilled, currentCycle } = this.props;
     const { activeCycle } = this.state;
     const previousCycle = cycles.filter((item, index) => {
       const nextCycle = cycles[index + 1];
@@ -77,12 +77,13 @@ export class Indicator extends Component {
       <IndicatorData
         indicatorData={cycle}
         key={cycle.cycle}
-        canFill={isCycleFilled(previousCycle)}
+        canFill={isCycleFilled(previousCycle) || index === 0}
         isFilled={isCycleFilled(cycle)}
         onClick={this.setActiveCycle}
         onApply={this.onApply}
         indicator={indicator}
         activeCycle={activeCycle}
+        isCurrentCycle={cycle.cycle === currentCycle}
         {...this.props}
       />
     );

@@ -64,6 +64,7 @@ export class ConsolidatedIndicator extends Component {
         isValid={this.isValidCycle(cycle)}
         isActive={this.isActiveCycle(cycle)}
         consolidatedCycles={this.props.consolidatedCycles}
+        isCurrentCycle={cycle.cycle === this.props.currentCycle}
         {...this.props}
       />
     );

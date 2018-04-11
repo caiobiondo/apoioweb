@@ -227,7 +227,7 @@ export class CareerPlan extends Component {
   };
 
   render() {
-    const { loading, pastIndicators, pastConsolidatedCycles, concepts } = this.props;
+    const { loading, pastIndicators, pastConsolidatedCycles, concepts, currentCycle } = this.props;
     const { activeMenu, indicators, consolidatedCycles, hasInternalLoading } = this.state;
 
     return (
@@ -276,6 +276,7 @@ export class CareerPlan extends Component {
               activeMenu={activeMenu}
               cyclesPerPage={this.cyclesPerPage}
               onApplyChanges={this.onApplyChanges}
+              currentCycle={currentCycle}
             />
           </div>
         </LoadingHandler>
