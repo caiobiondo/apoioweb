@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { injectIntl, FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
-import {
-  CourseViewQuery,
-  CourseViewQueryOptions,
-} from 'components/ecosystems/Training/data/CourseView.data';
+import { CourseViewHtml5Query, CourseViewHtml5QueryOptions } from './CourseViewHtml5.data';
+import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 
 import {
   Main,
@@ -15,40 +13,56 @@ import {
   TrainingCourseThumbnail,
   TrainingCourseThumbnailWrapper,
   TrainingCourseThumbnailDescriptionWrapper,
-  TrainingCourseDescription,
-  TrainingCourseTitle,
-  TrainingCourseUnavailableTitle,
   TrainingCourseActions,
-  TrainingCourseActionButton,
   TrainingCourseActionButtonMobile,
   TrainingCourseActionButtonWrapper,
-  TrainingCourseRatingWrapper,
+  Html5Wrapper,
   IconWrapper,
-} from './CourseStartView.styles';
+  TrainingCourseUnavailableTitle,
+} from './CourseViewHtml5.styles';
 
-import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
-import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
-import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
-import CourseDescription from 'components/ecosystems/Training/Courses/View/molecules/CourseDescription';
 import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
-import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
+import CourseDescription from 'components/ecosystems/Training/Courses/View/molecules/CourseDescription';
+import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
+import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
+import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
 import Dialog from 'material-ui/Dialog';
-
-import { Loading, FlatButton, Icon } from 'natura-ui';
 import { translate } from 'locale';
 
-import MediaQuery from 'react-responsive';
+import { Loading, FlatButton, Icon } from 'natura-ui';
 
-export class CourseStartView extends Component {
+export class CourseViewHtml5 extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
     showEvaluation: false,
+    courseStatus: 'pending',
+    courseIsFavorite: false,
   };
 
   componentWillReceiveProps({ loading, course }) {
     this.notifyLoadFinish(loading, course);
+
+    if (!this.props.course && course) {
+      this.setState({
+        courseStatus: course.status,
+        courseIsFavorite: course.isfavorite === 'true',
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (
+      !this.props.course ||
+      !this.refs.html5Iframe ||
+      this.refs.html5Iframe.contentDocument.body.innerHTML
+    ) {
+      return;
+    }
+
+    this.refs.html5Iframe.contentDocument.open();
+    this.refs.html5Iframe.contentDocument.write(this.props.course.courseContent.html5Embed);
+    this.refs.html5Iframe.contentDocument.close();
   }
 
   notifyLoadFinish = (loading, course) => {
@@ -62,11 +76,11 @@ export class CourseStartView extends Component {
   isEmpty = (loading, course) => !loading && !course.id;
 
   myListIconName = () => {
-    return this.props.course.isfavorite === 'true' ? 'ico_minus' : 'ico_plus';
+    return this.state.courseIsFavorite ? 'ico_minus' : 'ico_plus';
   };
 
   valueToUpdateMyList = () => {
-    return this.props.course.isfavorite === 'true' ? 'unfavorite' : 'favorite';
+    return this.state.courseIsFavorite ? 'unfavorite' : 'favorite';
   };
 
   handleTrainingError = () => {
@@ -87,7 +101,8 @@ export class CourseStartView extends Component {
   };
 
   handleUpdateSuccessMyList = () => {
-    this.props.refetch();
+    // this.props.refetch();
+    this.setState({ courseIsFavorite: !this.state.courseIsFavorite });
     this.handleDefaultMyList('trainingAddCourseSuccess', 'trainingRemoveCourseSuccess');
   };
 
@@ -118,14 +133,20 @@ export class CourseStartView extends Component {
       .then(response => {
         if (action === 'initialized') {
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
-          if (course.type === 'VIDEO') this.props.history.push(`/training/courses/${course.id}`);
+          if (course.type === 'HTML5') {
+            this.props.history.push(`/training/courses/${course.id}/html5`);
+          }
+          if (course.type === 'VIDEO') {
+            this.props.history.push(`/training/courses/${course.id}/video`);
+          }
+          this.setState({ courseStatus: 'started' });
         }
 
         if (action === 'terminated') {
-          this.setState({ showEvaluation: true });
+          this.setState({ showEvaluation: true, courseStatus: 'finished' });
         }
 
-        this.props.refetch();
+        // this.props.refetch();
         return;
       })
       .catch(err => {
@@ -211,35 +232,12 @@ export class CourseStartView extends Component {
 
     if (course.status === 'started' || course.status === 'paused') {
       buttons.push(
-        <TrainingCourseActionButtonWrapper key="resume">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('resumeTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('initialized')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-      buttons.push(
         <TrainingCourseActionButtonWrapper key="finish">
           <FlatButton
             {...buttonStyle}
             label={translate('finishTraining')}
             icon={<Icon file="ico_play_circle" />}
             onClick={this.handleTrainingClick('terminated')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-    }
-
-    if (course.status === 'finished') {
-      buttons.push(
-        <TrainingCourseActionButtonWrapper key="review">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('reviewTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('initialized')}
           />
         </TrainingCourseActionButtonWrapper>,
       );
@@ -263,32 +261,24 @@ export class CourseStartView extends Component {
     return this.state.showEvaluation && course.ratedByYou !== 'true';
   };
 
-  render() {
+  isCourseAvailable = () => {
     const { course } = this.props;
 
-    if (!course && !this.props.loading) return null;
+    return !/.*\.zip$/i.test(course.courseContent.html5);
+  };
 
-    if (!course && this.props.loading) {
+  render() {
+    const { course, loading } = this.props;
+
+    if (loading) {
       return <Loading background="transparent" />;
     }
 
-    if (!course.id) {
-      return (
-        <Main>
-          <EmptyList
-            icon="ico_list_add"
-            titleId="myCourseEmptyList"
-            descriptionId="myCourseEmptyListDescription"
-          />
-        </Main>
-      );
-    }
-
-    if (course.type === 'HTML5') {
-      return (
-        <Main>
-          <CourseViewHeader course={course} />
-          <TrainingCourseThumbnailWrapper>
+    return (
+      <Main>
+        <CourseViewHeader />
+        <TrainingCourseThumbnailWrapper>
+          {!this.isCourseAvailable() && (
             <TrainingCourseThumbnail imageUrl={course.thumbnail}>
               <TrainingCourseThumbnailDescriptionWrapper>
                 <IconWrapper>
@@ -299,63 +289,41 @@ export class CourseStartView extends Component {
                 </TrainingCourseUnavailableTitle>
               </TrainingCourseThumbnailDescriptionWrapper>
             </TrainingCourseThumbnail>
-          </TrainingCourseThumbnailWrapper>
-          <CourseDescription course={course} />
-          <CourseRating course={course} />
-          <RelatedCourses courses={course.relatedCourses} />
-        </Main>
-      );
-    }
-
-    return (
-      <Main>
-        <CourseViewHeader course={course} />
-        <MediaQuery maxWidth={767}>
-          <TrainingCourseThumbnailWrapper>
-            <TrainingCourseThumbnail imageUrl={course.thumbnail}>
-              <TrainingCourseThumbnailDescriptionWrapper>
-                <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
-                <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
-              </TrainingCourseThumbnailDescriptionWrapper>
-            </TrainingCourseThumbnail>
-            <TrainingCourseActions>
-              {this.renderActionButtons(TrainingCourseActionButtonMobile, course)}
-            </TrainingCourseActions>
-            <TrainingCourseRatingWrapper>
-              <CourseRating course={course} />
-            </TrainingCourseRatingWrapper>
-          </TrainingCourseThumbnailWrapper>
-        </MediaQuery>
-        <MediaQuery minWidth={768}>
-          <TrainingCourseThumbnailWrapper>
-            <TrainingCourseThumbnail imageUrl={course.thumbnail}>
-              <TrainingCourseThumbnailDescriptionWrapper>
-                <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
-                <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
-                <TrainingCourseActions>
-                  {this.renderActionButtons(TrainingCourseActionButton, course)}
-                </TrainingCourseActions>
-              </TrainingCourseThumbnailDescriptionWrapper>
-            </TrainingCourseThumbnail>
-            <TrainingCourseRatingWrapper>
-              <CourseRating course={course} />
-            </TrainingCourseRatingWrapper>
-          </TrainingCourseThumbnailWrapper>
-        </MediaQuery>
-        <RelatedCourses courses={course.relatedCourses} />
-        {this.renderFeedbackModal()}
-        {this.canEvaluate() && (
-          <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+          )}
+          {this.isCourseAvailable() && (
+            <Html5Wrapper>
+              <iframe
+                ref="html5Iframe"
+                title={course.title}
+                src="about:blank"
+                allowFullScreen
+                frameBorder="0"
+              />
+            </Html5Wrapper>
+          )}
+        </TrainingCourseThumbnailWrapper>
+        <CourseDescription course={course} />
+        {this.isCourseAvailable() && (
+          <TrainingCourseActions>
+            {this.renderActionButtons(TrainingCourseActionButtonMobile, course)}
+          </TrainingCourseActions>
         )}
+        <CourseRating course={course} />
+        <RelatedCourses courses={course.relatedCourses} />
+        {this.isCourseAvailable() && this.renderFeedbackModal()}
+        {this.isCourseAvailable() &&
+          this.canEvaluate() && (
+            <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+          )}
       </Main>
     );
   }
 }
 
-export const CourseStartViewWithIntl = injectIntl(CourseStartView);
-export const CourseStartViewWithRouter = withRouter(CourseStartViewWithIntl);
+export const CourseViewHtml5WithIntl = injectIntl(CourseViewHtml5);
+export const CourseViewHtml5WithRouter = withRouter(CourseViewHtml5WithIntl);
 
 export default compose(
-  graphql(CourseViewQuery, CourseViewQueryOptions),
+  graphql(CourseViewHtml5Query, CourseViewHtml5QueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseStartViewWithRouter);
+)(CourseViewHtml5WithRouter);

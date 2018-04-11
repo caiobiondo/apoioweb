@@ -130,6 +130,14 @@ export default class App extends Component {
                 />
                 <Route
                   exact
+                  path="/training/courses/:id/:type"
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Courses/View'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
                   path="/training/certificates"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Certificates/List'),
@@ -157,22 +165,6 @@ export default class App extends Component {
                   path="/training/my-list"
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/MyList/List'),
-                    'training',
-                  )}
-                />
-                <Route
-                  exact
-                  path="/training/courses/:id"
-                  component={withDefaultBehaviour(
-                    import('components/ecosystems/Training/Courses/View'),
-                    'training',
-                  )}
-                />
-                <Route
-                  exact
-                  path="/training/courses/:id/start"
-                  component={withDefaultBehaviour(
-                    import('components/ecosystems/Training/Courses/StartView'),
                     'training',
                   )}
                 />

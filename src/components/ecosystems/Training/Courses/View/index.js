@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Main } from './index.styles';
 import CourseView from './organisms/CourseView/CourseView';
+import CourseStartView from './organisms/CourseStartView/CourseStartView';
+import CourseViewHtml5 from './organisms/CourseViewHtml5/CourseViewHtml5';
 
 class TrainingWrapper extends Component {
   state = {
@@ -12,14 +14,23 @@ class TrainingWrapper extends Component {
     this.setState({ empty: empty, loading: loading });
   };
 
-  render() {
-    const { id } = this.props.match.params;
+  renderCourse = () => {
+    const { user, match: { params: { id, type } } } = this.props;
 
-    return (
-      <Main>
-        <CourseView user={this.props.user} courseId={id} onLoadFinished={this.onLoadFinished} />
-      </Main>
-    );
+    let element = CourseStartView;
+    if (type === 'video') element = CourseView;
+    if (type === 'html5') element = CourseViewHtml5;
+    if (type === 'web') element = CourseStartView;
+
+    return React.createElement(element, {
+      user,
+      courseId: id,
+      onLoadFinished: this.onLoadFinished,
+    });
+  };
+
+  render() {
+    return <Main>{this.renderCourse()}</Main>;
   }
 }
 
