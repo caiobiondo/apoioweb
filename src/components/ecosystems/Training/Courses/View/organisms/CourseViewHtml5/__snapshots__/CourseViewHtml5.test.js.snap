@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrainingCourseViewHtml5 renders correctly when loading 1`] = `
+<Loading
+  background="transparent"
+  visible={true}
+  zIndex={9999}
+/>
+`;
+
+exports[`TrainingCourseViewHtml5 renders correctly when the course is defined 1`] = `
+<CourseViewHtml5styles__Main>
+  <withRouter(CourseViewHeader) />
+  <CourseViewHtml5styles__TrainingCourseThumbnailWrapper>
+    <CourseViewHtml5styles__Html5Wrapper>
+      <iframe
+        allowFullScreen={true}
+        frameBorder="0"
+        src="about:blank"
+        title="new course"
+      />
+    </CourseViewHtml5styles__Html5Wrapper>
+  </CourseViewHtml5styles__TrainingCourseThumbnailWrapper>
+  <CourseDescription
+    course={
+      Object {
+        "courseContent": Object {
+          "html5": "file.html",
+          "html5Embed": "<html></html>",
+        },
+        "dateUpload": "2017-04-20T00:00:00.000Z",
+        "description": "new course description",
+        "durationInSeconds": 1234,
+        "id": 1,
+        "isfavorite": true,
+        "ratedByYou": "false",
+        "relatedCourses": Array [],
+        "status": "started",
+        "stoppedAt": 12,
+        "title": "new course",
+        "type": "VIDEO",
+        "views": 12,
+      }
+    }
+  />
+  <CourseViewHtml5styles__TrainingCourseActions>
+    <CourseViewHtml5styles__TrainingCourseActionButtonWrapper
+      key="finish"
+    >
+      <FlatButton
+        backgroundColor="#f8f8f8"
+        disabled={false}
+        fullWidth={false}
+        hoverColor="#f8f8f8"
+        icon={
+          <Icon
+            file="ico_play_circle"
+          />
+        }
+        label="Finalizar treinamento"
+        labelPosition="after"
+        labelStyle={
+          Object {
+            "color": "#f3971f",
+            "fontFamily": "Roboto-Medium",
+            "paddingLeft": "0px",
+            "paddingRight": "40px",
+            "textTransform": "uppercase",
+          }
+        }
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={false}
+        secondary={false}
+      />
+    </CourseViewHtml5styles__TrainingCourseActionButtonWrapper>
+    <CourseViewHtml5styles__TrainingCourseActionButtonWrapper
+      key="list"
+    >
+      <FlatButton
+        backgroundColor="#f8f8f8"
+        disabled={false}
+        fullWidth={false}
+        hoverColor="#f8f8f8"
+        icon={
+          <Icon
+            file="ico_plus"
+          />
+        }
+        label="Minha Lista"
+        labelPosition="after"
+        labelStyle={
+          Object {
+            "color": "#f3971f",
+            "fontFamily": "Roboto-Medium",
+            "paddingLeft": "0px",
+            "paddingRight": "40px",
+            "textTransform": "uppercase",
+          }
+        }
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={false}
+        secondary={false}
+      />
+    </CourseViewHtml5styles__TrainingCourseActionButtonWrapper>
+  </CourseViewHtml5styles__TrainingCourseActions>
+  <CourseRating
+    course={
+      Object {
+        "courseContent": Object {
+          "html5": "file.html",
+          "html5Embed": "<html></html>",
+        },
+        "dateUpload": "2017-04-20T00:00:00.000Z",
+        "description": "new course description",
+        "durationInSeconds": 1234,
+        "id": 1,
+        "isfavorite": true,
+        "ratedByYou": "false",
+        "relatedCourses": Array [],
+        "status": "started",
+        "stoppedAt": 12,
+        "title": "new course",
+        "type": "VIDEO",
+        "views": 12,
+      }
+    }
+  />
+  <RelatedCourses
+    courses={Array []}
+  />
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label={
+              <FormattedMessage
+                  id="ok"
+                  values={Object {}}
+              />
+          }
+          labelPosition="after"
+          labelStyle={
+              Object {
+                  "fontFamily": "Roboto-Regular",
+                }
+          }
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    key="feedbackModal"
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title=""
+    titleStyle={
+      Object {
+        "fontFamily": "NaturaSans-Bold",
+        "fontSize": "25px",
+      }
+    }
+  />
+</CourseViewHtml5styles__Main>
+`;
+
+exports[`TrainingCourseViewHtml5 renders correctly when the course is not defined 1`] = `""`;

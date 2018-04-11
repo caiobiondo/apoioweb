@@ -234,7 +234,7 @@ describe('Training Course Start View', () => {
           await result.instance().handleTrainingClick('initialized')();
 
           // then
-          expect(props.history.push).toBeCalledWith(`/training/courses/${course.id}`);
+          expect(props.history.push).toBeCalledWith(`/training/courses/${course.id}/video`);
         });
       });
     });
