@@ -132,14 +132,12 @@ export class CourseViewHtml5 extends Component {
       })
       .then(response => {
         if (action === 'initialized') {
+          this.setState({ courseStatus: 'started' });
+
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
-          if (course.type === 'HTML5') {
-            this.props.history.push(`/training/courses/${course.id}/html5`);
-          }
           if (course.type === 'VIDEO') {
             this.props.history.push(`/training/courses/${course.id}/video`);
           }
-          this.setState({ courseStatus: 'started' });
         }
 
         if (action === 'terminated') {
@@ -270,9 +268,11 @@ export class CourseViewHtml5 extends Component {
   render() {
     const { course, loading } = this.props;
 
-    if (loading) {
+    if (!course && loading) {
       return <Loading background="transparent" />;
     }
+
+    if (!course.id) return null;
 
     return (
       <Main>

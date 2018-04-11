@@ -1,8 +1,8 @@
-import { CourseViewQuery, CourseViewQueryOptions } from './CourseView.data';
+import { CourseViewHtml5Query, CourseViewHtml5QueryOptions } from './CourseViewHtml5.data';
 
-describe('CourseViewQuery', () => {
+describe('CourseViewHtml5Query', () => {
   it('should be the correct query', () => {
-    expect(CourseViewQuery).toMatchSnapshot();
+    expect(CourseViewHtml5Query).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
@@ -35,7 +35,7 @@ describe('CourseViewQuery', () => {
     };
     const props = { user, courseId: 2 };
 
-    const options = CourseViewQueryOptions.options(props);
+    const options = CourseViewHtml5QueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
@@ -58,12 +58,12 @@ describe('CourseViewQuery', () => {
     const data = {
       data: {
         loading: true,
-        course: {},
+        courseHtml5: {},
         refetch: jest.fn(),
       },
     };
 
-    const props = CourseViewQueryOptions.props(data);
+    const props = CourseViewHtml5QueryOptions.props(data);
 
     expect(props).toMatchSnapshot();
   });

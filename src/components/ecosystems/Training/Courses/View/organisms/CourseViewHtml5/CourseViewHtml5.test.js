@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CourseStartView } from './CourseStartView';
+import { CourseViewHtml5 } from './CourseViewHtml5';
 
 const setup = propOverrides => {
   const intl = {
@@ -25,6 +25,10 @@ const setup = propOverrides => {
         isfavorite: true,
         relatedCourses: [],
         ratedByYou: 'false',
+        courseContent: {
+          html5: 'file.html',
+          html5Embed: '<html></html>',
+        },
       },
       history: { push: jest.fn() },
       mutate: jest.fn().mockReturnValue(
@@ -44,7 +48,7 @@ const setup = propOverrides => {
     propOverrides,
   );
 
-  const result = shallow(<CourseStartView {...props} />);
+  const result = shallow(<CourseViewHtml5 {...props} />);
 
   return {
     props,
@@ -52,7 +56,7 @@ const setup = propOverrides => {
   };
 };
 
-describe('Training Course Start View', () => {
+describe('TrainingCourseViewHtml5', () => {
   it('renders correctly when loading', () => {
     // given
     // when
@@ -133,6 +137,10 @@ describe('Training Course Start View', () => {
           isfavorite: true,
           relatedCourses: [],
           ratedByYou: 'false',
+          courseContent: {
+            html5: 'file.html',
+            html5Embed: '<html></html>',
+          },
         };
 
         // when
@@ -159,6 +167,10 @@ describe('Training Course Start View', () => {
             isfavorite: true,
             relatedCourses: [],
             ratedByYou: 'true',
+            courseContent: {
+              html5: 'file.html',
+              html5Embed: '<html></html>',
+            },
           };
 
           // when
@@ -227,7 +239,6 @@ describe('Training Course Start View', () => {
               html5: null,
             },
           };
-          global.open = jest.fn();
 
           // when
           const { result, props } = setup({ loading: false, course });
