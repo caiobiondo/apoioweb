@@ -124,6 +124,7 @@ export class CareerPlan extends Component {
     };
 
     const afterFetchOvercomingSuccess = () => {
+      cb();
       this._setInternalLoading(false);
     };
 
@@ -150,11 +151,11 @@ export class CareerPlan extends Component {
   };
 
   _simulate = (indicators, cb) => {
-    const { user, client, businessModel, country } = this.props;
+    const { user, client, businessModel, country, currentYear } = this.props;
     const query = {
       query: CyclesConsolidatedQuery,
       variables: {
-        year: 1,
+        year: currentYear,
         indicators: this._omitTypename(this._getIndicatorsWithSimulatedCyles(indicators)),
         sellerId: user.codigo,
         businessModel,
