@@ -111,23 +111,27 @@ export class ConsolidatedIndicatorData extends Component {
   }
 
   renderConceptValue() {
-    const { cycle, isActive } = this.props;
+    const { cycle, isActive, isValid } = this.props;
 
     if (isActive) {
       return;
     }
 
-    return IndicatorConceptsLabels[cycle.overcoming.concept] || '-';
+    return (isValid && IndicatorConceptsLabels[cycle.overcoming.concept]) || '-';
   }
 
   renderOvercoming() {
-    const { cycle, isActive } = this.props;
+    const { cycle, isActive, isValid } = this.props;
 
     if (isActive) {
       return;
     }
 
-    return cycle.overcoming.value ? <PercentageFormat value={cycle.overcoming.value} /> : '-';
+    return cycle.overcoming.value && isValid ? (
+      <PercentageFormat value={cycle.overcoming.value} />
+    ) : (
+      '-'
+    );
   }
 
   render() {
