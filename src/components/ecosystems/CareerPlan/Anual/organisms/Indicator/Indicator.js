@@ -98,7 +98,7 @@ export class Indicator extends Component {
 
   render() {
     const { informationModalOpened } = this.state;
-    const { indicator, concepts } = this.props;
+    const { indicator, pastIndicator, concepts } = this.props;
     const now = new Date();
     const currentYear = now.getFullYear();
     const lastYear = currentYear - 1;
@@ -122,7 +122,10 @@ export class Indicator extends Component {
 
             <IndicatorTableLegend indicatorType={indicator.indicatorType}>
               <IndicatorTableLegendItem>{currentYear}</IndicatorTableLegendItem>
-              <IndicatorTableLegendItem>{lastYear}</IndicatorTableLegendItem>
+              {pastIndicator &&
+                pastIndicator.cycles.length > 0 && (
+                  <IndicatorTableLegendItem>{lastYear}</IndicatorTableLegendItem>
+                )}
             </IndicatorTableLegend>
           </IndicatorTableHeader>
 
