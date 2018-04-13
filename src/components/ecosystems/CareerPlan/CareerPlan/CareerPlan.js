@@ -104,7 +104,7 @@ export class CareerPlan extends Component {
     this.setState({ hasInternalLoading });
   }
 
-  _fetchOvercoming = ({ indicatorType, cycle }, cb) => {
+  _fetchOvercoming = ({ indicatorType, cycle }, cb = () => {}) => {
     const { user, client, businessModel, country } = this.props;
     const { directSale, naturaNetwork } = cycle;
 
@@ -210,7 +210,6 @@ export class CareerPlan extends Component {
     }
 
     const { cyclesConsolidated } = data;
-
     const consolidatedCycles = this.state.consolidatedCycles.map(cycle => {
       const cycleOvercoming = cyclesConsolidated.filter(c => c.cycle === cycle.cycle)[0];
 
