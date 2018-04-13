@@ -73,7 +73,7 @@ export const CourseViewQueryOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
+      fetchPolicy: 'cache-and-network',
     };
   },
 

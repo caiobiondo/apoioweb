@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { Loading, CircularProgress } from 'natura-ui';
-import ReactInfiniteScroller from 'react-infinite-scroller';
+import { Loading, CircularProgress, FormButton } from 'natura-ui';
+import { translate } from 'locale';
 
 import { debounce } from 'utils/debounce';
 
-import { LoadingWrapper } from './InfiniteScroll.styles';
+import { LoadingWrapper, searchButtonStyles } from './InfiniteScroll.styles';
 
 export class InfiniteScroll extends Component {
   isEmpty = () => {
@@ -28,17 +28,25 @@ export class InfiniteScroll extends Component {
     }
 
     return (
-      <ReactInfiniteScroller
-        loadMore={this.onScroll}
-        hasMore={hasMore}
-        loader={
+      <div>
+        {children}
+        {loading && (
           <LoadingWrapper key="loadingWrapper">
             <CircularProgress thickness={2} />
           </LoadingWrapper>
-        }
-      >
-        {children}
-      </ReactInfiniteScroller>
+        )}
+        {!loading &&
+          hasMore && (
+            <LoadingWrapper key="loadingWrapper">
+              <FormButton
+                {...searchButtonStyles}
+                primary
+                onClick={this.onScroll}
+                label={translate('viewMore')}
+              />
+            </LoadingWrapper>
+          )}
+      </div>
     );
   }
 }

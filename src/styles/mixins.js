@@ -31,4 +31,5 @@ export const LoadingWrapperStyle = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-top: 40px;
 `;

@@ -45,7 +45,7 @@ describe('TrainingCoursesQuery', () => {
     expect(options).toEqual({
       variables: {
         sellerId: props.user.codigo,
-        limit: 10,
+        limit: 20,
         offset: 0,
         status: null,
         favorite: null,
@@ -58,8 +58,7 @@ describe('TrainingCoursesQuery', () => {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     });
   });
 
