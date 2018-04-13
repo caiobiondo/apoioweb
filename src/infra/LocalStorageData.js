@@ -1,7 +1,7 @@
 export default class LocalStorageData {
   constructor() {
     const keys = {
-      cycle: 'cycle',
+      cycle: 'cycleNaturaWeb',
       businessModel: 'businessModelNaturaWeb',
       country: 'countryNaturaWeb',
     };
