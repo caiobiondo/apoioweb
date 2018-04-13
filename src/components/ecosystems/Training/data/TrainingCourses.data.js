@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 export const TrainingCoursesQuery = gql`
   query TrainingCoursesQuery(
@@ -67,16 +67,11 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
     return previousResult;
   }
 
-  const previousResultIds = previousResult.courses.items.map(item => item.id);
-  const fetchMoreResultsToAdd = fetchMoreResult.courses.items.filter(
-    item => previousResultIds.indexOf(item.id) < 0,
-  );
-
   return Object.assign({}, previousResult, {
     courses: {
       __typename: previousResult.courses.__typename,
       hasNextPage: fetchMoreResult.courses.hasNextPage,
-      items: [...previousResult.courses.items, ...fetchMoreResultsToAdd],
+      items: [...previousResult.courses.items, ...fetchMoreResult.courses.items],
     },
   });
 };

@@ -65,7 +65,7 @@ export const TrainingCategoriesQueryOptions = {
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
       forceFetch: true,
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     };
   },
   props({ data }) {
