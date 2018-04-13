@@ -101,10 +101,9 @@ describe('IndicatorData', () => {
 
     it('should not render the current label if the item is not the current one', () => {
       // given
-      const indicatorData = { current: false };
 
       // when
-      const { result } = setup({ indicatorData });
+      const { result } = setup({ isCurrentCycle: false });
       const currentLabel = result.find('IndicatorDatastyles__IndicatorDataSortCurrent');
 
       // then
@@ -113,10 +112,9 @@ describe('IndicatorData', () => {
 
     it('should render the current label if the item is the current one', () => {
       // given
-      const indicatorData = { current: true };
 
       // when
-      const { result } = setup({ indicatorData });
+      const { result } = setup({ isCurrentCycle: true });
       const currentLabel = result.find('IndicatorDatastyles__IndicatorDataSortCurrent');
 
       // then

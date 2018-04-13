@@ -96,30 +96,6 @@ describe('CareerPlan', () => {
       // then
       expect(instance.state.indicators).toEqual(expectedIndicators);
     });
-
-    it('should call the simulate method and its respective callback', async () => {
-      // given
-      const callback = jest.fn();
-      const newCycle = { cycle: 1, value: 2 };
-      const indicator = { indicatorType: 'scoresTotal', cycles: [{ cycle: 1, value: 1 }] };
-      const indicators = [indicator];
-
-      // when
-      const { result } = setup({
-        client: {
-          query: jest.fn().mockReturnValue(Promise.resolve({ data: {} })),
-        },
-      });
-      const instance = result.instance();
-      result.setProps({ indicators });
-      await instance._updateCycle(
-        { cycle: newCycle, indicatorType: indicator.indicatorType },
-        callback,
-      );
-
-      // then
-      expect(callback).toBeCalled();
-    });
   });
 
   describe('on onApplyChanges method', async () => {

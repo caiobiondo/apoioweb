@@ -136,7 +136,7 @@ describe('ConsolidatedIndicatorData', () => {
       // given
 
       // when
-      const { result } = setup({ current: false });
+      const { result } = setup({ isCurrentCycle: false });
       const currentLabel = result.find('IndicatorDatastyles__IndicatorDataSortCurrent');
 
       // then
@@ -147,7 +147,7 @@ describe('ConsolidatedIndicatorData', () => {
       // given
 
       // when
-      const { result } = setup({ current: true });
+      const { result } = setup({ isCurrentCycle: true });
       const currentLabel = result.find('IndicatorDatastyles__IndicatorDataSortCurrent');
 
       // then
