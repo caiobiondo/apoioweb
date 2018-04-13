@@ -49,11 +49,8 @@ export class ConsolidatedIndicator extends Component {
 
   isActiveCycle = cycle => {
     const { consolidatedCycles } = this.props;
-    const index = consolidatedCycles.indexOf(cycle);
-
-    return (
-      (index === 0 || this.isValidCycle(consolidatedCycles[index - 1])) && !this.isValidCycle(cycle)
-    );
+    const firstInvalidCycle = consolidatedCycles.filter(c => !this.isValidCycle(c))[0];
+    return firstInvalidCycle && firstInvalidCycle.cycle === cycle.cycle;
   };
 
   renderIndicatorData = cycle => {
