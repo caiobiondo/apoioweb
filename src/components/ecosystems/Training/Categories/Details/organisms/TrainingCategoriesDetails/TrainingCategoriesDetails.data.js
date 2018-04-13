@@ -99,8 +99,7 @@ export const TrainingCategoriesDetailsOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     };
   },
   props({ data }) {
