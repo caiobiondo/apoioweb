@@ -88,7 +88,7 @@ export class ConsolidatedIndicator extends Component {
 
   render() {
     const { informationModalOpened } = this.state;
-    const { consolidatedCycles, concepts } = this.props;
+    const { consolidatedCycles, pastConsolidatedCycles, concepts } = this.props;
     const now = new Date();
     const currentYear = now.getFullYear();
     const lastYear = currentYear - 1;
@@ -118,7 +118,10 @@ export class ConsolidatedIndicator extends Component {
 
               <IndicatorTableLegend>
                 <IndicatorTableLegendItem>{currentYear}</IndicatorTableLegendItem>
-                <IndicatorTableLegendItem>{lastYear}</IndicatorTableLegendItem>
+                {pastConsolidatedCycles &&
+                  pastConsolidatedCycles.length > 0 && (
+                    <IndicatorTableLegendItem>{lastYear}</IndicatorTableLegendItem>
+                  )}
               </IndicatorTableLegend>
             </IndicatorTableHeader>
 
