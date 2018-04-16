@@ -18,5 +18,8 @@ export default {
     careerPlanNotFilled: 'O simulador deve ser preenchido sequencialmente',
     careerPlanConsolidatedIndicatorError:
       'Simule os indicadores {indicatorNames} no ciclo {cycle} para obter o consolidado',
+    careerPlanEmptyList: 'Indicadores não encontrados',
+    careerPlanEmptyListDescription:
+      'Não foi possível encontrar os indicadores do Plano de Carreira',
   },
 };

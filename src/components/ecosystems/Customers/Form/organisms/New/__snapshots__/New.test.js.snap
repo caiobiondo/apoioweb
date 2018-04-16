@@ -1332,6 +1332,8 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "careerPlanCleanSimulationContent": "Tem certeza que deseja limpar a sua simulação do indicador {indicatorTitle} no ciclo {cycle}?",
             "careerPlanConsolidatedIndicatorError": "Simule os indicadores {indicatorNames} no ciclo {cycle} para obter o consolidado",
             "careerPlanDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
+            "careerPlanEmptyList": "Indicadores não encontrados",
+            "careerPlanEmptyListDescription": "Não foi possível encontrar os indicadores do Plano de Carreira",
             "careerPlanNotFilled": "O simulador deve ser preenchido sequencialmente",
             "careerPlanTitle": "Plano de Carreira",
             "categories": "Categorias",

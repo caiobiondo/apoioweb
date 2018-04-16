@@ -7,6 +7,7 @@ import { omit } from 'lodash';
 import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
 
 import { Loading } from 'natura-ui';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import LoadingHandler from 'components/atoms/LoadingHandler';
 import CycleMenu from './molecules/CycleMenu';
 import CycleMenuViewer from './molecules/CycleMenuViewer';
@@ -226,60 +227,76 @@ export class CareerPlan extends Component {
     this.setState({ consolidatedCycles });
   };
 
-  render() {
-    const { loading, pastIndicators, pastConsolidatedCycles, concepts, currentCycle } = this.props;
+  renderCareerPlanComponents() {
+    const { pastIndicators, pastConsolidatedCycles, concepts, currentCycle } = this.props;
     const { activeMenu, indicators, consolidatedCycles, hasInternalLoading } = this.state;
+
+    if (!indicators || indicators.length === 0) {
+      return (
+        <EmptyList
+          icon="ico_warning_info"
+          titleId="careerPlanEmptyList"
+          descriptionId="careerPlanEmptyListDescription"
+        />
+      );
+    }
+
+    return (
+      <div>
+        <ReactCSSTransitionGroup
+          transitionName="fadeIn"
+          transitionAppearTimeout={300}
+          transitionLeaveTimeout={300}
+          transitionAppear
+          transitionLeave
+          transitionEnter={false}
+        >
+          {hasInternalLoading && (
+            <LoadingOverlay>
+              <LoadingWrapper>
+                <Loading background="transparent" />
+              </LoadingWrapper>
+            </LoadingOverlay>
+          )}
+        </ReactCSSTransitionGroup>
+        <CareerPlanTitleWrapper>
+          <CareerPlanTitle>
+            <FormattedMessage id="careerPlanTitle" />
+          </CareerPlanTitle>
+
+          <CareerPlanDescription>
+            <FormattedMessage id="careerPlanDescription" />
+          </CareerPlanDescription>
+        </CareerPlanTitleWrapper>
+
+        <CycleMenu
+          indicators={indicators}
+          onMenuChange={this.onMenuChange}
+          activeMenu={activeMenu}
+          cyclesPerPage={this.cyclesPerPage}
+        />
+
+        <CycleMenuViewer
+          indicators={indicators}
+          pastIndicators={pastIndicators}
+          consolidatedCycles={consolidatedCycles}
+          pastConsolidatedCycles={pastConsolidatedCycles}
+          concepts={concepts}
+          activeMenu={activeMenu}
+          cyclesPerPage={this.cyclesPerPage}
+          onApplyChanges={this.onApplyChanges}
+          currentCycle={currentCycle}
+        />
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.props;
 
     return (
       <CareerPlanSection>
-        <LoadingHandler loading={loading}>
-          <div>
-            <ReactCSSTransitionGroup
-              transitionName="fadeIn"
-              transitionAppearTimeout={300}
-              transitionLeaveTimeout={300}
-              transitionAppear
-              transitionLeave
-              transitionEnter={false}
-            >
-              {hasInternalLoading && (
-                <LoadingOverlay>
-                  <LoadingWrapper>
-                    <Loading background="transparent" />
-                  </LoadingWrapper>
-                </LoadingOverlay>
-              )}
-            </ReactCSSTransitionGroup>
-            <CareerPlanTitleWrapper>
-              <CareerPlanTitle>
-                <FormattedMessage id="careerPlanTitle" />
-              </CareerPlanTitle>
-
-              <CareerPlanDescription>
-                <FormattedMessage id="careerPlanDescription" />
-              </CareerPlanDescription>
-            </CareerPlanTitleWrapper>
-
-            <CycleMenu
-              indicators={indicators}
-              onMenuChange={this.onMenuChange}
-              activeMenu={activeMenu}
-              cyclesPerPage={this.cyclesPerPage}
-            />
-
-            <CycleMenuViewer
-              indicators={indicators}
-              pastIndicators={pastIndicators}
-              consolidatedCycles={consolidatedCycles}
-              pastConsolidatedCycles={pastConsolidatedCycles}
-              concepts={concepts}
-              activeMenu={activeMenu}
-              cyclesPerPage={this.cyclesPerPage}
-              onApplyChanges={this.onApplyChanges}
-              currentCycle={currentCycle}
-            />
-          </div>
-        </LoadingHandler>
+        <LoadingHandler loading={loading}>{this.renderCareerPlanComponents()}</LoadingHandler>
       </CareerPlanSection>
     );
   }
