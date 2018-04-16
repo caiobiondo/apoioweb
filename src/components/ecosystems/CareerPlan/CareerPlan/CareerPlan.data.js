@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import { IndicatorTypes } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
 export const IndicatorListQuery = gql`
-  query OrdersListQuery(
+  query CareerPlanQuery(
     $sellerId: Int!
     $currentCycle: Int!
     $currentYear: Int!
