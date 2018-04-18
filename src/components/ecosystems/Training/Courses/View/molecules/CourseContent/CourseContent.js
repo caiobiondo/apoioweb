@@ -77,12 +77,6 @@ export class CourseContent extends Component {
     }
   }
 
-  componentWillUnmount() {
-    if (!this.refs.player) return null;
-
-    this.mutateVideoCourseStatus('paused');
-  }
-
   defineVideoCourseStatus = () => {
     this.mutateVideoCourseStatus(this.state.mutationStatus);
   };
