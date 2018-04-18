@@ -6,11 +6,36 @@ const setup = propOverrides => {
   const intl = {
     formatMessage: value => `formatedMessage ${value}`,
   };
+  const client = {
+    writeFragment: options => `writeFragment ${options}`,
+    readQuery: options => `readQuery ${options}`,
+    writeQuery: options => `writeQuery ${options}`,
+  };
 
   const props = Object.assign(
     {
       user: {
         codigo: 1234,
+        estrutura: {
+          codigo: 1,
+          ciclo: {
+            numero: 201801,
+          },
+          gerenciaMercado: {
+            codigo: 2,
+          },
+          regiaoEstrategica: {
+            codigo: 3,
+          },
+          gerenciaVenda: {
+            codigo: 4,
+          },
+          setor: {
+            codigo: 5,
+          },
+          cdPapelAtivo: 2,
+          cdCanalCaptacao: 1,
+        },
       },
       courses: [
         {
@@ -50,6 +75,7 @@ const setup = propOverrides => {
       onLoadFinished: jest.fn(),
       onSearch: jest.fn(),
       intl,
+      client,
     },
     propOverrides,
   );

@@ -12,12 +12,16 @@ import {
 } from './CourseViewHeader.styles';
 
 export class CourseViewHeader extends Component {
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <Header>
         <Row>
           <Col md={12} sm={12}>
-            <BackButtonWrapper onClick={this.props.history.goBack}>
+            <BackButtonWrapper onClick={this.goBack}>
               <BackButtonIcon>
                 <Icon file="ico_back" />
               </BackButtonIcon>

@@ -46,7 +46,11 @@ describe('ApolloClientCreator', () => {
 
     // then
     expect(client).toEqual(expectedClient);
-    expect(apolloConstructorMock).toBeCalledWith({ cache: expectedCache, link: expectedLink });
+    expect(apolloConstructorMock).toBeCalledWith({
+      cache: expectedCache,
+      link: expectedLink,
+      addTypename: true,
+    });
     expect(inMemoryCacheMock).toBeCalled();
     expect(createHttpLink).toBeCalledWith({
       headers: {

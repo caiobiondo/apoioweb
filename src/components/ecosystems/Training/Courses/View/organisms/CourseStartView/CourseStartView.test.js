@@ -6,6 +6,11 @@ const setup = propOverrides => {
   const intl = {
     formatMessage: value => `formatedMessage ${value}`,
   };
+  const client = {
+    writeFragment: options => `writeFragment ${options}`,
+    readQuery: options => `readQuery ${options}`,
+    writeQuery: options => `writeQuery ${options}`,
+  };
 
   const props = Object.assign(
     {
@@ -40,6 +45,7 @@ const setup = propOverrides => {
       onLoadFinished: jest.fn(),
       refetch: jest.fn(),
       intl,
+      client,
     },
     propOverrides,
   );
