@@ -26,12 +26,17 @@ export const CourseViewQuery = gql`
       regiao: $regiao
     ) {
       id
+      accessToken
+      categoryTitle
+      clientIdentifier
+      clientSecrets
       courseContent {
         video
         html5
         web
         videoEmbed
       }
+      dateUpload
       durationInSeconds
       description
       generalRating

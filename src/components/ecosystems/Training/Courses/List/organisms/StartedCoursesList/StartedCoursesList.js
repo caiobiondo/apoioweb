@@ -79,7 +79,7 @@ export class StartedCoursesList extends Component {
 
     const { courses } = this.props;
 
-    if (!courses) return null;
+    if (!courses || !courses.length) return null;
 
     return (
       <Wrapper>

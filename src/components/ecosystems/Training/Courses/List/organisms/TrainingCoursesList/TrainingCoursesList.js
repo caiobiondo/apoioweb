@@ -6,7 +6,7 @@ import {
 } from 'components/ecosystems/Training/data/TrainingCourses.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
-import { graphql, compose } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
 import { translate } from 'locale';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
@@ -15,6 +15,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
+import gql from 'graphql-tag';
 
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
@@ -103,16 +104,18 @@ export class TrainingCoursesList extends Component {
         }
 
         // Handle update success
-        this.props.refetch();
         const message =
           child.props.value === 'favorite'
             ? formatMessage({ id: 'trainingAddCourseSuccess' })
             : formatMessage({ id: 'trainingRemoveCourseSuccess' });
 
-        this.setState({
-          feedbackModalOpened: true,
-          feedbackModalTitle: message,
-        });
+        this.setState(
+          {
+            feedbackModalOpened: true,
+            feedbackModalTitle: message,
+          },
+          this.updateCachedList(child.props.course),
+        );
 
         return;
       })
@@ -128,6 +131,57 @@ export class TrainingCoursesList extends Component {
           feedbackModalTitle: message,
         });
       });
+  };
+
+  updateCachedList = course => {
+    const { client } = this.props;
+    const isfavorite = course.isfavorite === 'true' ? 'false' : 'true';
+
+    client.writeFragment({
+      id: course.id,
+      fragment: gql`
+        fragment myCourse on Course {
+          isfavorite
+          __typename
+        }
+      `,
+      data: {
+        isfavorite,
+        __typename: 'Course',
+      },
+    });
+
+    let favoritedCourses = null;
+    const { filter, ...otherVariables } = TrainingCoursesQueryOptions.options({
+      ...this.props,
+      favorite: true,
+    }).variables;
+    try {
+      favoritedCourses = client.readQuery({
+        query: TrainingCoursesQuery,
+        variables: otherVariables,
+      });
+    } catch (e) {
+      // could not find cache
+    }
+
+    if (favoritedCourses) {
+      if (course.isfavorite === 'true') {
+        favoritedCourses.courses.items = favoritedCourses.courses.items.filter(item => {
+          return item.id !== course.id;
+        });
+      }
+
+      if (course.isfavorite === 'false') {
+        favoritedCourses.courses.items.push({ ...course, isfavorite: 'true' });
+      }
+
+      client.writeQuery({
+        query: TrainingCoursesQuery,
+        variables: otherVariables,
+        data: favoritedCourses,
+      });
+    }
   };
 
   renderMenuItems = course => {
@@ -252,8 +306,9 @@ export class TrainingCoursesList extends Component {
 }
 
 export const TrainingCoursesListWithIntl = injectIntl(TrainingCoursesList);
+export const TrainingCoursesListWithApollo = withApollo(TrainingCoursesListWithIntl);
 
 export default compose(
   graphql(TrainingCoursesQuery, TrainingCoursesQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(TrainingCoursesListWithIntl);
+)(TrainingCoursesListWithApollo);
