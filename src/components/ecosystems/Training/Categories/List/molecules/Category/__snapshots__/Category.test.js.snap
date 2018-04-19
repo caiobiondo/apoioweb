@@ -41,19 +41,6 @@ exports[`Category renders correctly when there are sub categories 1`] = `
     <Categorystyles__CategoryTitle>
       Test
     </Categorystyles__CategoryTitle>
-    <Categorystyles__ViewAll>
-      <Categorystyles__ViewAllLink>
-        <Link
-          replace={false}
-          to="/training/categories/1"
-        >
-          <FormattedMessage
-            id="viewAllCourses"
-            values={Object {}}
-          />
-        </Link>
-      </Categorystyles__ViewAllLink>
-    </Categorystyles__ViewAll>
   </Categorystyles__CategoryTitleHolder>
   <Categorystyles__List>
     <SubCategory
