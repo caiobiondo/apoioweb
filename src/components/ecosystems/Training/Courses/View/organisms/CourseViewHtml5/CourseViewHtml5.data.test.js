@@ -1,11 +1,8 @@
-import {
-  TrainingCategoriesQuery,
-  TrainingCategoriesQueryOptions,
-} from './TrainingCategoriesList.data';
+import { CourseViewHtml5Query, CourseViewHtml5QueryOptions } from './CourseViewHtml5.data';
 
-describe('TrainingCategoriesQuery', () => {
+describe('CourseViewHtml5Query', () => {
   it('should be the correct query', () => {
-    expect(TrainingCategoriesQuery).toMatchSnapshot();
+    expect(CourseViewHtml5Query).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
@@ -36,14 +33,14 @@ describe('TrainingCategoriesQuery', () => {
         },
       },
     };
-    const props = { user };
+    const props = { user, courseId: 2 };
 
-    const options = TrainingCategoriesQueryOptions.options(props);
+    const options = CourseViewHtml5QueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
         sellerId: props.user.codigo,
-        limit: 5,
+        courseId: 2,
         ciclo: props.user.estrutura.ciclo[0].numero,
         setor: props.user.estrutura.setor.codigo,
         gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
@@ -53,7 +50,7 @@ describe('TrainingCategoriesQuery', () => {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      fetchPolicy: 'cache-first',
+      forceFetch: true,
     });
   });
 
@@ -61,11 +58,12 @@ describe('TrainingCategoriesQuery', () => {
     const data = {
       data: {
         loading: true,
-        trainingCategories: [],
+        courseHtml5: {},
+        refetch: jest.fn(),
       },
     };
 
-    const props = TrainingCategoriesQueryOptions.props(data);
+    const props = CourseViewHtml5QueryOptions.props(data);
 
     expect(props).toMatchSnapshot();
   });

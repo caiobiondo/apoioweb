@@ -60,7 +60,9 @@ export const CategoryCourse = ({ course, ...props }) => {
   };
 
   const handleCourseClick = () => {
-    const url = course.type === 'VIDEO' ? `${course.id}` : `${course.id}/start`;
+    let url = `${course.id}/web`;
+    if (course.type === 'VIDEO') url = `${course.id}/video`;
+    if (course.type === 'HTML5') url = `${course.id}/html5`;
 
     props.history.push(`/training/courses/${url}`);
   };

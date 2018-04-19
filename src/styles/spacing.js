@@ -3,7 +3,7 @@
 // -------------------------------------
 export const spSmall = '5px';
 export const spMedium = '24px';
-export const spPage = '70px';
+export const spPage = '40px';
 
 export const screenXs = '576px';
 export const screenSm = '576px';

@@ -56,7 +56,9 @@ export class TrainingCourse extends Component {
   };
 
   linkTo = course => event => {
-    const url = course.type === 'VIDEO' ? course.id : `${course.id}/start`;
+    let url = `${course.id}/web`;
+    if (course.type === 'VIDEO') url = `${course.id}/video`;
+    if (course.type === 'HTML5') url = `${course.id}/html5`;
     this.props.history.push(`/training/courses/${url}`);
   };
 

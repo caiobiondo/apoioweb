@@ -17,19 +17,16 @@ import {
   TrainingCourseThumbnailDescriptionWrapper,
   TrainingCourseDescription,
   TrainingCourseTitle,
-  TrainingCourseUnavailableTitle,
   TrainingCourseActions,
   TrainingCourseActionButton,
   TrainingCourseActionButtonMobile,
   TrainingCourseActionButtonWrapper,
   TrainingCourseRatingWrapper,
-  IconWrapper,
 } from './CourseStartView.styles';
 
 import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
 import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
 import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
-import CourseDescription from 'components/ecosystems/Training/Courses/View/molecules/CourseDescription';
 import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
@@ -118,7 +115,12 @@ export class CourseStartView extends Component {
       .then(response => {
         if (action === 'initialized') {
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
-          if (course.type === 'VIDEO') this.props.history.push(`/training/courses/${course.id}`);
+          if (course.type === 'HTML5') {
+            this.props.history.push(`/training/courses/${course.id}/html5`);
+          }
+          if (course.type === 'VIDEO') {
+            this.props.history.push(`/training/courses/${course.id}/video`);
+          }
         }
 
         if (action === 'terminated') {
@@ -280,29 +282,6 @@ export class CourseStartView extends Component {
             titleId="myCourseEmptyList"
             descriptionId="myCourseEmptyListDescription"
           />
-        </Main>
-      );
-    }
-
-    if (course.type === 'HTML5') {
-      return (
-        <Main>
-          <CourseViewHeader course={course} />
-          <TrainingCourseThumbnailWrapper>
-            <TrainingCourseThumbnail imageUrl={course.thumbnail}>
-              <TrainingCourseThumbnailDescriptionWrapper>
-                <IconWrapper>
-                  <Icon file="ico_graduate_cap" />
-                </IconWrapper>
-                <TrainingCourseUnavailableTitle>
-                  {translate('trainingCourseUnavailable')}
-                </TrainingCourseUnavailableTitle>
-              </TrainingCourseThumbnailDescriptionWrapper>
-            </TrainingCourseThumbnail>
-          </TrainingCourseThumbnailWrapper>
-          <CourseDescription course={course} />
-          <CourseRating course={course} />
-          <RelatedCourses courses={course.relatedCourses} />
         </Main>
       );
     }

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 export const TrainingCategoriesDetailsQuery = gql`
   query TrainingCategoriesDetails(
@@ -99,8 +99,7 @@ export const TrainingCategoriesDetailsOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     };
   },
   props({ data }) {

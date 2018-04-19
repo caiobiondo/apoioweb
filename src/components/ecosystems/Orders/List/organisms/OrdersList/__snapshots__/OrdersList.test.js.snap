@@ -9,7 +9,7 @@ exports[`OrdersList should render an order list 1`] = `
       "flex": "1 1 0",
       "flexDirection": "column",
       "justifyContent": "center",
-      "paddingBottom": "70px",
+      "paddingBottom": "40px",
     }
   }
   transitionEnabled={true}

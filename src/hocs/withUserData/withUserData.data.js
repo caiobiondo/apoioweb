@@ -7,6 +7,7 @@ export const UserDataQuery = gql`
       cdCanalCaptacao
       codigoCentro
       nomeCompleto
+      cdPapelAtivo
       acl {
         stock
         customers

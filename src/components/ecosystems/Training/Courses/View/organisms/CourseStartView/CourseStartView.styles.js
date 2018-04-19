@@ -219,4 +219,5 @@ export const IconWrapper = styled.div`
       width: 83px;
     }
   }
+}
 `;

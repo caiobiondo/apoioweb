@@ -44,7 +44,7 @@ describe('TrainingCategoriesDetailsQuery', () => {
     expect(options).toEqual({
       variables: {
         sellerId: props.user.codigo,
-        limit: 10,
+        limit: 20,
         offset: 0,
         ciclo: props.user.estrutura.ciclo[0].numero,
         setor: props.user.estrutura.setor.codigo,
@@ -55,8 +55,7 @@ describe('TrainingCategoriesDetailsQuery', () => {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     });
   });
 

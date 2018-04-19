@@ -1,9 +1,9 @@
 import gql from 'graphql-tag';
 
-export const CertificateListQuery = gql`
-  query CertificateListQuery(
+export const CourseViewHtml5Query = gql`
+  query CourseViewHtml5Query(
     $sellerId: Int!
-    $userName: String!
+    $courseId: Int!
     $ciclo: Int
     $setor: Int
     $gerenciaMercado: Int
@@ -13,9 +13,9 @@ export const CertificateListQuery = gql`
     $gerenciaDeVendas: Int
     $regiao: Int
   ) {
-    trainingCertificates(
+    courseHtml5(
       sellerId: $sellerId
-      userName: $userName
+      courseId: $courseId
       ciclo: $ciclo
       setor: $setor
       gerenciaMercado: $gerenciaMercado
@@ -26,21 +26,42 @@ export const CertificateListQuery = gql`
       regiao: $regiao
     ) {
       id
-      name
+      courseContent {
+        video
+        html5
+        web
+        videoEmbed
+        html5Embed
+      }
+      durationInSeconds
+      description
+      generalRating
+      isfavorite
+      myRating
+      ratedByYou
+      relatedCourses {
+        id
+        title
+        thumbnail
+        type
+        url
+      }
+      status
+      stoppedAt
       thumbnail
-      percentageOfCompletedCourse
-      isCompleted
-      downloadUrl
+      title
+      type
+      views
     }
   }
 `;
 
-export const CertificateListQueryOptions = {
+export const CourseViewHtml5QueryOptions = {
   options(props) {
     return {
       variables: {
         sellerId: props.user.codigo,
-        userName: props.user.nomeCompleto,
+        courseId: props.courseId,
         ciclo:
           props.user.estrutura.ciclo &&
           props.user.estrutura.ciclo[0] &&
@@ -53,7 +74,7 @@ export const CertificateListQueryOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      fetchPolicy: 'cache-first',
+      forceFetch: true,
     };
   },
 
@@ -61,7 +82,8 @@ export const CertificateListQueryOptions = {
     return {
       data,
       loading: data.loading,
-      certificates: data.trainingCertificates,
+      course: data.courseHtml5,
+      refetch: data.refetch,
     };
   },
 };
