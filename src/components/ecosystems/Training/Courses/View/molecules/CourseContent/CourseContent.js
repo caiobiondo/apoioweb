@@ -59,7 +59,6 @@ export class CourseContent extends Component {
             {
               course: {
                 ...this.state.course,
-                status: 'paused',
                 stoppedAt: Math.round(seconds),
               },
               mutationStatus: 'paused',
