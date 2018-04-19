@@ -56,13 +56,15 @@ const Category = ({ category }) => {
         <CategoryIcon src={category.thumbnail} alt={category.title} />
         <CategoryTitle>{category.name}</CategoryTitle>
 
-        <ViewAll>
-          <ViewAllLink>
-            <Link to={`/training/categories/${category.id}`}>
-              <FormattedMessage id="viewAllCourses" />
-            </Link>
-          </ViewAllLink>
-        </ViewAll>
+        {!hasSubCategories() && (
+          <ViewAll>
+            <ViewAllLink>
+              <Link to={`/training/categories/${category.id}`}>
+                <FormattedMessage id="viewAllCourses" />
+              </Link>
+            </ViewAllLink>
+          </ViewAll>
+        )}
       </CategoryTitleHolder>
 
       {childList}
