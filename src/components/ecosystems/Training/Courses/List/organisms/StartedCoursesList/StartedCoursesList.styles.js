@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
-import { black, white, orange100 } from 'styles/colors';
+import { black, white, orange100, gray100 } from 'styles/colors';
 import {
   RobotoMedium,
   NaturaRegular,
@@ -11,7 +11,6 @@ import {
   fs60,
   fs100,
 } from 'styles/typography';
-import { Wrapper as ImageWithFallBackWrapper } from 'components/molecules/ImageWithFallback/ImageWithFallback.styles';
 
 export const Wrapper = styled.div`
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
@@ -39,21 +38,26 @@ export const Header = styled.h2`
 
 export const StartedCoursesWrapper = styled.div`
   position: relative;
-  height: 350px;
+  height: 355px;
   width: 100%;
 
   @media (max-height: ${Responsive.VIEWPORT.MEDIUM}px) and (max-width: 975px), (max-width: 1024px) {
     height: 195px;
   }
 
-  > div {
+  .slick-slider {
     position: absolute;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
+    height: 100%;
   }
 
   .slick-list {
     height: 100% !important;
+  }
+
+  .slick-track {
+    height: 100%;
   }
 
   .slick-slide {
@@ -121,9 +125,9 @@ export const StartedCourseInfo = styled.div`
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 30px;
   cursor: pointer;
+  z-index: 1;
 `;
 
 export const StartedCourseTitle = styled.h2`
@@ -157,7 +161,6 @@ export const StartedCourseCategoryTitle = styled.span`
   font-family: ${RobotoMedium};
   font-size: 20.5px;
   font-weight: normal;
-  line-height: 0.71;
   text-align: left;
   text-transform: uppercase;
   color: ${white};
@@ -170,35 +173,27 @@ export const StartedCourseCategoryTitle = styled.span`
   }
 `;
 
+/* eslint-disable no-confusing-arrow */
 export const StartedCoursesThumbnail = styled.div`
-  display: flex;
-  justify-content: center;
   position: relative;
+  background-color: ${gray100};
+  background-image: url(${props => (props.imageUrl ? props.imageUrl : '')});
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 
-  img {
-    width: 100%;
-    object-fit: cover;
-    height: 350px;
-
-    @media (max-width: 1024px) {
-      object-fit: cover;
-      height: 195px
-    }
-
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
-
-  ${ImageWithFallBackWrapper} {
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @media (max-width: 1024px) {
-      min-height: 195px
-    }
-  }
-}
 `;
+/* eslint-enable no-confusing-arrow */
 
 export const LeftCarouselArrow = styled.span`
   position: absolute;

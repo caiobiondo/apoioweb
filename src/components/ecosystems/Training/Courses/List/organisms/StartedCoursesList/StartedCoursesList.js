@@ -20,8 +20,6 @@ import {
 } from 'components/ecosystems/Training/data/TrainingCourses.data';
 import { graphql } from 'react-apollo';
 
-import ImageWithFallback from 'components/molecules/ImageWithFallback';
-
 export class LeftArrow extends Component {
   render() {
     const { onClick, currentSlide } = this.props;
@@ -88,12 +86,11 @@ export class StartedCoursesList extends Component {
           <Slider {...settings}>
             {courses.map(course => {
               return (
-                <StartedCoursesThumbnail key={course.id}>
+                <StartedCoursesThumbnail key={course.id} imageUrl={course.thumbnail}>
                   <StartedCourseInfo onClick={this.handleCourseClick(course)}>
                     <StartedCourseTitle>{course.title}</StartedCourseTitle>
                     <StartedCourseCategoryTitle>{course.categoryTitle}</StartedCourseCategoryTitle>
                   </StartedCourseInfo>
-                  <ImageWithFallback imageUrl={course.thumbnail} />
                 </StartedCoursesThumbnail>
               );
             })}
