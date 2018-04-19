@@ -26,6 +26,10 @@ export const CourseViewHtml5Query = gql`
       regiao: $regiao
     ) {
       id
+      accessToken
+      categoryTitle
+      clientIdentifier
+      clientSecrets
       courseContent {
         video
         html5
@@ -33,6 +37,7 @@ export const CourseViewHtml5Query = gql`
         videoEmbed
         html5Embed
       }
+      dateUpload
       durationInSeconds
       description
       generalRating
@@ -74,7 +79,7 @@ export const CourseViewHtml5QueryOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
+      fetchPolicy: 'cache-and-network',
     };
   },
 

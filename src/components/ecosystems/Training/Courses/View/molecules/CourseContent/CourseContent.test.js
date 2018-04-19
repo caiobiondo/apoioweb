@@ -2,6 +2,12 @@ import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import { CourseContent } from './CourseContent';
 
+const client = {
+  writeFragment: options => `writeFragment ${options}`,
+  readQuery: options => `readQuery ${options}`,
+  writeQuery: options => `writeQuery ${options}`,
+};
+
 const setup = propOverrides => {
   const props = Object.assign(
     {
@@ -15,6 +21,7 @@ const setup = propOverrides => {
           videoEmbed: '',
         },
         thumbnail: '',
+        stoppedAt: 123,
       },
       sellerId: 123,
       mutate: jest.fn().mockReturnValue(
@@ -28,6 +35,7 @@ const setup = propOverrides => {
         }),
       ),
       refetch: jest.fn(),
+      client,
     },
     propOverrides,
   );
@@ -50,19 +58,34 @@ describe('CourseContent', () => {
   });
 
   describe('when defineVideoCourseStatus', () => {
-    it('correctly defined final hasStarted state', done => {
+    it('correctly defined started state', done => {
       // given
       // when
       const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-      result.setState({ hasStarted: true }, () => {
-        result.instance().defineVideoCourseStatus();
-        done();
-      });
+      result.setState(
+        {
+          course: { ...props.course, status: 'started' },
+          mutationStatus: 'initialized',
+        },
+        () => {
+          result.instance().defineVideoCourseStatus();
+          done();
+        },
+      );
 
       // then
-      expect(result.state('hasStarted')).toBe(false);
+      expect(props.mutate).toBeCalledWith({
+        variables: {
+          input: {
+            action: 'initialized',
+            stoppedAt: props.course.stoppedAt,
+          },
+          sellerId: props.sellerId,
+          courseId: props.course.id,
+        },
+      });
     });
 
     it('correctly defined final paused state', done => {
@@ -71,13 +94,28 @@ describe('CourseContent', () => {
       const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-      result.setState({ paused: true }, () => {
-        result.instance().defineVideoCourseStatus();
-        done();
-      });
+      result.setState(
+        {
+          course: { ...props.course, status: 'paused' },
+          mutationStatus: 'paused',
+        },
+        () => {
+          result.instance().defineVideoCourseStatus();
+          done();
+        },
+      );
 
       // then
-      expect(result.state('paused')).toBe(false);
+      expect(props.mutate).toBeCalledWith({
+        variables: {
+          input: {
+            action: 'paused',
+            stoppedAt: props.course.stoppedAt,
+          },
+          sellerId: props.sellerId,
+          courseId: props.course.id,
+        },
+      });
     });
 
     it('correctly defined final ended state', done => {
@@ -86,13 +124,28 @@ describe('CourseContent', () => {
       const { props } = setup({ loading: false });
 
       const result = mount(<CourseContent {...props} />);
-      result.setState({ ended: true }, () => {
-        result.instance().defineVideoCourseStatus();
-        done();
-      });
+      result.setState(
+        {
+          course: { ...props.course, status: 'finished' },
+          mutationStatus: 'terminated',
+        },
+        () => {
+          result.instance().defineVideoCourseStatus();
+          done();
+        },
+      );
 
       // then
-      expect(result.state('ended')).toBeTruthy();
+      expect(props.mutate).toBeCalledWith({
+        variables: {
+          input: {
+            action: 'terminated',
+            stoppedAt: props.course.stoppedAt,
+          },
+          sellerId: props.sellerId,
+          courseId: props.course.id,
+        },
+      });
     });
 
     it('shows evaluation modal', done => {

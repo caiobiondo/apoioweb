@@ -59,6 +59,7 @@ exports[`StartedCourses should render a slide with the courses 1`] = `
       speed={500}
     >
       <StartedCoursesListstyles__StartedCoursesThumbnail
+        imageUrl=""
         key="1"
       >
         <StartedCoursesListstyles__StartedCourseInfo
@@ -69,10 +70,6 @@ exports[`StartedCourses should render a slide with the courses 1`] = `
           </StartedCoursesListstyles__StartedCourseTitle>
           <StartedCoursesListstyles__StartedCourseCategoryTitle />
         </StartedCoursesListstyles__StartedCourseInfo>
-        <ImageWithFallback
-          fallbackIcon="ico_pictureless"
-          imageUrl=""
-        />
       </StartedCoursesListstyles__StartedCoursesThumbnail>
     </Slider>
   </StartedCoursesListstyles__StartedCoursesWrapper>
