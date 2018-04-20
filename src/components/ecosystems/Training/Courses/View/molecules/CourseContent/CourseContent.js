@@ -194,7 +194,7 @@ export class CourseContent extends Component {
 
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
-  user: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
   refetch: PropTypes.func.isRequired,
 };
 
