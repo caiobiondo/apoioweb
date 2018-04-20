@@ -36,6 +36,6 @@ export const IndicatorTypesLabels = {
     return 'Média de Cadastros';
   },
   get [IndicatorTypes.Active]() {
-    return 'Atingido, Meta e Grupo';
+    return 'Bônus Atingimento Aceleradores Líderes';
   },
 };
