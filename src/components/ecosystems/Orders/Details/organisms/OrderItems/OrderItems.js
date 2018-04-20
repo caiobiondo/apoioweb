@@ -64,6 +64,12 @@ export class OrderItems extends Component {
         ],
       })
       .then(() => {
+        window.dataLayer.push({
+          event: 'ev-importar-produto',
+          category: 'Meu estoque',
+          action: 'Importar',
+          label: orderItem.codigoProduto,
+        });
         this.setState({
           productsImporting: this.state.productsImporting.filter(e => {
             return e !== orderItem.codigoProduto;

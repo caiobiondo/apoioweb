@@ -120,6 +120,14 @@ class CustomerForm extends Component {
       .then(response => {
         const { data } = response;
         const customer = (data.createCustomer || data.updateCustomer).customer;
+
+        window.dataLayer.push({
+          event: 'ev-editar-cliente',
+          category: 'Cadastro',
+          action: 'Editar Cadastro',
+          label: 'Cliente',
+        });
+
         this.props.history.push(`/my-customers/detail/${customer.id}`);
       });
   };

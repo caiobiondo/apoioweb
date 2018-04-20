@@ -64,6 +64,13 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
+        window.dataLayer.push({
+          event: 'ev-alterar-quantidade',
+          category: 'Meu estoque',
+          action: 'Adicionar',
+          label: this.props.product.id,
+          value: submittedQuantity,
+        });
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit);
       });
   };
@@ -78,6 +85,13 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
+        window.dataLayer.push({
+          event: 'ev-alterar-quantidade',
+          category: 'Meu estoque',
+          action: 'Remover',
+          label: this.props.product.id,
+          value: submittedQuantity,
+        });
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit, () => {
           this.props.onRemove(this.props.product.id);
         });

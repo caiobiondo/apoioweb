@@ -270,6 +270,7 @@ export class CourseView extends Component {
           <CourseContent
             course={course}
             sellerId={this.props.user.codigo}
+            user={this.props.user}
             refetch={this.props.refetch}
           />
           <CourseDescription course={course} />

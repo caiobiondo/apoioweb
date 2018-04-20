@@ -94,12 +94,23 @@ export class CustomersList extends Component {
     if (!filters || !filters.name) {
       return customers;
     }
+
     const regexp = new RegExp(filters.name.toLowerCase(), 'i');
-    return customers.filter(
+    const filteredCustomers = customers.filter(
       customer =>
         (customer.nickname && regexp.test(customer.nickname.toLowerCase())) ||
         (customer.name && regexp.test(customer.name.toLowerCase())),
     );
+
+    window.dataLayer.push({
+      event: 'ev-buscar-cliente',
+      category: 'Cadastro',
+      action: 'Buscar Cadastro',
+      label: 'Cliente',
+      searchResults: filteredCustomers.length,
+    });
+
+    return filteredCustomers;
   };
 
   notifyLoadFinish = (loading, customers) => {

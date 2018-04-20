@@ -137,7 +137,29 @@ export class CourseViewHtml5 extends Component {
         },
       })
       .then(response => {
+        if (response.error) {
+          // handle error
+          return;
+        }
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          return;
+        }
+
         if (action === 'initialized') {
+          window.dataLayer.push({
+            event: 'ev-iniciar-treinamento',
+            category: 'Treinamento',
+            action: 'Iniciar',
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              certificateName: this.props.user.nomeCompleto,
+              startTime: new Date(),
+            },
+          });
           this.setState(
             { course: { ...this.state.course, status: 'started' } },
             this.updateCachedList,
@@ -150,6 +172,17 @@ export class CourseViewHtml5 extends Component {
         }
 
         if (action === 'terminated') {
+          window.dataLayer.push({
+            event: 'ev-concluir-treinamento',
+            category: 'Treinamento',
+            action: 'Iniciar',
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              certificateName: this.props.user.nomeCompleto,
+            },
+          });
           this.setState(
             {
               showEvaluation: true,

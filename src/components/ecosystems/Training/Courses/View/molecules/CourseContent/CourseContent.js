@@ -84,16 +84,55 @@ export class CourseContent extends Component {
 
   mutateVideoCourseStatus = (action, additional) => {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
+    const { course } = this.state;
 
     this.props
       .mutate({
         variables: {
           input,
-          sellerId: this.props.sellerId,
+          sellerId: this.props.user.codigo,
           courseId: this.props.course.id,
         },
       })
-      .then(() => {
+      .then(response => {
+        if (response.error) {
+          // handle error
+          return;
+        }
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          return;
+        }
+
+        if (action === 'initialized') {
+          window.dataLayer.push({
+            event: 'ev-iniciar-treinamento',
+            category: 'Treinamento',
+            action: 'Iniciar',
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              certificateName: this.props.user.nomeCompleto,
+              startTime: new Date(),
+            },
+          });
+        }
+
+        if (action === 'terminated') {
+          window.dataLayer.push({
+            event: 'ev-concluir-treinamento',
+            category: 'Treinamento',
+            action: 'Iniciar',
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              certificateName: this.props.user.nomeCompleto,
+            },
+          });
+        }
         this.updateCachedList();
       })
       .catch(err => {
@@ -146,7 +185,7 @@ export class CourseContent extends Component {
           />
         )}
         {this.canRenderEvaluation() && (
-          <CourseEvaluation courseId={course.id} sellerId={this.props.sellerId} />
+          <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
         )}
       </ContentWrapper>
     );
@@ -155,7 +194,7 @@ export class CourseContent extends Component {
 
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
-  sellerId: PropTypes.number.isRequired,
+  user: PropTypes.number.isRequired,
   refetch: PropTypes.func.isRequired,
 };
 

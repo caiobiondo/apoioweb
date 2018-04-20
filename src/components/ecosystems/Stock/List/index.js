@@ -22,10 +22,18 @@ class StockListWrapper extends Component {
   };
 
   openAddStockModal = () => {
+    window.dataLayer.push({
+      event: 'ev-expandir-botao-adicionar',
+    });
+
     this.setState({ addStockModalOpen: true });
   };
 
   handleClose = () => {
+    window.dataLayer.push({
+      event: 'ev-colapsar-botao-adicionar',
+    });
+
     this.setState({ addStockModalOpen: false });
   };
 

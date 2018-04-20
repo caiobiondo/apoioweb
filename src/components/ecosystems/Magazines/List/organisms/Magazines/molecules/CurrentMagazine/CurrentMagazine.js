@@ -34,11 +34,27 @@ export class CurrentMagazine extends Component {
 
   downloadMagazine = () => {
     const { magazine } = this.props;
+
+    window.dataLayer.push({
+      event: 'ev-baixar-revista',
+      category: 'Revista',
+      action: 'Baixar',
+      label: magazine.id,
+    });
+
     window.open(magazine.pdfFile);
   };
 
   openMagazine = () => {
     const { magazine, type } = this.props;
+
+    window.dataLayer.push({
+      event: 'ev-ver-revista',
+      category: 'Revista',
+      action: 'Ver',
+      label: magazine.id,
+    });
+
     this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 

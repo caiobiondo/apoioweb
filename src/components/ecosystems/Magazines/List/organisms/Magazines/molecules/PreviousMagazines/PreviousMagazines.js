@@ -23,6 +23,14 @@ import ImageWithFallback from 'components/molecules/ImageWithFallback';
 export class PreviousMagazines extends Component {
   openMagazine = magazine => {
     const { type } = this.props;
+
+    window.dataLayer.push({
+      event: 'ev-ver-revista',
+      category: 'Revista',
+      action: 'Ver',
+      label: magazine.id,
+    });
+
     this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 

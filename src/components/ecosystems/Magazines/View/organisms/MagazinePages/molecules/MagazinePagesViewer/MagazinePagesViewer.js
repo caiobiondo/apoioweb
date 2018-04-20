@@ -50,7 +50,6 @@ const MagazinePage = ({ src }) => {
             },
             smallImage: {
               isFluidWidth: true,
-              alt: 'Wristwatch by Versace',
               src: src,
               sizes: '360px',
             },
