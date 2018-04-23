@@ -11,6 +11,10 @@ const setup = propOverrides => {
     readQuery: options => `readQuery ${options}`,
     writeQuery: options => `writeQuery ${options}`,
   };
+  global.dataLayer = {
+    push: jest.fn(),
+  };
+  global.open = jest.fn();
 
   const props = Object.assign(
     {
@@ -200,7 +204,6 @@ describe('Training Course Start View', () => {
               html5: null,
             },
           };
-          global.open = jest.fn();
 
           // when
           const { result } = setup({ loading: false, course });
@@ -233,7 +236,6 @@ describe('Training Course Start View', () => {
               html5: null,
             },
           };
-          global.open = jest.fn();
 
           // when
           const { result, props } = setup({ loading: false, course });
