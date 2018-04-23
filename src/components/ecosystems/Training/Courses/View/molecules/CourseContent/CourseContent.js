@@ -40,7 +40,6 @@ export class CourseContent extends Component {
             {
               course: { ...this.state.course, status: 'finished', stoppedAt: 1 },
               mutationStatus: 'terminated',
-              ended: true,
             },
             this.defineVideoCourseStatus,
           );
