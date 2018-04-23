@@ -85,6 +85,7 @@ export class CourseContent extends Component {
   mutateVideoCourseStatus = (action, additional) => {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
     const { course } = this.state;
+    const { formatMessage, handleFeedbackMessage } = this.props;
 
     this.props
       .mutate({
@@ -97,11 +98,19 @@ export class CourseContent extends Component {
       .then(response => {
         if (response.error) {
           // handle error
+          handleFeedbackMessage(formatMessage('TrainingUpdateError'));
           return;
         }
 
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
+          // Not handling when initialized
+          // (initializing after a course was terminated [rewatching] will set updateCourse.status to be false)
+          if (action !== 'terminated') {
+            return;
+          }
+
+          handleFeedbackMessage(formatMessage('TrainingUpdateError'));
           return;
         }
 
@@ -123,8 +132,8 @@ export class CourseContent extends Component {
         if (action === 'terminated') {
           window.dataLayer.push({
             event: 'ev-concluir-treinamento',
-            category: 'Treinamento',
             action: 'Iniciar',
+            category: 'Treinamento',
             treinamento: {
               name: course.title,
               id: course.id,
@@ -132,6 +141,8 @@ export class CourseContent extends Component {
               certificateName: this.props.user.nomeCompleto,
             },
           });
+
+          this.setState({ ended: true });
         }
         this.updateCachedList();
       })
@@ -196,6 +207,8 @@ CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   refetch: PropTypes.func.isRequired,
+  formatMessage: PropTypes.func.isRequired,
+  handleFeedbackMessage: PropTypes.func.isRequired,
 };
 
 export const CourseContentWithApollo = withApollo(CourseContent);

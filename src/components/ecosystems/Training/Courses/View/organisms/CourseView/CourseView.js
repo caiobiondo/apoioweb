@@ -90,6 +90,10 @@ export class CourseView extends Component {
         ? formatMessage({ id: addMsg })
         : formatMessage({ id: removeMsg });
 
+    this.handleFeedbackMessage(message);
+  };
+
+  handleFeedbackMessage = message => {
     this.setState({
       feedbackModalOpened: true,
       feedbackModalTitle: message,
@@ -269,9 +273,10 @@ export class CourseView extends Component {
           <CourseViewHeader />
           <CourseContent
             course={course}
-            sellerId={this.props.user.codigo}
             user={this.props.user}
             refetch={this.props.refetch}
+            formatMessage={this.props.formatMessage}
+            handleFeedbackMessage={this.handleFeedbackMessage}
           />
           <CourseDescription course={course} />
           <Row>
