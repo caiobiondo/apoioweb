@@ -14,7 +14,7 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
     fluid={true}
   >
     <withRouter(CourseViewHeader) />
-    <Apollo(CourseContent)
+    <Apollo(withApollo(CourseContent))
       course={
         Object {
           "dateUpload": "2017-04-20T00:00:00.000Z",

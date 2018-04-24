@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { graphql, compose } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import gql from 'graphql-tag';
 
 import { CourseViewHtml5Query, CourseViewHtml5QueryOptions } from './CourseViewHtml5.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
+import {
+  TrainingCoursesQuery,
+  TrainingCoursesQueryOptions,
+} from 'components/ecosystems/Training/data/TrainingCourses.data';
 
 import {
   Main,
@@ -36,18 +41,19 @@ export class CourseViewHtml5 extends Component {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
     showEvaluation: false,
-    courseStatus: 'pending',
-    courseIsFavorite: false,
+    course: {},
   };
+
+  componentDidMount() {
+    const { course } = this.props;
+    if (course) this.setState({ course });
+  }
 
   componentWillReceiveProps({ loading, course }) {
     this.notifyLoadFinish(loading, course);
 
     if (!this.props.course && course) {
-      this.setState({
-        courseStatus: course.status,
-        courseIsFavorite: course.isfavorite === 'true',
-      });
+      this.setState({ course });
     }
   }
 
@@ -76,11 +82,11 @@ export class CourseViewHtml5 extends Component {
   isEmpty = (loading, course) => !loading && !course.id;
 
   myListIconName = () => {
-    return this.state.courseIsFavorite ? 'ico_minus' : 'ico_plus';
+    return this.state.course.isfavorite === 'true' ? 'ico_minus' : 'ico_plus';
   };
 
   valueToUpdateMyList = () => {
-    return this.state.courseIsFavorite ? 'unfavorite' : 'favorite';
+    return this.state.course.isfavorite === 'true' ? 'unfavorite' : 'favorite';
   };
 
   handleTrainingError = () => {
@@ -101,9 +107,9 @@ export class CourseViewHtml5 extends Component {
   };
 
   handleUpdateSuccessMyList = () => {
-    // this.props.refetch();
-    this.setState({ courseIsFavorite: !this.state.courseIsFavorite });
     this.handleDefaultMyList('trainingAddCourseSuccess', 'trainingRemoveCourseSuccess');
+    const isfavorite = this.state.course.isfavorite === 'true' ? 'false' : 'true';
+    this.setState({ course: { ...this.state.course, isfavorite } }, this.updateCachedList);
   };
 
   handleDefaultMyList = (addMsg, removeMsg) => {
@@ -132,7 +138,10 @@ export class CourseViewHtml5 extends Component {
       })
       .then(response => {
         if (action === 'initialized') {
-          this.setState({ courseStatus: 'started' });
+          this.setState(
+            { course: { ...this.state.course, status: 'started' } },
+            this.updateCachedList,
+          );
 
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
           if (course.type === 'VIDEO') {
@@ -141,10 +150,15 @@ export class CourseViewHtml5 extends Component {
         }
 
         if (action === 'terminated') {
-          this.setState({ showEvaluation: true, courseStatus: 'finished' });
+          this.setState(
+            {
+              showEvaluation: true,
+              course: { ...this.state.course, status: 'finished' },
+            },
+            this.updateCachedList,
+          );
         }
 
-        // this.props.refetch();
         return;
       })
       .catch(err => {
@@ -152,6 +166,95 @@ export class CourseViewHtml5 extends Component {
 
         this.handleTrainingError();
       });
+  };
+
+  updateCachedList = () => {
+    const { course } = this.state;
+    const { client } = this.props;
+
+    client.writeFragment({
+      id: course.id,
+      fragment: gql`
+        fragment myCourse on Course {
+          isfavorite
+          status
+          __typename
+        }
+      `,
+      data: {
+        isfavorite: course.isfavorite,
+        status: course.status,
+        __typename: 'Course',
+      },
+    });
+
+    let startedCourses = null;
+    try {
+      startedCourses = client.readQuery({
+        query: TrainingCoursesQuery,
+        variables: TrainingCoursesQueryOptions.options({
+          ...this.props,
+          status: 'started',
+        }).variables,
+      });
+    } catch (e) {
+      // could not find cache
+    }
+
+    if (startedCourses) {
+      if (this.state.course.status === 'started' && this.props.course.status === 'pending') {
+        startedCourses.courses.items.push(this.state.course);
+      }
+
+      if (this.state.course.status !== 'started' && this.props.course.status === 'started') {
+        startedCourses.courses.items = startedCourses.courses.items.filter(
+          item => item.id !== this.state.course.id,
+        );
+      }
+
+      client.writeQuery({
+        query: TrainingCoursesQuery,
+        variables: TrainingCoursesQueryOptions.options({
+          ...this.props,
+          status: 'started',
+        }).variables,
+        data: startedCourses,
+      });
+    }
+
+    let favoritedCourses = null;
+    try {
+      favoritedCourses = client.readQuery({
+        query: TrainingCoursesQuery,
+        variables: TrainingCoursesQueryOptions.options({
+          ...this.props,
+          favorite: true,
+        }).variables,
+      });
+    } catch (e) {
+      // could not find cache
+    }
+
+    if (favoritedCourses) {
+      if (this.state.course.isfavorite === 'true' && this.props.course.isfavorite === 'false') {
+        favoritedCourses.courses.items.push(this.state.course);
+      }
+
+      if (this.state.course.isfavorite === 'false' && this.props.course.isfavorite === 'true') {
+        favoritedCourses.courses.items = favoritedCourses.courses.items.filter(item => {
+          return item.id !== this.state.course.id;
+        });
+      }
+
+      client.writeQuery({
+        query: TrainingCoursesQuery,
+        variables: TrainingCoursesQueryOptions.options({
+          ...this.props,
+          favorite: true,
+        }).variables,
+        data: favoritedCourses,
+      });
+    }
   };
 
   handleMyListClick = (event, child) => {
@@ -322,8 +425,9 @@ export class CourseViewHtml5 extends Component {
 
 export const CourseViewHtml5WithIntl = injectIntl(CourseViewHtml5);
 export const CourseViewHtml5WithRouter = withRouter(CourseViewHtml5WithIntl);
+export const CourseViewHtml5WithApollo = withApollo(CourseViewHtml5WithRouter);
 
 export default compose(
   graphql(CourseViewHtml5Query, CourseViewHtml5QueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseViewHtml5WithRouter);
+)(CourseViewHtml5WithApollo);

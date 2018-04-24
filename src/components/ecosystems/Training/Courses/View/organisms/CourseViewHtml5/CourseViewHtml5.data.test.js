@@ -50,7 +50,7 @@ describe('CourseViewHtml5Query', () => {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      forceFetch: true,
+      fetchPolicy: 'cache-and-network',
     });
   });
 

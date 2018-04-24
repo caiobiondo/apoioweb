@@ -10,81 +10,80 @@ import {
 } from './CourseContent.styles';
 import CourseEvaluation from '../CourseEvaluation/CourseEvaluation';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import { graphql } from 'react-apollo';
+import { graphql, withApollo } from 'react-apollo';
 import { Icon } from 'natura-ui';
 import Player from '@vimeo/player';
 import { translate } from 'locale';
+import gql from 'graphql-tag';
 
 export class CourseContent extends Component {
   state = {
+    course: {},
     ended: false,
-    hasStarted: false,
-    paused: false,
-    currentTime: 0,
   };
 
   componentDidMount() {
-    if (!this.props.course.courseContent.videoEmbed) {
+    const { course } = this.props;
+    if (course) this.setState({ course });
+
+    if (!course.courseContent.videoEmbed) {
       return;
     }
 
     const player = new Player(document.querySelector('iframe'));
 
-    player.on('ended', () => {
-      this.setState({ ended: true }, this.defineVideoCourseStatus);
-    });
-
-    player.on('play', () => {
-      this.setState({ hasStarted: true }, this.defineVideoCourseStatus);
-    });
-
-    player.on('pause', ({ seconds }) => {
-      this.setState({ paused: true, currentTime: seconds }, this.defineVideoCourseStatus);
-    });
-
-    const startTime = this.props.course.stoppedAt || 0;
+    const startTime = course.stoppedAt || 1;
     player.setCurrentTime(startTime).then(() => {
-      player.pause();
+      player.pause().then(() => {
+        player.on('ended', () => {
+          this.setState(
+            {
+              course: { ...this.state.course, status: 'finished', stoppedAt: 1 },
+              mutationStatus: 'terminated',
+              ended: true,
+            },
+            this.defineVideoCourseStatus,
+          );
+        });
+
+        player.on('play', () => {
+          this.setState(
+            {
+              course: { ...this.state.course, status: 'started' },
+              mutationStatus: 'initialized',
+            },
+            this.defineVideoCourseStatus,
+          );
+        });
+
+        player.on('pause', ({ seconds }) => {
+          this.setState(
+            {
+              course: {
+                ...this.state.course,
+                stoppedAt: Math.round(seconds),
+              },
+              mutationStatus: 'paused',
+            },
+            this.defineVideoCourseStatus,
+          );
+        });
+      });
     });
   }
 
-  componentWillUnmount() {
-    if (!this.refs.player) return null;
-
-    this.mutateVideoCourseStatus('paused', { stoppedAt: this.roundCurrentTime() });
+  componentWillReceiveProps({ loading, course }) {
+    if (!this.props.course && course) {
+      this.setState({ course });
+    }
   }
 
   defineVideoCourseStatus = () => {
-    if (this.state.hasStarted) {
-      this.mutateVideoCourseStatus('initialized');
-      this.setState({ hasStarted: false });
-    }
-
-    if (this.state.paused && !this.state.ended) {
-      this.mutateVideoCourseStatus('paused');
-      this.setState({ paused: false });
-    }
-
-    if (this.state.ended) {
-      this.mutateVideoCourseStatus('terminated');
-      this.setState({ ended: true });
-    }
+    this.mutateVideoCourseStatus(this.state.mutationStatus);
   };
 
-  roundCurrentTime = () => Math.round(this.state.currentTime).toString();
-
   mutateVideoCourseStatus = (action, additional) => {
-    let input = { action };
-
-    if (this.state.paused) {
-      input = { ...input, stoppedAt: this.roundCurrentTime() };
-    }
-
-    if (this.state.ended) {
-      input = { ...input, stoppedAt: '1' };
-    }
-
-    if (additional) input = { ...input, ...additional };
+    const input = { action, stoppedAt: this.state.course.stoppedAt };
 
     this.props
       .mutate({
@@ -95,11 +94,32 @@ export class CourseContent extends Component {
         },
       })
       .then(() => {
-        this.props.refetch();
+        this.updateCachedList();
       })
       .catch(err => {
         console.log('err', err);
       });
+  };
+
+  updateCachedList = () => {
+    const { course } = this.state;
+    const { client } = this.props;
+
+    client.writeFragment({
+      id: course.id,
+      fragment: gql`
+        fragment myCourse on Course {
+          stoppedAt
+          status
+          __typename
+        }
+      `,
+      data: {
+        stoppedAt: course.stoppedAt,
+        status: course.status,
+        __typename: 'Course',
+      },
+    });
   };
 
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
@@ -139,4 +159,6 @@ CourseContent.propTypes = {
   refetch: PropTypes.func.isRequired,
 };
 
-export default graphql(TrainingCourseUpdateMutation)(CourseContent);
+export const CourseContentWithApollo = withApollo(CourseContent);
+
+export default graphql(TrainingCourseUpdateMutation)(CourseContentWithApollo);

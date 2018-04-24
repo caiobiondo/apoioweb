@@ -7,6 +7,26 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
     user={
       Object {
         "codigo": 1234,
+        "estrutura": Object {
+          "cdCanalCaptacao": 1,
+          "cdPapelAtivo": 2,
+          "ciclo": Object {
+            "numero": 201801,
+          },
+          "codigo": 1,
+          "gerenciaMercado": Object {
+            "codigo": 2,
+          },
+          "gerenciaVenda": Object {
+            "codigo": 4,
+          },
+          "regiaoEstrategica": Object {
+            "codigo": 3,
+          },
+          "setor": Object {
+            "codigo": 5,
+          },
+        },
       }
     }
   />
@@ -65,6 +85,13 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
       onScroll={[Function]}
     >
       <TrainingCourses
+        client={
+          Object {
+            "readQuery": [Function],
+            "writeFragment": [Function],
+            "writeQuery": [Function],
+          }
+        }
         courses={
           Array [
             Object {
@@ -106,6 +133,26 @@ exports[`Training Courses List renders correctly when the list is not empty 1`] 
         user={
           Object {
             "codigo": 1234,
+            "estrutura": Object {
+              "cdCanalCaptacao": 1,
+              "cdPapelAtivo": 2,
+              "ciclo": Object {
+                "numero": 201801,
+              },
+              "codigo": 1,
+              "gerenciaMercado": Object {
+                "codigo": 2,
+              },
+              "gerenciaVenda": Object {
+                "codigo": 4,
+              },
+              "regiaoEstrategica": Object {
+                "codigo": 3,
+              },
+              "setor": Object {
+                "codigo": 5,
+              },
+            },
           }
         }
       />

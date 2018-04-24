@@ -92,7 +92,7 @@ export class CourseEvaluation extends Component {
           }
 
           if (!response.data.addCourseEvaluations.status) {
-            this.handleEvaluationDuplicationError();
+            this.handleEvaluationError();
             return;
           }
 
@@ -119,10 +119,6 @@ export class CourseEvaluation extends Component {
 
   handleEvaluationError = () => {
     this.handleDefaultEvaluation('courseAddEvaluationError');
-  };
-
-  handleEvaluationDuplicationError = () => {
-    this.handleDefaultEvaluation('courseAddEvaluationDuplicationError');
   };
 
   handleDefaultEvaluation = msgId => {

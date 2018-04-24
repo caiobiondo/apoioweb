@@ -3,18 +3,26 @@ import propTypes from 'prop-types';
 import { Loading, CircularProgress, FormButton } from 'natura-ui';
 import { translate } from 'locale';
 
-import { debounce } from 'utils/debounce';
-
 import { LoadingWrapper, searchButtonStyles } from './InfiniteScroll.styles';
 
 export class InfiniteScroll extends Component {
+  state = {
+    viewMoreDisabled: false,
+  };
+
+  componentWillReceiveProps({ items }) {
+    if (this.state.viewMoreDisabled && this.props.items.length !== items.length) {
+      this.setState({ viewMoreDisabled: false });
+    }
+  }
+
   isEmpty = () => {
     return !this.props.items || !this.props.items.length;
   };
 
-  onScroll = debounce(() => {
-    this.props.onScroll();
-  }, this.props.debounce);
+  onScroll = () => {
+    this.setState({ viewMoreDisabled: true }, this.props.onScroll);
+  };
 
   render() {
     const { loading, hasMore, children, items } = this.props;
@@ -30,12 +38,12 @@ export class InfiniteScroll extends Component {
     return (
       <div>
         {children}
-        {loading && (
+        {this.state.viewMoreDisabled && (
           <LoadingWrapper key="loadingWrapper">
             <CircularProgress thickness={2} />
           </LoadingWrapper>
         )}
-        {!loading &&
+        {!this.state.viewMoreDisabled &&
           hasMore && (
             <LoadingWrapper key="loadingWrapper">
               <FormButton

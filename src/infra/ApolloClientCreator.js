@@ -1,3 +1,5 @@
+import { defaultDataIdFromObject } from 'apollo-cache-inmemory';
+
 export default class ApolloClientCreator {
   constructor(uri, accessTokenKey, cnoTokenKey, ApolloClient, InMemoryCache, createHttpLink) {
     this.uri = uri;
@@ -12,11 +14,20 @@ export default class ApolloClientCreator {
     const link = this._createLink(links);
     const cache = this._createCache();
 
-    return new this.ApolloClient({ cache, link });
+    return new this.ApolloClient({ cache, link, addTypename: true });
   }
 
   _createCache() {
-    return new this.InMemoryCache();
+    return new this.InMemoryCache({
+      dataIdFromObject: object => {
+        switch (object.__typename) {
+          case 'Course':
+            return object.id;
+          default:
+            return defaultDataIdFromObject(object);
+        }
+      },
+    });
   }
 
   _createLink(links) {
