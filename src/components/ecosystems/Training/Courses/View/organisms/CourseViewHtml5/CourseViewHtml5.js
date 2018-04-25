@@ -10,6 +10,7 @@ import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
 } from 'components/ecosystems/Training/data/TrainingCourses.data';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 import {
   Main,
@@ -148,10 +149,10 @@ export class CourseViewHtml5 extends Component {
         }
 
         if (action === 'initialized') {
-          window.dataLayer.push({
-            event: 'ev-iniciar-treinamento',
-            category: 'Treinamento',
-            action: 'Iniciar',
+          gtmPushDataLayerEvent({
+            event: events.START_TRAINING,
+            category: categories.TRAINING,
+            action: actions.START,
             treinamento: {
               name: course.title,
               id: course.id,
@@ -160,6 +161,7 @@ export class CourseViewHtml5 extends Component {
               startTime: new Date(),
             },
           });
+
           this.setState(
             { course: { ...this.state.course, status: 'started' } },
             this.updateCachedList,
@@ -172,10 +174,10 @@ export class CourseViewHtml5 extends Component {
         }
 
         if (action === 'terminated') {
-          window.dataLayer.push({
-            event: 'ev-concluir-treinamento',
-            category: 'Treinamento',
-            action: 'Iniciar',
+          gtmPushDataLayerEvent({
+            event: events.FINISH_TRAINING,
+            category: categories.TRAINING,
+            action: actions.FINISH,
             treinamento: {
               name: course.title,
               id: course.id,
@@ -183,6 +185,7 @@ export class CourseViewHtml5 extends Component {
               certificateName: this.props.user.nomeCompleto,
             },
           });
+
           this.setState(
             {
               showEvaluation: true,

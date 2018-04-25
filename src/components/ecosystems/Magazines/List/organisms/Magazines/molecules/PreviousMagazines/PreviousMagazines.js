@@ -19,15 +19,16 @@ import {
 } from './PreviousMagazines.styles';
 
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class PreviousMagazines extends Component {
   openMagazine = magazine => {
     const { type } = this.props;
 
-    window.dataLayer.push({
-      event: 'ev-ver-revista',
-      category: 'Revista',
-      action: 'Ver',
+    gtmPushDataLayerEvent({
+      event: events.READ_MAGAZINE,
+      category: categories.MAGAZINE,
+      action: actions.READ,
       label: magazine.id,
     });
 

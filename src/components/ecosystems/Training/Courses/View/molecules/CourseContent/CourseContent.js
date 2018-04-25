@@ -15,6 +15,7 @@ import { Icon } from 'natura-ui';
 import Player from '@vimeo/player';
 import { translate } from 'locale';
 import gql from 'graphql-tag';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class CourseContent extends Component {
   state = {
@@ -114,10 +115,10 @@ export class CourseContent extends Component {
         }
 
         if (action === 'initialized') {
-          window.dataLayer.push({
-            event: 'ev-iniciar-treinamento',
-            category: 'Treinamento',
-            action: 'Iniciar',
+          gtmPushDataLayerEvent({
+            event: events.START_TRAINING,
+            category: categories.TRAINING,
+            action: actions.START,
             treinamento: {
               name: course.title,
               id: course.id,
@@ -129,10 +130,10 @@ export class CourseContent extends Component {
         }
 
         if (action === 'terminated') {
-          window.dataLayer.push({
-            event: 'ev-concluir-treinamento',
-            action: 'Iniciar',
-            category: 'Treinamento',
+          gtmPushDataLayerEvent({
+            event: events.FINISH_TRAINING,
+            category: categories.TRAINING,
+            action: actions.FINISH,
             treinamento: {
               name: course.title,
               id: course.id,

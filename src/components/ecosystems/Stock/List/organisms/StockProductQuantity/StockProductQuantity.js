@@ -12,6 +12,7 @@ import {
   RemoveStockProductMutation,
 } from './StockProductQuantity.data';
 import { graphql, compose } from 'react-apollo';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 const FEEDBACK_TIMEOUT = 5000;
 const MAX_PRODUCT_QTY = 100000;
@@ -64,13 +65,14 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
-        window.dataLayer.push({
-          event: 'ev-alterar-quantidade',
-          category: 'Meu estoque',
-          action: 'Adicionar',
+        gtmPushDataLayerEvent({
+          event: events.CHANGE_QUANTITY,
+          category: categories.STOCK,
+          action: actions.ADD,
           label: this.props.product.id,
           value: submittedQuantity,
         });
+
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit);
       });
   };
@@ -85,13 +87,14 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
-        window.dataLayer.push({
-          event: 'ev-alterar-quantidade',
-          category: 'Meu estoque',
-          action: 'Remover',
+        gtmPushDataLayerEvent({
+          event: events.CHANGE_QUANTITY,
+          category: categories.STOCK,
+          action: actions.REMOVE,
           label: this.props.product.id,
           value: submittedQuantity,
         });
+
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit, () => {
           this.props.onRemove(this.props.product.id);
         });

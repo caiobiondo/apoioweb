@@ -19,6 +19,7 @@ import NotesForm from '../../molecules/NotesForm';
 import validateForm from '../../../Validators/Form';
 import removeTypename from 'utils/removeTypename';
 import { translate } from 'locale';
+import { gtmPushDataLayerEvent, events, categories, actions, labels } from 'utils/googleTagManager';
 
 class CustomerForm extends Component {
   constructor(props) {
@@ -121,11 +122,11 @@ class CustomerForm extends Component {
         const { data } = response;
         const customer = (data.createCustomer || data.updateCustomer).customer;
 
-        window.dataLayer.push({
-          event: 'ev-editar-cliente',
-          category: 'Cadastro',
-          action: 'Editar Cadastro',
-          label: 'Cliente',
+        gtmPushDataLayerEvent({
+          event: events.EDIT_CUSTOMER,
+          category: categories.REGISTRATION,
+          action: actions.EDIT_REGISTRATION,
+          label: labels.CUSTOMER,
         });
 
         this.props.history.push(`/my-customers/detail/${customer.id}`);

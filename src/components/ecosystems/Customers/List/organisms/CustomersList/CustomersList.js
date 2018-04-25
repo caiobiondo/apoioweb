@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import CustomerAvatar from '../../../atoms/CustomerAvatar';
+import { gtmPushDataLayerEvent, events, categories, actions, labels } from 'utils/googleTagManager';
 
 import {
   CustomerName,
@@ -102,11 +103,11 @@ export class CustomersList extends Component {
         (customer.name && regexp.test(customer.name.toLowerCase())),
     );
 
-    window.dataLayer.push({
-      event: 'ev-buscar-cliente',
-      category: 'Cadastro',
-      action: 'Buscar Cadastro',
-      label: 'Cliente',
+    gtmPushDataLayerEvent({
+      event: events.SEARCH_CUSTOMER,
+      category: categories.REGISTRATION,
+      action: actions.SEARCH_REGISTRATION,
+      label: labels.CUSTOMER,
       searchResults: filteredCustomers.length,
     });
 
