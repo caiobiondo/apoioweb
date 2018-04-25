@@ -36,7 +36,7 @@ exports[`Training Category Header render correct when there is at least 1 banner
         >
           <TrainingCategoriesDetailsHeaderstyles__CategoryPercentageLabel>
             <strong>
-              71.43
+              71
               %
             </strong>
              
@@ -46,7 +46,7 @@ exports[`Training Category Header render correct when there is at least 1 banner
             />
           </TrainingCategoriesDetailsHeaderstyles__CategoryPercentageLabel>
           <TrainingCategoriesDetailsHeaderstyles__CategoryPercentageBar
-            completedPercentage="71.43"
+            completedPercentage="71"
           />
         </Col>
       </Row>
