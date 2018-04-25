@@ -30,8 +30,13 @@ exports[`Training Course View renders correctly when the course is defined 1`] =
           "views": 12,
         }
       }
+      handleFeedbackMessage={[Function]}
       refetch={[Function]}
-      sellerId={1234}
+      user={
+        Object {
+          "codigo": 1234,
+        }
+      }
     />
     <CourseDescription
       course={

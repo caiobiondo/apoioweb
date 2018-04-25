@@ -9,8 +9,16 @@ const client = {
 };
 
 const setup = propOverrides => {
+  global.dataLayer = {
+    push: jest.fn(),
+  };
+  global.open = jest.fn();
+
   const props = Object.assign(
     {
+      user: {
+        codigo: 123,
+      },
       course: {
         id: 1,
         title: '',
@@ -23,7 +31,6 @@ const setup = propOverrides => {
         thumbnail: '',
         stoppedAt: 123,
       },
-      sellerId: 123,
       mutate: jest.fn().mockReturnValue(
         Promise.resolve({
           data: {
@@ -35,6 +42,8 @@ const setup = propOverrides => {
         }),
       ),
       refetch: jest.fn(),
+      formatMessage: jest.fn(),
+      handleFeedbackMessage: jest.fn(),
       client,
     },
     propOverrides,
@@ -82,7 +91,7 @@ describe('CourseContent', () => {
             action: 'initialized',
             stoppedAt: props.course.stoppedAt,
           },
-          sellerId: props.sellerId,
+          sellerId: props.user.codigo,
           courseId: props.course.id,
         },
       });
@@ -112,7 +121,7 @@ describe('CourseContent', () => {
             action: 'paused',
             stoppedAt: props.course.stoppedAt,
           },
-          sellerId: props.sellerId,
+          sellerId: props.user.codigo,
           courseId: props.course.id,
         },
       });
@@ -142,7 +151,7 @@ describe('CourseContent', () => {
             action: 'terminated',
             stoppedAt: props.course.stoppedAt,
           },
-          sellerId: props.sellerId,
+          sellerId: props.user.codigo,
           courseId: props.course.id,
         },
       });

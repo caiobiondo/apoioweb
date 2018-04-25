@@ -12,6 +12,7 @@ import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
 } from 'components/ecosystems/Training/data/TrainingCourses.data';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 import {
   Main,
@@ -111,6 +112,10 @@ export class CourseStartView extends Component {
         ? formatMessage({ id: addMsg })
         : formatMessage({ id: removeMsg });
 
+    this.handleFeedbackMessage(message);
+  };
+
+  handleFeedbackMessage = message => {
     this.setState({
       feedbackModalOpened: true,
       feedbackModalTitle: message,
@@ -119,6 +124,7 @@ export class CourseStartView extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
+    const { formatMessage } = this.props.intl;
 
     this.props
       .mutate({
@@ -129,7 +135,32 @@ export class CourseStartView extends Component {
         },
       })
       .then(response => {
+        if (response.error) {
+          // handle error
+          this.handleFeedbackMessage(formatMessage('TrainingUpdateError'));
+          return;
+        }
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          this.handleFeedbackMessage(formatMessage('TrainingUpdateError'));
+          return;
+        }
+
         if (action === 'initialized') {
+          gtmPushDataLayerEvent({
+            event: events.START_TRAINING,
+            category: categories.TRAINING,
+            action: actions.START,
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              certificateName: this.props.user.nomeCompleto,
+              startTime: new Date(),
+            },
+          });
+
           this.setState(
             { course: { ...this.state.course, status: 'started' } },
             this.updateCachedList,
@@ -145,6 +176,18 @@ export class CourseStartView extends Component {
         }
 
         if (action === 'terminated') {
+          gtmPushDataLayerEvent({
+            event: events.FINISH_TRAINING,
+            category: categories.TRAINING,
+            action: actions.FINISH,
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              certificateName: this.props.user.nomeCompleto,
+            },
+          });
+
           this.setState(
             {
               showEvaluation: true,

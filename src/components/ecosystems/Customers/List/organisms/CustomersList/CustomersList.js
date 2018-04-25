@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import CustomerAvatar from '../../../atoms/CustomerAvatar';
+import { gtmPushDataLayerEvent, events, categories, actions, labels } from 'utils/googleTagManager';
 
 import {
   CustomerName,
@@ -94,12 +95,23 @@ export class CustomersList extends Component {
     if (!filters || !filters.name) {
       return customers;
     }
+
     const regexp = new RegExp(filters.name.toLowerCase(), 'i');
-    return customers.filter(
+    const filteredCustomers = customers.filter(
       customer =>
         (customer.nickname && regexp.test(customer.nickname.toLowerCase())) ||
         (customer.name && regexp.test(customer.name.toLowerCase())),
     );
+
+    gtmPushDataLayerEvent({
+      event: events.SEARCH_CUSTOMER,
+      category: categories.REGISTRATION,
+      action: actions.SEARCH_REGISTRATION,
+      label: labels.CUSTOMER,
+      searchResults: filteredCustomers.length,
+    });
+
+    return filteredCustomers;
   };
 
   notifyLoadFinish = (loading, customers) => {
