@@ -45,7 +45,18 @@ export const TrainingCategoriesDetailsQuery = gql`
         isfavorite
       }
     }
-    trainingCategory(sellerId: $sellerId, categoryId: $categoryId) {
+    trainingCategory(
+      sellerId: $sellerId
+      categoryId: $categoryId
+      ciclo: $ciclo
+      setor: $setor
+      gerenciaMercado: $gerenciaMercado
+      grupo: $grupo
+      papelDaConsultora: $papelDaConsultora
+      canal: $canal
+      gerenciaDeVendas: $gerenciaDeVendas
+      regiao: $regiao
+    ) {
       id
       name
       thumbnail
@@ -99,7 +110,7 @@ export const TrainingCategoriesDetailsOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      fetchPolicy: 'cache-first',
+      fetchPolicy: 'cache-and-network',
     };
   },
   props({ data }) {

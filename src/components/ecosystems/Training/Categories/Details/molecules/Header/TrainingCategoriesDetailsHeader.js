@@ -37,7 +37,7 @@ export class CategoryDetailsHeader extends Component {
       return 0;
     }
 
-    return (totalOfCoursesCompleted * 100 / totalOfCourses).toFixed(2);
+    return (totalOfCoursesCompleted * 100 / totalOfCourses).toFixed();
   };
 
   render() {
