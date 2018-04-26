@@ -455,7 +455,7 @@ export class CourseViewHtml5 extends Component {
         {this.isCourseAvailable() && this.renderFeedbackModal()}
         {this.isCourseAvailable() &&
           this.canEvaluate() && (
-            <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+            <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
           )}
       </Main>
     );
