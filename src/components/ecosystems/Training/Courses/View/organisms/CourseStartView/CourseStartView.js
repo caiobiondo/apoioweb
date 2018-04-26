@@ -485,7 +485,7 @@ export class CourseStartView extends Component {
         <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
         {this.canEvaluate() && (
-          <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
         )}
       </Main>
     );

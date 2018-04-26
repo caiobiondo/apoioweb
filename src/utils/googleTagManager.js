@@ -9,6 +9,7 @@ export const events = {
   DOWNLOAD_MAGAZINE: 'ev-baixar-revista',
   START_TRAINING: 'ev-iniciar-treinamento',
   FINISH_TRAINING: 'ev-concluir-treinamento',
+  TRAINING_EVALUATION: 'ev-avaliar-treinamento',
 };
 
 export const categories = {
@@ -28,6 +29,7 @@ export const actions = {
   DOWNLOAD: 'Baixar',
   START: 'Iniciar',
   FINISH: 'Concluir',
+  EVALUATION: 'Avaliar',
 };
 
 export const labels = {

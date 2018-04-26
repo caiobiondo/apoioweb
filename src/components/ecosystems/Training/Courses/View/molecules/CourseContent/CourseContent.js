@@ -199,7 +199,7 @@ export class CourseContent extends Component {
           />
         )}
         {this.canRenderEvaluation() && (
-          <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
         )}
       </ContentWrapper>
     );

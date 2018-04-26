@@ -19,6 +19,7 @@ import {
 } from './CourseEvaluation.styles';
 import { ToggleStar, ToggleStarBorder } from 'material-ui/svg-icons';
 import { red500 } from 'styles/colors';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class CourseEvaluation extends Component {
   state = {
@@ -82,7 +83,7 @@ export class CourseEvaluation extends Component {
           variables: {
             input: { action: this.state.userRates },
             sellerId: this.props.sellerId,
-            courseId: this.props.courseId,
+            courseId: this.props.course.id,
           },
         })
         .then(response => {
@@ -95,6 +96,23 @@ export class CourseEvaluation extends Component {
             this.handleEvaluationError();
             return;
           }
+
+          const ratingAverage = this.state.userRates.reduce((sum, userRate, index, array) => {
+            return sum + userRate.rate / array.length;
+          }, 0);
+          gtmPushDataLayerEvent({
+            event: events.TRAINING_EVALUATION,
+            category: categories.TRAINING,
+            action: actions.EVALUATION,
+            treinamento: {
+              name: this.props.course.title,
+              id: this.props.course.id,
+              type: this.props.course.type,
+              startTime: undefined,
+              endTime: new Date().getTime(),
+              rating: Number(ratingAverage.toFixed(2)),
+            },
+          });
 
           this.handleEvaluationSuccess();
           return;
@@ -231,7 +249,7 @@ export class CourseEvaluation extends Component {
 }
 
 CourseEvaluation.propTypes = {
-  courseId: PropTypes.number.isRequired,
+  course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
 };
 
