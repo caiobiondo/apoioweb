@@ -13,7 +13,18 @@ const setup = propOverrides => {
       user: {
         codigo: 1234,
       },
-      courseId: 1,
+      course: {
+        id: 1,
+        title: '',
+        type: 'VIDEO',
+        ratedByYou: 'true',
+        courseContent: {
+          video: '',
+          videoEmbed: '',
+        },
+        thumbnail: '',
+        stoppedAt: 123,
+      },
       sellerId: 1,
       evaluations: [
         {
