@@ -26,7 +26,13 @@ export class StockAddButton extends Component {
   ];
 
   render() {
-    return <ActionsFloatingButton actions={this.actions} />;
+    return (
+      <ActionsFloatingButton
+        actions={this.actions}
+        open={this.props.open}
+        close={this.props.close}
+      />
+    );
   }
 }
 

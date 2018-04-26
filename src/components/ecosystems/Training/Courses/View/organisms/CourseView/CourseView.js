@@ -275,7 +275,7 @@ export class CourseView extends Component {
             course={course}
             user={this.props.user}
             refetch={this.props.refetch}
-            formatMessage={this.props.formatMessage}
+            formatMessage={this.props.intl.formatMessage}
             handleFeedbackMessage={this.handleFeedbackMessage}
           />
           <CourseDescription course={course} />
