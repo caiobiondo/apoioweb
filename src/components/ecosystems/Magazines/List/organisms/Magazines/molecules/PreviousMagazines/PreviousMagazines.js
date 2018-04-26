@@ -29,7 +29,11 @@ export class PreviousMagazines extends Component {
       event: events.READ_MAGAZINE,
       category: categories.MAGAZINE,
       action: actions.READ,
-      label: magazine.id,
+      revista: {
+        id: magazine.id,
+        ciclo: magazine.year * 100 + magazine.period,
+        name: magazine.title,
+      },
     });
 
     this.props.history.push(`/magazines/view/${type}/${magazine.id}`);

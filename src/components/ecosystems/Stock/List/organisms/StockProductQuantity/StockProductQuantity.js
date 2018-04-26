@@ -65,13 +65,25 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
-        gtmPushDataLayerEvent({
-          event: events.CHANGE_QUANTITY,
-          category: categories.STOCK,
-          action: actions.ADD,
-          label: this.props.product.id,
-          value: submittedQuantity,
-        });
+        const quantity = submittedQuantity - productQuantityBeforeSubmit;
+        if (quantity > 0) {
+          gtmPushDataLayerEvent({
+            event: events.CHANGE_QUANTITY,
+            category: categories.STOCK,
+            action: actions.ADD,
+            label: this.props.product.productCode,
+            value: quantity,
+          });
+        }
+        if (quantity < 0) {
+          gtmPushDataLayerEvent({
+            event: events.CHANGE_QUANTITY,
+            category: categories.STOCK,
+            action: actions.REMOVE,
+            label: this.props.product.productCode,
+            value: quantity * -1,
+          });
+        }
 
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit);
       });
@@ -87,14 +99,6 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
-        gtmPushDataLayerEvent({
-          event: events.CHANGE_QUANTITY,
-          category: categories.STOCK,
-          action: actions.REMOVE,
-          label: this.props.product.id,
-          value: submittedQuantity,
-        });
-
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit, () => {
           this.props.onRemove(this.props.product.id);
         });

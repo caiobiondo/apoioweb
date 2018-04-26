@@ -123,8 +123,9 @@ export class CourseContent extends Component {
               name: course.title,
               id: course.id,
               type: course.type,
-              certificateName: this.props.user.nomeCompleto,
-              startTime: new Date(),
+              startTime: new Date().getTime(),
+              endTime: undefined,
+              rating: undefined,
             },
           });
         }
@@ -138,7 +139,9 @@ export class CourseContent extends Component {
               name: course.title,
               id: course.id,
               type: course.type,
-              certificateName: this.props.user.nomeCompleto,
+              startTime: undefined,
+              endTime: new Date().getTime(),
+              rating: undefined,
             },
           });
 

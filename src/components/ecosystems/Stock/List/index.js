@@ -23,19 +23,23 @@ class StockListWrapper extends Component {
   };
 
   openAddStockModal = () => {
-    gtmPushDataLayerEvent({
-      event: events.EXPAND_ADD_BUTTON,
-    });
-
     this.setState({ addStockModalOpen: true });
   };
 
   handleClose = () => {
+    this.setState({ addStockModalOpen: false });
+  };
+
+  openAddButton = () => {
+    gtmPushDataLayerEvent({
+      event: events.EXPAND_ADD_BUTTON,
+    });
+  };
+
+  closeAddButton = () => {
     gtmPushDataLayerEvent({
       event: events.COLLAPSE_ADD_BUTTON,
     });
-
-    this.setState({ addStockModalOpen: false });
   };
 
   render() {
@@ -49,7 +53,11 @@ class StockListWrapper extends Component {
         )}
         {!loading && (
           <StockAddButtonContainer empty={empty}>
-            <StockAddButton openAddStockModal={this.openAddStockModal} />
+            <StockAddButton
+              openAddStockModal={this.openAddStockModal}
+              open={this.openAddButton}
+              close={this.closeAddButton}
+            />
           </StockAddButtonContainer>
         )}
         <StockAddProductModal
