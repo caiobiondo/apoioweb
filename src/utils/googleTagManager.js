@@ -1,4 +1,5 @@
 export const events = {
+  NEW_CUSTOMER: 'ev-novo-cliente',
   EDIT_CUSTOMER: 'ev-editar-cliente',
   SEARCH_CUSTOMER: 'ev-buscar-cliente',
   IMPORT_PRODUCT: 'ev-importar-produto',
@@ -20,6 +21,7 @@ export const categories = {
 };
 
 export const actions = {
+  NEW_REGISTRATION: 'Novo Cadastro',
   EDIT_REGISTRATION: 'Editar Cadastro',
   SEARCH_REGISTRATION: 'Buscar Cadastro',
   IMPORT: 'Importar',
