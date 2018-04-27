@@ -122,12 +122,22 @@ class CustomerForm extends Component {
         const { data } = response;
         const customer = (data.createCustomer || data.updateCustomer).customer;
 
-        gtmPushDataLayerEvent({
-          event: events.EDIT_CUSTOMER,
-          category: categories.REGISTRATION,
-          action: actions.EDIT_REGISTRATION,
-          label: labels.CUSTOMER,
-        });
+        if (data.createCustomer) {
+          gtmPushDataLayerEvent({
+            event: events.NEW_CUSTOMER,
+            category: categories.REGISTRATION,
+            action: actions.NEW_REGISTRATION,
+            label: labels.CUSTOMER,
+          });
+        }
+        if (data.updateCustomer) {
+          gtmPushDataLayerEvent({
+            event: events.EDIT_CUSTOMER,
+            category: categories.REGISTRATION,
+            action: actions.EDIT_REGISTRATION,
+            label: labels.CUSTOMER,
+          });
+        }
 
         this.props.history.push(`/my-customers/detail/${customer.id}`);
       });
