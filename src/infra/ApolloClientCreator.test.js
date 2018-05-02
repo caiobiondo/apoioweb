@@ -1,11 +1,16 @@
 import ApolloClientCreator from './ApolloClientCreator';
-import { ACCESS_TOKEN_LOCAL_STORAGE_KEY, CNO_TOKEN_LOCAL_STORAGE_KEY } from 'config';
+import {
+  ACCESS_TOKEN_LOCAL_STORAGE_KEY,
+  CNO_TOKEN_LOCAL_STORAGE_KEY,
+  PERSON_ID_LOCAL_STORAGE_KEY,
+} from 'config';
 
 describe('ApolloClientCreator', () => {
   test('creates an Apollo Client', () => {
     // given
     const uri = 'a graphql-uri';
-    const sso = '{ "accessToken": "an-access-token", "clientId": "a-client-id" }';
+    const accessToken = 'an-access-token';
+    const userCode = 'a-user-code';
     const cnoToken = 'a-cno-token';
     const expectedClient = { client: 'an apollo client' };
     const expectedCache = { cache: 'a cache' };
@@ -14,8 +19,9 @@ describe('ApolloClientCreator', () => {
     const inMemoryCacheMock = jest.fn();
     const createHttpLink = jest.fn().mockReturnValue(expectedLink);
     const localStorageMock = key => {
-      if (key === ACCESS_TOKEN_LOCAL_STORAGE_KEY) return sso;
+      if (key === ACCESS_TOKEN_LOCAL_STORAGE_KEY) return accessToken;
       if (key === CNO_TOKEN_LOCAL_STORAGE_KEY) return cnoToken;
+      if (key === PERSON_ID_LOCAL_STORAGE_KEY) return userCode;
     };
 
     window.localStorage.getItem = localStorageMock;
@@ -38,6 +44,7 @@ describe('ApolloClientCreator', () => {
       uri,
       ACCESS_TOKEN_LOCAL_STORAGE_KEY,
       CNO_TOKEN_LOCAL_STORAGE_KEY,
+      PERSON_ID_LOCAL_STORAGE_KEY,
       ApolloClient,
       InMemoryCache,
       createHttpLink,
@@ -56,7 +63,7 @@ describe('ApolloClientCreator', () => {
       headers: {
         accessToken: 'an-access-token',
         cnotoken: 'a-cno-token',
-        clientId: 'a-client-id',
+        userCode: 'a-user-code',
       },
       uri: uri,
     });
