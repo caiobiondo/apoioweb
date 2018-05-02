@@ -1,10 +1,19 @@
 import { defaultDataIdFromObject } from 'apollo-cache-inmemory';
 
 export default class ApolloClientCreator {
-  constructor(uri, accessTokenKey, cnoTokenKey, ApolloClient, InMemoryCache, createHttpLink) {
+  constructor(
+    uri,
+    accessTokenKey,
+    cnoTokenKey,
+    personIdTokenKey,
+    ApolloClient,
+    InMemoryCache,
+    createHttpLink,
+  ) {
     this.uri = uri;
     this.accessTokenKey = accessTokenKey;
     this.cnoTokenKey = cnoTokenKey;
+    this.personIdTokenKey = personIdTokenKey;
     this.ApolloClient = ApolloClient || require('apollo-client').ApolloClient;
     this.InMemoryCache = InMemoryCache || require('apollo-cache-inmemory').InMemoryCache;
     this.createHttpLink = createHttpLink || require('apollo-link-http').createHttpLink;
@@ -47,9 +56,10 @@ export default class ApolloClientCreator {
   }
 
   _createAuthHeaders() {
-    const accessToken = JSON.parse(localStorage.getItem(this.accessTokenKey));
+    const accessToken = localStorage.getItem(this.accessTokenKey);
     const cnotoken = localStorage.getItem(this.cnoTokenKey);
+    const userCode = localStorage.getItem(this.personIdTokenKey);
 
-    return Object.assign({}, accessToken, { cnotoken });
+    return { accessToken, userCode, cnotoken };
   }
 }

@@ -4,7 +4,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from 'infra/ApolloClientCreator';
-import { GRAPHQL_URI, ACCESS_TOKEN_LOCAL_STORAGE_KEY, CNO_TOKEN_LOCAL_STORAGE_KEY } from 'config';
+import {
+  GRAPHQL_URI,
+  ACCESS_TOKEN_LOCAL_STORAGE_KEY,
+  CNO_TOKEN_LOCAL_STORAGE_KEY,
+  PERSON_ID_LOCAL_STORAGE_KEY,
+} from 'config';
 
 import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
 
@@ -20,6 +25,7 @@ const client = new ApolloClientCreator(
   GRAPHQL_URI,
   ACCESS_TOKEN_LOCAL_STORAGE_KEY,
   CNO_TOKEN_LOCAL_STORAGE_KEY,
+  PERSON_ID_LOCAL_STORAGE_KEY,
 ).create([authLink]);
 
 export default class App extends Component {
