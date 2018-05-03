@@ -1,6 +1,6 @@
 import { onError } from 'apollo-link-error';
 
-const LOGIN_PATH = '/logout';
+const LOGIN_PATH = '/login';
 const REDIRECT_TO_LOGIN_MESSAGE = '#REDIRECT_TO_LOGIN#';
 
 const redirectToLogin = () => {
