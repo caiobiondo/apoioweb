@@ -15,6 +15,7 @@ import {
   getCommercialStructureIdFromUser,
   getCommercialStructureTypeIdFromUser,
 } from 'utils/getUserParams';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 import {
   OrderDetailsWrapper,
@@ -64,6 +65,13 @@ export class OrderItems extends Component {
         ],
       })
       .then(() => {
+        gtmPushDataLayerEvent({
+          event: events.IMPORT_PRODUCT,
+          category: categories.STOCK,
+          action: actions.IMPORT,
+          label: orderItem.codigoProduto,
+        });
+
         this.setState({
           productsImporting: this.state.productsImporting.filter(e => {
             return e !== orderItem.codigoProduto;

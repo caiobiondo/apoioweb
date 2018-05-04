@@ -4,6 +4,7 @@ import StockList from './organisms/ListTable';
 import StockAddButton from './organisms/StockAddButton';
 import { Main, StockSearchContainer, StockAddButtonContainer } from './index.styles';
 import StockAddProductModal from './organisms/StockAddProductModal';
+import { gtmPushDataLayerEvent, events } from 'utils/googleTagManager';
 
 class StockListWrapper extends Component {
   state = {
@@ -29,6 +30,18 @@ class StockListWrapper extends Component {
     this.setState({ addStockModalOpen: false });
   };
 
+  openAddButton = () => {
+    gtmPushDataLayerEvent({
+      event: events.EXPAND_ADD_BUTTON,
+    });
+  };
+
+  closeAddButton = () => {
+    gtmPushDataLayerEvent({
+      event: events.COLLAPSE_ADD_BUTTON,
+    });
+  };
+
   render() {
     const { loading, empty } = this.state;
     return (
@@ -40,7 +53,11 @@ class StockListWrapper extends Component {
         )}
         {!loading && (
           <StockAddButtonContainer empty={empty}>
-            <StockAddButton openAddStockModal={this.openAddStockModal} />
+            <StockAddButton
+              openAddStockModal={this.openAddStockModal}
+              open={this.openAddButton}
+              close={this.closeAddButton}
+            />
           </StockAddButtonContainer>
         )}
         <StockAddProductModal

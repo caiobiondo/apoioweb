@@ -19,10 +19,23 @@ import {
 } from './PreviousMagazines.styles';
 
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class PreviousMagazines extends Component {
   openMagazine = magazine => {
     const { type } = this.props;
+
+    gtmPushDataLayerEvent({
+      event: events.READ_MAGAZINE,
+      category: categories.MAGAZINE,
+      action: actions.READ,
+      revista: {
+        id: magazine.id,
+        ciclo: magazine.year * 100 + magazine.period,
+        name: magazine.title,
+      },
+    });
+
     this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 

@@ -10,6 +10,7 @@ import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
 } from 'components/ecosystems/Training/data/TrainingCourses.data';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 import {
   Main,
@@ -137,7 +138,31 @@ export class CourseViewHtml5 extends Component {
         },
       })
       .then(response => {
+        if (response.error) {
+          // handle error
+          return;
+        }
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          return;
+        }
+
         if (action === 'initialized') {
+          gtmPushDataLayerEvent({
+            event: events.START_TRAINING,
+            category: categories.TRAINING,
+            action: actions.START,
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              startTime: new Date().getTime(),
+              endTime: undefined,
+              rating: undefined,
+            },
+          });
+
           this.setState(
             { course: { ...this.state.course, status: 'started' } },
             this.updateCachedList,
@@ -150,6 +175,20 @@ export class CourseViewHtml5 extends Component {
         }
 
         if (action === 'terminated') {
+          gtmPushDataLayerEvent({
+            event: events.FINISH_TRAINING,
+            category: categories.TRAINING,
+            action: actions.FINISH,
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              startTime: undefined,
+              endTime: new Date().getTime(),
+              rating: undefined,
+            },
+          });
+
           this.setState(
             {
               showEvaluation: true,
@@ -416,7 +455,7 @@ export class CourseViewHtml5 extends Component {
         {this.isCourseAvailable() && this.renderFeedbackModal()}
         {this.isCourseAvailable() &&
           this.canEvaluate() && (
-            <CourseEvaluation courseId={course.id} sellerId={this.props.user.codigo} />
+            <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
           )}
       </Main>
     );

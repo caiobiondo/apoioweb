@@ -25,6 +25,7 @@ import {
 } from './CurrentMagazine.styles';
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
 import { FormattedNumber } from 'react-intl';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class CurrentMagazine extends Component {
   state = {
@@ -34,11 +35,35 @@ export class CurrentMagazine extends Component {
 
   downloadMagazine = () => {
     const { magazine } = this.props;
+
+    gtmPushDataLayerEvent({
+      event: events.DOWNLOAD_MAGAZINE,
+      category: categories.MAGAZINE,
+      action: actions.DOWNLOAD,
+      revista: {
+        id: magazine.id,
+        ciclo: magazine.year * 100 + magazine.period,
+        name: magazine.title,
+      },
+    });
+
     window.open(magazine.pdfFile);
   };
 
   openMagazine = () => {
     const { magazine, type } = this.props;
+
+    gtmPushDataLayerEvent({
+      event: events.READ_MAGAZINE,
+      category: categories.MAGAZINE,
+      action: actions.READ,
+      revista: {
+        id: magazine.id,
+        ciclo: magazine.year * 100 + magazine.period,
+        name: magazine.title,
+      },
+    });
+
     this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
   };
 

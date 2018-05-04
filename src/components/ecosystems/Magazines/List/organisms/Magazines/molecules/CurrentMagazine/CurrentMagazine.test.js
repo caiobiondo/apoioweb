@@ -5,6 +5,9 @@ import { CurrentMagazine } from './CurrentMagazine';
 describe('CurrentMagazine', () => {
   it('should call downloadMagazine and open pdfFile ', () => {
     global.open = jest.fn();
+    global.dataLayer = {
+      push: jest.fn(),
+    };
 
     const props = {
       magazine: {
@@ -28,6 +31,9 @@ describe('CurrentMagazine', () => {
         id: '6',
       },
       type: 'natura',
+    };
+    global.dataLayer = {
+      push: jest.fn(),
     };
 
     const result = shallow(<CurrentMagazine {...props} />);

@@ -12,6 +12,7 @@ import {
   RemoveStockProductMutation,
 } from './StockProductQuantity.data';
 import { graphql, compose } from 'react-apollo';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 const FEEDBACK_TIMEOUT = 5000;
 const MAX_PRODUCT_QTY = 100000;
@@ -64,6 +65,26 @@ class StockProductQuantity extends Component {
         },
       })
       .then(() => {
+        const quantity = submittedQuantity - productQuantityBeforeSubmit;
+        if (quantity > 0) {
+          gtmPushDataLayerEvent({
+            event: events.CHANGE_QUANTITY,
+            category: categories.STOCK,
+            action: actions.ADD,
+            label: this.props.product.productCode,
+            value: quantity,
+          });
+        }
+        if (quantity < 0) {
+          gtmPushDataLayerEvent({
+            event: events.CHANGE_QUANTITY,
+            category: categories.STOCK,
+            action: actions.REMOVE,
+            label: this.props.product.productCode,
+            value: quantity * -1,
+          });
+        }
+
         this.showUpdateFeedback(submittedQuantity, productQuantityBeforeSubmit);
       });
   };

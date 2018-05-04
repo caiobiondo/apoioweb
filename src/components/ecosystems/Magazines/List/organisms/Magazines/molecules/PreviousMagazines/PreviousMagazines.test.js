@@ -4,7 +4,7 @@ import { PreviousMagazines } from './PreviousMagazines';
 import { MagazineCoverWrapper } from './PreviousMagazines.styles';
 
 describe('PreviousMagazines', () => {
-  fit('should call openMagazine and redirect to a new router', () => {
+  it('should call openMagazine and redirect to a new router', () => {
     const historyPush = jest.fn();
     const props = {
       history: {
@@ -19,6 +19,9 @@ describe('PreviousMagazines', () => {
         },
       ],
       type: 'natura',
+    };
+    global.dataLayer = {
+      push: jest.fn(),
     };
 
     const result = shallow(<PreviousMagazines {...props} />);

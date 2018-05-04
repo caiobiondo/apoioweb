@@ -53,7 +53,7 @@ export const CertificateListQueryOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      fetchPolicy: 'cache-first',
+      fetchPolicy: 'cache-and-network',
     };
   },
 

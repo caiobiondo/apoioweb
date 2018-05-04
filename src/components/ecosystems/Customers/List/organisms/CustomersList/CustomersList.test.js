@@ -89,6 +89,9 @@ describe('CustomersList Organism', () => {
         },
       ],
     };
+    global.dataLayer = {
+      push: jest.fn(),
+    };
 
     const result = shallow(
       <CustomersList filters={filters} selectedCustomers={selectedCustomers} data={data} />,

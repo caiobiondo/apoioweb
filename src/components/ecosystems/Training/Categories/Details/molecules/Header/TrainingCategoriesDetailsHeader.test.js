@@ -44,7 +44,7 @@ describe('Training Category Header', () => {
       thumbnail: 'test.jpg',
       banners: [{ thumbnail: 'test.jpg' }],
     };
-    const expectedPercentage = '50.00';
+    const expectedPercentage = '50';
 
     // when
     const { result } = setup({ category });

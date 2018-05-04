@@ -15,6 +15,7 @@ import { Icon } from 'natura-ui';
 import Player from '@vimeo/player';
 import { translate } from 'locale';
 import gql from 'graphql-tag';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class CourseContent extends Component {
   state = {
@@ -40,7 +41,6 @@ export class CourseContent extends Component {
             {
               course: { ...this.state.course, status: 'finished', stoppedAt: 1 },
               mutationStatus: 'terminated',
-              ended: true,
             },
             this.defineVideoCourseStatus,
           );
@@ -84,16 +84,69 @@ export class CourseContent extends Component {
 
   mutateVideoCourseStatus = (action, additional) => {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
+    const { course } = this.state;
+    const { formatMessage, handleFeedbackMessage } = this.props;
 
     this.props
       .mutate({
         variables: {
           input,
-          sellerId: this.props.sellerId,
+          sellerId: this.props.user.codigo,
           courseId: this.props.course.id,
         },
       })
-      .then(() => {
+      .then(response => {
+        if (response.error) {
+          // handle error
+          handleFeedbackMessage(formatMessage('TrainingUpdateError'));
+          return;
+        }
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          // Not handling when initialized
+          // (initializing after a course was terminated [rewatching] will set updateCourse.status to be false)
+          if (action !== 'terminated') {
+            return;
+          }
+
+          handleFeedbackMessage(formatMessage('TrainingUpdateError'));
+          return;
+        }
+
+        if (action === 'initialized') {
+          gtmPushDataLayerEvent({
+            event: events.START_TRAINING,
+            category: categories.TRAINING,
+            action: actions.START,
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              startTime: new Date().getTime(),
+              endTime: undefined,
+              rating: undefined,
+            },
+          });
+        }
+
+        if (action === 'terminated') {
+          gtmPushDataLayerEvent({
+            event: events.FINISH_TRAINING,
+            category: categories.TRAINING,
+            action: actions.FINISH,
+            treinamento: {
+              name: course.title,
+              id: course.id,
+              type: course.type,
+              startTime: undefined,
+              endTime: new Date().getTime(),
+              rating: undefined,
+            },
+          });
+
+          this.setState({ ended: true });
+        }
         this.updateCachedList();
       })
       .catch(err => {
@@ -146,7 +199,7 @@ export class CourseContent extends Component {
           />
         )}
         {this.canRenderEvaluation() && (
-          <CourseEvaluation courseId={course.id} sellerId={this.props.sellerId} />
+          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
         )}
       </ContentWrapper>
     );
@@ -155,8 +208,10 @@ export class CourseContent extends Component {
 
 CourseContent.propTypes = {
   course: PropTypes.object.isRequired,
-  sellerId: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
   refetch: PropTypes.func.isRequired,
+  formatMessage: PropTypes.func.isRequired,
+  handleFeedbackMessage: PropTypes.func.isRequired,
 };
 
 export const CourseContentWithApollo = withApollo(CourseContent);
