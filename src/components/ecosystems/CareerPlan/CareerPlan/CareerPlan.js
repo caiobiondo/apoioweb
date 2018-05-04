@@ -49,8 +49,10 @@ export class CareerPlan extends Component {
     this.setState({ activeMenu: menuItem.id });
   };
 
-  _getEditedIndicators = (indicators, indicatorToEdit) => {
-    return indicators.map(indicator => {
+  _getEditedIndicators = indicatorToEdit => {
+    const currentIndicators = this.state.indicators;
+
+    return currentIndicators.map(indicator => {
       if (indicator.indicatorType !== indicatorToEdit.indicatorType) {
         return indicator;
       }
@@ -59,37 +61,9 @@ export class CareerPlan extends Component {
     });
   };
 
-  _getEditedCycles = (cycles, cycleToEdit) => {
-    return cycles.map(cycle => {
-      if (cycle.cycle !== cycleToEdit.cycle) {
-        return cycle;
-      }
-
-      return { ...cycle, ...cycleToEdit };
-    });
-  };
-
-  _updateCycle = ({ cycle, indicatorType }, cb = () => {}) => {
-    const currentIndicators = this.state.indicators;
-    const indicator = currentIndicators.filter(i => i.indicatorType === indicatorType)[0];
-    const cycles = this._getEditedCycles(indicator.cycles, cycle);
-    const indicators = this._getEditedIndicators(currentIndicators, { cycles, indicatorType });
-
-    const onStateSuccess = () => {
-      this._simulate(indicators, cb);
-    };
-
-    this.setState({ indicators }, onStateSuccess);
-  };
-
-  onApplyChanges = ({ indicatorType, cycle }, cb) => {
-    const { directSale, naturaNetwork } = cycle;
-
-    if (naturaNetwork || directSale) {
-      return this._fetchOvercoming({ indicatorType, cycle }, cb);
-    }
-
-    return this._eraseCycle({ indicatorType, cycle }, cb);
+  updateIndicator = indicator => {
+    const indicators = this._getEditedIndicators(indicator);
+    this.setState({ indicators });
   };
 
   _eraseCycle = ({ indicatorType, cycle }, cb) => {
@@ -284,7 +258,7 @@ export class CareerPlan extends Component {
           concepts={concepts}
           activeMenu={activeMenu}
           cyclesPerPage={this.cyclesPerPage}
-          onApplyChanges={this.onApplyChanges}
+          onIndicatorChange={this.updateIndicator}
           currentCycle={currentCycle}
         />
       </div>

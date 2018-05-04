@@ -108,36 +108,6 @@ export const IndicatorDataRowObj = IndicatorDataRow.extend`
   font-family: ${RobotoMedium};
 `;
 
-export const IndicatorDataApplyButton = styled.button`
-  background: transparent;
-  border-radius: 4px;
-  border: 1px solid ${gray890};
-  bottom: 5px;
-  color: ${gray890};
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: ${fw400};
-  left: 0;
-  padding: 8px 0;
-  position: absolute;
-  text-transform: uppercase;
-  transition: all 0.2s ease-in;
-  width: 100%;
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-
-  &:disabled {
-    border-color: ${gray150};
-    color: ${gray150};
-    cursor: not-allowed;
-  }
-`;
-
-export const ApplyButtonHeight = '32px';
-
 export const IndicatorDataSimulatorLabel = styled.span`
   color: ${gray890};
   font-size: 11px;
