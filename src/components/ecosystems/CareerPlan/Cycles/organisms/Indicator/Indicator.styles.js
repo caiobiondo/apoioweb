@@ -3,8 +3,6 @@ import { orange100, gray150, gray700, gray890 } from 'styles/colors';
 import { RobotoRegular, RobotoMedium } from 'styles/typography';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
-import { ApplyButtonHeight } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
-
 import { IndicatorDataWrapper } from '../../molecules/IndicatorData/IndicatorData.styles';
 
 export const IndicatorWeightWrapper = styled.div`
@@ -119,7 +117,7 @@ export const IndicatorTableHeaderItemFeatured = IndicatorTableHeaderItem.extend`
 export const IndicatorTableContent = styled.ul`
   margin: 0;
   overflow: hidden;
-  padding: 30px 10px 20px;
+  padding: 30px 10px 0;
   position: relative;
   vertical-align: top;
   white-space: nowrap;
@@ -134,7 +132,7 @@ export const IndicatorTableContentWrapper = styled.div`
   &:before {
     background-color: white;
     border-radius: 3px;
-    bottom: ${ApplyButtonHeight};
+    bottom: 0;
     box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
     content: '';
     left: 0;
@@ -156,8 +154,6 @@ export const IndicatorTableContentWrapper = styled.div`
       padding-left: 20px;
     `};
   }
-
-  ${({ hasChart }) => hasChart && ` &:before { bottom: 20px; }`};
 `;
 
 export const IndicatorTableLegendItem = styled.li`

@@ -52,15 +52,19 @@ export class Indicator extends Component {
     this.setState({ informationModalOpened: false });
   };
 
-  onApplyChanges = (cycle, cb) => {
-    const { indicator, onApplyChanges } = this.props;
-
-    return onApplyChanges({ cycle, indicatorType: indicator.indicatorType }, cb);
+  onChange = cycle => {
+    const { indicator, onIndicatorChange } = this.props;
+    return onIndicatorChange({ ...indicator, cycles: this._getEditedCycles(cycle) });
   };
 
-  onApply = cycle => {
-    this.onApplyChanges(cycle, () => {
-      this.setState({ activeCycle: null });
+  _getEditedCycles = cycleToEdit => {
+    const { cycles } = this.props.indicator;
+    return cycles.map(cycle => {
+      if (cycle.cycle !== cycleToEdit.cycle) {
+        return cycle;
+      }
+
+      return { ...cycle, ...cycleToEdit };
     });
   };
 
@@ -80,7 +84,7 @@ export class Indicator extends Component {
         canFill={isCycleFilled(previousCycle) || index === 0}
         isFilled={isCycleFilled(cycle)}
         onClick={this.setActiveCycle}
-        onApply={this.onApply}
+        onChange={this.onChange}
         indicator={indicator}
         activeCycle={activeCycle}
         isCurrentCycle={cycle.cycle === currentCycle}

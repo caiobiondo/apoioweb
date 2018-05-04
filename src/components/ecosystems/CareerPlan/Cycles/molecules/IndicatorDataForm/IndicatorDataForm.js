@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
+import { debounce } from 'lodash';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 import {
@@ -21,79 +22,40 @@ import {
   IndicatorDataRowInput,
   IndicatorDataSimulatorLabel,
   IndicatorDataValue,
-  IndicatorDataApplyButton,
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
-  constructor({ indicatorData, indicator }) {
+  constructor({ indicator, onChange }) {
     super();
     this.indicatorFields = IndicatorFields[indicator.indicatorType];
-
-    const indicatorDataValues = {};
-    this.indicatorFields.forEach(field => {
-      indicatorDataValues[field] = indicatorData[field];
-    });
-
-    this.state = {
-      indicatorDataValues,
-      showDeleteModal: false,
-    };
+    this.state = { showDeleteModal: false };
+    this.onChangeDebounced = debounce(onChange, 200);
   }
-
-  componentWillReceiveProps({ isActive }) {
-    this.handleIndicatorDataBlur(isActive);
-  }
-
-  updateIndicatorDataValues = (indicatorData, cb) => {
-    const indicatorDataValues = {};
-    this.indicatorFields.forEach(field => {
-      indicatorDataValues[field] = indicatorData[field];
-    });
-
-    this.setState({ indicatorDataValues }, cb);
-  };
-
-  handleIndicatorDataBlur = isActive => {
-    if (!this.props.isActive || isActive) {
-      return;
-    }
-
-    this.updateIndicatorDataValues(this.props.indicatorData);
-  };
 
   onChange = (value, event) => {
-    const indicatorData = Object.assign({}, this.state.indicatorDataValues);
+    const { indicatorData } = this.props;
     const { name } = event.target;
-    indicatorData[name] = value;
+    const updatedIndicator = {
+      ...indicatorData,
+      [name]: value,
+    };
 
-    this.updateIndicatorDataValues(indicatorData);
+    this.updateIndicatorData(updatedIndicator);
+  };
+
+  updateIndicatorData = indicatorData => {
+    this.onChangeDebounced(indicatorData);
   };
 
   deleteValues = () => {
-    const indicatorData = {};
-
+    const { indicatorData } = this.props;
+    const updatedIndicator = { ...indicatorData };
     this.indicatorFields.forEach(field => {
-      indicatorData[field] = 0;
+      updatedIndicator[field] = 0;
     });
 
     this.closeModal();
-
-    return this.updateIndicatorDataValues(indicatorData, this.applyValues);
-  };
-
-  applyValues = event => {
-    event && event.stopPropagation();
-    const { onApply, indicatorData } = this.props;
-
-    const values = {};
-    this.indicatorFields.forEach(field => {
-      values[field] = this.state.indicatorDataValues[field];
-    });
-
-    return onApply({
-      ...indicatorData,
-      ...values,
-    });
+    this.updateIndicatorData(updatedIndicator);
   };
 
   openModal = event => {
@@ -189,24 +151,6 @@ export class IndicatorDataForm extends Component {
     );
   }
 
-  renderApplyButton() {
-    const { isActive, isCycleFilled } = this.props;
-    const { indicatorDataValues } = this.state;
-
-    if (!isActive) {
-      return;
-    }
-
-    return (
-      <IndicatorDataApplyButton
-        onClick={this.applyValues}
-        disabled={!isCycleFilled(indicatorDataValues)}
-      >
-        <FormattedMessage id="apply" />
-      </IndicatorDataApplyButton>
-    );
-  }
-
   render() {
     const { indicatorData, canFill, isActive } = this.props;
     const { value, concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
@@ -223,15 +167,12 @@ export class IndicatorDataForm extends Component {
 
         {this.indicatorFields.map(field => (
           <IndicatorDataRow key={field}>
-            <IndicatorDataRowInputWrapper
-              isActive={isActive}
-              empty={!this.state.indicatorDataValues[field]}
-            >
+            <IndicatorDataRowInputWrapper isActive={isActive} empty={!indicatorData[field]}>
               <IndicatorDataRowInput
                 name={field}
                 type="text"
                 props={{ isActive }}
-                value={this.state.indicatorDataValues[field]}
+                value={indicatorData[field]}
                 onChange={this.onChange}
                 disabled={!canFill}
                 maxLength={7}
@@ -251,7 +192,6 @@ export class IndicatorDataForm extends Component {
         <IndicatorDataRow>
           <CycleConcept concept={concept} />
         </IndicatorDataRow>
-        {this.renderApplyButton()}
         {this.renderDeleteDialog()}
       </IndicatorDataContent>
     );

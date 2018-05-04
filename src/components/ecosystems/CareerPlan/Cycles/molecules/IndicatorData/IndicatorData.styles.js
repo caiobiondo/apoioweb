@@ -162,11 +162,6 @@ export const IndicatorDataWrapper = styled.li`
         z-index: -1;
       }
     `};
-
-    ${IndicatorDataContent} {
-      ${({ isActive, editable, hasChart }) =>
-        !isActive && editable && !hasChart && `padding-bottom: 35px;`};
-    }
   }
 
   ${({ showDetails }) => showDetails && `z-index: 1;`};
