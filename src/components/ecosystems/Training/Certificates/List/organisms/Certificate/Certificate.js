@@ -15,15 +15,33 @@ import {
 import Img from 'react-image';
 import { Icon, FormButton } from 'natura-ui';
 import { translate } from 'locale';
+import {
+  CertificateDownloadQuery,
+  CertificateDownloadQueryOptions,
+} from './CertificateDownload.data';
+import { withApollo } from 'react-apollo';
 
-class Certificate extends Component {
+export class Certificate extends Component {
   state = {
     courseCompleted: false,
   };
 
   downloadCertificate = () => {
-    const { downloadUrl } = this.props.certificate;
-    window.open(downloadUrl, '_blank');
+    const variables = CertificateDownloadQueryOptions.options(this.props).variables;
+    this.props.client
+      .query({
+        query: CertificateDownloadQuery,
+        variables,
+      })
+      .catch(() => {
+        return null;
+      })
+      .then(res => {
+        if (res.data && res.data.trainingCertificateDownload) {
+          const { downloadUrl } = res.data.trainingCertificateDownload;
+          window.open(downloadUrl, '_blank');
+        }
+      });
   };
 
   componentDidMount = () => {
@@ -67,7 +85,8 @@ class Certificate extends Component {
 
 Certificate.propTypes = {
   certificate: PropTypes.object,
+  user: PropTypes.object,
   index: PropTypes.number,
 };
 
-export default Certificate;
+export default withApollo(Certificate);

@@ -1,8 +1,11 @@
-import { CertificateListQuery, CertificateListQueryOptions } from './CertificateList.data';
+import {
+  CertificateDownloadQuery,
+  CertificateDownloadQueryOptions,
+} from './CertificateDownload.data';
 
-describe('CertificateListQuery', () => {
+describe('CertificateDownloadQuery', () => {
   it('should be the correct query', () => {
-    expect(CertificateListQuery).toMatchSnapshot();
+    expect(CertificateDownloadQuery).toMatchSnapshot();
   });
 
   it('should be the correct query options', () => {
@@ -10,6 +13,7 @@ describe('CertificateListQuery', () => {
       codigo: 4064925,
       cdCanalCaptacao: 8,
       codigoCentro: 5800,
+      nomeCompleto: 'Fulano Ciclano',
       estrutura: {
         codigo: 7416,
         codigoTipo: 5,
@@ -30,15 +34,19 @@ describe('CertificateListQuery', () => {
         setor: {
           codigo: 488,
         },
+        cdPapelAtivo: 2,
       },
     };
-    const props = { user };
+    const certificate = { id: 12345678 };
+    const props = { user, certificate };
 
-    const options = CertificateListQueryOptions.options(props);
+    const options = CertificateDownloadQueryOptions.options(props);
 
     expect(options).toEqual({
       variables: {
+        categoryId: certificate.id,
         sellerId: user.codigo,
+        userName: user.nomeCompleto,
         ciclo: props.user.estrutura.ciclo[0].numero,
         setor: props.user.estrutura.setor.codigo,
         gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
@@ -48,7 +56,7 @@ describe('CertificateListQuery', () => {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     });
   });
 
@@ -56,11 +64,11 @@ describe('CertificateListQuery', () => {
     const data = {
       data: {
         loading: true,
-        certificates: [],
+        trainingCertificateDownload: {},
       },
     };
 
-    const props = CertificateListQueryOptions.props(data);
+    const props = CertificateDownloadQueryOptions.props(data);
 
     expect(props).toMatchSnapshot();
   });
