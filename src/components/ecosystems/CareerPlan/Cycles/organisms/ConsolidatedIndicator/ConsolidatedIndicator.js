@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
+import { Loading, FormButton } from 'natura-ui';
 
 import TrophyIcon from 'assets/images/trophy.png';
 import ConsolidatedIndicatorData from '../../molecules/ConsolidatedIndicatorData';
@@ -18,6 +19,8 @@ import {
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
   IndicatorTableContentWrapper,
+  IndicatorSaveButtonContainer,
+  IndicatorSaveButtonWrapper,
 } from '../Indicator/Indicator.styles';
 
 export class ConsolidatedIndicator extends Component {
@@ -75,6 +78,10 @@ export class ConsolidatedIndicator extends Component {
     this.setState({ informationModalOpened: false });
   };
 
+  onSave = () => {
+    return this.props.onConsolidatedUpdate();
+  };
+
   render() {
     const consolidatedCycles = this.getVisibleCycles();
     const { concepts } = this.props;
@@ -118,6 +125,16 @@ export class ConsolidatedIndicator extends Component {
           open={informationModalOpened}
           concepts={concepts}
         />
+
+        <IndicatorSaveButtonContainer>
+          <IndicatorSaveButtonWrapper innerRef={this.setSaveButtonRef}>
+            <FormButton
+              primary
+              onClick={this.onSave}
+              label={<FormattedMessage id="updateConsolidated" />}
+            />
+          </IndicatorSaveButtonWrapper>
+        </IndicatorSaveButtonContainer>
       </IndicatorWrapper>
     );
   }

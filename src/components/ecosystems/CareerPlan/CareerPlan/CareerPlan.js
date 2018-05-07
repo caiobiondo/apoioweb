@@ -65,7 +65,7 @@ export class CareerPlan extends Component {
 
   fetchOvercomingCycles = (indicator, cb) => {
     const { user, client, businessModel, country } = this.props;
-    const editedCycles = this._getOvercomingFetchingCycles(indicator);
+    const editedCycles = this._getFetchOvercomingCycles(indicator);
     const { indicatorType } = indicator;
     const cycleArray = editedCycles.map(cycle => cycle.cycle);
 
@@ -91,6 +91,28 @@ export class CareerPlan extends Component {
       .finally(cb);
   };
 
+  fetchConsolidatedCycles = () => {
+    this._setInternalLoading(true);
+
+    const { indicators } = this.state;
+    const { user, client, businessModel, country, currentYear } = this.props;
+    const query = {
+      query: CyclesConsolidatedQuery,
+      variables: {
+        year: currentYear,
+        indicators: this._omitTypename(this._getIndicatorsWithSimulatedCyles(indicators)),
+        sellerId: user.codigo,
+        businessModel,
+        country,
+      },
+    };
+
+    client
+      .query(query)
+      .then(this._onFetchConsolidatedOvercomingSuccess)
+      .finally(() => this._setInternalLoading(false));
+  };
+
   _getEditedIndicators = indicatorToEdit => {
     const currentIndicators = this.state.indicators;
 
@@ -107,7 +129,7 @@ export class CareerPlan extends Component {
     this.setState({ hasInternalLoading });
   }
 
-  _getOvercomingFetchingCycles = ({ cycles, indicatorType }) => {
+  _getFetchOvercomingCycles = ({ cycles, indicatorType }) => {
     return cycles.filter(cycle => !cycle.isClosed && this.isCycleFilled(cycle, indicatorType));
   };
 
@@ -132,27 +154,6 @@ export class CareerPlan extends Component {
       ...indicator,
       cycles,
     });
-  };
-
-  _simulate = (indicators, cb) => {
-    const { user, client, businessModel, country, currentYear } = this.props;
-    const query = {
-      query: CyclesConsolidatedQuery,
-      variables: {
-        year: currentYear,
-        indicators: this._omitTypename(this._getIndicatorsWithSimulatedCyles(indicators)),
-        sellerId: user.codigo,
-        businessModel,
-        country,
-      },
-    };
-
-    client
-      .query(query)
-      .then(this._onFetchConsolidatedOvercomingSuccess)
-      .finally(() => {
-        cb();
-      });
   };
 
   _getIndicatorsWithSimulatedCyles = indicators => {
@@ -271,6 +272,7 @@ export class CareerPlan extends Component {
           onIndicatorSave={this.fetchOvercomingCycles}
           currentCycle={currentCycle}
           isCycleFilled={this.isCycleFilled}
+          onConsolidatedUpdate={this.fetchConsolidatedCycles}
         />
       </div>
     );
