@@ -2,39 +2,30 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import propTypes from 'prop-types';
 
-import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import Indicator from '../Indicator';
 import Consolidated from '../ConsolidatedIndicator';
 
 import { IndicatorListWrapper } from './IndicatorList.styles';
 
 export class IndicatorList extends Component {
-  isCycleFilled = (cycle, indicatorType) => {
-    if (!cycle) {
-      return true;
-    }
-
-    return IndicatorFields[indicatorType].some(field => cycle[field] > 0 || cycle.isClosed);
-  };
-
   renderIndicator = indicator => {
     return (
       <Indicator
+        {...this.props}
         key={indicator.indicatorType}
         indicator={indicator}
-        isCycleFilled={cycle => this.isCycleFilled(cycle, indicator.indicatorType)}
-        {...this.props}
+        isCycleFilled={cycle => this.props.isCycleFilled(cycle, indicator.indicatorType)}
       />
     );
   };
 
   render() {
-    const { indicators } = this.props;
+    const { indicators, isCycleFilled } = this.props;
 
     return (
       <div>
         <IndicatorListWrapper>{indicators.map(this.renderIndicator)}</IndicatorListWrapper>
-        <Consolidated {...this.props} isCycleFilled={this.isCycleFilled} />
+        <Consolidated {...this.props} isCycleFilled={isCycleFilled} />
       </div>
     );
   }

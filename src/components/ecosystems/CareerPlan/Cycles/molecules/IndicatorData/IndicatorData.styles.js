@@ -212,18 +212,3 @@ export const IndicatorDataWrapper = styled.li`
     ${({ isActive }) => isActive && `box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1); `};
   }
 `;
-
-export const PopoverStyles = {
-  color: gray700,
-  fontSize: '14px',
-  maxWidth: '250px',
-  overflow: 'visible',
-  padding: '20px',
-  fontFamily: RobotoRegular,
-  lineHeight: '24px',
-};
-
-export const PopoverContent = styled.div`
-  position: relative;
-  text-align: center;
-`;

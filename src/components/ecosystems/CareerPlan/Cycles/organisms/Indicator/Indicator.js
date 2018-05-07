@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
+import { Loading } from 'natura-ui';
 
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
 import IndicatorData from '../../molecules/IndicatorData/';
+import Popover from 'components/ecosystems/CareerPlan/molecules/Popover';
 import {
   IndicatorFields,
   IndicatorTypesLabels,
@@ -23,6 +25,8 @@ import {
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
   IndicatorTableContentWrapper,
+  IndicatorSaveButtonWrapper,
+  IndicatorSaveButton,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
@@ -54,6 +58,11 @@ export class Indicator extends Component {
 
   onChange = cycle => {
     const { indicator, onIndicatorChange } = this.props;
+
+    this.setState({
+      isEdited: true,
+    });
+
     return onIndicatorChange({ ...indicator, cycles: this._getEditedCycles(cycle) });
   };
 
@@ -67,6 +76,56 @@ export class Indicator extends Component {
       return { ...cycle, ...cycleToEdit };
     });
   };
+
+  onSave = () => {
+    if (!this.state.isEdited) {
+      return this._showPopover();
+    }
+
+    this.setState({
+      loading: true,
+      activeCycle: null,
+    });
+
+    return this.props.onIndicatorSave(this.props.indicator, () =>
+      this.setState({
+        loading: false,
+        isEdited: false,
+      }),
+    );
+  };
+
+  hidePopover = () => {
+    this.setState({ showPopover: false });
+  };
+
+  _showPopover = () => {
+    this.setState({ showPopover: true });
+  };
+
+  setSaveButtonRef = ref => {
+    this.saveButtonRef = ref;
+  };
+
+  renderSavePopover() {
+    const { isEdited, showPopover } = this.state;
+
+    if (isEdited) {
+      return;
+    }
+
+    return (
+      <Popover
+        open={showPopover}
+        anchorEl={this.saveButtonRef}
+        onRequestClose={this.hidePopover}
+        anchorOrigin={{ horizontal: 'middle', vertical: 'top' }}
+        targetOrigin={{ horizontal: 'middle', vertical: 'bottom' }}
+      >
+        <FormattedMessage id="careerPlanNotEdited" />
+      </Popover>
+    );
+  }
 
   renderCycles = (cycle, index) => {
     const { cycles } = this.props.indicator;
@@ -95,11 +154,12 @@ export class Indicator extends Component {
 
   render() {
     const { indicator, range, concepts } = this.props;
-    const { informationModalOpened } = this.state;
+    const { informationModalOpened, loading } = this.state;
     const visibleCycles = this.getVisibleCycles(range);
 
     return (
       <IndicatorWrapper indicatorType={indicator.indicatorType}>
+        {loading && <Loading background="rgba(248,248,248,0.8)" />}
         <IndicatorWeightWrapper>
           <IndicatorWeightLabel>
             <FormattedMessage id="weight" />
@@ -136,6 +196,13 @@ export class Indicator extends Component {
           open={informationModalOpened}
           concepts={concepts}
         />
+
+        <IndicatorSaveButtonWrapper>
+          <IndicatorSaveButton onClick={this.onSave} innerRef={this.setSaveButtonRef}>
+            <FormattedMessage id="saveInfo" />
+          </IndicatorSaveButton>
+          {this.renderSavePopover()}
+        </IndicatorSaveButtonWrapper>
       </IndicatorWrapper>
     );
   }
