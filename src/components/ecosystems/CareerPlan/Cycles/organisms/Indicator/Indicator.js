@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
-import { Loading } from 'natura-ui';
+import { Loading, FormButton } from 'natura-ui';
 
+import { gray450, orange200 } from 'styles/colors';
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
 import IndicatorData from '../../molecules/IndicatorData/';
 import Popover from 'components/ecosystems/CareerPlan/molecules/Popover';
@@ -25,8 +26,8 @@ import {
   IndicatorTableHeaderItemFeatured,
   IndicatorTableContent,
   IndicatorTableContentWrapper,
+  IndicatorSaveButtonContainer,
   IndicatorSaveButtonWrapper,
-  IndicatorSaveButton,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
@@ -197,12 +198,17 @@ export class Indicator extends Component {
           concepts={concepts}
         />
 
-        <IndicatorSaveButtonWrapper>
-          <IndicatorSaveButton onClick={this.onSave} innerRef={this.setSaveButtonRef}>
-            <FormattedMessage id="saveInfo" />
-          </IndicatorSaveButton>
+        <IndicatorSaveButtonContainer>
+          <IndicatorSaveButtonWrapper innerRef={this.setSaveButtonRef}>
+            <FormButton
+              backgroundColor={gray450}
+              labelColor={orange200}
+              onClick={this.onSave}
+              label={<FormattedMessage id="saveInfo" />}
+            />
+          </IndicatorSaveButtonWrapper>
           {this.renderSavePopover()}
-        </IndicatorSaveButtonWrapper>
+        </IndicatorSaveButtonContainer>
       </IndicatorWrapper>
     );
   }

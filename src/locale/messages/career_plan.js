@@ -23,5 +23,6 @@ export default {
     careerPlanEmptyListDescription:
       'Não foi possível encontrar os indicadores do Plano de Carreira',
     careerPlanNotEdited: 'Atualize algum valor antes de salvar as novas informações',
+    updateConsolidated: 'Atualizar consolidado',
   },
 };
