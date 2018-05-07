@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { orange100, gray150, gray700, gray890 } from 'styles/colors';
+import { orange100, gray150, gray450, gray500, gray700, gray890 } from 'styles/colors';
 import { RobotoRegular, RobotoMedium } from 'styles/typography';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
@@ -189,5 +189,32 @@ export const IndicatorTableLegend = styled.ul`
           `background-color: ${IndicatorTypesColors[indicatorType] || gray700}}`};
       }
     }
+  }
+`;
+
+export const IndicatorSaveButtonWrapper = styled.div`
+  margin-top: 30px;
+  text-align: right;
+`;
+
+export const IndicatorSaveButton = styled.button`
+  appearance: none;
+  background-color: ${gray450};
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  color: ${orange100};
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px 30px;
+  text-transform: uppercase;
+  transition: 0.2s box-shadow ease-in;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15);
   }
 `;
