@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import Certificate from 'components/ecosystems/Training/Certificates/List/molecules/Certificate';
+import Certificate from 'components/ecosystems/Training/Certificates/List/organisms/Certificate';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { CertificateListQuery, CertificateListQueryOptions } from './CertificateList.data';
 import { List, fullContainer } from './CertificateList.styles';
@@ -50,7 +50,12 @@ export class CertificateList extends Component {
         <PageMenu />
         <List>
           {certificates.map((certificate, index) => (
-            <Certificate key={certificate.id} index={index} certificate={certificate} />
+            <Certificate
+              key={certificate.id}
+              index={index}
+              certificate={certificate}
+              user={this.props.user}
+            />
           ))}
         </List>
       </Paper>

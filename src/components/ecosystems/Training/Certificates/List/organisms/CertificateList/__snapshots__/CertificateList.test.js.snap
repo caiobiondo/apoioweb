@@ -51,7 +51,7 @@ exports[`Training Certificate List renders correctly when the list is not empty 
 >
   <PageMenu />
   <CertificateListstyles__List>
-    <Certificate
+    <withApollo(Certificate)
       certificate={
         Object {
           "id": 1,
@@ -60,8 +60,14 @@ exports[`Training Certificate List renders correctly when the list is not empty 
       }
       index={0}
       key="1"
+      user={
+        Object {
+          "codigo": 1234,
+          "nomeCompleto": "Teste User",
+        }
+      }
     />
-    <Certificate
+    <withApollo(Certificate)
       certificate={
         Object {
           "id": 2,
@@ -70,8 +76,14 @@ exports[`Training Certificate List renders correctly when the list is not empty 
       }
       index={1}
       key="2"
+      user={
+        Object {
+          "codigo": 1234,
+          "nomeCompleto": "Teste User",
+        }
+      }
     />
-    <Certificate
+    <withApollo(Certificate)
       certificate={
         Object {
           "id": 3,
@@ -80,6 +92,12 @@ exports[`Training Certificate List renders correctly when the list is not empty 
       }
       index={2}
       key="3"
+      user={
+        Object {
+          "codigo": 1234,
+          "nomeCompleto": "Teste User",
+        }
+      }
     />
   </CertificateListstyles__List>
 </Paper>
