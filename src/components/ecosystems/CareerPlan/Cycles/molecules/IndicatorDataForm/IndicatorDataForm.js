@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
-import { debounce } from 'lodash';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 import {
@@ -29,33 +28,34 @@ export class IndicatorDataForm extends Component {
     super();
     this.indicatorFields = IndicatorFields[indicator.indicatorType];
     this.state = { showDeleteModal: false };
-    this.onChangeDebounced = debounce(onChange, 200);
   }
 
   onChange = (value, event) => {
+    const { name } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  onBlur = event => {
     const { indicatorData } = this.props;
     const { name } = event.target;
     const updatedIndicator = {
       ...indicatorData,
-      [name]: value,
+      [name]: this.state[name],
     };
 
-    this.updateIndicatorData(updatedIndicator);
-  };
-
-  updateIndicatorData = indicatorData => {
-    this.onChangeDebounced(indicatorData);
+    this.props.onChange(updatedIndicator);
   };
 
   deleteValues = () => {
     const { indicatorData } = this.props;
-    const updatedIndicator = { ...indicatorData };
+    const updatedIndicator = { ...indicatorData, overcoming: {} };
     this.indicatorFields.forEach(field => {
       updatedIndicator[field] = 0;
+      this.setState({ [field]: 0 });
     });
 
     this.closeModal();
-    this.updateIndicatorData(updatedIndicator);
+    this.props.onChange(updatedIndicator);
   };
 
   openModal = event => {
@@ -184,8 +184,9 @@ export class IndicatorDataForm extends Component {
                 name={field}
                 type="text"
                 props={{ isActive }}
-                value={indicatorData[field]}
+                value={this.state[field]}
                 onChange={this.onChange}
+                onBlur={this.onBlur}
                 disabled={!canFill}
                 maxLength={7}
                 thousandSeparator="."

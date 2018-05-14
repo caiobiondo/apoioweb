@@ -5,7 +5,13 @@ import ReactNumberFormat from 'react-number-format';
 
 export default class InputNumber extends Component {
   onValueChange = (value, event) => {
-    this.props.onChange(value.floatValue || 0, event);
+    const { onChange } = this.props;
+
+    if (!onChange) {
+      return;
+    }
+
+    onChange(value.floatValue || 0, event);
   };
 
   render() {
