@@ -120,7 +120,7 @@ export const IndicatorTableHeaderItemFeatured = IndicatorTableHeaderItem.extend`
 export const IndicatorTableContent = styled.ul`
   margin: 0;
   overflow: hidden;
-  padding: 30px 10px 0;
+  padding: 30px 0 0 0;
   position: relative;
   vertical-align: top;
   white-space: nowrap;

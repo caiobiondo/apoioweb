@@ -152,11 +152,23 @@ export class IndicatorDataForm extends Component {
   }
 
   render() {
-    const { indicatorData, canFill, isActive } = this.props;
+    const {
+      indicatorData,
+      canFill,
+      isActive,
+      isFilled,
+      showCycleLeftBorder,
+      showCycleRightBorder,
+    } = this.props;
     const { value, concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
-      <IndicatorDataContent>
+      <IndicatorDataContent
+        isFilled={isFilled}
+        showCycleLeftBorder={showCycleLeftBorder}
+        showCycleRightBorder={showCycleRightBorder}
+        isActive={isActive}
+      >
         {this.renderTrashButton()}
         {this.renderSimulatorLabelNode()}
         <IndicatorDataRowObj>

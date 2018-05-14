@@ -41,12 +41,12 @@ export const IndicatorDataSort = styled.div`
 
   &:before {
     background-color: ${gray150};
-    right: -10px;
+    right: 0px;
   }
 
   &:after {
     background-color: white;
-    right: -11px;
+    right: -1px;
   }
 `;
 
@@ -104,7 +104,6 @@ export const IndicatorDataWrapper = styled.li`
   cursor: pointer;
   display: inline-block;
   list-style-type: none;
-  padding: 0 10px;
   position: relative;
   text-align: center;
   transition: all 0.2s ease-in;
