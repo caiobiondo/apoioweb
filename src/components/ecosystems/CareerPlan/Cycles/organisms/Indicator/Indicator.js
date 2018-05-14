@@ -108,6 +108,24 @@ export class Indicator extends Component {
     this.saveButtonRef = ref;
   };
 
+  _getPreviousCycle = cycle => {
+    const { cycles } = this.props.indicator;
+
+    return cycles.find((item, index) => {
+      const nextCycle = cycles[index + 1];
+      return nextCycle && nextCycle.cycle === cycle.cycle;
+    });
+  };
+
+  _getNextCycle = cycle => {
+    const { cycles } = this.props.indicator;
+
+    return cycles.find((item, index) => {
+      const previousCycle = cycles[index - 1];
+      return previousCycle && previousCycle.cycle === cycle.cycle;
+    });
+  };
+
   renderSavePopover() {
     const { isEdited, showPopover } = this.state;
 
@@ -128,20 +146,31 @@ export class Indicator extends Component {
     );
   }
 
-  renderCycles = (cycle, index) => {
-    const { cycles } = this.props.indicator;
+  renderCycles = (cycle, index, array) => {
     const { indicator, isCycleFilled, currentCycle } = this.props;
     const { activeCycle } = this.state;
-    const previousCycle = cycles.filter((item, index) => {
-      const nextCycle = cycles[index + 1];
-      return !nextCycle || nextCycle.cycle === cycle.cycle;
-    })[0];
+    const previousCycle = this._getPreviousCycle(cycle) || {};
+    const nextCycle = this._getNextCycle(cycle) || {};
+
+    const showCycleLeftBorder =
+      isCycleFilled(previousCycle) &&
+      !previousCycle.isClosed &&
+      this.state.activeCycle !== previousCycle.cycle &&
+      index !== 0;
+
+    const showCycleRightBorder =
+      isCycleFilled(nextCycle) &&
+      !nextCycle.isClosed &&
+      this.state.activeCycle !== nextCycle.cycle &&
+      index !== array.length - 1;
 
     return (
       <IndicatorData
         indicatorData={cycle}
         key={cycle.cycle}
-        canFill={isCycleFilled(previousCycle) || index === 0}
+        canFill={isCycleFilled(previousCycle)}
+        showCycleLeftBorder={showCycleLeftBorder}
+        showCycleRightBorder={showCycleRightBorder}
         isFilled={isCycleFilled(cycle)}
         onClick={this.setActiveCycle}
         onChange={this.onChange}

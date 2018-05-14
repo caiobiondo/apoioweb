@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { gray150, gray300, gray700, gray890 } from 'styles/colors';
-import { fw400, RobotoRegular, RobotoMedium } from 'styles/typography';
+import { gray300, gray700, gray890 } from 'styles/colors';
+import { RobotoRegular, RobotoMedium } from 'styles/typography';
 import InputNumber from 'components/ecosystems/CareerPlan/Cycles/atoms/InputNumber';
 
 import { IndicatorConceptsColors } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
+
+import dotsBorder from './dots.png';
 
 export const IndicatorDataRowInput = styled(InputNumber)`
   border-radius: 2px;
@@ -42,6 +44,20 @@ export const IndicatorDataContent = styled.div`
   font-size: 13px;
   padding: 45px 0;
   position: relative;
+  border-width: 3px;
+  border-style: dotted;
+  border-color: transparent;
+
+  ${({ isFilled, isActive }) =>
+    isFilled &&
+    !isActive &&
+    `
+    border-image: url(${dotsBorder}) 20% round;
+  `};
+
+  ${({ showCycleLeftBorder }) => showCycleLeftBorder && `border-left: none;`};
+
+  ${({ showCycleRightBorder }) => showCycleRightBorder && `border-right: none;`};
 `;
 
 export const IndicatorDataTrashIcon = styled.a`
@@ -60,6 +76,7 @@ export const IndicatorDataTrashIcon = styled.a`
 `;
 
 export const IndicatorDataRowInputWrapper = styled.div`
+  margin: 0 10px;
   position: relative;
 
   svg {

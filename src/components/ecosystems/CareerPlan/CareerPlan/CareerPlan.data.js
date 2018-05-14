@@ -123,7 +123,8 @@ export const IndicatorListQueryOptions = {
     return {
       variables: {
         indicatorTypes: Object.values(IndicatorTypes),
-        sellerId: user.codigo,
+        sellerId: 40067106,
+        // sellerId: user.codigo,
         currentCycle,
         currentYear,
         pastYear,
