@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import propTypes from 'prop-types';
 import { Loading, FormButton } from 'natura-ui';
+import { translate } from 'locale';
 
 import { gray450, orange200 } from 'styles/colors';
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
 import IndicatorData from '../../molecules/IndicatorData/';
 import Popover from 'components/ecosystems/CareerPlan/molecules/Popover';
+import Snackbar from 'components/ecosystems/CareerPlan/molecules/Snackbar';
 import {
   IndicatorFields,
   IndicatorTypesLabels,
@@ -88,12 +90,16 @@ export class Indicator extends Component {
       activeCycle: null,
     });
 
-    return this.props.onIndicatorSave(this.props.indicator, () =>
-      this.setState({
-        loading: false,
-        isEdited: false,
-      }),
-    );
+    return this.props
+      .onIndicatorSave(this.props.indicator)
+      .then(() => {
+        const message = translate('careerPlanSuccessMessage');
+        Snackbar(message);
+        this.setState({ isEdited: false });
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      });
   };
 
   hidePopover = () => {
