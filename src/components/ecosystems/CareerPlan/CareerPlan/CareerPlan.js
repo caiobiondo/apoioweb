@@ -6,6 +6,7 @@ import { omit } from 'lodash';
 
 import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import { SnackbarComponent } from 'components/ecosystems/CareerPlan/molecules/Snackbar';
 
 import { Loading } from 'natura-ui';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
@@ -63,7 +64,7 @@ export class CareerPlan extends Component {
     this.setState({ indicators });
   };
 
-  fetchOvercomingCycles = (indicator, cb) => {
+  fetchOvercomingCycles = indicator => {
     const { user, client, businessModel, country } = this.props;
     const editedCycles = this._getFetchOvercomingCycles(indicator);
     const { indicatorType } = indicator;
@@ -82,13 +83,10 @@ export class CareerPlan extends Component {
       },
     };
 
-    return client
-      .query(query)
-      .then(({ data }) => {
-        const { cyclesOvercoming } = data;
-        this._onFetchOvercomingSuccess({ cyclesOvercoming, indicatorType });
-      })
-      .finally(cb);
+    return client.query(query).then(({ data }) => {
+      const { cyclesOvercoming } = data;
+      this._onFetchOvercomingSuccess({ cyclesOvercoming, indicatorType });
+    });
   };
 
   fetchConsolidatedCycles = () => {
@@ -274,6 +272,8 @@ export class CareerPlan extends Component {
           isCycleFilled={this.isCycleFilled}
           onConsolidatedUpdate={this.fetchConsolidatedCycles}
         />
+
+        <SnackbarComponent />
       </div>
     );
   }
