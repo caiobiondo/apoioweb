@@ -59,13 +59,8 @@ export class CareerPlan extends Component {
     return IndicatorFields[indicatorType].some(field => cycle[field] > 0 || cycle.isClosed);
   };
 
-  updateIndicator = indicator => {
-    const indicators = this._getEditedIndicators(indicator);
-    this.setState({ indicators });
-  };
-
   onIndicatorChange = indicator => {
-    return Promise.resolve(this.updateIndicator(indicator));
+    return Promise.resolve(this._updateIndicator(indicator));
   };
 
   fetchOvercomingCycles = indicator => {
@@ -130,6 +125,11 @@ export class CareerPlan extends Component {
     this.setState({ consolidatedCycles });
   };
 
+  _updateIndicator = indicator => {
+    const indicators = this._getEditedIndicators(indicator);
+    this.setState({ indicators });
+  };
+
   _getEditedIndicators = indicatorToEdit => {
     const currentIndicators = this.state.indicators;
 
@@ -167,7 +167,7 @@ export class CareerPlan extends Component {
       };
     });
 
-    this.updateIndicator({
+    this._updateIndicator({
       ...indicator,
       cycles,
     });

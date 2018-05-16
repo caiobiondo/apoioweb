@@ -79,65 +79,19 @@ describe('CareerPlan', () => {
     });
   });
 
-  describe('on updateCycle method', () => {
+  describe('on onIndicatorChange method', () => {
     it('should update the state with the new given value', async () => {
       // given
-      const newCycle = { cycle: 1, value: 2 };
-      const indicator = { indicatorType: 'scoresTotal', cycles: [{ cycle: 1, value: 1 }] };
+      const indicator = { indicatorType: 'scoresTotal', cycles: [] };
+      const newIndicator = { indicatorType: 'scoresTotal', cycles: [{ cycle: 1, value: 1 }] };
       const indicators = [indicator];
-      const expectedIndicators = [{ ...indicator, cycles: [newCycle] }];
+      const expectedIndicators = [newIndicator];
 
       // when
       const { result } = setup({});
       const instance = result.instance();
       result.setProps({ indicators });
-      instance._updateCycle({ cycle: newCycle, indicatorType: indicator.indicatorType });
-
-      // then
-      expect(instance.state.indicators).toEqual(expectedIndicators);
-    });
-  });
-
-  describe('on onApplyChanges method', async () => {
-    it('should get the overcoming data for the specific cycle and update the state', async () => {
-      // given
-      const cycle = { cycle: 1, naturaNetwork: 1, directSale: 1 };
-      const indicator = { indicatorType: 'scoresTotal', cycles: [cycle] };
-      const indicators = [indicator];
-      const overcoming = { value: 1 };
-      const expectedOvercoming = {
-        data: { cyclesOvercoming: [overcoming] },
-      };
-      const expectedIndicators = [{ ...indicator, cycles: [{ ...cycle, overcoming }] }];
-      const props = {
-        client: {
-          query: jest.fn().mockReturnValue(Promise.resolve(expectedOvercoming)),
-        },
-      };
-
-      // when
-      const { result } = setup(props);
-      const instance = result.instance();
-      result.setProps({ indicators });
-      await instance.onApplyChanges({ cycle, indicatorType: indicator.indicatorType });
-
-      // then
-      expect(instance.state.indicators).toEqual(expectedIndicators);
-    });
-
-    it('should only update the state with erased overcoming when there are no inputed values', async () => {
-      // given
-      const cycle = { cycle: 1, naturaNetwork: 0, directSale: 0 };
-      const indicator = { indicatorType: 'scoresTotal', cycles: [cycle] };
-      const indicators = [indicator];
-      const newCycle = { ...cycle, overcoming: { value: null, concept: null } };
-      const expectedIndicators = [{ ...indicator, cycles: [newCycle] }];
-
-      // when
-      const { result } = setup({});
-      const instance = result.instance();
-      result.setProps({ indicators });
-      await instance.onApplyChanges({ cycle, indicatorType: indicator.indicatorType });
+      instance.onIndicatorChange(newIndicator);
 
       // then
       expect(instance.state.indicators).toEqual(expectedIndicators);
