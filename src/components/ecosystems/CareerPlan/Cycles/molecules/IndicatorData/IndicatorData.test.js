@@ -81,7 +81,7 @@ describe('IndicatorData', () => {
 
       // when
       const { result } = setup({ indicatorData });
-      const popover = result.find('Popover');
+      const popover = result.find('CareerPlanPopover');
 
       // then
       expect(popover.length).toBeFalsy();
@@ -93,7 +93,7 @@ describe('IndicatorData', () => {
 
       // when
       const { result } = setup({ indicatorData });
-      const popover = result.find('Popover');
+      const popover = result.find('CareerPlanPopover');
 
       // then
       expect(popover.length).toBeTruthy();

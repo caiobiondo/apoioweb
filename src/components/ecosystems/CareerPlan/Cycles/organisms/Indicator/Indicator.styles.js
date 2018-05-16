@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { orange100, gray150, gray700, gray890 } from 'styles/colors';
+import { orange100, gray125, gray150, gray700, gray890 } from 'styles/colors';
 import { RobotoRegular, RobotoMedium } from 'styles/typography';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
-import { ApplyButtonHeight } from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
-
 import { IndicatorDataWrapper } from '../../molecules/IndicatorData/IndicatorData.styles';
 
 export const IndicatorWeightWrapper = styled.div`
@@ -31,8 +29,11 @@ export const IndicatorWrapper = styled.li`
   list-style-type: none;
   position: relative;
   margin-bottom: 80px;
+  padding-bottom: 40px;
   display: inline-block;
   width: 100%;
+
+  ${({ indicatorType }) => indicatorType && `border-bottom: 1px solid ${gray125};`};
 
   ${IndicatorWeightWrapper} {
     ${({ indicatorType }) => `
@@ -119,7 +120,7 @@ export const IndicatorTableHeaderItemFeatured = IndicatorTableHeaderItem.extend`
 export const IndicatorTableContent = styled.ul`
   margin: 0;
   overflow: hidden;
-  padding: 30px 10px 20px;
+  padding: 30px 0 0 0;
   position: relative;
   vertical-align: top;
   white-space: nowrap;
@@ -134,7 +135,7 @@ export const IndicatorTableContentWrapper = styled.div`
   &:before {
     background-color: white;
     border-radius: 3px;
-    bottom: ${ApplyButtonHeight};
+    bottom: 0;
     box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.2);
     content: '';
     left: 0;
@@ -156,8 +157,6 @@ export const IndicatorTableContentWrapper = styled.div`
       padding-left: 20px;
     `};
   }
-
-  ${({ hasChart }) => hasChart && ` &:before { bottom: 20px; }`};
 `;
 
 export const IndicatorTableLegendItem = styled.li`
@@ -194,4 +193,15 @@ export const IndicatorTableLegend = styled.ul`
       }
     }
   }
+`;
+
+export const IndicatorSaveButtonContainer = styled.div`
+  margin-top: 30px;
+  text-align: right;
+`;
+
+export const IndicatorSaveButtonWrapper = styled.span`
+  border-radius: 3px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  display: inline-block;
 `;

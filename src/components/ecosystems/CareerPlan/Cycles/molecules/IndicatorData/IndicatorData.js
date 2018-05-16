@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Popover, Menu } from 'material-ui';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import IndicatorDataForm from '../../molecules/IndicatorDataForm';
 import CycleConcept from 'components/ecosystems/CareerPlan/atoms/CycleConcept';
 import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
+import Popover from 'components/ecosystems/CareerPlan/molecules/Popover';
 
 import {
   IndicatorDataWrapper,
@@ -16,8 +16,6 @@ import {
   IndicatorDataRowFeatured,
   IndicatorDataRowObj,
   IndicatorDataValue,
-  PopoverStyles,
-  PopoverContent,
 } from './IndicatorData.styles';
 
 export class IndicatorData extends Component {
@@ -95,17 +93,11 @@ export class IndicatorData extends Component {
       <Popover
         open={this.state.showPopover}
         anchorEl={this.indicatorDataNode}
-        className="Popover"
+        onRequestClose={this.hidePopover}
         anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
         targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
-        onRequestClose={this.hidePopover}
-        style={PopoverStyles}
       >
-        <Menu>
-          <PopoverContent>
-            <FormattedMessage id="careerPlanNotFilled" />
-          </PopoverContent>
-        </Menu>
+        <FormattedMessage id="careerPlanNotFilled" />
       </Popover>
     );
   }

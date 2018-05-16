@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Popover, Menu } from 'material-ui';
 import { Icon } from 'natura-ui';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
+import Popover from 'components/ecosystems/CareerPlan/molecules/Popover';
 
 import { IndicatorTypesLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { IndicatorConceptsLabels } from 'components/ecosystems/CareerPlan/enums/IndicatorConcepts';
@@ -15,8 +15,6 @@ import {
   IndicatorDataSort,
   IndicatorDataRowFeatured,
   IndicatorDataValue,
-  PopoverStyles,
-  PopoverContent,
   IndicatorDataSortCurrent,
 } from '../../molecules/IndicatorData/IndicatorData.styles';
 
@@ -65,24 +63,28 @@ export class ConsolidatedIndicatorData extends Component {
       <Popover
         open={showPopover}
         anchorEl={this.cycleNode}
-        className="Popover"
         anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
         targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
         onRequestClose={this.hidePopover}
-        style={PopoverStyles}
       >
-        <Menu>
-          <PopoverContent>
-            <FormattedMessage
-              id="careerPlanConsolidatedIndicatorError"
-              values={{
-                indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
-                cycle: <strong>{cycle.cycle}</strong>,
-              }}
-            />
-          </PopoverContent>
-        </Menu>
+        {this.renderError(cycle)}
       </Popover>
+    );
+  };
+
+  renderError = cycle => {
+    const error = this.props.isFilled
+      ? 'careerPlanConsolidatedIndicatorUpdateError'
+      : 'careerPlanConsolidatedIndicatorError';
+
+    return (
+      <FormattedMessage
+        id={error}
+        values={{
+          indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
+          cycle: <strong>{cycle.cycle}</strong>,
+        }}
+      />
     );
   };
 

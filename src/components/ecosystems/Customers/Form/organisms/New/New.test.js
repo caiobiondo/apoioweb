@@ -1,8 +1,10 @@
 import React from 'react';
 import { NewCustomerForm } from './New';
+import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import { mount, clickOnElementWithText, changeInputValue } from 'testUtils';
 import { translate } from 'locale';
+import toJson from 'enzyme-to-json';
 
 describe('NewCustomerForm', () => {
   const fakeCustomerData = () => {
@@ -46,7 +48,8 @@ describe('NewCustomerForm', () => {
       propOverrides,
     );
 
-    const result = mount(<NewCustomerForm {...props} />);
+    const render = props.shallow ? shallow : mount;
+    const result = render(<NewCustomerForm {...props} />);
 
     return {
       props,
@@ -71,9 +74,9 @@ describe('NewCustomerForm', () => {
   });
 
   it('correctly renders the form', () => {
-    const { result } = setup();
+    const { result } = setup({ shallow: true });
 
-    expect(result).toMatchSnapshot();
+    expect(toJson(result)).toMatchSnapshot();
   });
 
   it('correctly calls the mutate function with the customer', () => {

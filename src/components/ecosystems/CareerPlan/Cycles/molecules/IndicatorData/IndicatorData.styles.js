@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gray150, gray400, gray700, gray890 } from 'styles/colors';
-import { fw600, RobotoRegular } from 'styles/typography';
+import { fw600 } from 'styles/typography';
 import * as IndicatorDataFormComponents from '../../molecules/IndicatorDataForm/IndicatorDataForm.styles';
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 
@@ -41,12 +41,12 @@ export const IndicatorDataSort = styled.div`
 
   &:before {
     background-color: ${gray150};
-    right: -10px;
+    right: 0px;
   }
 
   &:after {
     background-color: white;
-    right: -11px;
+    right: -1px;
   }
 `;
 
@@ -104,7 +104,6 @@ export const IndicatorDataWrapper = styled.li`
   cursor: pointer;
   display: inline-block;
   list-style-type: none;
-  padding: 0 10px;
   position: relative;
   text-align: center;
   transition: all 0.2s ease-in;
@@ -162,11 +161,6 @@ export const IndicatorDataWrapper = styled.li`
         z-index: -1;
       }
     `};
-
-    ${IndicatorDataContent} {
-      ${({ isActive, editable, hasChart }) =>
-        !isActive && editable && !hasChart && `padding-bottom: 35px;`};
-    }
   }
 
   ${({ showDetails }) => showDetails && `z-index: 1;`};
@@ -216,19 +210,4 @@ export const IndicatorDataWrapper = styled.li`
   ${IndicatorDataFormComponents.IndicatorDataRowInput} {
     ${({ isActive }) => isActive && `box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1); `};
   }
-`;
-
-export const PopoverStyles = {
-  color: gray700,
-  fontSize: '14px',
-  maxWidth: '250px',
-  overflow: 'visible',
-  padding: '20px',
-  fontFamily: RobotoRegular,
-  lineHeight: '24px',
-};
-
-export const PopoverContent = styled.div`
-  position: relative;
-  text-align: center;
 `;

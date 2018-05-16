@@ -5,6 +5,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { omit } from 'lodash';
 
 import CareerPlanMenus from 'components/ecosystems/CareerPlan/enums/CareerPlanMenus';
+import { IndicatorFields } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
+import { SnackbarComponent } from 'components/ecosystems/CareerPlan/molecules/Snackbar';
 
 import { Loading } from 'natura-ui';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
@@ -49,109 +51,47 @@ export class CareerPlan extends Component {
     this.setState({ activeMenu: menuItem.id });
   };
 
-  _getEditedIndicators = (indicators, indicatorToEdit) => {
-    return indicators.map(indicator => {
-      if (indicator.indicatorType !== indicatorToEdit.indicatorType) {
-        return indicator;
-      }
-
-      return { ...indicator, ...indicatorToEdit };
-    });
-  };
-
-  _getEditedCycles = (cycles, cycleToEdit) => {
-    return cycles.map(cycle => {
-      if (cycle.cycle !== cycleToEdit.cycle) {
-        return cycle;
-      }
-
-      return { ...cycle, ...cycleToEdit };
-    });
-  };
-
-  _updateCycle = ({ cycle, indicatorType }, cb = () => {}) => {
-    const currentIndicators = this.state.indicators;
-    const indicator = currentIndicators.filter(i => i.indicatorType === indicatorType)[0];
-    const cycles = this._getEditedCycles(indicator.cycles, cycle);
-    const indicators = this._getEditedIndicators(currentIndicators, { cycles, indicatorType });
-
-    const onStateSuccess = () => {
-      this._simulate(indicators, cb);
-    };
-
-    this.setState({ indicators }, onStateSuccess);
-  };
-
-  onApplyChanges = ({ indicatorType, cycle }, cb) => {
-    const { directSale, naturaNetwork } = cycle;
-
-    if (naturaNetwork || directSale) {
-      return this._fetchOvercoming({ indicatorType, cycle }, cb);
+  isCycleFilled = (cycle, indicatorType) => {
+    if (!cycle) {
+      return true;
     }
 
-    return this._eraseCycle({ indicatorType, cycle }, cb);
+    return IndicatorFields[indicatorType].some(field => cycle[field] > 0 || cycle.isClosed);
   };
 
-  _eraseCycle = ({ indicatorType, cycle }, cb) => {
-    const erasedCycle = {
-      ...cycle,
-      overcoming: { value: null, concept: null },
-    };
-
-    return this._updateCycle({ cycle: erasedCycle, indicatorType });
+  onIndicatorChange = indicator => {
+    return Promise.resolve(this._updateIndicator(indicator));
   };
 
-  _setInternalLoading(hasInternalLoading) {
-    this.setState({ hasInternalLoading });
-  }
-
-  _fetchOvercoming = ({ indicatorType, cycle }, cb = () => {}) => {
+  fetchOvercomingCycles = indicator => {
     const { user, client, businessModel, country } = this.props;
-    const { directSale, naturaNetwork } = cycle;
-
-    this._setInternalLoading(true);
+    const editedCycles = this._getFetchOvercomingCycles(indicator);
+    const { indicatorType } = indicator;
+    const cycleArray = editedCycles.map(cycle => cycle.cycle);
 
     const query = {
       query: OvercomingQuery,
       variables: {
-        indicatorType,
-        directSale: directSale || 0,
-        naturaNetwork: naturaNetwork || 0,
         sellerId: user.codigo,
-        cycleArray: [cycle.cycle],
+        naturaNetwork: editedCycles.map(cycle => cycle.naturaNetwork || 0),
+        directSale: editedCycles.map(cycle => cycle.directSale || 0),
+        indicatorType,
+        cycleArray,
         businessModel,
         country,
       },
     };
 
-    const afterFetchOvercomingSuccess = () => {
-      cb();
-      this._setInternalLoading(false);
-    };
-
     return client.query(query).then(({ data }) => {
-      return this._onFetchOvercomingSuccess({
-        ...data,
-        indicatorType,
-        cycle,
-        cb: afterFetchOvercomingSuccess,
-      });
+      const { cyclesOvercoming } = data;
+      this._onFetchOvercomingSuccess({ cyclesOvercoming, indicatorType });
     });
   };
 
-  _onFetchOvercomingSuccess = ({ cyclesOvercoming, indicatorType, cycle, cb }) => {
-    const updateCycleModel = {
-      indicatorType,
-      cycle: {
-        ...cycle,
-        overcoming: cyclesOvercoming[0],
-      },
-    };
+  fetchConsolidatedCycles = () => {
+    this._setInternalLoading(true);
 
-    this._updateCycle(updateCycleModel, cb);
-  };
-
-  _simulate = (indicators, cb) => {
+    const { indicators } = this.state;
     const { user, client, businessModel, country, currentYear } = this.props;
     const query = {
       query: CyclesConsolidatedQuery,
@@ -164,12 +104,73 @@ export class CareerPlan extends Component {
       },
     };
 
-    client
+    return client
       .query(query)
       .then(this._onFetchConsolidatedOvercomingSuccess)
-      .finally(() => {
-        cb();
-      });
+      .finally(() => this._setInternalLoading(false));
+  };
+
+  resetConsolidatedCycle = cycle => {
+    const consolidatedCycles = this.state.consolidatedCycles.map(c => {
+      if (c.cycle !== cycle.cycle) {
+        return c;
+      }
+
+      return {
+        ...cycle,
+        overcoming: {},
+      };
+    });
+
+    this.setState({ consolidatedCycles });
+  };
+
+  _updateIndicator = indicator => {
+    const indicators = this._getEditedIndicators(indicator);
+    this.setState({ indicators });
+  };
+
+  _getEditedIndicators = indicatorToEdit => {
+    const currentIndicators = this.state.indicators;
+
+    return currentIndicators.map(indicator => {
+      if (indicator.indicatorType !== indicatorToEdit.indicatorType) {
+        return indicator;
+      }
+
+      return { ...indicator, ...indicatorToEdit };
+    });
+  };
+
+  _setInternalLoading(hasInternalLoading) {
+    this.setState({ hasInternalLoading });
+  }
+
+  _getFetchOvercomingCycles = ({ cycles, indicatorType }) => {
+    return cycles.filter(cycle => !cycle.isClosed && this.isCycleFilled(cycle, indicatorType));
+  };
+
+  _onFetchOvercomingSuccess = ({ cyclesOvercoming, indicatorType }) => {
+    const indicator = this.state.indicators.find(
+      indicator => indicator.indicatorType === indicatorType,
+    );
+
+    const cycles = indicator.cycles.map(cycle => {
+      const cycleOvercoming = cyclesOvercoming.find(c => c.cycle === cycle.cycle);
+      if (!cycleOvercoming) {
+        return cycle;
+      }
+
+      return {
+        ...cycle,
+        overcoming: cycleOvercoming,
+      };
+    });
+
+    this._updateIndicator({
+      ...indicator,
+      cycles,
+    });
   };
 
   _getIndicatorsWithSimulatedCyles = indicators => {
@@ -284,9 +285,15 @@ export class CareerPlan extends Component {
           concepts={concepts}
           activeMenu={activeMenu}
           cyclesPerPage={this.cyclesPerPage}
-          onApplyChanges={this.onApplyChanges}
+          onIndicatorChange={this.onIndicatorChange}
+          onIndicatorSave={this.fetchOvercomingCycles}
           currentCycle={currentCycle}
+          isCycleFilled={this.isCycleFilled}
+          onConsolidatedUpdate={this.fetchConsolidatedCycles}
+          resetConsolidatedCycle={this.resetConsolidatedCycle}
         />
+
+        <SnackbarComponent />
       </div>
     );
   }

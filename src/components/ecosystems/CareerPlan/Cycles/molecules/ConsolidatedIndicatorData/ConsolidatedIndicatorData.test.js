@@ -93,7 +93,7 @@ describe('ConsolidatedIndicatorData', () => {
 
       // when
       const { result } = setup({ isActive: false });
-      const popover = result.find('Popover');
+      const popover = result.find('CareerPlanPopover');
 
       // then
       expect(popover.length).toBeFalsy();
@@ -104,7 +104,7 @@ describe('ConsolidatedIndicatorData', () => {
 
       // when
       const { result } = setup({ isActive: true });
-      const popover = result.find('Popover');
+      const popover = result.find('CareerPlanPopover');
 
       // then
       expect(popover.length).toBeTruthy();
