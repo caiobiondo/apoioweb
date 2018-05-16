@@ -24,10 +24,16 @@ import {
 } from './IndicatorDataForm.styles';
 
 export class IndicatorDataForm extends Component {
-  constructor({ indicator, onChange }) {
+  constructor({ indicator, onChange, indicatorData }) {
     super();
     this.indicatorFields = IndicatorFields[indicator.indicatorType];
-    this.state = { showDeleteModal: false };
+
+    const state = { showDeleteModal: false };
+    this.indicatorFields.forEach(field => {
+      state[field] = indicatorData[field];
+    });
+
+    this.state = state;
   }
 
   onChange = (value, event) => {
@@ -38,12 +44,21 @@ export class IndicatorDataForm extends Component {
   onBlur = event => {
     const { indicatorData } = this.props;
     const { name } = event.target;
-    const updatedIndicator = {
+    const updatedIndicatorData = {
       ...indicatorData,
+      overcoming: {},
       [name]: this.state[name],
     };
 
-    this.props.onChange(updatedIndicator);
+    if (!this.hasChanged(indicatorData, updatedIndicatorData)) {
+      return;
+    }
+
+    return this.props.onChange(updatedIndicatorData);
+  };
+
+  hasChanged = (oldIndicatorData, newIndicatorData) => {
+    return this.indicatorFields.find(field => oldIndicatorData[field] !== newIndicatorData[field]);
   };
 
   deleteValues = () => {

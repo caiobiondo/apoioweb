@@ -60,13 +60,14 @@ export class Indicator extends Component {
   };
 
   onChange = cycle => {
-    const { indicator, onIndicatorChange } = this.props;
+    const { indicator, onIndicatorChange, resetConsolidatedCycle } = this.props;
+    const params = { ...indicator, cycles: this._getEditedCycles(cycle) };
 
     this.setState({
       isEdited: true,
     });
 
-    return onIndicatorChange({ ...indicator, cycles: this._getEditedCycles(cycle) });
+    return onIndicatorChange(params).then(() => resetConsolidatedCycle(cycle));
   };
 
   _getEditedCycles = cycleToEdit => {
@@ -155,29 +156,37 @@ export class Indicator extends Component {
   renderCycles = (cycle, index, array) => {
     const { indicator, isCycleFilled, currentCycle } = this.props;
     const { activeCycle } = this.state;
+
     const previousCycle = this._getPreviousCycle(cycle) || {};
+    const isPreviousCycleFilled = isCycleFilled(previousCycle);
     const nextCycle = this._getNextCycle(cycle) || {};
+    const isNextCycleFilled = isCycleFilled(nextCycle);
 
     const showCycleLeftBorder =
-      isCycleFilled(previousCycle) &&
+      isPreviousCycleFilled &&
       !previousCycle.isClosed &&
       this.state.activeCycle !== previousCycle.cycle &&
       index !== 0;
 
     const showCycleRightBorder =
-      isCycleFilled(nextCycle) &&
+      isNextCycleFilled &&
       !nextCycle.isClosed &&
       this.state.activeCycle !== nextCycle.cycle &&
       index !== array.length - 1;
+
+    const isFilled = isCycleFilled(cycle);
+    const firstCycle = indicator.cycles[0];
+    const isFirstCycle = firstCycle && cycle.cycle === firstCycle.cycle;
+    const canFill = isCycleFilled(previousCycle) || isFirstCycle;
 
     return (
       <IndicatorData
         indicatorData={cycle}
         key={cycle.cycle}
-        canFill={isCycleFilled(previousCycle)}
+        canFill={canFill}
         showCycleLeftBorder={showCycleLeftBorder}
         showCycleRightBorder={showCycleRightBorder}
-        isFilled={isCycleFilled(cycle)}
+        isFilled={isFilled}
         onClick={this.setActiveCycle}
         onChange={this.onChange}
         indicator={indicator}
