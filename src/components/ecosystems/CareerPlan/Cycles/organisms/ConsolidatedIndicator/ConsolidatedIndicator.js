@@ -6,6 +6,7 @@ import { FormButton } from 'natura-ui';
 import TrophyIcon from 'assets/images/trophy.png';
 import ConsolidatedIndicatorData from '../../molecules/ConsolidatedIndicatorData';
 import ModalConcept from 'components/ecosystems/CareerPlan/molecules/ModalConcept/';
+import Snackbar from 'components/ecosystems/CareerPlan/molecules/Snackbar';
 
 import { ConsolidatedIndicatorWrapper } from './ConsolidatedIndicator.styles';
 
@@ -32,14 +33,18 @@ export class ConsolidatedIndicator extends Component {
     };
   }
 
-  isValidCycle = (cycle, indicators = this.props.indicators) => {
-    const { isCycleFilled } = this.props;
+  isCycleFilled = ({ cycle }) => {
+    const { isCycleFilled, indicators } = this.props;
     return (
       indicators.filter(indicator => {
-        const cycleToValidate = indicator.cycles.filter(c => c.cycle === cycle.cycle)[0];
-        return isCycleFilled(cycleToValidate, indicator.indicatorType);
+        const cycleToValidate = indicator.cycles.find(c => c.cycle === cycle);
+        return cycleToValidate && isCycleFilled(cycleToValidate, indicator.indicatorType);
       }).length === indicators.length
     );
+  };
+
+  isConsolidatedCycleSimulated = cycle => {
+    return cycle.overcoming.value;
   };
 
   getVisibleCycles = () => {
@@ -52,7 +57,7 @@ export class ConsolidatedIndicator extends Component {
 
   isActiveCycle = cycle => {
     const { consolidatedCycles } = this.props;
-    const firstInvalidCycle = consolidatedCycles.filter(c => !this.isValidCycle(c))[0];
+    const firstInvalidCycle = consolidatedCycles.find(c => !this.isConsolidatedCycleSimulated(c));
     return firstInvalidCycle && firstInvalidCycle.cycle === cycle.cycle;
   };
 
@@ -61,7 +66,8 @@ export class ConsolidatedIndicator extends Component {
       <ConsolidatedIndicatorData
         key={cycle.cycle}
         cycle={cycle}
-        isValid={this.isValidCycle(cycle)}
+        isValid={this.isConsolidatedCycleSimulated(cycle)}
+        isFilled={this.isCycleFilled(cycle)}
         isActive={this.isActiveCycle(cycle)}
         consolidatedCycles={this.props.consolidatedCycles}
         isCurrentCycle={cycle.cycle === this.props.currentCycle}
@@ -79,7 +85,10 @@ export class ConsolidatedIndicator extends Component {
   };
 
   onSave = () => {
-    return this.props.onConsolidatedUpdate();
+    return this.props.onConsolidatedUpdate().then(() => {
+      const message = translate('careerPlanSuccessMessage');
+      Snackbar(message);
+    });
   };
 
   render() {

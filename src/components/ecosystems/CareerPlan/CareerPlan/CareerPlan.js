@@ -64,6 +64,10 @@ export class CareerPlan extends Component {
     this.setState({ indicators });
   };
 
+  onIndicatorChange = indicator => {
+    return Promise.resolve(this.updateIndicator(indicator));
+  };
+
   fetchOvercomingCycles = indicator => {
     const { user, client, businessModel, country } = this.props;
     const editedCycles = this._getFetchOvercomingCycles(indicator);
@@ -105,10 +109,25 @@ export class CareerPlan extends Component {
       },
     };
 
-    client
+    return client
       .query(query)
       .then(this._onFetchConsolidatedOvercomingSuccess)
       .finally(() => this._setInternalLoading(false));
+  };
+
+  resetConsolidatedCycle = cycle => {
+    const consolidatedCycles = this.state.consolidatedCycles.map(c => {
+      if (c.cycle !== cycle.cycle) {
+        return c;
+      }
+
+      return {
+        ...cycle,
+        overcoming: {},
+      };
+    });
+
+    this.setState({ consolidatedCycles });
   };
 
   _getEditedIndicators = indicatorToEdit => {
@@ -266,11 +285,12 @@ export class CareerPlan extends Component {
           concepts={concepts}
           activeMenu={activeMenu}
           cyclesPerPage={this.cyclesPerPage}
-          onIndicatorChange={this.updateIndicator}
+          onIndicatorChange={this.onIndicatorChange}
           onIndicatorSave={this.fetchOvercomingCycles}
           currentCycle={currentCycle}
           isCycleFilled={this.isCycleFilled}
           onConsolidatedUpdate={this.fetchConsolidatedCycles}
+          resetConsolidatedCycle={this.resetConsolidatedCycle}
         />
 
         <SnackbarComponent />

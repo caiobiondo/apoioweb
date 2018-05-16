@@ -67,14 +67,24 @@ export class ConsolidatedIndicatorData extends Component {
         targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
         onRequestClose={this.hidePopover}
       >
-        <FormattedMessage
-          id="careerPlanConsolidatedIndicatorError"
-          values={{
-            indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
-            cycle: <strong>{cycle.cycle}</strong>,
-          }}
-        />
+        {this.renderError(cycle)}
       </Popover>
+    );
+  };
+
+  renderError = cycle => {
+    const error = this.props.isFilled
+      ? 'careerPlanConsolidatedIndicatorUpdateError'
+      : 'careerPlanConsolidatedIndicatorError';
+
+    return (
+      <FormattedMessage
+        id={error}
+        values={{
+          indicatorNames: <strong>{this.getIndicatorNames()}</strong>,
+          cycle: <strong>{cycle.cycle}</strong>,
+        }}
+      />
     );
   };
 
