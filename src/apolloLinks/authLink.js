@@ -1,11 +1,13 @@
 import { onError } from 'apollo-link-error';
+import { LOGOUT_URL } from 'config';
 
-const LOGIN_PATH = '/login';
 const REDIRECT_TO_LOGIN_MESSAGE = '#REDIRECT_TO_LOGIN#';
+
+const LOGOUT_PATH = `${LOGOUT_URL}${window.location.href}`;
 
 const redirectToLogin = () => {
   localStorage.clear();
-  window.location.assign(LOGIN_PATH);
+  window.location.assign(LOGOUT_PATH);
 };
 
 const checkForAuthError = error => {
