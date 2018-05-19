@@ -25,7 +25,7 @@ export default {
     orderEventDate: 'Data',
     orderEventHour: 'Hora',
     orderEventMotive: 'Motivo',
-    orderEvents: 'Ocorrências',
+    orderEvents: 'Ocorrência de Transporte',
     orderEventSolution: 'Solução para a consultora',
     orderImport: 'Importar',
     orderInformations: 'Informações',
