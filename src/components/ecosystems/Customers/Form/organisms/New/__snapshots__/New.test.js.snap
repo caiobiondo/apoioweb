@@ -1463,7 +1463,7 @@ exports[`NewCustomerForm correctly renders the form 1`] = `
             "orderEventHour": "Hora",
             "orderEventMotive": "Motivo",
             "orderEventSolution": "Solução para a consultora",
-            "orderEvents": "Ocorrências",
+            "orderEvents": "Ocorrência de Transporte",
             "orderHistory": "Histórico de Pedidos",
             "orderImport": "Importar",
             "orderInformations": "Informações",
