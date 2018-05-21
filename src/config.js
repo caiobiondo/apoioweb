@@ -9,3 +9,4 @@ export const OAM_CAPTA_SUFFIX = process.env.REACT_APP_OAM_CAPTA_SUFFIX;
 export const OAM_FV_SUFFIX = process.env.REACT_APP_OAM_FV_SUFFIX;
 export const HTTP_CDPESSOA = 'HTTP_CDPESSOA';
 export const LOGOUT_URL = process.env.REACT_APP_LOGOUT_URL;
+export const ROUTE_PREFIX = '/webfv';
