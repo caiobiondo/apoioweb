@@ -1,8 +1,10 @@
 import gql from 'graphql-tag';
 
-export const CertificateListQuery = gql`
-  query CertificateListQuery(
+export const CertificateDownloadQuery = gql`
+  query CertificateDownloadQuery(
+    $categoryId: Int!
     $sellerId: Int!
+    $userName: String!
     $ciclo: Int
     $setor: Int
     $gerenciaMercado: Int
@@ -12,8 +14,10 @@ export const CertificateListQuery = gql`
     $gerenciaDeVendas: Int
     $regiao: Int
   ) {
-    trainingCertificates(
+    trainingCertificateDownload(
+      categoryId: $categoryId
       sellerId: $sellerId
+      userName: $userName
       ciclo: $ciclo
       setor: $setor
       gerenciaMercado: $gerenciaMercado
@@ -23,20 +27,19 @@ export const CertificateListQuery = gql`
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
     ) {
-      id
-      name
-      thumbnail
-      percentageOfCompletedCourse
-      isCompleted
+      categoryId
+      downloadUrl
     }
   }
 `;
 
-export const CertificateListQueryOptions = {
+export const CertificateDownloadQueryOptions = {
   options(props) {
     return {
       variables: {
+        categoryId: props.certificate.id,
         sellerId: props.user.codigo,
+        userName: props.user.nomeCompleto,
         ciclo:
           props.user.estrutura.ciclo &&
           props.user.estrutura.ciclo[0] &&
@@ -49,7 +52,7 @@ export const CertificateListQueryOptions = {
         gerenciaDeVendas: props.user.estrutura.gerenciaVenda.codigo,
         regiao: props.user.estrutura.regiaoEstrategica.codigo,
       },
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     };
   },
 
@@ -57,7 +60,7 @@ export const CertificateListQueryOptions = {
     return {
       data,
       loading: data.loading,
-      certificates: data.trainingCertificates,
+      certificateDownloadUrl: data.trainingCertificateDownload,
     };
   },
 };

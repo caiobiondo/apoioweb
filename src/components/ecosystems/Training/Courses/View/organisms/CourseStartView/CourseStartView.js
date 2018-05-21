@@ -143,7 +143,15 @@ export class CourseStartView extends Component {
 
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
-          this.handleFeedbackMessage(formatMessage('TrainingUpdateError'));
+          if (action === 'initialized') {
+            if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
+            if (course.type === 'HTML5') {
+              this.props.history.push(`/training/courses/${course.id}/html5`);
+            }
+            if (course.type === 'VIDEO') {
+              this.props.history.push(`/training/courses/${course.id}/video`);
+            }
+          }
           return;
         }
 
