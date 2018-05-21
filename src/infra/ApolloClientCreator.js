@@ -1,4 +1,6 @@
 import { defaultDataIdFromObject } from 'apollo-cache-inmemory';
+import Cookies from 'js-cookie';
+import { OAM_PREFIX, OAM_FV_SUFFIX, OAM_CAPTA_SUFFIX, HTTP_CDPESSOA } from 'config';
 
 export default class ApolloClientCreator {
   constructor(
@@ -55,11 +57,22 @@ export default class ApolloClientCreator {
     return httpLink;
   }
 
+  /* eslint-disable camelcase */
   _createAuthHeaders() {
     const accessToken = localStorage.getItem(this.accessTokenKey);
     const cnotoken = localStorage.getItem(this.cnoTokenKey);
     const userCode = localStorage.getItem(this.personIdTokenKey);
+    const oamCookieValue = this._createCaptaCookieHeader();
 
-    return { accessToken, userCode, cnotoken };
+    return { accessToken, userCode, cnotoken, oam_cookie: oamCookieValue };
+  }
+  /* eslint-enable camelcase */
+
+  _createCaptaCookieHeader() {
+    const cookieHttpCdPessoa = Cookies.get(HTTP_CDPESSOA);
+    const cookieOam = Cookies.get(`${OAM_PREFIX}${OAM_FV_SUFFIX}`);
+    const cookieValue = `${HTTP_CDPESSOA}=${cookieHttpCdPessoa}; ${OAM_PREFIX}${OAM_CAPTA_SUFFIX}=${cookieOam};`;
+
+    return cookieValue;
   }
 }

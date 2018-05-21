@@ -9,6 +9,7 @@ import {
   ACCESS_TOKEN_LOCAL_STORAGE_KEY,
   CNO_TOKEN_LOCAL_STORAGE_KEY,
   PERSON_ID_LOCAL_STORAGE_KEY,
+  ROUTE_PREFIX,
 } from 'config';
 
 import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
@@ -38,21 +39,21 @@ export default class App extends Component {
               <div>
                 <Route
                   exact
-                  path="/my-orders"
+                  path={`${ROUTE_PREFIX}/my-orders`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Orders/List'),
                     'orders',
                   )}
                 />
                 <Route
-                  path="/my-orders/detail/:id"
+                  path={`${ROUTE_PREFIX}/my-orders/detail/:id`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Orders/Details'),
                     'orders',
                   )}
                 />
                 <Route
-                  path="/my-score"
+                  path={`${ROUTE_PREFIX}/my-score`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/MyScore'),
                     'myScore',
@@ -60,28 +61,28 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/my-customers"
+                  path={`${ROUTE_PREFIX}/my-customers`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Customers/List'),
                     'customers',
                   )}
                 />
                 <Route
-                  path="/my-customers/detail/:customerId"
+                  path={`${ROUTE_PREFIX}/my-customers/detail/:customerId`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Customers/Details'),
                     'customers',
                   )}
                 />
                 <Route
-                  path="/my-customers/add"
+                  path={`${ROUTE_PREFIX}/my-customers/add`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Customers/Form/New'),
                     'customers',
                   )}
                 />
                 <Route
-                  path="/my-customers/edit/:id"
+                  path={`${ROUTE_PREFIX}/my-customers/edit/:id`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Customers/Form/Edit'),
                     'customers',
@@ -89,7 +90,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/my-stock"
+                  path={`${ROUTE_PREFIX}/my-stock`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Stock/List'),
                     'stock',
@@ -97,14 +98,14 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/my-stock/import/orders"
+                  path={`${ROUTE_PREFIX}/my-stock/import/orders`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Stock/Import/organisms/List/List'),
                     'stock',
                   )}
                 />
                 <Route
-                  path="/my-stock/import/orders/detail/:id"
+                  path={`${ROUTE_PREFIX}/my-stock/import/orders/detail/:id`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Stock/Import/organisms/Details/Details'),
                     'stock',
@@ -112,7 +113,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/magazines/:type"
+                  path={`${ROUTE_PREFIX}/magazines/:type`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Magazines/List'),
                     'magazine',
@@ -120,7 +121,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/magazines/view/:type/:id"
+                  path={`${ROUTE_PREFIX}/magazines/view/:type/:id`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Magazines/View'),
                     'magazine',
@@ -128,7 +129,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training/courses"
+                  path={`${ROUTE_PREFIX}/training/courses`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Courses/List'),
                     'training',
@@ -136,7 +137,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training/courses/:id/:type"
+                  path={`${ROUTE_PREFIX}/training/courses/:id/:type`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Courses/View'),
                     'training',
@@ -144,7 +145,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training/certificates"
+                  path={`${ROUTE_PREFIX}/training/certificates`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Certificates/List'),
                     'training',
@@ -152,7 +153,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training/categories"
+                  path={`${ROUTE_PREFIX}/training/categories`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Categories/List'),
                     'training',
@@ -160,7 +161,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training/categories/:id"
+                  path={`${ROUTE_PREFIX}/training/categories/:id`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Categories/Details'),
                     'training',
@@ -168,7 +169,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/training/my-list"
+                  path={`${ROUTE_PREFIX}/training/my-list`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/MyList/List'),
                     'training',
