@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { ActionsFloatingButton } from 'natura-ui';
 import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
+import { ROUTE_PREFIX } from 'config';
 
 export class StockAddButton extends Component {
   importFromOrders = () => {
-    this.props.history.push('/my-stock/import/orders');
+    this.props.history.push(`${ROUTE_PREFIX}/my-stock/import/orders`);
   };
 
   addProductToStockDialog = () => {

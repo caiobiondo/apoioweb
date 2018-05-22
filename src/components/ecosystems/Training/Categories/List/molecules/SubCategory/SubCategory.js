@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   SubCategoryWrapper,
@@ -11,7 +12,7 @@ import {
 const SubCategory = ({ category }) => {
   return (
     <SubCategoryWrapper>
-      <Link to={`/training/categories/${category.id}`}>
+      <Link to={`${ROUTE_PREFIX}/training/categories/${category.id}`}>
         <SubCategoryTitleWrapper>
           <SubCategoryIcon src={category.thumbnail} />
           <SubCategoryTitle>{category.name}</SubCategoryTitle>

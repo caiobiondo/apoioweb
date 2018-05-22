@@ -29,6 +29,7 @@ import {
 import SectionTitle from 'components/molecules/SectionTitle/SectionTitle';
 import CustomerDatum from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum';
 import { CustomerDatumValue } from 'components/ecosystems/Customers/Details/molecules/CustomerDatum/CustomerDatum.styles';
+import { ROUTE_PREFIX } from 'config';
 
 import { Paper, Loading, Icon } from 'natura-ui';
 
@@ -113,7 +114,7 @@ export class CustomerDetails extends Component {
     const email = customer.emails && customer.emails[0] && customer.emails[0].email;
     const phone = customer.phones && customer.phones[0] && customer.phones[0].phone;
     const phoneProvider = customer.phones && customer.phones[0] && customer.phones[0].provider;
-    const profileEditUrl = `/my-customers/edit/${customer.id}`;
+    const profileEditUrl = `${ROUTE_PREFIX}/my-customers/edit/${customer.id}`;
     const birthday = this.parseBirthday(customer.birthday);
 
     return (

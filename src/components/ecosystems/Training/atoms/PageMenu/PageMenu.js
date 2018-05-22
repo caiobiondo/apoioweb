@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Wrapper, LinkWrapper, Link, ActiveLink } from './PageMenu.styles';
 import { NavLink } from 'react-router-dom';
 import { translate } from 'locale';
+import { ROUTE_PREFIX } from 'config';
 
 const menu = [
-  { link: '/training/courses', label: translate('courses') },
-  { link: '/training/categories', label: translate('categories') },
-  { link: '/training/my-list', label: translate('myList') },
-  { link: '/training/certificates', label: translate('certificate') },
+  { link: `${ROUTE_PREFIX}/training/courses`, label: translate('courses') },
+  { link: `${ROUTE_PREFIX}/training/categories`, label: translate('categories') },
+  { link: `${ROUTE_PREFIX}/training/my-list`, label: translate('myList') },
+  { link: `${ROUTE_PREFIX}/training/certificates`, label: translate('certificate') },
 ];
 
 class PageMenu extends Component {

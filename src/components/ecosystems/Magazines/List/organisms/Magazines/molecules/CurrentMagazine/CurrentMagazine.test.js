@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CurrentMagazine } from './CurrentMagazine';
+import { ROUTE_PREFIX } from 'config';
 
 describe('CurrentMagazine', () => {
   it('should call downloadMagazine and open pdfFile ', () => {
@@ -40,7 +41,7 @@ describe('CurrentMagazine', () => {
     const instance = result.instance();
     instance.openMagazine();
 
-    expect(props.history.push).toBeCalledWith(`/magazines/view/natura/6`);
+    expect(props.history.push).toBeCalledWith(`${ROUTE_PREFIX}/magazines/view/natura/6`);
   });
 
   it('should call additionalInfoOpened when change the screen for mobile show a button for show options', () => {

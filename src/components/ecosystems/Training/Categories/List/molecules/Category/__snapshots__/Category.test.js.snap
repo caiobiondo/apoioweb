@@ -11,7 +11,7 @@ exports[`Category renders correctly when there are courses 1`] = `
       <Categorystyles__ViewAllLink>
         <Link
           replace={false}
-          to="/training/categories/1"
+          to="/webfv/training/categories/1"
         >
           <FormattedMessage
             id="viewAllCourses"
