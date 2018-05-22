@@ -16,6 +16,7 @@ import {
   getCommercialStructureTypeIdFromUser,
 } from 'utils/getUserParams';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   OrderDetailsWrapper,
@@ -129,7 +130,7 @@ export class OrderItems extends Component {
   };
 
   goToStock = () => {
-    this.props.history.push(`/my-stock`);
+    this.props.history.push(`${ROUTE_PREFIX}/my-stock`);
   };
 
   renderOrderItems = orderItems => {

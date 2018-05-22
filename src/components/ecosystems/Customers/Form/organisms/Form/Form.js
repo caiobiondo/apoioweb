@@ -20,6 +20,7 @@ import validateForm from '../../../Validators/Form';
 import removeTypename from 'utils/removeTypename';
 import { translate } from 'locale';
 import { gtmPushDataLayerEvent, events, categories, actions, labels } from 'utils/googleTagManager';
+import { ROUTE_PREFIX } from 'config';
 
 class CustomerForm extends Component {
   constructor(props) {
@@ -139,7 +140,7 @@ class CustomerForm extends Component {
           });
         }
 
-        this.props.history.push(`/my-customers/detail/${customer.id}`);
+        this.props.history.push(`${ROUTE_PREFIX}/my-customers/detail/${customer.id}`);
       });
   };
 

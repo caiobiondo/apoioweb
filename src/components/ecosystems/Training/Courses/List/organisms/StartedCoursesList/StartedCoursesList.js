@@ -19,6 +19,7 @@ import {
   TrainingCoursesQueryOptions,
 } from 'components/ecosystems/Training/data/TrainingCourses.data';
 import { graphql } from 'react-apollo';
+import { ROUTE_PREFIX } from 'config';
 
 export class LeftArrow extends Component {
   render() {
@@ -46,7 +47,7 @@ export class StartedCoursesList extends Component {
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
 
-    this.props.history.push(`/training/courses/${url}`);
+    this.props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
   };
 
   render() {

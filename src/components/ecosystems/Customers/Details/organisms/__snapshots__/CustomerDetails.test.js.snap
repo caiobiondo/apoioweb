@@ -45,7 +45,7 @@ exports[`CustomerDetails renders customer details 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/50221"
+                to="/webfv/my-customers/edit/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -188,7 +188,7 @@ exports[`CustomerDetails renders customer details with additional phones 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/50221"
+                to="/webfv/my-customers/edit/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -336,7 +336,7 @@ exports[`CustomerDetails renders customer details with empty data 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/undefined"
+                to="/webfv/my-customers/edit/undefined"
               >
                 <Icon
                   file="ico_pencil"
@@ -464,7 +464,7 @@ exports[`CustomerDetails renders customer details with invalid birthday 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/50221"
+                to="/webfv/my-customers/edit/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -607,7 +607,7 @@ exports[`CustomerDetails renders customer details with phone without number and 
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/50221"
+                to="/webfv/my-customers/edit/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -757,7 +757,7 @@ exports[`CustomerDetails renders customer details without addresses 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/50221"
+                to="/webfv/my-customers/edit/50221"
               >
                 <Icon
                   file="ico_pencil"
@@ -890,7 +890,7 @@ exports[`CustomerDetails renders customer details without phones 1`] = `
             <CustomerDetailsstyles__CustomerEditWrapper>
               <Link
                 replace={false}
-                to="/my-customers/edit/50221"
+                to="/webfv/my-customers/edit/50221"
               >
                 <Icon
                   file="ico_pencil"

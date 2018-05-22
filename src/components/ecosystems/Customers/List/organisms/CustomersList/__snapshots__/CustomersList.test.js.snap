@@ -549,7 +549,7 @@ exports[`CustomersList Organism should render default cell 1`] = `
         "width": "100%",
       }
     }
-    to="/my-customers/detail/123"
+    to="/webfv/my-customers/detail/123"
   />
 </div>
 `;
@@ -568,7 +568,7 @@ exports[`CustomersList Organism should render default cell with null value 1`] =
         "width": "100%",
       }
     }
-    to="/my-customers/detail/123"
+    to="/webfv/my-customers/detail/123"
   />
 </div>
 `;
@@ -611,7 +611,7 @@ exports[`CustomersList Organism should render name cell 1`] = `
           "width": "100%",
         }
       }
-      to="/my-customers/detail/123"
+      to="/webfv/my-customers/detail/123"
     />
   </CustomersListstyles__NameLabel>
 </CustomersListstyles__CustomerName>
@@ -655,7 +655,7 @@ exports[`CustomersList Organism should render name cell with avatar 1`] = `
           "width": "100%",
         }
       }
-      to="/my-customers/detail/123"
+      to="/webfv/my-customers/detail/123"
     />
   </CustomersListstyles__NameLabel>
 </CustomersListstyles__CustomerName>
