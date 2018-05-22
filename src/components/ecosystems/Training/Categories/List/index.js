@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TrainingCategoriesList from './organisms/TrainingCategoriesList/TrainingCategoriesList';
 import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
 import { Main, CourseSearchContainer } from './index.styles';
+import { ROUTE_PREFIX } from 'config';
 
 class TrainingWrapper extends Component {
   state = {
@@ -14,7 +15,7 @@ class TrainingWrapper extends Component {
   };
 
   onSearch = filter => {
-    this.props.history.push(`/training/courses?filter=${filter.name}`);
+    this.props.history.push(`${ROUTE_PREFIX}/training/courses?filter=${filter.name}`);
   };
 
   render() {

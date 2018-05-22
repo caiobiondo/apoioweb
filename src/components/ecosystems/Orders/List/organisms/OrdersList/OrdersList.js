@@ -7,6 +7,7 @@ import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
+import { ROUTE_PREFIX } from 'config';
 
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
@@ -15,9 +16,9 @@ const renderOrder = (order, importing, intl) => {
   const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl, '-');
   const orderValue = formatCurrency(order.valor, intl, '-');
 
-  let url = `/my-orders/detail/${order.codigoPedido}`;
+  let url = `${ROUTE_PREFIX}/my-orders/detail/${order.codigoPedido}`;
   if (importing) {
-    url = `/my-stock/import/orders/detail/${order.codigoPedido}`;
+    url = `${ROUTE_PREFIX}/my-stock/import/orders/detail/${order.codigoPedido}`;
   }
 
   return (

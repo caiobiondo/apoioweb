@@ -3,6 +3,7 @@ import { graphql, compose, withApollo } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import gql from 'graphql-tag';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   CourseViewQuery,
@@ -146,10 +147,10 @@ export class CourseStartView extends Component {
           if (action === 'initialized') {
             if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
             if (course.type === 'HTML5') {
-              this.props.history.push(`/training/courses/${course.id}/html5`);
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
             }
             if (course.type === 'VIDEO') {
-              this.props.history.push(`/training/courses/${course.id}/video`);
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
             }
           }
           return;
@@ -177,10 +178,10 @@ export class CourseStartView extends Component {
 
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
           if (course.type === 'HTML5') {
-            this.props.history.push(`/training/courses/${course.id}/html5`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
           }
           if (course.type === 'VIDEO') {
-            this.props.history.push(`/training/courses/${course.id}/video`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
           }
         }
 

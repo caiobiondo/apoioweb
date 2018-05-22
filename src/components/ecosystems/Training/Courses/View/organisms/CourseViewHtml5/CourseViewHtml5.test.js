@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CourseViewHtml5 } from './CourseViewHtml5';
+import { ROUTE_PREFIX } from 'config';
 
 const setup = propOverrides => {
   const intl = {
@@ -254,7 +255,9 @@ describe('TrainingCourseViewHtml5', () => {
           await result.instance().handleTrainingClick('initialized')();
 
           // then
-          expect(props.history.push).toBeCalledWith(`/training/courses/${course.id}/video`);
+          expect(props.history.push).toBeCalledWith(
+            `${ROUTE_PREFIX}/training/courses/${course.id}/video`,
+          );
         });
       });
     });
