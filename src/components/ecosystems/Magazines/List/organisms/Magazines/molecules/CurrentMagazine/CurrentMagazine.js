@@ -26,6 +26,7 @@ import {
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
 import { FormattedNumber } from 'react-intl';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
+import { ROUTE_PREFIX } from 'config';
 
 export class CurrentMagazine extends Component {
   state = {
@@ -64,7 +65,7 @@ export class CurrentMagazine extends Component {
       },
     });
 
-    this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
+    this.props.history.push(`${ROUTE_PREFIX}/magazines/view/${type}/${magazine.id}`);
   };
 
   toggleAdditionalInfo = () => {

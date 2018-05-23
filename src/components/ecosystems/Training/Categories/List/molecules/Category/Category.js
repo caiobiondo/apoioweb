@@ -6,6 +6,7 @@ import CategoryCourse from '../CategoryCourse/CategoryCourse';
 import SubCategory from '../SubCategory/SubCategory';
 
 import { Link } from 'react-router-dom';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   CategoryWrapper,
@@ -59,7 +60,7 @@ const Category = ({ category }) => {
         {!hasSubCategories() && (
           <ViewAll>
             <ViewAllLink>
-              <Link to={`/training/categories/${category.id}`}>
+              <Link to={`${ROUTE_PREFIX}/training/categories/${category.id}`}>
                 <FormattedMessage id="viewAllCourses" />
               </Link>
             </ViewAllLink>

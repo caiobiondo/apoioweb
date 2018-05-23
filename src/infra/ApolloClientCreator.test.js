@@ -3,7 +3,17 @@ import {
   ACCESS_TOKEN_LOCAL_STORAGE_KEY,
   CNO_TOKEN_LOCAL_STORAGE_KEY,
   PERSON_ID_LOCAL_STORAGE_KEY,
+  HTTP_CDPESSOA,
+  OAM_PREFIX,
+  OAM_FV_SUFFIX,
+  OAM_CAPTA_SUFFIX,
 } from 'config';
+import Cookies from 'js-cookie';
+
+beforeEach(() => {
+  process.env.OAM_FV_SUFFIX = 'a fv suffix';
+  process.env.OAM_CAPTA_SUFFIX = 'a fv suffix';
+});
 
 describe('ApolloClientCreator', () => {
   test('creates an Apollo Client', () => {
@@ -38,6 +48,8 @@ describe('ApolloClientCreator', () => {
         return expectedCache;
       }
     }
+    Cookies.set(`${OAM_PREFIX}${OAM_FV_SUFFIX}`, 'a-cookie');
+    Cookies.set(HTTP_CDPESSOA, 'a-http-cd-pessoa');
 
     // when
     const creator = new ApolloClientCreator(
@@ -59,13 +71,16 @@ describe('ApolloClientCreator', () => {
       addTypename: true,
     });
     expect(inMemoryCacheMock).toBeCalled();
+    /* eslint-disable camelcase */
     expect(createHttpLink).toBeCalledWith({
       headers: {
         accessToken: 'an-access-token',
         cnotoken: 'a-cno-token',
         userCode: 'a-user-code',
+        oam_cookie: `${HTTP_CDPESSOA}=a-http-cd-pessoa; ${OAM_PREFIX}${OAM_CAPTA_SUFFIX}=a-cookie;`,
       },
       uri: uri,
     });
+    /* eslint-enable camelcase */
   });
 });

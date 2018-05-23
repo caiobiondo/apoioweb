@@ -10,6 +10,7 @@ import { CustomersListQuery } from '../CustomersList/CustomersList.data';
 import { dialogContent, dialogTitle, dialogActions } from 'styles/dialog';
 import { RemoveCustomersMutation } from './RemoveCustomerButton.data';
 import { customDialogContainer } from './RemoveCustomerButton.styles';
+import { ROUTE_PREFIX } from 'config';
 
 export class RemoveCustomerButton extends Component {
   state = {
@@ -22,7 +23,7 @@ export class RemoveCustomerButton extends Component {
   };
 
   goToCustomerForm = () => {
-    this.props.history.push(`/my-customers/add`);
+    this.props.history.push(`${ROUTE_PREFIX}/my-customers/add`);
   };
 
   onButtonAction = () => {

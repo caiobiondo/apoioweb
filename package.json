@@ -41,6 +41,7 @@
     "graphql-tag": "~2.5.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "js-cookie": "~2.2.0",
     "lodash.debounce": "~4.0.8",
     "material-ui-fullscreen-dialog": "~0.7.2",
     "moment": "~2.20.1",

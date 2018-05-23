@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { LeftArrow, RightArrow, StartedCoursesList } from './StartedCoursesList';
+import { ROUTE_PREFIX } from 'config';
 
 describe('StartedCourses', () => {
   it('should call StartedCourse and redirect to a new router', () => {
@@ -24,7 +25,7 @@ describe('StartedCourses', () => {
     const instance = result.instance();
     instance.handleCourseClick(props.courses[0])({});
 
-    expect(props.history.push).toBeCalledWith(`/training/courses/1/video`);
+    expect(props.history.push).toBeCalledWith(`${ROUTE_PREFIX}/training/courses/1/video`);
   });
 
   it('should call StartedCourse and redirect to a new router and not a VIDEO', () => {
@@ -48,7 +49,7 @@ describe('StartedCourses', () => {
     const instance = result.instance();
     instance.handleCourseClick(props.courses[0])({});
 
-    expect(props.history.push).toBeCalledWith(`/training/courses/1/html5`);
+    expect(props.history.push).toBeCalledWith(`${ROUTE_PREFIX}/training/courses/1/html5`);
   });
 
   it('should render a slide with the courses', () => {

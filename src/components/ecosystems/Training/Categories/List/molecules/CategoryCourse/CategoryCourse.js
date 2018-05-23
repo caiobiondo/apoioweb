@@ -13,6 +13,7 @@ import {
   CategoryCourseTitle,
   CategoryCourseDuration,
 } from './CategoryCourse.styles.js';
+import { ROUTE_PREFIX } from 'config';
 
 export const CategoryCourse = ({ course, ...props }) => {
   const getCourseIconFileName = () => {
@@ -64,7 +65,7 @@ export const CategoryCourse = ({ course, ...props }) => {
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
 
-    props.history.push(`/training/courses/${url}`);
+    props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
   };
 
   return (

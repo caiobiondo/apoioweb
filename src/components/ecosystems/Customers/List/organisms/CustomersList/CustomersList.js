@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import CustomerAvatar from '../../../atoms/CustomerAvatar';
 import { gtmPushDataLayerEvent, events, categories, actions, labels } from 'utils/googleTagManager';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   CustomerName,
@@ -148,7 +149,7 @@ export class CustomersList extends Component {
     return (
       <div>
         {value || '-'}
-        <Link style={LinkStyle} to={`/my-customers/detail/${row.id}`} />
+        <Link style={LinkStyle} to={`${ROUTE_PREFIX}/my-customers/detail/${row.id}`} />
       </div>
     );
   };
@@ -159,7 +160,7 @@ export class CustomersList extends Component {
         <CustomerAvatar name={value} avatar={row.avatar} style={CustomerAvatarStyle} />
         <NameLabel>
           {value}
-          <Link style={LinkStyle} to={`/my-customers/detail/${row.id}`} />
+          <Link style={LinkStyle} to={`${ROUTE_PREFIX}/my-customers/detail/${row.id}`} />
         </NameLabel>
       </CustomerName>
     );

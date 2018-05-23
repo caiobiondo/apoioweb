@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import WithAuthentication from './withAuthentication';
+import Cookies from 'js-cookie';
 
 class WrappedComponent extends React.Component {
   render() {
@@ -18,17 +19,36 @@ describe('withAuthentication HOC', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('should dispatch an AUTH_CHECK event when mounted', () => {
-    global.dispatchEvent = jest.fn();
-    //eslint-disable-next-line
-    global.CustomEvent = function(event) {
-      this.event = event;
-    };
+  describe('when mounted', () => {
+    it('logs out when some cookies are not present', () => {
+      // given
+      global.location.assign = jest.fn();
 
-    const ComponentWithAuthentication = WithAuthentication(WrappedComponent);
-    shallow(<ComponentWithAuthentication />);
+      // when
+      const ComponentWithAuthentication = WithAuthentication(WrappedComponent);
+      shallow(<ComponentWithAuthentication />);
 
-    expect(global.dispatchEvent.mock.calls.length).toBe(1);
-    expect(global.dispatchEvent.mock.calls[0]).toEqual([{ event: 'AUTH_CHECK' }]);
+      // then
+      expect(global.location.assign).toBeCalled();
+    });
+
+    it('does not log out in presence of some cookies', () => {
+      // given
+      global.location.assign = jest.fn();
+      global.location.href = 'a-callback-url';
+      global.location.host = 'a-host-url';
+      process.env.LOGOUT_URL = 'a-logout-url?callback-url=';
+      process.env.OAM_PREFIX = 'a-oam-key_';
+      process.env.OAM_FV_SUFFIX = 'a-oam-fv-suffix';
+      Cookies.set(`${process.env.OAM_PREFIX}${process.env.OAM_FV_SUFFIX}`, 'a-oam-cookie');
+      Cookies.set('HTTP_CDPESSOA', 'a-httpcdpessoa-cookie');
+
+      // when
+      const ComponentWithAuthentication = WithAuthentication(WrappedComponent);
+      shallow(<ComponentWithAuthentication />);
+
+      // then
+      expect(global.location.assign).not.toBeCalled();
+    });
   });
 });

@@ -91,7 +91,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         right={
           Object {
-            "details": "/my-orders/detail/311619650",
+            "details": "/webfv/my-orders/detail/311619650",
             "status": "CONCLUÍDO E APROVADO",
           }
         }
@@ -123,7 +123,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         right={
           Object {
-            "details": "/my-orders/detail/311619651",
+            "details": "/webfv/my-orders/detail/311619651",
             "status": "CONCLUÍDO E APROVADO",
           }
         }

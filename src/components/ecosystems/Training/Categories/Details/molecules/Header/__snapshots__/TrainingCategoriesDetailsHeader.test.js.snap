@@ -10,7 +10,7 @@ exports[`Training Category Header render correct when there is at least 1 banner
       <TrainingCategoriesDetailsHeaderstyles__BackButtonWrapper>
         <Link
           replace={false}
-          to="/training/categories"
+          to="/webfv/training/categories"
         >
           <TrainingCategoriesDetailsHeaderstyles__BackButtonIcon>
             <Icon
