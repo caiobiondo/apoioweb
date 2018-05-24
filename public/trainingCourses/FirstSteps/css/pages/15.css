@@ -1,0 +1,113 @@
+#step01_icon01 {
+    max-width: 54px;
+    max-height: 54px;
+    position: absolute;
+    top: 213px;
+    left: 127px;
+    visibility: hidden;
+}
+
+#step01_img01 {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    top: 349px;
+    left: 849px;
+    z-index: 999;
+    visibility: hidden;
+}
+
+#step01_p01 {
+    font-family: 'Natura Sans Regular';
+    font-size: 25px;
+    line-height: 28px;
+    color: #FFF;
+    max-width: 296px;
+    position: absolute;
+    text-align: center;
+    top: 433px;
+    left: 746px;
+    visibility: hidden;
+}
+
+#step01_p02 {
+    font-family: 'Natura Sans Regular';
+    font-size: 25px;
+    line-height: 28px;
+    color: #FFF;
+    max-width: 689px;
+    position: absolute;
+    top: 362px;
+    left: 212px;
+    visibility: hidden;
+}
+
+#step01_p03 {
+    font-family: 'Natura Sans Regular';
+    font-size: 25px;
+    line-height: 28px;
+    color: #FFF;
+    max-width: 689px;
+    position: absolute;
+    top: 424px;
+    left: 212px;
+    visibility: hidden;
+}
+
+#step02_p01 {
+    font-family: 'Natura Sans Regular';
+    font-size: 28px;
+    line-height: 31px;
+    color: #FFF;
+    max-width: 244px;
+    position: absolute;
+    top: 90px;
+    left: 690px;
+    visibility: hidden;
+}
+
+#step02_p02 {
+    font-family: 'Natura Sans Regular';
+    font-size: 28px;
+    line-height: 31px;
+    color: #FFF;
+    max-width: 244px;
+    position: absolute;
+    top: 134px;
+    left: 690px;
+    visibility: hidden;
+}
+
+#step02_p03 {
+    font-family: 'Natura Sans Regular';
+    font-size: 21px;
+    line-height: 24px;
+    color: #FFF;
+    max-width: 272px;
+    position: absolute;
+    top: 218px;
+    left: 690px;
+    visibility: hidden;
+}
+
+#step02_img01 {
+    max-width: 72px;
+    max-height: 72px;
+    position: absolute;
+    top: 328px;
+    left: 776px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#step02_p04 {
+    font-family: 'Natura Sans Regular';
+    font-size: 21px;
+    line-height: 24px;
+    color: #FFF;
+    max-width: 272px;
+    position: absolute;
+    top: 444px;
+    left: 690px;
+    visibility: hidden;
+}

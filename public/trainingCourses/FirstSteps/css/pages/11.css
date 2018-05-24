@@ -1,0 +1,285 @@
+#step01_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 33px;
+    max-width: 723px;
+    color: #3c1604;
+    position: absolute;
+    top:175px;
+    left:150px;
+    visibility: hidden;
+}
+
+#step01_img01{
+    max-width: 866px;
+    position: absolute;
+    top: 260px;
+    left: 79px;
+    visibility: hidden;
+}
+
+/* Structure */
+#steps_box01{
+    width: 100%;
+    height: 82px;
+    position: absolute;
+    background-color: #3C1604;
+    top:18px;
+    left:0px;
+    opacity: .9;
+    visibility: hidden;
+}
+
+#steps_img_click{
+    max-width: 63px;
+    max-height: 63px;
+    position: absolute;
+    top: 291px;
+    left: 704px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+#steps_clock{
+    max-width: 124px;
+    max-height: 124px;
+    position: absolute;
+    top:248px;
+    left:337px;
+    visibility: hidden;
+}
+
+#steps_timer{
+    font-family:'Natura Sans Bold';
+    font-size: 63px;
+    max-width: 200px;
+    color: #3C1604;
+    position: absolute;
+    text-align: center;
+    top:276px;
+    left:492px;
+    visibility: hidden;
+}
+
+#steps_timer_end{
+    font-family:'Natura Sans Regular';    
+    font-size: 22px;
+    line-height: 25px;
+    max-width: 90px;
+    color: #FFF;
+    position: absolute;
+    text-align: center;
+    top:35px;
+    left:920px;    
+    visibility: hidden;
+}
+
+#steps_continue{
+    max-width: 194px;
+    max-height: 76px;
+    position: absolute;
+    top:479px;
+    left:830px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+/* Structure */
+
+
+/* Onde */
+
+#step02_icon01{
+    max-width: 36px;
+    max-height: 39px;
+    position: absolute;
+    top:40px;
+    left:23px;
+    visibility: hidden;
+}
+
+#step02_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 35px;    
+    color: #FFF;
+    max-width: 410px;
+    position: absolute;
+    top:36px;
+    left:80px;    
+    visibility: hidden;
+}
+
+#step02_wrapper{
+    max-width: 1004px;
+    position: absolute;
+    top:117px;
+    left:20px;
+}
+
+#step02_list{
+    font-family:'Natura Sans Regular';    
+    font-size: 22px;
+    line-height: 25px;
+    color: #3C1604;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step02_list li{
+    padding: 5px 0px;
+    
+}
+
+#step02_list li p{
+    margin: 0px;
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+#step02_subitem01{
+    margin-top: 20px!important; 
+}
+
+#step02_subitem04{
+    margin-bottom: 15px!important; 
+}
+
+/* Onde */
+
+/* Como */
+
+#step03_icon01{
+    max-width: 40px;
+    position: absolute;
+    top:40px;
+    left:23px;
+    visibility: hidden;
+}
+
+#step03_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 35px;    
+    color: #FFF;
+    max-width: 410px;
+    position: absolute;
+    top:36px;
+    left:80px;    
+    visibility: hidden;
+}
+
+#step03_wrapper{
+    max-width: 1004px;
+    position: absolute;
+    top:117px;
+    left:20px;
+}
+
+#step03_list{
+    font-family:'Natura Sans Regular';    
+    font-size: 22px;
+    line-height: 25px;
+    color: #3C1604;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step03_list li{
+    padding: 5px 0px;    
+}
+
+#step03_list li p{
+    margin: 0px;
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+#step03_subitem01{
+    margin-top: 20px!important; 
+}
+
+#step03_subitem03{
+    margin-bottom: 15px!important; 
+}
+/* Como */
+
+#step04_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 29px;
+    line-height: 32px;
+    color: #FFF;
+    max-width: 1023px;
+    position: absolute;
+    top:36px;
+    left:0px;
+    visibility: hidden;
+}
+
+#step04_icon01{
+    max-width: 64px;
+    max-height: 64px;
+    position: absolute;
+    top: 170px;
+    left: 119px;
+    visibility: hidden;
+}
+
+#step04_img01{
+    max-width: 305px;    
+    position: absolute;
+    top:170px;
+    left:183px;
+    visibility: hidden;
+}
+
+#step04_icon02{
+    max-width: 64px;
+    max-height: 64px;
+    position: absolute;
+    top: 170px;
+    left: 517px;
+    visibility: hidden;
+}
+
+#step04_img02{
+    max-width: 305px;
+    position: absolute;
+    top:170px;
+    left:581px;
+    visibility: hidden;
+}
+
+#step04_icon03{
+    max-width: 64px;
+    max-height: 64px;
+    position: absolute;
+    top: 319px;
+    left: 119px;
+    visibility: hidden;
+}
+
+#step04_img03{
+    max-width: 305px;
+    position: absolute;
+    top: 319px;
+    left: 183px;
+    visibility: hidden;
+}
+
+#step04_icon04{
+    max-width: 64px;
+    max-height: 64px;
+    position: absolute;
+    top: 319px;
+    left: 517px;
+    visibility: hidden;
+}
+
+#step04_img04{
+    max-width: 305px;
+    position: absolute;
+    top: 319px;
+    left:581px;
+    visibility: hidden;
+}
