@@ -3,6 +3,14 @@ import { shallow } from 'enzyme';
 import { CourseStartView } from './CourseStartView';
 import { ROUTE_PREFIX } from 'config';
 
+jest.mock('components/ecosystems/Training/enums/staticCourses.enum', () => ({
+  TestCourse: 999,
+}));
+
+beforeEach(() => {
+  process.env.BASE_URI = 'http://test.com';
+});
+
 const setup = propOverrides => {
   const intl = {
     formatMessage: value => `formatedMessage ${value}`,
@@ -15,7 +23,7 @@ const setup = propOverrides => {
   global.dataLayer = {
     push: jest.fn(),
   };
-  global.open = jest.fn();
+  global.open = jest.fn().mockReturnValue({ addEventListener: jest.fn() });
 
   const props = Object.assign(
     {
@@ -184,7 +192,7 @@ describe('Training Course Start View', () => {
 
     describe('when starting/resuming a training course', () => {
       describe('when course type is web', () => {
-        it('opens a new tab', async () => {
+        it('opens a new tab for a non static course', async () => {
           // given
           const course = {
             id: 1,
@@ -212,6 +220,38 @@ describe('Training Course Start View', () => {
 
           // then
           expect(global.open).toBeCalledWith(course.courseContent.web, '_blank');
+        });
+
+        it('opens a new tab with a local url for a static course', async () => {
+          // given
+          const mockCourseName = 'TestCourse';
+          const course = {
+            id: 999,
+            title: 'new course 1',
+            description: 'new course description 1',
+            durationInSeconds: 1234,
+            stoppedAt: 12,
+            views: 12,
+            dateUpload: '2017-04-20T00:00:00.000Z',
+            type: 'WEB',
+            status: 'pending',
+            isfavorite: true,
+            relatedCourses: [],
+            ratedByYou: 'false',
+            courseContent: {
+              web: 'google.com',
+              video: null,
+              html5: null,
+            },
+          };
+          const expectedUrl = `${process.env.PUBLIC_URL}/trainingCourses/${mockCourseName}`;
+
+          // when
+          const { result } = setup({ loading: false, course });
+          await result.instance().handleTrainingClick('initialized')();
+
+          // then
+          expect(global.open).toBeCalledWith(expectedUrl, '_blank');
         });
       });
 
