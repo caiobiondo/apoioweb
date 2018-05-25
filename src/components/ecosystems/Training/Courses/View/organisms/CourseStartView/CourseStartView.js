@@ -44,7 +44,6 @@ import { Loading, FlatButton, Icon } from 'natura-ui';
 import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
-import { PUBLIC_URL } from 'config';
 
 export class CourseStartView extends Component {
   state = {
