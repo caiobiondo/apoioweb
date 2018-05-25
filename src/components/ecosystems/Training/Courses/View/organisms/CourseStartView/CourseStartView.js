@@ -128,6 +128,8 @@ export class CourseStartView extends Component {
   handleTrainingClick = action => event => {
     const { course } = this.props;
     const { formatMessage } = this.props.intl;
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
 
     this.props
       .mutate({
@@ -135,6 +137,8 @@ export class CourseStartView extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
+          roleId: this.props.user.cdPapelAtivo,
         },
       })
       .then(response => {
@@ -406,6 +410,7 @@ export class CourseStartView extends Component {
   };
 
   renderActionButtons = (buttonStyle, course) => {
+    const { showStaticCourse } = this.state;
     const buttons = [];
     const hasFinishingTrigger = this.hasFinishingTrigger();
 
@@ -427,7 +432,7 @@ export class CourseStartView extends Component {
       );
     }
 
-    if (isStarted || isPaused) {
+    if ((isStarted || isPaused) && !showStaticCourse) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="resume">
           <FlatButton

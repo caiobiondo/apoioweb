@@ -26,6 +26,13 @@ const setup = propOverrides => {
     {
       user: {
         codigo: 1234,
+        estrutura: {
+          ciclo: [
+            {
+              numero: 1,
+            },
+          ],
+        },
       },
       course: {
         id: 1,
