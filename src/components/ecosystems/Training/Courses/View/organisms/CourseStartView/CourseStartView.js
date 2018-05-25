@@ -44,12 +44,14 @@ import { Loading, FlatButton, Icon } from 'natura-ui';
 import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
+import { PUBLIC_URL } from 'config';
 
 export class CourseStartView extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
     showEvaluation: false,
+    showStaticCourse: false,
     course: {},
   };
 
@@ -230,16 +232,20 @@ export class CourseStartView extends Component {
   };
 
   openWebCourse = () => {
-    const { courseContent, id } = this.props.course;
+    const { courseContent } = this.props.course;
     const hasFinishingTrigger = this.hasFinishingTrigger();
 
     if (!hasFinishingTrigger) {
       return window.open(courseContent.web, '_blank');
     }
 
-    const courseName = Object.keys(staticCourses).find(key => staticCourses[key] === id);
-    const courseWindow = window.open(`${PUBLIC_URL}/trainingCourses/${courseName}`, '_blank');
-    courseWindow.onload = this.onloadStaticCourse(courseWindow);
+    const afterSetState = () => {
+      const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
+      const courseWindow = courseIframe.contentWindow;
+      courseWindow.onload = this.onloadStaticCourse(courseWindow);
+    };
+
+    this.setState({ showStaticCourse: true }, afterSetState);
   };
 
   onloadStaticCourse = courseWindow => {
@@ -479,6 +485,35 @@ export class CourseStartView extends Component {
     return this.state.showEvaluation && course.ratedByYou !== 'true';
   };
 
+  setStaticCourseRef = ref => {
+    this.staticCourseIframe = ref;
+  };
+
+  getStaticCourseName = () => {
+    const { id } = this.props.course;
+    return Object.keys(staticCourses).find(key => staticCourses[key] === id);
+  };
+
+  renderStaticCourse = () => {
+    const { showStaticCourse } = this.state;
+    const courseName = this.getStaticCourseName();
+    const courseUrl = `${PUBLIC_URL}/trainingCourses/${courseName}`;
+
+    if (!showStaticCourse) {
+      return;
+    }
+
+    return (
+      <iframe
+        ref={this.setStaticCourseRef}
+        title={courseName}
+        src={courseUrl}
+        allow="autoplay"
+        height={600}
+      />
+    );
+  };
+
   render() {
     const { course } = this.props;
 
@@ -540,6 +575,7 @@ export class CourseStartView extends Component {
         {this.canEvaluate() && (
           <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
         )}
+        {this.renderStaticCourse()}
       </Main>
     );
   }
