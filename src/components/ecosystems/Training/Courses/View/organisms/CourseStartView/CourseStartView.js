@@ -501,7 +501,7 @@ export class CourseStartView extends Component {
   renderStaticCourse = () => {
     const { showStaticCourse } = this.state;
     const courseName = this.getStaticCourseName();
-    const courseUrl = `${PUBLIC_URL}/trainingCourses/${courseName}`;
+    const courseUrl = `${PUBLIC_URL}trainingCourses/${courseName}`;
 
     if (!showStaticCourse) {
       return;
