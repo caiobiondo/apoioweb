@@ -253,7 +253,7 @@ export class CourseStartView extends Component {
 
   onloadStaticCourse = courseWindow => {
     courseWindow.addEventListener('hashchange', () => {
-      if (courseWindow.location.hash !== '#finished') {
+      if (courseWindow.location.hash !== '#finish') {
         return;
       }
 
