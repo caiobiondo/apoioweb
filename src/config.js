@@ -10,3 +10,5 @@ export const OAM_FV_SUFFIX = process.env.REACT_APP_OAM_FV_SUFFIX;
 export const HTTP_CDPESSOA = 'HTTP_CDPESSOA';
 export const LOGOUT_URL = process.env.REACT_APP_LOGOUT_URL;
 export const ROUTE_PREFIX = '/webfv';
+export const FIRST_STEPS_COURSE_ID = process.env.REACT_APP_FIRST_STEPS_COURSE_ID;
+export const { PUBLIC_URL } = process.env;

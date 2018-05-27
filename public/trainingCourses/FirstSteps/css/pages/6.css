@@ -1,0 +1,51 @@
+#step01_box01{
+    width: 433px;
+    height: 270px;
+    position: absolute;
+    top:180px;
+    left:594px;
+    background-color: #DC632A;
+    opacity: .8;
+    visibility: hidden;
+}
+
+#step01_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 33px;
+    line-height: 35px;
+    color: #FFF;
+    max-width: 380px;
+    position: absolute;
+    top:208px;
+    left:619px;    
+    visibility: hidden;
+}
+
+#step01_img01{
+    max-width: 387px;
+    max-height: 49px;
+    position: absolute;
+    top:296px;
+    left:615px;
+    visibility: hidden;
+}
+
+#step02_img01{
+    max-width: 434px;    
+    position: absolute;
+    top:206px;
+    left:537px;
+    visibility: hidden;
+}
+
+#step02_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 58px;
+    line-height: 61px;
+    color: #3C1604;
+    max-width: 425px;
+    position: absolute;
+    top:265px;
+    left:538px;    
+    visibility: hidden;
+}

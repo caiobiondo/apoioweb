@@ -1,0 +1,118 @@
+#step01_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 34px;
+    color: #FFF;
+    max-width: 731px;
+    position: absolute;
+    top:198px;
+    left:145px;    
+    visibility: hidden;    
+}
+
+#step01_img01{
+    max-width: 702px;    
+    position: absolute;
+    top:275px;
+    left:145px;
+    visibility: hidden;
+}
+
+#step02_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 33px;
+    color: #3A1A0D;
+    max-width: 573px;
+    position: absolute;
+    top:167px;
+    left:287px;    
+    visibility: hidden;
+}
+
+#step02_p02{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 33px;
+    color: #3A1A0D;
+    max-width: 573px;
+    position: absolute;
+    top:283px;
+    left:287px;    
+    visibility: hidden;
+}
+
+#step02_img01{
+    max-width: 591px;    
+    position: absolute;
+    top:329px;
+    left:285px;
+    visibility: hidden;
+}
+
+#step03_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 34px;
+    line-height: 37px;
+    color: #7F604D;
+    max-width: 807px;
+    position: absolute;
+    top:104px;
+    left:96px;
+    visibility: hidden;
+}
+
+#step03_p02{
+    font-family:'Natura Sans Regular';    
+    font-size: 34px;
+    line-height: 37px;
+    color: #7F604D;
+    max-width: 807px;
+    position: absolute;
+    top:268px;
+    left:96px;
+    visibility: hidden;
+}
+
+#step03_img01{
+    max-width: 812px;    
+    position: absolute;
+    top:315px;
+    left:96px;
+    visibility: hidden;
+}
+
+#step04_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 34px;
+    line-height: 37px;
+    color: #7F604D;
+    max-width: 807px;
+    position: absolute;
+    top:26px;
+    left:0px;
+    visibility: hidden;
+}
+
+#step04_vdo01{
+    position: absolute;
+    top:109px;
+    left:150px;
+    visibility: hidden;
+}
+
+#step03_blk01{
+    top: 109px;
+    left: 150px;
+    width: 700px;
+    height: 394px;
+    position: absolute;
+    background-color: rgba(0,0,0,.2);
+    z-index: 100;
+    visibility: hidden;
+}
+
+#step04_vdo01 video{
+    max-width: 100%;
+    max-height: 100%;
+}
