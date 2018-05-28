@@ -246,22 +246,20 @@ export class CourseStartView extends Component {
       console.log('showStaticCourse -> afterSetState');
       const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
       const courseWindow = courseIframe.contentWindow;
-      this.checkCourseFinished(courseWindow);
+      courseWindow.onload = this.onloadStaticCourse(courseWindow);
     };
 
     this.setState({ showStaticCourse: true }, afterSetState);
   };
 
-  checkCourseFinished = courseWindow => {
-    const timerId = setInterval(() => {
-      console.log('showStaticCourse -> checkHash: ', courseWindow.location.hash);
-      if (courseWindow.location.hash === '#finish') {
-        console.log('showStaticCourse -> checkHash -> FINISH');
-        clearInterval(timerId);
-        console.log('showStaticCourse -> checkHash -> clearInterval');
-        this.handleTrainingClick('terminated')();
+  onloadStaticCourse = courseWindow => {
+    courseWindow.addEventListener('hashchange', () => {
+      if (courseWindow.location.hash !== '#finish') {
+        return;
       }
-    }, 1000);
+
+      return this.handleTrainingClick('terminated');
+    });
   };
 
   updateCachedList = () => {

@@ -112,7 +112,8 @@ exports[`Order should render an order card 1`] = `
         </Orderstyles__Label>
       }
       labelColor="#000"
-      link="link"
+      link={null}
+      onClick={[Function]}
       primary={false}
       raised="true"
     />
@@ -198,7 +199,8 @@ exports[`Order should render an order card without some field 1`] = `
         </Orderstyles__Label>
       }
       labelColor="#000"
-      link="link"
+      link={null}
+      onClick={[Function]}
       primary={false}
       raised="true"
     />
@@ -311,7 +313,8 @@ exports[`Order should render an order card without status 1`] = `
         </Orderstyles__Label>
       }
       labelColor="#000"
-      link="link"
+      link={null}
+      onClick={[Function]}
       primary={false}
       raised="true"
     />
