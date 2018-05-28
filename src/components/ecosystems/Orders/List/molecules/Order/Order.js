@@ -75,11 +75,13 @@ const Order = ({ statusType, left, middle, right, importing }) => {
         )}
 
         <FormButton
-          link={right.details}
           label={buttonMessage}
           backgroundColor="#fff"
           labelColor="#000"
           raised="true"
+          onClick={() => {
+            window.open(right.details, '_blank');
+          }}
         />
       </CustomCard.Section>
     </CustomCard>
