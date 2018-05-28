@@ -1,0 +1,147 @@
+#step01_icon01{
+    max-width: 50px;
+    max-height: 50px;
+    position: absolute;
+    top:35px;
+    left:0px;
+    visibility: hidden;
+}
+
+#step01_box01{
+    background-color: #DFA01D;
+    opacity: .9;
+    width: 537px;
+    height: 490px;
+    position: absolute;
+    top:35px;
+    left:50px;
+    visibility: hidden;
+}
+
+#step01_img01{
+    max-width: 343px;    
+    position: absolute;
+    top:63px;
+    left:72px;
+    visibility: hidden;
+}
+
+#step01_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 30px;
+    color: #FFF;
+    max-width: 834px;
+    position: absolute;
+    top:262px;
+    left:96px;
+    visibility: hidden;
+}
+
+#step01_p02{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 30px;
+    color: #FFF;
+    max-width: 219px;
+    position: absolute;
+    top:262px;
+    left:404px;
+    visibility: hidden;
+}
+
+#step01_p03{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 30px;
+    color: #FFF;
+    max-width: 561px;
+    position: absolute;
+    top:262px;
+    left:233px;
+    visibility: hidden;
+}
+
+#step01_p04{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 30px;
+    color: #FFF;
+    max-width: 776px;
+    position: absolute;
+    top:262px;
+    left:125px;
+    visibility: hidden;
+}
+
+#step01_p05{
+    font-family:'Natura Sans Regular';    
+    font-size: 30px;
+    line-height: 30px;
+    color: #FFF;
+    max-width: 591px;
+    position: absolute;
+    top:226px;
+    left:218px;
+    visibility: hidden;
+}
+
+#step02_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 40px;
+    line-height: 43px;
+    color: #4E3629;
+    max-width: 841px;
+    position: absolute;
+    top:230px;
+    left:88px;
+    visibility: hidden;
+}
+
+#step02_img01{
+    max-width: 836px;
+    position: absolute;
+    top:280px;
+    left:86px;
+    visibility: hidden;
+}
+
+#step03_icon01{
+    max-width: 53px;
+    max-height: 73px;
+    position: absolute;
+    top:188px;
+    left:289px;
+    visibility: hidden;
+}
+
+#step03_p01{
+    font-family:'Natura Sans Bold';    
+    font-size: 40px;
+    line-height: 43px;
+    color: #dd632a;
+    position: absolute;
+    top:219px;
+    left:382px;
+    visibility: hidden;
+}
+
+#step03_icon02{
+    max-width: 58px;
+    max-height: 62px;
+    position: absolute;
+    top:309px;
+    left:289px;
+    visibility: hidden;
+}
+
+#step03_p02{
+    font-family:'Natura Sans Bold';    
+    font-size: 40px;
+    line-height: 43px;
+    color: #dd632a;
+    position: absolute;
+    top:328px;
+    left:382px;
+    visibility: hidden;
+}

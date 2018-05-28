@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tincan xmlns="http://projecttincan.com/tincan.xsd">
+    <activities>
+        <activity id="http://natura.net/curso/1234" type="http://adlnet.gov/expapi/activities/course">
+            <name>Natura - Primeiros Passos</name>
+            <description lang="en-US">Primeiros Passos</description>
+            <launch lang="en-US">index.html</launch>
+        </activity>
+    </activities>
+</tincan>

@@ -1,0 +1,113 @@
+#step01_img01{
+    max-width: 408px;
+    max-height: 487px;
+    position: absolute;
+    top: 58px;
+    left: 0px;
+    visibility: hidden;
+}
+
+#step01_item01{
+    position: absolute;
+    top: 230px;
+    left: 618px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item02{
+    position: absolute;
+    top: 230px;
+    left: 386px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item03{
+    position: absolute;
+    top: 230px;
+    left: 544px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item04{
+    position: absolute;
+    top: 230px;
+    left: 400px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item05{
+    position: absolute;
+    top: 217px;
+    left: 524px;
+    width: 324px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item06{
+    position: absolute;
+    top: 230px;
+    left: 526px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item07{
+    position: absolute;
+    top: 230px;
+    left: 593px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+
+#step01_item08{
+    position: absolute;
+    top: 230px;
+    left: 571px;
+    font-family:'Natura Sans Regular';
+    font-size: 23px;
+    line-height: 26px;
+    color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}

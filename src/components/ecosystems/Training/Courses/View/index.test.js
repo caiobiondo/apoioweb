@@ -2,6 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CourseView from './index';
 
+jest.mock('config', () => ({
+  PUBLIC_URL: 'http://test.com',
+}));
+
 const baseState = {
   empty: false,
   loading: true,
