@@ -12,3 +12,4 @@ export const LOGOUT_URL = process.env.REACT_APP_LOGOUT_URL;
 export const ROUTE_PREFIX = '/webfv';
 export const FIRST_STEPS_COURSE_ID = process.env.REACT_APP_FIRST_STEPS_COURSE_ID;
 export const { PUBLIC_URL } = process.env;
+export const CAPTA_ORDER_LIST_URL = process.env.REACT_APP_CAPTA_ORDER_LIST_URL;

@@ -7,7 +7,7 @@ import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { graphql } from 'react-apollo';
 import { injectIntl } from 'react-intl';
 import { formatDate, formatCurrency } from 'locale/utils';
-import { ROUTE_PREFIX } from 'config';
+import { CAPTA_ORDER_LIST_URL } from 'config';
 
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
@@ -16,10 +16,12 @@ const renderOrder = (order, importing, intl) => {
   const orderEstimatedDeliveryDate = formatDate(order.dataPrevisaoEntrega, intl, '-');
   const orderValue = formatCurrency(order.valor, intl, '-');
 
-  let url = `${ROUTE_PREFIX}/my-orders/detail/${order.codigoPedido}`;
-  if (importing) {
-    url = `${ROUTE_PREFIX}/my-stock/import/orders/detail/${order.codigoPedido}`;
-  }
+  // Order details feature being hidden because capta's api is blocking it due to single sign on
+  // let url = `${ROUTE_PREFIX}/my-orders/detail/${order.codigoPedido}`;
+  // if (importing) {
+  //   url = `${ROUTE_PREFIX}/my-stock/import/orders/detail/${order.codigoPedido}`;
+  // }
+  const url = CAPTA_ORDER_LIST_URL;
 
   return (
     <Order

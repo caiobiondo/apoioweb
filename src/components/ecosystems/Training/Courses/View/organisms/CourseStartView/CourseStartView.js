@@ -254,12 +254,9 @@ export class CourseStartView extends Component {
 
   checkCourseFinished = courseWindow => {
     const timerId = setInterval(() => {
-      console.log('showStaticCourse -> checkHash: ', courseWindow.location.hash);
       if (courseWindow.location.hash === '#finish') {
-        console.log('showStaticCourse -> checkHash -> FINISH');
         clearInterval(timerId);
-        console.log('showStaticCourse -> checkHash -> clearInterval');
-        this.handleTrainingClick('terminated');
+        this.handleTrainingClick('terminated')();
       }
     }, 1000);
   };
