@@ -17,6 +17,7 @@ import {
   MagazineCoverList,
   MagazineCoverMobileInfo,
 } from './PreviousMagazines.styles';
+import { ROUTE_PREFIX } from 'config';
 
 import ImageWithFallback from 'components/molecules/ImageWithFallback';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
@@ -36,7 +37,7 @@ export class PreviousMagazines extends Component {
       },
     });
 
-    this.props.history.push(`/magazines/view/${type}/${magazine.id}`);
+    this.props.history.push(`${ROUTE_PREFIX}/magazines/view/${type}/${magazine.id}`);
   };
 
   render() {

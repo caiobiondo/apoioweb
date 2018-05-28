@@ -3,6 +3,7 @@ import { graphql, compose, withApollo } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import gql from 'graphql-tag';
+import { ROUTE_PREFIX, PUBLIC_URL } from 'config';
 
 import {
   CourseViewQuery,
@@ -30,6 +31,7 @@ import {
   TrainingCourseRatingWrapper,
 } from './CourseStartView.styles';
 
+import staticCourses from 'components/ecosystems/Training/enums/staticCourses.enum';
 import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
 import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
 import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
@@ -48,6 +50,7 @@ export class CourseStartView extends Component {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
     showEvaluation: false,
+    showStaticCourse: false,
     course: {},
   };
 
@@ -125,6 +128,8 @@ export class CourseStartView extends Component {
   handleTrainingClick = action => event => {
     const { course } = this.props;
     const { formatMessage } = this.props.intl;
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
 
     this.props
       .mutate({
@@ -132,6 +137,8 @@ export class CourseStartView extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
+          roleId: this.props.user.cdPapelAtivo,
         },
       })
       .then(response => {
@@ -144,12 +151,14 @@ export class CourseStartView extends Component {
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
           if (action === 'initialized') {
-            if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
+            if (course.type === 'WEB') {
+              this.openWebCourse();
+            }
             if (course.type === 'HTML5') {
-              this.props.history.push(`/training/courses/${course.id}/html5`);
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
             }
             if (course.type === 'VIDEO') {
-              this.props.history.push(`/training/courses/${course.id}/video`);
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
             }
           }
           return;
@@ -175,12 +184,14 @@ export class CourseStartView extends Component {
             this.updateCachedList,
           );
 
-          if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
+          if (course.type === 'WEB') {
+            this.openWebCourse();
+          }
           if (course.type === 'HTML5') {
-            this.props.history.push(`/training/courses/${course.id}/html5`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
           }
           if (course.type === 'VIDEO') {
-            this.props.history.push(`/training/courses/${course.id}/video`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
           }
         }
 
@@ -215,6 +226,42 @@ export class CourseStartView extends Component {
 
         this.handleTrainingError();
       });
+  };
+
+  hasFinishingTrigger = () => {
+    const { id } = this.props.course;
+    const staticCoursesIds = Object.values(staticCourses);
+    return staticCoursesIds.includes(id);
+  };
+
+  openWebCourse = () => {
+    const { courseContent } = this.props.course;
+    const hasFinishingTrigger = this.hasFinishingTrigger();
+
+    if (!hasFinishingTrigger) {
+      return window.open(courseContent.web, '_blank');
+    }
+
+    const afterSetState = () => {
+      console.log('showStaticCourse -> afterSetState');
+      const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
+      const courseWindow = courseIframe.contentWindow;
+      this.checkCourseFinished(courseWindow);
+    };
+
+    this.setState({ showStaticCourse: true }, afterSetState);
+  };
+
+  checkCourseFinished = courseWindow => {
+    const timerId = setInterval(() => {
+      console.log('showStaticCourse -> checkHash: ', courseWindow.location.hash);
+      if (courseWindow.location.hash === '#finish') {
+        console.log('showStaticCourse -> checkHash -> FINISH');
+        clearInterval(timerId);
+        console.log('showStaticCourse -> checkHash -> clearInterval');
+        this.handleTrainingClick('terminated');
+      }
+    }, 1000);
   };
 
   updateCachedList = () => {
@@ -366,8 +413,16 @@ export class CourseStartView extends Component {
   };
 
   renderActionButtons = (buttonStyle, course) => {
+    const { showStaticCourse } = this.state;
     const buttons = [];
-    if (course.status === 'pending') {
+    const hasFinishingTrigger = this.hasFinishingTrigger();
+
+    const isPending = course.status === 'pending';
+    const isStarted = course.status === 'started';
+    const isPaused = course.status === 'paused';
+    const isFinished = course.status === 'finished';
+
+    if (isPending) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="start">
           <FlatButton
@@ -380,7 +435,7 @@ export class CourseStartView extends Component {
       );
     }
 
-    if (course.status === 'started' || course.status === 'paused') {
+    if ((isStarted || isPaused) && !showStaticCourse) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="resume">
           <FlatButton
@@ -391,6 +446,9 @@ export class CourseStartView extends Component {
           />
         </TrainingCourseActionButtonWrapper>,
       );
+    }
+
+    if ((isStarted || isPaused) && !hasFinishingTrigger) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="finish">
           <FlatButton
@@ -403,7 +461,7 @@ export class CourseStartView extends Component {
       );
     }
 
-    if (course.status === 'finished') {
+    if (isFinished) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="review">
           <FlatButton
@@ -432,6 +490,35 @@ export class CourseStartView extends Component {
   canEvaluate = () => {
     const { course } = this.props;
     return this.state.showEvaluation && course.ratedByYou !== 'true';
+  };
+
+  setStaticCourseRef = ref => {
+    this.staticCourseIframe = ref;
+  };
+
+  getStaticCourseName = () => {
+    const { id } = this.props.course;
+    return Object.keys(staticCourses).find(key => staticCourses[key] === id);
+  };
+
+  renderStaticCourse = () => {
+    const { showStaticCourse } = this.state;
+    const courseName = this.getStaticCourseName();
+    const courseUrl = `${PUBLIC_URL}trainingCourses/${courseName}/`;
+
+    if (!showStaticCourse) {
+      return;
+    }
+
+    return (
+      <iframe
+        ref={this.setStaticCourseRef}
+        title={courseName}
+        src={courseUrl}
+        allow="autoplay"
+        height={600}
+      />
+    );
   };
 
   render() {
@@ -495,6 +582,7 @@ export class CourseStartView extends Component {
         {this.canEvaluate() && (
           <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
         )}
+        {this.renderStaticCourse()}
       </Main>
     );
   }

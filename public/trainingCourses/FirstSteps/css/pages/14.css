@@ -1,0 +1,38 @@
+#step01_p01{
+    font-family:'Natura Sans Regular';    
+    font-size: 29px;
+    line-height: 32px;
+    color: #FFF;
+    max-width: 1024px;
+    position: absolute;
+    top:23px;
+    left:0px;
+    visibility: hidden;
+}
+
+#step01_vdo01{
+    position: absolute;
+    top:90px;
+    left:163px;
+    visibility: hidden;
+}
+
+#step01_blk01{
+    position: absolute;
+    top:90px;
+    left:163px;
+    width: 700px;
+    height: 394px;
+    background-color: rgba(0,0,0,.2);
+    z-index: 1;
+    visibility: hidden;
+}
+
+#step01_vdo01 video{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.mejs__controls:not([style*="display: none"]) {
+    background: #E88024;    
+}

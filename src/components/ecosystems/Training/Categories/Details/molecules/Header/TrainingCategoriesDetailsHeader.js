@@ -4,6 +4,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { Row, Col, getRowProps } from 'react-flexbox-grid';
 import { Icon } from 'natura-ui';
 import { Link } from 'react-router-dom';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   Header,
@@ -50,7 +51,7 @@ export class CategoryDetailsHeader extends Component {
         <Row>
           <Col md={4} sm={12}>
             <BackButtonWrapper>
-              <Link to="/training/categories">
+              <Link to={`${ROUTE_PREFIX}/training/categories`}>
                 <BackButtonIcon>
                   <Icon file="ico_back" />
                 </BackButtonIcon>

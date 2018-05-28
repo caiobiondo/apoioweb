@@ -34,6 +34,7 @@ import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/
 import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
 import Dialog from 'material-ui/Dialog';
 import { translate } from 'locale';
+import { ROUTE_PREFIX } from 'config';
 
 import { Loading, FlatButton, Icon } from 'natura-ui';
 
@@ -170,7 +171,7 @@ export class CourseViewHtml5 extends Component {
 
           if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
           if (course.type === 'VIDEO') {
-            this.props.history.push(`/training/courses/${course.id}/video`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
           }
         }
 
