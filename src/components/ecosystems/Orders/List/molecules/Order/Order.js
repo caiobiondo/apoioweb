@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormButton } from 'natura-ui';
+// import { FormButton } from 'natura-ui';
 import { FormattedMessage } from 'react-intl';
 
 import { Header, Body, Status, Label } from './Order.styles';
@@ -34,26 +34,26 @@ const colorByStatusType = statusType => {
       return CustomCard.WARNING;
   }
 };
-
-const renderButtonMessage = importing => {
-  if (importing) {
-    return (
-      <Label>
-        <FormattedMessage id="orderImport" />
-      </Label>
-    );
-  }
-
-  return (
-    <Label>
-      <FormattedMessage id="orderDetails" />
-    </Label>
-  );
-};
+// Hiding Order detail's button
+// const renderButtonMessage = importing => {
+//   if (importing) {
+//     return (
+//       <Label>
+//         <FormattedMessage id="orderImport" />
+//       </Label>
+//     );
+//   }
+//
+//   return (
+//     <Label>
+//       <FormattedMessage id="orderDetails" />
+//     </Label>
+//   );
+// };
 
 const Order = ({ statusType, left, middle, right, importing }) => {
   const color = colorByStatusType(statusType);
-  const buttonMessage = renderButtonMessage(importing);
+  // const buttonMessage = renderButtonMessage(importing);
 
   return (
     <CustomCard color={color}>
@@ -74,15 +74,17 @@ const Order = ({ statusType, left, middle, right, importing }) => {
           </Status>
         )}
 
-        <FormButton
-          label={buttonMessage}
-          backgroundColor="#fff"
-          labelColor="#000"
-          raised="true"
-          onClick={() => {
-            window.open(right.details, '_blank');
-          }}
-        />
+        {/*
+          <FormButton
+            label={buttonMessage}
+            backgroundColor="#fff"
+            labelColor="#000"
+            raised="true"
+            onClick={() => {
+              window.open(right.details, '_blank');
+            }}
+          />
+        */}
       </CustomCard.Section>
     </CustomCard>
   );
