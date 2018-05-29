@@ -514,6 +514,7 @@ export class CourseStartView extends Component {
         src={courseUrl}
         allow="autoplay"
         height={600}
+        frameborder="0"
       />
     );
   };
