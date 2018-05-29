@@ -99,24 +99,6 @@ exports[`Order should render an order card 1`] = `
         status
       </CustomCardText>
     </Orderstyles__Status>
-    <FormButton
-      backgroundColor="#fff"
-      disabled={false}
-      height="44px"
-      label={
-        <Orderstyles__Label>
-          <FormattedMessage
-            id="orderDetails"
-            values={Object {}}
-          />
-        </Orderstyles__Label>
-      }
-      labelColor="#000"
-      link={null}
-      onClick={[Function]}
-      primary={false}
-      raised="true"
-    />
   </CardSection>
 </CustomCard>
 `;
@@ -186,24 +168,6 @@ exports[`Order should render an order card without some field 1`] = `
         status
       </CustomCardText>
     </Orderstyles__Status>
-    <FormButton
-      backgroundColor="#fff"
-      disabled={false}
-      height="44px"
-      label={
-        <Orderstyles__Label>
-          <FormattedMessage
-            id="orderDetails"
-            values={Object {}}
-          />
-        </Orderstyles__Label>
-      }
-      labelColor="#000"
-      link={null}
-      onClick={[Function]}
-      primary={false}
-      raised="true"
-    />
   </CardSection>
 </CustomCard>
 `;
@@ -299,25 +263,6 @@ exports[`Order should render an order card without status 1`] = `
   <CardSection
     alignItems="center"
     justifyContent="center"
-  >
-    <FormButton
-      backgroundColor="#fff"
-      disabled={false}
-      height="44px"
-      label={
-        <Orderstyles__Label>
-          <FormattedMessage
-            id="orderDetails"
-            values={Object {}}
-          />
-        </Orderstyles__Label>
-      }
-      labelColor="#000"
-      link={null}
-      onClick={[Function]}
-      primary={false}
-      raised="true"
-    />
-  </CardSection>
+  />
 </CustomCard>
 `;
