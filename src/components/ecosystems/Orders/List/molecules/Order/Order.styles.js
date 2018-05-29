@@ -49,7 +49,6 @@ export const Status = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
-  padding-bottom: 30px;
 `;
 
 export const Label = styled.label`
