@@ -177,7 +177,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/person/:id/careerPlan"
+                  path={`${ROUTE_PREFIX}/person/:id/careerPlan`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/CareerPlan'),
                     'careerPlan',
