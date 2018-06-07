@@ -91,7 +91,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         right={
           Object {
-            "details": "https://pedidoshml3.natura.net/captaweb/captaweb/index.html#!view=consultaPedidos",
+            "details": undefined,
             "status": "CONCLUÍDO E APROVADO",
           }
         }
@@ -123,7 +123,7 @@ exports[`OrdersList should render an order list 1`] = `
         }
         right={
           Object {
-            "details": "https://pedidoshml3.natura.net/captaweb/captaweb/index.html#!view=consultaPedidos",
+            "details": undefined,
             "status": "CONCLUÍDO E APROVADO",
           }
         }

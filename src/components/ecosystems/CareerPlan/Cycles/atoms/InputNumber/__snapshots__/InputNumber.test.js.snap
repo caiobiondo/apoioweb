@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputNumber should render with the correctly props 1`] = `
+<NumberFormat
+  allowNegative={false}
+  decimalSeparator=","
+  disabled={false}
+  displayType="input"
+  fixedDecimalScale={false}
+  getInputRef={[Function]}
+  isAllowed={[Function]}
+  isNumericString={true}
+  max={999999}
+  name="test"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseUp={[Function]}
+  onValueChange={[Function]}
+  placeholder=""
+  prefix=""
+  required={false}
+  suffix=""
+  thousandSeparator="."
+  type="tel"
+  value={0}
+/>
+`;
