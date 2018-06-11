@@ -10,6 +10,7 @@ export default {
     rating: 'Conceito',
     information: 'Informações',
     saveInfo: 'Salvar informações',
+    careerPlanTitle: 'Plano de Carreira',
     careerPlanCleanSimulation: 'Limpar simulação.',
     careerPlanCleanSimulationContent:
       'Tem certeza que deseja limpar a sua simulação do indicador {indicatorTitle} no ciclo {cycle}?',

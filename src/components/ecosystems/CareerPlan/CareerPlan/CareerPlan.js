@@ -264,10 +264,6 @@ export class CareerPlan extends Component {
           <CareerPlanTitle>
             <FormattedMessage id="careerPlanTitle" />
           </CareerPlanTitle>
-
-          <CareerPlanDescription>
-            <FormattedMessage id="careerPlanDescription" />
-          </CareerPlanDescription>
         </CareerPlanTitleWrapper>
 
         <CycleMenu
