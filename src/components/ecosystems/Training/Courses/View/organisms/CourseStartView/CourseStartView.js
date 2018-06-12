@@ -150,6 +150,43 @@ export class CourseStartView extends Component {
 
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
+          if (
+            response.data.updateCourse.message &&
+            response.data.updateCourse.message === 'Este curso ja está finalizado.'
+          ) {
+            if (action === 'initialized') {
+              gtmPushDataLayerEvent({
+                event: events.RESTART_TRAINING,
+                category: categories.TRAINING,
+                action: actions.RESTART,
+                treinamento: {
+                  name: course.title,
+                  id: course.id,
+                  type: course.type,
+                  startTime: new Date().getTime(),
+                  endTime: undefined,
+                  rating: undefined,
+                },
+              });
+            }
+
+            if (action === 'terminated') {
+              gtmPushDataLayerEvent({
+                event: events.REFINISH_TRAINING,
+                category: categories.TRAINING,
+                action: actions.REFINISH,
+                treinamento: {
+                  name: course.title,
+                  id: course.id,
+                  type: course.type,
+                  startTime: undefined,
+                  endTime: new Date().getTime(),
+                  rating: undefined,
+                },
+              });
+            }
+          }
+
           if (action === 'initialized') {
             if (course.type === 'WEB') {
               this.openWebCourse();
