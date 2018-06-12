@@ -22,7 +22,7 @@ brew install dnsmasq # For Mac
 #### Configuring dnsmasq
 
 Just create a file called /etc/dnsmasq.d/docker_dns.conf with the following
-content
+content:
 
     address=/dev/127.0.0.1
 
