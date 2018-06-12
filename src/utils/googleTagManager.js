@@ -10,6 +10,8 @@ export const events = {
   DOWNLOAD_MAGAZINE: 'ev-baixar-revista',
   START_TRAINING: 'ev-iniciar-treinamento',
   FINISH_TRAINING: 'ev-concluir-treinamento',
+  RESTART_TRAINING: 'ev-reiniciar-treinamento',
+  REFINISH_TRAINING: 'ev-reconcluir-treinamento',
   TRAINING_EVALUATION: 'ev-avaliar-treinamento',
 };
 
@@ -31,6 +33,8 @@ export const actions = {
   DOWNLOAD: 'Baixar',
   START: 'Iniciar',
   FINISH: 'Concluir',
+  RESTART: 'Reiniciar',
+  REFINISH: 'Reconcluir',
   EVALUATION: 'Avaliar',
 };
 
