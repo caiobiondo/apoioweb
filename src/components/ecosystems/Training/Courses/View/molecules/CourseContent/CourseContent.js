@@ -21,8 +21,6 @@ export class CourseContent extends Component {
   state = {
     course: {},
     ended: false,
-    initialized: 0,
-    terminated: 0,
   };
 
   componentDidMount() {
@@ -43,7 +41,6 @@ export class CourseContent extends Component {
             {
               course: { ...this.state.course, status: 'finished', stoppedAt: 1 },
               mutationStatus: 'terminated',
-              terminated: this.state.terminated + 1,
             },
             this.defineVideoCourseStatus,
           );
@@ -54,7 +51,6 @@ export class CourseContent extends Component {
             {
               course: { ...this.state.course, status: 'started' },
               mutationStatus: 'initialized',
-              initialized: this.state.initialized + 1,
             },
             this.defineVideoCourseStatus,
           );
@@ -83,8 +79,6 @@ export class CourseContent extends Component {
   }
 
   defineVideoCourseStatus = () => {
-    if (this.state[this.state.mutationStatus] > 0) return;
-
     this.mutateVideoCourseStatus(this.state.mutationStatus);
   };
 
@@ -112,42 +106,6 @@ export class CourseContent extends Component {
           // handle not updated
           // Not handling when initialized
           // (initializing after a course was terminated [rewatching] will set updateCourse.status to be false)
-          if (
-            response.data.updateCourse.message &&
-            response.data.updateCourse.message === 'Este curso ja está finalizado.'
-          ) {
-            if (action === 'initialized') {
-              gtmPushDataLayerEvent({
-                event: events.RESTART_TRAINING,
-                category: categories.TRAINING,
-                action: actions.RESTART,
-                treinamento: {
-                  name: course.title,
-                  id: course.id,
-                  type: course.type,
-                  startTime: new Date().getTime(),
-                  endTime: undefined,
-                  rating: undefined,
-                },
-              });
-            }
-
-            if (action === 'terminated') {
-              gtmPushDataLayerEvent({
-                event: events.REFINISH_TRAINING,
-                category: categories.TRAINING,
-                action: actions.REFINISH,
-                treinamento: {
-                  name: course.title,
-                  id: course.id,
-                  type: course.type,
-                  startTime: undefined,
-                  endTime: new Date().getTime(),
-                  rating: undefined,
-                },
-              });
-            }
-          }
           if (action !== 'terminated') {
             return;
           }
