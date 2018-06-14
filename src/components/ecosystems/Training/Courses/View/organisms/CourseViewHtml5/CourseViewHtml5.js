@@ -44,6 +44,8 @@ export class CourseViewHtml5 extends Component {
     feedbackModalTitle: '',
     showEvaluation: false,
     course: {},
+    initialized: false,
+    terminated: false,
   };
 
   componentDidMount() {
@@ -130,6 +132,8 @@ export class CourseViewHtml5 extends Component {
   handleTrainingClick = action => event => {
     const { course } = this.props;
 
+    if (this.state[action]) return;
+
     this.props
       .mutate({
         variables: {
@@ -143,6 +147,8 @@ export class CourseViewHtml5 extends Component {
           // handle error
           return;
         }
+
+        this.setState({ [action]: true });
 
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
