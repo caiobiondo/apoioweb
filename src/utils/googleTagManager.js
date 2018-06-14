@@ -1,4 +1,5 @@
 export const events = {
+  PAGE_VIEW: 'virtualPageview',
   NEW_CUSTOMER: 'ev-novo-cliente',
   EDIT_CUSTOMER: 'ev-editar-cliente',
   SEARCH_CUSTOMER: 'ev-buscar-cliente',
