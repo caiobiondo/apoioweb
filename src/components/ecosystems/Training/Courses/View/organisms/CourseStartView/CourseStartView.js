@@ -52,6 +52,8 @@ export class CourseStartView extends Component {
     showEvaluation: false,
     showStaticCourse: false,
     course: {},
+    initialized: false,
+    terminated: false,
   };
 
   componentDidMount() {
@@ -127,9 +129,10 @@ export class CourseStartView extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
-    const { formatMessage } = this.props.intl;
     const cycles = this.props.user.estrutura.ciclo;
     const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+
+    if (this.state[action]) return;
 
     this.props
       .mutate({
@@ -144,9 +147,11 @@ export class CourseStartView extends Component {
       .then(response => {
         if (response.error) {
           // handle error
-          this.handleFeedbackMessage(formatMessage('TrainingUpdateError'));
+          this.handleFeedbackMessage(translate('trainingUpdateError'));
           return;
         }
+
+        this.setState({ [action]: true });
 
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
