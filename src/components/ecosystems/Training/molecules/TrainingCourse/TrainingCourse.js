@@ -24,6 +24,7 @@ import { translate } from 'locale';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import { ROUTE_PREFIX } from 'config';
+import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 
 export class TrainingCourse extends Component {
   renderCourseIcon = course => {
@@ -60,6 +61,16 @@ export class TrainingCourse extends Component {
     let url = `${course.id}/web`;
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
+
+    gtmPushDataLayerEvent({
+      event: events.PAGE_VIEW,
+      page: {
+        previousUrl: window.location.pathname,
+        url: `${ROUTE_PREFIX}/training/courses/${url}`,
+        title: document.title,
+      },
+    });
+
     this.props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
   };
 
