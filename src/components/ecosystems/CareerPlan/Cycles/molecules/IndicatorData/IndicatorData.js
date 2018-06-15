@@ -72,7 +72,7 @@ export class IndicatorData extends Component {
 
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>
-            <PercentageFormat value={value} isPercentage />
+            <PercentageFormat value={value} />
           </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>

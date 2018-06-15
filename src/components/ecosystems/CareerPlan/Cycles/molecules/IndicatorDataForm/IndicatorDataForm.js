@@ -213,7 +213,7 @@ export class IndicatorDataForm extends Component {
 
         <IndicatorDataRowAcc>
           <IndicatorDataValue>
-            {Boolean(value) && <PercentageFormat value={value} isPercentage />}
+            {Boolean(value) && <PercentageFormat value={value} />}
             {!value && '-'}
           </IndicatorDataValue>
         </IndicatorDataRowAcc>

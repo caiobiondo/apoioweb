@@ -56,7 +56,7 @@ export class IndicatorData extends Component {
       <div>
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>
-            <PercentageFormat value={value} isPercentage />
+            <PercentageFormat value={value} />
           </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
@@ -74,7 +74,7 @@ export class IndicatorData extends Component {
       <div>
         <IndicatorDataRowFeatured>
           <IndicatorDataValue>
-            <PercentageFormat value={value} isPercentage />
+            <PercentageFormat value={value} />
           </IndicatorDataValue>
         </IndicatorDataRowFeatured>
         <IndicatorDataRow>
