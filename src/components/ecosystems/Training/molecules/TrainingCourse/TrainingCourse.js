@@ -24,7 +24,7 @@ import { translate } from 'locale';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import { ROUTE_PREFIX } from 'config';
-import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
+import { gtmPushDataLayerEvent, events } from 'utils/googleTagManager';
 
 export class TrainingCourse extends Component {
   renderCourseIcon = course => {
