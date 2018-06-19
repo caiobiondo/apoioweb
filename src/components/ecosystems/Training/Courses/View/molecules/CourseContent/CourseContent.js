@@ -38,7 +38,7 @@ export class CourseContent extends Component {
       });
     }
 
-    if (!course.courseContent.videoEmbed) {
+    if (!course.courseContent.videoEmbedUrl) {
       return;
     }
 
@@ -252,7 +252,7 @@ export class CourseContent extends Component {
 
     return (
       <ContentWrapper>
-        {!course.courseContent.videoEmbed && (
+        {!course.courseContent.videoEmbedUrl && (
           <TrainingCourseThumbnail imageUrl={course.thumbnail}>
             <TrainingCourseThumbnailDescriptionWrapper>
               <IconWrapper>
@@ -262,11 +262,19 @@ export class CourseContent extends Component {
             </TrainingCourseThumbnailDescriptionWrapper>
           </TrainingCourseThumbnail>
         )}
-        {!!course.courseContent.videoEmbed && (
-          <PlayerWrapper
-            ref="player"
-            dangerouslySetInnerHTML={{ __html: course.courseContent.videoEmbed }}
-          />
+        {!!course.courseContent.videoEmbedUrl && (
+          <PlayerWrapper id="player">
+            <iframe
+              src={course.courseContent.videoEmbedUrl}
+              width="480"
+              height="270"
+              title={course.title}
+              frameBorder="0"
+              allowFullScreen="true"
+              webkitallowfullscreen="true"
+              mozallowfullscreen="true"
+            />
+          </PlayerWrapper>
         )}
         {this.canRenderEvaluation() && (
           <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
