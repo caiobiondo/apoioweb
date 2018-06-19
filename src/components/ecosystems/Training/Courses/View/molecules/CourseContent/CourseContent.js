@@ -23,11 +23,20 @@ export class CourseContent extends Component {
     ended: false,
     initialized: 0,
     terminated: 0,
+    initialCourse: {},
   };
 
   componentDidMount() {
     const { course } = this.props;
-    if (course) this.setState({ course });
+    if (course) {
+      this.setState({
+        course,
+        initialCourse: {
+          ...course,
+          stoppedAt: course.stoppedAt,
+        },
+      });
+    }
 
     if (!course.courseContent.videoEmbedUrl) {
       return;
@@ -35,43 +44,14 @@ export class CourseContent extends Component {
 
     const player = new Player(document.querySelector('iframe'));
 
-    const startTime = course.stoppedAt || 1;
-    player.setCurrentTime(startTime).then(() => {
+    if (!course.stoppedAt) {
+      this.playerEventListeners(player);
+      return;
+    }
+
+    player.setCurrentTime(course.stoppedAt).then(() => {
       player.pause().then(() => {
-        player.on('ended', () => {
-          this.setState(
-            {
-              course: { ...this.state.course, status: 'finished', stoppedAt: 1 },
-              mutationStatus: 'terminated',
-              terminated: this.state.terminated + 1,
-            },
-            this.defineVideoCourseStatus,
-          );
-        });
-
-        player.on('play', () => {
-          this.setState(
-            {
-              course: { ...this.state.course, status: 'started' },
-              mutationStatus: 'initialized',
-              initialized: this.state.initialized + 1,
-            },
-            this.defineVideoCourseStatus,
-          );
-        });
-
-        player.on('pause', ({ seconds }) => {
-          this.setState(
-            {
-              course: {
-                ...this.state.course,
-                stoppedAt: Math.round(seconds),
-              },
-              mutationStatus: 'paused',
-            },
-            this.defineVideoCourseStatus,
-          );
-        });
+        this.playerEventListeners(player);
       });
     });
   }
@@ -81,6 +61,58 @@ export class CourseContent extends Component {
       this.setState({ course });
     }
   }
+
+  playerEventListeners = player => {
+    if (!player) return;
+
+    player.on('ended', () => {
+      if (this.state.initialCourse.status === 'finished') {
+        this.setState(
+          {
+            course: {
+              ...this.state.course,
+              stoppedAt: 0,
+            },
+            mutationStatus: 'paused',
+          },
+          this.defineVideoCourseStatus,
+        );
+      }
+
+      this.setState(
+        {
+          course: { ...this.state.course, status: 'finished', stoppedAt: 0 },
+          mutationStatus: 'terminated',
+          terminated: this.state.terminated + 1,
+        },
+        this.defineVideoCourseStatus,
+      );
+    });
+
+    player.on('play', () => {
+      this.setState(
+        {
+          course: { ...this.state.course, status: 'started' },
+          mutationStatus: 'initialized',
+          initialized: this.state.initialized + 1,
+        },
+        this.defineVideoCourseStatus,
+      );
+    });
+
+    player.on('pause', ({ seconds }) => {
+      this.setState(
+        {
+          course: {
+            ...this.state.course,
+            stoppedAt: Math.round(seconds),
+          },
+          mutationStatus: 'paused',
+        },
+        this.defineVideoCourseStatus,
+      );
+    });
+  };
 
   defineVideoCourseStatus = () => {
     if (this.state[this.state.mutationStatus] > 1) return;
@@ -116,7 +148,7 @@ export class CourseContent extends Component {
             response.data.updateCourse.message &&
             response.data.updateCourse.message === 'Este curso ja está finalizado.'
           ) {
-            if (action === 'initialized') {
+            if (action === 'initialized' && !this.state.initialCourse.stoppedAt) {
               gtmPushDataLayerEvent({
                 event: events.RESTART_TRAINING,
                 category: categories.TRAINING,
