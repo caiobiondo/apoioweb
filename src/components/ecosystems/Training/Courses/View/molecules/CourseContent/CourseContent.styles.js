@@ -94,6 +94,7 @@ export const PlayerWrapper = styled.div`
   height: 0;
   width: 100%;
   overflow: hidden;
+  border-radius: 4px;
 
   iframe, object, embed {
     position: absolute;
@@ -101,7 +102,6 @@ export const PlayerWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 4px;
   }
 }
 `;
