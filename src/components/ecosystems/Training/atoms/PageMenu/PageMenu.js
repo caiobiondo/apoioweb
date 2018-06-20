@@ -3,6 +3,7 @@ import { Wrapper, LinkWrapper, Link, ActiveLink } from './PageMenu.styles';
 import { NavLink } from 'react-router-dom';
 import { translate } from 'locale';
 import { ROUTE_PREFIX } from 'config';
+import { gtmPushDataLayerEvent, events } from 'utils/googleTagManager';
 
 const menu = [
   { link: `${ROUTE_PREFIX}/training/courses`, label: translate('courses') },
@@ -12,12 +13,31 @@ const menu = [
 ];
 
 class PageMenu extends Component {
+  triggerGtmEvent = link => {
+    gtmPushDataLayerEvent({
+      event: events.PAGE_VIEW,
+      page: {
+        previousUrl: window.location.pathname,
+        url: link,
+        title: document.title,
+      },
+    });
+  };
+
   render() {
     return (
       <Wrapper>
         {menu.map((item, key) => (
           <LinkWrapper key={item.link || key}>
-            <NavLink to={item.link} exact={item.exact} style={Link} activeStyle={ActiveLink}>
+            <NavLink
+              to={item.link}
+              exact={item.exact}
+              style={Link}
+              activeStyle={ActiveLink}
+              onClick={() => {
+                this.triggerGtmEvent(item.link);
+              }}
+            >
               {item.label}
             </NavLink>
           </LinkWrapper>
