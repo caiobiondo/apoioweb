@@ -44,7 +44,7 @@ export class CourseContent extends Component {
 
     const player = new Player(document.querySelector('iframe'));
 
-    if (!course.stoppedAt) {
+    if (course.stoppedAt <= 1) {
       this.playerEventListeners(player);
       return;
     }
@@ -148,7 +148,7 @@ export class CourseContent extends Component {
             response.data.updateCourse.message &&
             response.data.updateCourse.message === 'Este curso ja está finalizado.'
           ) {
-            if (action === 'initialized' && !this.state.initialCourse.stoppedAt) {
+            if (action === 'initialized' && this.state.initialCourse.stoppedAt <= 1) {
               gtmPushDataLayerEvent({
                 event: events.RESTART_TRAINING,
                 category: categories.TRAINING,
@@ -184,7 +184,7 @@ export class CourseContent extends Component {
           return;
         }
 
-        if (action === 'initialized') {
+        if (action === 'initialized' && this.state.initialCourse.status === 'pending') {
           gtmPushDataLayerEvent({
             event: events.START_TRAINING,
             category: categories.TRAINING,
