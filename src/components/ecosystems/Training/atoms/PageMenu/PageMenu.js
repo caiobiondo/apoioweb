@@ -14,6 +14,8 @@ const menu = [
 
 class PageMenu extends Component {
   triggerGtmEvent = link => {
+    if (window.location.pathname === link) return;
+
     gtmPushDataLayerEvent({
       event: events.PAGE_VIEW,
       page: {
