@@ -190,7 +190,7 @@ describe('CourseContent', () => {
 
   describe('when finishing watching a video', () => {
     describe('when there are related courses', () => {
-      fit('does not show finished related courses', () => {
+      it('does not show finished related courses', () => {
         // given
         const unfinishedRelatedCourse = {
           id: 3,
