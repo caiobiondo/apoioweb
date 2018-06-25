@@ -18,8 +18,13 @@ export const TrainingCourseThumbnail = styled.div`
   background-image: url(${props => (props.imageUrl ? props.imageUrl : '')});
   background-repeat: no-repeat;
   background-size: cover;
-  height: 560px;
   border-radius: 4px;
+
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
 
   &:before {
     position: absolute;
@@ -32,12 +37,18 @@ export const TrainingCourseThumbnail = styled.div`
     z-index: 1;
     border-radius: 4px;
   }
+`;
 
-  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
-    height: 250px;
-  }
+export const TrainingNextCourseThumbnail = TrainingCourseThumbnail.extend`
+  z-index: ${props => (props.showNext ? 2 : 0)};
+  opacity: ${props => (props.showNext ? '1' : '0')};
+  transition: opacity 600ms, z-index 600ms;
 `;
 /* eslint-enable no-confusing-arrow */
+
+export const TrainingNextCourseDescription = styled.div`
+  cursor: pointer;
+`;
 
 export const TrainingCourseThumbnailDescriptionWrapper = styled.div`
   position: absolute;
@@ -61,17 +72,22 @@ export const TrainingCourseTitle = styled.div`
   font-weight: ${fw700};
   position: relative;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   flex: 0 1 auto;
   color: ${gray150};
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     font-size: ${fs20};
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0px;
+    }
   }
 `;
 
 export const IconWrapper = styled.div`
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   display: inline-block;
 
   svg {
@@ -87,6 +103,30 @@ export const IconWrapper = styled.div`
     }
   }
 `;
+
+export const TrainingNextCourseIconWrapper = IconWrapper.extend`
+  text-align: center;
+  display: block;
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    display: none;
+  }
+`;
+
+/* eslint-disable no-confusing-arrow */
+export const CloseIconWrapper = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: ${props => (props.showNext ? 2 : 0)};
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    fill: ${gray150};
+  }
+`;
+/* eslint-enable no-confusing-arrow */
 
 export const PlayerWrapper = styled.div`
   position: relative;

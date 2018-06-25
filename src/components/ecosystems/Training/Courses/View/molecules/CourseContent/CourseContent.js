@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   ContentWrapper,
+  TrainingNextCourseThumbnail,
+  TrainingNextCourseIconWrapper,
+  TrainingNextCourseDescription,
   TrainingCourseThumbnail,
   TrainingCourseThumbnailDescriptionWrapper,
   TrainingCourseTitle,
   IconWrapper,
+  CloseIconWrapper,
   PlayerWrapper,
 } from './CourseContent.styles';
 import CourseEvaluation from '../CourseEvaluation/CourseEvaluation';
@@ -16,14 +20,25 @@ import Player from '@vimeo/player';
 import { translate } from 'locale';
 import gql from 'graphql-tag';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
+import { ROUTE_PREFIX } from 'config';
+import { withRouter } from 'react-router-dom';
 
 export class CourseContent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.playerRef = null;
+    this.setPlayerRef = element => {
+      this.playerRef = element;
+    };
+  }
   state = {
     course: {},
     ended: false,
     initialized: 0,
     terminated: 0,
     initialCourse: {},
+    showNext: false,
   };
 
   componentDidMount() {
@@ -38,11 +53,11 @@ export class CourseContent extends Component {
       });
     }
 
-    if (!course.courseContent.videoEmbedUrl) {
+    if (!course.courseContent.videoEmbedUrl || !this.playerRef) {
       return;
     }
 
-    const player = new Player(document.querySelector('iframe'));
+    const player = new Player(this.playerRef);
 
     if (course.stoppedAt <= 1) {
       this.playerEventListeners(player);
@@ -84,6 +99,7 @@ export class CourseContent extends Component {
           course: { ...this.state.course, status: 'finished', stoppedAt: 0 },
           mutationStatus: 'terminated',
           terminated: this.state.terminated + 1,
+          showNext: true,
         },
         this.defineVideoCourseStatus,
       );
@@ -245,10 +261,36 @@ export class CourseContent extends Component {
     });
   };
 
+  linkToNextCourse = course => event => {
+    let url = `${course.id}/web`;
+    if (course.type === 'VIDEO') url = `${course.id}/video`;
+    if (course.type === 'HTML5') url = `${course.id}/html5`;
+
+    gtmPushDataLayerEvent({
+      event: events.PAGE_VIEW,
+      page: {
+        previousUrl: window.location.pathname,
+        url: `${ROUTE_PREFIX}/training/courses/${url}`,
+        title: document.title,
+      },
+    });
+
+    this.props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
+  };
+
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
+
+  getNextCourse = relatedCourses => {
+    if (!relatedCourses || relatedCourses.length === 0) return null;
+
+    return relatedCourses.find(currentCourse => {
+      return currentCourse.status !== 'finished';
+    });
+  };
 
   render() {
     const { course } = this.props;
+    const nextCourse = this.getNextCourse(course.relatedCourses);
 
     return (
       <ContentWrapper>
@@ -263,8 +305,35 @@ export class CourseContent extends Component {
           </TrainingCourseThumbnail>
         )}
         {!!course.courseContent.videoEmbedUrl && (
-          <PlayerWrapper id="player">
+          <PlayerWrapper>
+            {nextCourse && (
+              <TrainingNextCourseThumbnail
+                imageUrl={nextCourse.thumbnail}
+                showNext={this.state.showNext}
+              >
+                <TrainingCourseThumbnailDescriptionWrapper
+                  onClick={this.linkToNextCourse(nextCourse)}
+                >
+                  <TrainingNextCourseDescription>
+                    <TrainingCourseTitle>{translate('trainingNextVideo')}</TrainingCourseTitle>
+                    <TrainingNextCourseIconWrapper>
+                      <Icon file="ico_play_circle" />
+                    </TrainingNextCourseIconWrapper>
+                    <TrainingCourseTitle>{nextCourse.title}</TrainingCourseTitle>
+                  </TrainingNextCourseDescription>
+                </TrainingCourseThumbnailDescriptionWrapper>
+                <CloseIconWrapper
+                  showNext={this.state.showNext}
+                  onClick={() => {
+                    this.setState({ showNext: false });
+                  }}
+                >
+                  <Icon file="ico_times" />
+                </CloseIconWrapper>
+              </TrainingNextCourseThumbnail>
+            )}
             <iframe
+              ref={this.setPlayerRef}
               src={course.courseContent.videoEmbedUrl}
               width="480"
               height="270"
@@ -292,5 +361,6 @@ CourseContent.propTypes = {
 };
 
 export const CourseContentWithApollo = withApollo(CourseContent);
+export const CourseContentWithRouter = withRouter(CourseContentWithApollo);
 
-export default graphql(TrainingCourseUpdateMutation)(CourseContentWithApollo);
+export default graphql(TrainingCourseUpdateMutation)(CourseContentWithRouter);
