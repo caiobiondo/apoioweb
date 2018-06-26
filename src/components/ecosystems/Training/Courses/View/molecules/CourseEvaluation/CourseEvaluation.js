@@ -78,6 +78,7 @@ export class CourseEvaluation extends Component {
   handleClose = () => {
     if (this.isLastEvaluation()) {
       this.setState({ modalOpened: false });
+      this.props.onFinish();
       this.props
         .mutate({
           variables: {

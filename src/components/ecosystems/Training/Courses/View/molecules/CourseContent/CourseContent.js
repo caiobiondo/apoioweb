@@ -5,9 +5,11 @@ import {
   TrainingNextCourseThumbnail,
   TrainingNextCourseIconWrapper,
   TrainingNextCourseDescription,
+  TrainingNextCourseTimer,
   TrainingCourseThumbnail,
   TrainingCourseThumbnailDescriptionWrapper,
   TrainingCourseTitle,
+  TrainingNextCourseSubtitle,
   IconWrapper,
   CloseIconWrapper,
   PlayerWrapper,
@@ -22,6 +24,7 @@ import gql from 'graphql-tag';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
 import { ROUTE_PREFIX } from 'config';
 import { withRouter } from 'react-router-dom';
+import Timer from 'components/ecosystems/Training/Courses/View/molecules/Timer/Timer';
 
 export class CourseContent extends Component {
   constructor(props) {
@@ -39,6 +42,7 @@ export class CourseContent extends Component {
     terminated: 0,
     initialCourse: {},
     showNext: false,
+    startTimer: false,
   };
 
   componentDidMount() {
@@ -101,7 +105,10 @@ export class CourseContent extends Component {
           terminated: this.state.terminated + 1,
           showNext: true,
         },
-        this.defineVideoCourseStatus,
+        () => {
+          this.defineVideoCourseStatus();
+          this.startTimerFunction();
+        },
       );
     });
 
@@ -288,6 +295,12 @@ export class CourseContent extends Component {
     });
   };
 
+  startTimerFunction = () => {
+    if (this.props.course.ratedByYou !== 'true') return;
+
+    this.setState({ startTimer: true });
+  };
+
   render() {
     const { course } = this.props;
     const nextCourse = this.getNextCourse(course.relatedCourses);
@@ -315,21 +328,27 @@ export class CourseContent extends Component {
                   onClick={this.linkToNextCourse(nextCourse)}
                 >
                   <TrainingNextCourseDescription>
-                    <TrainingCourseTitle>{translate('trainingNextVideo')}</TrainingCourseTitle>
+                    <TrainingNextCourseSubtitle>
+                      {translate('trainingNextVideo')}
+                      <Timer
+                        seconds={10}
+                        start={this.state.startTimer}
+                        onFinish={this.linkToNextCourse(nextCourse)}
+                      />
+                    </TrainingNextCourseSubtitle>
+                    <TrainingCourseTitle>{nextCourse.title}</TrainingCourseTitle>
                     <TrainingNextCourseIconWrapper>
                       <Icon file="ico_play_circle" />
                     </TrainingNextCourseIconWrapper>
-                    <TrainingCourseTitle>{nextCourse.title}</TrainingCourseTitle>
                   </TrainingNextCourseDescription>
+                  <TrainingNextCourseSubtitle
+                    onClick={() => {
+                      this.setState({ showNext: false, startTimer: false });
+                    }}
+                  >
+                    {'Cancelar'}
+                  </TrainingNextCourseSubtitle>
                 </TrainingCourseThumbnailDescriptionWrapper>
-                <CloseIconWrapper
-                  showNext={this.state.showNext}
-                  onClick={() => {
-                    this.setState({ showNext: false });
-                  }}
-                >
-                  <Icon file="ico_times" />
-                </CloseIconWrapper>
               </TrainingNextCourseThumbnail>
             )}
             <iframe
@@ -346,7 +365,11 @@ export class CourseContent extends Component {
           </PlayerWrapper>
         )}
         {this.canRenderEvaluation() && (
-          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
+          <CourseEvaluation
+            course={course}
+            sellerId={this.props.user.codigo}
+            onFinish={this.startTimerFunction}
+          />
         )}
       </ContentWrapper>
     );
