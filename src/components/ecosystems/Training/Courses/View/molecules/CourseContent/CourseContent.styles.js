@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getTheme, Responsive } from '@entria/components';
 import { gray100, gray150, white } from 'styles/colors';
-import { fs20, fs26, fw700, NaturaBold } from 'styles/typography';
+import { fs15, fs20, fs26, fw700, NaturaBold } from 'styles/typography';
 
 export const ContentWrapper = styled.div`
   margin-bottom: 25px;
@@ -50,6 +50,11 @@ export const TrainingNextCourseDescription = styled.div`
   cursor: pointer;
 `;
 
+export const TrainingNextCourseTimer = styled.div`
+  display: inline-block;
+  margin-left: 10px;
+`;
+
 export const TrainingCourseThumbnailDescriptionWrapper = styled.div`
   position: absolute;
   content: '';
@@ -83,6 +88,15 @@ export const TrainingCourseTitle = styled.div`
     &:last-of-type {
       margin-bottom: 0px;
     }
+  }
+`;
+
+export const TrainingNextCourseSubtitle = TrainingCourseTitle.extend`
+  font-size: 18px;
+  cursor: pointer;
+
+  @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
+    font-size: ${fs15};
   }
 `;
 
