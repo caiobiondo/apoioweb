@@ -5,13 +5,11 @@ import {
   TrainingNextCourseThumbnail,
   TrainingNextCourseIconWrapper,
   TrainingNextCourseDescription,
-  TrainingNextCourseTimer,
   TrainingCourseThumbnail,
   TrainingCourseThumbnailDescriptionWrapper,
   TrainingCourseTitle,
   TrainingNextCourseSubtitle,
   IconWrapper,
-  CloseIconWrapper,
   PlayerWrapper,
 } from './CourseContent.styles';
 import CourseEvaluation from '../CourseEvaluation/CourseEvaluation';
@@ -104,6 +102,7 @@ export class CourseContent extends Component {
           mutationStatus: 'terminated',
           terminated: this.state.terminated + 1,
           showNext: true,
+          ended: true,
         },
         () => {
           this.defineVideoCourseStatus();
@@ -324,12 +323,10 @@ export class CourseContent extends Component {
                 imageUrl={nextCourse.thumbnail}
                 showNext={this.state.showNext}
               >
-                <TrainingCourseThumbnailDescriptionWrapper
-                  onClick={this.linkToNextCourse(nextCourse)}
-                >
-                  <TrainingNextCourseDescription>
+                <TrainingCourseThumbnailDescriptionWrapper>
+                  <TrainingNextCourseDescription onClick={this.linkToNextCourse(nextCourse)}>
                     <TrainingNextCourseSubtitle>
-                      {translate('trainingNextVideo')}
+                      {translate('trainingCourseUpcomingVideo')}
                       <Timer
                         seconds={10}
                         start={this.state.startTimer}
@@ -346,7 +343,7 @@ export class CourseContent extends Component {
                       this.setState({ showNext: false, startTimer: false });
                     }}
                   >
-                    {'Cancelar'}
+                    {translate('cancel')}
                   </TrainingNextCourseSubtitle>
                 </TrainingCourseThumbnailDescriptionWrapper>
               </TrainingNextCourseThumbnail>
@@ -368,7 +365,9 @@ export class CourseContent extends Component {
           <CourseEvaluation
             course={course}
             sellerId={this.props.user.codigo}
-            onFinish={this.startTimerFunction}
+            onFinish={() => {
+              this.setState({ startTimer: true });
+            }}
           />
         )}
       </ContentWrapper>

@@ -78,7 +78,9 @@ export class CourseEvaluation extends Component {
   handleClose = () => {
     if (this.isLastEvaluation()) {
       this.setState({ modalOpened: false });
-      this.props.onFinish();
+
+      if (this.props.onFinish) this.props.onFinish();
+
       this.props
         .mutate({
           variables: {
@@ -252,6 +254,7 @@ export class CourseEvaluation extends Component {
 CourseEvaluation.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
+  onFinish: PropTypes.func,
 };
 
 export const CourseEvaluationIntl = injectIntl(CourseEvaluation);
