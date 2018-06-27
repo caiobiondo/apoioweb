@@ -127,21 +127,6 @@ export const TrainingNextCourseIconWrapper = IconWrapper.extend`
   }
 `;
 
-/* eslint-disable no-confusing-arrow */
-export const CloseIconWrapper = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: ${props => (props.showNext ? 2 : 0)};
-  cursor: pointer;
-
-  svg {
-    width: 20px;
-    fill: ${gray150};
-  }
-`;
-/* eslint-enable no-confusing-arrow */
-
 export const PlayerWrapper = styled.div`
   position: relative;
   padding-bottom: 56.25%;
