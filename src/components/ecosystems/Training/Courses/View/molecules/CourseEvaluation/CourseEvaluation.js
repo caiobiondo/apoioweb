@@ -54,6 +54,8 @@ export class CourseEvaluation extends Component {
 
   handleFeedbackClose = () => {
     this.setState({ feedbackModalOpened: false });
+
+    if (this.props.onFinish) this.props.onFinish();
   };
 
   mapUserRates = (evaluation, rate) => {
@@ -75,11 +77,11 @@ export class CourseEvaluation extends Component {
     });
   };
 
-  handleClose = () => {
+  handleClose = buttonClicked => {
+    if (!buttonClicked) return;
+
     if (this.isLastEvaluation()) {
       this.setState({ modalOpened: false });
-
-      if (this.props.onFinish) this.props.onFinish();
 
       this.props
         .mutate({
