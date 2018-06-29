@@ -34,7 +34,6 @@ export const CourseViewHtml5Query = gql`
         video
         html5
         web
-        videoEmbed
         html5Embed
       }
       dateUpload
