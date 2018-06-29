@@ -26,7 +26,7 @@ const setup = propOverrides => {
         ratedByYou: 'true',
         courseContent: {
           video: '',
-          videoEmbed: '',
+          videoEmbedUrl: '',
         },
         thumbnail: '',
         stoppedAt: 123,
@@ -167,7 +167,7 @@ describe('CourseContent', () => {
           ratedByYou: 'false',
           courseContent: {
             video: '',
-            videoEmbed: '',
+            videoEmbedUrl: '',
           },
           thumbnail: '',
         },
