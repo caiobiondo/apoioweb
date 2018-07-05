@@ -245,6 +245,10 @@ export class CourseContent extends Component {
     });
   };
 
+  getCycleNumber = cycles => {
+    return cycles.length > 0 ? cycles[0].numero : 0;
+  };
+
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
 
   render() {
@@ -277,7 +281,11 @@ export class CourseContent extends Component {
           </PlayerWrapper>
         )}
         {this.canRenderEvaluation() && (
-          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
+          <CourseEvaluation
+            course={course}
+            sellerId={this.props.user.codigo}
+            currentCycle={this.getCycleNumber(this.props.user.estrutura.ciclo)}
+          />
         )}
       </ContentWrapper>
     );

@@ -84,6 +84,7 @@ export class CourseEvaluation extends Component {
             input: { action: this.state.userRates },
             sellerId: this.props.sellerId,
             courseId: this.props.course.id,
+            currentCycle: this.props.currentCycle,
           },
         })
         .then(response => {
