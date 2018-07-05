@@ -124,13 +124,15 @@ export class CourseContent extends Component {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
     const { course } = this.state;
     const { handleFeedbackMessage } = this.props;
-
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
     this.props
       .mutate({
         variables: {
           input,
           sellerId: this.props.user.codigo,
           courseId: this.props.course.id,
+          currentCycle,
         },
       })
       .then(response => {

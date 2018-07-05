@@ -191,12 +191,16 @@ export class CourseView extends Component {
 
   handleMyListClick = () => {
     const { course } = this.props;
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
         },
       })
       .then(response => {

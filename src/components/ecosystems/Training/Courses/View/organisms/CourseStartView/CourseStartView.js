@@ -128,14 +128,12 @@ export class CourseStartView extends Component {
   };
 
   getCycleNumber = cycles => {
-    console.log(`Log: CourseStartView 131${cycles}`);
     return cycles.length > 0 ? cycles[0].numero : 0;
   };
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
     const currentCycle = this.getCycleNumber(this.props.user.estrutura.ciclo);
-    console.log(`Log: CourseStartView 138: ${currentCycle}`);
 
     if (this.state[action]) return;
 
@@ -399,12 +397,14 @@ export class CourseStartView extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
+    const currentCycle = this.getCycleNumber(this.props.user.estrutura.ciclo);
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
         },
       })
       .then(response => {
