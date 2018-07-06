@@ -62,13 +62,15 @@ export class TrainingCategoriesDetails extends Component {
 
   handleMenuItemClick = (event, child) => {
     const { formatMessage } = this.props.intl;
-
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
     this.props
       .mutate({
         variables: {
           input: { action: child.props.value },
           sellerId: this.props.user.codigo,
           courseId: child.props.course.id,
+          currentCycle,
         },
       })
       .then(response => {

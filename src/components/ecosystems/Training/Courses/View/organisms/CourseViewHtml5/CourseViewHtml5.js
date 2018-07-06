@@ -131,6 +131,8 @@ export class CourseViewHtml5 extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
 
     if (this.state[action]) return;
 
@@ -140,6 +142,7 @@ export class CourseViewHtml5 extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
         },
       })
       .then(response => {
@@ -345,12 +348,16 @@ export class CourseViewHtml5 extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
         },
       })
       .then(response => {

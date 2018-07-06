@@ -127,10 +127,13 @@ export class CourseStartView extends Component {
     });
   };
 
+  getCycleNumber = cycles => {
+    return cycles.length > 0 ? cycles[0].numero : 0;
+  };
+
   handleTrainingClick = action => event => {
     const { course } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+    const currentCycle = this.getCycleNumber(this.props.user.estrutura.ciclo);
 
     if (this.state[action]) return;
 
@@ -394,12 +397,14 @@ export class CourseStartView extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
+    const currentCycle = this.getCycleNumber(this.props.user.estrutura.ciclo);
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          currentCycle,
         },
       })
       .then(response => {
@@ -620,7 +625,11 @@ export class CourseStartView extends Component {
         <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
         {this.canEvaluate() && (
-          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
+          <CourseEvaluation
+            course={course}
+            sellerId={this.props.user.codigo}
+            currentCycle={this.getCycleNumber(this.props.user.estrutura.ciclo)}
+          />
         )}
         {this.renderStaticCourse()}
       </Main>

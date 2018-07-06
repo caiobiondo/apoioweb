@@ -14,9 +14,15 @@ export const CourseAddEvaluationMutation = gql`
   mutation AddCourseEvaluations(
     $sellerId: Int!
     $courseId: Int!
+    $currentCycle: Int
     $input: AddCourseEvaluationInput!
   ) {
-    addCourseEvaluations(sellerId: $sellerId, courseId: $courseId, input: $input) {
+    addCourseEvaluations(
+      sellerId: $sellerId
+      courseId: $courseId
+      currentCycle: $currentCycle
+      input: $input
+    ) {
       status
       message
     }
