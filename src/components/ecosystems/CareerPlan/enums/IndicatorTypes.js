@@ -3,8 +3,8 @@ import { IndicatorFieldsTypes } from './IndicatorFields';
 
 export const IndicatorTypes = {
   ScoresTotal: 1,
-  Registration: 3,
-  Active: 4,
+  Active: 3,
+  Registration: 4,
 };
 
 export const IndicatorTypesColors = {
