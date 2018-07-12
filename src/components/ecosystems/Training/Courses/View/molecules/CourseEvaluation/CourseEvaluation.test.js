@@ -46,6 +46,7 @@ const setup = propOverrides => {
         }),
       ),
       onLoadFinished: jest.fn(),
+      onFinish: jest.fn(),
       intl,
     },
     propOverrides,
@@ -107,10 +108,22 @@ describe('Course Evaluation', () => {
       // when
       const { result, props } = setup({ fetchMore: jest.fn(), loading: false });
       result.setState({ currentIndex: 1 });
-      result.instance().handleClose();
+      result.instance().handleClose(true);
 
       // then
       expect(props.mutate).toBeCalled();
+    });
+  });
+
+  describe('when feedback modal is closed', () => {
+    it('calls onFinish callback', () => {
+      // given
+      // when
+      const { result, props } = setup({ fetchMore: jest.fn(), loading: false });
+      result.instance().handleFeedbackClose();
+
+      // then
+      expect(props.onFinish).toBeCalled();
     });
   });
 });

@@ -5,20 +5,20 @@ exports[`CourseContent should render a player with the course content 1`] = `
   class="CourseContentstyles__ContentWrapper-igDuWn eXEIqx"
 >
   <div
-    class="CourseContentstyles__TrainingCourseThumbnail-bxZcq kqcZrn"
+    class="CourseContentstyles__TrainingCourseThumbnail-bxZcq cNkLtV"
   >
     <div
       class="CourseContentstyles__TrainingCourseThumbnailDescriptionWrapper-ggmefD ekgSvK"
     >
       <div
-        class="CourseContentstyles__IconWrapper-dLguMV dxEFGG"
+        class="CourseContentstyles__IconWrapper-dLguMV jdDhek"
       >
         <ico_warning_info.svg>
           
         </ico_warning_info.svg>
       </div>
       <div
-        class="CourseContentstyles__TrainingCourseTitle-eVWUpL iscctE"
+        class="CourseContentstyles__TrainingCourseTitle-eVWUpL fTedjH"
       >
         Ooops, video não encontrado :(
       </div>

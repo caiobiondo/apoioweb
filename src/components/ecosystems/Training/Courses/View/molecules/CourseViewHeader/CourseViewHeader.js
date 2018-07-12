@@ -3,6 +3,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import { Icon } from 'natura-ui';
 import { withRouter } from 'react-router-dom';
 import { translate } from 'locale';
+import { ROUTE_PREFIX } from 'config';
 
 import {
   Header,
@@ -13,7 +14,7 @@ import {
 
 export class CourseViewHeader extends Component {
   goBack = () => {
-    this.props.history.goBack();
+    this.props.history.push(`${ROUTE_PREFIX}/training/courses`);
   };
 
   render() {

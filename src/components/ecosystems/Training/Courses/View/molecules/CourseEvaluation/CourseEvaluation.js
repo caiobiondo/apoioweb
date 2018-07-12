@@ -54,6 +54,8 @@ export class CourseEvaluation extends Component {
 
   handleFeedbackClose = () => {
     this.setState({ feedbackModalOpened: false });
+
+    if (this.props.onFinish) this.props.onFinish();
   };
 
   mapUserRates = (evaluation, rate) => {
@@ -75,9 +77,12 @@ export class CourseEvaluation extends Component {
     });
   };
 
-  handleClose = () => {
+  handleClose = buttonClicked => {
+    if (!buttonClicked) return;
+
     if (this.isLastEvaluation()) {
       this.setState({ modalOpened: false });
+
       this.props
         .mutate({
           variables: {
@@ -251,6 +256,7 @@ export class CourseEvaluation extends Component {
 CourseEvaluation.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
+  onFinish: PropTypes.func,
 };
 
 export const CourseEvaluationIntl = injectIntl(CourseEvaluation);
