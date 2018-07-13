@@ -82,7 +82,7 @@ export class RelatedCourses extends Component {
 }
 
 RelatedCourses.propTypes = {
-  courses: PropTypes.array.isRequired,
+  courses: PropTypes.array,
 };
 
 export default RelatedCourses;
