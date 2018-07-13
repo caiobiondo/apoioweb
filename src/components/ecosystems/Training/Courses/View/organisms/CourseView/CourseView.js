@@ -59,7 +59,7 @@ export class CourseView extends Component {
 
   isLoading = (loading, course) => loading && !course;
 
-  isEmpty = (loading, course) => !loading && !course.id;
+  isEmpty = (loading, course) => !loading && (!course || !course.id);
 
   myListIconName = () => {
     return this.state.course.isfavorite === 'true' ? 'ico_minus' : 'ico_plus';
@@ -259,7 +259,7 @@ export class CourseView extends Component {
       return <Loading background="transparent" />;
     }
 
-    if (!course.id) {
+    if (!course || !course.id) {
       return (
         <Main>
           <EmptyList

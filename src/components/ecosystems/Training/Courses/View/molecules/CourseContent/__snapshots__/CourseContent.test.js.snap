@@ -5,24 +5,20 @@ exports[`CourseContent should render a player with the course content 1`] = `
   class="CourseContentstyles__ContentWrapper-igDuWn eXEIqx"
 >
   <div
-    class="CourseContentstyles__TrainingCourseThumbnail-bxZcq kqcZrn"
+    class="CourseContentstyles__PlayerWrapper-iRhOUU dfVUkH"
   >
-    <div
-      class="CourseContentstyles__TrainingCourseThumbnailDescriptionWrapper-ggmefD ekgSvK"
+    <iframe
+      allowfullscreen=""
+      frameborder="0"
+      height="270"
+      mozallowfullscreen="true"
+      src="https://vimeo.com/123456789"
+      title=""
+      webkitallowfullscreen="true"
+      width="480"
     >
-      <div
-        class="CourseContentstyles__IconWrapper-dLguMV dxEFGG"
-      >
-        <ico_warning_info.svg>
-          
-        </ico_warning_info.svg>
-      </div>
-      <div
-        class="CourseContentstyles__TrainingCourseTitle-eVWUpL iscctE"
-      >
-        Ooops, video não encontrado :(
-      </div>
-    </div>
+      
+    </iframe>
   </div>
 </div>
 `;

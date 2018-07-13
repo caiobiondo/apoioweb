@@ -187,4 +187,131 @@ describe('CourseContent', () => {
       expect(result.find('Apollo(Apollo(CourseEvaluation))').exists()).toBeTruthy();
     });
   });
+
+  describe('when finishing watching a video', () => {
+    describe('when there are related courses', () => {
+      it('does not show finished related courses as next courses', () => {
+        // given
+        const unfinishedRelatedCourse = {
+          id: 3,
+          title: 'Related Unfinished Course',
+          type: 'VIDEO',
+          status: 'pending',
+          ratedByYou: 'false',
+          courseContent: {
+            video: '',
+            videoEmbedUrl: 'videoEmbedUrl',
+          },
+          thumbnail: '',
+        };
+        const params = {
+          course: {
+            id: 1,
+            title: '',
+            type: 'VIDEO',
+            ratedByYou: 'false',
+            courseContent: {
+              video: '',
+              videoEmbedUrl: 'https://vimeo.com/123456789',
+            },
+            thumbnail: '',
+            relatedCourses: [
+              {
+                id: 2,
+                title: 'Related finished Course',
+                type: 'VIDEO',
+                status: 'finished',
+                ratedByYou: 'false',
+                courseContent: {
+                  video: '',
+                  videoEmbedUrl: 'videoEmbedUrl',
+                },
+                thumbnail: '',
+              },
+              unfinishedRelatedCourse,
+            ],
+          },
+          loading: false,
+        };
+
+        // when
+        const { props } = setup(params);
+        const result = shallow(<CourseContent {...props} />);
+        const nextCourse = result.instance().getNextCourse(params.course.relatedCourses);
+
+        // then
+        expect(nextCourse.id).toBe(unfinishedRelatedCourse.id);
+      });
+    });
+
+    describe('when there are no unfinished related courses', () => {
+      it('does not show related courses as next courses', () => {
+        // given
+        const finishedRelatedCourse = {
+          id: 3,
+          title: 'Related Unfinished Course',
+          type: 'VIDEO',
+          status: 'finished',
+          ratedByYou: 'false',
+          courseContent: {
+            video: '',
+            videoEmbedUrl: 'videoEmbedUrl',
+          },
+          thumbnail: '',
+        };
+        const params = {
+          course: {
+            id: 1,
+            title: '',
+            type: 'VIDEO',
+            ratedByYou: 'false',
+            courseContent: {
+              video: '',
+              videoEmbedUrl: 'https://vimeo.com/123456789',
+            },
+            thumbnail: '',
+            relatedCourses: [finishedRelatedCourse],
+          },
+          loading: false,
+        };
+
+        // when
+        const { props } = setup(params);
+        const result = shallow(<CourseContent {...props} />);
+        const nextCourse = result.instance().getNextCourse(params.course.relatedCourses);
+
+        // then
+        expect(nextCourse).toBeFalsy();
+      });
+    });
+
+    describe('when there are no related courses', () => {
+      it('does not show related courses as next courses', () => {
+        // given
+        const params = {
+          course: {
+            id: 1,
+            title: '',
+            type: 'VIDEO',
+            ratedByYou: 'false',
+            courseContent: {
+              video: '',
+              videoEmbedUrl: 'https://vimeo.com/123456789',
+            },
+            thumbnail: '',
+            relatedCourses: null,
+          },
+          loading: false,
+        };
+
+        // when
+        const { props } = setup(params);
+        const result = shallow(<CourseContent {...props} />);
+        const nextCourse = result.instance().getNextCourse(params.course.relatedCourses);
+
+        // then
+        expect(nextCourse).toBeFalsy();
+      });
+    });
+  });
 });
