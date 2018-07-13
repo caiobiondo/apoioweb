@@ -139,7 +139,7 @@ export class CourseContent extends Component {
   defineVideoCourseStatus = () => {
     if (this.state[this.state.mutationStatus] > 1) return;
 
-    // this.mutateVideoCourseStatus(this.state.mutationStatus);
+    this.mutateVideoCourseStatus(this.state.mutationStatus);
   };
 
   mutateVideoCourseStatus = (action, additional) => {
