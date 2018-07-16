@@ -30,6 +30,7 @@ import {
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
 } from './TrainingMyList.styles';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
 export class TrainingMyList extends Component {
   constructor(props) {
@@ -61,8 +62,18 @@ export class TrainingMyList extends Component {
 
   handleMenuItemClick = (event, child) => {
     const { formatMessage } = this.props.intl;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      appVersion,
+      origem,
+    } = getHeadersFromUser(this.props.user);
 
     this.props
       .mutate({
@@ -70,7 +81,16 @@ export class TrainingMyList extends Component {
           input: { action: child.props.value },
           sellerId: this.props.user.codigo,
           courseId: child.props.course.id,
-          currentCycle,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          appVersion,
+          origem,
         },
       })
       .then(response => {

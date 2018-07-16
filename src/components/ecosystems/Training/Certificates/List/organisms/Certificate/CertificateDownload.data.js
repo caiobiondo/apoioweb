@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { APP_VERSION, Origem } from '../../../../../../../config';
 
 export const CertificateDownloadQuery = gql`
   query CertificateDownloadQuery(
@@ -13,6 +14,8 @@ export const CertificateDownloadQuery = gql`
     $canal: Int
     $gerenciaDeVendas: Int
     $regiao: Int
+    $appVersion: String!
+    $origem: String!
   ) {
     trainingCertificateDownload(
       categoryId: $categoryId
@@ -26,6 +29,8 @@ export const CertificateDownloadQuery = gql`
       canal: $canal
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
+      appVersion: $appVersion
+      origem: $origem
     ) {
       categoryId
       downloadUrl
@@ -53,6 +58,8 @@ export const CertificateDownloadQueryOptions = {
           props.user.estrutura.codigoTipo > 2 ? props.user.estrutura.gerenciaVenda.codigo : 0,
         regiao:
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
+        appVersion: APP_VERSION,
+        origem: Origem,
       },
       fetchPolicy: 'cache-first',
     };
