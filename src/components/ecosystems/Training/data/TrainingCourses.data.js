@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { APP_VERSION, Origem } from 'config';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -18,6 +19,8 @@ export const TrainingCoursesQuery = gql`
     $canal: Int
     $gerenciaDeVendas: Int
     $regiao: Int
+    $appVersion: String!
+    $origem: String!
   ) {
     courses(
       sellerId: $sellerId
@@ -34,6 +37,8 @@ export const TrainingCoursesQuery = gql`
       canal: $canal
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
+      appVersion: $appVersion
+      origem: $origem
     ) {
       hasNextPage
       items {
@@ -99,6 +104,8 @@ export const TrainingCoursesQueryOptions = {
           props.user.estrutura.codigoTipo > 2 ? props.user.estrutura.gerenciaVenda.codigo : 0,
         regiao:
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
+        appVersion: APP_VERSION,
+        origem: Origem,
       },
       fetchPolicy: 'cache-first',
     };

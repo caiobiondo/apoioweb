@@ -30,6 +30,7 @@ import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import { Loading, FlatButton, Icon, Dialog } from 'natura-ui';
 import { translate } from 'locale';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
 export class CourseView extends Component {
   state = {
@@ -191,8 +192,18 @@ export class CourseView extends Component {
 
   handleMyListClick = () => {
     const { course } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      appVersion,
+      origem,
+    } = getHeadersFromUser(this.props.user);
 
     this.props
       .mutate({
@@ -200,7 +211,16 @@ export class CourseView extends Component {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          currentCycle,
+          ciclo,
+          grupo,
+          gerenciaMercado,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          papelDaConsultora,
+          canal,
+          appVersion,
+          origem,
         },
       })
       .then(response => {
