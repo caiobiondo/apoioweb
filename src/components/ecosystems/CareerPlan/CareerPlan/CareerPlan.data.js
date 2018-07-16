@@ -5,6 +5,7 @@ export const IndicatorListQuery = gql`
   query CareerPlanQuery(
     $sellerId: Int!
     $currentCycle: Int!
+    $closedCycle: Int!
     $currentYear: Int!
     $pastYear: Int!
     $indicatorTypes: [Int]
@@ -14,7 +15,7 @@ export const IndicatorListQuery = gql`
     currentIndicators: indicators(
       sellerId: $sellerId
       year: $currentYear
-      cycle: $currentCycle
+      cycle: $closedCycle
       indicatorTypes: $indicatorTypes
       businessModel: $businessModel
       country: $country
@@ -120,11 +121,15 @@ export const CyclesConsolidatedQuery = gql`
 
 export const IndicatorListQueryOptions = {
   options({ user, currentCycle, currentYear, pastYear, businessModel, country }) {
+    // workaround: setting a closedCycle until end of 2018
+    const closedCycle = parseInt(currentCycle, 10) - 1;
+
     return {
       variables: {
         indicatorTypes: Object.values(IndicatorTypes),
         sellerId: user.codigo,
         currentCycle,
+        closedCycle,
         currentYear,
         pastYear,
         businessModel,
