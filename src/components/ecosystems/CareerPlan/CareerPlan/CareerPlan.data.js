@@ -156,7 +156,16 @@ const getIndicators = (indicators, types) => {
     return null;
   }
 
-  return indicators.filter(({ indicatorType }) => types.indexOf(indicatorType) > -1);
+  const filteredIndicators = indicators.filter(
+    ({ indicatorType }) => types.indexOf(indicatorType) > -1,
+  );
+  const sortedIndicators = [
+    filteredIndicators.find(({ indicatorType }) => indicatorType === IndicatorTypes.ScoresTotal),
+    filteredIndicators.find(({ indicatorType }) => indicatorType === IndicatorTypes.Registration),
+    filteredIndicators.find(({ indicatorType }) => indicatorType === IndicatorTypes.Active),
+  ].filter(indicator => indicator);
+
+  return sortedIndicators;
 };
 
 const getConsolidatedCycles = indicators => {

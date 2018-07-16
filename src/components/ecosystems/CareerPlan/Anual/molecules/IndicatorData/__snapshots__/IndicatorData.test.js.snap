@@ -21,7 +21,6 @@ exports[`IndicatorData renderContent method should call renderConsolidatedData m
       <IndicatorDataFormstyles__IndicatorDataValue>
         <PercentageFormat
           decimalScale={2}
-          isPercentage={true}
         />
       </IndicatorDataFormstyles__IndicatorDataValue>
     </IndicatorDataFormstyles__IndicatorDataRow>
@@ -90,7 +89,6 @@ exports[`IndicatorData renderContent method should call renderConsolidatedData m
       <IndicatorDataFormstyles__IndicatorDataValue>
         <PercentageFormat
           decimalScale={2}
-          isPercentage={true}
         />
       </IndicatorDataFormstyles__IndicatorDataValue>
     </IndicatorDataFormstyles__IndicatorDataRow>
