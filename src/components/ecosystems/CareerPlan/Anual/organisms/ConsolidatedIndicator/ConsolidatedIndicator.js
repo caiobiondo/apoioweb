@@ -63,7 +63,9 @@ export class ConsolidatedIndicator extends Component {
         cycleNode={indicatorCycleNode}
         cycles={consolidatedCycles}
         pastCycles={pastConsolidatedCycles}
-        value={item => item.value}
+        value={item => {
+          return item.overcoming ? item.overcoming.value : 0;
+        }}
       />
     );
   };
