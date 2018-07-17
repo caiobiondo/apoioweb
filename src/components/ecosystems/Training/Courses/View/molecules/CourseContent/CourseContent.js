@@ -157,7 +157,6 @@ export class CourseContent extends Component {
       gerenciaMercado,
       papelDaConsultora,
       canal,
-      appVersion,
       origem,
     } = getHeadersFromUser(this.props.user);
     this.props
@@ -174,7 +173,6 @@ export class CourseContent extends Component {
           gerenciaMercado,
           papelDaConsultora,
           canal,
-          appVersion,
           origem,
         },
       })
@@ -396,7 +394,6 @@ export class CourseContent extends Component {
             course={course}
             sellerId={this.props.user.codigo}
             user={this.props.user}
-            appVersion={APP_VERSION}
             origem={Origem}
             onFinish={() => {
               this.setState({ startTimer: true });

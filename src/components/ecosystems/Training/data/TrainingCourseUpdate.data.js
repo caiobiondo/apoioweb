@@ -14,7 +14,6 @@ export const TrainingCourseUpdateMutation = gql`
     $gerenciaMercado: Int!
     $papelDaConsultora: Int!
     $canal: Int!
-    $appVersion: String!
     $origem: String!
   ) {
     updateCourse(
@@ -30,7 +29,6 @@ export const TrainingCourseUpdateMutation = gql`
       setor: $setor
       papelDaConsultora: $papelDaConsultora
       canal: $canal
-      appVersion: $appVersion
       origem: $origem
     ) {
       status

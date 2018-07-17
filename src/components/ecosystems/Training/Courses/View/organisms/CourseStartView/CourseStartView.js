@@ -139,7 +139,6 @@ export class CourseStartView extends Component {
       gerenciaMercado,
       papelDaConsultora,
       canal,
-      appVersion,
       origem,
     } = getHeadersFromUser(this.props.user);
     if (this.state[action]) return;
@@ -158,7 +157,6 @@ export class CourseStartView extends Component {
           papelDaConsultora,
           regiao,
           setor,
-          appVersion,
           origem,
           roleId: this.props.user.cdPapelAtivo,
         },
@@ -422,7 +420,6 @@ export class CourseStartView extends Component {
       gerenciaMercado,
       papelDaConsultora,
       canal,
-      appVersion,
       origem,
     } = getHeadersFromUser(this.props.user);
     this.props
@@ -439,7 +436,6 @@ export class CourseStartView extends Component {
           setor,
           papelDaConsultora,
           canal,
-          appVersion,
           origem,
         },
       })

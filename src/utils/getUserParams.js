@@ -46,7 +46,6 @@ export const getHeadersFromUser = user => {
     gerenciaMercado: user.estrutura.gerenciaMercado.codigo,
     papelDaConsultora: user.cdPapelAtivo,
     canal: user.cdCanalCaptacao,
-    appVersion: APP_VERSION,
     origem: Origem,
     sellerId: user.codigo,
   };

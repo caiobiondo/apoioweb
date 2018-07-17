@@ -71,7 +71,6 @@ export class TrainingMyList extends Component {
       gerenciaMercado,
       papelDaConsultora,
       canal,
-      appVersion,
       origem,
     } = getHeadersFromUser(this.props.user);
 
@@ -89,7 +88,6 @@ export class TrainingMyList extends Component {
           gerenciaMercado,
           papelDaConsultora,
           canal,
-          appVersion,
           origem,
         },
       })
