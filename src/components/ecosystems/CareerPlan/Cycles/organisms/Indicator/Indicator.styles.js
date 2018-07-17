@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { orange100, gray125, gray150, gray700, gray890 } from 'styles/colors';
 import { RobotoRegular, RobotoMedium } from 'styles/typography';
+import { Loading } from 'natura-ui';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { IndicatorDataWrapper } from '../../molecules/IndicatorData/IndicatorData.styles';
@@ -205,3 +206,8 @@ export const IndicatorSaveButtonWrapper = styled.span`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   display: inline-block;
 `;
+
+export const LoadingStyles = {
+  background: 'rgba(248,248,248,0.7)',
+  zIndex: 999,
+};
