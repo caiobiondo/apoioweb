@@ -51,7 +51,7 @@ export class ConsolidatedIndicator extends Component {
     const { consolidatedCycles } = this.props;
 
     const { from, to } = this.props.range;
-    const start = from === 0 ? 0 : from - 1;
+    const start = from === 0 ? 0 : from;
     return consolidatedCycles.slice(start, to);
   };
 
