@@ -60,7 +60,7 @@ export const IndicatorListQuery = gql`
     }
     concepts(
       sellerId: $sellerId
-      cycle: $currentCycle
+      cycle: $closedCycle
       businessModel: $businessModel
       country: $country
     ) {
