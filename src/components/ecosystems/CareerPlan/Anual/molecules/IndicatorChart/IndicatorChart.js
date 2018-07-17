@@ -40,8 +40,8 @@ export default class IndicatorChart extends Component {
       y: value(cycle),
     });
 
-    const currentPeriod = cycles.map(parseData).filter(item => item.y > 0);
-    const pastPeriod = pastCycles.map(parseData).filter(item => item.y > 0);
+    const currentPeriod = cycles.map(parseData).filter(item => item.y >= 0);
+    const pastPeriod = pastCycles.map(parseData).filter(item => item.y >= 0);
 
     return { currentPeriod, pastPeriod };
   };
