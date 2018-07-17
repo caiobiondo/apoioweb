@@ -30,6 +30,7 @@ import {
   IndicatorTableContentWrapper,
   IndicatorSaveButtonContainer,
   IndicatorSaveButtonWrapper,
+  LoadingStyles,
 } from './Indicator.styles';
 
 export class Indicator extends Component {
@@ -204,7 +205,7 @@ export class Indicator extends Component {
 
     return (
       <IndicatorWrapper indicatorType={indicator.indicatorType}>
-        {loading && <Loading background="rgba(248,248,248,0.8)" />}
+        {loading && <Loading {...LoadingStyles} />}
         <IndicatorWeightWrapper>
           <IndicatorWeightLabel>
             <FormattedMessage id="weight" />
