@@ -12,7 +12,6 @@ export const CourseEvaluationQuery = gql`
     $canal: Int
     $gerenciaDeVendas: Int
     $regiao: Int
-    $appVersion: String!
     $origem: String!
   ) {
     trainingEvaluations(
@@ -25,7 +24,6 @@ export const CourseEvaluationQuery = gql`
       canal: $canal
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
-      appVersion: $appVersion
       origem: $origem
     ) {
       id
@@ -47,7 +45,6 @@ export const CourseAddEvaluationMutation = gql`
     $canal: Int
     $gerenciaDeVendas: Int
     $regiao: Int
-    $appVersion: String!
     $origem: String!
     $input: AddCourseEvaluationInput!
   ) {
@@ -63,7 +60,6 @@ export const CourseAddEvaluationMutation = gql`
       canal: $canal
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
-      appVersion: $appVersion
       origem: $origem
     ) {
       status
@@ -90,7 +86,6 @@ export const CourseEvaluationQueryOptions = {
         props.user.estrutura.codigoTipo > 2 ? props.user.estrutura.gerenciaVenda.codigo : 0,
       regiao:
         props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
-      appVersion: APP_VERSION,
       origem: Origem,
     };
   },

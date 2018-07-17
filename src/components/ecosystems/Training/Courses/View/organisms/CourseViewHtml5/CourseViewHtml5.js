@@ -142,7 +142,6 @@ export class CourseViewHtml5 extends Component {
       gerenciaMercado,
       papelDaConsultora,
       canal,
-      appVersion,
       origem,
     } = getHeadersFromUser(this.props.user);
 
@@ -162,7 +161,6 @@ export class CourseViewHtml5 extends Component {
           gerenciaMercado,
           papelDaConsultora,
           canal,
-          appVersion,
           origem,
         },
       })
@@ -534,7 +532,6 @@ export class CourseViewHtml5 extends Component {
               course={course}
               sellerId={this.props.user.codigo}
               user={this.props.user}
-              appVersion={APP_VERSION}
               origem={Origem}
             />
           )}

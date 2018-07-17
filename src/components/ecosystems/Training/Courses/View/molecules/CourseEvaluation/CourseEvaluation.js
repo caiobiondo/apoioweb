@@ -96,7 +96,6 @@ export class CourseEvaluation extends Component {
         gerenciaMercado,
         papelDaConsultora,
         canal,
-        appVersion,
         origem,
       } = getHeadersFromUser(this.props.user);
       this.props
@@ -113,7 +112,6 @@ export class CourseEvaluation extends Component {
             gerenciaMercado,
             papelDaConsultora,
             canal,
-            appVersion,
             origem,
           },
         })

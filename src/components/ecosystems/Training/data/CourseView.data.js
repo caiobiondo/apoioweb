@@ -13,7 +13,6 @@ export const CourseViewQuery = gql`
     $canal: Int
     $gerenciaDeVendas: Int
     $regiao: Int
-    $appVersion: String!
     $origem: String!
   ) {
     course(
@@ -27,7 +26,6 @@ export const CourseViewQuery = gql`
       canal: $canal
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
-      appVersion: $appVersion
       origem: $origem
     ) {
       id
@@ -84,7 +82,6 @@ export const CourseViewQueryOptions = {
           props.user.estrutura.codigoTipo > 2 ? props.user.estrutura.gerenciaVenda.codigo : 0,
         regiao:
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
-        appVersion: APP_VERSION,
         origem: Origem,
       },
       fetchPolicy: 'cache-and-network',

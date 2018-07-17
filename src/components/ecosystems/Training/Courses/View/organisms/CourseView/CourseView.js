@@ -201,7 +201,6 @@ export class CourseView extends Component {
       gerenciaMercado,
       papelDaConsultora,
       canal,
-      appVersion,
       origem,
     } = getHeadersFromUser(this.props.user);
 
@@ -219,7 +218,6 @@ export class CourseView extends Component {
           setor,
           papelDaConsultora,
           canal,
-          appVersion,
           origem,
         },
       })
