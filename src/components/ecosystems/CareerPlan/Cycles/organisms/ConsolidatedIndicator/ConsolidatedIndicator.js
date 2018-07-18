@@ -85,10 +85,16 @@ export class ConsolidatedIndicator extends Component {
   };
 
   onSave = () => {
-    return this.props.onConsolidatedUpdate().then(() => {
-      const message = translate('careerPlanSuccessMessage');
-      Snackbar(message);
-    });
+    return this.props
+      .onConsolidatedUpdate()
+      .then(() => {
+        const message = translate('careerPlanSuccessMessage');
+        Snackbar(message);
+      })
+      .catch(() => {
+        const message = translate('careerPlanFailureMessage');
+        Snackbar(message);
+      });
   };
 
   render() {

@@ -99,6 +99,10 @@ export class Indicator extends Component {
         Snackbar(message);
         this.setState({ isEdited: false });
       })
+      .catch(() => {
+        const message = translate('careerPlanFailureMessage');
+        Snackbar(message);
+      })
       .finally(() => {
         this.setState({ loading: false });
       });
