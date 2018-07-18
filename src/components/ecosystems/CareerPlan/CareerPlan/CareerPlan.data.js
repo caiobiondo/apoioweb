@@ -4,7 +4,7 @@ import { IndicatorTypes } from 'components/ecosystems/CareerPlan/enums/Indicator
 export const IndicatorListQuery = gql`
   query CareerPlanQuery(
     $sellerId: Int!
-    $currentCycle: Int!
+    $pastYearLastCycle: Int!
     $closedCycle: Int!
     $currentYear: Int!
     $pastYear: Int!
@@ -38,7 +38,7 @@ export const IndicatorListQuery = gql`
     pastIndicators: indicators(
       sellerId: $sellerId
       year: $pastYear
-      cycle: $currentCycle
+      cycle: $pastYearLastCycle
       indicatorTypes: $indicatorTypes
       businessModel: $businessModel
       country: $country
@@ -123,12 +123,13 @@ export const IndicatorListQueryOptions = {
   options({ user, currentCycle, currentYear, pastYear, businessModel, country }) {
     // workaround: setting a closedCycle until end of 2018
     const closedCycle = parseInt(currentCycle, 10) - 1;
+    const pastYearLastCycle = 201718;
 
     return {
       variables: {
         indicatorTypes: Object.values(IndicatorTypes),
         sellerId: user.codigo,
-        currentCycle,
+        pastYearLastCycle,
         closedCycle,
         currentYear,
         pastYear,
