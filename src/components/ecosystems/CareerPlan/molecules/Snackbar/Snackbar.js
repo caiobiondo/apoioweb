@@ -51,7 +51,7 @@ export class SnackbarComponent extends Component {
 }
 
 SnackbarComponent.defaultProps = {
-  autoHideDuration: 2000,
+  autoHideDuration: 5000,
 };
 
 export default SnackbarMessage;

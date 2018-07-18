@@ -27,6 +27,7 @@ export default {
       'Não foi possível encontrar os indicadores do Plano de Carreira',
     careerPlanNotEdited: 'Atualize algum valor antes de salvar as novas informações',
     careerPlanSuccessMessage: 'As alterações foram salvas com sucesso!',
+    careerPlanFailureMessage: 'Falha ao enviar as informações, tente novamente',
     updateConsolidated: 'Atualizar consolidado',
   },
 };
