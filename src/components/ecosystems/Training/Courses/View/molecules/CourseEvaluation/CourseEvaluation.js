@@ -282,7 +282,6 @@ CourseEvaluation.propTypes = {
   sellerId: PropTypes.number.isRequired,
   onFinish: PropTypes.func,
   user: PropTypes.object.isRequired,
-  appVersion: PropTypes.string.isRequired,
   origem: PropTypes.string.isRequired,
 };
 

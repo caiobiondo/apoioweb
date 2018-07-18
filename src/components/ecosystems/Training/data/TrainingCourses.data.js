@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { APP_VERSION, Origem } from 'config';
+import { Origem } from 'config';
 
 const ITEMS_PER_PAGE = 20;
 
