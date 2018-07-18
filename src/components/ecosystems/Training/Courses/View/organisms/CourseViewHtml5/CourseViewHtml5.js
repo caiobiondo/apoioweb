@@ -367,8 +367,17 @@ export class CourseViewHtml5 extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const ciclo = cycles.length > 0 ? cycles[0].numero : 0;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
 
     this.props
       .mutate({
@@ -377,6 +386,14 @@ export class CourseViewHtml5 extends Component {
           sellerId: this.props.user.codigo,
           courseId: course.id,
           ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
