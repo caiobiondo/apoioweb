@@ -24,7 +24,7 @@ import { ROUTE_PREFIX } from 'config';
 import { withRouter } from 'react-router-dom';
 import Timer from 'components/ecosystems/Training/Courses/View/molecules/Timer/Timer';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
-import { APP_VERSION, Origem } from '../../../../../../../config';
+import { Origem } from '../../../../../../../config';
 
 export class CourseContent extends Component {
   constructor(props) {

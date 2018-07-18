@@ -38,7 +38,7 @@ import { ROUTE_PREFIX } from 'config';
 
 import { Loading, FlatButton, Icon } from 'natura-ui';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
-import { APP_VERSION, Origem } from '../../../../../../../config';
+import { Origem } from '../../../../../../../config';
 
 export class CourseViewHtml5 extends Component {
   state = {

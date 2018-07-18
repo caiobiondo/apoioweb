@@ -1,4 +1,4 @@
-import { APP_VERSION, Origem, LOGOUT_URL } from 'config';
+import { Origem, LOGOUT_URL } from 'config';
 
 export const getCycleIdFromUser = user => {
   return (
@@ -36,7 +36,6 @@ export const getSalesManagementIdFromUser = user => {
 };
 
 export const getHeadersFromUser = user => {
-  console.log(`Logout: ${LOGOUT_URL} , Version: ${APP_VERSION}`);
   return {
     ciclo: user.estrutura.ciclo.length > 0 ? user.estrutura.ciclo[0].numero : 0,
     grupo: user.estrutura.codigoTipo > 4 ? user.estrutura.codigo : 0,
