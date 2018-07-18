@@ -45,6 +45,7 @@ import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { Origem } from '../../../../../../../config';
 
 export class CourseStartView extends Component {
   state = {
@@ -660,6 +661,7 @@ export class CourseStartView extends Component {
           <CourseEvaluation
             course={course}
             sellerId={this.props.user.codigo}
+            origem={Origem}
             user={this.props.user}
           />
         )}
