@@ -7,7 +7,7 @@ export default {
     animate: {
       onLoad: { duration: 800 },
     },
-    interpolation: 'natural',
+    interpolation: 'monotoneX',
   },
   PastPeriod: {
     animate: {
