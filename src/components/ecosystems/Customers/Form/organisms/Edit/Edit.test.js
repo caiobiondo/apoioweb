@@ -1,8 +1,10 @@
 import React from 'react';
 import { EditCustomerForm } from './Edit';
 import 'jest-styled-components';
+import { shallow } from 'enzyme';
 import { mount, clickOnElementWithText, changeInputValue } from 'testUtils';
 import { translate } from 'locale';
+import toJson from 'enzyme-to-json';
 
 describe('EditCustomerForm', () => {
   const fakeCustomer = () => {
@@ -39,7 +41,8 @@ describe('EditCustomerForm', () => {
       propOverrides,
     );
 
-    const result = mount(<EditCustomerForm {...props} />);
+    const render = props.shallow ? shallow : mount;
+    const result = render(<EditCustomerForm {...props} />);
 
     return {
       props,
@@ -97,21 +100,21 @@ describe('EditCustomerForm', () => {
     });
 
     it('correctly renders the customer form when there is no customer in props', () => {
-      const { result } = setup({ loading: false });
+      const { result } = setup({ loading: false, shallow: true });
 
-      expect(result).toMatchSnapshot();
+      expect(toJson(result)).toMatchSnapshot();
     });
 
     it('correctly renders the customer form when the form is loading', () => {
-      const { result } = setup({ customer: fakeCustomer(), loading: true });
+      const { result } = setup({ customer: fakeCustomer(), loading: true, shallow: true });
 
-      expect(result).toMatchSnapshot();
+      expect(toJson(result)).toMatchSnapshot();
     });
 
     it('correctly renders the customer when the form is loaded', () => {
-      const { result } = setup({ customer: fakeCustomer(), loading: false });
+      const { result } = setup({ customer: fakeCustomer(), loading: false, shallow: true });
 
-      expect(result).toMatchSnapshot();
+      expect(toJson(result)).toMatchSnapshot();
     });
   });
 
