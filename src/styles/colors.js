@@ -19,8 +19,17 @@ export const gray890 = '#333333';
 export const gray900 = '#222222';
 
 export const orange100 = '#f3971f';
+export const orange200 = '#f36c21';
+
+export const blue100 = '#5fafc5';
 
 export const successGreen = '#80ba41';
 
 export const red500 = '#f44336';
 export const red400 = '#ef5350';
+export const red100 = '#e03726';
+
+export const yellow100 = '#fcdb17';
+
+export const green100 = '#cfde41';
+export const green200 = '#66a944';

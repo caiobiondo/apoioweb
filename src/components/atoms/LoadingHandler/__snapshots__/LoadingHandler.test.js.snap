@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading handler should disable the tooltip when there is not a concept 1`] = `
+<CSSTransitionGroup
+  transitionAppear={true}
+  transitionAppearTimeout={300}
+  transitionEnter={true}
+  transitionEnterTimeout={300}
+  transitionLeave={true}
+  transitionLeaveTimeout={300}
+  transitionName="fadeIn"
+>
+  <LoadingHandlerstyles__LoadingContent
+    key="loadingContent"
+  >
+    Test
+  </LoadingHandlerstyles__LoadingContent>
+</CSSTransitionGroup>
+`;
+
+exports[`Loading handler should render the loading icon when loading is true 1`] = `
+<CSSTransitionGroup
+  transitionAppear={true}
+  transitionAppearTimeout={300}
+  transitionEnter={true}
+  transitionEnterTimeout={300}
+  transitionLeave={true}
+  transitionLeaveTimeout={300}
+  transitionName="fadeIn"
+>
+  <LoadingHandlerstyles__LoadingContainer
+    key="loadingContainer"
+  >
+    <Loading
+      background="transparent"
+      visible={true}
+      zIndex={9999}
+    />
+  </LoadingHandlerstyles__LoadingContainer>
+</CSSTransitionGroup>
+`;
