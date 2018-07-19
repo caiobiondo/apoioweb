@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndicatorData renderContent method should call renderConsolidatedData method when a indicatorType is given 1`] = `
+<IndicatorDatastyles__IndicatorFloatContent>
+  <IndicatorDatastyles__IndicatorFloatContentClose
+    onClick={[Function]}
+  >
+    <Icon
+      file="ico_times"
+    />
+  </IndicatorDatastyles__IndicatorFloatContentClose>
+  <IndicatorDatastyles__IndicatorDataSortNumber>
+    <NumberFormat
+      decimalScale={0}
+      showLastDigits={2}
+      value={1}
+    />
+  </IndicatorDatastyles__IndicatorDataSortNumber>
+  <div>
+    <IndicatorDataFormstyles__IndicatorDataRow>
+      <IndicatorDataFormstyles__IndicatorDataValue>
+        <PercentageFormat
+          decimalScale={2}
+        />
+      </IndicatorDataFormstyles__IndicatorDataValue>
+    </IndicatorDataFormstyles__IndicatorDataRow>
+    <IndicatorDataFormstyles__IndicatorDataRow>
+      <CycleConcept
+        concept="Excede"
+        size="large"
+      />
+    </IndicatorDataFormstyles__IndicatorDataRow>
+    <IndicatorDataFormstyles__IndicatorDataRow>
+      <IndicatorDatastyles__IndicatorDataSmallLabel>
+        Objetivo
+      </IndicatorDatastyles__IndicatorDataSmallLabel>
+      <IndicatorDatastyles__IndicatorDataSmallValue>
+        <NumberFormat
+          decimalScale={0}
+        />
+      </IndicatorDatastyles__IndicatorDataSmallValue>
+    </IndicatorDataFormstyles__IndicatorDataRow>
+    <IndicatorDataFormstyles__IndicatorDataRow
+      key="directSale"
+    >
+      <IndicatorDatastyles__IndicatorDataSmallLabel>
+        Real.
+      </IndicatorDatastyles__IndicatorDataSmallLabel>
+      <IndicatorDatastyles__IndicatorDataSmallValue>
+        <NumberFormat
+          decimalScale={0}
+        />
+      </IndicatorDatastyles__IndicatorDataSmallValue>
+    </IndicatorDataFormstyles__IndicatorDataRow>
+    <IndicatorDataFormstyles__IndicatorDataRow
+      key="naturaNetwork"
+    >
+      <IndicatorDatastyles__IndicatorDataSmallLabel>
+        Real Rede
+      </IndicatorDatastyles__IndicatorDataSmallLabel>
+      <IndicatorDatastyles__IndicatorDataSmallValue>
+        <NumberFormat
+          decimalScale={0}
+        />
+      </IndicatorDatastyles__IndicatorDataSmallValue>
+    </IndicatorDataFormstyles__IndicatorDataRow>
+  </div>
+</IndicatorDatastyles__IndicatorFloatContent>
+`;
+
+exports[`IndicatorData renderContent method should call renderConsolidatedData method when a indicatorType is not given 1`] = `
+<IndicatorDatastyles__IndicatorFloatContent>
+  <IndicatorDatastyles__IndicatorFloatContentClose
+    onClick={[Function]}
+  >
+    <Icon
+      file="ico_times"
+    />
+  </IndicatorDatastyles__IndicatorFloatContentClose>
+  <IndicatorDatastyles__IndicatorDataSortNumber>
+    <NumberFormat
+      decimalScale={0}
+      showLastDigits={2}
+      value={1}
+    />
+  </IndicatorDatastyles__IndicatorDataSortNumber>
+  <div>
+    <IndicatorDataFormstyles__IndicatorDataRow>
+      <IndicatorDataFormstyles__IndicatorDataValue>
+        <PercentageFormat
+          decimalScale={2}
+        />
+      </IndicatorDataFormstyles__IndicatorDataValue>
+    </IndicatorDataFormstyles__IndicatorDataRow>
+    <IndicatorDataFormstyles__IndicatorDataRow>
+      <CycleConcept
+        concept="Excede"
+        size="large"
+      />
+    </IndicatorDataFormstyles__IndicatorDataRow>
+  </div>
+</IndicatorDatastyles__IndicatorFloatContent>
+`;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CourseEvaluation } from './CourseEvaluation';
-import { FlatButton } from 'natura-ui';
 
 const setup = propOverrides => {
   const intl = {
