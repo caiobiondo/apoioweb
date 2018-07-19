@@ -30,6 +30,7 @@ import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import { Loading, FlatButton, Icon, Dialog } from 'natura-ui';
 import { translate } from 'locale';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
 export class CourseView extends Component {
   state = {
@@ -59,7 +60,7 @@ export class CourseView extends Component {
 
   isLoading = (loading, course) => loading && !course;
 
-  isEmpty = (loading, course) => !loading && !course.id;
+  isEmpty = (loading, course) => !loading && (!course || !course.id);
 
   myListIconName = () => {
     return this.state.course.isfavorite === 'true' ? 'ico_minus' : 'ico_plus';
@@ -191,12 +192,33 @@ export class CourseView extends Component {
 
   handleMyListClick = () => {
     const { course } = this.props;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
+
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          ciclo,
+          grupo,
+          gerenciaMercado,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -255,7 +277,7 @@ export class CourseView extends Component {
       return <Loading background="transparent" />;
     }
 
-    if (!course.id) {
+    if (!course || !course.id) {
       return (
         <Main>
           <EmptyList

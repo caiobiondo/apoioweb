@@ -21,6 +21,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
 import {
   TrainingCategoriesDetailsWrapper,
@@ -62,13 +63,32 @@ export class TrainingCategoriesDetails extends Component {
 
   handleMenuItemClick = (event, child) => {
     const { formatMessage } = this.props.intl;
-
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     this.props
       .mutate({
         variables: {
           input: { action: child.props.value },
           sellerId: this.props.user.codigo,
           courseId: child.props.course.id,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {

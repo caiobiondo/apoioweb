@@ -20,6 +20,7 @@ import {
 import { ToggleStar, ToggleStarBorder } from 'material-ui/svg-icons';
 import { red500 } from 'styles/colors';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
 export class CourseEvaluation extends Component {
   state = {
@@ -54,6 +55,8 @@ export class CourseEvaluation extends Component {
 
   handleFeedbackClose = () => {
     this.setState({ feedbackModalOpened: false });
+
+    if (this.props.onFinish) this.props.onFinish();
   };
 
   mapUserRates = (evaluation, rate) => {
@@ -75,15 +78,41 @@ export class CourseEvaluation extends Component {
     });
   };
 
-  handleClose = () => {
+  getCycleNumber = cycles => {
+    return cycles.length > 0 ? cycles[0].numero : 0;
+  };
+
+  handleClose = buttonClicked => {
+    if (!buttonClicked) return;
+
     if (this.isLastEvaluation()) {
       this.setState({ modalOpened: false });
+      const {
+        ciclo,
+        grupo,
+        gerenciaDeVendas,
+        regiao,
+        setor,
+        gerenciaMercado,
+        papelDaConsultora,
+        canal,
+        origem,
+      } = getHeadersFromUser(this.props.user);
       this.props
         .mutate({
           variables: {
             input: { action: this.state.userRates },
             sellerId: this.props.sellerId,
             courseId: this.props.course.id,
+            ciclo,
+            grupo,
+            gerenciaDeVendas,
+            regiao,
+            setor,
+            gerenciaMercado,
+            papelDaConsultora,
+            canal,
+            origem,
           },
         })
         .then(response => {
@@ -251,6 +280,9 @@ export class CourseEvaluation extends Component {
 CourseEvaluation.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
+  onFinish: PropTypes.func,
+  user: PropTypes.object.isRequired,
+  origem: PropTypes.string.isRequired,
 };
 
 export const CourseEvaluationIntl = injectIntl(CourseEvaluation);

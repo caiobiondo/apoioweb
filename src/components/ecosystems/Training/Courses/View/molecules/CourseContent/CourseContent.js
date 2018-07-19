@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   ContentWrapper,
+  TrainingNextCourseThumbnail,
+  TrainingNextCourseIconWrapper,
+  TrainingNextCourseDescription,
   TrainingCourseThumbnail,
   TrainingCourseThumbnailDescriptionWrapper,
   TrainingCourseTitle,
+  TrainingNextCourseSubtitle,
   IconWrapper,
   PlayerWrapper,
 } from './CourseContent.styles';
@@ -16,14 +20,29 @@ import Player from '@vimeo/player';
 import { translate } from 'locale';
 import gql from 'graphql-tag';
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
+import { ROUTE_PREFIX } from 'config';
+import { withRouter } from 'react-router-dom';
+import Timer from 'components/ecosystems/Training/Courses/View/molecules/Timer/Timer';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { Origem } from '../../../../../../../config';
 
 export class CourseContent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.playerRef = null;
+    this.setPlayerRef = element => {
+      this.playerRef = element;
+    };
+  }
   state = {
     course: {},
     ended: false,
     initialized: 0,
     terminated: 0,
     initialCourse: {},
+    showNext: false,
+    startTimer: false,
   };
 
   componentDidMount() {
@@ -38,13 +57,13 @@ export class CourseContent extends Component {
       });
     }
 
-    if (!course.courseContent.videoEmbedUrl) {
+    if (!course.courseContent.videoEmbedUrl || !this.playerRef) {
       return;
     }
 
-    const player = new Player(document.querySelector('iframe'));
+    const player = new Player(this.playerRef);
 
-    if (!course.stoppedAt) {
+    if (course.stoppedAt <= 1) {
       this.playerEventListeners(player);
       return;
     }
@@ -84,8 +103,13 @@ export class CourseContent extends Component {
           course: { ...this.state.course, status: 'finished', stoppedAt: 0 },
           mutationStatus: 'terminated',
           terminated: this.state.terminated + 1,
+          showNext: true,
+          ended: true,
         },
-        this.defineVideoCourseStatus,
+        () => {
+          this.defineVideoCourseStatus();
+          this.startTimerFunction();
+        },
       );
     });
 
@@ -124,13 +148,32 @@ export class CourseContent extends Component {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
     const { course } = this.state;
     const { handleFeedbackMessage } = this.props;
-
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     this.props
       .mutate({
         variables: {
           input,
           sellerId: this.props.user.codigo,
           courseId: this.props.course.id,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -148,7 +191,7 @@ export class CourseContent extends Component {
             response.data.updateCourse.message &&
             response.data.updateCourse.message === 'Este curso ja está finalizado.'
           ) {
-            if (action === 'initialized' && !this.state.initialCourse.stoppedAt) {
+            if (action === 'initialized' && this.state.initialCourse.stoppedAt <= 1) {
               gtmPushDataLayerEvent({
                 event: events.RESTART_TRAINING,
                 category: categories.TRAINING,
@@ -184,7 +227,7 @@ export class CourseContent extends Component {
           return;
         }
 
-        if (action === 'initialized') {
+        if (action === 'initialized' && this.state.initialCourse.status === 'pending') {
           gtmPushDataLayerEvent({
             event: events.START_TRAINING,
             category: categories.TRAINING,
@@ -245,11 +288,49 @@ export class CourseContent extends Component {
     });
   };
 
+  linkToNextCourse = course => event => {
+    let url = `${course.id}/web`;
+    if (course.type === 'VIDEO') url = `${course.id}/video`;
+    if (course.type === 'HTML5') url = `${course.id}/html5`;
+
+    gtmPushDataLayerEvent({
+      event: events.PAGE_VIEW,
+      page: {
+        previousUrl: window.location.pathname,
+        url: `${ROUTE_PREFIX}/training/courses/${url}`,
+        title: document.title,
+      },
+    });
+
+    this.props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
+  };
+
+  getCycleNumber = cycles => {
+    return cycles.length > 0 ? cycles[0].numero : 0;
+  };
+
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
+
+  getNextCourse = relatedCourses => {
+    if (!relatedCourses || relatedCourses.length === 0) return null;
+
+    return relatedCourses.find(currentCourse => {
+      return currentCourse.status !== 'finished';
+    });
+  };
+
+  startTimerFunction = () => {
+    if (this.props.course.ratedByYou !== 'true') return;
+
+    this.setState({ startTimer: true });
+  };
 
   render() {
     const { course } = this.props;
+    const nextCourse = this.getNextCourse(course.relatedCourses);
 
+    // iframe with key prop to force a "rerender" of iframe when changing from a course to another one,
+    // so it prevents iframe src change to add a browser history item
     return (
       <ContentWrapper>
         {!course.courseContent.videoEmbedUrl && (
@@ -263,8 +344,40 @@ export class CourseContent extends Component {
           </TrainingCourseThumbnail>
         )}
         {!!course.courseContent.videoEmbedUrl && (
-          <PlayerWrapper id="player">
+          <PlayerWrapper>
+            {nextCourse && (
+              <TrainingNextCourseThumbnail
+                imageUrl={nextCourse.thumbnail}
+                showNext={this.state.showNext}
+              >
+                <TrainingCourseThumbnailDescriptionWrapper>
+                  <TrainingNextCourseDescription onClick={this.linkToNextCourse(nextCourse)}>
+                    <TrainingNextCourseSubtitle>
+                      {translate('trainingCourseUpcomingVideo')}
+                      <Timer
+                        seconds={5}
+                        start={this.state.startTimer}
+                        onFinish={this.linkToNextCourse(nextCourse)}
+                      />
+                    </TrainingNextCourseSubtitle>
+                    <TrainingCourseTitle>{nextCourse.title}</TrainingCourseTitle>
+                    <TrainingNextCourseIconWrapper>
+                      <Icon file="ico_play_circle" />
+                    </TrainingNextCourseIconWrapper>
+                  </TrainingNextCourseDescription>
+                  <TrainingNextCourseSubtitle
+                    onClick={() => {
+                      this.setState({ showNext: false, startTimer: false });
+                    }}
+                  >
+                    {translate('cancel')}
+                  </TrainingNextCourseSubtitle>
+                </TrainingCourseThumbnailDescriptionWrapper>
+              </TrainingNextCourseThumbnail>
+            )}
             <iframe
+              key={course.id}
+              ref={this.setPlayerRef}
               src={course.courseContent.videoEmbedUrl}
               width="480"
               height="270"
@@ -277,7 +390,15 @@ export class CourseContent extends Component {
           </PlayerWrapper>
         )}
         {this.canRenderEvaluation() && (
-          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
+          <CourseEvaluation
+            course={course}
+            sellerId={this.props.user.codigo}
+            user={this.props.user}
+            origem={Origem}
+            onFinish={() => {
+              this.setState({ startTimer: true });
+            }}
+          />
         )}
       </ContentWrapper>
     );
@@ -292,5 +413,6 @@ CourseContent.propTypes = {
 };
 
 export const CourseContentWithApollo = withApollo(CourseContent);
+export const CourseContentWithRouter = withRouter(CourseContentWithApollo);
 
-export default graphql(TrainingCourseUpdateMutation)(CourseContentWithApollo);
+export default graphql(TrainingCourseUpdateMutation)(CourseContentWithRouter);

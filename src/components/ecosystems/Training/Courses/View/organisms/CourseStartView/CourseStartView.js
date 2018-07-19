@@ -44,6 +44,8 @@ import { Loading, FlatButton, Icon } from 'natura-ui';
 import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { Origem } from '../../../../../../../config';
 
 export class CourseStartView extends Component {
   state = {
@@ -129,9 +131,17 @@ export class CourseStartView extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
-
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     if (this.state[action]) return;
 
     this.props
@@ -140,7 +150,15 @@ export class CourseStartView extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          currentCycle,
+          ciclo: ciclo,
+          grupo,
+          gerenciaMercado,
+          gerenciaDeVendas,
+          canal,
+          papelDaConsultora,
+          regiao,
+          setor,
+          origem,
           roleId: this.props.user.cdPapelAtivo,
         },
       })
@@ -394,12 +412,32 @@ export class CourseStartView extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          gerenciaMercado,
+          regiao,
+          setor,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -620,7 +658,12 @@ export class CourseStartView extends Component {
         <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
         {this.canEvaluate() && (
-          <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
+          <CourseEvaluation
+            course={course}
+            sellerId={this.props.user.codigo}
+            origem={Origem}
+            user={this.props.user}
+          />
         )}
         {this.renderStaticCourse()}
       </Main>
