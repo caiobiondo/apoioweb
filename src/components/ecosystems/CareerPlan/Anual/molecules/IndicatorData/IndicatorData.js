@@ -102,7 +102,9 @@ export class IndicatorData extends Component {
 
   render() {
     const { indicatorType, indicatorData, setRef, showDetails, isSimulated } = this.props;
-    const { concept } = indicatorData.overcoming ? indicatorData.overcoming : {};
+    const { concept } = !this.props.indicatorType
+      ? indicatorData
+      : indicatorData.overcoming ? indicatorData.overcoming : {};
 
     return (
       <IndicatorDataWrapper
