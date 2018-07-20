@@ -3,7 +3,10 @@ import propTypes from 'prop-types';
 import ReactNumberFormat from 'react-number-format';
 
 export const PercentageFormat = ({ value, decimalScale, isPercentage }) => {
-  const formattedValue = isPercentage ? value * 100 : value;
+  const tempValue = isPercentage ? value * 100 : value;
+
+  // truncating number 98.767 => 98.76 (decimal scale being 2)
+  const formattedValue = Math.floor(tempValue * 100) / 100;
 
   if (value === null) {
     return value;
