@@ -212,7 +212,7 @@ export class CareerPlan extends Component {
     }
 
     const { cyclesConsolidated } = data;
-    const consolidatedCycles = this.state.consolidatedCycles.map(cycle => {
+    const consolidatedCycles = this.props.consolidatedCycles.map(cycle => {
       const cycleOvercoming = cyclesConsolidated.filter(c => c.cycle === cycle.cycle)[0];
 
       if (!cycleOvercoming) {
