@@ -175,6 +175,14 @@ export default class App extends Component {
                     'training',
                   )}
                 />
+                <Route
+                  exact
+                  path={`${ROUTE_PREFIX}/person/:id/careerPlan`}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/CareerPlan'),
+                    'careerPlan',
+                  )}
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>
