@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { orange100, gray125, gray150, gray700, gray890 } from 'styles/colors';
 import { RobotoRegular, RobotoMedium } from 'styles/typography';
-import { Loading } from 'natura-ui';
 
 import { IndicatorTypesColors } from 'components/ecosystems/CareerPlan/enums/IndicatorTypes';
 import { IndicatorDataWrapper } from '../../molecules/IndicatorData/IndicatorData.styles';
