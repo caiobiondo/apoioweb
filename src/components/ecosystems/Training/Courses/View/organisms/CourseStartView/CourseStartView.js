@@ -44,6 +44,8 @@ import { Loading, FlatButton, Icon } from 'natura-ui';
 import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { Origem } from '../../../../../../../config';
 
 export class CourseStartView extends Component {
   state = {
@@ -127,14 +129,19 @@ export class CourseStartView extends Component {
     });
   };
 
-  getCycleNumber = cycles => {
-    return cycles.length > 0 ? cycles[0].numero : 0;
-  };
-
   handleTrainingClick = action => event => {
     const { course } = this.props;
-    const currentCycle = this.getCycleNumber(this.props.user.estrutura.ciclo);
-
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     if (this.state[action]) return;
 
     this.props
@@ -143,7 +150,15 @@ export class CourseStartView extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          currentCycle,
+          ciclo: ciclo,
+          grupo,
+          gerenciaMercado,
+          gerenciaDeVendas,
+          canal,
+          papelDaConsultora,
+          regiao,
+          setor,
+          origem,
           roleId: this.props.user.cdPapelAtivo,
         },
       })
@@ -397,14 +412,32 @@ export class CourseStartView extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
-    const currentCycle = this.getCycleNumber(this.props.user.estrutura.ciclo);
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     this.props
       .mutate({
         variables: {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          currentCycle,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          gerenciaMercado,
+          regiao,
+          setor,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -628,7 +661,8 @@ export class CourseStartView extends Component {
           <CourseEvaluation
             course={course}
             sellerId={this.props.user.codigo}
-            currentCycle={this.getCycleNumber(this.props.user.estrutura.ciclo)}
+            origem={Origem}
+            user={this.props.user}
           />
         )}
         {this.renderStaticCourse()}

@@ -23,6 +23,8 @@ import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/google
 import { ROUTE_PREFIX } from 'config';
 import { withRouter } from 'react-router-dom';
 import Timer from 'components/ecosystems/Training/Courses/View/molecules/Timer/Timer';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { Origem } from '../../../../../../../config';
 
 export class CourseContent extends Component {
   constructor(props) {
@@ -146,15 +148,32 @@ export class CourseContent extends Component {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
     const { course } = this.state;
     const { handleFeedbackMessage } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
     this.props
       .mutate({
         variables: {
           input,
           sellerId: this.props.user.codigo,
           courseId: this.props.course.id,
-          currentCycle,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -374,7 +393,8 @@ export class CourseContent extends Component {
           <CourseEvaluation
             course={course}
             sellerId={this.props.user.codigo}
-            currentCycle={this.getCycleNumber(this.props.user.estrutura.ciclo)}
+            user={this.props.user}
+            origem={Origem}
             onFinish={() => {
               this.setState({ startTimer: true });
             }}

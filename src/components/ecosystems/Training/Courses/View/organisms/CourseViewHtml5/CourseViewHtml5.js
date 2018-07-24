@@ -37,6 +37,8 @@ import { translate } from 'locale';
 import { ROUTE_PREFIX } from 'config';
 
 import { Loading, FlatButton, Icon } from 'natura-ui';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { Origem } from '../../../../../../../config';
 
 export class CourseViewHtml5 extends Component {
   state = {
@@ -131,8 +133,17 @@ export class CourseViewHtml5 extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
 
     if (this.state[action]) return;
 
@@ -142,7 +153,15 @@ export class CourseViewHtml5 extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          currentCycle,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -348,8 +367,17 @@ export class CourseViewHtml5 extends Component {
 
   handleMyListClick = (event, child) => {
     const { course } = this.props;
-    const cycles = this.props.user.estrutura.ciclo;
-    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
 
     this.props
       .mutate({
@@ -357,7 +385,15 @@ export class CourseViewHtml5 extends Component {
           input: { action: this.valueToUpdateMyList() },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          currentCycle,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
         },
       })
       .then(response => {
@@ -509,7 +545,12 @@ export class CourseViewHtml5 extends Component {
         {this.isCourseAvailable() && this.renderFeedbackModal()}
         {this.isCourseAvailable() &&
           this.canEvaluate() && (
-            <CourseEvaluation course={course} sellerId={this.props.user.codigo} />
+            <CourseEvaluation
+              course={course}
+              sellerId={this.props.user.codigo}
+              user={this.props.user}
+              origem={Origem}
+            />
           )}
       </Main>
     );
