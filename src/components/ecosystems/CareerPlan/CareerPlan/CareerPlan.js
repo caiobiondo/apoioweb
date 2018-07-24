@@ -25,7 +25,6 @@ import {
   CareerPlanSection,
   CareerPlanTitleWrapper,
   CareerPlanTitle,
-  CareerPlanDescription,
   LoadingOverlay,
   LoadingWrapper,
 } from './CareerPlan.styles';
@@ -56,7 +55,11 @@ export class CareerPlan extends Component {
       return true;
     }
 
-    return IndicatorFields[indicatorType].some(field => cycle[field] > 0 || cycle.isClosed);
+    return IndicatorFields[indicatorType].every(field => {
+      /* eslint-disable eqeqeq */
+      return (cycle[field] >= 0 && cycle[field] != null) || cycle.isClosed;
+      /* eslint-enable eqeqeq */
+    });
   };
 
   onIndicatorChange = indicator => {
