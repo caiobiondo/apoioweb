@@ -33,7 +33,7 @@ export const IndicatorDataRowInput = styled(InputNumber)`
 
   ${({ props, value }) =>
     !props.isActive &&
-    !value &&
+    value === null &&
     `
     visibility: hidden;
   `};

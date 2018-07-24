@@ -76,7 +76,11 @@ export class Indicator extends Component {
   };
 
   isSimulated = (cycle, indicatorType) => {
-    return IndicatorFields[indicatorType].some(field => cycle[field] > 0);
+    return IndicatorFields[indicatorType].every(field => {
+      /* eslint-disable eqeqeq */
+      return cycle[field] >= 0 && cycle[field] != null;
+      /* eslint-enable eqeqeq */
+    });
   };
 
   renderIndicatorData = indicatorData => {

@@ -2,6 +2,7 @@
 
 exports[`InputNumber should render with the correctly props 1`] = `
 <NumberFormat
+  allowEmptyFormatting={false}
   allowNegative={false}
   decimalSeparator=","
   disabled={false}
@@ -24,6 +25,5 @@ exports[`InputNumber should render with the correctly props 1`] = `
   suffix=""
   thousandSeparator="."
   type="tel"
-  value={0}
 />
 `;
