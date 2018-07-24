@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import { Icon, FlatButton, Dialog } from 'natura-ui';
+import { isNil } from 'lodash';
 
 import { PercentageFormat, NumberFormat } from 'utils/numberFormat';
 import {
@@ -65,8 +66,8 @@ export class IndicatorDataForm extends Component {
     const { indicatorData } = this.props;
     const updatedIndicator = { ...indicatorData, overcoming: {} };
     this.indicatorFields.forEach(field => {
-      updatedIndicator[field] = 0;
-      this.setState({ [field]: 0 });
+      updatedIndicator[field] = null;
+      this.setState({ [field]: null });
     });
 
     this.closeModal();
@@ -194,7 +195,7 @@ export class IndicatorDataForm extends Component {
 
         {this.indicatorFields.map(field => (
           <IndicatorDataRow key={field}>
-            <IndicatorDataRowInputWrapper isActive={isActive} empty={!indicatorData[field]}>
+            <IndicatorDataRowInputWrapper isActive={isActive} empty={isNil(indicatorData[field])}>
               <IndicatorDataRowInput
                 name={field}
                 type="text"
@@ -213,8 +214,7 @@ export class IndicatorDataForm extends Component {
 
         <IndicatorDataRowAcc>
           <IndicatorDataValue>
-            {Boolean(value) && <PercentageFormat value={value} />}
-            {!value && '-'}
+            {!isNil(value) ? <PercentageFormat value={value} /> : '-'}
           </IndicatorDataValue>
         </IndicatorDataRowAcc>
         <IndicatorDataRow>
