@@ -197,6 +197,7 @@ export class Indicator extends Component {
         indicator={indicator}
         activeCycle={activeCycle}
         isCurrentCycle={cycle.cycle === currentCycle}
+        isLastVisibleCycle={array.length - 1 === index}
         {...this.props}
       />
     );
