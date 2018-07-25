@@ -11,7 +11,7 @@ export default class InputNumber extends Component {
       return;
     }
 
-    onChange(value.floatValue || 0, event);
+    onChange(value.floatValue, event);
   };
 
   render() {
@@ -19,7 +19,7 @@ export default class InputNumber extends Component {
       <ReactNumberFormat
         {...this.props}
         type="tel"
-        value={this.props.value || 0}
+        value={this.props.value}
         onValueChange={this.onValueChange}
         onChange={() => {}}
         isNumericString

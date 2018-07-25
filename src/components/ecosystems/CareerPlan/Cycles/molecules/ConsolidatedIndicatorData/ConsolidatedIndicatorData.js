@@ -129,11 +129,13 @@ export class ConsolidatedIndicatorData extends Component {
       return;
     }
 
-    return cycle.overcoming.value && isValid ? (
+    /* eslint-disable eqeqeq */
+    return cycle.overcoming.value != null && isValid ? (
       <PercentageFormat value={cycle.overcoming.value} />
     ) : (
       '-'
     );
+    /* eslint-enable eqeqeq */
   }
 
   render() {
