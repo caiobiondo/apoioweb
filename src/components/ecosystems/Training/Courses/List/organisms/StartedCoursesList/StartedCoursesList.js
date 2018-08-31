@@ -46,6 +46,7 @@ export class StartedCoursesList extends Component {
     let url = `${course.id}/web`;
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
+    if (course.type === 'SCORM') url = `${course.id}/scorm`;
 
     this.props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
   };
