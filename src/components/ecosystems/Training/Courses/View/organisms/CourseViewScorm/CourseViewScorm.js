@@ -76,8 +76,10 @@ export class CourseViewScorm extends Component {
       return;
     }
 
+    console.log(this.props.course);
+
     const scormUrl =
-      'http://treinamento-hml.natura.com/education/scorm/2020/player?courseId=4545&accessToken=b30495bcefcf4c85ba3f9ee929286e43';
+      'http://treinamento-hml.natura.com/education/scorm/2020/player?courseId=5252&accessToken=b30495bcefcf4c85ba3f9ee929286e43&sellerid=1367676';
 
     this.refs.html5Iframe.src = scormUrl;
   }

@@ -49,6 +49,7 @@ export const TrainingCoursesQuery = gql`
           video
           html5
           web
+          scorm
         }
         dateUpload
         durationInSeconds
