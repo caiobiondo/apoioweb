@@ -38,7 +38,6 @@ export const CourseViewQuery = gql`
         html5
         web
         videoEmbedUrl
-        scorm
       }
       dateUpload
       durationInSeconds
