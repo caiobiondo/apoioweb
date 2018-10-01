@@ -3,7 +3,7 @@ import { Main } from './index.styles';
 import CourseView from './organisms/CourseView/CourseView';
 import CourseStartView from './organisms/CourseStartView/CourseStartView';
 import CourseViewHtml5 from './organisms/CourseViewHtml5/CourseViewHtml5';
-import CourseViewScorm from './organisms/CourseViewScorm/CourseViewScorm';
+import CourseViewScormHome from './organisms/CourseViewScormHome/CourseViewScormHome';
 
 class TrainingWrapper extends Component {
   state = {
@@ -22,7 +22,7 @@ class TrainingWrapper extends Component {
     if (type === 'video') element = CourseView;
     if (type === 'html5') element = CourseViewHtml5;
     if (type === 'web') element = CourseStartView;
-    if (type === 'scorm') element = CourseViewScorm;
+    if (type === 'scorm') element = CourseViewScormHome;
 
     return React.createElement(element, {
       user,

@@ -56,6 +56,8 @@ export default {
     trainingCourseUnavailable: 'Treinamento indisponível',
     trainingUpdateError: 'Ocorreu um erro ao atualizar o treinamento',
     trainingCourseUpcomingVideo: 'Próximo vídeo em',
+    courseDateDate: 'Data',
+    courseCategory: 'Categoria',
   },
 };
 /* eslint-disable sort-keys */

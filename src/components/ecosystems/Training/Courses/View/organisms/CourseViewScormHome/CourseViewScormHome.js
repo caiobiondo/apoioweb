@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { graphql, compose, withApollo } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 import gql from 'graphql-tag';
+import { ROUTE_PREFIX, PUBLIC_URL } from 'config';
 
 import {
   CourseViewQuery,
   CourseViewQueryOptions,
 } from 'components/ecosystems/Training/data/CourseView.data';
-
-import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
@@ -23,32 +22,38 @@ import {
   TrainingCourseThumbnail,
   TrainingCourseThumbnailWrapper,
   TrainingCourseThumbnailDescriptionWrapper,
+  TrainingCourseDescription,
+  TrainingCourseTitle,
   TrainingCourseActions,
+  TrainingCourseActionButton,
   TrainingCourseActionButtonMobile,
   TrainingCourseActionButtonWrapper,
-  Html5Wrapper,
-  IconWrapper,
-  TrainingCourseUnavailableTitle,
-} from './CourseViewScorm.styles';
+  TrainingCourseRatingWrapper,
+  TrainingCourseFooterWrapper,
+} from './CourseViewScormHome.style';
 
-import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
-import CourseDescription from 'components/ecosystems/Training/Courses/View/molecules/CourseDescription';
+import staticCourses from 'components/ecosystems/Training/enums/staticCourses.enum';
 import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
-import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
 import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
+import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
+import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
+import EmptyList from 'components/molecules/EmptyList/EmptyList';
+import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import Dialog from 'material-ui/Dialog';
-import { translate } from 'locale';
-import { ROUTE_PREFIX } from 'config';
 
 import { Loading, FlatButton, Icon } from 'natura-ui';
+import { translate } from 'locale';
+
+import MediaQuery from 'react-responsive';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 import { Origem } from '../../../../../../../config';
 
-export class CourseViewScorm extends Component {
+export class CourseViewScormHome extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
     showEvaluation: false,
+    showStaticCourse: false,
     course: {},
     initialized: false,
     terminated: false,
@@ -67,21 +72,6 @@ export class CourseViewScorm extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if (
-      !this.props.course ||
-      !this.refs.html5Iframe ||
-      this.refs.html5Iframe.contentDocument.body.innerHTML
-    ) {
-      return;
-    }
-
-    const scormUrl = `http://treinamento-hml.natura.com/education/scorm/${this.props.course
-      .courseContent.scorm}/player?courseId=${this.props.course
-      .id}&accessToken=b30495bcefcf4c85ba3f9ee929286e43&sellerId=1367676`;
-    this.refs.html5Iframe.src = scormUrl;
-  }
-
   notifyLoadFinish = (loading, course) => {
     if (!loading && this.props.onLoadFinished) {
       this.props.onLoadFinished(this.isEmpty(loading, course), this.isLoading(loading, course));
@@ -91,10 +81,6 @@ export class CourseViewScorm extends Component {
   isLoading = (loading, course) => loading && !course;
 
   isEmpty = (loading, course) => !loading && !course.id;
-
-  isCourseAvailable = () => {
-    return true;
-  };
 
   myListIconName = () => {
     return this.state.course.isfavorite === 'true' ? 'ico_minus' : 'ico_plus';
@@ -134,6 +120,10 @@ export class CourseViewScorm extends Component {
         ? formatMessage({ id: addMsg })
         : formatMessage({ id: removeMsg });
 
+    this.handleFeedbackMessage(message);
+  };
+
+  handleFeedbackMessage = message => {
     this.setState({
       feedbackModalOpened: true,
       feedbackModalTitle: message,
@@ -153,7 +143,6 @@ export class CourseViewScorm extends Component {
       canal,
       origem,
     } = getHeadersFromUser(this.props.user);
-
     if (this.state[action]) return;
 
     this.props
@@ -162,20 +151,22 @@ export class CourseViewScorm extends Component {
           input: { action },
           sellerId: this.props.user.codigo,
           courseId: course.id,
-          ciclo,
+          ciclo: ciclo,
           grupo,
+          gerenciaMercado,
           gerenciaDeVendas,
+          canal,
+          papelDaConsultora,
           regiao,
           setor,
-          gerenciaMercado,
-          papelDaConsultora,
-          canal,
           origem,
+          roleId: this.props.user.cdPapelAtivo,
         },
       })
       .then(response => {
         if (response.error) {
           // handle error
+          this.handleFeedbackMessage(translate('trainingUpdateError'));
           return;
         }
 
@@ -183,7 +174,6 @@ export class CourseViewScorm extends Component {
 
         if (response.data && !response.data.updateCourse.status) {
           // handle not updated
-
           if (
             response.data.updateCourse.message &&
             response.data.updateCourse.message === 'Este curso ja está finalizado.'
@@ -202,7 +192,6 @@ export class CourseViewScorm extends Component {
                   rating: undefined,
                 },
               });
-              return;
             }
 
             if (action === 'terminated') {
@@ -219,10 +208,23 @@ export class CourseViewScorm extends Component {
                   rating: undefined,
                 },
               });
-              return;
             }
           }
 
+          if (action === 'initialized') {
+            if (course.type === 'WEB') {
+              this.openWebCourse();
+            }
+            if (course.type === 'HTML5') {
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
+            }
+            if (course.type === 'VIDEO') {
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
+            }
+            if (course.type === 'SCORM') {
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+            }
+          }
           return;
         }
 
@@ -246,9 +248,17 @@ export class CourseViewScorm extends Component {
             this.updateCachedList,
           );
 
-          if (course.type === 'WEB') window.open(course.courseContent.web, '_blank');
+          if (course.type === 'WEB') {
+            this.openWebCourse();
+          }
+          if (course.type === 'HTML5') {
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
+          }
           if (course.type === 'VIDEO') {
             this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
+          }
+          if (course.type === 'SCORM') {
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
           }
         }
 
@@ -283,6 +293,39 @@ export class CourseViewScorm extends Component {
 
         this.handleTrainingError();
       });
+  };
+
+  hasFinishingTrigger = () => {
+    const { id } = this.props.course;
+    const staticCoursesIds = Object.values(staticCourses);
+    return staticCoursesIds.includes(id);
+  };
+
+  openWebCourse = () => {
+    const { courseContent } = this.props.course;
+    const hasFinishingTrigger = this.hasFinishingTrigger();
+
+    if (!hasFinishingTrigger) {
+      return window.open(courseContent.web, '_blank');
+    }
+
+    const afterSetState = () => {
+      console.log('showStaticCourse -> afterSetState');
+      const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
+      const courseWindow = courseIframe.contentWindow;
+      this.checkCourseFinished(courseWindow);
+    };
+
+    this.setState({ showStaticCourse: true }, afterSetState);
+  };
+
+  checkCourseFinished = courseWindow => {
+    const timerId = setInterval(() => {
+      if (courseWindow.location.hash === '#finish') {
+        clearInterval(timerId);
+        this.handleTrainingClick('terminated')();
+      }
+    }, 1000);
   };
 
   updateCachedList = () => {
@@ -387,7 +430,6 @@ export class CourseViewScorm extends Component {
       canal,
       origem,
     } = getHeadersFromUser(this.props.user);
-
     this.props
       .mutate({
         variables: {
@@ -397,9 +439,9 @@ export class CourseViewScorm extends Component {
           ciclo,
           grupo,
           gerenciaDeVendas,
+          gerenciaMercado,
           regiao,
           setor,
-          gerenciaMercado,
           papelDaConsultora,
           canal,
           origem,
@@ -455,8 +497,16 @@ export class CourseViewScorm extends Component {
   };
 
   renderActionButtons = (buttonStyle, course) => {
+    const { showStaticCourse } = this.state;
     const buttons = [];
-    if (course.status === 'pending') {
+    const hasFinishingTrigger = this.hasFinishingTrigger();
+
+    const isPending = course.status === 'pending';
+    const isStarted = course.status === 'started';
+    const isPaused = course.status === 'paused';
+    const isFinished = course.status === 'finished';
+
+    if (isPending) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="start">
           <FlatButton
@@ -469,7 +519,20 @@ export class CourseViewScorm extends Component {
       );
     }
 
-    if (course.status === 'started' || course.status === 'paused') {
+    if ((isStarted || isPaused) && !showStaticCourse) {
+      buttons.push(
+        <TrainingCourseActionButtonWrapper key="resume">
+          <FlatButton
+            {...buttonStyle}
+            label={translate('resumeTraining')}
+            icon={<Icon file="ico_play_circle" />}
+            onClick={this.handleTrainingClick('initialized')}
+          />
+        </TrainingCourseActionButtonWrapper>,
+      );
+    }
+
+    if ((isStarted || isPaused) && !hasFinishingTrigger) {
       buttons.push(
         <TrainingCourseActionButtonWrapper key="finish">
           <FlatButton
@@ -477,6 +540,19 @@ export class CourseViewScorm extends Component {
             label={translate('finishTraining')}
             icon={<Icon file="ico_play_circle" />}
             onClick={this.handleTrainingClick('terminated')}
+          />
+        </TrainingCourseActionButtonWrapper>,
+      );
+    }
+
+    if (isFinished) {
+      buttons.push(
+        <TrainingCourseActionButtonWrapper key="review">
+          <FlatButton
+            {...buttonStyle}
+            label={translate('reviewTraining')}
+            icon={<Icon file="ico_play_circle" />}
+            onClick={this.handleTrainingClick('initialized')}
           />
         </TrainingCourseActionButtonWrapper>,
       );
@@ -500,69 +576,114 @@ export class CourseViewScorm extends Component {
     return this.state.showEvaluation && course.ratedByYou !== 'true';
   };
 
-  render() {
-    const { course, loading } = this.props;
+  setStaticCourseRef = ref => {
+    this.staticCourseIframe = ref;
+  };
 
-    if (!course && loading) {
+  getStaticCourseName = () => {
+    const { id } = this.props.course;
+    return Object.keys(staticCourses).find(key => staticCourses[key] === id);
+  };
+
+  renderStaticCourse = () => {
+    const { showStaticCourse } = this.state;
+    const courseName = this.getStaticCourseName();
+    const courseUrl = `${PUBLIC_URL}trainingCourses/${courseName}/`;
+
+    if (!showStaticCourse) {
+      return;
+    }
+
+    return (
+      <iframe
+        ref={this.setStaticCourseRef}
+        title={courseName}
+        src={courseUrl}
+        allow="autoplay"
+        height={600}
+        frameborder="0"
+      />
+    );
+  };
+
+  render() {
+    const { course } = this.props;
+
+    if (!course && !this.props.loading) return null;
+
+    if (!course && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
-    if (!course.id) return null;
+    if (!course.id) {
+      return (
+        <Main>
+          <EmptyList
+            icon="ico_list_add"
+            titleId="myCourseEmptyList"
+            descriptionId="myCourseEmptyListDescription"
+          />
+        </Main>
+      );
+    }
 
     return (
       <Main>
-        <CourseViewHeader />
-        <TrainingCourseThumbnailWrapper>
-          {!this.isCourseAvailable() && (
+        <CourseViewHeader course={course} />
+        <MediaQuery maxWidth={767}>
+          <TrainingCourseThumbnailWrapper>
             <TrainingCourseThumbnail imageUrl={course.thumbnail}>
               <TrainingCourseThumbnailDescriptionWrapper>
-                <IconWrapper>
-                  <Icon file="ico_graduate_cap" />
-                </IconWrapper>
-                <TrainingCourseUnavailableTitle>
-                  {translate('trainingCourseUnavailable')}
-                </TrainingCourseUnavailableTitle>
+                <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
+                <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
               </TrainingCourseThumbnailDescriptionWrapper>
             </TrainingCourseThumbnail>
-          )}
-          <Html5Wrapper>
-            <iframe
-              ref="html5Iframe"
-              title={course.title}
-              src="about:blank"
-              allowFullScreen
-              frameBorder="0"
-            />
-          </Html5Wrapper>
-        </TrainingCourseThumbnailWrapper>
-        <CourseDescription course={course} />
-        {this.isCourseAvailable() && (
-          <TrainingCourseActions>
-            {this.renderActionButtons(TrainingCourseActionButtonMobile, course)}
-          </TrainingCourseActions>
-        )}
-        <CourseRating course={course} />
+            <TrainingCourseActions>
+              {this.renderActionButtons(TrainingCourseActionButtonMobile, course)}
+            </TrainingCourseActions>
+            <TrainingCourseRatingWrapper>
+              <CourseRating course={course} />
+            </TrainingCourseRatingWrapper>
+          </TrainingCourseThumbnailWrapper>
+        </MediaQuery>
+        <MediaQuery minWidth={768}>
+          <TrainingCourseThumbnailWrapper>
+            <TrainingCourseThumbnail imageUrl={course.thumbnail}>
+              <TrainingCourseThumbnailDescriptionWrapper>
+                <TrainingCourseTitle>{course.title}</TrainingCourseTitle>
+                <TrainingCourseDescription>{course.description}</TrainingCourseDescription>
+                <TrainingCourseActions>
+                  {this.renderActionButtons(TrainingCourseActionButton, course)}
+                </TrainingCourseActions>
+              </TrainingCourseThumbnailDescriptionWrapper>
+            </TrainingCourseThumbnail>
+
+            <TrainingCourseFooterWrapper>
+              <CourseRating course={course} />
+            </TrainingCourseFooterWrapper>
+          </TrainingCourseThumbnailWrapper>
+        </MediaQuery>
         <RelatedCourses courses={course.relatedCourses} />
-        {this.isCourseAvailable() && this.renderFeedbackModal()}
-        {this.isCourseAvailable() &&
-          this.canEvaluate() && (
-            <CourseEvaluation
-              course={course}
-              sellerId={this.props.user.codigo}
-              user={this.props.user}
-              origem={Origem}
-            />
-          )}
+        {this.renderFeedbackModal()}
+        {this.canEvaluate() && (
+          <CourseEvaluation
+            course={course}
+            sellerId={this.props.user.codigo}
+            origem={Origem}
+            user={this.props.user}
+          />
+        )}
+        {this.renderStaticCourse()}
       </Main>
     );
   }
 }
 
-export const CourseViewScormWithIntl = injectIntl(CourseViewScorm);
-export const CourseViewScormWithRouter = withRouter(CourseViewScormWithIntl);
-export const CourseViewScormWithApollo = withApollo(CourseViewScormWithRouter);
+export const CourseViewScormHomeIntl = injectIntl(CourseViewScormHome);
+export const CourseViewScormHomeRouter = withRouter(CourseViewScormHomeIntl);
+export const CourseViewScormHomeWithApollo = withApollo(CourseViewScormHomeRouter);
 
 export default compose(
   graphql(CourseViewQuery, CourseViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseViewScormWithApollo);
+)(CourseViewScormHomeWithApollo);
