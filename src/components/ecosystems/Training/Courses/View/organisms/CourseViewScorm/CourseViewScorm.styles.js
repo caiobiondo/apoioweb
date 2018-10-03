@@ -191,7 +191,7 @@ export const TrainingCourseActionButtonMobile = {
   hoverColor: gray450,
 };
 
-export const TrainingCourseRatingWrapper = styled.div`
+export const TrainingCourseFooterWrapper = styled.div`
   display: flex;
   justify-content: center;
 

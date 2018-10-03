@@ -500,6 +500,13 @@ export class CourseViewScorm extends Component {
     return this.state.showEvaluation && course.ratedByYou !== 'true';
   };
 
+  handleBackClick = () => {
+    const { course } = this.props;
+    this.props.history.push(
+      `${ROUTE_PREFIX}/training/courses/${course.id}/${course.type.toLowerCase()}`,
+    );
+  };
+
   render() {
     const { course, loading } = this.props;
 
@@ -511,7 +518,7 @@ export class CourseViewScorm extends Component {
 
     return (
       <Main>
-        <CourseViewHeader />
+        <CourseViewHeader handleBackClick={this.handleBackClick} />
         <TrainingCourseThumbnailWrapper>
           {!this.isCourseAvailable() && (
             <TrainingCourseThumbnail imageUrl={course.thumbnail}>

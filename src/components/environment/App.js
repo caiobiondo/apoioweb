@@ -145,6 +145,14 @@ export default class App extends Component {
                 />
                 <Route
                   exact
+                  path={`${ROUTE_PREFIX}/training/courses/:id/:type/:scormId`}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Courses/View'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
                   path={`${ROUTE_PREFIX}/training/certificates`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Certificates/List'),

@@ -17,12 +17,6 @@ export const DateWrapper = styled.div`
   color: ${gray700};
 `;
 
-export const CategoryWrapper = styled.div`
-  font-size: ${fs14};
-  font-family: ${NaturaRegular};
-  color: ${gray700};
-`;
-
 export const ColWrapper = styled.div`
   height: 50px;
   padding-right: 25px;
@@ -47,6 +41,8 @@ export const RatingWrapper = styled.div`
 /* eslint-enable no-confusing-arrow */
 
 export const RowWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   margin-top: 30px;
   width: 100%;
   padding-left: 10px;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-flexbox-grid';
+import { Col, Row } from 'react-flexbox-grid';
 import moment from 'moment';
 import { translate } from 'locale';
 
@@ -9,7 +9,6 @@ import { Rating } from 'natura-ui';
 import { orange100, gray150, red500 } from 'styles/colors';
 import {
   ColWrapper,
-  CategoryWrapper,
   DateWrapper,
   RatingWrapper,
   RowWrapper,
@@ -18,7 +17,7 @@ import {
 
 export class CourseScormFooter extends Component {
   getFormatedDate(date) {
-    return moment(date).format('dd/MM/yyyy');
+    return moment(date).format('DD/MM/YYYY');
   }
 
   render() {
@@ -32,23 +31,23 @@ export class CourseScormFooter extends Component {
       <RowWrapper>
         <Row>
           <ColWrapper>
-            <TittleWrapper>{translate('courseDate')}</TittleWrapper>
-            <DateWrapper>{this.getFormatedDate(course.dateUpload)}</DateWrapper>
+            <Col>
+              <TittleWrapper>{translate('courseDate')}</TittleWrapper>
+              <DateWrapper>{this.getFormatedDate(course.dateUpload)}</DateWrapper>
+            </Col>
           </ColWrapper>
           <ColWrapper>
-            <TittleWrapper>{translate('courseCategory')}</TittleWrapper>
-            <CategoryWrapper>{this.course.category}</CategoryWrapper>
-          </ColWrapper>
-          <ColWrapper>
-            <TittleWrapper>{translate('courseRatingAvaliation')}</TittleWrapper>
-            <RatingWrapper ratedByYou={course.ratedByYou}>
-              <Rating
-                initialRating={rating}
-                emptySymbol={<ToggleStarBorder color={ratingColorNormal} />}
-                fullSymbol={<ToggleStar color={ratingColorFilled} />}
-                readonly
-              />
-            </RatingWrapper>
+            <Col>
+              <TittleWrapper>{translate('courseRatingAvaliation')}</TittleWrapper>
+              <RatingWrapper ratedByYou={course.ratedByYou}>
+                <Rating
+                  initialRating={rating}
+                  emptySymbol={<ToggleStarBorder color={ratingColorNormal} />}
+                  fullSymbol={<ToggleStar color={ratingColorFilled} />}
+                  readonly
+                />
+              </RatingWrapper>
+            </Col>
           </ColWrapper>
         </Row>
       </RowWrapper>
@@ -59,3 +58,5 @@ export class CourseScormFooter extends Component {
 CourseScormFooter.Prototypes = {
   course: PropTypes.object.isRequired,
 };
+
+export default CourseScormFooter;

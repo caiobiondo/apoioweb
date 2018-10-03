@@ -4,6 +4,7 @@ import CourseView from './organisms/CourseView/CourseView';
 import CourseStartView from './organisms/CourseStartView/CourseStartView';
 import CourseViewHtml5 from './organisms/CourseViewHtml5/CourseViewHtml5';
 import CourseViewScormHome from './organisms/CourseViewScormHome/CourseViewScormHome';
+import CourseViewScorm from './organisms/CourseViewScorm/CourseViewScorm';
 
 class TrainingWrapper extends Component {
   state = {
@@ -16,13 +17,14 @@ class TrainingWrapper extends Component {
   };
 
   renderCourse = () => {
-    const { user, match: { params: { id, type } } } = this.props;
+    const { user, match: { params: { id, type, scormId } } } = this.props;
 
     let element = CourseStartView;
     if (type === 'video') element = CourseView;
     if (type === 'html5') element = CourseViewHtml5;
     if (type === 'web') element = CourseStartView;
-    if (type === 'scorm') element = CourseViewScormHome;
+    if (type === 'scorm' && !scormId) element = CourseViewScormHome;
+    if (type === 'scorm' && scormId) element = CourseViewScorm;
 
     return React.createElement(element, {
       user,
