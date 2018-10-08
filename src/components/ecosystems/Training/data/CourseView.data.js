@@ -85,7 +85,8 @@ export const CourseViewQueryOptions = {
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
         origem: Origem,
       },
-      fetchPolicy: 'cache-and-network',
+      // fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'no-cache',
     };
   },
 

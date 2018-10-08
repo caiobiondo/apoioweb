@@ -455,35 +455,7 @@ export class CourseViewScorm extends Component {
   };
 
   renderActionButtons = (buttonStyle, course) => {
-    const buttons = [];
-    if (course.status === 'pending') {
-      buttons.push(
-        <TrainingCourseActionButtonWrapper key="start">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('startTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('initialized')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-    }
-
-    if (course.status === 'started' || course.status === 'paused') {
-      buttons.push(
-        <TrainingCourseActionButtonWrapper key="finish">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('finishTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('terminated')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-    }
-
     return [
-      ...buttons,
       <TrainingCourseActionButtonWrapper key="list">
         <FlatButton
           {...buttonStyle}

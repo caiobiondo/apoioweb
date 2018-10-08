@@ -66,13 +66,13 @@ export class CourseViewScormHome extends Component {
 
   componentWillReceiveProps({ loading, course }) {
     this.notifyLoadFinish(loading, course);
-
     if (!this.props.course && course) {
       this.setState({ course });
     }
   }
 
   notifyLoadFinish = (loading, course) => {
+    console.log('notifyLoadFinish', loading);
     if (!loading && this.props.onLoadFinished) {
       this.props.onLoadFinished(this.isEmpty(loading, course), this.isLoading(loading, course));
     }
@@ -532,7 +532,7 @@ export class CourseViewScormHome extends Component {
 
   canEvaluate = () => {
     const { course } = this.props;
-    return this.state.showEvaluation && course.ratedByYou !== 'true';
+    return course.status === 'finished' && course.ratedByYou !== 'true';
   };
 
   setStaticCourseRef = ref => {
