@@ -131,6 +131,7 @@ export class CourseStartView extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
+<<<<<<< HEAD
     const {
       ciclo,
       grupo,
@@ -142,6 +143,12 @@ export class CourseStartView extends Component {
       canal,
       origem,
     } = getHeadersFromUser(this.props.user);
+    if (this.state[action]) return;
+=======
+    const cycles = this.props.user.estrutura.ciclo;
+    const currentCycle = cycles.length > 0 ? cycles[0].numero : 0;
+>>>>>>> dev
+
     if (this.state[action]) return;
 
     this.props

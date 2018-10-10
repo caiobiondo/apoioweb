@@ -83,19 +83,36 @@ export class IndicatorData extends Component {
   }
 
   renderPopover() {
+<<<<<<< HEAD
     const { indicatorData } = this.props;
+=======
+    const { indicatorData, isLastVisibleCycle } = this.props;
+>>>>>>> dev
 
     if (indicatorData.isClosed) {
       return null;
     }
 
+<<<<<<< HEAD
+=======
+    let popupLastVisibleCycle = {};
+    if (isLastVisibleCycle) {
+      popupLastVisibleCycle = { horizontal: 'left' };
+    }
+
+>>>>>>> dev
     return (
       <Popover
         open={this.state.showPopover}
         anchorEl={this.indicatorDataNode}
         onRequestClose={this.hidePopover}
+<<<<<<< HEAD
         anchorOrigin={{ horizontal: 'middle', vertical: 'center' }}
         targetOrigin={{ horizontal: 'middle', vertical: 'center' }}
+=======
+        anchorOrigin={{ horizontal: 'middle', vertical: 'center', ...popupLastVisibleCycle }}
+        targetOrigin={{ horizontal: 'middle', vertical: 'center', ...popupLastVisibleCycle }}
+>>>>>>> dev
       >
         <FormattedMessage id="careerPlanNotFilled" />
       </Popover>

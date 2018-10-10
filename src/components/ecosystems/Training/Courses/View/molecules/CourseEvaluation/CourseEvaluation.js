@@ -78,15 +78,19 @@ export class CourseEvaluation extends Component {
     });
   };
 
+<<<<<<< HEAD
   getCycleNumber = cycles => {
     return cycles.length > 0 ? cycles[0].numero : 0;
   };
 
+=======
+>>>>>>> dev
   handleClose = buttonClicked => {
     if (!buttonClicked) return;
 
     if (this.isLastEvaluation()) {
       this.setState({ modalOpened: false });
+<<<<<<< HEAD
       const {
         ciclo,
         grupo,
@@ -98,6 +102,9 @@ export class CourseEvaluation extends Component {
         canal,
         origem,
       } = getHeadersFromUser(this.props.user);
+=======
+
+>>>>>>> dev
       this.props
         .mutate({
           variables: {
@@ -281,8 +288,11 @@ CourseEvaluation.propTypes = {
   course: PropTypes.object.isRequired,
   sellerId: PropTypes.number.isRequired,
   onFinish: PropTypes.func,
+<<<<<<< HEAD
   user: PropTypes.object.isRequired,
   origem: PropTypes.string.isRequired,
+=======
+>>>>>>> dev
 };
 
 export const CourseEvaluationIntl = injectIntl(CourseEvaluation);
