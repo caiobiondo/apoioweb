@@ -23,11 +23,8 @@ import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/google
 import { ROUTE_PREFIX } from 'config';
 import { withRouter } from 'react-router-dom';
 import Timer from 'components/ecosystems/Training/Courses/View/molecules/Timer/Timer';
-<<<<<<< HEAD
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 import { Origem } from '../../../../../../../config';
-=======
->>>>>>> dev
 
 export class CourseContent extends Component {
   constructor(props) {
@@ -65,21 +62,12 @@ export class CourseContent extends Component {
     }
 
     const player = new Player(this.playerRef);
-<<<<<<< HEAD
 
     if (course.stoppedAt <= 1) {
       this.playerEventListeners(player);
       return;
     }
 
-=======
-
-    if (course.stoppedAt <= 1) {
-      this.playerEventListeners(player);
-      return;
-    }
-
->>>>>>> dev
     player.setCurrentTime(course.stoppedAt).then(() => {
       player.pause().then(() => {
         this.playerEventListeners(player);
@@ -160,7 +148,6 @@ export class CourseContent extends Component {
     const input = { action, stoppedAt: this.state.course.stoppedAt };
     const { course } = this.state;
     const { handleFeedbackMessage } = this.props;
-<<<<<<< HEAD
     const {
       ciclo,
       grupo,
@@ -172,9 +159,6 @@ export class CourseContent extends Component {
       canal,
       origem,
     } = getHeadersFromUser(this.props.user);
-=======
-
->>>>>>> dev
     this.props
       .mutate({
         variables: {
@@ -321,13 +305,10 @@ export class CourseContent extends Component {
     this.props.history.push(`${ROUTE_PREFIX}/training/courses/${url}`);
   };
 
-<<<<<<< HEAD
   getCycleNumber = cycles => {
     return cycles.length > 0 ? cycles[0].numero : 0;
   };
 
-=======
->>>>>>> dev
   canRenderEvaluation = () => this.props.course.ratedByYou !== 'true' && this.state.ended;
 
   getNextCourse = relatedCourses => {
@@ -412,11 +393,8 @@ export class CourseContent extends Component {
           <CourseEvaluation
             course={course}
             sellerId={this.props.user.codigo}
-<<<<<<< HEAD
             user={this.props.user}
             origem={Origem}
-=======
->>>>>>> dev
             onFinish={() => {
               this.setState({ startTimer: true });
             }}
