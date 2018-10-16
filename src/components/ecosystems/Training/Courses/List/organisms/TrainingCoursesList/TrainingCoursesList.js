@@ -26,7 +26,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
 
-import BaseFormSearch from 'components/molecules/BaseFormSearch/BaseFormSearch';
+import CourseFormSearch from '../../../../molecules/CourseFormSearch';
 
 import {
   StartedWrapper,
@@ -288,17 +288,19 @@ export class TrainingCoursesList extends Component {
     const baseFormSearchProps = {
       onSearch: this.props.onSearch,
       searchValue: this.props.courseFilter,
+      status: this.props.status,
       sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
       description: 'myTrainingsSearchDescription',
       inputLabel: 'trainingLabel',
     };
-    const titleToEmptyList = this.props.courseFilter ? 'coursesNoSearchResult' : 'coursesEmptyList';
+    const titleToEmptyList =
+      this.props.courseFilter || this.props.status ? 'coursesNoSearchResult' : 'coursesEmptyList';
 
     return (
       <StartedWrapper>
         <StartedCoursesList status="started" user={this.props.user} />
         <CourseSearchContainer>
-          <BaseFormSearch {...baseFormSearchProps} />
+          <CourseFormSearch {...baseFormSearchProps} />
         </CourseSearchContainer>
 
         <TrainingCoursesListWrapper>

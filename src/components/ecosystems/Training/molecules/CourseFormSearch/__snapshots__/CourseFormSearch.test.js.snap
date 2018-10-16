@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseFormSearch Organism should render input, select and submit button 1`] = `
+<Paper
+  circle={false}
+  rounded={true}
+  style={
+    Object {
+      "padding": 30,
+    }
+  }
+  transitionEnabled={true}
+  zDepth={1}
+>
+  <SectionTitle
+    iconName="ico_add_customer"
+    value="myCustomers"
+  />
+  <CourseFormSearchstyles__BaseFormSearchDescription>
+    Preencha o campo abaixo para buscar seus clientes
+  </CourseFormSearchstyles__BaseFormSearchDescription>
+  <CourseFormSearchstyles__FormWrapper>
+    <CourseFormSearchstyles__FormInputWrapper>
+      <CourseFormSearchstyles__FormInput
+        label="Nome"
+        name="inputBaseFormSearch"
+        onChange={[Function]}
+        onKeyPress={[Function]}
+        type="text"
+        value=""
+      />
+    </CourseFormSearchstyles__FormInputWrapper>
+    <CourseFormSearchstyles__FormInputWrapper>
+      <CourseFormSearchstyles__FormSelect
+        blankOptionText="Selecione aqui o status do treinamento"
+        bordered={true}
+        label="Status"
+        name="statusFormSearch"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "key": "finished",
+              "label": "Concluídos",
+              "value": "finished",
+            },
+            Object {
+              "key": "pending",
+              "label": "Em andamento",
+              "value": "pending",
+            },
+          ]
+        }
+        renderBlank={true}
+        value=""
+      />
+    </CourseFormSearchstyles__FormInputWrapper>
+    <CourseFormSearchstyles__FormButtonWrapper>
+      <FormButton
+        backgroundColor="#c9c9c9"
+        disabled={false}
+        height={54}
+        label="Buscar"
+        labelColor="#fff"
+        labelStyle={
+          Object {
+            "color": "#fff",
+            "fontFamily": "Roboto-Regular",
+            "textAlign": "center",
+            "textTransform": "uppercase",
+          }
+        }
+        link={null}
+        onClick={[Function]}
+        primary={true}
+        raised={false}
+        type="submit"
+      />
+    </CourseFormSearchstyles__FormButtonWrapper>
+  </CourseFormSearchstyles__FormWrapper>
+</Paper>
+`;

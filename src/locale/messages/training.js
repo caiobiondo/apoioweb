@@ -28,6 +28,8 @@ export default {
     'courseViews.one': 'visualização',
     'courseViews.many': 'visualizações',
     trainingCourseCompleted: 'Concluído',
+    trainingCourseStatusFinished: 'Concluídos',
+    trainingCourseStatusPending: 'Em andamento',
     downloadCertificate: 'Baixar Certificado',
     trainingAddCourseToMyList: 'Adicionar à minha lista',
     trainingCategoryCompleted: 'Completa',
