@@ -8,6 +8,19 @@ This project is focused on serving a **Natura Consultora Mobile App** features o
 
 Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/facebookincubator/create-react-app).
 
+## 23/10/2018 Luiz Júnior
+## run the project on windows
+
+-Change the variables in archive .env.dev for:
+    GRAPHQL_URI = http://localhost:8082/graphql	
+	PUBLIC_URL = http://localhost:4242/
+
+-run command:	
+    npm run build:hml 
+
+-copy all variables from the localstorage and the variables HTTP_CDPESSOA and OAMAuthnCookie_consultoriahml.natura.com.br:80 from the hml environment cookies: https://consultoriahml.natura.com.br/webfv/ to the local environment: http:localhost:4242/ and then change the local environment to: http: //localhost:4242/webfv/training/courses 
+
+
 ## :rocket: Setup & Run (Linux)
 
 #### Installing dnsmasq
