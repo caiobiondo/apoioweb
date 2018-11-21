@@ -59,6 +59,9 @@ export default {
     trainingUpdateError: 'Ocorreu um erro ao atualizar o treinamento',
     trainingCourseUpcomingVideo: 'Próximo vídeo em',
     courseDate: 'Data',
+    multimediaEmptyList: 'Lista de multimídia vazia',
+    multimediaNoSearchResult: 'Nenhum resultado encontrado',
+    multimediasEmptyListDescription: 'Não existem multimídias disponíveis.',
   },
 };
 /* eslint-disable sort-keys */
