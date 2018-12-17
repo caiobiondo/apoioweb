@@ -292,7 +292,8 @@ export class CourseContent extends Component {
     let url = `${course.id}/web`;
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
-    if (course.type === 'SCORM') url = `${course.id}/scorm`;
+    // if (course.type === 'SCORM') url = `${course.id}/scorm`;
+    if (course.type === 'SCORM') url = `#`;
 
     gtmPushDataLayerEvent({
       event: events.PAGE_VIEW,

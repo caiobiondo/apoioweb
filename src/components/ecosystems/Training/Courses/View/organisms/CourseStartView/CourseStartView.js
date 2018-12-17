@@ -223,7 +223,8 @@ export class CourseStartView extends Component {
               this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
             }
             if (course.type === 'SCORM') {
-              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+              // this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses`);
             }
           }
           return;
@@ -259,7 +260,8 @@ export class CourseStartView extends Component {
             this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
           }
           if (course.type === 'SCORM') {
-            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+            // this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/#`);
           }
         }
 

@@ -215,7 +215,8 @@ export class CourseViewScormHome extends Component {
           if (action === 'initialized') {
             if (course.type === 'SCORM') {
               this.props.history.push(
-                `${ROUTE_PREFIX}/training/courses/${course.id}/scorm/${course.courseContent.scorm}`,
+                // `${ROUTE_PREFIX}/training/courses/${course.id}/scorm/${course.courseContent.scorm}`,
+                `${ROUTE_PREFIX}/training/courses/${course.id}/#`,
               );
             }
           }
@@ -244,7 +245,8 @@ export class CourseViewScormHome extends Component {
 
           if (course.type === 'SCORM') {
             this.props.history.push(
-              `${ROUTE_PREFIX}/training/courses/${course.id}/scorm/${course.courseContent.scorm}`,
+              // `${ROUTE_PREFIX}/training/courses/${course.id}/scorm/${course.courseContent.scorm}`,
+              `${ROUTE_PREFIX}/training/courses/${course.id}`,
             );
           }
         }
