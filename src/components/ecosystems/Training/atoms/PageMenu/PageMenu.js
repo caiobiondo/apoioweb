@@ -10,6 +10,7 @@ const menu = [
   { link: `${ROUTE_PREFIX}/training/categories`, label: translate('categories') },
   { link: `${ROUTE_PREFIX}/training/my-list`, label: translate('myList') },
   { link: `${ROUTE_PREFIX}/training/certificates`, label: translate('certificate') },
+  { link: `${ROUTE_PREFIX}/training/midialibary`, label: translate('midialibary') },
 ];
 
 class PageMenu extends Component {
