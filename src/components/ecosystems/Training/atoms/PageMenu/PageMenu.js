@@ -6,6 +6,7 @@ import { ROUTE_PREFIX } from 'config';
 import { gtmPushDataLayerEvent, events } from 'utils/googleTagManager';
 
 const menu = [
+  { link: `${ROUTE_PREFIX}/training/recommendations`, label: translate('recommendations') },
   { link: `${ROUTE_PREFIX}/training/courses`, label: translate('courses') },
   { link: `${ROUTE_PREFIX}/training/categories`, label: translate('categories') },
   { link: `${ROUTE_PREFIX}/training/my-list`, label: translate('myList') },
