@@ -5,7 +5,6 @@ import TrainingCourse from 'components/ecosystems/Training/molecules/TrainingCou
 import { List } from './TrainingCourses.styles';
 
 export default class TrainingCourses extends Component {
-  // 19-10-18 Luiz Júnior
   // renderListNoFinished = courses => {
   //   return courses.map((course, index) => {
   //     if (course.status !== 'finished') {
@@ -17,7 +16,6 @@ export default class TrainingCourses extends Component {
   //     }
   //   });
   // };
-  // 19-10-18 Luiz Júnior
   renderCompletedEnd = courses => {
     const obj = [...courses];
     /* necessário validar os 3 status por que caso validar para ordenar apenas os cursos finalizados para o final da lista, ocorrerá 

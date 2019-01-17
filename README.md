@@ -8,7 +8,7 @@ This project is focused on serving a **Natura Consultora Mobile App** features o
 
 Boilerplated based on ejected [create-react-app (1.4.1)](https://github.com/facebookincubator/create-react-app).
 
-## 23/10/2018 Luiz Júnior
+
 ## run the project on windows
 
 -Change the variables in archive .env.dev for:
