@@ -144,6 +144,8 @@ export class CourseStartView extends Component {
     } = getHeadersFromUser(this.props.user);
     if (this.state[action]) return;
 
+    if (this.state[action]) return;
+
     this.props
       .mutate({
         variables: {
