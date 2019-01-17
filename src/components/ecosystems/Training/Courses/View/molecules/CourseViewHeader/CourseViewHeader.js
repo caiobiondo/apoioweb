@@ -17,7 +17,7 @@ export class CourseViewHeader extends Component {
     if (this.props.handleBackClick) {
       this.props.handleBackClick();
     } else {
-      this.props.history.push(`${ROUTE_PREFIX}/training/courses`);
+      this.props.history.goBack();
     }
   };
 
