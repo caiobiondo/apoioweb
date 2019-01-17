@@ -86,9 +86,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "build:hml": "copy .env.dev .env && node scripts/build.js",
-    "build:staging": "copy .env.staging .env && node scripts/build.js",
-    "build:prod": "copy .env.prod .env && node scripts/build.js",
+    "build:hml": "cp .env.dev .env && node scripts/build.js",
+    "build:staging": "cp .env.staging .env && node scripts/build.js",
+    "build:prod": "cp .env.prod .env && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom --coverage --watch",
     "coverage": "node scripts/test.js --env=jsdom --coverage",
     "coverage:upload": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
