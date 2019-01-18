@@ -1,4 +1,4 @@
-import { Origem, LOGOUT_URL } from 'config';
+import { Origem } from 'config';
 
 export const getCycleIdFromUser = user => {
   return (

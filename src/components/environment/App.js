@@ -129,6 +129,14 @@ export default class App extends Component {
                 />
                 <Route
                   exact
+                  path={`${ROUTE_PREFIX}/training/recommendations`}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Recommendations/List'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
                   path={`${ROUTE_PREFIX}/training/courses`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Courses/List'),
@@ -138,6 +146,14 @@ export default class App extends Component {
                 <Route
                   exact
                   path={`${ROUTE_PREFIX}/training/courses/:id/:type`}
+                  component={withDefaultBehaviour(
+                    import('components/ecosystems/Training/Courses/View'),
+                    'training',
+                  )}
+                />
+                <Route
+                  exact
+                  path={`${ROUTE_PREFIX}/training/courses/:id/:type/:scormId`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Courses/View'),
                     'training',

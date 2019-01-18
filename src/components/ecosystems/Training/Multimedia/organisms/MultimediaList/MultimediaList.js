@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
-import {
-  TrainingCoursesQuery,
-  TrainingCoursesQueryOptions,
-} from 'components/ecosystems/Training/data/TrainingCourses.data';
-import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
+import gql from 'graphql-tag';
 import { graphql, compose, withApollo } from 'react-apollo';
+import { injectIntl, FormattedMessage } from 'react-intl';
+
+import { Loading } from 'natura-ui';
 import { translate } from 'locale';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
@@ -15,29 +12,24 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { RobotoRegular } from 'styles/typography';
-import gql from 'graphql-tag';
 
+import MultimediaItems from 'components/ecosystems/Training/molecules/MultimediaItems';
+
+import {
+  TrainingMultimediaQuery,
+  TrainingMultimediaQueryOptions,
+} from '../../../data/TrainingMultimedia.data';
+
+import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
-import { Loading } from 'natura-ui';
-
-import { injectIntl, FormattedMessage } from 'react-intl';
-
 import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
 
-import CourseFormSearch from '../../../../molecules/CourseFormSearch';
-
-import {
-  StartedWrapper,
-  TrainingCoursesListWrapper,
-  TrainingCourseFeedbackModalTitle,
-  TrainingCourseFeedbackModalAction,
-  CourseSearchContainer,
-} from './TrainingCoursesList.styles';
+import { StartedWrapper, TrainingMultimediaListWrapper } from './MultimediaList.styles';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
-export class TrainingCoursesList extends Component {
+export class MultimediaList extends Component {
   constructor(props) {
     super(props);
 
@@ -47,8 +39,8 @@ export class TrainingCoursesList extends Component {
     };
   }
 
-  componentWillReceiveProps({ loading, courses }) {
-    this.notifyLoadFinish(loading, courses);
+  componentWillReceiveProps({ loading, multimedias }) {
+    this.notifyLoadFinish(loading, multimedias);
   }
 
   notifyLoadFinish = (loading, items) => {
@@ -173,13 +165,13 @@ export class TrainingCoursesList extends Component {
     });
 
     let favoritedCourses = null;
-    const { filter, ...otherVariables } = TrainingCoursesQueryOptions.options({
+    const { filter, ...otherVariables } = TrainingMultimediaQueryOptions.options({
       ...this.props,
       favorite: true,
     }).variables;
     try {
       favoritedCourses = client.readQuery({
-        query: TrainingCoursesQuery,
+        query: TrainingMultimediaQuery,
         variables: otherVariables,
       });
     } catch (e) {
@@ -198,7 +190,7 @@ export class TrainingCoursesList extends Component {
       }
 
       client.writeQuery({
-        query: TrainingCoursesQuery,
+        query: TrainingMultimediaQuery,
         variables: otherVariables,
         data: favoritedCourses,
       });
@@ -251,87 +243,46 @@ export class TrainingCoursesList extends Component {
     );
   };
 
-  handleClose = () => {
-    this.setState({ feedbackModalOpened: false });
-  };
-
-  renderFeedbackModal = () => {
-    const { feedbackModalTitle } = this.state;
-    const actions = [
-      <FlatButton
-        key="ok"
-        label={<FormattedMessage id="ok" />}
-        primary={true}
-        labelStyle={TrainingCourseFeedbackModalAction}
-        onClick={this.handleClose}
-      />,
-    ];
-
-    return (
-      <Dialog
-        key="feedbackModal"
-        title={feedbackModalTitle}
-        actions={actions}
-        modal={false}
-        open={this.state.feedbackModalOpened}
-        titleStyle={TrainingCourseFeedbackModalTitle}
-        onRequestClose={this.handleClose}
-      />
-    );
-  };
-
   render() {
     if (!this.props.courses && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
-    const baseFormSearchProps = {
-      onSearch: this.props.onSearch,
-      searchValue: this.props.courseFilter,
-      status: this.props.status,
-      sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
-      description: 'myTrainingsSearchDescription',
-      inputLabel: 'trainingLabel',
-    };
     const titleToEmptyList =
-      this.props.courseFilter || this.props.status ? 'coursesNoSearchResult' : 'coursesEmptyList';
+      this.props.courseFilter || this.props.status
+        ? 'multimediaNoSearchResult'
+        : 'multimediaEmptyList';
 
     return (
       <StartedWrapper>
         <StartedCoursesList status="started" user={this.props.user} />
-        <CourseSearchContainer>
-          <CourseFormSearch {...baseFormSearchProps} />
-        </CourseSearchContainer>
-
-        <TrainingCoursesListWrapper>
+        <TrainingMultimediaListWrapper>
           <PageMenu />
           <InfiniteScroll
             onScroll={this.props.fetchMore}
             hasMore={this.props.hasNextPage}
             loading={this.props.loading}
             debounce={500}
-            items={this.props.courses}
+            items={this.props.multimedias}
             emptyList={
               <EmptyList
                 icon="ico_list_add"
                 titleId={titleToEmptyList}
-                descriptionId="coursesEmptyListDescription"
+                descriptionId="multimediasEmptyListDescription"
               />
             }
           >
-            <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
+            <MultimediaItems {...this.props} renderMenuItems={this.renderMenuItems} />
           </InfiniteScroll>
-          {this.renderFeedbackModal()}
-        </TrainingCoursesListWrapper>
+        </TrainingMultimediaListWrapper>
       </StartedWrapper>
     );
   }
 }
 
-export const TrainingCoursesListWithIntl = injectIntl(TrainingCoursesList);
-export const TrainingCoursesListWithApollo = withApollo(TrainingCoursesListWithIntl);
+export const MultimediaListWithIntl = injectIntl(MultimediaList);
+export const MultimediaListWithApollo = withApollo(MultimediaListWithIntl);
 
-export default compose(
-  graphql(TrainingCoursesQuery, TrainingCoursesQueryOptions),
-  graphql(TrainingCourseUpdateMutation),
-)(TrainingCoursesListWithApollo);
+export default compose(graphql(TrainingMultimediaQuery, TrainingMultimediaQueryOptions))(
+  MultimediaListWithApollo,
+);

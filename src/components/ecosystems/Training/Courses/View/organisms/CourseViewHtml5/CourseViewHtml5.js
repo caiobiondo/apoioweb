@@ -147,6 +147,8 @@ export class CourseViewHtml5 extends Component {
 
     if (this.state[action]) return;
 
+    if (this.state[action]) return;
+
     this.props
       .mutate({
         variables: {

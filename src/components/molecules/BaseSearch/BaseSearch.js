@@ -3,10 +3,15 @@ import { Component } from 'react';
 export class BaseSearch extends Component {
   state = {
     name: '',
+    status: '',
   };
 
   handleNameChange = (event, name) => {
-    this.setState({ name });
+    this.setState({ ...this.state, name });
+  };
+
+  handleSelectChange = event => {
+    this.setState({ ...this.state, status: event.target.value });
   };
 
   onSubmit = event => {
@@ -21,8 +26,8 @@ export class BaseSearch extends Component {
   };
 
   onSearch = () => {
-    const { name } = this.state;
-    this.props.onSearch({ name });
+    const { name, status } = this.state;
+    this.props.onSearch({ name, status });
   };
 }
 

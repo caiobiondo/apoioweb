@@ -3,7 +3,7 @@ import { Origem } from 'config';
 
 const ITEMS_PER_PAGE = 20;
 
-export const TrainingCoursesQuery = gql`
+export const RecommendationCoursesQuery = gql`
   query TrainingCoursesQuery(
     $sellerId: Int!
     $offset: Int!
@@ -20,6 +20,7 @@ export const TrainingCoursesQuery = gql`
     $gerenciaDeVendas: Int
     $regiao: Int
     $origem: String!
+    $recommended: Boolean
   ) {
     courses(
       sellerId: $sellerId
@@ -37,6 +38,7 @@ export const TrainingCoursesQuery = gql`
       gerenciaDeVendas: $gerenciaDeVendas
       regiao: $regiao
       origem: $origem
+      recommended: $recommended
     ) {
       hasNextPage
       items {
@@ -80,7 +82,7 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
   });
 };
 
-export const TrainingCoursesQueryOptions = {
+export const RecommendationCoursesQueryOptions = {
   options(props) {
     return {
       variables: {
@@ -89,6 +91,7 @@ export const TrainingCoursesQueryOptions = {
         offset: 0,
         status: props.status,
         favorite: props.favorite,
+        recommended: true,
         filter: props.courseFilter,
         ciclo:
           props.user.estrutura.ciclo &&

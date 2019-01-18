@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TrainingCoursesList from './organisms/TrainingCoursesList';
+import RecommendedCourseList from './organisms/RecommendedCourseList';
 import { Main } from './index.styles';
 
 class TrainingWrapper extends Component {
@@ -36,7 +36,7 @@ class TrainingWrapper extends Component {
   render() {
     return (
       <Main>
-        <TrainingCoursesList
+        <RecommendedCourseList
           user={this.props.user}
           onLoadFinished={this.onLoadFinished}
           courseFilter={this.state.courseFilter}

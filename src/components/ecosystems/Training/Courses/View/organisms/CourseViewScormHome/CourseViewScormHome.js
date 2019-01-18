@@ -9,6 +9,7 @@ import {
   CourseViewQuery,
   CourseViewQueryOptions,
 } from 'components/ecosystems/Training/data/CourseView.data';
+
 import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
@@ -28,15 +29,15 @@ import {
   TrainingCourseActionButton,
   TrainingCourseActionButtonMobile,
   TrainingCourseActionButtonWrapper,
-  TrainingCourseRatingWrapper,
-} from './CourseStartView.styles';
+  TrainingCourseFooterWrapper,
+} from './CourseViewScormHome.style';
 
 import staticCourses from 'components/ecosystems/Training/enums/staticCourses.enum';
 import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
 import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
-import CourseRating from 'components/ecosystems/Training/Courses/View/molecules/CourseRating';
 import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
+import CourseScormFooter from '../../molecules/CourseScormFooter/CourseScormFooter';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import Dialog from 'material-ui/Dialog';
 
@@ -47,7 +48,7 @@ import MediaQuery from 'react-responsive';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 import { Origem } from '../../../../../../../config';
 
-export class CourseStartView extends Component {
+export class CourseViewScormHome extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
@@ -65,13 +66,13 @@ export class CourseStartView extends Component {
 
   componentWillReceiveProps({ loading, course }) {
     this.notifyLoadFinish(loading, course);
-
     if (!this.props.course && course) {
       this.setState({ course });
     }
   }
 
   notifyLoadFinish = (loading, course) => {
+    console.log('notifyLoadFinish', loading);
     if (!loading && this.props.onLoadFinished) {
       this.props.onLoadFinished(this.isEmpty(loading, course), this.isLoading(loading, course));
     }
@@ -144,8 +145,6 @@ export class CourseStartView extends Component {
     } = getHeadersFromUser(this.props.user);
     if (this.state[action]) return;
 
-    if (this.state[action]) return;
-
     this.props
       .mutate({
         variables: {
@@ -174,6 +173,7 @@ export class CourseStartView extends Component {
         this.setState({ [action]: true });
 
         if (response.data && !response.data.updateCourse.status) {
+          console.log('response', response);
           // handle not updated
           if (
             response.data.updateCourse.message &&
@@ -213,18 +213,11 @@ export class CourseStartView extends Component {
           }
 
           if (action === 'initialized') {
-            if (course.type === 'WEB') {
-              this.openWebCourse();
-            }
-            if (course.type === 'HTML5') {
-              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
-            }
-            if (course.type === 'VIDEO') {
-              this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
-            }
             if (course.type === 'SCORM') {
-              // this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
-              this.props.history.push(`${ROUTE_PREFIX}/training/courses`);
+              this.props.history.push(
+                // `${ROUTE_PREFIX}/training/courses/${course.id}/scorm/${course.courseContent.scorm}`,
+                `${ROUTE_PREFIX}/training/courses/${course.id}/#`,
+              );
             }
           }
           return;
@@ -250,18 +243,11 @@ export class CourseStartView extends Component {
             this.updateCachedList,
           );
 
-          if (course.type === 'WEB') {
-            this.openWebCourse();
-          }
-          if (course.type === 'HTML5') {
-            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/html5`);
-          }
-          if (course.type === 'VIDEO') {
-            this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
-          }
           if (course.type === 'SCORM') {
-            // this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
-            this.props.history.push(`${ROUTE_PREFIX}/training/courses/#`);
+            this.props.history.push(
+              // `${ROUTE_PREFIX}/training/courses/${course.id}/scorm/${course.courseContent.scorm}`,
+              `${ROUTE_PREFIX}/training/courses/${course.id}`,
+            );
           }
         }
 
@@ -502,12 +488,10 @@ export class CourseStartView extends Component {
   renderActionButtons = (buttonStyle, course) => {
     const { showStaticCourse } = this.state;
     const buttons = [];
-    const hasFinishingTrigger = this.hasFinishingTrigger();
 
     const isPending = course.status === 'pending';
     const isStarted = course.status === 'started';
     const isPaused = course.status === 'paused';
-    const isFinished = course.status === 'finished';
 
     if (isPending) {
       buttons.push(
@@ -535,32 +519,6 @@ export class CourseStartView extends Component {
       );
     }
 
-    if ((isStarted || isPaused) && !hasFinishingTrigger) {
-      buttons.push(
-        <TrainingCourseActionButtonWrapper key="finish">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('finishTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('terminated')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-    }
-
-    if (isFinished) {
-      buttons.push(
-        <TrainingCourseActionButtonWrapper key="review">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('reviewTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('initialized')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-    }
-
     return [
       ...buttons,
       <TrainingCourseActionButtonWrapper key="list">
@@ -576,7 +534,7 @@ export class CourseStartView extends Component {
 
   canEvaluate = () => {
     const { course } = this.props;
-    return this.state.showEvaluation && course.ratedByYou !== 'true';
+    return course.status === 'finished' && course.ratedByYou !== 'true';
   };
 
   setStaticCourseRef = ref => {
@@ -644,9 +602,9 @@ export class CourseStartView extends Component {
             <TrainingCourseActions>
               {this.renderActionButtons(TrainingCourseActionButtonMobile, course)}
             </TrainingCourseActions>
-            <TrainingCourseRatingWrapper>
-              <CourseRating course={course} />
-            </TrainingCourseRatingWrapper>
+            <TrainingCourseFooterWrapper>
+              <CourseScormFooter course={course} />
+            </TrainingCourseFooterWrapper>
           </TrainingCourseThumbnailWrapper>
         </MediaQuery>
         <MediaQuery minWidth={768}>
@@ -660,9 +618,10 @@ export class CourseStartView extends Component {
                 </TrainingCourseActions>
               </TrainingCourseThumbnailDescriptionWrapper>
             </TrainingCourseThumbnail>
-            <TrainingCourseRatingWrapper>
-              <CourseRating course={course} />
-            </TrainingCourseRatingWrapper>
+
+            <TrainingCourseFooterWrapper>
+              <CourseScormFooter course={course} />
+            </TrainingCourseFooterWrapper>
           </TrainingCourseThumbnailWrapper>
         </MediaQuery>
         <RelatedCourses courses={course.relatedCourses} />
@@ -681,11 +640,11 @@ export class CourseStartView extends Component {
   }
 }
 
-export const CourseStartViewWithIntl = injectIntl(CourseStartView);
-export const CourseStartViewWithRouter = withRouter(CourseStartViewWithIntl);
-export const CourseStartViewWithApollo = withApollo(CourseStartViewWithRouter);
+export const CourseViewScormHomeIntl = injectIntl(CourseViewScormHome);
+export const CourseViewScormHomeRouter = withRouter(CourseViewScormHomeIntl);
+export const CourseViewScormHomeWithApollo = withApollo(CourseViewScormHomeRouter);
 
 export default compose(
   graphql(CourseViewQuery, CourseViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseStartViewWithApollo);
+)(CourseViewScormHomeWithApollo);

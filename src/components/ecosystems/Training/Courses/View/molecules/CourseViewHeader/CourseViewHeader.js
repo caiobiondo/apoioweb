@@ -14,7 +14,11 @@ import {
 
 export class CourseViewHeader extends Component {
   goBack = () => {
-    this.props.history.push(`${ROUTE_PREFIX}/training/courses`);
+    if (this.props.handleBackClick) {
+      this.props.handleBackClick();
+    } else {
+      this.props.history.goBack();
+    }
   };
 
   render() {

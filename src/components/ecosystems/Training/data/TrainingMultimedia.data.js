@@ -3,8 +3,8 @@ import { Origem } from 'config';
 
 const ITEMS_PER_PAGE = 20;
 
-export const TrainingCoursesQuery = gql`
-  query TrainingCoursesQuery(
+export const TrainingMultimediaQuery = gql`
+  query TrainingMultimediaQuery(
     $sellerId: Int!
     $offset: Int!
     $limit: Int!
@@ -21,7 +21,7 @@ export const TrainingCoursesQuery = gql`
     $regiao: Int
     $origem: String!
   ) {
-    courses(
+    trainingMultimedias(
       sellerId: $sellerId
       offset: $offset
       limit: $limit
@@ -40,27 +40,24 @@ export const TrainingCoursesQuery = gql`
     ) {
       hasNextPage
       items {
-        id
-        accessToken
-        categoryTitle
-        clientIdentifier
-        clientSecrets
-        courseContent {
-          video
-          html5
-          web
-          scorm
-        }
-        dateUpload
-        durationInSeconds
-        isfavorite
-        ratedByYou
-        status
-        stoppedAt
-        thumbnail
-        title
-        type
-        views
+        id: Int
+        title: String
+        description: String
+        type: String
+        dateUpload: Date
+        durationInSeconds: Int
+        categories: [
+          {
+            id: Int
+            name: String
+          }
+        ]
+        content: [
+          { 
+            title: String
+            downloadUrl: String
+          }
+        ]
       }
     }
   }
@@ -72,22 +69,21 @@ export const updateQuery = (previousResult, { fetchMoreResult }) => {
   }
 
   return Object.assign({}, previousResult, {
-    courses: {
-      __typename: previousResult.courses.__typename,
-      hasNextPage: fetchMoreResult.courses.hasNextPage,
-      items: [...previousResult.courses.items, ...fetchMoreResult.courses.items],
+    multimedias: {
+      __typename: previousResult.multimedias.__typename,
+      hasNextPage: fetchMoreResult.multimedias.hasNextPage,
+      items: [...previousResult.multimedias.items, ...fetchMoreResult.multimedias.items],
     },
   });
 };
 
-export const TrainingCoursesQueryOptions = {
+export const TrainingMultimediaQueryOptions = {
   options(props) {
     return {
       variables: {
         sellerId: props.user.codigo,
         limit: ITEMS_PER_PAGE,
         offset: 0,
-        status: props.status,
         favorite: props.favorite,
         filter: props.courseFilter,
         ciclo:
@@ -110,21 +106,21 @@ export const TrainingCoursesQueryOptions = {
   },
   props({ data }) {
     const { refetch, loading } = data;
-    const courses = data.courses && data.courses.items;
-    const hasNextPage = (data.courses && data.courses.hasNextPage) || false;
+    const multimedias = data.multimedias && data.multimedias.items;
+    const hasNextPage = (data.multimedias && data.multimedias.hasNextPage) || false;
 
     return {
       data,
       refetch,
       loading,
-      courses,
+      multimedias,
       hasNextPage,
       fetchMore() {
         if (data.loading) {
           return;
         }
 
-        const offset = courses ? courses.length : 0;
+        const offset = multimedias ? multimedias.length : 0;
         const variables = { offset };
 
         return data.fetchMore({

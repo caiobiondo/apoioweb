@@ -38,6 +38,7 @@ export const CourseViewQuery = gql`
         html5
         web
         videoEmbedUrl
+        scorm
       }
       dateUpload
       durationInSeconds
@@ -85,6 +86,7 @@ export const CourseViewQueryOptions = {
         origem: Origem,
       },
       fetchPolicy: 'cache-and-network',
+      //fetchPolicy: 'no-cache',
     };
   },
 

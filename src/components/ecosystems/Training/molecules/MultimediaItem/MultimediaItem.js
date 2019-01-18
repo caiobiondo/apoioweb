@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  TrainingCourseWrapper,
-  TrainingCoursePaper,
-  TrainingCourseThumbnail,
-  TrainingCourseThumbnailPlay,
-  TrainingCourseThumbnailPlayWrapper,
-  TrainingCourseThumbnailDurationWrapper,
-  TrainingCourseThumbnailStoppedAt,
-  TrainingCourseThumbnailCompletedWrapper,
-  TrainingCourseThumbnailCompleted,
-  TrainingCourseDescriptionWrapper,
-  TrainingCourseIconWrapper,
-  TrainingCourseDescription,
-  TrainingCourseDescriptionTitle,
-  TrainingCourseDescriptionViews,
-  TrainingCourseMenu,
-} from './TrainingCourse.styles';
+  MultimediaItemWrapper,
+  MultimediaItemPaper,
+  MultimediaItemThumbnail,
+  MultimediaItemThumbnailPlay,
+  MultimediaItemThumbnailPlayWrapper,
+  MultimediaItemThumbnailDurationWrapper,
+  MultimediaItemThumbnailStoppedAt,
+  MultimediaItemThumbnailCompletedWrapper,
+  MultimediaItemThumbnailCompleted,
+  MultimediaItemDescriptionWrapper,
+  MultimediaItemIconWrapper,
+  MultimediaItemDescription,
+  MultimediaItemDescriptionTitle,
+  MultimediaItemDescriptionViews,
+  MultimediaItemMenu,
+} from './MultimediaItem.styles';
 import { Icon } from 'natura-ui';
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
 import { injectIntl, FormattedRelative, FormattedPlural } from 'react-intl';
@@ -26,20 +26,20 @@ import { withRouter } from 'react-router-dom';
 import { ROUTE_PREFIX } from 'config';
 import { gtmPushDataLayerEvent, events } from 'utils/googleTagManager';
 
-export class TrainingCourse extends Component {
+export class MultimediaItem extends Component {
   renderCourseIcon = course => {
     if (course.type === 'VIDEO') {
       return (
-        <TrainingCourseIconWrapper>
+        <MultimediaItemIconWrapper>
           <Icon file="ico_film_stock" />
-        </TrainingCourseIconWrapper>
+        </MultimediaItemIconWrapper>
       );
     }
 
     return (
-      <TrainingCourseIconWrapper>
+      <MultimediaItemIconWrapper>
         <Icon file="ico_file" />
-      </TrainingCourseIconWrapper>
+      </MultimediaItemIconWrapper>
     );
   };
 
@@ -54,7 +54,7 @@ export class TrainingCourse extends Component {
 
     const percentage = parseInt(stoppedAt * 100.0 / durationInSeconds, 10);
 
-    return <TrainingCourseThumbnailStoppedAt key={3} width={`${percentage}%`} />;
+    return <MultimediaItemThumbnailStoppedAt key={3} width={`${percentage}%`} />;
   };
 
   linkTo = course => event => {
@@ -81,13 +81,13 @@ export class TrainingCourse extends Component {
     const { formatMessage } = this.props.intl;
 
     return (
-      <TrainingCourseWrapper key={course.id}>
-        <TrainingCoursePaper>
-          <TrainingCourseDescriptionWrapper>
+      <MultimediaItemWrapper key={course.id}>
+        <MultimediaItemPaper>
+          <MultimediaItemDescriptionWrapper>
             {this.renderCourseIcon(course)}
-            <TrainingCourseDescription onClick={this.linkTo(course)}>
-              <TrainingCourseDescriptionTitle>{course.title}</TrainingCourseDescriptionTitle>
-              <TrainingCourseDescriptionViews>
+            <MultimediaItemDescription onClick={this.linkTo(course)}>
+              <MultimediaItemDescriptionTitle>{course.title}</MultimediaItemDescriptionTitle>
+              <MultimediaItemDescriptionViews>
                 {course.views}&nbsp;
                 <FormattedPlural
                   value={course.views}
@@ -96,38 +96,38 @@ export class TrainingCourse extends Component {
                 />
                 &nbsp;-&nbsp;
                 <FormattedRelative value={course.dateUpload} />
-              </TrainingCourseDescriptionViews>
-            </TrainingCourseDescription>
-            <TrainingCourseMenu>{this.props.children}</TrainingCourseMenu>
-          </TrainingCourseDescriptionWrapper>
-          <TrainingCourseThumbnail onClick={this.linkTo(course)}>
+              </MultimediaItemDescriptionViews>
+            </MultimediaItemDescription>
+            <MultimediaItemMenu>{this.props.children}</MultimediaItemMenu>
+          </MultimediaItemDescriptionWrapper>
+          <MultimediaItemThumbnail onClick={this.linkTo(course)}>
             <ImageWithFallback imageUrl={course.thumbnail} fallbackIcon="ico_photo" />
             {course.type === 'VIDEO' && [
-              <TrainingCourseThumbnailPlayWrapper key={1}>
-                <TrainingCourseThumbnailPlay />
-              </TrainingCourseThumbnailPlayWrapper>,
-              <TrainingCourseThumbnailDurationWrapper key={2}>
+              <MultimediaItemThumbnailPlayWrapper key={1}>
+                <MultimediaItemThumbnailPlay />
+              </MultimediaItemThumbnailPlayWrapper>,
+              <MultimediaItemThumbnailDurationWrapper key={2}>
                 {this.renderCourseDuration(course)}
-              </TrainingCourseThumbnailDurationWrapper>,
+              </MultimediaItemThumbnailDurationWrapper>,
               this.renderCourseStoppedAt(course),
             ]}
             {course.status === 'finished' && [
-              <TrainingCourseThumbnailCompletedWrapper key={4}>
-                <TrainingCourseThumbnailCompleted>
+              <MultimediaItemThumbnailCompletedWrapper key={4}>
+                <MultimediaItemThumbnailCompleted>
                   {translate('trainingCourseCompleted')}
-                </TrainingCourseThumbnailCompleted>
-              </TrainingCourseThumbnailCompletedWrapper>,
+                </MultimediaItemThumbnailCompleted>
+              </MultimediaItemThumbnailCompletedWrapper>,
             ]}
-          </TrainingCourseThumbnail>
-        </TrainingCoursePaper>
-      </TrainingCourseWrapper>
+          </MultimediaItemThumbnail>
+        </MultimediaItemPaper>
+      </MultimediaItemWrapper>
     );
   }
 }
 
-TrainingCourse.propTypes = {
-  course: PropTypes.object.isRequired,
+MultimediaItem.propTypes = {
+  multimedia: PropTypes.object.isRequired,
 };
 
-export const TrainingCoursewithIntl = injectIntl(TrainingCourse);
-export default withRouter(TrainingCoursewithIntl);
+export const MultimediaItemwithIntl = injectIntl(MultimediaItem);
+export default withRouter(MultimediaItemwithIntl);

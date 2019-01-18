@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import TrainingCourses from 'components/ecosystems/Training/molecules/TrainingCourses';
+import TrainingCourses from '../../../../molecules/TrainingCourses/TrainingCourses';
 import {
-  TrainingCoursesQuery,
-  TrainingCoursesQueryOptions,
-} from 'components/ecosystems/Training/data/TrainingCourses.data';
+  RecommendationCoursesQuery,
+  RecommendationCoursesQueryOptions,
+} from 'components/ecosystems/Training/data/RecommendationCourses.data';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import { graphql, compose, withApollo } from 'react-apollo';
@@ -24,20 +24,20 @@ import { Loading } from 'natura-ui';
 
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
+import StartedCoursesList from '../../../../Courses/List/organisms/StartedCoursesList/StartedCoursesList';
 
 import CourseFormSearch from '../../../../molecules/CourseFormSearch';
 
 import {
   StartedWrapper,
-  TrainingCoursesListWrapper,
+  RecommendedCourseListWrapper,
   TrainingCourseFeedbackModalTitle,
   TrainingCourseFeedbackModalAction,
   CourseSearchContainer,
-} from './TrainingCoursesList.styles';
+} from './RecommendedCourseList.styles';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
-export class TrainingCoursesList extends Component {
+export class RecommendedCourseList extends Component {
   constructor(props) {
     super(props);
 
@@ -173,13 +173,13 @@ export class TrainingCoursesList extends Component {
     });
 
     let favoritedCourses = null;
-    const { filter, ...otherVariables } = TrainingCoursesQueryOptions.options({
+    const { filter, ...otherVariables } = RecommendationCoursesQueryOptions.options({
       ...this.props,
       favorite: true,
     }).variables;
     try {
       favoritedCourses = client.readQuery({
-        query: TrainingCoursesQuery,
+        query: RecommendationCoursesQuery,
         variables: otherVariables,
       });
     } catch (e) {
@@ -198,7 +198,7 @@ export class TrainingCoursesList extends Component {
       }
 
       client.writeQuery({
-        query: TrainingCoursesQuery,
+        query: RecommendationCoursesQuery,
         variables: otherVariables,
         data: favoritedCourses,
       });
@@ -288,6 +288,7 @@ export class TrainingCoursesList extends Component {
     const baseFormSearchProps = {
       onSearch: this.props.onSearch,
       searchValue: this.props.courseFilter,
+      recommended: true,
       status: this.props.status,
       sectionTitle: { iconName: 'ico_graduate_cap', value: 'myTrainings' },
       description: 'myTrainingsSearchDescription',
@@ -303,7 +304,7 @@ export class TrainingCoursesList extends Component {
           <CourseFormSearch {...baseFormSearchProps} />
         </CourseSearchContainer>
 
-        <TrainingCoursesListWrapper>
+        <RecommendedCourseListWrapper>
           <PageMenu />
           <InfiniteScroll
             onScroll={this.props.fetchMore}
@@ -322,16 +323,16 @@ export class TrainingCoursesList extends Component {
             <TrainingCourses {...this.props} renderMenuItems={this.renderMenuItems} />
           </InfiniteScroll>
           {this.renderFeedbackModal()}
-        </TrainingCoursesListWrapper>
+        </RecommendedCourseListWrapper>
       </StartedWrapper>
     );
   }
 }
 
-export const TrainingCoursesListWithIntl = injectIntl(TrainingCoursesList);
-export const TrainingCoursesListWithApollo = withApollo(TrainingCoursesListWithIntl);
+export const RecommendedCourseListWithIntl = injectIntl(RecommendedCourseList);
+export const RecommendedCourseListWithApollo = withApollo(RecommendedCourseListWithIntl);
 
 export default compose(
-  graphql(TrainingCoursesQuery, TrainingCoursesQueryOptions),
+  graphql(RecommendationCoursesQuery, RecommendationCoursesQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(TrainingCoursesListWithApollo);
+)(RecommendedCourseListWithApollo);
