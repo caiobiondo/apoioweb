@@ -13,18 +13,31 @@ import {
   DownloadCertificateButton,
 } from './Certificate.styles';
 import Img from 'react-image';
-import { Icon, FormButton } from 'natura-ui';
+import { Icon, FormButton, Dialog, Modal } from 'natura-ui';
+import FlatButton from 'material-ui/FlatButton';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import {
   CertificateDownloadQuery,
   CertificateDownloadQueryOptions,
 } from './CertificateDownload.data';
+import {
+  CertificateSendEmailQuery,
+  CertificateSendEmailOptions,
+} from './CenrtificateSendEmail.data';
+
 import { withApollo } from 'react-apollo';
 
 export class Certificate extends Component {
-  state = {
-    courseCompleted: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      certificateModalOpened: true,
+      certificateModalTitle: '',
+      courseCompleted: false,
+    };
+  }
 
   downloadCertificate = () => {
     const variables = CertificateDownloadQueryOptions.options(this.props).variables;
@@ -39,6 +52,55 @@ export class Certificate extends Component {
       .then(res => {
         if (res.data && res.data.trainingCertificateDownload) {
           const { downloadUrl } = res.data.trainingCertificateDownload;
+          window.open(downloadUrl, '_blank');
+        }
+      });
+  };
+
+  /*
+  openModalSendEmail = () => {
+
+  }
+  */
+
+  openModalCertificate = () => {
+    const actions = [
+      <FlatButton
+        key="ok"
+        label={<FormattedMessage id="ok" />}
+        primary={false}
+        onClick={this.openModalSendEmail}
+      />,
+    ];
+    return (
+      <Dialog
+        key="certificateModal"
+        title="Teste"
+        actions={actions}
+        modal={true}
+        open={this.state.certificateModalOpened}
+        onRequestClose={this.handleClose}
+      />
+    );
+  };
+
+  handleClose = () => {
+    this.setState({ certificateModalOpened: false });
+  };
+
+  sendCertificate = () => {
+    const variables = CertificateSendEmailOptions.options(this.props).variables;
+    this.props.client
+      .query({
+        query: CertificateSendEmailQuery,
+        variables,
+      })
+      .catch(() => {
+        return null;
+      })
+      .then(res => {
+        if (res.data && res.data.trainingCertificateSendEmail) {
+          const { downloadUrl } = res.data.trainingCertificateSendEmail;
           window.open(downloadUrl, '_blank');
         }
       });
@@ -72,9 +134,9 @@ export class Certificate extends Component {
           {this.state.courseCompleted && (
             <FormButton
               {...DownloadCertificateButton}
-              type="submit"
-              onClick={this.downloadCertificate}
-              label={translate('downloadCertificate')}
+              type="button"
+              onClick={this.openModalCertificate}
+              label={translate('sendCertificate')}
             />
           )}
         </DownloadCertificateButtonWrapper>

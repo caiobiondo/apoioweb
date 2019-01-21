@@ -33,6 +33,7 @@ export default {
     trainingCourseStatusFinished: 'Concluídos',
     trainingCourseStatusPending: 'Em andamento',
     downloadCertificate: 'Baixar Certificado',
+    sendCertificate: 'Enviar Certificado',
     trainingAddCourseToMyList: 'Adicionar à minha lista',
     trainingCategoryCompleted: 'Completa',
     continueCourses: 'Continue seus cursos',
