@@ -12,24 +12,11 @@ class TrainingMultimediaWrapper extends Component {
 
   componentWillMount() {
     const params = new URLSearchParams(this.props.location.search);
-    // const name = params.get('filter');
-
-    // if (name) {
-    //   this.onSearch({ name: name });
-    // }
   }
 
   onLoadFinished = (empty, loading) => {
     this.setState({ empty: empty, loading: loading });
   };
-
-  // onSearch = filter => {
-  //   this.setState({
-  //     filter: filter.name,
-  //     loading: true,
-  //     empty: false,
-  //   });
-  // };
 
   render() {
     return (

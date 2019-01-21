@@ -24,8 +24,6 @@ import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
-import StartedCoursesList from '../../../Courses/List/organisms/StartedCoursesList/StartedCoursesList';
-
 import { StartedWrapper, TrainingMultimediaListWrapper } from './MultimediaList.styles';
 import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
@@ -244,7 +242,7 @@ export class MultimediaList extends Component {
   };
 
   render() {
-    if (!this.props.courses && this.props.loading) {
+    if (!this.props.multimedias && this.props.loading) {
       return <Loading background="transparent" />;
     }
 
@@ -255,7 +253,6 @@ export class MultimediaList extends Component {
 
     return (
       <StartedWrapper>
-        <StartedCoursesList status="started" user={this.props.user} />
         <TrainingMultimediaListWrapper>
           <PageMenu />
           <InfiniteScroll

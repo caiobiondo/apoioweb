@@ -8,9 +8,6 @@ export const TrainingMultimediaQuery = gql`
     $sellerId: Int!
     $offset: Int!
     $limit: Int!
-    $status: String
-    $favorite: Boolean
-    $filter: String
     $ciclo: Int
     $setor: Int
     $gerenciaMercado: Int
@@ -21,13 +18,10 @@ export const TrainingMultimediaQuery = gql`
     $regiao: Int
     $origem: String!
   ) {
-    trainingMultimedias(
+    multimedias(
       sellerId: $sellerId
       offset: $offset
       limit: $limit
-      status: $status
-      favorite: $favorite
-      filter: $filter
       ciclo: $ciclo
       setor: $setor
       gerenciaMercado: $gerenciaMercado
@@ -42,13 +36,19 @@ export const TrainingMultimediaQuery = gql`
       items {
         id
         title
-        description
-        type
         date_upload
-        duration_in_seconds
         thumbnail
-        categories
-        content
+        type
+        duration_in_seconds
+        content {
+          title
+          download_url
+          bearer_token
+        }
+        categories {
+          id
+          name
+        }
       }
     }
   }
@@ -73,10 +73,8 @@ export const TrainingMultimediaQueryOptions = {
     return {
       variables: {
         sellerId: props.user.codigo,
-        limit: ITEMS_PER_PAGE,
         offset: 0,
-        favorite: props.favorite,
-        filter: props.courseFilter,
+        limit: ITEMS_PER_PAGE,
         ciclo:
           props.user.estrutura.ciclo &&
           props.user.estrutura.ciclo[0] &&
@@ -92,7 +90,8 @@ export const TrainingMultimediaQueryOptions = {
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
         origem: Origem,
       },
-      fetchPolicy: 'cache-first',
+      //fetchPolicy: 'cache-first',
+      fetchPolicy: 'network',
     };
   },
   props({ data }) {
