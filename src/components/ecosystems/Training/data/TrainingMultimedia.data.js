@@ -40,24 +40,15 @@ export const TrainingMultimediaQuery = gql`
     ) {
       hasNextPage
       items {
-        id: Int
-        title: String
-        description: String
-        type: String
-        dateUpload: Date
-        durationInSeconds: Int
-        categories: [
-          {
-            id: Int
-            name: String
-          }
-        ]
-        content: [
-          { 
-            title: String
-            downloadUrl: String
-          }
-        ]
+        id
+        title
+        description
+        type
+        date_upload
+        duration_in_seconds
+        thumbnail
+        categories
+        content
       }
     }
   }
