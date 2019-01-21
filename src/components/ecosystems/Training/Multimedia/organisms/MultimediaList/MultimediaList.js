@@ -24,10 +24,10 @@ import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
-import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
+import StartedCoursesList from '../../../Courses/List/organisms/StartedCoursesList/StartedCoursesList';
 
 import { StartedWrapper, TrainingMultimediaListWrapper } from './MultimediaList.styles';
-import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
 export class MultimediaList extends Component {
   constructor(props) {
