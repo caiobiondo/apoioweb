@@ -6,8 +6,6 @@ class TrainingMultimediaWrapper extends Component {
   state = {
     empty: false,
     loading: true,
-    courseFilter: '',
-    status: '',
   };
 
   componentWillMount() {

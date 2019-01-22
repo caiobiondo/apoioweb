@@ -12,10 +12,8 @@ export default class MultimediaItems extends Component {
 
     return (
       <List>
-        {this.props.multimedias.map((course, index) => (
-          <MultimediaItem key={index} course={course}>
-            {this.props.renderMenuItems(course)}
-          </MultimediaItem>
+        {this.props.multimedias.map((multimedia, index) => (
+          <MultimediaItem key={index} multimedia={multimedia} />
         ))}
       </List>
     );
@@ -23,6 +21,5 @@ export default class MultimediaItems extends Component {
 }
 
 MultimediaItems.propTypes = {
-  renderMenuItems: PropTypes.func,
   multimedias: PropTypes.array,
 };

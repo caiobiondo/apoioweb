@@ -36,14 +36,14 @@ export const TrainingMultimediaQuery = gql`
       items {
         id
         title
-        date_upload
+        dateUpload
         thumbnail
         type
-        duration_in_seconds
+        durationInSeconds
         content {
           title
-          download_url
-          bearer_token
+          downloadUrl
+          bearerToken
         }
         categories {
           id
@@ -90,8 +90,7 @@ export const TrainingMultimediaQueryOptions = {
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
         origem: Origem,
       },
-      //fetchPolicy: 'cache-first',
-      fetchPolicy: 'network',
+      fetchPolicy: 'cache-first',
     };
   },
   props({ data }) {

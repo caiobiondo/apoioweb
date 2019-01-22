@@ -55,95 +55,6 @@ export class MultimediaList extends Component {
     return !loading && (!items || items.length === 0);
   };
 
-  handleMenuItemClick = (event, child) => {
-    const { formatMessage } = this.props.intl;
-    const {
-      ciclo,
-      grupo,
-      gerenciaDeVendas,
-      regiao,
-      setor,
-      gerenciaMercado,
-      papelDaConsultora,
-      canal,
-      origem,
-    } = getHeadersFromUser(this.props.user);
-
-    this.props
-      .mutate({
-        variables: {
-          input: { action: child.props.value },
-          sellerId: this.props.user.codigo,
-          courseId: child.props.course.id,
-          ciclo,
-          grupo,
-          gerenciaDeVendas,
-          regiao,
-          setor,
-          gerenciaMercado,
-          papelDaConsultora,
-          canal,
-          origem,
-        },
-      })
-      .then(response => {
-        if (response.error) {
-          const message =
-            child.props.value === 'favorite'
-              ? formatMessage({ id: 'trainingAddCourseError' })
-              : formatMessage({ id: 'trainingRemoveCourseError' });
-          this.setState({
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          });
-
-          // Handle error
-          return;
-        }
-
-        if (!response.data.updateCourse.status) {
-          const message =
-            child.props.value === 'favorite'
-              ? formatMessage({ id: 'trainingAddCourseFailure' })
-              : formatMessage({ id: 'trainingRemoveCourseFailure' });
-          this.setState({
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          });
-          // Handle not updated
-          return;
-        }
-
-        // Handle update success
-        const message =
-          child.props.value === 'favorite'
-            ? formatMessage({ id: 'trainingAddCourseSuccess' })
-            : formatMessage({ id: 'trainingRemoveCourseSuccess' });
-
-        this.setState(
-          {
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          },
-          this.updateCachedList(child.props.course),
-        );
-
-        return;
-      })
-      .catch(err => {
-        console.log('err', err);
-        // Handle error
-        const message =
-          child.props.value === 'favorite'
-            ? formatMessage({ id: 'trainingAddCourseError' })
-            : formatMessage({ id: 'trainingRemoveCourseError' });
-        this.setState({
-          feedbackModalOpened: true,
-          feedbackModalTitle: message,
-        });
-      });
-  };
-
   updateCachedList = course => {
     const { client } = this.props;
     const isfavorite = course.isfavorite === 'true' ? 'false' : 'true';
@@ -195,57 +106,10 @@ export class MultimediaList extends Component {
     }
   };
 
-  renderMenuItems = course => {
-    const style = { fontFamily: RobotoRegular };
-
-    if (course.isfavorite === 'true') {
-      return (
-        <IconMenu
-          iconButtonElement={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-          targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-          onItemTouchTap={this.handleMenuItemClick}
-        >
-          <MenuItem
-            style={style}
-            primaryText={translate('trainingRemoveCourseMyList')}
-            value="unfavorite"
-            course={course}
-          />
-        </IconMenu>
-      );
-    }
-
-    return (
-      <IconMenu
-        iconButtonElement={
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-        onItemTouchTap={this.handleMenuItemClick}
-      >
-        <MenuItem
-          style={style}
-          primaryText={translate('trainingAddCourseMyList')}
-          value="favorite"
-          course={course}
-        />
-      </IconMenu>
-    );
-  };
-
   render() {
     if (!this.props.multimedias && this.props.loading) {
       return <Loading background="transparent" />;
     }
-
     const titleToEmptyList =
       this.props.courseFilter || this.props.status
         ? 'multimediaNoSearchResult'
@@ -269,7 +133,7 @@ export class MultimediaList extends Component {
               />
             }
           >
-            <MultimediaItems {...this.props} renderMenuItems={this.renderMenuItems} />
+            <MultimediaItems {...this.props} />
           </InfiniteScroll>
         </TrainingMultimediaListWrapper>
       </StartedWrapper>

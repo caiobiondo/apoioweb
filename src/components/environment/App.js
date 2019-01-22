@@ -193,7 +193,7 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path={`${ROUTE_PREFIX}/training/midialibrary`}
+                  path={`${ROUTE_PREFIX}/training/medialibrary`}
                   component={withDefaultBehaviour(
                     import('components/ecosystems/Training/Multimedia/List'),
                     'training',
