@@ -13,9 +13,9 @@ import {
   DownloadCertificateButton,
 } from './Certificate.styles';
 import Img from 'react-image';
-import { Icon, FormButton, Dialog, Modal } from 'natura-ui';
+import { Icon, FormButton, Dialog } from 'natura-ui';
 import FlatButton from 'material-ui/FlatButton';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { translate } from 'locale';
 import {
   CertificateDownloadQuery,
@@ -27,15 +27,18 @@ import {
 } from './CenrtificateSendEmail.data';
 
 import { withApollo } from 'react-apollo';
+import { Form, Field } from 'formik';
 
 export class Certificate extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      certificateModalOpened: true,
+      certificateModalOpened: false,
+      certificateSendEmailModalOpened: false,
       certificateModalTitle: '',
       courseCompleted: false,
+      primaryNameUser: props.user.nomeCompleto,
+      categoryName: props.certificate.name,
     };
   }
 
@@ -57,41 +60,74 @@ export class Certificate extends Component {
       });
   };
 
-  /*
-  openModalSendEmail = () => {
-
-  }
-  */
-
   openModalCertificate = () => {
     const actions = [
       <FlatButton
-        key="ok"
-        label={<FormattedMessage id="ok" />}
+        key="close"
+        label={<FormattedMessage id="close" />}
         primary={false}
-        onClick={this.openModalSendEmail}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        key="ok"
+        label={<FormattedMessage id="sendCertificate" />}
+        primary={true}
+        onClick={this.handleClickOpenSendEmail}
       />,
     ];
     return (
       <Dialog
         key="certificateModal"
-        title="Teste"
+        title={'Categoria ' + this.state.categoryName + ' concluido com sucesso'}
         actions={actions}
-        modal={true}
+        modal={false}
         open={this.state.certificateModalOpened}
         onRequestClose={this.handleClose}
-      />
+      >
+        <div>
+          <p>Parabéns, {this.state.primaryNameUser}, você concluiu mais uma etapa!</p>
+          <p>
+            O dowload do seu certificado irá iniciar em instantes. Caso queira, poderá enviá-lo por
+            e-mail clicando no botão abaixo.
+          </p>
+        </div>
+      </Dialog>
     );
   };
 
-  handleClose = () => {
-    this.setState({ certificateModalOpened: false });
+  openModalSendEmail = () => {
+    const actions = [
+      <FlatButton
+        key="close"
+        label={<FormattedMessage id="close" />}
+        primary={false}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        key="ok"
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        onClick={this.sendCertificate}
+      />,
+    ];
+    return (
+      <Dialog
+        key="certificateSendEmailModal"
+        title={'Por Favor Digite seu e-mail'}
+        actions={actions}
+        modal={false}
+        open={this.state.certificateSendEmailModalOpened}
+        onRequestClose={this.handleClickCloseSendEmail}
+      >
+        <p>input</p>
+      </Dialog>
+    );
   };
 
   sendCertificate = () => {
     const variables = CertificateSendEmailOptions.options(this.props).variables;
     this.props.client
-      .query({
+      .mutate({
         query: CertificateSendEmailQuery,
         variables,
       })
@@ -106,6 +142,22 @@ export class Certificate extends Component {
       });
   };
 
+  handleClickOpen = () => {
+    this.setState({ certificateModalOpened: true });
+  };
+
+  handleClickOpenSendEmail = () => {
+    this.setState({ certificateModalOpened: false });
+    this.setState({ certificateSendEmailModalOpened: true });
+  };
+
+  handleClickCloseSendEmail = () => {
+    this.setState({ certificateSendEmailModalOpened: false });
+  };
+
+  handleClose = () => {
+    this.setState({ certificateModalOpened: false });
+  };
   componentDidMount = () => {
     const { isCompleted } = this.props.certificate;
     this.setState({ courseCompleted: isCompleted });
@@ -135,10 +187,12 @@ export class Certificate extends Component {
             <FormButton
               {...DownloadCertificateButton}
               type="button"
-              onClick={this.openModalCertificate}
+              onClick={this.handleClickOpen}
               label={translate('sendCertificate')}
             />
           )}
+          {this.openModalCertificate()}
+          {this.openModalSendEmail()}
         </DownloadCertificateButtonWrapper>
       </CertificateWrapper>
     );
