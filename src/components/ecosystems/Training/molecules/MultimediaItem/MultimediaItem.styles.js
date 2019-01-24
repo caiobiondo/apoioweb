@@ -83,3 +83,27 @@ export const MultimediaItemIconWrapper = styled.div`
     fill: ${orange100};
   }
 `;
+
+export const MultimediaItemThumbnail = styled.div`
+  position: relative;
+  height: 200px;
+  background-color: ${gray100};
+  cursor: pointer;
+
+  > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    img {
+      object-fit: cover;
+      max-height: 200px;
+      width: 100%;
+    }
+
+    svg {
+      height: 40px;
+    }
+  }
+`;
