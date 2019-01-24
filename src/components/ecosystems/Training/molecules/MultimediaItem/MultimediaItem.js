@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   MultimediaItemWrapper,
@@ -11,16 +11,27 @@ import {
 } from './MultimediaItem.styles';
 import { Icon } from 'natura-ui';
 import ImageWithFallback from 'components/molecules/ImageWithFallback/ImageWithFallback';
+
 import { injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
-export class MultimediaItem extends Component {
+export class MultimediaItem extends PureComponent {
+  courseIconName = multimedia => {
+    if (multimedia.type === 'VIDEO') return 'ico_film_stock';
+    return 'ico_file';
+  };
+
   openContent = multimedia => event => {
     const firstItem = multimedia.content[0];
     if (firstItem && firstItem.downloadUrl) {
-      const urlToOpen = firstItem.bearerToken
-        ? `${firstItem.downloadUrl}?token=${firstItem.bearerToken}`
-        : firstItem.downloadUrl;
+      const urlToOpen =
+        multimedia.type === 'VIDEO'
+          ? firstItem.downloadUrl.replace(
+              /https:\/\/api.vimeo.com\/me\/videos\//g,
+              'https://player.vimeo.com/video/',
+            )
+          : firstItem.downloadUrl;
+
       window.open(urlToOpen, '_blank');
     }
   };
@@ -32,7 +43,7 @@ export class MultimediaItem extends Component {
         <MultimediaItemPaper>
           <MultimediaItemDescriptionWrapper>
             <MultimediaItemIconWrapper>
-              <Icon file="ico_file" />
+              <Icon file={this.courseIconName(multimedia)} />
             </MultimediaItemIconWrapper>
             <MultimediaItemDescription onClick={this.openContent(multimedia)}>
               <MultimediaItemDescriptionTitle>{multimedia.title}</MultimediaItemDescriptionTitle>
