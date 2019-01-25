@@ -173,7 +173,7 @@ export class Certificate extends Component {
                 <p>
                   <FormattedMessage
                     id="infoSendMailSuccess"
-                    values={{ categoryName: { categoryName }, inputValue: { inputValue } }}
+                    value={{ categoryName: { categoryName }, inputValue: { inputValue } }}
                   />
                 </p>
               </div>
