@@ -27,7 +27,7 @@ import {
 } from './CenrtificateSendEmail.data';
 
 import { withApollo } from 'react-apollo';
-import { Form, Field } from 'formik';
+import { Form, Field, Formik } from 'formik';
 
 export class Certificate extends Component {
   constructor(props) {
@@ -39,6 +39,8 @@ export class Certificate extends Component {
       courseCompleted: false,
       primaryNameUser: props.user.nomeCompleto,
       categoryName: props.certificate.name,
+      finishSendCertificate: false,
+      inputValue: '',
     };
   }
 
@@ -85,7 +87,7 @@ export class Certificate extends Component {
         onRequestClose={this.handleClose}
       >
         <div>
-          <p>Parabéns, {this.state.primaryNameUser}, você concluiu mais uma etapa!</p>
+          <p>Parabéns, {this.state.primaryNameUser.split(' ')[0]}, você concluiu mais uma etapa!</p>
           <p>
             O dowload do seu certificado irá iniciar em instantes. Caso queira, poderá enviá-lo por
             e-mail clicando no botão abaixo.
@@ -101,7 +103,7 @@ export class Certificate extends Component {
         key="close"
         label={<FormattedMessage id="close" />}
         primary={false}
-        onClick={this.handleClose}
+        onClick={this.handleClickCloseSendEmail}
       />,
       <FlatButton
         key="ok"
@@ -111,20 +113,38 @@ export class Certificate extends Component {
       />,
     ];
     return (
-      <Dialog
-        key="certificateSendEmailModal"
-        title={'Por Favor Digite seu e-mail'}
-        actions={actions}
-        modal={false}
-        open={this.state.certificateSendEmailModalOpened}
-        onRequestClose={this.handleClickCloseSendEmail}
-      >
-        <p>input</p>
-      </Dialog>
+      <div>
+        <form>
+          <Dialog
+            key="certificateSendEmailModal"
+            title={'Por Favor Digite seu e-mail'}
+            actions={actions}
+            modal={false}
+            open={this.state.certificateSendEmailModalOpened}
+            onRequestClose={this.handleClickCloseSendEmail}
+          >
+            <input name="email" type="text" onChange={this.updateInputValue} />
+          </Dialog>
+        </form>
+      </div>
     );
   };
 
+  updateInputValue = event => {
+    this.setState({
+      inputValue: event.target.value,
+    });
+  };
+
   sendCertificate = () => {
+    const actions = [
+      <FlatButton
+        key="ok"
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        onClick={this.finishSendCertificate}
+      />,
+    ];
     const variables = CertificateSendEmailOptions.options(this.props).variables;
     this.props.client
       .mutate({
@@ -136,8 +156,24 @@ export class Certificate extends Component {
       })
       .then(res => {
         if (res.data && res.data.trainingCertificateSendEmail) {
-          const { downloadUrl } = res.data.trainingCertificateSendEmail;
-          window.open(downloadUrl, '_blank');
+          this.setState({ finishSendCertificate: true });
+          return (
+            <Dialog
+              key="certificateModalFinish"
+              title="Certificado enviado com sucesso!"
+              actions={actions}
+              modal={false}
+              open={this.state.finishSendCertificate}
+              onRequestClose={this.handleClose}
+            >
+              <div>
+                <p>
+                  O certificado da categoria “{this.state.categoryName}” foi enviado para o <br />
+                  e-mail {this.state.inputValue}.
+                </p>
+              </div>
+            </Dialog>
+          );
         }
       });
   };
@@ -158,6 +194,11 @@ export class Certificate extends Component {
   handleClose = () => {
     this.setState({ certificateModalOpened: false });
   };
+
+  handleFinish = () => {
+    this.setState({ finishSendCertificate: true });
+  };
+
   componentDidMount = () => {
     const { isCompleted } = this.props.certificate;
     this.setState({ courseCompleted: isCompleted });
