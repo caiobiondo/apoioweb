@@ -611,6 +611,7 @@ export class CourseStartView extends Component {
 
   render() {
     const { course } = this.props;
+    console.log('course with activities', course);
 
     if (!course && !this.props.loading) return null;
 

@@ -47,6 +47,12 @@ export const CourseViewQuery = gql`
       isfavorite
       myRating
       ratedByYou
+      activities {
+        id
+        name
+        type
+        finished
+      }
       relatedCourses {
         id
         title

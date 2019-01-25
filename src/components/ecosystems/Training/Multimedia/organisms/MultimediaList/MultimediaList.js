@@ -4,14 +4,6 @@ import { graphql, compose, withApollo } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { Loading } from 'natura-ui';
-import { translate } from 'locale';
-import MenuItem from 'material-ui/MenuItem';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import { RobotoRegular } from 'styles/typography';
 
 import MultimediaItems from 'components/ecosystems/Training/molecules/MultimediaItems';
 
