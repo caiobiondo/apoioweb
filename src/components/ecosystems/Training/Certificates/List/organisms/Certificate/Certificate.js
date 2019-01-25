@@ -77,6 +77,7 @@ export class Certificate extends Component {
         onClick={this.handleClickOpenSendEmail}
       />,
     ];
+    const { primaryNameUser } = this.state.primaryNameUser.split(' ')[0];
     return (
       <Dialog
         key="certificateModal"
@@ -87,10 +88,11 @@ export class Certificate extends Component {
         onRequestClose={this.handleClose}
       >
         <div>
-          <p>Parabéns, {this.state.primaryNameUser.split(' ')[0]}, você concluiu mais uma etapa!</p>
           <p>
-            O dowload do seu certificado irá iniciar em instantes. Caso queira, poderá enviá-lo por
-            e-mail clicando no botão abaixo.
+            <FormattedMessage id="congratulateCertificate" values={{ name: { primaryNameUser } }} />
+          </p>
+          <p>
+            <FormattedMessage id="infoCongratulateCertificate" />
           </p>
         </div>
       </Dialog>
@@ -117,7 +119,7 @@ export class Certificate extends Component {
         <form>
           <Dialog
             key="certificateSendEmailModal"
-            title={'Por Favor Digite seu e-mail'}
+            title={<FormattedMessage id="pleaseInsertMail" />}
             actions={actions}
             modal={false}
             open={this.state.certificateSendEmailModalOpened}
@@ -146,6 +148,7 @@ export class Certificate extends Component {
       />,
     ];
     const variables = CertificateSendEmailOptions.options(this.props).variables;
+    const { categoryName, inputValue } = this.state;
     this.props.client
       .mutate({
         query: CertificateSendEmailQuery,
@@ -160,7 +163,7 @@ export class Certificate extends Component {
           return (
             <Dialog
               key="certificateModalFinish"
-              title="Certificado enviado com sucesso!"
+              title={<FormattedMessage id="sendMailSuccess" />}
               actions={actions}
               modal={false}
               open={this.state.finishSendCertificate}
@@ -168,8 +171,10 @@ export class Certificate extends Component {
             >
               <div>
                 <p>
-                  O certificado da categoria “{this.state.categoryName}” foi enviado para o <br />
-                  e-mail {this.state.inputValue}.
+                  <FormattedMessage
+                    id="infoSendMailSuccess"
+                    values={{ categoryName: { categoryName }, inputValue: { inputValue } }}
+                  />
                 </p>
               </div>
             </Dialog>

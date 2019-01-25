@@ -65,6 +65,13 @@ export default {
     multimediaEmptyList: 'Lista de multimídia vazia',
     multimediaNoSearchResult: 'Nenhum resultado encontrado',
     multimediasEmptyListDescription: 'Não existem multimídias disponíveis.',
+    congratulateCertificate: 'Parabéns, {name}, você concluiu mais uma etapa!',
+    infoCongratulateCertificate:
+      'O dowload do seu certificado irá iniciar em instantes. Caso queira, poderá enviá-lo por e- mail clicando no botão abaixo.',
+    pleaseInsertMail: 'Por favor Insira seu e-mail',
+    sendMailSuccess: 'Certificado enviado com sucesso!',
+    infoSendMailSuccess:
+      'O certificado da categoria “{categoryName}” foi enviado para o e- mail <b>{ inputValue }</b>.',
   },
 };
 /* eslint-disable sort-keys */
