@@ -11,6 +11,8 @@ import {
   CompletedIconWrapper,
   DownloadCertificateButtonWrapper,
   DownloadCertificateButton,
+  TextCongratulate,
+  InputMail,
 } from './Certificate.styles';
 import Img from 'react-image';
 import { Icon, FormButton, Dialog } from 'natura-ui';
@@ -21,13 +23,9 @@ import {
   CertificateDownloadQuery,
   CertificateDownloadQueryOptions,
 } from './CertificateDownload.data';
-import {
-  CertificateSendEmailQuery,
-  CertificateSendEmailOptions,
-} from './CenrtificateSendEmail.data';
+import { certificateSendEmail, CertificateSendEmailOptions } from './CenrtificateSendEmail.data';
 
 import { withApollo } from 'react-apollo';
-import { Form, Field, Formik } from 'formik';
 
 export class Certificate extends Component {
   constructor(props) {
@@ -89,7 +87,12 @@ export class Certificate extends Component {
       >
         <div>
           <p>
-            <FormattedMessage id="congratulateCertificate" values={{ name: { primaryNameUser } }} />
+            <TextCongratulate>
+              <FormattedMessage
+                id="congratulateCertificate"
+                values={{ name: { primaryNameUser } }}
+              />
+            </TextCongratulate>
           </p>
           <p>
             <FormattedMessage id="infoCongratulateCertificate" />
@@ -119,13 +122,18 @@ export class Certificate extends Component {
         <form>
           <Dialog
             key="certificateSendEmailModal"
-            title={<FormattedMessage id="pleaseInsertMail" />}
+            title="Por favor insira seu email"
             actions={actions}
             modal={false}
             open={this.state.certificateSendEmailModalOpened}
             onRequestClose={this.handleClickCloseSendEmail}
           >
-            <input name="email" type="text" onChange={this.updateInputValue} />
+            <InputMail
+              name="email"
+              type="text"
+              onChange={this.updateInputValue}
+              placeholder={<FormattedMessage id="writeEmailHere" />}
+            />
           </Dialog>
         </form>
       </div>
@@ -139,6 +147,7 @@ export class Certificate extends Component {
   };
 
   sendCertificate = () => {
+    const variables = CertificateSendEmailOptions.options(this.props).variables;
     const actions = [
       <FlatButton
         key="ok"
@@ -147,17 +156,24 @@ export class Certificate extends Component {
         onClick={this.finishSendCertificate}
       />,
     ];
-    const variables = CertificateSendEmailOptions.options(this.props).variables;
     const { categoryName, inputValue } = this.state;
+    console.log(this.props);
     this.props.client
       .mutate({
-        query: CertificateSendEmailQuery,
-        variables,
+        mutation: certificateSendEmail,
+        variables: {
+          categoryId: this.props.certificate.id,
+          sellerId: this.props.user.codigo,
+          emails: this.state.inputValue,
+        },
+        fetchPolicy: 'cache-first',
       })
       .catch(() => {
         return null;
       })
       .then(res => {
+        console.log(res);
+        /*
         if (res.data && res.data.trainingCertificateSendEmail) {
           this.setState({ finishSendCertificate: true });
           return (
@@ -170,16 +186,17 @@ export class Certificate extends Component {
               onRequestClose={this.handleClose}
             >
               <div>
-                <p>
+                <TextCongratulate>
                   <FormattedMessage
                     id="infoSendMailSuccess"
                     value={{ categoryName: { categoryName }, inputValue: { inputValue } }}
                   />
-                </p>
+                </TextCongratulate>
               </div>
             </Dialog>
           );
         }
+        */
       });
   };
 

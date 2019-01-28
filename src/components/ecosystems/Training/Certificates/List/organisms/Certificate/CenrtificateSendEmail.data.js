@@ -1,9 +1,10 @@
 import gql from 'graphql-tag';
-import { Origem } from '../../../../../../../config';
 
-export const CertificateSendEmailQuery = gql`
-  mutation CertificateSendEmailQuery($categoryId: Int!, $sellerId: Int!, $emails: String) {
-    trainingCertificateSendEmail(categoryId: $categoryId, sellerId: $sellerId, emails: $emails) {
+export const certificateSendEmail = gql`
+  mutation certificateSendEmail($categoryId: Int!, $sellerId: Int!, $emails: String!) {
+    certificateSendEmail(
+      input: { category_id: $categoryId, sellerId: $sellerId, emails: $emails }
+    ) {
       status
       totalOfElement
     }
@@ -14,8 +15,10 @@ export const CertificateSendEmailOptions = {
   options(props) {
     return {
       variables: {
-        categoryId: props.certificate.id,
+        // eslint-disable-next-line camelcase
+        category_id: props.certificate.id,
         sellerId: props.user.codigo,
+        emails: props.emails,
       },
       fetchPolicy: 'cache-first',
     };
@@ -25,7 +28,7 @@ export const CertificateSendEmailOptions = {
     return {
       data,
       loading: data.loading,
-      certificateDownloadUrl: data.trainingCertificateSendEmail,
+      certificateDownloadUrl: data.trainingCertificateDownload,
     };
   },
 };

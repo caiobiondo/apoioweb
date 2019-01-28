@@ -72,6 +72,7 @@ export default {
     sendMailSuccess: 'Certificado enviado com sucesso!',
     infoSendMailSuccess:
       'O certificado da categoria “{categoryName}” foi enviado para o e- mail <b>{ inputValue }</b>.',
+    writeEmailHere: 'Digite aqui o e-mail que quer enviar.',
   },
 };
 /* eslint-disable sort-keys */
