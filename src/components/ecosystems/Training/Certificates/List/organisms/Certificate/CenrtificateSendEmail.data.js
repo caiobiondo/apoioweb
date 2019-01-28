@@ -12,13 +12,12 @@ export const certificateSendEmail = gql`
 `;
 
 export const CertificateSendEmailOptions = {
-  options(props) {
+  options(props, emails) {
     return {
       variables: {
-        // eslint-disable-next-line camelcase
-        category_id: props.certificate.id,
+        categoryId: props.certificate.id,
         sellerId: props.user.codigo,
-        emails: props.emails,
+        emails: emails,
       },
       fetchPolicy: 'cache-first',
     };
@@ -28,7 +27,7 @@ export const CertificateSendEmailOptions = {
     return {
       data,
       loading: data.loading,
-      certificateDownloadUrl: data.trainingCertificateDownload,
+      certificateDownloadUrl: data.certificateSendEmail,
     };
   },
 };

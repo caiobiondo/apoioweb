@@ -147,7 +147,8 @@ export class Certificate extends Component {
   };
 
   sendCertificate = () => {
-    const variables = CertificateSendEmailOptions.options(this.props).variables;
+    const variables = CertificateSendEmailOptions.options(this.props, this.state.inputValue)
+      .variables;
     const actions = [
       <FlatButton
         key="ok"
@@ -161,12 +162,7 @@ export class Certificate extends Component {
     this.props.client
       .mutate({
         mutation: certificateSendEmail,
-        variables: {
-          categoryId: this.props.certificate.id,
-          sellerId: this.props.user.codigo,
-          emails: this.state.inputValue,
-        },
-        fetchPolicy: 'cache-first',
+        variables,
       })
       .catch(() => {
         return null;
