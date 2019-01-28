@@ -28,48 +28,49 @@ export const ActivityViewQuery = gql`
       regiao: $regiao
       origem: $origem
     ) {
-        status
-        totalOfElement
-        activityDetail: {
-            id
-            name
-            type
-            finished
-            access_token
-            course_content: {
-                video
-                html5
-                web 
-                videoEmbedUrl
-                html5Embed
-                scorm
-            }
+      status
+      totalOfElement
+      activityDetail {
+        id
+        name
+        type
+        finished
+        access_token
+        course_content {
+          video
+          html5
+          web
+          videoEmbedUrl
+          html5Embed
+          scorm
         }
-        assessmentActivityDetail: {
-            assessment: {
+      }
+      assessmentActivityDetail {
+        assessment {
+          id
+          title
+          order
+          status
+          questions {
+            assessmentQuestionText {
+              id
+              description
+              type
+            }
+            assessmentQuestionMultipleChoice {
+              id
+              description
+              type
+              alternatives {
                 id
-                title
-                order
-                status
-                questions: {
-                    assessmentQuestionText: {
-                        id
-                        description
-                        type
-                    }
-                    assessmentQuestionMultipleChoice {
-                        id
-                        description
-                        type
-                        alternatives {
-                            id
-                            description
-                        }
-                    }
-                }
+                description
+              }
             }
+          }
         }
+      }
     }
+  }
 `;
 
 export const ActivityViewQueryOptions = {
