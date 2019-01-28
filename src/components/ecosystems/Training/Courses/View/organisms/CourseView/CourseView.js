@@ -272,7 +272,6 @@ export class CourseView extends Component {
 
   render() {
     const { course } = this.props;
-
     if (!course && this.props.loading) {
       return <Loading background="transparent" />;
     }
