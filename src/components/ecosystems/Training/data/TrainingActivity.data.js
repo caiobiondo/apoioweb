@@ -29,43 +29,29 @@ export const ActivityViewQuery = gql`
       origem: $origem
     ) {
       status
+      message
       totalOfElement
-      activityDetail {
-        id
-        name
-        type
-        finished
-        access_token
-        course_content {
-          video
-          html5
-          web
-          videoEmbedUrl
-          html5Embed
-          scorm
-        }
+      finished
+      courseContent {
+        video
+        html5
+        web
+        scorm
       }
-      assessmentActivityDetail {
-        assessment {
+      accessToken
+      results {
+        id
+        title
+        order
+        status
+        questions {
           id
-          title
-          order
-          status
-          questions {
-            assessmentQuestionText {
-              id
-              description
-              type
-            }
-            assessmentQuestionMultipleChoice {
-              id
-              description
-              type
-              alternatives {
-                id
-                description
-              }
-            }
+          description
+          type
+          alternatives {
+            id
+            description
+            selected
           }
         }
       }

@@ -72,6 +72,7 @@ export default {
     sendMailSuccess: 'Certificado enviado com sucesso!',
     infoSendMailSuccess:
       'O certificado da categoria “{categoryName}” foi enviado para o e- mail <b>{ inputValue }</b>.',
+    sendCertificateError: 'Não foi possível enviar seu certificado',
   },
 };
 /* eslint-disable sort-keys */

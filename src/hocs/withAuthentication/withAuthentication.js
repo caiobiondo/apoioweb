@@ -7,8 +7,8 @@ const LOGOUT_PATH = `${LOGOUT_URL}${window.location.href}`;
 export default function withAuthentication(Component) {
   class AuthenticatedComponent extends PureComponent {
     componentDidMount() {
-      console.log(this);
-      console.log(Cookies.get(HTTP_CDPESSOA));
+      // console.log(this);
+      // console.log(Cookies.get(HTTP_CDPESSOA));
       // if (!this.isHttpCdPessoaCookiePresent() || !this.isOamCookiePresent) this.redirectToLogin();
     }
 
