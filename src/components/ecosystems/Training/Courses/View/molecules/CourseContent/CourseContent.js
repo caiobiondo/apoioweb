@@ -330,10 +330,8 @@ export class CourseContent extends Component {
   render() {
     const { course } = this.props;
     const nextCourse = this.getNextCourse(course.relatedCourses);
-
     // iframe with key prop to force a "rerender" of iframe when changing from a course to another one,
     // so it prevents iframe src change to add a browser history item
-    console.log('course', JSON.stringify(course));
     return (
       <ContentWrapper>
         {!course.courseContent.videoEmbedUrl && (

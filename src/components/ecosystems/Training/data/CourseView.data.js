@@ -92,7 +92,7 @@ export const CourseViewQueryOptions = {
         origem: Origem,
       },
       fetchPolicy: 'cache-and-network',
-      //fetchPolicy: 'no-cache',
+      // fetchPolicy: 'no-cache',
     };
   },
 

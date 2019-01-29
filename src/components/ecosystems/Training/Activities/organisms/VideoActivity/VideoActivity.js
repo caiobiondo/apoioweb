@@ -18,7 +18,7 @@ import {
   CourseViewFeedbackModalAction,
 } from './VideoActivity.styles';
 
-import CourseContent from '../../../Courses/View/molecules/CourseContent';
+import ActivityContent from '../../molecules/ActivityContent/ActivityContent';
 import CourseDescription from '../../../Courses/View/molecules/CourseDescription';
 import RelatedCourses from '../../../Courses/View/molecules/RelatedCourses';
 import CourseRating from '../../../Courses/View/molecules/CourseRating';
@@ -251,51 +251,22 @@ class VideoActivity extends Component {
   };
 
   render() {
-    console.log('VideoActivity, this.props', this.props);
-    const { course } = this.props;
-    if (!course && this.props.loading) {
+    const { activity } = this.props;
+    if (!activity && this.props.loading) {
       return <Loading background="transparent" />;
-    }
-
-    if (!course || !course.id) {
-      return (
-        <Main>
-          <EmptyList
-            icon="ico_list_add"
-            titleId="myCourseEmptyList"
-            descriptionId="myCourseEmptyListDescription"
-          />
-        </Main>
-      );
     }
 
     return (
       <Main>
         <Grid fluid>
           <CourseViewHeader />
-          <CourseContent
-            course={this.props.activity}
+          <ActivityContent
+            activity={this.props.activity.results[0]}
             user={this.props.user}
             refetch={this.props.refetch}
             handleFeedbackMessage={this.handleFeedbackMessage}
           />
-          <CourseDescription course={this.props.activity} />
-          <Row>
-            <Col md={1} sm={1}>
-              <MylistButtonWrapper>
-                <FlatButton
-                  {...MylistButton}
-                  label={translate('myList')}
-                  icon={<Icon file={this.myListIconName()} />}
-                  onClick={this.handleMyListClick}
-                />
-              </MylistButtonWrapper>
-            </Col>
-          </Row>
-          <CourseRating course={course} />
-          <RelatedCourses courses={course.relatedCourses} />
         </Grid>
-        {this.renderFeedbackModal()}
       </Main>
     );
   }
