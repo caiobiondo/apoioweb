@@ -8,9 +8,6 @@ export const TrainingMultimediaQuery = gql`
     $sellerId: Int!
     $offset: Int!
     $limit: Int!
-    $status: String
-    $favorite: Boolean
-    $filter: String
     $ciclo: Int
     $setor: Int
     $gerenciaMercado: Int
@@ -21,13 +18,10 @@ export const TrainingMultimediaQuery = gql`
     $regiao: Int
     $origem: String!
   ) {
-    trainingMultimedias(
+    multimedias(
       sellerId: $sellerId
       offset: $offset
       limit: $limit
-      status: $status
-      favorite: $favorite
-      filter: $filter
       ciclo: $ciclo
       setor: $setor
       gerenciaMercado: $gerenciaMercado
@@ -40,24 +34,21 @@ export const TrainingMultimediaQuery = gql`
     ) {
       hasNextPage
       items {
-        id: Int
-        title: String
-        description: String
-        type: String
-        dateUpload: Date
-        durationInSeconds: Int
-        categories: [
-          {
-            id: Int
-            name: String
-          }
-        ]
-        content: [
-          { 
-            title: String
-            downloadUrl: String
-          }
-        ]
+        id
+        title
+        dateUpload
+        thumbnail
+        type
+        durationInSeconds
+        content {
+          title
+          downloadUrl
+          bearerToken
+        }
+        categories {
+          id
+          name
+        }
       }
     }
   }
@@ -82,10 +73,8 @@ export const TrainingMultimediaQueryOptions = {
     return {
       variables: {
         sellerId: props.user.codigo,
-        limit: ITEMS_PER_PAGE,
         offset: 0,
-        favorite: props.favorite,
-        filter: props.courseFilter,
+        limit: ITEMS_PER_PAGE,
         ciclo:
           props.user.estrutura.ciclo &&
           props.user.estrutura.ciclo[0] &&

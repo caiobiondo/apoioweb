@@ -33,6 +33,8 @@ export default {
     trainingCourseStatusFinished: 'Concluídos',
     trainingCourseStatusPending: 'Em andamento',
     downloadCertificate: 'Baixar Certificado',
+    sendCertificate: 'Enviar Certificado',
+    sendCertificateByEmail: 'Enviar Certificado Por E-mail',
     trainingAddCourseToMyList: 'Adicionar à minha lista',
     trainingCategoryCompleted: 'Completa',
     continueCourses: 'Continue seus cursos',
@@ -64,6 +66,15 @@ export default {
     multimediaEmptyList: 'Lista de multimídia vazia',
     multimediaNoSearchResult: 'Nenhum resultado encontrado',
     multimediasEmptyListDescription: 'Não existem multimídias disponíveis.',
+    congratulateTitle: 'Categoria {name} concluída com sucesso!',
+    congratulateCertificate: 'Parabéns, {name}, você concluiu mais uma etapa!',
+    infoCongratulateCertificate:
+      'O dowload do seu certificado irá iniciar em instantes. Caso queira, poderá enviá-lo por e-mail clicando no botão abaixo.',
+    pleaseInsertMail: 'Por favor Insira seu e-mail',
+    sendMailSuccess: 'Certificado enviado com sucesso!',
+    infoSendMailSuccess:
+      'O certificado da categoria “{categoryName}” foi enviado para o e- mail <b>{ inputValue }</b>.',
+    sendCertificateError: 'Não foi possível enviar seu certificado',
   },
 };
 /* eslint-disable sort-keys */

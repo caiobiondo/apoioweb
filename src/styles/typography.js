@@ -35,6 +35,7 @@ export const fs100 = '100px';
 // Font Families
 //
 
+export const NaturaScript = 'NaturaScript';
 export const NaturaBold = 'NaturaSans-Bold';
 export const NaturaRegular = 'NaturaSans-Regular';
 export const RobotoRegular = 'Roboto-Regular';

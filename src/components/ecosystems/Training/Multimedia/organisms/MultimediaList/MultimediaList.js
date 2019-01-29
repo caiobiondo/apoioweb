@@ -4,14 +4,6 @@ import { graphql, compose, withApollo } from 'react-apollo';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { Loading } from 'natura-ui';
-import { translate } from 'locale';
-import MenuItem from 'material-ui/MenuItem';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import { RobotoRegular } from 'styles/typography';
 
 import MultimediaItems from 'components/ecosystems/Training/molecules/MultimediaItems';
 
@@ -24,10 +16,8 @@ import PageMenu from 'components/ecosystems/Training/atoms/PageMenu/PageMenu';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import InfiniteScroll from 'components/organisms/InfiniteScroll';
 
-import StartedCoursesList from '../../organisms/StartedCoursesList/StartedCoursesList';
-
 import { StartedWrapper, TrainingMultimediaListWrapper } from './MultimediaList.styles';
-import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
 export class MultimediaList extends Component {
   constructor(props) {
@@ -55,95 +45,6 @@ export class MultimediaList extends Component {
 
   isEmpty = (loading, items) => {
     return !loading && (!items || items.length === 0);
-  };
-
-  handleMenuItemClick = (event, child) => {
-    const { formatMessage } = this.props.intl;
-    const {
-      ciclo,
-      grupo,
-      gerenciaDeVendas,
-      regiao,
-      setor,
-      gerenciaMercado,
-      papelDaConsultora,
-      canal,
-      origem,
-    } = getHeadersFromUser(this.props.user);
-
-    this.props
-      .mutate({
-        variables: {
-          input: { action: child.props.value },
-          sellerId: this.props.user.codigo,
-          courseId: child.props.course.id,
-          ciclo,
-          grupo,
-          gerenciaDeVendas,
-          regiao,
-          setor,
-          gerenciaMercado,
-          papelDaConsultora,
-          canal,
-          origem,
-        },
-      })
-      .then(response => {
-        if (response.error) {
-          const message =
-            child.props.value === 'favorite'
-              ? formatMessage({ id: 'trainingAddCourseError' })
-              : formatMessage({ id: 'trainingRemoveCourseError' });
-          this.setState({
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          });
-
-          // Handle error
-          return;
-        }
-
-        if (!response.data.updateCourse.status) {
-          const message =
-            child.props.value === 'favorite'
-              ? formatMessage({ id: 'trainingAddCourseFailure' })
-              : formatMessage({ id: 'trainingRemoveCourseFailure' });
-          this.setState({
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          });
-          // Handle not updated
-          return;
-        }
-
-        // Handle update success
-        const message =
-          child.props.value === 'favorite'
-            ? formatMessage({ id: 'trainingAddCourseSuccess' })
-            : formatMessage({ id: 'trainingRemoveCourseSuccess' });
-
-        this.setState(
-          {
-            feedbackModalOpened: true,
-            feedbackModalTitle: message,
-          },
-          this.updateCachedList(child.props.course),
-        );
-
-        return;
-      })
-      .catch(err => {
-        console.log('err', err);
-        // Handle error
-        const message =
-          child.props.value === 'favorite'
-            ? formatMessage({ id: 'trainingAddCourseError' })
-            : formatMessage({ id: 'trainingRemoveCourseError' });
-        this.setState({
-          feedbackModalOpened: true,
-          feedbackModalTitle: message,
-        });
-      });
   };
 
   updateCachedList = course => {
@@ -197,57 +98,10 @@ export class MultimediaList extends Component {
     }
   };
 
-  renderMenuItems = course => {
-    const style = { fontFamily: RobotoRegular };
-
-    if (course.isfavorite === 'true') {
-      return (
-        <IconMenu
-          iconButtonElement={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-          targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-          onItemTouchTap={this.handleMenuItemClick}
-        >
-          <MenuItem
-            style={style}
-            primaryText={translate('trainingRemoveCourseMyList')}
-            value="unfavorite"
-            course={course}
-          />
-        </IconMenu>
-      );
-    }
-
-    return (
-      <IconMenu
-        iconButtonElement={
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-        onItemTouchTap={this.handleMenuItemClick}
-      >
-        <MenuItem
-          style={style}
-          primaryText={translate('trainingAddCourseMyList')}
-          value="favorite"
-          course={course}
-        />
-      </IconMenu>
-    );
-  };
-
   render() {
-    if (!this.props.courses && this.props.loading) {
+    if (!this.props.multimedias && this.props.loading) {
       return <Loading background="transparent" />;
     }
-
     const titleToEmptyList =
       this.props.courseFilter || this.props.status
         ? 'multimediaNoSearchResult'
@@ -255,7 +109,6 @@ export class MultimediaList extends Component {
 
     return (
       <StartedWrapper>
-        <StartedCoursesList status="started" user={this.props.user} />
         <TrainingMultimediaListWrapper>
           <PageMenu />
           <InfiniteScroll
@@ -272,7 +125,7 @@ export class MultimediaList extends Component {
               />
             }
           >
-            <MultimediaItems {...this.props} renderMenuItems={this.renderMenuItems} />
+            <MultimediaItems {...this.props} />
           </InfiniteScroll>
         </TrainingMultimediaListWrapper>
       </StartedWrapper>

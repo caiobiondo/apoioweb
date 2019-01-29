@@ -1,10 +1,10 @@
 import gql from 'graphql-tag';
 import { Origem } from 'config';
 
-export const CourseViewQuery = gql`
-  query CourseViewQuery(
+export const ActivityViewQuery = gql`
+  query ActivityViewQuery(
     $sellerId: Int!
-    $courseId: Int!
+    $activityId: Int!
     $ciclo: Int
     $setor: Int
     $gerenciaMercado: Int
@@ -15,9 +15,9 @@ export const CourseViewQuery = gql`
     $regiao: Int
     $origem: String!
   ) {
-    course(
+    activity(
       sellerId: $sellerId
-      courseId: $courseId
+      activityId: $activityId
       ciclo: $ciclo
       setor: $setor
       gerenciaMercado: $gerenciaMercado
@@ -28,54 +28,47 @@ export const CourseViewQuery = gql`
       regiao: $regiao
       origem: $origem
     ) {
-      id
-      accessToken
-      categoryTitle
-      clientIdentifier
-      clientSecrets
-      courseContent {
-        video
-        html5
-        web
-        videoEmbedUrl
-        scorm
-      }
-      dateUpload
-      durationInSeconds
-      description
-      generalRating
-      isfavorite
-      myRating
-      ratedByYou
-      activities {
+      status
+      message
+      totalOfElement
+      results {
         id
+        finished
         name
         type
-        finished
+        accessToken
+        courseContent {
+          video
+          html5
+          web
+          videoEmbedUrl
+          html5Embed
+          scorm
+        }
+        assessments {
+          id
+          title
+          questions {
+            id
+            description
+            type
+            alternatives {
+              id
+              description
+            }
+          }
+        }
       }
-      relatedCourses {
-        id
-        title
-        thumbnail
-        type
-        url
-      }
-      status
-      stoppedAt
-      thumbnail
-      title
-      type
-      views
     }
   }
 `;
 
-export const CourseViewQueryOptions = {
+export const ActivityViewQueryOptions = {
   options(props) {
     return {
       variables: {
         sellerId: props.user.codigo,
-        courseId: props.courseId,
+        activityId: props.courseId,
         ciclo:
           props.user.estrutura.ciclo &&
           props.user.estrutura.ciclo[0] &&
@@ -92,7 +85,6 @@ export const CourseViewQueryOptions = {
         origem: Origem,
       },
       fetchPolicy: 'cache-and-network',
-      // fetchPolicy: 'no-cache',
     };
   },
 
@@ -100,7 +92,7 @@ export const CourseViewQueryOptions = {
     return {
       data,
       loading: data.loading,
-      course: data.course,
+      activity: data.activity,
       refetch: data.refetch,
     };
   },

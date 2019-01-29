@@ -11,6 +11,8 @@ const redirectToLogin = () => {
 };
 
 const checkForAuthError = error => {
+  console.log('error', error);
+  // debugger;
   try {
     if (!error || !error.message) {
       return false;
@@ -20,9 +22,7 @@ const checkForAuthError = error => {
       redirectToLogin();
       return true;
     }
-
     const parsedMessage = JSON.parse(error.message);
-
     if (parsedMessage.error && parsedMessage.error.status === 401) {
       redirectToLogin();
       return true;

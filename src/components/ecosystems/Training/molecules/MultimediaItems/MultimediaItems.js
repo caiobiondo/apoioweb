@@ -6,16 +6,14 @@ import { List } from './MultimediaItems.styles';
 
 export default class MultimediaItems extends Component {
   render() {
-    if (!this.props.courses || !this.props.courses.length) {
+    if (!this.props.multimedias || !this.props.multimedias.length) {
       return null;
     }
 
     return (
       <List>
-        {this.props.courses.map((course, index) => (
-          <MultimediaItem key={index} course={course}>
-            {this.props.renderMenuItems(course)}
-          </MultimediaItem>
+        {this.props.multimedias.map((multimedia, index) => (
+          <MultimediaItem key={index} multimedia={multimedia} />
         ))}
       </List>
     );
@@ -23,6 +21,5 @@ export default class MultimediaItems extends Component {
 }
 
 MultimediaItems.propTypes = {
-  renderMenuItems: PropTypes.func,
   multimedias: PropTypes.array,
 };

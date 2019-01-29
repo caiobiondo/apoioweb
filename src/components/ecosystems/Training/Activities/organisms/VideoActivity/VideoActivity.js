@@ -4,10 +4,7 @@ import { Row, Col, Grid } from 'react-flexbox-grid';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import gql from 'graphql-tag';
 
-import {
-  CourseViewQuery,
-  CourseViewQueryOptions,
-} from 'components/ecosystems/Training/data/CourseView.data';
+import { ActivityViewQuery, ActivityViewQueryOptions } from '../../../data/TrainingActivity.data';
 import {
   TrainingCoursesQuery,
   TrainingCoursesQueryOptions,
@@ -19,20 +16,20 @@ import {
   MylistButton,
   CourseViewFeedbackModalTitle,
   CourseViewFeedbackModalAction,
-} from './CourseView.styles';
+} from './VideoActivity.styles';
 
-import CourseContent from '../../molecules/CourseContent';
-import CourseDescription from '../../molecules/CourseDescription';
-import RelatedCourses from '../../molecules/RelatedCourses';
-import CourseRating from '../../molecules/CourseRating';
-import CourseViewHeader from '../../molecules/CourseViewHeader';
+import ActivityContent from '../../molecules/ActivityContent/ActivityContent';
+import CourseDescription from '../../../Courses/View/molecules/CourseDescription';
+import RelatedCourses from '../../../Courses/View/molecules/RelatedCourses';
+import CourseRating from '../../../Courses/View/molecules/CourseRating';
+import CourseViewHeader from '../../../Courses/View/molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import { Loading, FlatButton, Icon, Dialog } from 'natura-ui';
 import { translate } from 'locale';
-import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
-export class CourseView extends Component {
+class VideoActivity extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
@@ -45,18 +42,10 @@ export class CourseView extends Component {
   }
 
   componentWillReceiveProps({ loading, course }) {
-    this.notifyLoadFinish(loading, course);
-
     if (!this.props.course && course) {
       this.setState({ course });
     }
   }
-
-  notifyLoadFinish = (loading, course) => {
-    if (!loading && this.props.onLoadFinished) {
-      this.props.onLoadFinished(this.isEmpty(loading, course), this.isLoading(loading, course));
-    }
-  };
 
   isLoading = (loading, course) => loading && !course;
 
@@ -102,92 +91,83 @@ export class CourseView extends Component {
   };
 
   updateCachedList = () => {
-    const { course } = this.state;
-    const { client } = this.props;
-
-    client.writeFragment({
-      id: course.id,
-      fragment: gql`
-        fragment myCourse on Course {
-          isfavorite
-          status
-          __typename
-        }
-      `,
-      data: {
-        isfavorite: course.isfavorite,
-        status: course.status,
-        __typename: 'Course',
-      },
-    });
-
-    let startedCourses = null;
-    try {
-      startedCourses = client.readQuery({
-        query: TrainingCoursesQuery,
-        variables: TrainingCoursesQueryOptions.options({
-          ...this.props,
-          status: 'started',
-        }).variables,
-      });
-    } catch (e) {
-      // could not find cache
-    }
-
-    if (startedCourses) {
-      if (this.state.course.status === 'started' && this.props.course.status === 'pending') {
-        startedCourses.courses.items.push(this.state.course);
-      }
-
-      if (this.state.course.status !== 'started' && this.props.course.status === 'started') {
-        startedCourses.courses.items = startedCourses.courses.items.filter(
-          item => item.id !== this.state.course.id,
-        );
-      }
-
-      client.writeQuery({
-        query: TrainingCoursesQuery,
-        variables: TrainingCoursesQueryOptions.options({
-          ...this.props,
-          status: 'started',
-        }).variables,
-        data: startedCourses,
-      });
-    }
-
-    let favoritedCourses = null;
-    try {
-      favoritedCourses = client.readQuery({
-        query: TrainingCoursesQuery,
-        variables: TrainingCoursesQueryOptions.options({
-          ...this.props,
-          favorite: true,
-        }).variables,
-      });
-    } catch (e) {
-      // could not find cache
-    }
-
-    if (favoritedCourses) {
-      if (this.state.course.isfavorite === 'true' && this.props.course.isfavorite === 'false') {
-        favoritedCourses.courses.items.push(this.state.course);
-      }
-
-      if (this.state.course.isfavorite === 'false' && this.props.course.isfavorite === 'true') {
-        favoritedCourses.courses.items = favoritedCourses.courses.items.filter(item => {
-          return item.id !== this.state.course.id;
-        });
-      }
-
-      client.writeQuery({
-        query: TrainingCoursesQuery,
-        variables: TrainingCoursesQueryOptions.options({
-          ...this.props,
-          favorite: true,
-        }).variables,
-        data: favoritedCourses,
-      });
-    }
+    // const { course } = this.state;
+    // const { client } = this.props;
+    // client.writeFragment({
+    //   id: course.id,
+    //   fragment: gql`
+    //     fragment myCourse on Course {
+    //       isfavorite
+    //       status
+    //       __typename
+    //     }
+    //   `,
+    //   data: {
+    //     isfavorite: course.isfavorite,
+    //     status: course.status,
+    //     __typename: 'Course',
+    //   },
+    // });
+    // let startedCourses = null;
+    // try {
+    //   startedCourses = client.readQuery({
+    //     query: TrainingCoursesQuery,
+    //     variables: TrainingCoursesQueryOptions.options({
+    //       ...this.props,
+    //       status: 'started',
+    //     }).variables,
+    //   });
+    // } catch (e) {
+    //   // could not find cache
+    // }
+    // if (startedCourses) {
+    //   if (this.state.course.status === 'started' && this.props.course.status === 'pending') {
+    //     startedCourses.courses.items.push(this.state.course);
+    //   }
+    //   if (this.state.course.status !== 'started' && this.props.course.status === 'started') {
+    //     startedCourses.courses.items = startedCourses.courses.items.filter(
+    //       item => item.id !== this.state.course.id,
+    //     );
+    //   }
+    //   client.writeQuery({
+    //     query: TrainingCoursesQuery,
+    //     variables: TrainingCoursesQueryOptions.options({
+    //       ...this.props,
+    //       status: 'started',
+    //     }).variables,
+    //     data: startedCourses,
+    //   });
+    // }
+    // let favoritedCourses = null;
+    // try {
+    //   favoritedCourses = client.readQuery({
+    //     query: TrainingCoursesQuery,
+    //     variables: TrainingCoursesQueryOptions.options({
+    //       ...this.props,
+    //       favorite: true,
+    //     }).variables,
+    //   });
+    // } catch (e) {
+    //   // could not find cache
+    // }
+    // if (favoritedCourses) {
+    //   if (this.state.course.isfavorite === 'true' && this.props.course.isfavorite === 'false') {
+    //     favoritedCourses.courses.items.push(this.state.course);
+    //   }
+    //   if (this.state.course.isfavorite === 'false' && this.props.course.isfavorite === 'true') {
+    //     favoritedCourses.courses.items = favoritedCourses.courses.items.filter(item => {
+    //       return item.id !== this.state.course.id;
+    //     });
+    //   }
+    //   client.writeQuery({
+    //     query: TrainingCoursesQuery,
+    //     variables: TrainingCoursesQueryOptions.options({
+    //       ...this.props,
+    //       favorite: true,
+    //     }).variables,
+    //     data: favoritedCourses,
+    //   });
+    // }
   };
 
   handleMyListClick = () => {
@@ -271,59 +251,29 @@ export class CourseView extends Component {
   };
 
   render() {
-    const { course } = this.props;
-    if (!course && this.props.loading) {
+    const { activity } = this.props;
+    if (!activity && this.props.loading) {
       return <Loading background="transparent" />;
-    }
-
-    if (!course || !course.id) {
-      return (
-        <Main>
-          <EmptyList
-            icon="ico_list_add"
-            titleId="myCourseEmptyList"
-            descriptionId="myCourseEmptyListDescription"
-          />
-        </Main>
-      );
     }
 
     return (
       <Main>
         <Grid fluid>
           <CourseViewHeader />
-          <CourseContent
-            course={course}
+          <ActivityContent
+            activity={this.props.activity.results[0]}
             user={this.props.user}
             refetch={this.props.refetch}
             handleFeedbackMessage={this.handleFeedbackMessage}
           />
-          <CourseDescription course={course} />
-          <Row>
-            <Col md={1} sm={1}>
-              <MylistButtonWrapper>
-                <FlatButton
-                  {...MylistButton}
-                  label={translate('myList')}
-                  icon={<Icon file={this.myListIconName()} />}
-                  onClick={this.handleMyListClick}
-                />
-              </MylistButtonWrapper>
-            </Col>
-          </Row>
-          <CourseRating course={course} />
-          <RelatedCourses courses={course.relatedCourses} />
         </Grid>
-        {this.renderFeedbackModal()}
       </Main>
     );
   }
 }
+export const VideoActivityWithIntl = injectIntl(VideoActivity);
+export const VideoActivityWithApollo = withApollo(VideoActivityWithIntl);
 
-export const CourseViewWithIntl = injectIntl(CourseView);
-export const CourseViewWithApollo = withApollo(CourseViewWithIntl);
-
-export default compose(
-  graphql(CourseViewQuery, CourseViewQueryOptions),
-  graphql(TrainingCourseUpdateMutation),
-)(CourseViewWithApollo);
+export default compose(graphql(ActivityViewQuery, ActivityViewQueryOptions))(
+  VideoActivityWithApollo,
+);
