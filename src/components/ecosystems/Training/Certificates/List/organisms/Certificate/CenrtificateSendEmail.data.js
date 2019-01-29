@@ -1,12 +1,11 @@
 import gql from 'graphql-tag';
 import { Origem } from '../../../../../../../config';
 
-export const certificateSendEmail = gql`
-  mutation certificateSendEmail(
-    $categoryId: Int!
+export const CertificateSendEmail = gql`
+  mutation CertificateSendEmail(
     $sellerId: Int!
-    $emails: String!
-    $ciclo: Int
+    $categoryId: Int!
+    $ciclo: Int!
     $setor: Int
     $gerenciaMercado: Int
     $grupo: Int
@@ -15,12 +14,13 @@ export const certificateSendEmail = gql`
     $gerenciaDeVendas: Int
     $regiao: Int
     $origem: String!
+    $input: CertificateSendEmailInput!
   ) {
     certificateSendEmail(
-      categoryId: $categoryId
       sellerId: $sellerId
-      emails: $emails
+      categoryId: $categoryId
       ciclo: $ciclo
+      input: $input
       setor: $setor
       gerenciaMercado: $gerenciaMercado
       grupo: $grupo
@@ -31,34 +31,30 @@ export const certificateSendEmail = gql`
       origem: $origem
     ) {
       status
-      totalOfElement
+      message
     }
   }
 `;
 
-export const CertificateSendEmailOptions = {
-  options(props, emails) {
+export const CourseEvaluationQueryOptions = {
+  options(props) {
     return {
-      variables: {
-        categoryId: props.certificate.id,
-        sellerId: props.user.codigo,
-        emails: emails,
-        ciclo:
-          props.user.estrutura.ciclo &&
-          props.user.estrutura.ciclo[0] &&
-          props.user.estrutura.ciclo[0].numero,
-        setor: props.user.estrutura.codigoTipo > 3 ? props.user.estrutura.setor.codigo : 0,
-        gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
-        grupo: props.user.estrutura.codigoTipo > 4 ? props.user.estrutura.codigo : 0,
-        papelDaConsultora: props.user.cdPapelAtivo,
-        canal: props.user.cdCanalCaptacao,
-        gerenciaDeVendas:
-          props.user.estrutura.codigoTipo > 2 ? props.user.estrutura.gerenciaVenda.codigo : 0,
-        regiao:
-          props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
-        origem: Origem,
-      },
-      fetchPolicy: 'cache-first',
+      forceFetch: true,
+      sellerId: props.user.codigo,
+      ciclo:
+        props.user.estrutura.ciclo &&
+        props.user.estrutura.ciclo[0] &&
+        props.user.estrutura.ciclo[0].numero,
+      setor: props.user.estrutura.codigoTipo > 3 ? props.user.estrutura.setor.codigo : 0,
+      gerenciaMercado: props.user.estrutura.gerenciaMercado.codigo,
+      grupo: props.user.estrutura.codigoTipo > 4 ? props.user.estrutura.codigo : 0,
+      papelDaConsultora: props.user.cdPapelAtivo,
+      canal: props.user.cdCanalCaptacao,
+      gerenciaDeVendas:
+        props.user.estrutura.codigoTipo > 2 ? props.user.estrutura.gerenciaVenda.codigo : 0,
+      regiao:
+        props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
+      origem: Origem,
     };
   },
 

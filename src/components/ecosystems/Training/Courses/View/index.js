@@ -5,6 +5,7 @@ import CourseStartView from './organisms/CourseStartView/CourseStartView';
 import CourseViewHtml5 from './organisms/CourseViewHtml5/CourseViewHtml5';
 import CourseViewScormHome from './organisms/CourseViewScormHome/CourseViewScormHome';
 import CourseViewScorm from './organisms/CourseViewScorm/CourseViewScorm';
+import CourseViewModule from './organisms/CourseViewModule/CourseViewModule';
 
 class TrainingWrapper extends Component {
   state = {
@@ -25,6 +26,7 @@ class TrainingWrapper extends Component {
     if (type === 'web') element = CourseStartView;
     if (type === 'scorm' && !scormId) element = CourseViewScormHome;
     if (type === 'scorm' && scormId) element = CourseViewScorm;
+    if (type === 'module') element = CourseViewModule;
 
     return React.createElement(element, {
       user,

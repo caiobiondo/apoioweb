@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
+import { graphql, compose } from 'react-apollo';
 import PropTypes from 'prop-types';
+import Img from 'react-image';
+import { Icon, FormButton, Dialog } from 'natura-ui';
+import FlatButton from 'material-ui/FlatButton';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { translate } from 'locale';
+import {
+  CertificateDownloadQuery,
+  CertificateDownloadQueryOptions,
+} from './CertificateDownload.data';
+import { CertificateSendEmail } from './CenrtificateSendEmail.data';
 import {
   CertificateWrapper,
   CertificateName,
@@ -14,18 +25,8 @@ import {
   TextCongratulate,
   InputMail,
 } from './Certificate.styles';
-import Img from 'react-image';
-import { Icon, FormButton, Dialog } from 'natura-ui';
-import FlatButton from 'material-ui/FlatButton';
-import { FormattedMessage } from 'react-intl';
-import { translate } from 'locale';
-import {
-  CertificateDownloadQuery,
-  CertificateDownloadQueryOptions,
-} from './CertificateDownload.data';
-import { certificateSendEmail, CertificateSendEmailOptions } from './CenrtificateSendEmail.data';
 
-import { withApollo } from 'react-apollo';
+import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 
 export class Certificate extends Component {
   constructor(props) {
@@ -61,6 +62,8 @@ export class Certificate extends Component {
   };
 
   openModalCertificate = () => {
+    const firstName = this.props.user.nomeCompleto.split(' ')[0];
+
     const actions = [
       <FlatButton
         key="close"
@@ -85,13 +88,12 @@ export class Certificate extends Component {
         onRequestClose={this.handleClose}
       >
         <div>
-          <TextCongratulate>
-            <FormattedMessage
-              id="congratulateCertificate"
-              values={{ name: this.state.primaryNameUser.split(' ')[0] }}
-            />
-          </TextCongratulate>
-          <FormattedMessage id="infoCongratulateCertificate" />
+          <p>
+            <FormattedMessage id="congratulateCertificate" values={{ name: firstName }} />
+          </p>
+          <p>
+            <FormattedMessage id="infoCongratulateCertificate" />
+          </p>
         </div>
       </Dialog>
     );
@@ -141,9 +143,7 @@ export class Certificate extends Component {
     });
   };
 
-  sendCertificate = () => {
-    const variables = CertificateSendEmailOptions.options(this.props, this.state.inputValue)
-      .variables;
+  sendCertificate = async () => {
     const actions = [
       <FlatButton
         key="ok"
@@ -153,42 +153,79 @@ export class Certificate extends Component {
       />,
     ];
     const { categoryName, inputValue } = this.state;
-    console.log(variables);
-    this.props.client
-      .mutate({
-        mutation: certificateSendEmail,
-        variables,
-      })
-      .catch(() => {
-        return null;
-      })
-      .then(res => {
-        console.log(res);
-        /*
-        if (res.data && res.data.trainingCertificateSendEmail) {
-          this.setState({ finishSendCertificate: true });
-          return (
-            <Dialog
-              key="certificateModalFinish"
-              title={<FormattedMessage id="sendMailSuccess" />}
-              actions={actions}
-              modal={false}
-              open={this.state.finishSendCertificate}
-              onRequestClose={this.handleClose}
-            >
-              <div>
-                <TextCongratulate>
-                  <FormattedMessage
-                    id="infoSendMailSuccess"
-                    value={{ categoryName: { categoryName }, inputValue: { inputValue } }}
-                  />
-                </TextCongratulate>
-              </div>
-            </Dialog>
-          );
-        }
-        */
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+      sellerId,
+    } = getHeadersFromUser(this.props.user);
+
+    try {
+      const response = await this.props.mutate({
+        query: CertificateSendEmail,
+        variables: {
+          input: { emails: this.state.inputValue },
+          sellerId,
+          categoryId: this.props.certificate.id,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
+        },
       });
+
+      if (!response) {
+        this.handleSendEmailError();
+        return;
+      }
+
+      if (response.error) {
+        this.handleSendEmailError();
+        return;
+      }
+
+      if (!response.data.trainingCertificateSendEmail) {
+        this.handleSendEmailError();
+        return;
+      }
+
+      if (response.data && response.data.trainingCertificateSendEmail) {
+        this.setState({ finishSendCertificate: true });
+        return (
+          <Dialog
+            key="certificateModalFinish"
+            title={<FormattedMessage id="sendMailSuccess" />}
+            actions={actions}
+            modal={false}
+            open={this.state.finishSendCertificate}
+            onRequestClose={this.handleClose}
+          >
+            <div>
+              <p>
+                <FormattedMessage
+                  id="infoSendMailSuccess"
+                  value={{ categoryName: { categoryName }, inputValue: { inputValue } }}
+                />
+              </p>
+            </div>
+          </Dialog>
+        );
+      }
+    } catch (err) {
+      console.log('err', err);
+      this.handleSendEmailError();
+    }
   };
 
   handleClickOpen = () => {
@@ -210,6 +247,20 @@ export class Certificate extends Component {
 
   handleFinish = () => {
     this.setState({ finishSendCertificate: true });
+  };
+
+  handleSendEmailError = () => {
+    this.handleDefaultSendEmail('sendCertificateError');
+  };
+
+  handleDefaultSendEmail = msgId => {
+    const { formatMessage } = this.props.intl;
+    const message = formatMessage({ id: msgId });
+    this.setState({
+      modalOpened: false,
+      feedbackModalOpened: true,
+      feedbackModalTitle: message,
+    });
   };
 
   componentDidMount = () => {
@@ -259,4 +310,5 @@ Certificate.propTypes = {
   index: PropTypes.number,
 };
 
-export default withApollo(Certificate);
+export const CertificateIntl = injectIntl(Certificate);
+export default compose(graphql(CertificateSendEmail))(CertificateIntl);

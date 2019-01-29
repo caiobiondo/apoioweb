@@ -1,6 +1,6 @@
 /* eslint-disable import */
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClientCreator from 'infra/ApolloClientCreator';
@@ -96,6 +96,7 @@ export default class App extends Component {
                     'stock',
                   )}
                 />
+
                 <Route
                   exact
                   path={`${ROUTE_PREFIX}/my-stock/import/orders`}
@@ -143,22 +144,39 @@ export default class App extends Component {
                     'training',
                   )}
                 />
-                <Route
-                  exact
-                  path={`${ROUTE_PREFIX}/training/courses/:id/:type`}
-                  component={withDefaultBehaviour(
-                    import('components/ecosystems/Training/Courses/View'),
-                    'training',
-                  )}
-                />
-                <Route
-                  exact
-                  path={`${ROUTE_PREFIX}/training/courses/:id/:type/:scormId`}
-                  component={withDefaultBehaviour(
-                    import('components/ecosystems/Training/Courses/View'),
-                    'training',
-                  )}
-                />
+
+                <Switch>
+                  <Route
+                    exact
+                    strict
+                    path={`${ROUTE_PREFIX}/training/courses/:id/:type`}
+                    component={withDefaultBehaviour(
+                      import('components/ecosystems/Training/Courses/View'),
+                      'training',
+                    )}
+                  />
+
+                  <Route
+                    exact
+                    strict
+                    path={`${ROUTE_PREFIX}/training/courses/:id/module/:activityId`}
+                    component={withDefaultBehaviour(
+                      import('components/ecosystems/Training/Activities'),
+                      'training',
+                    )}
+                  />
+
+                  <Route
+                    exact
+                    strict
+                    path={`${ROUTE_PREFIX}/training/courses/:id/:type/:scormId`}
+                    component={withDefaultBehaviour(
+                      import('components/ecosystems/Training/Courses/View'),
+                      'training',
+                    )}
+                  />
+                </Switch>
+
                 <Route
                   exact
                   path={`${ROUTE_PREFIX}/training/certificates`}

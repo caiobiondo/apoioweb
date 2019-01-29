@@ -30,7 +30,7 @@ import {
   TrainingCourseActionButtonMobile,
   TrainingCourseActionButtonWrapper,
   TrainingCourseFooterWrapper,
-} from './CourseViewScormHome.style';
+} from './CourseViewModule.styles';
 
 import staticCourses from 'components/ecosystems/Training/enums/staticCourses.enum';
 import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
@@ -42,13 +42,19 @@ import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/dat
 import Dialog from 'material-ui/Dialog';
 
 import { Loading, FlatButton, Icon } from 'natura-ui';
+
+import { List, ListItem } from 'material-ui/List';
+
+import checkImage from '../../../../../../../assets/images/check.png';
+import lockImage from '../../../../../../../assets/images/lock.png';
+
 import { translate } from 'locale';
 
 import MediaQuery from 'react-responsive';
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
 import { Origem } from '../../../../../../../config';
 
-export class CourseViewScormHome extends Component {
+export class CourseViewModule extends Component {
   state = {
     feedbackModalOpened: false,
     feedbackModalTitle: '',
@@ -505,19 +511,6 @@ export class CourseViewScormHome extends Component {
       );
     }
 
-    if ((isStarted || isPaused) && !showStaticCourse) {
-      buttons.push(
-        <TrainingCourseActionButtonWrapper key="resume">
-          <FlatButton
-            {...buttonStyle}
-            label={translate('resumeTraining')}
-            icon={<Icon file="ico_play_circle" />}
-            onClick={this.handleTrainingClick('initialized')}
-          />
-        </TrainingCourseActionButtonWrapper>,
-      );
-    }
-
     return [
       ...buttons,
       <TrainingCourseActionButtonWrapper key="list">
@@ -566,9 +559,21 @@ export class CourseViewScormHome extends Component {
     );
   };
 
+  onActivityItemClicked = (course, activity) => {
+    const type = activity.type;
+
+    switch (type) {
+      case 'VIDEO':
+        this.props.history.push({
+          pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
+          state: { activity, course },
+        });
+        break;
+    }
+  };
+
   render() {
     const { course } = this.props;
-    console.log(course);
 
     if (!course && !this.props.loading) return null;
 
@@ -624,6 +629,19 @@ export class CourseViewScormHome extends Component {
             </TrainingCourseFooterWrapper>
           </TrainingCourseThumbnailWrapper>
         </MediaQuery>
+        <List>
+          {course.activities.map(activity => (
+            <ListItem key={activity.id}>
+              <ListItem
+                primaryText={activity.name}
+                leftIcon={<img src={activity.finished ? checkImage : lockImage} alt="status" />}
+                onClick={() => {
+                  this.onActivityItemClicked(course, activity);
+                }}
+              />
+            </ListItem>
+          ))}
+        </List>
         <RelatedCourses courses={course.relatedCourses} />
         {this.renderFeedbackModal()}
         {this.canEvaluate() && (
@@ -640,11 +658,11 @@ export class CourseViewScormHome extends Component {
   }
 }
 
-export const CourseViewScormHomeIntl = injectIntl(CourseViewScormHome);
-export const CourseViewScormHomeRouter = withRouter(CourseViewScormHomeIntl);
-export const CourseViewScormHomeWithApollo = withApollo(CourseViewScormHomeRouter);
+export const CourseViewModuleIntl = injectIntl(CourseViewModule);
+export const CourseViewModuleRouter = withRouter(CourseViewModuleIntl);
+export const CourseViewModuleWithApollo = withApollo(CourseViewModuleRouter);
 
 export default compose(
   graphql(CourseViewQuery, CourseViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-)(CourseViewScormHomeWithApollo);
+)(CourseViewModuleWithApollo);
