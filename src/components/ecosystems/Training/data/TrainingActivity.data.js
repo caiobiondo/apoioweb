@@ -31,27 +31,31 @@ export const ActivityViewQuery = gql`
       status
       message
       totalOfElement
-      finished
-      courseContent {
-        video
-        html5
-        web
-        scorm
-      }
-      accessToken
       results {
         id
-        title
-        order
-        status
-        questions {
+        finished
+        name
+        type
+        accessToken
+        courseContent {
+          video
+          html5
+          web
+          videoEmbedUrl
+          html5Embed
+          scorm
+        }
+        assessments {
           id
-          description
-          type
-          alternatives {
+          title
+          questions {
             id
             description
-            selected
+            type
+            alternatives {
+              id
+              description
+            }
           }
         }
       }
