@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import Img from 'react-image';
 import { Icon, FormButton, Dialog } from 'natura-ui';
 import FlatButton from 'material-ui/FlatButton';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import DialogContent from 'material-ui';
+import { FormattedMessage, injectIntl, FormattedHTMLMessage } from 'react-intl';
 import { translate } from 'locale';
 import {
   CertificateDownloadQuery,
   CertificateDownloadQueryOptions,
 } from './CertificateDownload.data';
+import { RobotoRegular } from 'styles/typography';
 import { CertificateSendEmail } from './CenrtificateSendEmail.data';
 import {
   CertificateWrapper,
@@ -23,14 +25,26 @@ import {
   DownloadCertificateButtonWrapper,
   DownloadCertificateButton,
   TextCongratulate,
-  InputMail,
+  TextMessageModal,
+  DialogTitle,
+  IconWrapper,
+  IconWrapperCircle,
+  IconWrapperCap,
+  ModalTextContentWrapper,
+  DialogTitleWrapper,
+  EmailTextFieldWrapper,
+  EmailBolder,
+  SuccessModalTitle,
+  ContentWrapper,
 } from './Certificate.styles';
 
 import { getHeadersFromUser } from '../../../../../../../utils/getUserParams';
+import Input from 'natura-ui/dist/components/Form/Input/Input';
 
 export class Certificate extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       certificateModalOpened: false,
       certificateSendEmailModalOpened: false,
@@ -40,6 +54,7 @@ export class Certificate extends Component {
       categoryName: props.certificate.name,
       finishSendCertificate: false,
       inputValue: '',
+      validEmail: true,
     };
   }
 
@@ -70,31 +85,51 @@ export class Certificate extends Component {
         label={<FormattedMessage id="close" />}
         primary={false}
         onClick={this.handleClose}
+        style={{ fontFamily: RobotoRegular }}
       />,
       <FlatButton
         key="ok"
-        label={<FormattedMessage id="sendCertificate" />}
+        label={<FormattedMessage id="sendCertificateByEmail" />}
         primary={true}
         onClick={this.handleClickOpenSendEmail}
+        style={{ fontFamily: RobotoRegular }}
       />,
     ];
+
     return (
       <Dialog
         key="certificateModal"
-        title={'Categoria ' + this.state.categoryName + ' concluido com sucesso'}
+        title={
+          <DialogTitleWrapper>
+            <IconWrapperCap>
+              <Icon file="ico_graduate_cap" />
+            </IconWrapperCap>
+            <DialogTitle>
+              <FormattedMessage id="congratulateTitle" values={{ name: this.state.categoryName }} />
+            </DialogTitle>
+          </DialogTitleWrapper>
+        }
+        contentStyle={{ width: '63%', maxWidth: '650px' }}
         actions={actions}
         modal={false}
         open={this.state.certificateModalOpened}
         onRequestClose={this.handleClose}
       >
-        <div>
-          <p>
+        <IconWrapperCircle>
+          <IconWrapper>
+            <Icon file="ico_trophy" />
+          </IconWrapper>
+        </IconWrapperCircle>
+
+        <ModalTextContentWrapper>
+          <TextCongratulate>
             <FormattedMessage id="congratulateCertificate" values={{ name: firstName }} />
-          </p>
-          <p>
+          </TextCongratulate>
+
+          <TextMessageModal>
             <FormattedMessage id="infoCongratulateCertificate" />
-          </p>
-        </div>
+          </TextMessageModal>
+        </ModalTextContentWrapper>
       </Dialog>
     );
   };
@@ -119,21 +154,65 @@ export class Certificate extends Component {
         <form>
           <Dialog
             key="certificateSendEmailModal"
-            title="Por favor insira seu email"
+            title={<DialogTitle>{'Por favor digite seu e-mail'}</DialogTitle>}
             actions={actions}
             modal={false}
+            contentStyle={{ height: 'fit-content', width: '100%', maxWidth: '500px' }}
             open={this.state.certificateSendEmailModalOpened}
             onRequestClose={this.handleClickCloseSendEmail}
           >
-            <InputMail
-              name="email"
-              type="text"
-              onChange={this.updateInputValue}
-              placeholder="Digite aqui seu e=mail"
-            />
+            <div>
+              <EmailTextFieldWrapper>
+                <Input
+                  name="email"
+                  type="text"
+                  label="E-mail"
+                  value={this.state.inputValue}
+                  onChange={this.updateInputValue}
+                  onBlur={this.validateEmail}
+                  placeholder="Digite o e-mail em que quer receber o certificado."
+                  rows={1}
+                  style={{ height: '50px' }}
+                  errorMessage={this.state.validEmail ? '' : 'Digite um e-mail válido.'}
+                />
+              </EmailTextFieldWrapper>
+            </div>
           </Dialog>
         </form>
       </div>
+    );
+  };
+
+  openModalSuccess = () => {
+    const actions = [
+      <FlatButton
+        key="ok"
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        style={{ fontFamily: RobotoRegular }}
+        onClick={this.handleSuccessModalClose}
+      />,
+    ];
+
+    const { categoryName, inputValue } = this.state;
+
+    return (
+      <Dialog
+        key="certificateModalFinish"
+        title={translate('sendMailSuccess')}
+        actions={actions}
+        modal={false}
+        titleStyle={SuccessModalTitle}
+        open={this.state.finishSendCertificate}
+        onRequestClose={this.handleClose}
+      >
+        <ContentWrapper>
+          <FormattedHTMLMessage
+            id="infoSendMailSuccess"
+            values={{ categoryName: categoryName, inputValue: inputValue }}
+          />
+        </ContentWrapper>
+      </Dialog>
     );
   };
 
@@ -143,16 +222,19 @@ export class Certificate extends Component {
     });
   };
 
+  validateEmail = () => {
+    const expression = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    this.setState({
+      validEmail: expression.test(String(this.state.inputValue).toLowerCase()),
+    });
+  };
+
   sendCertificate = async () => {
-    const actions = [
-      <FlatButton
-        key="ok"
-        label={<FormattedMessage id="ok" />}
-        primary={true}
-        onClick={this.finishSendCertificate}
-      />,
-    ];
-    const { categoryName, inputValue } = this.state;
+    this.validateEmail();
+    if (!this.state.validEmail) {
+      return;
+    }
+
     const {
       ciclo,
       grupo,
@@ -195,32 +277,12 @@ export class Certificate extends Component {
         return;
       }
 
-      if (!response.data.trainingCertificateSendEmail) {
+      if (!response.data.certificateSendEmail) {
         this.handleSendEmailError();
         return;
       }
-
-      if (response.data && response.data.trainingCertificateSendEmail) {
-        this.setState({ finishSendCertificate: true });
-        return (
-          <Dialog
-            key="certificateModalFinish"
-            title={<FormattedMessage id="sendMailSuccess" />}
-            actions={actions}
-            modal={false}
-            open={this.state.finishSendCertificate}
-            onRequestClose={this.handleClose}
-          >
-            <div>
-              <p>
-                <FormattedMessage
-                  id="infoSendMailSuccess"
-                  value={{ categoryName: { categoryName }, inputValue: { inputValue } }}
-                />
-              </p>
-            </div>
-          </Dialog>
-        );
+      if (response.data.certificateSendEmail.message === 'success') {
+        this.setState({ certificateSendEmailModalOpened: false, finishSendCertificate: true });
       }
     } catch (err) {
       console.log('err', err);
@@ -233,8 +295,7 @@ export class Certificate extends Component {
   };
 
   handleClickOpenSendEmail = () => {
-    this.setState({ certificateModalOpened: false });
-    this.setState({ certificateSendEmailModalOpened: true });
+    this.setState({ certificateModalOpened: false, certificateSendEmailModalOpened: true });
   };
 
   handleClickCloseSendEmail = () => {
@@ -243,6 +304,10 @@ export class Certificate extends Component {
 
   handleClose = () => {
     this.setState({ certificateModalOpened: false });
+  };
+
+  handleSuccessModalClose = () => {
+    this.setState({ finishSendCertificate: false });
   };
 
   handleFinish = () => {
@@ -298,6 +363,7 @@ export class Certificate extends Component {
           )}
           {this.openModalCertificate()}
           {this.openModalSendEmail()}
+          {this.openModalSuccess()}
         </DownloadCertificateButtonWrapper>
       </CertificateWrapper>
     );

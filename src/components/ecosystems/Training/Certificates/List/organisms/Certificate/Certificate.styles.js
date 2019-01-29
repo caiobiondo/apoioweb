@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import { Responsive, getTheme } from '@entria/components';
-import { RobotoRegular } from 'styles/typography';
-import { gray50, gray125, gray150, gray500, gray890 } from 'styles/colors';
+import { RobotoRegular, NaturaScript, NaturaBold, fs25 } from 'styles/typography';
+import {
+  gray50,
+  gray125,
+  gray150,
+  gray500,
+  gray890,
+  brownPod,
+  gray700,
+  black,
+  lightningYellow,
+} from 'styles/colors';
 
 export const CertificateWrapper = styled.div`
   display: flex;
@@ -67,11 +77,17 @@ export const SliderPercentage = styled.div`
 `;
 
 export const TextCongratulate = styled.p`
-  font-size: 3em;
-  font-weight: 500;
+  width: 512px;
+  height: 100px;
+  font-family: ${NaturaScript};
+  font-size: 47.9px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.91;
+  letter-spacing: normal;
   text-align: center;
-  font-family: NaturaScript;
-  color: ${gray890};
+  color: ${brownPod};
 `;
 
 export const InputMail = styled.input`
@@ -148,3 +164,102 @@ export const DownloadCertificateButton = {
   backgroundColor: 'transparent',
   buttonStyle: { border: `1px solid ${gray125}` },
 };
+
+export const TextMessageModal = styled.div`
+  width: 575.5px;
+  height: 44.5px;
+  font-family: ${RobotoRegular};
+  font-size: 15.5px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.68;
+  letter-spacing: normal;
+  text-align: left;
+  color: ${gray700};
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-family: ${RobotoRegular};
+`;
+
+export const DialogTitleWrapper = styled.div`
+  align-items: center;
+  display: inline-flex;
+`;
+
+export const SuccessModalTitle = {
+  fontFamily: NaturaBold,
+  fontSize: fs25,
+};
+
+export const DialogTitle = styled.h3`
+  width: auto;
+  height: 24.5px;
+  opacity: 0.87;
+  font-family: ${NaturaBold};
+  font-size: 24.5px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  text-align: left;
+  margin-bottom: 30px !important;
+  color: ${black} !important;
+`;
+
+export const IconWrapper = styled.div`
+  margin-left: 39px;
+  margin-top: 46px;
+  svg {
+    width: 69.7px;
+    height: 60.3px;
+    fill: ${brownPod};
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    svg {
+      height: 71.5px;
+      width: 83px;
+    }
+  }
+`;
+
+export const IconWrapperCap = styled.div`
+  svg {
+    width: 25px;
+    height: 25px;
+    fill: ${lightningYellow};
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  @media (max-width: ${Responsive.VIEWPORT.SMALL}px) {
+    svg {
+      height: 71.5px;
+      width: 83px;
+    }
+  }
+`;
+
+export const IconWrapperCircle = styled.div`
+  width: 146px;
+  height: 146px;
+  border-radius: 73px;
+  border: solid 2px ${lightningYellow};
+  margin: 0 auto;
+  margin-bottom: -62px;
+`;
+
+export const ModalTextContentWrapper = styled.div`
+  text-align: -webkit-center;
+`;
+
+export const EmailTextFieldWrapper = styled.div`
+  height: auto;
+`;
+
+export const EmailBolder = styled.b;
