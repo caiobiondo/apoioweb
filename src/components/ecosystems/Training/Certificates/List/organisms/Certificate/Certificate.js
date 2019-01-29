@@ -75,7 +75,6 @@ export class Certificate extends Component {
         onClick={this.handleClickOpenSendEmail}
       />,
     ];
-    const { primaryNameUser } = this.state.primaryNameUser.split(' ')[0];
     return (
       <Dialog
         key="certificateModal"
@@ -86,17 +85,13 @@ export class Certificate extends Component {
         onRequestClose={this.handleClose}
       >
         <div>
-          <p>
-            <TextCongratulate>
-              <FormattedMessage
-                id="congratulateCertificate"
-                values={{ name: { primaryNameUser } }}
-              />
-            </TextCongratulate>
-          </p>
-          <p>
-            <FormattedMessage id="infoCongratulateCertificate" />
-          </p>
+          <TextCongratulate>
+            <FormattedMessage
+              id="congratulateCertificate"
+              values={{ name: this.state.primaryNameUser.split(' ')[0] }}
+            />
+          </TextCongratulate>
+          <FormattedMessage id="infoCongratulateCertificate" />
         </div>
       </Dialog>
     );
@@ -132,7 +127,7 @@ export class Certificate extends Component {
               name="email"
               type="text"
               onChange={this.updateInputValue}
-              placeholder={<FormattedMessage id="writeEmailHere" />}
+              placeholder="Digite aqui seu e=mail"
             />
           </Dialog>
         </form>
@@ -158,7 +153,7 @@ export class Certificate extends Component {
       />,
     ];
     const { categoryName, inputValue } = this.state;
-    console.log(this.props);
+    console.log(variables);
     this.props.client
       .mutate({
         mutation: certificateSendEmail,
