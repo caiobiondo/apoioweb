@@ -16,7 +16,7 @@ export const TrainingActivityUpdateMutation = gql`
     $canal: Int!
     $origem: String!
   ) {
-    UpdateActivity(
+    updateActivity(
       sellerId: $sellerId
       activityId: $activityId
       input: $input

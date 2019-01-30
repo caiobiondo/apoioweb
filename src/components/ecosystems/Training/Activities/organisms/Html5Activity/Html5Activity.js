@@ -10,7 +10,7 @@ import { RobotoRegular } from 'styles/typography';
 import gql from 'graphql-tag';
 
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import { TrainingActivityUpdate } from '../../../data/TrainingActivityUpdate.data';
+import { TrainingActivityUpdateMutation } from '../../../data/TrainingActivityUpdate.data';
 import { ActivityViewQuery, ActivityViewQueryOptions } from '../../../data/TrainingActivity.data';
 
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
@@ -505,7 +505,7 @@ export class Html5Activity extends Component {
   };
 
   handleYes = () => {
-    const { activity } = this.props;
+    const { activityId } = this.props;
 
     const {
       ciclo,
@@ -519,13 +519,15 @@ export class Html5Activity extends Component {
       origem,
     } = getHeadersFromUser(this.props.user);
 
+    console.log('id', activityId);
+
     this.props
       .mutate({
+        query: TrainingActivityUpdateMutation,
         variables: {
-          query: TrainingActivityUpdate,
-          input: { action: 'terminated', stopedAt: 0 },
           sellerId: this.props.user.codigo,
-          courseId: activity.id,
+          activityId: activityId,
+          input: { action: 'terminated', stopedAt: 0 },
           ciclo: ciclo,
           grupo,
           gerenciaMercado,
@@ -543,7 +545,7 @@ export class Html5Activity extends Component {
         console.log('sucesso');
       })
       .catch(error => {
-        console.log(error);
+        console.log('erro', error);
       });
 
     this.goBack();
@@ -623,5 +625,5 @@ export const Html5ActivityWithApollo = withApollo(Html5ActivityWithRouter);
 export default compose(
   graphql(ActivityViewQuery, ActivityViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
-  graphql(TrainingActivityUpdate),
+  graphql(TrainingActivityUpdateMutation),
 )(Html5ActivityWithApollo);
