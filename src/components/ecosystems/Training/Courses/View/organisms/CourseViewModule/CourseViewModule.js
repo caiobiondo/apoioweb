@@ -561,11 +561,71 @@ export class CourseViewModule extends Component {
 
   onActivityItemClicked = (course, activity) => {
     const type = activity.type;
-
     this.props.history.push({
       pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
       state: { activity, course },
     });
+  };
+
+  initializeCourse = () => {
+    const action = 'initialized';
+    const { course } = this.props;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
+
+    if (this.state[action]) return;
+
+    this.props
+      .mutate({
+        variables: {
+          input: { action },
+          sellerId: this.props.user.codigo,
+          courseId: course.id,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
+        },
+      })
+      .then(response => {
+        if (response.error) {
+          return;
+        }
+
+        this.setState({ [action]: true });
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          return;
+        }
+
+        if (action === 'initialized') {
+          this.setState(
+            { course: { ...this.state.course, status: 'started' } },
+            this.updateCachedList,
+          );
+        }
+        return;
+      })
+      .catch(err => {
+        console.log('err', err);
+
+        this.handleTrainingError();
+      });
   };
 
   render() {
@@ -589,6 +649,7 @@ export class CourseViewModule extends Component {
       );
     }
 
+    this.initializeCourse();
     return (
       <Main>
         <CourseViewHeader course={course} />

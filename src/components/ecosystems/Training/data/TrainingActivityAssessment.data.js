@@ -1,10 +1,9 @@
 import gql from 'graphql-tag';
-
 export const TrainingActivityUpdateMutation = gql`
-  mutation UpdateActivity(
+  mutation AddActivityAnswers(
     $sellerId: Int!
     $activityId: Int!
-    $input: UpdateActivityInput!
+    $input: AddActivityAnswersInput!
     $ciclo: Int!
     $roleId: Int
     $grupo: Int!
@@ -16,7 +15,7 @@ export const TrainingActivityUpdateMutation = gql`
     $canal: Int!
     $origem: String!
   ) {
-    UpdateActivity(
+    addActivityAnswers(
       sellerId: $sellerId
       activityId: $activityId
       input: $input
@@ -31,8 +30,8 @@ export const TrainingActivityUpdateMutation = gql`
       canal: $canal
       origem: $origem
     ) {
-      status
-      message
+      action
+      stoppedAt
     }
   }
 `;

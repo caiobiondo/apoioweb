@@ -45,7 +45,7 @@ export const ActivityViewQuery = gql`
           html5Embed
           scorm
         }
-        assessments {
+        assessment {
           id
           title
           questions {
@@ -68,7 +68,7 @@ export const ActivityViewQueryOptions = {
     return {
       variables: {
         sellerId: props.user.codigo,
-        activityId: props.courseId,
+        activityId: props.activityId,
         ciclo:
           props.user.estrutura.ciclo &&
           props.user.estrutura.ciclo[0] &&
