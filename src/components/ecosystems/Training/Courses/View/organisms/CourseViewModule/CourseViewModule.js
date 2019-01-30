@@ -41,6 +41,8 @@ import CourseScormFooter from '../../molecules/CourseScormFooter/CourseScormFoot
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import Dialog from 'material-ui/Dialog';
 
+import AssessmentModal from '../../../../Activities/molecules/AssessmentModal/AssessmentModal';
+
 import { Loading, FlatButton, Icon } from 'natura-ui';
 
 import { List, ListItem } from 'material-ui/List';
@@ -63,6 +65,10 @@ export class CourseViewModule extends Component {
     course: {},
     initialized: false,
     terminated: false,
+
+    assessmentModalVisible: false,
+    assessmentModalTitle: '',
+    assessmentModalID: null,
   };
 
   componentDidMount() {
@@ -559,13 +565,28 @@ export class CourseViewModule extends Component {
     );
   };
 
-  onActivityItemClicked = (course, activity) => {
-    const type = activity.type;
+  closeAssessmentModal = () => {
+    this.setState({ assessmentModalVisible: false });
+  };
 
-    this.props.history.push({
-      pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
-      state: { activity, course },
-    });
+  onActivityItemClicked = (course, activity) => {
+    switch (activity.type) {
+      case 'ASSESSMENT': {
+        this.setState({
+          assessmentModalVisible: true,
+          assessmentModalTitle: activity.name,
+          assessmentModalID: activity.id,
+        });
+        break;
+      }
+
+      case 'VIDEO':
+        this.props.history.push({
+          pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
+          state: { activity, course },
+        });
+        break;
+    }
   };
 
   render() {
@@ -639,6 +660,19 @@ export class CourseViewModule extends Component {
           ))}
         </List>
         <RelatedCourses courses={course.relatedCourses} />
+
+        {this.state.assessmentModalVisible && (
+          <AssessmentModal
+            key={'assessmentModal_' + this.state.assessmentModalID}
+            visible={this.state.assessmentModalVisible}
+            title={this.state.assessmentModalTitle}
+            courseID={course.id}
+            activityId={this.state.assessmentModalID}
+            user={this.props.user}
+            closeModal={this.closeAssessmentModal}
+          />
+        )}
+
         {this.renderFeedbackModal()}
         {this.canEvaluate() && (
           <CourseEvaluation
