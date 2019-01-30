@@ -14,6 +14,8 @@ export default class ActivityWrapper extends Component {
 
     const activity = this.props.location.state.activity;
 
+    console.log('activity:', activity);
+
     let element = null;
 
     if (activity.type === 'VIDEO') element = VideoActivity;
