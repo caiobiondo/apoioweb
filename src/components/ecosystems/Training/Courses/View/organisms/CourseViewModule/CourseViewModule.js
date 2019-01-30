@@ -69,11 +69,38 @@ export class CourseViewModule extends Component {
     assessmentModalVisible: false,
     assessmentModalTitle: '',
     assessmentModalID: null,
+
+    messageModalVisible: false,
+    messageModalTitle: '',
+
+    openedHasFinished: false,
+  };
+
+  verifyIfHasJustFinished = () => {
+    if (
+      this.props.history.location.state !== undefined &&
+      this.props.history.location.state.hasfinished &&
+      this.state.openedHasFinished === false
+    ) {
+      const activity = this.props.course.activities.find(activity => {
+        return activity.finished === false;
+      });
+
+      this.setState({ openedHasFinished: true });
+
+      this.onActivityItemClicked(this.props.course, activity);
+    }
+  };
+
+  componentDidUpdate = () => {
+    this.verifyIfHasJustFinished();
   };
 
   componentDidMount() {
     const { course } = this.props;
     if (course) this.setState({ course });
+
+    this.verifyIfHasJustFinished();
   }
 
   componentWillReceiveProps({ loading, course }) {
@@ -496,6 +523,33 @@ export class CourseViewModule extends Component {
     );
   };
 
+  renderMessageModal = () => {
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        labelStyle={CourseViewFeedbackModalAction} //create a custom label style
+        onClick={() => {
+          this.setState({ messageModalVisible: false });
+        }}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="messageModal"
+        title={'Atenção!'} //create a custom style
+        titleStyle={CourseViewFeedbackModalTitle}
+        actions={actions}
+        visible={this.state.messageModalVisible}
+        open={this.state.messageModalVisible}
+        onRequestClose={this.handleClose}
+      >
+        <p>{this.state.messageModalTitle}</p>
+      </Dialog>
+    );
+  };
+
   renderActionButtons = (buttonStyle, course) => {
     const { showStaticCourse } = this.state;
     const buttons = [];
@@ -715,7 +769,16 @@ export class CourseViewModule extends Component {
                 primaryText={activity.name}
                 leftIcon={<img src={activity.finished ? checkImage : lockImage} alt="status" />}
                 onClick={() => {
-                  this.onActivityItemClicked(course, activity);
+                  const lastActivity = course.activities[index - 1];
+
+                  if (lastActivity === undefined || lastActivity.finished) {
+                    this.onActivityItemClicked(course, activity);
+                  } else {
+                    this.setState({
+                      messageModalVisible: true,
+                      messageModalTitle: `Para realizar a atividade ${activity.name}, você preicsa finalizar a atividade ${lastActivity.name}. Clique em OK para continuar.`,
+                    });
+                  }
                 }}
               />
             </ListItem>
@@ -736,6 +799,7 @@ export class CourseViewModule extends Component {
         )}
 
         {this.renderFeedbackModal()}
+        {this.renderMessageModal()}
         {this.canEvaluate() && (
           <CourseEvaluation
             course={course}

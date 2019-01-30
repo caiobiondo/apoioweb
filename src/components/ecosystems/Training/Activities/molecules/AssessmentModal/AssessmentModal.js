@@ -18,6 +18,10 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 //styles
 import styles, { TitleWrapper } from './AssessmentModal.styles';
 
+//route
+import { withRouter } from 'react-router-dom';
+import { ROUTE_PREFIX } from 'config';
+
 const INITIAL_STATE = {
   assessment: null,
   answers: [],
@@ -77,38 +81,46 @@ class AssessmentModal extends Component {
         this.setState(INITIAL_STATE);
         this.props.closeModal();
 
+        const pathname = `${ROUTE_PREFIX}/training/courses/${this.props.courseID}/module`;
+
+        this.props.history.push({
+          pathname: pathname,
+          search: '?hasfinished',
+          state: { hasfinished: true },
+        });
+
         //request
-        this.props
-          .mutate({
-            variables: {
-              input: {
-                id: this.props.activityId,
-                timeSpentInSeconds: (this.state.initialTime - new Date().getMilliseconds()) * 1000,
-                questions: this.state.answers,
-              },
-              sellerId: this.props.user.codigo,
-              activityId: this.props.activityId,
-              // ciclo,
-              // grupo,
-              // gerenciaDeVendas,
-              // regiao,
-              // setor,
-              // gerenciaMercado,
-              // papelDaConsultora,
-              // canal,
-              // origem,
-            },
-          })
-          .then(response => {
-            console.log(response);
-            window.location.reload();
-            if (response.error) {
-              return;
-            }
-          })
-          .catch(err => {
-            console.log('err', err);
-          });
+        // this.props
+        //   .mutate({
+        //     variables: {
+        //       input: {
+        //         id: this.props.activityId,
+        //         timeSpentInSeconds: (this.state.initialTime - new Date().getMilliseconds()) * 1000,
+        //         questions: this.state.answers,
+        //       },
+        //       sellerId: this.props.user.codigo,
+        //       activityId: this.props.activityId,
+        //       // ciclo,
+        //       // grupo,
+        //       // gerenciaDeVendas,
+        //       // regiao,
+        //       // setor,
+        //       // gerenciaMercado,
+        //       // papelDaConsultora,
+        //       // canal,
+        //       // origem,
+        //     },
+        //   })
+        //   .then(response => {
+        //     console.log(response);
+        //     window.location.reload();
+        //     if (response.error) {
+        //       return;
+        //     }
+        //   })
+        //   .catch(err => {
+        //     console.log('err', err);
+        //   });
       }
       return;
     }
@@ -252,13 +264,11 @@ class AssessmentModal extends Component {
               <p style={styles.progress}>{progress}</p>
             </TitleWrapper>
           )
-        }
+        } // onRequestClose={this.onCloseModal}
         actions={this.state.assessment === null ? null : actions}
         modal={false}
         open={this.props.visible}
-        contentStyle={
-          styles.content // onRequestClose={this.onCloseModal}
-        }
+        contentStyle={styles.content}
         titleStyle={styles.title}
         bodyStyle={styles.body}
         paperProps={{ style: styles.paper }}
@@ -287,10 +297,9 @@ AssessmentModal.PropTypes = {
 const AssessmentModalIntl = injectIntl(AssessmentModal);
 const AssessmentModalWithApollo = withApollo(AssessmentModalIntl);
 
-export default compose(
-  graphql(ActivityViewQuery, ActivityViewQueryOptions),
-  graphql(AddActivityAnswers),
-)(AssessmentModalWithApollo);
+export default withRouter(
+  compose(graphql(ActivityViewQuery, ActivityViewQueryOptions))(AssessmentModalWithApollo),
+);
 
 export const TextQuestion = props => (
   <div>
