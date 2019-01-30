@@ -562,14 +562,10 @@ export class CourseViewModule extends Component {
   onActivityItemClicked = (course, activity) => {
     const type = activity.type;
 
-    switch (type) {
-      case 'VIDEO':
-        this.props.history.push({
-          pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
-          state: { activity, course },
-        });
-        break;
-    }
+    this.props.history.push({
+      pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
+      state: { activity, course },
+    });
   };
 
   render() {
