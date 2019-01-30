@@ -709,7 +709,7 @@ export class CourseViewModule extends Component {
           </TrainingCourseThumbnailWrapper>
         </MediaQuery>
         <List>
-          {course.activities.map(activity => (
+          {course.activities.map((activity, index) => (
             <ListItem key={activity.id}>
               <ListItem
                 primaryText={activity.name}

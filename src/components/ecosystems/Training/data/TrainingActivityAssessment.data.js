@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-export const TrainingActivityUpdateMutation = gql`
+export const AddActivityAnswers = gql`
   mutation AddActivityAnswers(
     $sellerId: Int!
     $activityId: Int!
