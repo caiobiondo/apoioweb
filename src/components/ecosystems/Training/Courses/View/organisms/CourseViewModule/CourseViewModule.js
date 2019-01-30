@@ -535,6 +535,49 @@ export class CourseViewModule extends Component {
     return course.status === 'finished' && course.ratedByYou !== 'true';
   };
 
+  shouldFinishCourse = () => {
+    const { course } = this.props;
+    const atividadesNaoConcluidas = course.activities.filter(x => !x.finished);
+    if (course.status !== 'finished' && atividadesNaoConcluidas && atividadesNaoConcluidas.length) {
+      const {
+        ciclo,
+        grupo,
+        gerenciaDeVendas,
+        regiao,
+        setor,
+        gerenciaMercado,
+        papelDaConsultora,
+        canal,
+        origem,
+      } = getHeadersFromUser(this.props.user);
+
+      this.props
+        .mutate({
+          variables: {
+            input: { action: 'finished' },
+            sellerId: this.props.user.codigo,
+            courseId: course.id,
+            ciclo: ciclo,
+            grupo,
+            gerenciaMercado,
+            gerenciaDeVendas,
+            canal,
+            papelDaConsultora,
+            regiao,
+            setor,
+            origem,
+            roleId: this.props.user.cdPapelAtivo,
+          },
+        })
+        .then(response => {
+          //Apresentar o modal de avaliacao
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  };
+
   setStaticCourseRef = ref => {
     this.staticCourseIframe = ref;
   };
