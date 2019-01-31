@@ -75,6 +75,10 @@ export default {
     infoSendMailSuccess:
       'O certificado da categoria “{categoryName}” foi enviado para o e- mail <b>{ inputValue }</b>.',
     sendCertificateError: 'Não foi possível enviar seu certificado',
+    activityIsCompleted: 'Esta atividade foi concluída?',
+    finishActivity: 'Concluir atividade',
+    trainingYes: 'Sim',
+    trainingNo: 'Não',
   },
 };
 /* eslint-disable sort-keys */

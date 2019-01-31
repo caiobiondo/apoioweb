@@ -3,6 +3,8 @@ export default {
   'en-US': {},
   'pt-BR': {
     cancel: 'Cancelar',
+    continue: 'Continuar',
+    finish: 'Finalizar',
     dismiss: 'OK, entendi',
     error: 'Erro',
     errorMessage: 'Desculpe, houve um erro no processamento',

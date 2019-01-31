@@ -1,31 +1,21 @@
 import React, { Component } from 'react';
 import { graphql, compose, withApollo } from 'react-apollo';
-import { Row, Col, Grid } from 'react-flexbox-grid';
+import { Grid } from 'react-flexbox-grid';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import gql from 'graphql-tag';
 
 import { ActivityViewQuery, ActivityViewQueryOptions } from '../../../data/TrainingActivity.data';
-import {
-  TrainingCoursesQuery,
-  TrainingCoursesQueryOptions,
-} from 'components/ecosystems/Training/data/TrainingCourses.data';
 
 import {
   Main,
-  MylistButtonWrapper,
-  MylistButton,
   CourseViewFeedbackModalTitle,
   CourseViewFeedbackModalAction,
 } from './VideoActivity.styles';
 
 import ActivityContent from '../../molecules/ActivityContent/ActivityContent';
-import CourseDescription from '../../../Courses/View/molecules/CourseDescription';
-import RelatedCourses from '../../../Courses/View/molecules/RelatedCourses';
-import CourseRating from '../../../Courses/View/molecules/CourseRating';
+
 import CourseViewHeader from '../../../Courses/View/molecules/CourseViewHeader';
-import EmptyList from 'components/molecules/EmptyList/EmptyList';
-import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import { Loading, FlatButton, Icon, Dialog } from 'natura-ui';
+import { Loading, FlatButton, Dialog } from 'natura-ui';
 import { translate } from 'locale';
 import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
@@ -261,6 +251,7 @@ class VideoActivity extends Component {
         <Grid fluid>
           <CourseViewHeader />
           <ActivityContent
+            course={this.props.course}
             activity={this.props.activity.results[0]}
             user={this.props.user}
             refetch={this.props.refetch}

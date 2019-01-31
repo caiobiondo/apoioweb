@@ -41,6 +41,8 @@ import CourseScormFooter from '../../molecules/CourseScormFooter/CourseScormFoot
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
 import Dialog from 'material-ui/Dialog';
 
+import AssessmentModal from '../../../../Activities/molecules/AssessmentModal/AssessmentModal';
+
 import { Loading, FlatButton, Icon } from 'natura-ui';
 
 import { List, ListItem } from 'material-ui/List';
@@ -63,11 +65,46 @@ export class CourseViewModule extends Component {
     course: {},
     initialized: false,
     terminated: false,
+
+    assessmentModalVisible: false,
+    assessmentModalTitle: '',
+    assessmentModalID: null,
+
+    messageModalVisible: false,
+    messageModalTitle: '',
+
+    openedHasFinished: false,
+  };
+
+  verifyIfHasJustFinished = () => {
+    if (
+      this.props.history.location.state !== undefined &&
+      this.props.history.location.state.hasfinished &&
+      this.state.openedHasFinished === false
+    ) {
+      if (this.props.course && this.props.course.activities) {
+        const activity = this.props.course.activities.find(activity => {
+          return activity.finished === false;
+        });
+
+        if (!!activity) {
+          this.onActivityItemClicked(this.props.course, activity);
+        }
+      }
+
+      this.setState({ openedHasFinished: true });
+    }
+  };
+
+  componentDidUpdate = () => {
+    this.verifyIfHasJustFinished();
   };
 
   componentDidMount() {
     const { course } = this.props;
     if (course) this.setState({ course });
+
+    this.verifyIfHasJustFinished();
   }
 
   componentWillReceiveProps({ loading, course }) {
@@ -137,6 +174,7 @@ export class CourseViewModule extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
+
     const {
       ciclo,
       grupo,
@@ -178,7 +216,6 @@ export class CourseViewModule extends Component {
         this.setState({ [action]: true });
 
         if (response.data && !response.data.updateCourse.status) {
-          console.log('response', response);
           // handle not updated
           if (
             response.data.updateCourse.message &&
@@ -490,6 +527,33 @@ export class CourseViewModule extends Component {
     );
   };
 
+  renderMessageModal = () => {
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage id="ok" />}
+        primary={true}
+        labelStyle={CourseViewFeedbackModalAction} //create a custom label style
+        onClick={() => {
+          this.setState({ messageModalVisible: false });
+        }}
+      />,
+    ];
+
+    return (
+      <Dialog
+        key="messageModal"
+        title={'Atenção!'} //create a custom style
+        titleStyle={CourseViewFeedbackModalTitle}
+        actions={actions}
+        visible={this.state.messageModalVisible}
+        open={this.state.messageModalVisible}
+        onRequestClose={this.handleClose}
+      >
+        <p>{this.state.messageModalTitle}</p>
+      </Dialog>
+    );
+  };
+
   renderActionButtons = (buttonStyle, course) => {
     const { showStaticCourse } = this.state;
     const buttons = [];
@@ -529,6 +593,49 @@ export class CourseViewModule extends Component {
     return course.status === 'finished' && course.ratedByYou !== 'true';
   };
 
+  shouldFinishCourse = () => {
+    const { course } = this.props;
+    const atividadesNaoConcluidas = course.activities.filter(x => !x.finished);
+    if (course.status !== 'finished' && atividadesNaoConcluidas && atividadesNaoConcluidas.length) {
+      const {
+        ciclo,
+        grupo,
+        gerenciaDeVendas,
+        regiao,
+        setor,
+        gerenciaMercado,
+        papelDaConsultora,
+        canal,
+        origem,
+      } = getHeadersFromUser(this.props.user);
+
+      this.props
+        .mutate({
+          variables: {
+            input: { action: 'finished' },
+            sellerId: this.props.user.codigo,
+            courseId: course.id,
+            ciclo: ciclo,
+            grupo,
+            gerenciaMercado,
+            gerenciaDeVendas,
+            canal,
+            papelDaConsultora,
+            regiao,
+            setor,
+            origem,
+            roleId: this.props.user.cdPapelAtivo,
+          },
+        })
+        .then(response => {
+          //Apresentar o modal de avaliacao
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  };
+
   setStaticCourseRef = ref => {
     this.staticCourseIframe = ref;
   };
@@ -559,13 +666,92 @@ export class CourseViewModule extends Component {
     );
   };
 
-  onActivityItemClicked = (course, activity) => {
-    const type = activity.type;
+  closeAssessmentModal = () => {
+    this.setState({ assessmentModalVisible: false });
+  };
 
-    this.props.history.push({
-      pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
-      state: { activity, course },
-    });
+  onActivityItemClicked = (course, activity) => {
+    switch (activity.type) {
+      case 'SCORM':
+        return;
+
+      case 'ASSESSMENT': {
+        this.setState({
+          assessmentModalVisible: true,
+          assessmentModalTitle: activity.name,
+          assessmentModalID: activity.id,
+        });
+        break;
+      }
+      default:
+        this.props.history.push({
+          pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
+          state: { activity, course },
+        });
+        break;
+    }
+  };
+
+  initializeCourse = () => {
+    const action = 'initialized';
+    const { course } = this.props;
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
+
+    if (this.state[action]) return;
+
+    this.props
+      .mutate({
+        query: TrainingCourseUpdateMutation,
+        variables: {
+          input: { action },
+          sellerId: this.props.user.codigo,
+          courseId: course.id,
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
+        },
+      })
+      .then(response => {
+        if (response.error) {
+          return;
+        }
+
+        this.setState({ [action]: true });
+
+        if (response.data && !response.data.updateCourse.status) {
+          // handle not updated
+          return;
+        }
+
+        if (action === 'initialized') {
+          this.setState(
+            { course: { ...this.state.course, status: 'started' } },
+            this.updateCachedList,
+          );
+        }
+        return;
+      })
+      .catch(err => {
+        console.log('err', err);
+
+        this.handleTrainingError();
+      });
   };
 
   render() {
@@ -588,6 +774,8 @@ export class CourseViewModule extends Component {
         </Main>
       );
     }
+
+    this.initializeCourse();
 
     return (
       <Main>
@@ -626,20 +814,43 @@ export class CourseViewModule extends Component {
           </TrainingCourseThumbnailWrapper>
         </MediaQuery>
         <List>
-          {course.activities.map(activity => (
+          {course.activities.map((activity, index) => (
             <ListItem key={activity.id}>
               <ListItem
                 primaryText={activity.name}
                 leftIcon={<img src={activity.finished ? checkImage : lockImage} alt="status" />}
                 onClick={() => {
-                  this.onActivityItemClicked(course, activity);
+                  const lastActivity = course.activities[index - 1];
+
+                  if (lastActivity === undefined || lastActivity.finished) {
+                    this.onActivityItemClicked(course, activity);
+                  } else {
+                    this.setState({
+                      messageModalVisible: true,
+                      messageModalTitle: `Para realizar a atividade ${activity.name}, você preicsa finalizar a atividade ${lastActivity.name}. Clique em OK para continuar.`,
+                    });
+                  }
                 }}
               />
             </ListItem>
           ))}
         </List>
         <RelatedCourses courses={course.relatedCourses} />
+
+        {this.state.assessmentModalVisible && (
+          <AssessmentModal
+            key={'assessmentModal_' + this.state.assessmentModalID}
+            visible={this.state.assessmentModalVisible}
+            title={this.state.assessmentModalTitle}
+            courseID={course.id}
+            activityId={this.state.assessmentModalID}
+            user={this.props.user}
+            closeModal={this.closeAssessmentModal}
+          />
+        )}
+
         {this.renderFeedbackModal()}
+        {this.renderMessageModal()}
         {this.canEvaluate() && (
           <CourseEvaluation
             course={course}

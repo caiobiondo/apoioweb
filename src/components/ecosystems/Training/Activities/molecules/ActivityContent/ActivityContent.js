@@ -9,13 +9,18 @@ import {
   PlayerWrapper,
 } from './ActivityContent.styles';
 
+import { ROUTE_PREFIX } from 'config';
+
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
-import { graphql, withApollo } from 'react-apollo';
+import { TrainingActivityUpdateMutation } from 'components/ecosystems/Training/data/TrainingActivityUpdate.data';
+import { graphql, compose, withApollo } from 'react-apollo';
 import { Icon } from 'natura-ui';
 import Player from '@vimeo/player';
 import { translate } from 'locale';
 
 import { withRouter } from 'react-router-dom';
+
+import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
 export class ActivityContent extends Component {
   constructor(props) {
@@ -38,12 +43,6 @@ export class ActivityContent extends Component {
 
   componentDidMount() {
     const { activity } = this.props;
-    if (activity) {
-      this.setState({
-        activity,
-        initialCourse: { ...activity, stoppedAt: activity.stoppedAt },
-      });
-    }
 
     if (!activity.courseContent.video || !this.playerRef) {
       return;
@@ -51,12 +50,7 @@ export class ActivityContent extends Component {
 
     const player = new Player(this.playerRef);
 
-    if (activity.stoppedAt <= 1) {
-      this.playerEventListeners(player);
-      return;
-    }
-
-    player.setCurrentTime(activity.stoppedAt).then(() => {
+    player.setCurrentTime(0).then(() => {
       player.pause().then(() => {
         this.playerEventListeners(player);
       });
@@ -71,52 +65,61 @@ export class ActivityContent extends Component {
     }
   }
 
+  onEnded = () => {
+    const { activity, course } = this.props;
+
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
+
+    this.props
+      .mutate({
+        query: TrainingActivityUpdateMutation,
+        variables: {
+          sellerId: this.props.user.codigo,
+          activityId: activity.id,
+          input: { action: 'terminated', stopedAt: 0 },
+          ciclo: ciclo,
+          grupo,
+          gerenciaMercado,
+          gerenciaDeVendas,
+          canal,
+          papelDaConsultora,
+          regiao,
+          setor,
+          origem,
+          roleId: this.props.user.cdPapelAtivo,
+        },
+      })
+      .then(response => {
+        const pathname = `${ROUTE_PREFIX}/training/courses/${course.id}/module`;
+        this.props.history.push({
+          pathname: pathname,
+          search: '?hasfinished',
+          state: { hasfinished: true },
+        });
+      })
+      .catch(error => {
+        console.log('err', error);
+      });
+  };
+
   playerEventListeners = player => {
     if (!player) return;
 
-    player.on('ended', () => {
-      if (this.state.initialCourse.status === 'finished') {
-        this.setState(
-          { activity: { ...this.state.activity, stoppedAt: 0 }, mutationStatus: 'paused' },
-          this.defineVideoCourseStatus,
-        );
-      }
+    player.on('ended', this.onEnded);
 
-      this.setState(
-        {
-          activity: { ...this.state.activity, status: 'finished', stoppedAt: 0 },
-          mutationStatus: 'terminated',
-          terminated: this.state.terminated + 1,
-          showNext: true,
-          ended: true,
-        },
-        () => {
-          this.defineVideoCourseStatus();
-          this.startTimerFunction();
-        },
-      );
-    });
+    player.on('play', () => {});
 
-    player.on('play', () => {
-      this.setState(
-        {
-          activity: { ...this.state.activity, status: 'started' },
-          mutationStatus: 'initialized',
-          initialized: this.state.initialized + 1,
-        },
-        this.defineVideoCourseStatus,
-      );
-    });
-
-    player.on('pause', ({ seconds }) => {
-      this.setState(
-        {
-          activity: { ...this.state.activity, stoppedAt: Math.round(seconds) },
-          mutationStatus: 'paused',
-        },
-        this.defineVideoCourseStatus,
-      );
-    });
+    player.on('pause', ({ seconds }) => {});
   };
 
   defineVideoCourseStatus = () => {
@@ -192,4 +195,7 @@ ActivityContent.propTypes = {
 export const ActivityContentWithApollo = withApollo(ActivityContent);
 export const ActivityContentWithRouter = withRouter(ActivityContentWithApollo);
 
-export default graphql(TrainingCourseUpdateMutation)(ActivityContentWithRouter);
+export default compose(
+  graphql(TrainingCourseUpdateMutation),
+  graphql(TrainingActivityUpdateMutation),
+)(ActivityContentWithRouter);

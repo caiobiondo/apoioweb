@@ -313,7 +313,6 @@ export class CourseStartView extends Component {
     }
 
     const afterSetState = () => {
-      console.log('showStaticCourse -> afterSetState');
       const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
       const courseWindow = courseIframe.contentWindow;
       this.checkCourseFinished(courseWindow);
@@ -611,7 +610,6 @@ export class CourseStartView extends Component {
 
   render() {
     const { course } = this.props;
-    console.log('course with activities', course);
 
     if (!course && !this.props.loading) return null;
 
