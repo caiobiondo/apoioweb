@@ -84,7 +84,7 @@ export const ActivityViewQueryOptions = {
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
         origem: Origem,
       },
-      fetchPolicy: 'network',
+      fetchPolicy: 'network-only',
     };
   },
 

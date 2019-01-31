@@ -15,7 +15,7 @@ export default {
     myList: 'Minha Lista',
     certificate: 'Certificado',
     recommendations: 'Recomendados',
-    midialibary: 'Mídiateca',
+    medialibrary: 'Mídiateca',
     trainingAddCourseMyList: 'Adicionar à minha lista',
     trainingAddCourseSuccess: 'Treinamento adicionado à sua lista com sucesso!',
     trainingAddCourseError: 'Ocorreu um erro ao adicionar o treinamento',

@@ -4,7 +4,7 @@ import { Grid } from 'react-flexbox-grid';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-import { Icon, FormButton, Dialog, Loading, FlatButton } from 'natura-ui';
+import { Icon, Dialog, Loading, FlatButton } from 'natura-ui';
 import { RobotoRegular } from 'styles/typography';
 
 import gql from 'graphql-tag';
@@ -505,7 +505,7 @@ export class Html5Activity extends Component {
   };
 
   handleYes = () => {
-    const { activityId } = this.props;
+    const { activityId, course } = this.props;
 
     const {
       ciclo,
@@ -539,17 +539,16 @@ export class Html5Activity extends Component {
         },
       })
       .then(response => {
-        //Apresentar o modal de avaliacao
+        this.goBack();
+        //window.location.reload();
       })
       .catch(error => {
         console.log('err', error);
       });
-
-    this.goBack();
   };
   handleNo = () => {
-    this.setState({ finishModal: false });
     this.goBack();
+    //window.location.reload();
   };
 
   openActivityFinish = () => {

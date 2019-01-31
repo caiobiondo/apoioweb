@@ -100,12 +100,14 @@ export class ActivityContent extends Component {
         },
       })
       .then(response => {
-        const pathname = `${ROUTE_PREFIX}/training/courses/${course.id}/module`;
-        this.props.history.push({
-          pathname: pathname,
-          search: '?hasfinished',
-          state: { hasfinished: true },
-        });
+        // const pathname = `${ROUTE_PREFIX}/training/courses/${course.id}/module`;
+        // this.props.history.replace({
+        //   pathname: pathname,
+        //   search: '?hasfinished',
+        //   state: { hasfinished: true },
+        // });
+        //this.props.history.goBack();
+        window.location.reload();
       })
       .catch(error => {
         console.log('err', error);
