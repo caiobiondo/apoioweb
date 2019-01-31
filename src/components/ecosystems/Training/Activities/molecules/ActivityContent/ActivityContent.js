@@ -101,11 +101,10 @@ export class ActivityContent extends Component {
       })
       .then(response => {
         const pathname = `${ROUTE_PREFIX}/training/courses/${course.id}/module`;
-        this.props.history.push({
+        this.props.history.replace({
           pathname: pathname,
-          search: '?hasfinished',
-          state: { hasfinished: true },
         });
+        return;
       })
       .catch(error => {
         console.log('err', error);

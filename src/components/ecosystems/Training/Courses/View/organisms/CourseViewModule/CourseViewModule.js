@@ -33,7 +33,6 @@ import {
 } from './CourseViewModule.styles';
 
 import staticCourses from 'components/ecosystems/Training/enums/staticCourses.enum';
-import RelatedCourses from 'components/ecosystems/Training/Courses/View/molecules/RelatedCourses';
 import CourseEvaluation from 'components/ecosystems/Training/Courses/View/molecules/CourseEvaluation';
 import CourseViewHeader from 'components/ecosystems/Training/Courses/View/molecules/CourseViewHeader';
 import EmptyList from 'components/molecules/EmptyList/EmptyList';
@@ -65,15 +64,14 @@ export class CourseViewModule extends Component {
     course: {},
     initialized: false,
     terminated: false,
-
     assessmentModalVisible: false,
     assessmentModalTitle: '',
     assessmentModalID: null,
-
     messageModalVisible: false,
     messageModalTitle: '',
-
     openedHasFinished: false,
+    activityToGo: null,
+    courseFinished: false,
   };
 
   verifyIfHasJustFinished = () => {
@@ -83,28 +81,36 @@ export class CourseViewModule extends Component {
       this.state.openedHasFinished === false
     ) {
       if (this.props.course && this.props.course.activities) {
-        const activity = this.props.course.activities.find(activity => {
-          return activity.finished === false;
-        });
-
+        const activity = this.props.course.activities.find(activity => !activity.finished);
         if (!!activity) {
+          this.setState({ activityToGo: activity });
           this.onActivityItemClicked(this.props.course, activity);
+          this.setState({ openedHasFinished: true });
+          return;
+        } else {
+          if (this.props.course.status !== 'finished') {
+            this.updateCourse('terminated');
+            this.setState({ openedHasFinished: true });
+            return;
+          }
         }
       }
-
-      this.setState({ openedHasFinished: true });
+    } else {
+      if (this.props.course && this.canEvaluate() && !this.state.showEvaluation) {
+        this.setState({ showEvaluation: true });
+        return;
+      }
     }
   };
 
   componentDidUpdate = () => {
-    this.verifyIfHasJustFinished();
+    //this.verifyIfHasJustFinished();
   };
 
   componentDidMount() {
     const { course } = this.props;
     if (course) this.setState({ course });
-
-    this.verifyIfHasJustFinished();
+    //this.verifyIfHasJustFinished();
   }
 
   componentWillReceiveProps({ loading, course }) {
@@ -341,7 +347,6 @@ export class CourseViewModule extends Component {
     }
 
     const afterSetState = () => {
-      console.log('showStaticCourse -> afterSetState');
       const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
       const courseWindow = courseIframe.contentWindow;
       this.checkCourseFinished(courseWindow);
@@ -369,81 +374,49 @@ export class CourseViewModule extends Component {
         fragment myCourse on Course {
           isfavorite
           status
+          activities {
+            id
+            name
+            type
+            finished
+          }
           __typename
         }
       `,
       data: {
         isfavorite: course.isfavorite,
         status: course.status,
+        activities: course.activities,
         __typename: 'Course',
       },
     });
-
     let startedCourses = null;
+
     try {
       startedCourses = client.readQuery({
         query: TrainingCoursesQuery,
         variables: TrainingCoursesQueryOptions.options({
           ...this.props,
-          status: 'started',
         }).variables,
       });
     } catch (e) {
       // could not find cache
     }
-
     if (startedCourses) {
       if (this.state.course.status === 'started' && this.props.course.status === 'pending') {
-        startedCourses.courses.items.push(this.state.course);
+        startedCourses.courses.items = [...startedCourses.courses.items, this.state.course];
       }
-
       if (this.state.course.status !== 'started' && this.props.course.status === 'started') {
         startedCourses.courses.items = startedCourses.courses.items.filter(
           item => item.id !== this.state.course.id,
         );
       }
-
       client.writeQuery({
         query: TrainingCoursesQuery,
         variables: TrainingCoursesQueryOptions.options({
           ...this.props,
-          status: 'started',
         }).variables,
         data: startedCourses,
-      });
-    }
-
-    let favoritedCourses = null;
-    try {
-      favoritedCourses = client.readQuery({
-        query: TrainingCoursesQuery,
-        variables: TrainingCoursesQueryOptions.options({
-          ...this.props,
-          favorite: true,
-        }).variables,
-      });
-    } catch (e) {
-      // could not find cache
-    }
-
-    if (favoritedCourses) {
-      if (this.state.course.isfavorite === 'true' && this.props.course.isfavorite === 'false') {
-        favoritedCourses.courses.items.push(this.state.course);
-      }
-
-      if (this.state.course.isfavorite === 'false' && this.props.course.isfavorite === 'true') {
-        favoritedCourses.courses.items = favoritedCourses.courses.items.filter(item => {
-          return item.id !== this.state.course.id;
-        });
-      }
-
-      client.writeQuery({
-        query: TrainingCoursesQuery,
-        variables: TrainingCoursesQueryOptions.options({
-          ...this.props,
-          favorite: true,
-        }).variables,
-        data: favoritedCourses,
       });
     }
   };
@@ -692,8 +665,7 @@ export class CourseViewModule extends Component {
     }
   };
 
-  initializeCourse = () => {
-    const action = 'initialized';
+  updateCourse = action => {
     const { course } = this.props;
     const {
       ciclo,
@@ -706,8 +678,6 @@ export class CourseViewModule extends Component {
       canal,
       origem,
     } = getHeadersFromUser(this.props.user);
-
-    if (this.state[action]) return;
 
     this.props
       .mutate({
@@ -745,6 +715,12 @@ export class CourseViewModule extends Component {
             this.updateCachedList,
           );
         }
+
+        if (action === 'terminated') {
+          this.setState({ courseFinished: true });
+          this.setState(this.updateCachedList);
+          window.location.reload();
+        }
         return;
       })
       .catch(err => {
@@ -753,6 +729,14 @@ export class CourseViewModule extends Component {
         this.handleTrainingError();
       });
   };
+
+  canfinishCourse() {
+    if (this.props.course && this.props.course.activities) {
+      const activity = this.props.course.activities.find(activity => !activity.finished);
+      return !activity && this.props.course.status !== 'finished';
+    }
+    return false;
+  }
 
   render() {
     const { course } = this.props;
@@ -775,7 +759,7 @@ export class CourseViewModule extends Component {
       );
     }
 
-    this.initializeCourse();
+    if (course.status === 'pending') this.updateCourse('initialized');
 
     return (
       <Main>
@@ -835,8 +819,6 @@ export class CourseViewModule extends Component {
             </ListItem>
           ))}
         </List>
-        <RelatedCourses courses={course.relatedCourses} />
-
         {this.state.assessmentModalVisible && (
           <AssessmentModal
             key={'assessmentModal_' + this.state.assessmentModalID}
@@ -851,6 +833,7 @@ export class CourseViewModule extends Component {
 
         {this.renderFeedbackModal()}
         {this.renderMessageModal()}
+        {this.canfinishCourse() && !this.state.courseFinished && this.updateCourse('terminated')}
         {this.canEvaluate() && (
           <CourseEvaluation
             course={course}

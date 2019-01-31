@@ -81,7 +81,6 @@ class AssessmentModal extends Component {
       if (this.state.errorMessage === '') {
         this.setState(INITIAL_STATE);
         this.props.closeModal();
-
         const {
           ciclo,
           grupo,
@@ -118,12 +117,7 @@ class AssessmentModal extends Component {
             },
           })
           .then(response => {
-            const pathname = `${ROUTE_PREFIX}/training/courses/${this.props.courseID}/module`;
-            this.props.history.push({
-              pathname: pathname,
-              search: '?hasfinished',
-              state: { hasfinished: true },
-            });
+            window.location.reload();
             if (response.error) {
               return;
             }
