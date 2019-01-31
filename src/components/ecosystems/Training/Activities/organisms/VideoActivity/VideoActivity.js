@@ -256,6 +256,7 @@ class VideoActivity extends Component {
             user={this.props.user}
             refetch={this.props.refetch}
             handleFeedbackMessage={this.handleFeedbackMessage}
+            handleGoBack={this.goBack}
           />
         </Grid>
       </Main>

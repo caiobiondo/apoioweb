@@ -100,14 +100,11 @@ export class ActivityContent extends Component {
         },
       })
       .then(response => {
-        // const pathname = `${ROUTE_PREFIX}/training/courses/${course.id}/module`;
-        // this.props.history.replace({
-        //   pathname: pathname,
-        //   search: '?hasfinished',
-        //   state: { hasfinished: true },
-        // });
-        //this.props.history.goBack();
-        window.location.reload();
+        const pathname = `${ROUTE_PREFIX}/training/courses/${course.id}/module`;
+        this.props.history.replace({
+          pathname: pathname,
+        });
+        return;
       })
       .catch(error => {
         console.log('err', error);

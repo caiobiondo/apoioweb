@@ -546,6 +546,7 @@ export class Html5Activity extends Component {
         console.log('err', error);
       });
   };
+
   handleNo = () => {
     this.goBack();
     //window.location.reload();

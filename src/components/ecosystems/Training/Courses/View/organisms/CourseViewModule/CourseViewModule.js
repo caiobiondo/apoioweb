@@ -347,7 +347,6 @@ export class CourseViewModule extends Component {
     }
 
     const afterSetState = () => {
-      console.log('showStaticCourse -> afterSetState');
       const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
       const courseWindow = courseIframe.contentWindow;
       this.checkCourseFinished(courseWindow);
@@ -368,8 +367,6 @@ export class CourseViewModule extends Component {
   updateCachedList = () => {
     const { course } = this.state;
     const { client } = this.props;
-
-    console.log('updateCachedList', course);
 
     client.writeFragment({
       id: course.id,
@@ -405,7 +402,6 @@ export class CourseViewModule extends Component {
     } catch (e) {
       // could not find cache
     }
-    console.log('startedCourses', startedCourses);
     if (startedCourses) {
       if (this.state.course.status === 'started' && this.props.course.status === 'pending') {
         startedCourses.courses.items = [...startedCourses.courses.items, this.state.course];
@@ -735,7 +731,6 @@ export class CourseViewModule extends Component {
   };
 
   canfinishCourse() {
-    console.log('canfinishCourse');
     if (this.props.course && this.props.course.activities) {
       const activity = this.props.course.activities.find(activity => !activity.finished);
       return !activity && this.props.course.status !== 'finished';
@@ -745,7 +740,6 @@ export class CourseViewModule extends Component {
 
   render() {
     const { course } = this.props;
-    console.log('render', course);
 
     if (!course && !this.props.loading) return null;
 
