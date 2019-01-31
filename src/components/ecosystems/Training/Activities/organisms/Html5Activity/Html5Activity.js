@@ -10,6 +10,7 @@ import { RobotoRegular } from 'styles/typography';
 import gql from 'graphql-tag';
 
 import { TrainingCourseUpdateMutation } from 'components/ecosystems/Training/data/TrainingCourseUpdate.data';
+import { TrainingActivityUpdateMutation } from '../../../data/TrainingActivityUpdate.data';
 import { ActivityViewQuery, ActivityViewQueryOptions } from '../../../data/TrainingActivity.data';
 
 import { gtmPushDataLayerEvent, events, categories, actions } from 'utils/googleTagManager';
@@ -143,6 +144,7 @@ export class Html5Activity extends Component {
 
     this.props
       .mutate({
+        query: TrainingCourseUpdateMutation,
         variables: {
           input: { action },
           sellerId: this.props.user.codigo,
@@ -495,8 +497,6 @@ export class Html5Activity extends Component {
   goBack = () => this.props.history.goBack();
 
   handleFeedbackMessage = () => {
-    console.log('handleFeedbackMessage', this.props);
-
     if (this.props.activity.finished) {
       return;
     }
@@ -505,7 +505,46 @@ export class Html5Activity extends Component {
   };
 
   handleYes = () => {
-    console.log('exec mutate and close modal');
+    const { activityId } = this.props;
+
+    const {
+      ciclo,
+      grupo,
+      gerenciaDeVendas,
+      regiao,
+      setor,
+      gerenciaMercado,
+      papelDaConsultora,
+      canal,
+      origem,
+    } = getHeadersFromUser(this.props.user);
+
+    this.props
+      .mutate({
+        query: TrainingActivityUpdateMutation,
+        variables: {
+          sellerId: this.props.user.codigo,
+          activityId: activityId,
+          input: { action: 'terminated', stopedAt: 0 },
+          ciclo: ciclo,
+          grupo,
+          gerenciaMercado,
+          gerenciaDeVendas,
+          canal,
+          papelDaConsultora,
+          regiao,
+          setor,
+          origem,
+          roleId: this.props.user.cdPapelAtivo,
+        },
+      })
+      .then(response => {
+        //Apresentar o modal de avaliacao
+      })
+      .catch(error => {
+        console.log('err', error);
+      });
+
     this.goBack();
   };
   handleNo = () => {
@@ -554,7 +593,6 @@ export class Html5Activity extends Component {
   };
 
   render() {
-    //"data:text/html;charset=utf-8,"
     const { activity } = this.props;
 
     if (!activity && this.props.loading) {
@@ -584,4 +622,5 @@ export const Html5ActivityWithApollo = withApollo(Html5ActivityWithRouter);
 export default compose(
   graphql(ActivityViewQuery, ActivityViewQueryOptions),
   graphql(TrainingCourseUpdateMutation),
+  graphql(TrainingActivityUpdateMutation),
 )(Html5ActivityWithApollo);

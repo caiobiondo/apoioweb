@@ -105,7 +105,7 @@ export const TrainingCoursesQueryOptions = {
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
         origem: Origem,
       },
-      fetchPolicy: 'cache-first',
+      fetchPolicy: 'network',
     };
   },
   props({ data }) {

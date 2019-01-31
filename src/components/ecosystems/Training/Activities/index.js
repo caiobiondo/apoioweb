@@ -19,6 +19,7 @@ export default class ActivityWrapper extends Component {
 
     const { user, match: { params: { id, type, scormId } } } = this.props;
     const activity = this.props.location.state.activity;
+    const course = this.props.location.state.course;
 
     let component = null;
     switch (activity.type) {
@@ -43,7 +44,7 @@ export default class ActivityWrapper extends Component {
       return component;
     }
 
-    return React.createElement(component, { user, courseId: id, activityId: activity.id });
+    return React.createElement(component, { user, course, activityId: activity.id });
   };
 
   render() {

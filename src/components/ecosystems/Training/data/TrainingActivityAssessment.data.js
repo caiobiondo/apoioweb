@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-export const AddActivityAnswers = gql`
+export const AddActivityAnswersMutation = gql`
   mutation AddActivityAnswers(
     $sellerId: Int!
     $activityId: Int!
@@ -30,8 +30,8 @@ export const AddActivityAnswers = gql`
       canal: $canal
       origem: $origem
     ) {
-      action
-      stoppedAt
+      status
+      message
     }
   }
 `;

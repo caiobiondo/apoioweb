@@ -82,13 +82,17 @@ export class CourseViewModule extends Component {
       this.props.history.location.state.hasfinished &&
       this.state.openedHasFinished === false
     ) {
-      const activity = this.props.course.activities.find(activity => {
-        return activity.finished === false;
-      });
+      if (this.props.course && this.props.course.activities) {
+        const activity = this.props.course.activities.find(activity => {
+          return activity.finished === false;
+        });
+
+        if (!!activity) {
+          this.onActivityItemClicked(this.props.course, activity);
+        }
+      }
 
       this.setState({ openedHasFinished: true });
-
-      this.onActivityItemClicked(this.props.course, activity);
     }
   };
 
@@ -170,6 +174,7 @@ export class CourseViewModule extends Component {
 
   handleTrainingClick = action => event => {
     const { course } = this.props;
+
     const {
       ciclo,
       grupo,
@@ -211,7 +216,6 @@ export class CourseViewModule extends Component {
         this.setState({ [action]: true });
 
         if (response.data && !response.data.updateCourse.status) {
-          console.log('response', response);
           // handle not updated
           if (
             response.data.updateCourse.message &&
@@ -589,6 +593,49 @@ export class CourseViewModule extends Component {
     return course.status === 'finished' && course.ratedByYou !== 'true';
   };
 
+  shouldFinishCourse = () => {
+    const { course } = this.props;
+    const atividadesNaoConcluidas = course.activities.filter(x => !x.finished);
+    if (course.status !== 'finished' && atividadesNaoConcluidas && atividadesNaoConcluidas.length) {
+      const {
+        ciclo,
+        grupo,
+        gerenciaDeVendas,
+        regiao,
+        setor,
+        gerenciaMercado,
+        papelDaConsultora,
+        canal,
+        origem,
+      } = getHeadersFromUser(this.props.user);
+
+      this.props
+        .mutate({
+          variables: {
+            input: { action: 'finished' },
+            sellerId: this.props.user.codigo,
+            courseId: course.id,
+            ciclo: ciclo,
+            grupo,
+            gerenciaMercado,
+            gerenciaDeVendas,
+            canal,
+            papelDaConsultora,
+            regiao,
+            setor,
+            origem,
+            roleId: this.props.user.cdPapelAtivo,
+          },
+        })
+        .then(response => {
+          //Apresentar o modal de avaliacao
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  };
+
   setStaticCourseRef = ref => {
     this.staticCourseIframe = ref;
   };
@@ -625,6 +672,9 @@ export class CourseViewModule extends Component {
 
   onActivityItemClicked = (course, activity) => {
     switch (activity.type) {
+      case 'SCORM':
+        return;
+
       case 'ASSESSMENT': {
         this.setState({
           assessmentModalVisible: true,
@@ -633,7 +683,6 @@ export class CourseViewModule extends Component {
         });
         break;
       }
-
       default:
         this.props.history.push({
           pathname: `${ROUTE_PREFIX}/training/courses/${course.id}/module/${activity.id}`,
@@ -662,6 +711,7 @@ export class CourseViewModule extends Component {
 
     this.props
       .mutate({
+        query: TrainingCourseUpdateMutation,
         variables: {
           input: { action },
           sellerId: this.props.user.codigo,
@@ -726,6 +776,7 @@ export class CourseViewModule extends Component {
     }
 
     this.initializeCourse();
+
     return (
       <Main>
         <CourseViewHeader course={course} />

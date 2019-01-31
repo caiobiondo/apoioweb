@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 //query
 import { graphql, compose, withApollo } from 'react-apollo';
 import { ActivityViewQuery, ActivityViewQueryOptions } from '../../../data/TrainingActivity.data';
-import { AddActivityAnswers } from '../../../data/TrainingActivityUpdate.data';
+import { AddActivityAnswersMutation } from '../../../data/TrainingActivityAssessment.data';
 
 //components
 import { Dialog, FlatButton, Loading } from 'natura-ui';
@@ -21,6 +21,7 @@ import styles, { TitleWrapper } from './AssessmentModal.styles';
 //route
 import { withRouter } from 'react-router-dom';
 import { ROUTE_PREFIX } from 'config';
+import { getHeadersFromUser } from '../../../../../../utils/getUserParams';
 
 const INITIAL_STATE = {
   assessment: null,
@@ -81,46 +82,55 @@ class AssessmentModal extends Component {
         this.setState(INITIAL_STATE);
         this.props.closeModal();
 
-        const pathname = `${ROUTE_PREFIX}/training/courses/${this.props.courseID}/module`;
+        const {
+          ciclo,
+          grupo,
+          gerenciaDeVendas,
+          regiao,
+          setor,
+          gerenciaMercado,
+          papelDaConsultora,
+          canal,
+          origem,
+        } = getHeadersFromUser(this.props.user);
 
-        this.props.history.push({
-          pathname: pathname,
-          search: '?hasfinished',
-          state: { hasfinished: true },
-        });
+        const timeSpentInSeconds = (new Date().getTime() - this.state.initialTime) / 1000;
 
-        //request
-        // this.props
-        //   .mutate({
-        //     variables: {
-        //       input: {
-        //         id: this.props.activityId,
-        //         timeSpentInSeconds: (this.state.initialTime - new Date().getMilliseconds()) * 1000,
-        //         questions: this.state.answers,
-        //       },
-        //       sellerId: this.props.user.codigo,
-        //       activityId: this.props.activityId,
-        //       // ciclo,
-        //       // grupo,
-        //       // gerenciaDeVendas,
-        //       // regiao,
-        //       // setor,
-        //       // gerenciaMercado,
-        //       // papelDaConsultora,
-        //       // canal,
-        //       // origem,
-        //     },
-        //   })
-        //   .then(response => {
-        //     console.log(response);
-        //     window.location.reload();
-        //     if (response.error) {
-        //       return;
-        //     }
-        //   })
-        //   .catch(err => {
-        //     console.log('err', err);
-        //   });
+        this.props
+          .mutate({
+            variables: {
+              input: {
+                id: this.props.activityId,
+                timeSpentInSeconds: parseInt(timeSpentInSeconds.toFixed()),
+                questions: this.state.answers,
+              },
+              sellerId: this.props.user.codigo,
+              activityId: this.props.activityId,
+              ciclo,
+              grupo,
+              gerenciaDeVendas,
+              regiao,
+              setor,
+              gerenciaMercado,
+              papelDaConsultora,
+              canal,
+              origem,
+            },
+          })
+          .then(response => {
+            const pathname = `${ROUTE_PREFIX}/training/courses/${this.props.courseID}/module`;
+            this.props.history.push({
+              pathname: pathname,
+              search: '?hasfinished',
+              state: { hasfinished: true },
+            });
+            if (response.error) {
+              return;
+            }
+          })
+          .catch(err => {
+            console.log('err', err);
+          });
       }
       return;
     }
@@ -298,7 +308,10 @@ const AssessmentModalIntl = injectIntl(AssessmentModal);
 const AssessmentModalWithApollo = withApollo(AssessmentModalIntl);
 
 export default withRouter(
-  compose(graphql(ActivityViewQuery, ActivityViewQueryOptions))(AssessmentModalWithApollo),
+  compose(
+    graphql(ActivityViewQuery, ActivityViewQueryOptions),
+    graphql(AddActivityAnswersMutation),
+  )(AssessmentModalWithApollo),
 );
 
 export const TextQuestion = props => (

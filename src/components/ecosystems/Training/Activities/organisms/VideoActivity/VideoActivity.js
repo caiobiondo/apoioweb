@@ -251,6 +251,7 @@ class VideoActivity extends Component {
         <Grid fluid>
           <CourseViewHeader />
           <ActivityContent
+            course={this.props.course}
             activity={this.props.activity.results[0]}
             user={this.props.user}
             refetch={this.props.refetch}
