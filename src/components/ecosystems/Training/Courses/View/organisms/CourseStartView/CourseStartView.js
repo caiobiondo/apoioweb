@@ -144,6 +144,8 @@ export class CourseStartView extends Component {
     } = getHeadersFromUser(this.props.user);
     if (this.state[action]) return;
 
+    if (this.state[action]) return;
+
     this.props
       .mutate({
         variables: {
@@ -220,6 +222,10 @@ export class CourseStartView extends Component {
             if (course.type === 'VIDEO') {
               this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
             }
+            if (course.type === 'SCORM') {
+              // this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+              this.props.history.push(`${ROUTE_PREFIX}/training/courses`);
+            }
           }
           return;
         }
@@ -252,6 +258,10 @@ export class CourseStartView extends Component {
           }
           if (course.type === 'VIDEO') {
             this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/video`);
+          }
+          if (course.type === 'SCORM') {
+            // this.props.history.push(`${ROUTE_PREFIX}/training/courses/${course.id}/scorm`);
+            this.props.history.push(`${ROUTE_PREFIX}/training/courses/#`);
           }
         }
 
@@ -303,7 +313,6 @@ export class CourseStartView extends Component {
     }
 
     const afterSetState = () => {
-      console.log('showStaticCourse -> afterSetState');
       const courseIframe = document.querySelector(`iframe[title=${this.getStaticCourseName()}]`);
       const courseWindow = courseIframe.contentWindow;
       this.checkCourseFinished(courseWindow);

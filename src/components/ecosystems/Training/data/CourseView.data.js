@@ -38,6 +38,7 @@ export const CourseViewQuery = gql`
         html5
         web
         videoEmbedUrl
+        scorm
       }
       dateUpload
       durationInSeconds
@@ -46,6 +47,12 @@ export const CourseViewQuery = gql`
       isfavorite
       myRating
       ratedByYou
+      activities {
+        id
+        name
+        type
+        finished
+      }
       relatedCourses {
         id
         title
@@ -84,7 +91,7 @@ export const CourseViewQueryOptions = {
           props.user.estrutura.codigoTipo > 1 ? props.user.estrutura.regiaoEstrategica.codigo : 0,
         origem: Origem,
       },
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'network-only',
     };
   },
 

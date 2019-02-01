@@ -28,7 +28,6 @@ export class CourseRating extends Component {
     const rating = course.ratedByYou === 'true' ? course.myRating : course.generalRating;
     const ratingColorNormal = course.ratedByYou === 'true' ? red500 : gray150;
     const ratingColorFilled = course.ratedByYou === 'true' ? red500 : orange100;
-
     return (
       <RowWrapper>
         <Row>

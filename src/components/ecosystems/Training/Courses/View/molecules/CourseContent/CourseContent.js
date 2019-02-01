@@ -292,6 +292,8 @@ export class CourseContent extends Component {
     let url = `${course.id}/web`;
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
+    if (course.type === 'MODULE') url = `${course.id}/module`;
+    if (course.type === 'SCORM') url = `#`;
 
     gtmPushDataLayerEvent({
       event: events.PAGE_VIEW,
@@ -328,7 +330,6 @@ export class CourseContent extends Component {
   render() {
     const { course } = this.props;
     const nextCourse = this.getNextCourse(course.relatedCourses);
-
     // iframe with key prop to force a "rerender" of iframe when changing from a course to another one,
     // so it prevents iframe src change to add a browser history item
     return (

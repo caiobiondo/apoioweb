@@ -61,6 +61,8 @@ export class TrainingCourse extends Component {
     let url = `${course.id}/web`;
     if (course.type === 'VIDEO') url = `${course.id}/video`;
     if (course.type === 'HTML5') url = `${course.id}/html5`;
+    if (course.type === 'MODULE') url = `${course.id}/module`;
+    if (course.type === 'SCORM') url = `#`;
 
     gtmPushDataLayerEvent({
       event: events.PAGE_VIEW,

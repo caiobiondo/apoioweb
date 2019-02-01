@@ -33,3 +33,6 @@ export const yellow100 = '#fcdb17';
 
 export const green100 = '#cfde41';
 export const green200 = '#66a944';
+
+export const brownPod = '#40271e';
+export const lightningYellow = '#F4AB34';
