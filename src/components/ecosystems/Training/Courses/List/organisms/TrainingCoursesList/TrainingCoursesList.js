@@ -304,7 +304,7 @@ export class TrainingCoursesList extends Component {
         </CourseSearchContainer>
 
         <TrainingCoursesListWrapper>
-          <PageMenu />
+          <PageMenu {...this.props} />
           <InfiniteScroll
             onScroll={this.props.fetchMore}
             hasMore={this.props.hasNextPage}

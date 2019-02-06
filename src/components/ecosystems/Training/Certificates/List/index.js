@@ -15,7 +15,11 @@ class CertificateWrapper extends Component {
   render() {
     return (
       <Main>
-        <CertificateList user={this.props.user} onLoadFinished={this.onLoadFinished} />
+        <CertificateList
+          user={this.props.user}
+          onLoadFinished={this.onLoadFinished}
+          recommended={this.props.recommended}
+        />
       </Main>
     );
   }

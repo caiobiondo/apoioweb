@@ -19,7 +19,11 @@ class TrainingMultimediaWrapper extends Component {
   render() {
     return (
       <Main>
-        <MultimediaList user={this.props.user} onLoadFinished={this.onLoadFinished} />
+        <MultimediaList
+          user={this.props.user}
+          onLoadFinished={this.onLoadFinished}
+          recommended={this.props.recommended}
+        />
       </Main>
     );
   }

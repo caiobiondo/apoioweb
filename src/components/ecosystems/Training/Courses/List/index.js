@@ -37,6 +37,7 @@ class TrainingWrapper extends Component {
     return (
       <Main>
         <TrainingCoursesList
+          recommended={this.props.recommended}
           user={this.props.user}
           onLoadFinished={this.onLoadFinished}
           courseFilter={this.state.courseFilter}

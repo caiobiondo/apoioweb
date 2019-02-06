@@ -281,7 +281,7 @@ export class TrainingMyList extends Component {
 
     return (
       <TrainingMyListWrapper>
-        <PageMenu />
+        <PageMenu {...this.props} />
         <InfiniteScroll
           onScroll={fetchMore}
           hasMore={hasNextPage}

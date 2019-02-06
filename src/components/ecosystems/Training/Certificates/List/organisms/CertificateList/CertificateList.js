@@ -35,7 +35,7 @@ export class CertificateList extends Component {
     if (!this.props.certificates || !this.props.certificates.length) {
       return (
         <Paper style={fullContainer}>
-          <PageMenu />
+          <PageMenu {...this.props} />
           <EmptyList
             icon="ico_list_add"
             titleId="myCertificatesEmptyList"
@@ -47,7 +47,7 @@ export class CertificateList extends Component {
 
     return (
       <Paper>
-        <PageMenu />
+        <PageMenu {...this.props} />
         <List>
           {certificates.map((certificate, index) => (
             <Certificate
