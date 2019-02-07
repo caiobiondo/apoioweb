@@ -5,14 +5,6 @@ import { translate } from 'locale';
 import { ROUTE_PREFIX } from 'config';
 import { gtmPushDataLayerEvent, events } from 'utils/googleTagManager';
 
-// let menu = [
-//   { link: `${ROUTE_PREFIX}/training/courses`, label: translate('courses') },
-//   { link: `${ROUTE_PREFIX}/training/categories`, label: translate('categories') },
-//   { link: `${ROUTE_PREFIX}/training/my-list`, label: translate('myList') },
-//   { link: `${ROUTE_PREFIX}/training/medialibrary`, label: translate('medialibrary') },
-//   { link: `${ROUTE_PREFIX}/training/certificates`, label: translate('certificate') },
-// ];
-
 const menuItemRecommendation = {
   link: `${ROUTE_PREFIX}/training/recommendations`,
   label: translate('recommendations'),
@@ -49,7 +41,6 @@ class PageMenu extends Component {
   };
 
   render() {
-    console.log('props on pagemenu', this.props);
     const { recommended } = this.props;
     return (
       <Wrapper>
