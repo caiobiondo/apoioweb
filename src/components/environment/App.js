@@ -13,7 +13,6 @@ import {
 } from 'config';
 
 import withDefaultBehaviour from 'hocs/withDefaultBehaviour';
-
 import { ThemeProvider, theme, setupGlobals, setupFonts } from 'natura-ui';
 import { locale, flattenMessages, messages } from 'locale/index';
 

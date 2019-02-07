@@ -42,6 +42,7 @@ class TrainingWrapper extends Component {
           courseFilter={this.state.courseFilter}
           status={this.state.status}
           onSearch={this.onSearch}
+          recommended={this.props.recommended}
         />
       </Main>
     );
