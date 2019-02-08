@@ -20,17 +20,6 @@ const renderTrainingCategory = trainingCategory => {
   );
 };
 
-const renderEmptyList = (
-  <Paper style={fullContainer}>
-    <PageMenu />
-    <EmptyList
-      icon="ico_list_add"
-      titleId="trainingCategoriesEmptyList"
-      descriptionId="trainingCategoriesEmptyListDescription"
-    />
-  </Paper>
-);
-
 export class TrainingCategoriesList extends Component {
   state = {};
 
@@ -59,14 +48,20 @@ export class TrainingCategoriesList extends Component {
       return <Loading background="transparent" />;
     }
 
-    if (!trainingCategories || !trainingCategories.length) {
-      return renderEmptyList;
-    }
-
     return (
       <Paper style={fullContainer}>
-        <PageMenu />
-        <List>{trainingCategories.map(category => renderTrainingCategory(category))}</List>
+        <PageMenu {...this.props} />
+        {(!trainingCategories || !trainingCategories.length) && (
+          <EmptyList
+            icon="ico_list_add"
+            titleId="trainingCategoriesEmptyList"
+            descriptionId="trainingCategoriesEmptyListDescription"
+          />
+        )}
+        {trainingCategories &&
+          trainingCategories.length && (
+            <List>{trainingCategories.map(category => renderTrainingCategory(category))}</List>
+          )}
       </Paper>
     );
   }

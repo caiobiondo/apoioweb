@@ -37,6 +37,7 @@ class TrainingWrapper extends Component {
           user={this.props.user}
           favorite={true}
           onLoadFinished={this.onLoadFinished}
+          recommended={this.props.recommended}
         />
       </Main>
     );

@@ -33,7 +33,11 @@ class TrainingWrapper extends Component {
           <BaseFormSearch {...baseFormSearchProps} />
         </CourseSearchContainer>
 
-        <TrainingCategoriesList user={this.props.user} onLoadFinished={this.onLoadFinished} />
+        <TrainingCategoriesList
+          user={this.props.user}
+          onLoadFinished={this.onLoadFinished}
+          recommended={this.props.recommended}
+        />
       </Main>
     );
   }

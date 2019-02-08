@@ -110,7 +110,7 @@ export class MultimediaList extends Component {
     return (
       <StartedWrapper>
         <TrainingMultimediaListWrapper>
-          <PageMenu />
+          <PageMenu {...this.props} />
           <InfiniteScroll
             onScroll={this.props.fetchMore}
             hasMore={this.props.hasNextPage}
