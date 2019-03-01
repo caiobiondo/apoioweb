@@ -8,6 +8,7 @@ import {
   SelectedCustomersDescription,
 } from './index.styles';
 import RemoveCustomerButton from './organisms/RemoveCustomerButton/RemoveCustomerButton';
+import CustomerSpeedDial from './organisms/CustomerSpeedDial/CustomerSpeedDial';
 import { translate } from 'locale';
 
 class CustomersListWrapper extends Component {
@@ -66,15 +67,7 @@ class CustomersListWrapper extends Component {
 
     return (
       <Main loading={loading} empty={empty}>
-        {!loading && (
-          <ActionButtonContainer empty={empty}>
-            <RemoveCustomerButton
-              selected={selectedCustomers}
-              onRemove={this.onRemoveCustomer}
-              isCustomerSelected={selectedCustomers.length}
-            />
-          </ActionButtonContainer>
-        )}
+        {!loading && <CustomerSpeedDial />}
         {!loading && (
           <CustomersSearchContainer>
             <BaseFormSearch {...baseFormSearchProps} />
