@@ -21,13 +21,40 @@ export const FormWrapper = styled.div`
 export const FormButtonWrapper = styled.div`
   align-items: flex-end;
   display: flex;
-  margin-right: 10px;
+  margin-right: 37px;
+  margin-top: 12px;
 
-  width: 119px;
+  width: auto;
   height: 40px;
   border-radius: 6px;
-  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24);
   background-color: #ffffff;
+
+  button {
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24) !important;
+    font-family: ${RobotoRegular};
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    letter-spacing: 0.1px;
+    text-align: right;
+    color: #333;
+    width: auto;
+    min-width: auto !important;
+  }
+
+  button > div,
+  button > div > div,
+  button > div > div > span {
+    text-transform: lowercase !important;
+    width: auto;
+    min-width: auto !important;
+  }
+
+  button > div > div > span::first-letter {
+    text-transform: uppercase !important;
+  }
 
   @media (max-width: ${Responsive.VIEWPORT.MEDIUM}px) {
     margin-left: 0;
@@ -37,6 +64,7 @@ export const FormButtonWrapper = styled.div`
     > div,
     > div > div {
       width: 100%;
+      box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24);
     }
 
     > div > button > div {
@@ -47,11 +75,12 @@ export const FormButtonWrapper = styled.div`
 
 export const searchButtonStyles = {
   labelStyle: {
-    color: '#000',
-    fontSize: 14,
+    color: '#333',
+    fontWeight: 'bold',
+    fontSize: '10px',
     textAlign: 'center',
     textTransform: 'uppercase',
-    fontFamily: RobotoRegular,
+    fontFamily: 'Roboto-Regular',
   },
   width: 119,
   height: 40,

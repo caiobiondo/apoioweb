@@ -36,7 +36,7 @@ export default class CustomerSpeedDial extends Component {
   };
 
   render() {
-    const { hidden, open } = this.state;
+    const { open } = this.state;
     return (
       <div>
         {!open && (
@@ -65,10 +65,10 @@ export default class CustomerSpeedDial extends Component {
               </FloatingActionButton>
             </Wrapper>
             {actions.map((action, idx) => (
-              <div key={idx} style={{ flexDirection: 'row', flexWrap: 'wrap', display: 'flex' }}>
-                <FormButtonWrapper>
-                  <FormButton {...searchButtonStyles} type="submit" label={action.name} />
-                </FormButtonWrapper>
+              <div
+                key={idx}
+                style={{ flexDirection: 'row-reverse', flexWrap: 'wrap', display: 'flex' }}
+              >
                 <Wrapper
                   onClick={() => {
                     console.log(`Click icone ${action.icon}`);
@@ -78,6 +78,9 @@ export default class CustomerSpeedDial extends Component {
                     <Icon file={action.icon} />
                   </FloatingActionButton>
                 </Wrapper>
+                <FormButtonWrapper>
+                  <FormButton {...searchButtonStyles} type="submit" label={action.name} />
+                </FormButtonWrapper>
               </div>
             ))}
           </div>
